@@ -119,6 +119,45 @@
       height: 20px;
       cursor: pointer;
     }
+    .advanced-settings {
+      margin-top: 8px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .advanced-settings summary {
+      list-style: none;
+      padding: 12px 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #374151;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+    }
+    .advanced-settings summary::-webkit-details-marker { display: none; }
+    .advanced-settings summary::after {
+      content: '▸';
+      font-size: 0.8rem;
+      transition: transform 0.2s;
+    }
+    .advanced-settings[open] summary::after { transform: rotate(90deg); }
+    .advanced-body {
+      padding: 0 16px 8px;
+      border-top: 1px solid #e5e7eb;
+    }
+    .active-notice {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      color: #1e40af;
+      margin-top: 12px;
+    }
+    .active-notice strong { font-weight: 700; }
 
     /* ===== QUESTION SCREEN ===== */
     #screen-question {
@@ -672,10 +711,22 @@
     <button class="toggle-btn active" data-diff="easy" onclick="setDifficulty('easy')">Łatwy</button>
     <button class="toggle-btn" data-diff="hard" onclick="setDifficulty('hard')">Trudny</button>
   </div>
-  <label class="checkbox-label">
-    <input type="checkbox" id="timer-checkbox" checked onchange="state.timerEnabled = this.checked">
-    Licznik czasu (60 s/pytanie)
-  </label>
+  <details class="advanced-settings" id="advanced-settings">
+    <summary>Dodatkowe ustawienia</summary>
+    <div class="advanced-body">
+      <label class="checkbox-label">
+        <input type="checkbox" id="timer-checkbox" onchange="onTimerChange(this.checked)">
+        Licznik czasu (60 s/pytanie)
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" id="autoadvance-checkbox" onchange="onAutoAdvanceChange(this.checked)">
+        Automatycznie przechodź do kolejnego pytania po wyborze odpowiedzi
+      </label>
+    </div>
+  </details>
+  <div id="active-notice" class="active-notice" style="display:none">
+    Aktywne: <span id="active-notice-list"></span>
+  </div>
   <button onclick="startSession()">Rozpocznij &rarr;</button>
   <button class="secondary" onclick="showScreen('home')">Powrót</button>
 </div>
@@ -720,7 +771,8 @@
     screen: 'home',
     mode: 'learning',
     difficulty: 'easy',
-    timerEnabled: true,
+    timerEnabled: false,
+    autoAdvance: false,
     session: [],
     currentIndex: 0,
     answers: [],
@@ -757,6 +809,7 @@
       if (saved.mode) state.mode = saved.mode;
       if (saved.difficulty) state.difficulty = saved.difficulty;
       if (typeof saved.timerEnabled === 'boolean') state.timerEnabled = saved.timerEnabled;
+      if (typeof saved.autoAdvance === 'boolean') state.autoAdvance = saved.autoAdvance;
     } catch(e) {}
 
     // Hide history button if no sessions
@@ -782,6 +835,8 @@
     const hardBtn = document.querySelector('[data-diff="hard"]');
     if (hardBtn) hardBtn.disabled = (typeof QUESTIONS_HARD === 'undefined');
     document.getElementById('timer-checkbox').checked = state.timerEnabled;
+    document.getElementById('autoadvance-checkbox').checked = state.autoAdvance;
+    updateActiveNotice();
     showScreen('setup');
   }
 
@@ -798,6 +853,30 @@
     document.querySelectorAll('#difficulty-toggle .toggle-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.diff === d);
     });
+  }
+
+  function onTimerChange(checked) {
+    state.timerEnabled = checked;
+    updateActiveNotice();
+  }
+
+  function onAutoAdvanceChange(checked) {
+    state.autoAdvance = checked;
+    updateActiveNotice();
+  }
+
+  function updateActiveNotice() {
+    const items = [];
+    if (state.timerEnabled) items.push('Licznik czasu (60s)');
+    if (state.autoAdvance) items.push('Auto-przejście');
+    const notice = document.getElementById('active-notice');
+    if (!notice) return;
+    if (items.length) {
+      document.getElementById('active-notice-list').textContent = items.join(' · ');
+      notice.style.display = 'block';
+    } else {
+      notice.style.display = 'none';
+    }
   }
 
   function getQuestionBank() {
@@ -833,7 +912,7 @@
   function startSession() {
     // Save settings
     try {
-      localStorage.setItem('ksap_settings', JSON.stringify({ mode: state.mode, difficulty: state.difficulty, timerEnabled: state.timerEnabled }));
+      localStorage.setItem('ksap_settings', JSON.stringify({ mode: state.mode, difficulty: state.difficulty, timerEnabled: state.timerEnabled, autoAdvance: state.autoAdvance }));
     } catch(e) {}
 
     state.session = buildSession();
@@ -1285,6 +1364,7 @@
         timeSpentSec: timeSpent
       });
       document.getElementById('btn-next').disabled = false;
+      if (state.autoAdvance) setTimeout(nextQuestion, 700);
     }
   }
 
@@ -1330,6 +1410,21 @@
       const exp = document.querySelector('.explanation-box');
       if (exp) exp.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }, 100);
+
+    if (state.autoAdvance) {
+      let secs = 3;
+      btn.textContent = 'Dalej → (' + secs + ')';
+      const countdown = setInterval(function() {
+        secs--;
+        if (secs <= 0) {
+          clearInterval(countdown);
+          nextQuestion();
+        } else {
+          const b = document.getElementById('btn-next');
+          if (b) b.textContent = 'Dalej → (' + secs + ')';
+        }
+      }, 1000);
+    }
   }
 
   function onBtnNext() {
