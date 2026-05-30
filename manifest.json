@@ -2,7 +2,7 @@
   "name": "Sprawdzian Umiejętności KSAP",
   "short_name": "KSAP Quiz",
   "description": "Sprawdzian kompetencji menedżerskich i przywódczych",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#f0f2f5",
