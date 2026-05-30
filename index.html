@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sprawdzian Umiejętności KSAP</title>
+  <style>
+    /* ===== RESET & BASE (mobile-first) ===== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: sans-serif; font-size: 16px; background: #f0f2f5; color: #1a1a1a; }
+
+    .screen { display: none; max-width: 800px; margin: 0 auto; padding: 16px; }
+
+    h1 { font-size: clamp(1.4rem, 5vw, 2rem); margin-bottom: 8px; }
+    h2 { font-size: clamp(1.2rem, 4vw, 1.6rem); margin-bottom: 16px; }
+    h3 { font-size: 1.1rem; margin-bottom: 8px; }
+
+    /* ===== BUTTONS ===== */
+    button {
+      min-height: 48px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      border: none;
+      background: #2563eb;
+      color: white;
+      width: 100%;
+      margin-top: 12px;
+      font-weight: 500;
+    }
+    button:active { opacity: 0.85; }
+    button.secondary {
+      background: #6b7280;
+    }
+    button.btn-sm {
+      min-height: 36px;
+      padding: 6px 14px;
+      font-size: 0.85rem;
+      width: auto;
+      margin-top: 0;
+    }
+    button:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    /* ===== HOME SCREEN ===== */
+    #screen-home {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      gap: 4px;
+    }
+    #screen-home .subtitle {
+      color: #555;
+      margin-bottom: 32px;
+      font-size: 1rem;
+    }
+    #screen-home button {
+      max-width: 300px;
+    }
+
+    /* ===== SETUP SCREEN ===== */
+    #screen-setup {
+      display: none;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 32px 16px;
+    }
+    .toggle-group {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .toggle-btn {
+      flex: 1;
+      background: #e5e7eb;
+      color: #374151;
+      border: 2px solid #e5e7eb;
+      min-height: 44px;
+      margin-top: 0;
+    }
+    .toggle-btn.active {
+      background: #2563eb;
+      color: white;
+      border-color: #2563eb;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 0;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    .checkbox-label input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    /* ===== QUESTION SCREEN ===== */
+    #screen-question {
+      padding: 0;
+      max-width: 800px;
+    }
+    .q-header {
+      position: sticky;
+      top: 0;
+      background: white;
+      border-bottom: 1px solid #eee;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      z-index: 10;
+      font-size: 0.9rem;
+    }
+    #q-progress {
+      flex: 1;
+      height: 6px;
+      background: #e5e7eb;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    #q-progress-bar {
+      height: 100%;
+      background: #2563eb;
+      border-radius: 3px;
+      transition: width 0.3s;
+    }
+    .timer { font-weight: bold; min-width: 40px; text-align: right; font-size: 1rem; }
+    .timer-orange { color: #e67e22; }
+    .timer-red { color: #e74c3c; animation: pulse 0.5s infinite alternate; }
+    @keyframes pulse { from { opacity: 1; } to { opacity: 0.6; } }
+
+    #q-body { padding: 16px; }
+
+    .type-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #2563eb;
+      background: #eff6ff;
+      border-radius: 4px;
+      padding: 3px 8px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .instruction {
+      color: #374151;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 16px;
+      padding: 10px;
+      background: #f9fafb;
+      border-left: 3px solid #2563eb;
+      border-radius: 0 4px 4px 0;
+    }
+    .question-body {
+      margin-bottom: 16px;
+    }
+
+    /* ===== OPTIONS ===== */
+    .options { margin-top: 8px; }
+    .option {
+      display: block;
+      width: 100%;
+      padding: 14px 16px;
+      margin: 8px 0;
+      border: 2px solid #d0d0d0;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      background: white;
+      text-align: left;
+      min-height: 48px;
+      line-height: 1.4;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .option:active { background: #e8f0fe; }
+    .option:hover:not(.correct):not(.wrong):not(.disabled) { border-color: #93c5fd; background: #f0f7ff; }
+    .option.correct { border-color: #27ae60; background: #eafaf1; }
+    .option.wrong { border-color: #e74c3c; background: #fdf0ef; }
+    .option.disabled { cursor: default; opacity: 0.7; }
+
+    /* Type 8 options (figure options) */
+    .figure-option {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 4px;
+      padding: 10px;
+      margin: 6px;
+      border: 2px solid #d0d0d0;
+      border-radius: 8px;
+      cursor: pointer;
+      background: white;
+      min-width: 100px;
+      min-height: 60px;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .figure-option:hover:not(.correct):not(.wrong):not(.disabled) { border-color: #93c5fd; background: #f0f7ff; }
+    .figure-option.correct { border-color: #27ae60; background: #eafaf1; }
+    .figure-option.wrong { border-color: #e74c3c; background: #fdf0ef; }
+    .figure-option.disabled { cursor: default; opacity: 0.7; }
+    .figure-options-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 8px;
+    }
+    .figure-option-label {
+      display: block;
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-align: center;
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    /* ===== EXPLANATION ===== */
+    .explanation-box {
+      margin-top: 16px;
+      padding: 14px;
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #374151;
+    }
+    .explanation-box strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #92400e;
+    }
+
+    /* ===== NEXT BUTTON (inside question screen) ===== */
+    #btn-next {
+      margin: 16px;
+      margin-top: 0;
+    }
+
+    /* ===== TYPE 1: ANALOGY GRID ===== */
+    .analogy-grid {
+      display: flex;
+      gap: 12px;
+      margin: 8px 0;
+      align-items: stretch;
+    }
+    .analogy-card {
+      flex: 1;
+      border: 2px solid #d0d0d0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .analogy-cell {
+      padding: 14px 10px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .analogy-cell:last-child { border-bottom: none; }
+    .analogy-cell.blank {
+      font-size: 1.5rem;
+      color: #2563eb;
+      background: #eff6ff;
+    }
+    .analogy-arrow {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      color: #9ca3af;
+      padding: 0 4px;
+    }
+
+    /* ===== TYPE 2: WORD LIST ===== */
+    .word-list {
+      list-style: decimal inside;
+      padding: 10px 14px;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .word-list li {
+      padding: 6px 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .word-list li:last-child { border-bottom: none; }
+    .blank-box {
+      display: inline-block;
+      border-bottom: 2px solid #2563eb;
+      min-width: 60px;
+      height: 24px;
+      vertical-align: bottom;
+    }
+
+    /* ===== TYPE 4: SENTENCE ANALOGY ===== */
+    .stem {
+      padding: 12px;
+      background: #f9fafb;
+      border-radius: 8px;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* ===== TYPE 5: SYLLOGISM ===== */
+    .premises-list {
+      list-style: none;
+      padding: 0;
+    }
+    .premises-list li {
+      padding: 10px 14px;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .premises-list li::before {
+      content: attr(data-num) ". ";
+      font-weight: 700;
+      color: #2563eb;
+    }
+    .syllogism-conclusion {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: #6b7280;
+      font-style: italic;
+    }
+
+    /* ===== TYPE 6: TABLE ===== */
+    .narrative-text {
+      padding: 10px 12px;
+      background: #f9fafb;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      border-left: 3px solid #10b981;
+    }
+    .data-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .data-table th {
+      background: #1e3a5f;
+      color: white;
+      padding: 8px 10px;
+      text-align: center;
+      font-weight: 600;
+    }
+    .data-table td {
+      padding: 8px 10px;
+      text-align: center;
+      border: 1px solid #e5e7eb;
+    }
+    .data-table tr:nth-child(even) td { background: #f9fafb; }
+    .data-table tr:last-child td { background: #f0f9ff; font-weight: 600; }
+    .data-table td:first-child { text-align: left; font-weight: 600; background: #f9fafb; }
+    .cell-ask {
+      background: #fef3c7 !important;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #2563eb;
+    }
+
+    /* ===== TYPE 7: CHART TITLE ===== */
+    .chart-title {
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #374151;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== TYPE 8: FIGURE GRID ===== */
+    .figure-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 8px;
+      max-width: 300px;
+      margin: 0 auto 8px;
+      border: 2px solid #d0d0d0;
+      border-radius: 8px;
+      padding: 8px;
+      background: white;
+    }
+    .figure-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 4px;
+      min-height: 80px;
+      background: #f9fafb;
+      border-radius: 6px;
+      padding: 4px;
+    }
+    .figure-cell.bottom-right {
+      background: #eff6ff;
+      border: 2px dashed #93c5fd;
+      font-size: 2rem;
+      color: #2563eb;
+    }
+
+    /* ===== CHARTS ===== */
+    svg { max-width: 100%; height: auto; display: block; }
+    .chart-container { margin: 8px 0; }
+    .chart-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+      font-size: 0.8rem;
+      justify-content: center;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ===== SUMMARY SCREEN ===== */
+    #screen-summary {
+      padding: 24px 16px;
+      text-align: center;
+    }
+    .score-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin: 20px auto;
+      border: 5px solid;
+    }
+    .score-badge.good { border-color: #27ae60; color: #27ae60; background: #eafaf1; }
+    .score-badge.ok { border-color: #e67e22; color: #e67e22; background: #fef3e7; }
+    .score-badge.poor { border-color: #e74c3c; color: #e74c3c; background: #fdf0ef; }
+    .summary-time {
+      color: #6b7280;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 16px 0;
+      text-align: left;
+    }
+    .summary-table th {
+      background: #1e3a5f;
+      color: white;
+      padding: 8px 10px;
+    }
+    .summary-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .summary-table tr:nth-child(even) td { background: #f9fafb; }
+    .correct-mark { color: #27ae60; font-weight: 700; font-size: 1.1rem; }
+    .wrong-mark { color: #e74c3c; font-weight: 700; font-size: 1.1rem; }
+    .na-mark { color: #9ca3af; font-weight: 700; }
+    .summary-buttons { margin-top: 16px; }
+
+    /* ===== HISTORY SCREEN ===== */
+    #screen-history {
+      padding: 24px 16px;
+    }
+    .history-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .history-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      min-width: 420px;
+    }
+    .history-table th {
+      background: #1e3a5f;
+      color: white;
+      padding: 8px 10px;
+      text-align: left;
+    }
+    .history-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #e5e7eb;
+      vertical-align: top;
+    }
+    .history-table tr:nth-child(even) td { background: #f9fafb; }
+    .detail-row td {
+      padding: 0;
+      background: #f0f4f8 !important;
+    }
+    .detail-inner {
+      padding: 10px 16px;
+      overflow-x: auto;
+    }
+    .detail-table {
+      font-size: 0.78rem;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    .detail-table th {
+      background: #374151;
+      color: white;
+      padding: 6px 8px;
+    }
+    .detail-table td {
+      padding: 5px 8px;
+      border-bottom: 1px solid #d1d5db;
+    }
+    .history-empty {
+      text-align: center;
+      color: #6b7280;
+      padding: 32px 0;
+      font-size: 0.95rem;
+    }
+    .badge-mode-learning {
+      font-size: 0.72rem;
+      background: #dbeafe;
+      color: #1d4ed8;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+    .badge-mode-exam {
+      font-size: 0.72rem;
+      background: #fce7f3;
+      color: #9d174d;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-weight: 600;
+    }
+
+    /* ===== ERROR BANNER ===== */
+    #error-banner {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: #e74c3c;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 1.1rem;
+      z-index: 999;
+    }
+
+    /* ===== TABLET+ ===== */
+    @media (min-width: 480px) {
+      .screen { padding: 24px; }
+      button { width: auto; }
+      #screen-home button { width: 300px; }
+      #btn-next { width: auto; }
+      .analogy-cell { font-size: 1rem; }
+    }
+    @media (min-width: 768px) {
+      #screen-question { margin: 0 auto; }
+      #q-body { padding: 24px; }
+      #btn-next { margin: 0 24px 24px; }
+      .figure-grid { max-width: 320px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="error-banner">Błąd: nie znaleziono pliku questions.js lub dane są nieprawidłowe.</div>
+
+<!-- ==================== HOME ==================== -->
+<div id="screen-home" class="screen">
+  <h1>Sprawdzian Umiejętności KSAP</h1>
+  <p class="subtitle">Pomoc do nauki egzaminu kompetencyjnego</p>
+  <button id="btn-new-session" onclick="goSetup()">Nowa sesja</button>
+  <button id="btn-history" onclick="showScreen('history'); loadHistory();">Historia sesji</button>
+</div>
+
+<!-- ==================== SETUP ==================== -->
+<div id="screen-setup" class="screen">
+  <h2>Nowa sesja</h2>
+  <div class="toggle-group" id="mode-toggle">
+    <button class="toggle-btn active" data-mode="learning" onclick="setMode('learning')">Nauka</button>
+    <button class="toggle-btn" data-mode="exam" onclick="setMode('exam')">Egzamin</button>
+  </div>
+  <label class="checkbox-label">
+    <input type="checkbox" id="timer-checkbox" checked onchange="state.timerEnabled = this.checked">
+    Licznik czasu (60 s/pytanie)
+  </label>
+  <button onclick="startSession()">Rozpocznij &rarr;</button>
+  <button class="secondary" onclick="showScreen('home')">Powrót</button>
+</div>
+
+<!-- ==================== QUESTION ==================== -->
+<div id="screen-question" class="screen">
+  <div class="q-header" id="q-header">
+    <span id="q-counter">Pytanie 1 z 15</span>
+    <div id="q-progress"><div id="q-progress-bar" style="width:0%"></div></div>
+    <span id="q-timer" class="timer"></span>
+  </div>
+  <div id="q-body"></div>
+  <button id="btn-next" style="display:none" onclick="nextQuestion()">Dalej &rarr;</button>
+</div>
+
+<!-- ==================== SUMMARY ==================== -->
+<div id="screen-summary" class="screen">
+  <h2>Wynik sesji</h2>
+  <div id="summary-content"></div>
+</div>
+
+<!-- ==================== HISTORY ==================== -->
+<div id="screen-history" class="screen">
+  <h2>Historia sesji</h2>
+  <div id="history-content"></div>
+  <button class="secondary" onclick="showScreen('home')" style="max-width:200px; margin-top:20px;">Powrót</button>
+</div>
+
+<!-- questions data -->
+<script src="questions.js"></script>
+
+<!-- main script -->
+<script>
+  /* ================================================================
+     STATE
+  ================================================================ */
+  const state = {
+    screen: 'home',
+    mode: 'learning',
+    timerEnabled: true,
+    session: [],
+    currentIndex: 0,
+    answers: [],
+    timerInterval: null,
+    timerSeconds: 60,
+    sessionStartTime: null,
+  };
+
+  /* ================================================================
+     SCREEN MANAGEMENT
+  ================================================================ */
+  function showScreen(name) {
+    document.querySelectorAll('.screen').forEach(el => el.style.display = 'none');
+    document.getElementById('screen-' + name).style.display = '';
+    state.screen = name;
+    window.scrollTo(0, 0);
+  }
+
+  /* ================================================================
+     INIT
+  ================================================================ */
+  document.addEventListener('DOMContentLoaded', function() {
+    // Check questions.js loaded
+    if (typeof QUESTIONS === 'undefined') {
+      document.getElementById('error-banner').style.display = 'block';
+      return;
+    }
+
+    // Load saved settings
+    try {
+      const saved = JSON.parse(localStorage.getItem('ksap_settings') || '{}');
+      if (saved.mode) state.mode = saved.mode;
+      if (typeof saved.timerEnabled === 'boolean') state.timerEnabled = saved.timerEnabled;
+    } catch(e) {}
+
+    // Hide history button if no sessions
+    const sessions = getSessions();
+    if (!sessions.length) {
+      document.getElementById('btn-history').style.display = 'none';
+    }
+
+    showScreen('home');
+  });
+
+  /* ================================================================
+     SETUP
+  ================================================================ */
+  function goSetup() {
+    // Sync UI with current state
+    document.querySelectorAll('#mode-toggle .toggle-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.mode === state.mode);
+    });
+    document.getElementById('timer-checkbox').checked = state.timerEnabled;
+    showScreen('setup');
+  }
+
+  function setMode(m) {
+    state.mode = m;
+    document.querySelectorAll('#mode-toggle .toggle-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.mode === m);
+    });
+  }
+
+  /* ================================================================
+     SESSION
+  ================================================================ */
+  function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+  }
+
+  function buildSession() {
+    const guaranteed = [];
+    for (let t = 1; t <= 8; t++) {
+      const pool = QUESTIONS['type' + t];
+      guaranteed.push(pool[Math.floor(Math.random() * pool.length)]);
+    }
+    const usedIds = new Set(guaranteed.map(q => q.id));
+    const allQs = Object.values(QUESTIONS).flat().filter(q => !usedIds.has(q.id));
+    shuffle(allQs);
+    const session = [...guaranteed, ...allQs.slice(0, 7)];
+    shuffle(session);
+    return session;
+  }
+
+  function startSession() {
+    // Save settings
+    localStorage.setItem('ksap_settings', JSON.stringify({ mode: state.mode, timerEnabled: state.timerEnabled }));
+
+    state.session = buildSession();
+    state.currentIndex = 0;
+    state.answers = [];
+    state.sessionStartTime = Date.now();
+
+    showScreen('question');
+    renderQuestion();
+  }
+
+  /* ================================================================
+     TIMER
+  ================================================================ */
+  function startTimer() {
+    if (!state.timerEnabled) {
+      const el = document.getElementById('q-timer');
+      if (el) el.textContent = '';
+      return;
+    }
+    state.timerSeconds = 60;
+    updateTimerDisplay();
+    state.timerInterval = setInterval(function() {
+      state.timerSeconds--;
+      updateTimerDisplay();
+      if (state.timerSeconds <= 0) {
+        clearInterval(state.timerInterval);
+        // Time expired — auto-record no-answer and move on
+        state.answers.push({
+          questionId: state.session[state.currentIndex].id,
+          userAnswer: null,
+          correct: false,
+          timeSpentSec: 60
+        });
+        nextQuestion();
+      }
+    }, 1000);
+  }
+
+  function stopTimer() {
+    clearInterval(state.timerInterval);
+    state.timerInterval = null;
+  }
+
+  function updateTimerDisplay() {
+    const el = document.getElementById('q-timer');
+    if (!el) return;
+    if (!state.timerEnabled) { el.textContent = ''; return; }
+    const m = Math.floor(state.timerSeconds / 60);
+    const s = state.timerSeconds % 60;
+    el.textContent = m + ':' + String(s).padStart(2, '0');
+    el.className = 'timer' +
+      (state.timerSeconds <= 10 ? ' timer-red' : state.timerSeconds <= 30 ? ' timer-orange' : '');
+  }
+
+  /* ================================================================
+     TYPE NAMES
+  ================================================================ */
+  const TYPE_NAMES = {
+    1: 'ANALOGIA SŁOWNA — MACIERZ',
+    2: 'WSPÓLNY WYRAZ',
+    3: 'ZWIĄZEK PRZYCZYNOWO-SKUTKOWY',
+    4: 'ANALOGIA ZDANIOWA',
+    5: 'WNIOSKOWANIE LOGICZNE',
+    6: 'ZADANIE NUMERYCZNE',
+    7: 'ANALIZA WYKRESU',
+    8: 'POWIĄZANIA FIGUR',
+  };
+
+  /* ================================================================
+     RENDER QUESTION
+  ================================================================ */
+  function renderQuestion() {
+    const q = state.session[state.currentIndex];
+    const idx = state.currentIndex;
+    const total = state.session.length;
+
+    // Header
+    document.getElementById('q-counter').textContent = 'Pytanie ' + (idx + 1) + ' z ' + total;
+    const pct = ((idx + 1) / total * 100).toFixed(0);
+    document.getElementById('q-progress-bar').style.width = pct + '%';
+
+    // Body
+    const typeName = TYPE_NAMES[q.typeId] || ('TYP ' + q.typeId);
+    let bodyHtml = '';
+    bodyHtml += '<div class="type-label">' + escHtml(typeName) + '</div>';
+    bodyHtml += '<div class="instruction">' + escHtml(q.instruction) + '</div>';
+    bodyHtml += '<div class="question-body">' + renderQuestionBody(q) + '</div>';
+
+    if (q.typeId !== 8) {
+      // Standard text options
+      bodyHtml += '<div class="options" id="options-container">';
+      q.options.forEach(function(opt, i) {
+        bodyHtml += '<div class="option" data-index="' + i + '" onclick="selectAnswer(' + i + ')">' + escHtml(opt) + '</div>';
+      });
+      bodyHtml += '</div>';
+    } else {
+      // Figure options
+      bodyHtml += '<div class="figure-options-row" id="options-container">';
+      const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+      q.options.forEach(function(specs, i) {
+        const letter = letters[i] || (i + 1).toString();
+        bodyHtml += '<div class="figure-option" data-index="' + i + '" onclick="selectAnswer(' + i + ')">';
+        specs.forEach(function(spec) {
+          bodyHtml += renderFigure(spec);
+        });
+        bodyHtml += '<span class="figure-option-label">' + letter + ')</span>';
+        bodyHtml += '</div>';
+      });
+      bodyHtml += '</div>';
+    }
+
+    document.getElementById('q-body').innerHTML = bodyHtml;
+    document.getElementById('btn-next').style.display = 'none';
+
+    // Start timer
+    stopTimer();
+    startTimer();
+  }
+
+  /* ================================================================
+     TYPE-SPECIFIC RENDERERS
+  ================================================================ */
+  function renderQuestionBody(q) {
+    switch (q.typeId) {
+      case 1: return renderType1(q);
+      case 2: return renderType2(q);
+      case 3: return renderType3(q);
+      case 4: return renderType4(q);
+      case 5: return renderType5(q);
+      case 6: return renderType6(q);
+      case 7: return renderType7(q);
+      case 8: return renderType8(q);
+      default: return '';
+    }
+  }
+
+  function renderType1(q) {
+    return '<div class="analogy-grid">' +
+      '<div class="analogy-card">' +
+        '<div class="analogy-cell">' + escHtml(q.leftPair[0]) + '</div>' +
+        '<div class="analogy-cell">' + escHtml(q.leftPair[1]) + '</div>' +
+      '</div>' +
+      '<div class="analogy-arrow">&#8594;</div>' +
+      '<div class="analogy-card">' +
+        '<div class="analogy-cell">' + escHtml(q.rightTop) + '</div>' +
+        '<div class="analogy-cell blank">?</div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderType2(q) {
+    return '<ol class="word-list">' +
+      '<li>' + escHtml(q.words[0]) + '</li>' +
+      '<li>' + escHtml(q.words[1]) + '</li>' +
+      '<li>' + escHtml(q.words[2]) + '</li>' +
+      '<li><span class="blank-box">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>' +
+    '</ol>';
+  }
+
+  function renderType3(q) {
+    let html = '<p class="narrative-text">' + escHtml(q.text) + '</p>';
+    if (q.chart) {
+      if (q.chart.type === 'bar') {
+        html += renderBarChart(q.chart);
+      } else {
+        html += renderLineChart(q.chart);
+      }
+    }
+    return html;
+  }
+
+  function renderType4(q) {
+    return '<p class="stem"><strong>' + escHtml(q.stem) + '</strong> <span class="blank-box">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>';
+  }
+
+  function renderType5(q) {
+    let html = '<ul class="premises-list">';
+    q.premises.forEach(function(p, i) {
+      html += '<li data-num="' + (i + 1) + '">' + escHtml(p) + '</li>';
+    });
+    html += '</ul>';
+    html += '<p class="syllogism-conclusion">Na podstawie powyższych przesłanek, wybierz poprawny wniosek.</p>';
+    return html;
+  }
+
+  function renderType6(q) {
+    let html = '<p class="narrative-text">' + escHtml(q.narrative) + '</p>';
+    html += '<div class="data-table-wrap"><table class="data-table">';
+    // Headers
+    html += '<thead><tr>';
+    q.table.headers.forEach(function(h) {
+      html += '<th>' + escHtml(h) + '</th>';
+    });
+    html += '</tr></thead><tbody>';
+    // Rows
+    q.table.rows.forEach(function(row) {
+      html += '<tr>';
+      row.forEach(function(cell) {
+        const isAsk = cell === '?';
+        html += isAsk
+          ? '<td class="cell-ask">?</td>'
+          : '<td>' + escHtml(cell) + '</td>';
+      });
+      html += '</tr>';
+    });
+    html += '</tbody></table></div>';
+    return html;
+  }
+
+  function renderType7(q) {
+    let html = '<div class="chart-title">' + escHtml(q.chartTitle) + '</div>';
+    html += renderLineChart(q.chart);
+    return html;
+  }
+
+  function renderType8(q) {
+    const g = q.grid;
+    // topLeft cell
+    let tlHtml = renderFigure(g.topLeft);
+    // bottomLeft: array of figures
+    let blHtml = '';
+    if (Array.isArray(g.bottomLeft)) {
+      g.bottomLeft.forEach(function(spec) { blHtml += renderFigure(spec); });
+    } else {
+      blHtml = renderFigure(g.bottomLeft);
+    }
+    // topRight
+    let trHtml = renderFigure(g.topRight);
+
+    return '<div class="figure-grid">' +
+      '<div class="figure-cell">' + tlHtml + '</div>' +
+      '<div class="figure-cell">' + trHtml + '</div>' +
+      '<div class="figure-cell">' + blHtml + '</div>' +
+      '<div class="figure-cell bottom-right">?</div>' +
+    '</div>';
+  }
+
+  /* ================================================================
+     SVG RENDERERS
+  ================================================================ */
+  function renderFigure(spec) {
+    const stroke = '#333';
+    const strokeWidth = '2.5';
+    let interior = '';
+    let shapeFill = 'white';
+
+    if (spec.fill === 'solid') shapeFill = '#333';
+    else if (spec.fill === 'empty') shapeFill = 'white';
+    else if (spec.fill === 'x') shapeFill = 'white';
+    else if (spec.fill === 'dot-center') shapeFill = 'white';
+
+    let shapeHtml = '';
+    if (spec.shape === 'square') {
+      shapeHtml = '<rect x="10" y="10" width="60" height="60" fill="' + shapeFill + '" stroke="' + stroke + '" stroke-width="' + strokeWidth + '"/>';
+    } else {
+      shapeHtml = '<circle cx="40" cy="40" r="30" fill="' + shapeFill + '" stroke="' + stroke + '" stroke-width="' + strokeWidth + '"/>';
+    }
+
+    if (spec.fill === 'x') {
+      if (spec.shape === 'square') {
+        interior = '<line x1="12" y1="12" x2="68" y2="68" stroke="' + stroke + '" stroke-width="2"/>' +
+                   '<line x1="68" y1="12" x2="12" y2="68" stroke="' + stroke + '" stroke-width="2"/>';
+      } else {
+        interior = '<line x1="19" y1="19" x2="61" y2="61" stroke="' + stroke + '" stroke-width="2"/>' +
+                   '<line x1="61" y1="19" x2="19" y2="61" stroke="' + stroke + '" stroke-width="2"/>';
+      }
+    } else if (spec.fill === 'dot-center') {
+      interior = '<circle cx="40" cy="40" r="8" fill="#333"/>';
+    }
+
+    return '<svg viewBox="0 0 80 80" width="64" height="64" xmlns="http://www.w3.org/2000/svg">' +
+      shapeHtml + interior +
+    '</svg>';
+  }
+
+  function renderBarChart(chart) {
+    const W = 500, H = 260;
+    const padL = 50, padR = 20, padT = 20, padB = 60;
+    const plotW = W - padL - padR;
+    const plotH = H - padT - padB;
+
+    // Compute max
+    let maxVal = 0;
+    chart.datasets.forEach(function(ds) {
+      ds.data.forEach(function(v) { if (v > maxVal) maxVal = v; });
+    });
+    maxVal = maxVal * 1.15;
+    if (maxVal === 0) maxVal = 1;
+
+    const nGroups = chart.xLabels.length;
+    const nSeries = chart.datasets.length;
+    const groupW = plotW / nGroups;
+    const barW = Math.min((groupW / nSeries) * 0.75, 40);
+    const barGap = (groupW - barW * nSeries) / (nSeries + 1);
+
+    let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="100%" xmlns="http://www.w3.org/2000/svg">';
+
+    // Background
+    svg += '<rect width="' + W + '" height="' + H + '" fill="#fafafa" rx="4"/>';
+
+    // Y grid lines & labels (5 lines)
+    for (let i = 0; i <= 4; i++) {
+      const v = (maxVal / 4) * i;
+      const y = padT + plotH - (v / maxVal) * plotH;
+      svg += '<line x1="' + padL + '" y1="' + y + '" x2="' + (padL + plotW) + '" y2="' + y + '" stroke="#e5e7eb" stroke-width="1"/>';
+      svg += '<text x="' + (padL - 6) + '" y="' + (y + 4) + '" text-anchor="end" font-size="10" fill="#6b7280">' + Math.round(v) + '</text>';
+    }
+
+    // Axes
+    svg += '<line x1="' + padL + '" y1="' + padT + '" x2="' + padL + '" y2="' + (padT + plotH) + '" stroke="#374151" stroke-width="1.5"/>';
+    svg += '<line x1="' + padL + '" y1="' + (padT + plotH) + '" x2="' + (padL + plotW) + '" y2="' + (padT + plotH) + '" stroke="#374151" stroke-width="1.5"/>';
+
+    // Bars
+    chart.datasets.forEach(function(ds, si) {
+      chart.xLabels.forEach(function(lbl, gi) {
+        const v = ds.data[gi];
+        const barH = (v / maxVal) * plotH;
+        const x = padL + gi * groupW + barGap * (si + 1) + barW * si;
+        const y = padT + plotH - barH;
+        svg += '<rect x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + barW.toFixed(1) + '" height="' + barH.toFixed(1) + '" fill="' + ds.color + '" opacity="0.85" rx="2"/>';
+        // Value label above bar
+        if (barH > 8) {
+          svg += '<text x="' + (x + barW / 2).toFixed(1) + '" y="' + (y - 3).toFixed(1) + '" text-anchor="middle" font-size="9" fill="#374151">' + v + '</text>';
+        }
+      });
+    });
+
+    // X labels
+    chart.xLabels.forEach(function(lbl, gi) {
+      const x = padL + gi * groupW + groupW / 2;
+      const y = padT + plotH + 16;
+      svg += '<text x="' + x.toFixed(1) + '" y="' + y + '" text-anchor="middle" font-size="10" fill="#374151">' + escHtml(lbl) + '</text>';
+    });
+
+    svg += '</svg>';
+
+    // Legend
+    let legend = '<div class="chart-legend">';
+    chart.datasets.forEach(function(ds) {
+      legend += '<div class="legend-item"><div class="legend-dot" style="background:' + ds.color + '"></div><span>' + escHtml(ds.label) + '</span></div>';
+    });
+    legend += '</div>';
+
+    return '<div class="chart-container">' + svg + legend + '</div>';
+  }
+
+  function renderLineChart(chart) {
+    const W = 500, H = 260;
+    const padL = 50, padR = 20, padT = 20, padB = 60;
+    const plotW = W - padL - padR;
+    const plotH = H - padT - padB;
+
+    let maxVal = 0;
+    chart.datasets.forEach(function(ds) {
+      ds.data.forEach(function(v) { if (v > maxVal) maxVal = v; });
+    });
+    maxVal = maxVal * 1.15;
+    if (maxVal === 0) maxVal = 1;
+
+    const nGroups = chart.xLabels.length;
+
+    function xPos(i) { return padL + i * (plotW / (nGroups - 1)); }
+    function yPos(v) { return padT + plotH - (v / maxVal) * plotH; }
+
+    let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="100%" xmlns="http://www.w3.org/2000/svg">';
+    svg += '<rect width="' + W + '" height="' + H + '" fill="#fafafa" rx="4"/>';
+
+    // Y grid lines
+    for (let i = 0; i <= 4; i++) {
+      const v = (maxVal / 4) * i;
+      const y = yPos(v);
+      svg += '<line x1="' + padL + '" y1="' + y.toFixed(1) + '" x2="' + (padL + plotW) + '" y2="' + y.toFixed(1) + '" stroke="#e5e7eb" stroke-width="1"/>';
+      svg += '<text x="' + (padL - 6) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="end" font-size="10" fill="#6b7280">' + Math.round(v) + '</text>';
+    }
+
+    // Axes
+    svg += '<line x1="' + padL + '" y1="' + padT + '" x2="' + padL + '" y2="' + (padT + plotH) + '" stroke="#374151" stroke-width="1.5"/>';
+    svg += '<line x1="' + padL + '" y1="' + (padT + plotH) + '" x2="' + (padL + plotW) + '" y2="' + (padT + plotH) + '" stroke="#374151" stroke-width="1.5"/>';
+
+    // Lines + points
+    chart.datasets.forEach(function(ds) {
+      // Polyline
+      const points = ds.data.map(function(v, i) { return xPos(i).toFixed(1) + ',' + yPos(v).toFixed(1); }).join(' ');
+      svg += '<polyline points="' + points + '" fill="none" stroke="' + ds.color + '" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>';
+      // Points + value labels
+      ds.data.forEach(function(v, i) {
+        const cx = xPos(i);
+        const cy = yPos(v);
+        svg += '<circle cx="' + cx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="5" fill="' + ds.color + '" stroke="white" stroke-width="1.5"/>';
+        // Value label
+        const labelY = cy - 9;
+        svg += '<text x="' + cx.toFixed(1) + '" y="' + labelY.toFixed(1) + '" text-anchor="middle" font-size="9" fill="#374151">' + v + '</text>';
+      });
+    });
+
+    // X labels
+    chart.xLabels.forEach(function(lbl, i) {
+      const x = xPos(i);
+      svg += '<text x="' + x.toFixed(1) + '" y="' + (padT + plotH + 16) + '" text-anchor="middle" font-size="10" fill="#374151">' + escHtml(lbl) + '</text>';
+    });
+
+    svg += '</svg>';
+
+    let legend = '<div class="chart-legend">';
+    chart.datasets.forEach(function(ds) {
+      legend += '<div class="legend-item"><div class="legend-dot" style="background:' + ds.color + '; border-radius:50%"></div><span>' + escHtml(ds.label) + '</span></div>';
+    });
+    legend += '</div>';
+
+    return '<div class="chart-container">' + svg + legend + '</div>';
+  }
+
+  /* ================================================================
+     ANSWER HANDLING
+  ================================================================ */
+  function selectAnswer(index) {
+    // Prevent double-answering
+    const q = state.session[state.currentIndex];
+    if (!q) return;
+    // Check if already answered (btn-next visible = already answered)
+    if (document.getElementById('btn-next').style.display !== 'none') return;
+
+    const timeSpent = state.timerEnabled ? (60 - state.timerSeconds) : null;
+    stopTimer();
+
+    const isCorrect = index === q.correct;
+    state.answers.push({
+      questionId: q.id,
+      userAnswer: index,
+      correct: isCorrect,
+      timeSpentSec: timeSpent !== null ? timeSpent : null
+    });
+
+    if (state.mode === 'learning') {
+      // Highlight options
+      const container = document.getElementById('options-container');
+      if (container) {
+        if (q.typeId !== 8) {
+          container.querySelectorAll('.option').forEach(function(el) {
+            el.classList.add('disabled');
+            el.onclick = null;
+            const i = parseInt(el.dataset.index);
+            if (i === q.correct) el.classList.add('correct');
+            else if (i === index) el.classList.add('wrong');
+          });
+        } else {
+          container.querySelectorAll('.figure-option').forEach(function(el) {
+            el.classList.add('disabled');
+            el.onclick = null;
+            const i = parseInt(el.dataset.index);
+            if (i === q.correct) el.classList.add('correct');
+            else if (i === index) el.classList.add('wrong');
+          });
+        }
+      }
+
+      // Show explanation
+      const expHtml = '<div class="explanation-box"><strong>Wyjaśnienie:</strong>' + escHtml(q.explanation) + '</div>';
+      document.getElementById('q-body').insertAdjacentHTML('beforeend', expHtml);
+      document.getElementById('btn-next').style.display = '';
+
+      // Scroll to see explanation
+      setTimeout(function() {
+        const exp = document.querySelector('.explanation-box');
+        if (exp) exp.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 100);
+    } else {
+      // Exam mode — move on immediately
+      nextQuestion();
+    }
+  }
+
+  /* ================================================================
+     NAVIGATION
+  ================================================================ */
+  function nextQuestion() {
+    state.currentIndex++;
+    if (state.currentIndex < state.session.length) {
+      renderQuestion();
+    } else {
+      showSummary();
+    }
+  }
+
+  /* ================================================================
+     SUMMARY
+  ================================================================ */
+  function showSummary() {
+    stopTimer();
+    saveSession();
+
+    // Show history button on home
+    document.getElementById('btn-history').style.display = '';
+
+    const score = state.answers.filter(function(a) { return a.correct; }).length;
+    const total = state.session.length;
+    const totalSec = state.sessionStartTime
+      ? Math.floor((Date.now() - state.sessionStartTime) / 1000)
+      : null;
+
+    let scoreClass = 'poor';
+    if (score / total >= 0.8) scoreClass = 'good';
+    else if (score / total >= 0.5) scoreClass = 'ok';
+
+    let timeStr = '—';
+    if (state.timerEnabled && totalSec !== null) {
+      const m = Math.floor(totalSec / 60);
+      const s = totalSec % 60;
+      timeStr = m + ':' + String(s).padStart(2, '0');
+    }
+
+    let html = '<div class="score-badge ' + scoreClass + '">' + score + '&nbsp;/&nbsp;' + total + '</div>';
+    html += '<p class="summary-time">Czas całkowity: <strong>' + timeStr + '</strong></p>';
+
+    // Table
+    html += '<div class="data-table-wrap"><table class="summary-table">';
+    html += '<thead><tr><th>#</th><th>Typ</th><th>Wynik</th><th>Czas (s)</th></tr></thead><tbody>';
+
+    state.answers.forEach(function(a, i) {
+      const q = state.session[i];
+      const typeName = q ? (TYPE_NAMES[q.typeId] || ('Typ ' + q.typeId)) : '—';
+      const markHtml = a.userAnswer === null
+        ? '<span class="na-mark">—</span>'
+        : a.correct
+          ? '<span class="correct-mark">✓</span>'
+          : '<span class="wrong-mark">✗</span>';
+      const tStr = a.timeSpentSec !== null ? a.timeSpentSec : '—';
+      html += '<tr><td>' + (i + 1) + '</td><td style="font-size:0.78rem">' + escHtml(typeName) + '</td><td style="text-align:center">' + markHtml + '</td><td style="text-align:center">' + tStr + '</td></tr>';
+    });
+
+    html += '</tbody></table></div>';
+    html += '<div class="summary-buttons">';
+    html += '<button onclick="goSetup()">Nowa sesja</button>';
+    html += '<button class="secondary" onclick="showScreen(\'history\'); loadHistory();">Historia</button>';
+    html += '</div>';
+
+    document.getElementById('summary-content').innerHTML = html;
+    showScreen('summary');
+  }
+
+  /* ================================================================
+     LOCAL STORAGE
+  ================================================================ */
+  function getSessions() {
+    try {
+      return JSON.parse(localStorage.getItem('ksap_sessions') || '[]');
+    } catch(e) { return []; }
+  }
+
+  function saveSession() {
+    const sessions = getSessions();
+    const id = (typeof crypto !== 'undefined' && crypto.randomUUID)
+      ? crypto.randomUUID()
+      : Date.now().toString();
+    sessions.unshift({
+      id: id,
+      date: new Date().toISOString(),
+      mode: state.mode,
+      timerEnabled: state.timerEnabled,
+      totalTimeSec: state.sessionStartTime ? Math.floor((Date.now() - state.sessionStartTime) / 1000) : null,
+      score: state.answers.filter(function(a) { return a.correct; }).length,
+      total: state.session.length,
+      questions: state.answers.map(function(a, i) {
+        const q = state.session[i];
+        return {
+          typeId: q ? q.typeId : null,
+          questionId: a.questionId,
+          userAnswer: a.userAnswer,
+          correct: a.correct,
+          timeSpentSec: a.timeSpentSec
+        };
+      })
+    });
+    if (sessions.length > 50) sessions.length = 50;
+    try { localStorage.setItem('ksap_sessions', JSON.stringify(sessions)); } catch(e) {}
+  }
+
+  /* ================================================================
+     HISTORY
+  ================================================================ */
+  function loadHistory() {
+    const sessions = getSessions();
+    const container = document.getElementById('history-content');
+
+    if (!sessions.length) {
+      container.innerHTML = '<p class="history-empty">Brak historii sesji.</p>';
+      return;
+    }
+
+    let html = '<div class="history-table-wrap"><table class="history-table">';
+    html += '<thead><tr><th>Data</th><th>Tryb</th><th>Wynik</th><th>Czas</th><th></th></tr></thead><tbody>';
+
+    sessions.forEach(function(sess, si) {
+      const dateStr = formatDate(sess.date);
+      const modeLabel = sess.mode === 'exam'
+        ? '<span class="badge-mode-exam">Egzamin</span>'
+        : '<span class="badge-mode-learning">Nauka</span>';
+      const total = sess.total || (sess.questions ? sess.questions.length : 15);
+      const scoreStr = sess.score + ' / ' + total;
+      let timeStr = '—';
+      if (sess.timerEnabled && sess.totalTimeSec !== null) {
+        const m = Math.floor(sess.totalTimeSec / 60);
+        const s = sess.totalTimeSec % 60;
+        timeStr = m + ':' + String(s).padStart(2, '0');
+      }
+
+      html += '<tr id="hist-row-' + si + '">';
+      html += '<td style="font-size:0.8rem;white-space:nowrap">' + dateStr + '</td>';
+      html += '<td>' + modeLabel + '</td>';
+      html += '<td style="font-weight:600">' + scoreStr + '</td>';
+      html += '<td>' + timeStr + '</td>';
+      html += '<td><button class="btn-sm" onclick="toggleHistoryDetail(' + si + ')">Szczegóły</button></td>';
+      html += '</tr>';
+
+      // Detail row (hidden initially)
+      html += '<tr id="hist-detail-' + si + '" class="detail-row" style="display:none"><td colspan="5">';
+      html += '<div class="detail-inner">';
+      if (sess.questions && sess.questions.length) {
+        html += '<table class="detail-table"><thead><tr><th>#</th><th>Typ</th><th>Wynik</th><th>Czas (s)</th></tr></thead><tbody>';
+        sess.questions.forEach(function(q, qi) {
+          const tName = q.typeId ? (TYPE_NAMES[q.typeId] || 'Typ ' + q.typeId) : '—';
+          const markHtml = q.userAnswer === null
+            ? '<span class="na-mark">—</span>'
+            : q.correct
+              ? '<span class="correct-mark">✓</span>'
+              : '<span class="wrong-mark">✗</span>';
+          const tStr = q.timeSpentSec !== null && q.timeSpentSec !== undefined ? q.timeSpentSec : '—';
+          html += '<tr><td>' + (qi + 1) + '</td><td style="font-size:0.75rem">' + escHtml(tName) + '</td><td style="text-align:center">' + markHtml + '</td><td style="text-align:center">' + tStr + '</td></tr>';
+        });
+        html += '</tbody></table>';
+      } else {
+        html += '<p style="padding:8px;color:#6b7280">Brak szczegółowych danych.</p>';
+      }
+      html += '</div></td></tr>';
+    });
+
+    html += '</tbody></table></div>';
+    container.innerHTML = html;
+  }
+
+  function toggleHistoryDetail(si) {
+    const row = document.getElementById('hist-detail-' + si);
+    if (!row) return;
+    row.style.display = (row.style.display === 'none') ? '' : 'none';
+    // Update button text
+    const btn = document.querySelector('#hist-row-' + si + ' .btn-sm');
+    if (btn) btn.textContent = row.style.display === 'none' ? 'Szczegóły' : 'Ukryj';
+  }
+
+  function formatDate(iso) {
+    try {
+      const d = new Date(iso);
+      const day = String(d.getDate()).padStart(2, '0');
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const year = d.getFullYear();
+      const h = String(d.getHours()).padStart(2, '0');
+      const m = String(d.getMinutes()).padStart(2, '0');
+      return day + '.' + month + '.' + year + ' ' + h + ':' + m;
+    } catch(e) { return iso; }
+  }
+
+  /* ================================================================
+     UTILITIES
+  ================================================================ */
+  function escHtml(str) {
+    if (typeof str !== 'string') return '';
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+</script>
+</body>
+</html>
