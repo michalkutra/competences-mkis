@@ -28,7 +28,9 @@
       mix-blend-mode: multiply;
       pointer-events: none;
       z-index: -1;
+      transition: opacity 0.2s;
     }
+    body.hide-bg::after { opacity: 0; }
 
     .screen { display: none; max-width: 800px; margin: 0 auto; padding: 16px; }
 
@@ -790,6 +792,7 @@
     document.querySelectorAll('.screen').forEach(el => el.style.display = 'none');
     document.getElementById('screen-' + name).style.display = 'block';
     state.screen = name;
+    document.body.classList.toggle('hide-bg', name === 'question');
     window.scrollTo(0, 0);
   }
 
