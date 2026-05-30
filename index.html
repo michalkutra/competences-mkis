@@ -668,6 +668,7 @@
     timerInterval: null,
     timerSeconds: 60,
     sessionStartTime: null,
+    answered: false,
   };
 
   /* ================================================================
@@ -751,7 +752,9 @@
 
   function startSession() {
     // Save settings
-    localStorage.setItem('ksap_settings', JSON.stringify({ mode: state.mode, timerEnabled: state.timerEnabled }));
+    try {
+      localStorage.setItem('ksap_settings', JSON.stringify({ mode: state.mode, timerEnabled: state.timerEnabled }));
+    } catch(e) {}
 
     state.session = buildSession();
     state.currentIndex = 0;
@@ -779,6 +782,7 @@
       if (state.timerSeconds <= 0) {
         clearInterval(state.timerInterval);
         // Time expired — auto-record no-answer and move on
+        state.answered = true;
         state.answers.push({
           questionId: state.session[state.currentIndex].id,
           userAnswer: null,
@@ -824,6 +828,7 @@
      RENDER QUESTION
   ================================================================ */
   function renderQuestion() {
+    state.answered = false;
     const q = state.session[state.currentIndex];
     const idx = state.currentIndex;
     const total = state.session.length;
@@ -1113,7 +1118,7 @@
 
     const nGroups = chart.xLabels.length;
 
-    function xPos(i) { return padL + i * (plotW / (nGroups - 1)); }
+    function xPos(i) { return nGroups === 1 ? padL + plotW / 2 : padL + i * (plotW / (nGroups - 1)); }
     function yPos(v) { return padT + plotH - (v / maxVal) * plotH; }
 
     let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="100%" xmlns="http://www.w3.org/2000/svg">';
@@ -1169,10 +1174,10 @@
   ================================================================ */
   function selectAnswer(index) {
     // Prevent double-answering
+    if (state.answered) return;
+    state.answered = true;
     const q = state.session[state.currentIndex];
     if (!q) return;
-    // Check if already answered (btn-next visible = already answered)
-    if (document.getElementById('btn-next').style.display !== 'none') return;
 
     const timeSpent = state.timerEnabled ? (60 - state.timerSeconds) : null;
     stopTimer();
