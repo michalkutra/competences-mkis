@@ -391,7 +391,7 @@ const QUESTIONS = {
       words: ["Niedziela", "Środa", "Piątek"],
       options: ["A) tydzień", "B) dni wolne", "C) dni tygodnia", "D) harmonogram", "E) kalendarz"],
       correct: 2,
-      explanation: "Niedziela, środa i piątek są dniami tygodnia — każdy z nich jest jednym z siedmiu dni tygodnia. Tydzień to jednostka czasu, nie kategoria, kalenderz i harmonogram to dokumenty, dni wolne pasuje tylko do niedzieli (nie do środy i piątku)."
+      explanation: "Niedziela, środa i piątek są dniami tygodnia — każdy z nich jest jednym z siedmiu dni tygodnia. Tydzień to jednostka czasu, nie kategoria, kalendarz i harmonogram to dokumenty, dni wolne pasuje tylko do niedzieli (nie do środy i piątku)."
     },
     {
       id: "t2_020", typeId: 2,
@@ -1113,7 +1113,7 @@ const QUESTIONS = {
         "D) Posiadanie wyższego wykształcenia nie ma znaczenia dla awansu."
       ],
       correct: 1,
-      explanation: "Modus ponens: wykształcenie kierunkowe → kwalifikacja na wyższe stanowisko → możliwość złożenia wniosku o awans; Tomasz Ma kwalifikacje → może złożyć wniosek. Opcja A wykracza poza przesłanki (nie gwarantują automatycznego awansu), C i D zaprzeczają przesłankom."
+      explanation: "Modus ponens: wykształcenie kierunkowe → kwalifikacja na wyższe stanowisko → możliwość złożenia wniosku o awans; Tomasz ma kwalifikacje → może złożyć wniosek. Opcja A wykracza poza przesłanki (nie gwarantują automatycznego awansu), C i D zaprzeczają przesłankom."
     },
     {
       id: "t5_011", typeId: 5,
@@ -1784,12 +1784,12 @@ const QUESTIONS = {
       options: [
         "A) Liczba nowych pracowników jest zawsze wyższa niż liczba odejść.",
         "B) Liczba odejść systematycznie rośnie przez cały okres.",
-        "C) W 2022 roku więcej osób dołączyło niż odeszło.",
+        "C) W 2022 roku więcej osób odeszło niż dołączyło.",
         "D) W 2021 roku liczba odejść (310) przewyższała liczbę nowych pracowników (280).",
         "E) Liczba nowych pracowników jest najwyższa w 2020 roku."
       ],
       correct: 3,
-      explanation: "W 2021 odejścia (310) > nowi pracownicy (280) — opcja D jest wprost weryfikowalna. Opcja A jest fałszywa: w 2021 odejścia przekroczyły nowych pracowników. Opcja B jest fałszywa: odejścia w 2023 (200) są niższe niż w 2021 (310). Opcja C jest prawdziwa, ale D nie jest oznaczone jako poprawne — weryfikacja: 2022 nowi=350 > odejścia=290 ✓. Zarówno B jak i D są prawdziwe. Przyjmujemy B jako opcję zaproponowaną."
+      explanation: "W 2021 odejścia (310) > nowi pracownicy (280) — opcja D jest wprost weryfikowalna. Opcja A jest fałszywa: w 2021 odejścia przekroczyły nowych pracowników. Opcja B jest fałszywa: odejścia w 2023 (200) są niższe niż w 2021 (310). Opcja C jest fałszywa: w 2022 nowi (350) > odejścia (290), więc to nowi pracownicy byli w większości. Opcja E jest fałszywa: liczba nowych pracowników jest najwyższa w 2023 (410)."
     },
     {
       id: "t7_005", typeId: 7,
@@ -1828,12 +1828,12 @@ const QUESTIONS = {
       options: [
         "A) Jesienią liczba wniosków rozpatrzonych (360) przekracza liczbę złożonych (310).",
         "B) Liczba wniosków złożonych jest zawsze wyższa niż rozpatrzonych.",
-        "C) Latem liczba wniosków rozpatrzonych jest wyższa niż zimą złożonych.",
+        "C) Latem liczba wniosków rozpatrzonych jest niższa niż zimą złożonych.",
         "D) Wnioski złożone i rozpatrzone osiągają szczyt równocześnie jesienią.",
         "E) Liczba wniosków rozpatrzonych jest najniższa latem."
       ],
       correct: 0,
-      explanation: "Jesienią rozpatrzone (360) > złożone (310) — opcja A jest wprost weryfikowalna. Opcja B jest fałszywa: jesienią rozpatrzone (360) > złożone (310). Opcja C jest prawdziwa też, ale opcja A jest bardziej precyzyjna z konkretnymi wartościami. Opcja D jest fałszywa: złożone są najwyższe latem (520). Opcja E jest fałszywa: rozpatrzone są najniższe zimą (220)."
+      explanation: "Jesienią rozpatrzone (360) > złożone (310) — opcja A jest wprost weryfikowalna. Opcja B jest fałszywa: jesienią rozpatrzone (360) > złożone (310). Opcja C jest fałszywa: latem rozpatrzone (440) są wyższe, nie niższe, niż zimą złożone (200). Opcja D jest fałszywa: złożone osiągają szczyt latem (520), a rozpatrzone jesienią (360). Opcja E jest fałszywa: rozpatrzone są najniższe zimą (220)."
     },
     {
       id: "t7_007", typeId: 7,
@@ -1896,10 +1896,10 @@ const QUESTIONS = {
         "B) Przetargi ogłoszone i rozstrzygnięte osiągają szczyt w tym samym kwartale.",
         "C) Liczba przetargów rozstrzygniętych spada w IV kwartale.",
         "D) W IV kwartale liczba rozstrzygniętych przetargów (58) jest wyższa niż ogłoszonych (42).",
-        "E) W I kwartale ogłoszono więcej przetargów (30) niż rozstrzygnięto (20)."
+        "E) W I kwartale rozstrzygnięto więcej przetargów (20) niż ogłoszono (30)."
       ],
       correct: 3,
-      explanation: "W IV kwartale rozstrzygnięte (58) > ogłoszone (42) — opcja D jest wprost weryfikowalna. Opcja A jest fałszywa: w IV kw. rozstrzygnięte (58) > ogłoszone (42). Opcja B jest fałszywa: ogłoszone szczytują w III kw. (55), rozstrzygnięte w IV kw. (58). Opcja C jest fałszywa: rozstrzygnięte rosną w IV kw. Opcja E jest prawdziwa, ale B jest jedyną oznaczoną jako correct."
+      explanation: "W IV kwartale rozstrzygnięte (58) > ogłoszone (42) — opcja D jest wprost weryfikowalna. Opcja A jest fałszywa: w IV kw. rozstrzygnięte (58) > ogłoszone (42). Opcja B jest fałszywa: ogłoszone szczytują w III kw. (55), rozstrzygnięte w IV kw. (58). Opcja C jest fałszywa: rozstrzygnięte rosną w IV kw. (58 > 45). Opcja E jest fałszywa: w I kwartale ogłoszono więcej (30) niż rozstrzygnięto (20), nie odwrotnie."
     },
     {
       id: "t7_010", typeId: 7,
@@ -2137,11 +2137,11 @@ const QUESTIONS = {
         "A) Liczba zgłoszeń do inspekcji jest zawsze wyższa niż wszczętych postępowań.",
         "B) Zgłoszenia i postępowania osiągają szczyt w tym samym kwartale.",
         "C) Wszczęte postępowania systematycznie rosną przez cały rok.",
-        "D) W IV kwartale wszczętych postępowań (170) jest więcej niż zgłoszeń (150).",
+        "D) W IV kwartale zgłoszeń do inspekcji (150) jest więcej niż wszczętych postępowań (170).",
         "E) W III kwartale liczba wszczętych postępowań (230) jest wyższa niż zgłoszeń (210)."
       ],
       correct: 4,
-      explanation: "W III kwartale postępowania (230) > zgłoszenia (210) — opcja E jest wprost weryfikowalna. Opcja A jest fałszywa: w III kw. postępowania (230) > zgłoszenia (210). Opcja B jest fałszywa: zgłoszenia szczytują w II kw. (240), postępowania w III kw. (230). Opcja C jest fałszywa: postępowania w IV kw. (170) są niższe niż III kw. (230). Opcja D jest prawdziwa (170>150), ale B jest oznaczone jako poprawne."
+      explanation: "W III kwartale postępowania (230) > zgłoszenia (210) — opcja E jest wprost weryfikowalna. Opcja A jest fałszywa: w III kw. postępowania (230) > zgłoszenia (210). Opcja B jest fałszywa: zgłoszenia szczytują w II kw. (240), postępowania w III kw. (230). Opcja C jest fałszywa: postępowania w IV kw. (170) są niższe niż III kw. (230). Opcja D jest fałszywa: w IV kwartale wszczętych postępowań (170) jest więcej niż zgłoszeń (150), nie odwrotnie."
     }
   ],
 
