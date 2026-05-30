@@ -263,9 +263,9 @@
     /* Type 8 options (figure options) */
     .figure-option {
       display: inline-flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 4px;
       padding: 10px;
       margin: 6px;
@@ -506,9 +506,9 @@
     }
     .figure-cell {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 4px;
       min-height: 80px;
       background: #f9fafb;
@@ -664,29 +664,7 @@
       vertical-align: top;
     }
     .history-table tr:nth-child(even) td { background: #f9fafb; }
-    .detail-row td {
-      padding: 0;
-      background: #f0f4f8 !important;
-    }
-    .detail-inner {
-      padding: 10px 16px;
-      overflow-x: auto;
-    }
-    .detail-table {
-      font-size: 0.78rem;
-      border-collapse: collapse;
-      width: 100%;
-    }
-    .detail-table th {
-      background: #374151;
-      color: white;
-      padding: 6px 8px;
-    }
-    .detail-table td {
-      padding: 5px 8px;
-      border-bottom: 1px solid #d1d5db;
-    }
-    .history-empty {
+.history-empty {
       text-align: center;
       color: #6b7280;
       padding: 32px 0;
@@ -960,6 +938,11 @@
 <div id="screen-summary" class="screen">
   <h2>Wynik sesji</h2>
   <div id="summary-content"></div>
+</div>
+
+<!-- ==================== SESSION DETAIL ==================== -->
+<div id="screen-session-detail" class="screen">
+  <div id="session-detail-content"></div>
 </div>
 
 <!-- ==================== STATS ==================== -->
@@ -1698,62 +1681,63 @@
   }
 
   /* ================================================================
-     SUMMARY
+     QUESTION LOOKUP
   ================================================================ */
-  function showSummary() {
-    stopTimer();
-    saveSession();
+  function findQuestionById(id) {
+    const banks = [QUESTIONS_EASY];
+    if (typeof QUESTIONS_HARD !== 'undefined') banks.push(QUESTIONS_HARD);
+    for (const bank of banks) {
+      for (const pool of Object.values(bank)) {
+        const q = pool.find(function(q) { return q.id === id; });
+        if (q) return q;
+      }
+    }
+    return null;
+  }
 
-    // Show history button on home
-    document.getElementById('btn-history').style.display = '';
-
-    const score = state.answers.filter(function(a) { return a.correct; }).length;
-    const total = state.session.length;
-    const totalSec = state.sessionStartTime
-      ? Math.floor((Date.now() - state.sessionStartTime) / 1000)
-      : null;
-
+  /* ================================================================
+     SUMMARY RENDERER (shared by summary screen and session detail)
+  ================================================================ */
+  function buildSummaryHtml(items, meta) {
     let scoreClass = 'poor';
-    if (score / total >= 0.8) scoreClass = 'good';
-    else if (score / total >= 0.5) scoreClass = 'ok';
+    if (meta.score / meta.total >= 0.8) scoreClass = 'good';
+    else if (meta.score / meta.total >= 0.5) scoreClass = 'ok';
 
     let timeStr = '—';
-    if (state.timerEnabled && totalSec !== null) {
-      const m = Math.floor(totalSec / 60);
-      const s = totalSec % 60;
+    if (meta.timerEnabled && meta.totalTimeSec !== null) {
+      const m = Math.floor(meta.totalTimeSec / 60);
+      const s = meta.totalTimeSec % 60;
       timeStr = m + ':' + String(s).padStart(2, '0');
     }
 
-    let html = '<div class="score-badge ' + scoreClass + '">' + score + '&nbsp;/&nbsp;' + total + '</div>';
+    let html = '<div class="score-badge ' + scoreClass + '">' + meta.score + '&nbsp;/&nbsp;' + meta.total + '</div>';
     html += '<p class="summary-time">Czas całkowity: <strong>' + timeStr + '</strong></p>';
 
-    // Table
     html += '<div class="data-table-wrap"><table class="summary-table">';
     html += '<thead><tr><th>#</th><th>Typ</th><th>Wynik</th><th>Czas (s)</th></tr></thead><tbody>';
 
-    state.answers.forEach(function(a, i) {
-      const q = state.session[i];
-      const typeName = q ? (TYPE_NAMES[q.typeId] || ('Typ ' + q.typeId)) : '—';
-      const markHtml = a.userAnswer === null
+    items.forEach(function(item, i) {
+      const typeName = item.q ? (TYPE_NAMES[item.q.typeId] || ('Typ ' + item.q.typeId)) : '—';
+      const markHtml = item.userAnswer === null
         ? '<span class="na-mark">—</span>'
-        : a.correct
+        : item.correct
           ? '<span class="correct-mark">✓</span>'
           : '<span class="wrong-mark">✗</span>';
-      const tStr = a.timeSpentSec !== null ? a.timeSpentSec : '—';
+      const tStr = (item.timeSpentSec !== null && item.timeSpentSec !== undefined) ? item.timeSpentSec : '—';
       html += '<tr><td>' + (i + 1) + '</td><td style="font-size:0.78rem">' + escHtml(typeName) + '</td><td style="text-align:center">' + markHtml + '</td><td style="text-align:center">' + tStr + '</td></tr>';
     });
 
     html += '</tbody></table></div>';
-    // Wrong answer review section
-    const wrongAnswers = state.answers
-      .map(function(a, i) { return { a: a, i: i }; })
-      .filter(function(x) { return !x.a.correct && x.a.userAnswer !== null; });
 
-    if (wrongAnswers.length > 0) {
+    const wrongItems = items
+      .map(function(item, i) { return { item: item, i: i }; })
+      .filter(function(x) { return !x.item.correct && x.item.userAnswer !== null && x.item.q !== null; });
+
+    if (wrongItems.length > 0) {
       html += '<div class="review-section">';
       html += '<h3>Przegląd błędnych odpowiedzi</h3>';
-      wrongAnswers.forEach(function(x) {
-        const q = state.session[x.i];
+      wrongItems.forEach(function(x) {
+        const q = x.item.q;
         const typeName = TYPE_NAMES[q.typeId] || ('Typ ' + q.typeId);
         html += '<details class="review-item">';
         html += '<summary><span><span class="review-summary-wrong">✗</span> Pytanie ' + (x.i + 1) + ' — ' + escHtml(typeName) + '</span></summary>';
@@ -1761,7 +1745,7 @@
         html += '<div class="type-label">' + escHtml(typeName) + '</div>';
         html += '<div class="instruction">' + escHtml(q.instruction) + '</div>';
         html += '<div class="question-body">' + renderQuestionBody(q) + '</div>';
-        html += renderOptionsStatic(q, x.a.userAnswer);
+        html += renderOptionsStatic(q, x.item.userAnswer);
         html += '<div class="explanation-box"><strong>Wyjaśnienie:</strong> ' + escHtml(q.explanation) + '</div>';
         html += '</div>';
         html += '</details>';
@@ -1769,6 +1753,31 @@
       html += '</div>';
     }
 
+    return html;
+  }
+
+  function showSummary() {
+    stopTimer();
+    saveSession();
+
+    document.getElementById('btn-history').style.display = '';
+
+    const items = state.answers.map(function(a, i) {
+      return {
+        q: state.session[i] || null,
+        userAnswer: a.userAnswer,
+        correct: a.correct,
+        timeSpentSec: a.timeSpentSec
+      };
+    });
+    const meta = {
+      score: state.answers.filter(function(a) { return a.correct; }).length,
+      total: state.session.length,
+      totalTimeSec: state.sessionStartTime ? Math.floor((Date.now() - state.sessionStartTime) / 1000) : null,
+      timerEnabled: state.timerEnabled
+    };
+
+    let html = buildSummaryHtml(items, meta);
     html += '<div class="summary-buttons">';
     html += '<button onclick="goSetup()">Nowa sesja</button>';
     html += '<button class="secondary" onclick="showScreen(\'history\'); loadHistory();">Historia</button>';
@@ -1781,6 +1790,34 @@
   /* ================================================================
      LOCAL STORAGE
   ================================================================ */
+  function showSessionDetail(sessIndex) {
+    const sess = getSessions()[sessIndex];
+    if (!sess) return;
+
+    const items = (sess.questions || []).map(function(sq) {
+      return {
+        q: findQuestionById(sq.questionId),
+        userAnswer: sq.userAnswer,
+        correct: sq.correct,
+        timeSpentSec: sq.timeSpentSec !== undefined ? sq.timeSpentSec : null
+      };
+    });
+    const meta = {
+      score: sess.score,
+      total: sess.total || items.length,
+      totalTimeSec: sess.totalTimeSec,
+      timerEnabled: sess.timerEnabled
+    };
+
+    let html = buildSummaryHtml(items, meta);
+    html += '<div class="summary-buttons">';
+    html += '<button class="secondary" onclick="showScreen(\'history\'); loadHistory();">← Wróć do historii</button>';
+    html += '</div>';
+
+    document.getElementById('session-detail-content').innerHTML = html;
+    showScreen('session-detail');
+  }
+
   function getSessions() {
     try {
       return JSON.parse(localStorage.getItem('ksap_sessions') || '[]');
@@ -1865,29 +1902,8 @@
       html += '<td>' + modeLabel + '</td>';
       html += '<td style="font-weight:600">' + scoreStr + '</td>';
       html += '<td>' + timeStr + '</td>';
-      html += '<td><button class="btn-sm" onclick="toggleHistoryDetail(' + si + ')">Szczegóły</button></td>';
+      html += '<td><button class="btn-sm" onclick="showSessionDetail(' + si + ')">Szczegóły</button></td>';
       html += '</tr>';
-
-      // Detail row (hidden initially)
-      html += '<tr id="hist-detail-' + si + '" class="detail-row" style="display:none"><td colspan="5">';
-      html += '<div class="detail-inner">';
-      if (sess.questions && sess.questions.length) {
-        html += '<table class="detail-table"><thead><tr><th>#</th><th>Typ</th><th>Wynik</th><th>Czas (s)</th></tr></thead><tbody>';
-        sess.questions.forEach(function(q, qi) {
-          const tName = q.typeId ? (TYPE_NAMES[q.typeId] || 'Typ ' + q.typeId) : '—';
-          const markHtml = q.userAnswer === null
-            ? '<span class="na-mark">—</span>'
-            : q.correct
-              ? '<span class="correct-mark">✓</span>'
-              : '<span class="wrong-mark">✗</span>';
-          const tStr = q.timeSpentSec !== null && q.timeSpentSec !== undefined ? q.timeSpentSec : '—';
-          html += '<tr><td>' + (qi + 1) + '</td><td style="font-size:0.75rem">' + escHtml(tName) + '</td><td style="text-align:center">' + markHtml + '</td><td style="text-align:center">' + tStr + '</td></tr>';
-        });
-        html += '</tbody></table>';
-      } else {
-        html += '<p style="padding:8px;color:#6b7280">Brak szczegółowych danych.</p>';
-      }
-      html += '</div></td></tr>';
     });
 
     html += '</tbody></table></div>';
@@ -1968,15 +1984,6 @@
     html += '</tbody></table></div>';
 
     container.innerHTML = html;
-  }
-
-  function toggleHistoryDetail(si) {
-    const row = document.getElementById('hist-detail-' + si);
-    if (!row) return;
-    row.style.display = (row.style.display === 'none') ? '' : 'none';
-    // Update button text
-    const btn = document.querySelector('#hist-row-' + si + ' .btn-sm');
-    if (btn) btn.textContent = row.style.display === 'none' ? 'Szczegóły' : 'Ukryj';
   }
 
   function formatDate(iso) {

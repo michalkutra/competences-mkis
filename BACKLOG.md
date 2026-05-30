@@ -14,7 +14,7 @@
 | 6 | Analityka GA4 | Bez tego nie wiesz CO się dzieje — adopcja, drop-off, które tryby | ~1h | **MUST** |
 | 7 | NPS / CSAT (Tally) | Bez tego nie wiesz CO MYŚLĄ — liczby bez kontekstu nic nie mówią | ~30 min | **MUST** |
 | 8 | Informacja o puli pytań | Ustawia oczekiwania, zapobiega "to za mało" | ~15 min | SHOULD |
-| 9 | Odliczanie do egzaminu | Emocjonalny hak, przypomina dlaczego tu są | ~30 min | SHOULD |
+| 9 | Odliczanie do egzaminu | Emocjonalny hak, przypomina dlaczego tu są | ~30 min | SHOULD | [spec](docs/superpowers/specs/2026-05-30-exam-countdown-design.md) · [plan](docs/superpowers/plans/2026-05-30-exam-countdown.md) |
 | 10 | Podziel się wynikiem | Jedyny mechanizm wyjścia poza te 700 osób | ~1h | SHOULD |
 | 11 | PWA install prompt | Zwiększa powroty mobilnych użytkowników (fundament już jest) | ~2h | SHOULD |
 | 12 | Podstrona "O aplikacji" | Buduje zaufanie + kluczowa notka o localStorage | ~2h | SHOULD |
@@ -164,6 +164,8 @@ Wyświetlać liczbę dni do egzaminu na ekranie głównym, np. "Egzamin za 28 dn
 ---
 
 ## Zgłoś błąd / zakwestionuj odpowiedź
+
+> **Plan gotowy:** [docs/superpowers/plans/2026-05-30-report-error.md](docs/superpowers/plans/2026-05-30-report-error.md) · [Spec](docs/superpowers/specs/2026-05-30-report-error-design.md)
 
 Przy każdym pytaniu (lub na ekranie wyników) dać możliwość zgłoszenia błędu w treści pytania lub niezgody z odpowiedzią.
 
