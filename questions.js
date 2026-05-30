@@ -12,16 +12,27 @@ const QUESTIONS = {
       id: "t1_002", typeId: 1,
       instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
       leftPair: ["Polska", "Europa"], rightTop: "Japonia",
-      options: ["A) Azja", "B) Pacyfik", "C) Tokio", "D) Chiny", "E) Wschód"],
-      correct: 0,
+      options: [
+        "A) Pacyfik",
+        "B) Azja",
+        "C) Tokio",
+        "D) Chiny",
+        "E) Wschód"
+      ],
+      correct: 1,
       explanation: "Polska leży na kontynencie Europa. Analogicznie Japonia leży na kontynencie Azja. Pacyfik to ocean, Tokio to stolica Japonii, a Chiny i Wschód nie są kontynentami."
     },
     {
       id: "t1_003", typeId: 1,
       instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
       leftPair: ["Sejm", "ustawodawstwo"], rightTop: "sąd",
-      options: ["A) wymiar sprawiedliwości", "B) prawo", "C) prokuratura", "D) policja"],
-      correct: 0,
+      options: [
+        "A) prawo",
+        "B) prokuratura",
+        "C) wymiar sprawiedliwości",
+        "D) policja"
+      ],
+      correct: 2,
       explanation: "Sejm realizuje funkcję ustawodawstwa — jest to jego kompetencja ustrojowa. Analogicznie sąd realizuje wymiar sprawiedliwości, czyli to jego konstytucyjna kompetencja. Prawo to ogólna dziedzina, a prokuratura i policja to odrębne organy o innych funkcjach."
     },
     {
@@ -36,8 +47,13 @@ const QUESTIONS = {
       id: "t1_005", typeId: 1,
       instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
       leftPair: ["minister", "wiceminister"], rightTop: "dyrektor generalny",
-      options: ["A) dyrektor departamentu", "B) sekretarz stanu", "C) minister", "D) naczelnik wydziału"],
-      correct: 0,
+      options: [
+        "A) sekretarz stanu",
+        "B) minister",
+        "C) naczelnik wydziału",
+        "D) dyrektor departamentu"
+      ],
+      correct: 3,
       explanation: "Minister jest przełożonym wiceministra w hierarchii rządowej. Analogicznie dyrektor generalny jest przełożonym dyrektora departamentu w strukturze ministerstwa. Sekretarz stanu jest równorzędny lub wyższy od dyrektora generalnego, a naczelnik wydziału podlega dyrektorowi departamentu."
     },
     {
@@ -52,32 +68,54 @@ const QUESTIONS = {
       id: "t1_007", typeId: 1,
       instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
       leftPair: ["Kodeks postępowania administracyjnego", "decyzja administracyjna"], rightTop: "Kodeks cywilny",
-      options: ["A) umowa", "B) sąd", "C) wyrok", "D) prawo", "E) notariusz"],
-      correct: 0,
+      options: [
+        "A) sąd",
+        "B) umowa",
+        "C) wyrok",
+        "D) prawo",
+        "E) notariusz"
+      ],
+      correct: 1,
       explanation: "Kodeks postępowania administracyjnego reguluje tryb wydawania decyzji administracyjnych — decyzja jest głównym aktem stosowania KPA. Analogicznie Kodeks cywilny reguluje zawieranie umów — umowa jest podstawowym aktem stosowania KC w obrocie cywilnoprawnym."
     },
     {
       id: "t1_008", typeId: 1,
       instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
       leftPair: ["dąb", "żołądź"], rightTop: "klon",
-      options: ["A) skrzydlak", "B) liść", "C) konar", "D) pień"],
-      correct: 0,
+      options: [
+        "A) liść",
+        "B) konar",
+        "C) skrzydlak",
+        "D) pień"
+      ],
+      correct: 2,
       explanation: "Żołądź to owoc dębu — produkt reprodukcyjny tego drzewa. Analogicznie skrzydlak (nasienie z skrzydełkiem) to owoc klonu. Liść, konar i pień to części drzewa, nie jego owoce."
     },
     {
       id: "t1_009", typeId: 1,
       instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
       leftPair: ["Polska", "złoty"], rightTop: "Niemcy",
-      options: ["A) euro", "B) marka", "C) frank", "D) dolar", "E) korona"],
-      correct: 0,
+      options: [
+        "A) marka",
+        "B) frank",
+        "C) dolar",
+        "D) euro",
+        "E) korona"
+      ],
+      correct: 3,
       explanation: "Złoty to waluta narodowa Polski. Analogicznie euro jest walutą Niemiec — Niemcy należą do strefy euro od 2002 roku. Marka była dawną walutą Niemiec, ale nie jest aktualną."
     },
     {
       id: "t1_010", typeId: 1,
       instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
       leftPair: ["pilot", "samolot"], rightTop: "kapitan",
-      options: ["A) statek", "B) port", "C) ocean", "D) marynarz"],
-      correct: 0,
+      options: [
+        "A) port",
+        "B) statek",
+        "C) ocean",
+        "D) marynarz"
+      ],
+      correct: 1,
       explanation: "Pilot prowadzi samolot — jest osobą kierującą tym pojazdem. Analogicznie kapitan dowodzi statkiem i kieruje nim w żegludze. Port to miejsce cumowania statków, ocean to akwen, marynarz to członek załogi podległy kapitanowi."
     },
     {
@@ -92,32 +130,54 @@ const QUESTIONS = {
       id: "t1_012", typeId: 1,
       instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
       leftPair: ["rząd", "premier"], rightTop: "gmina",
-      options: ["A) wójt", "B) rada gminy", "C) sołtys", "D) starosta"],
-      correct: 0,
+      options: [
+        "A) rada gminy",
+        "B) sołtys",
+        "C) starosta",
+        "D) wójt"
+      ],
+      correct: 3,
       explanation: "Premier jest szefem rządu — to jednoosobowy organ wykonawczy stojący na czele rządu. Analogicznie wójt jest jednoosobowym organem wykonawczym gminy, stojącym na jej czele. Rada gminy to organ stanowiący, starosta kieruje powiatem, a sołtys to organ pomocniczy."
     },
     {
       id: "t1_013", typeId: 1,
       instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
       leftPair: ["termostat", "temperatura"], rightTop: "barometr",
-      options: ["A) ciśnienie", "B) wiatr", "C) wilgotność", "D) opady", "E) temperatura"],
-      correct: 0,
+      options: [
+        "A) wiatr",
+        "B) ciśnienie",
+        "C) wilgotność",
+        "D) opady",
+        "E) temperatura"
+      ],
+      correct: 1,
       explanation: "Termostat mierzy i reguluje temperaturę — temperatura jest jego przedmiotem działania. Analogicznie barometr mierzy ciśnienie atmosferyczne. Wiatr, wilgotność i opady to inne elementy pogody mierzone innymi przyrządami."
     },
     {
       id: "t1_014", typeId: 1,
       instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
       leftPair: ["ustawa", "Sejm"], rightTop: "rozporządzenie",
-      options: ["A) minister", "B) Senat", "C) Trybunał", "D) prezydent"],
-      correct: 0,
+      options: [
+        "A) Senat",
+        "B) Trybunał",
+        "C) minister",
+        "D) prezydent"
+      ],
+      correct: 2,
       explanation: "Ustawa jest aktem normatywnym stanowionym przez Sejm. Analogicznie rozporządzenie jest aktem normatywnym wydawanym przez ministra lub inny organ wykonawczy na podstawie upoważnienia ustawowego. Senat uczestniczy w uchwalaniu ustaw, ale nie stanowi rozporządzeń."
     },
     {
       id: "t1_015", typeId: 1,
       instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
       leftPair: ["biologia", "organizmy żywe"], rightTop: "ekonomia",
-      options: ["A) zjawiska gospodarcze", "B) pieniądz", "C) rynek", "D) finanse", "E) handel"],
-      correct: 0,
+      options: [
+        "A) pieniądz",
+        "B) rynek",
+        "C) finanse",
+        "D) zjawiska gospodarcze",
+        "E) handel"
+      ],
+      correct: 3,
       explanation: "Biologia bada organizmy żywe — to jej przedmiot badań. Analogicznie ekonomia bada zjawiska gospodarcze, w tym produkcję, wymianę i podział dóbr. Pieniądz, rynek i handel to elementy gospodarki, ale zjawiska gospodarcze to pojęcie nadrzędne i najpełniej oddające przedmiot ekonomii."
     },
     {
@@ -132,16 +192,28 @@ const QUESTIONS = {
       id: "t1_017", typeId: 1,
       instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
       leftPair: ["Naczelny Sąd Administracyjny", "kontrola decyzji administracyjnych"], rightTop: "Trybunał Konstytucyjny",
-      options: ["A) kontrola konstytucyjności prawa", "B) orzekanie o winie", "C) wymiar sprawiedliwości", "D) nadzór nad sądami", "E) ochrona praw człowieka"],
-      correct: 0,
+      options: [
+        "A) orzekanie o winie",
+        "B) kontrola konstytucyjności prawa",
+        "C) wymiar sprawiedliwości",
+        "D) nadzór nad sądami",
+        "E) ochrona praw człowieka"
+      ],
+      correct: 1,
       explanation: "Naczelny Sąd Administracyjny sprawuje kontrolę nad decyzjami administracyjnymi — jest to jego główna kompetencja. Analogicznie Trybunał Konstytucyjny sprawuje kontrolę konstytucyjności prawa, badając zgodność aktów normatywnych z Konstytucją. Orzekanie o winie należy do sądów powszechnych."
     },
     {
       id: "t1_018", typeId: 1,
       instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
       leftPair: ["pszczelarstwo", "miód"], rightTop: "sadownictwo",
-      options: ["A) owoce", "B) sad", "C) drzewa", "D) uprawa", "E) rośliny"],
-      correct: 0,
+      options: [
+        "A) sad",
+        "B) drzewa",
+        "C) uprawa",
+        "D) owoce",
+        "E) rośliny"
+      ],
+      correct: 3,
       explanation: "Pszczelarstwo to działalność, której głównym produktem jest miód. Analogicznie sadownictwo to dziedzina rolnictwa, której głównym produktem są owoce. Sad to miejsce prowadzenia sadownictwa, a drzewa i rośliny to środki produkcji, nie produkty."
     },
     {
@@ -156,8 +228,14 @@ const QUESTIONS = {
       id: "t1_020", typeId: 1,
       instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
       leftPair: ["diagnoza", "leczenie"], rightTop: "audyt",
-      options: ["A) rekomendacje", "B) sprawozdanie", "C) kontrola", "D) raport", "E) ocena"],
-      correct: 0,
+      options: [
+        "A) sprawozdanie",
+        "B) kontrola",
+        "C) rekomendacje",
+        "D) raport",
+        "E) ocena"
+      ],
+      correct: 2,
       explanation: "Diagnoza poprzedza leczenie i jest jego podstawą — leczenie to działanie podejmowane na podstawie diagnozy. Analogicznie audyt jest czynnością, po której następują rekomendacje — rekomendacje to działanie wynikające z przeprowadzonego audytu. Raport i sprawozdanie to dokumenty, nie działania następcze."
     }
   ],
@@ -371,7 +449,7 @@ const QUESTIONS = {
     {
       id: "t3_003", typeId: 3,
       instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
-      text: "Dane z urzędu pracy pokazują, że jesienią liczba nowych bezrobotnych rejestrujących się w urzędzie wyraźnie maleje. Równocześnie w tym samym okresie spada liczba ofert pracy zgłaszanych przez pracodawców do urzędu.",
+      text: "Dane z urzędu pracy pokazują, że latem liczba nowych bezrobotnych rejestrujących się w urzędzie wyraźnie wzrasta. Równocześnie w tym samym sezonie rośnie liczba ofert pracy zgłaszanych przez pracodawców do urzędu.",
       chart: {
         type: "bar",
         xLabels: ["WIOSNA", "LATO", "JESIEŃ", "ZIMA"],
@@ -926,27 +1004,42 @@ const QUESTIONS = {
       instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
       premises: ["Wszyscy urzędnicy służby cywilnej muszą złożyć ślubowanie.", "Wszyscy, którzy złożyli ślubowanie, są zobowiązani do przestrzegania Kodeksu Etyki Służby Cywilnej."],
       syllogismVariant: "chain",
-      options: ["A) Wszyscy urzędnicy służby cywilnej są zobowiązani do przestrzegania Kodeksu Etyki.", "B) Tylko urzędnicy służby cywilnej składają ślubowanie.", "C) Niektórzy urzędnicy służby cywilnej nie muszą przestrzegać Kodeksu Etyki.", "D) Wszyscy, którzy przestrzegają Kodeksu Etyki, są urzędnikami służby cywilnej."],
-      correct: 0,
-      explanation: "Łańcuch: urzędnicy służby cywilnej → ślubowanie → przestrzeganie Kodeksu Etyki. Zatem wszyscy urzędnicy służby cywilnej są zobowiązani do Kodeksu Etyki. Opcje B i D odwracają implikacje, C zaprzecza pierwszej przesłance."
+      options: [
+        "A) Tylko urzędnicy służby cywilnej składają ślubowanie.",
+        "B) Wszyscy urzędnicy służby cywilnej są zobowiązani do przestrzegania Kodeksu Etyki.",
+        "C) Niektórzy urzędnicy służby cywilnej nie muszą przestrzegać Kodeksu Etyki.",
+        "D) Wszyscy, którzy przestrzegają Kodeksu Etyki, są urzędnikami służby cywilnej."
+      ],
+      correct: 1,
+      explanation: "Łańcuch: urzędnicy służby cywilnej → ślubowanie → przestrzeganie Kodeksu Etyki. Zatem wszyscy urzędnicy służby cywilnej są zobowiązani do Kodeksu Etyki. Opcje A i D odwracają implikacje, C zaprzecza pierwszej przesłance."
     },
     {
       id: "t5_003", typeId: 5,
       instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
       premises: ["Wszystkie przetargi publiczne muszą być ogłaszane w Biuletynie Zamówień Publicznych.", "Wszystkie ogłoszenia w Biuletynie Zamówień Publicznych są publicznie dostępne."],
       syllogismVariant: "chain",
-      options: ["A) Wszystkie przetargi publiczne są publicznie dostępne.", "B) Wszystkie publicznie dostępne dokumenty to przetargi.", "C) Niektóre przetargi publiczne nie muszą być ogłaszane.", "D) Tylko przetargi są ogłaszane w Biuletynie Zamówień Publicznych."],
-      correct: 0,
-      explanation: "Łańcuch: przetargi → ogłoszenia w BZP → publiczna dostępność. Zatem wszystkie przetargi są publicznie dostępne. Opcja B odwraca implikację, C zaprzecza pierwszej przesłance, D wprowadza ograniczenie niewystępujące w przesłankach."
+      options: [
+        "A) Wszystkie publicznie dostępne dokumenty to przetargi.",
+        "B) Niektóre przetargi publiczne nie muszą być ogłaszane.",
+        "C) Wszystkie przetargi publiczne są publicznie dostępne.",
+        "D) Tylko przetargi są ogłaszane w Biuletynie Zamówień Publicznych."
+      ],
+      correct: 2,
+      explanation: "Łańcuch: przetargi → ogłoszenia w BZP → publiczna dostępność. Zatem wszystkie przetargi są publicznie dostępne. Opcja A odwraca implikację, B zaprzecza pierwszej przesłance, D wprowadza ograniczenie niewystępujące w przesłankach."
     },
     {
       id: "t5_004", typeId: 5,
       instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
       premises: ["Każde podanie kierowane do organu administracji publicznej musi zawierać adres wnioskodawcy.", "Każde pismo zawierające adres wnioskodawcy umożliwia doręczenie odpowiedzi."],
       syllogismVariant: "chain",
-      options: ["A) Każde podanie kierowane do organu administracji umożliwia doręczenie odpowiedzi.", "B) Każde pismo umożliwiające doręczenie jest podaniem do organu.", "C) Niektóre podania do organów nie muszą zawierać adresu.", "D) Organy nie odpowiadają na pisma bez adresu."],
-      correct: 0,
-      explanation: "Łańcuch: podanie → zawiera adres → umożliwia doręczenie. Wniosek: każde podanie umożliwia doręczenie odpowiedzi. Opcja B odwraca relację, C zaprzecza przesłance, D wykracza poza podane przesłanki (mogłaby być prawdziwa, ale nie wynika bezpośrednio i pewnie z przesłanek)."
+      options: [
+        "A) Każde pismo umożliwiające doręczenie jest podaniem do organu.",
+        "B) Niektóre podania do organów nie muszą zawierać adresu.",
+        "C) Organy nie odpowiadają na pisma bez adresu.",
+        "D) Każde podanie kierowane do organu administracji umożliwia doręczenie odpowiedzi."
+      ],
+      correct: 3,
+      explanation: "Łańcuch: podanie → zawiera adres → umożliwia doręczenie. Wniosek: każde podanie umożliwia doręczenie odpowiedzi. Opcja A odwraca relację, B zaprzecza przesłance, C wykracza poza podane przesłanki (mogłaby być prawdziwa, ale nie wynika bezpośrednio i pewnie z przesłanek)."
     },
     {
       id: "t5_005", typeId: 5,
@@ -962,27 +1055,42 @@ const QUESTIONS = {
       instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
       premises: ["Jeśli wniosek złożono po terminie, organ wydaje postanowienie o odmowie wszczęcia postępowania.", "Jeśli organ wydaje postanowienie o odmowie wszczęcia postępowania, strona może wnieść zażalenie.", "Jan Kowalski złożył wniosek po terminie."],
       syllogismVariant: "modus_ponens",
-      options: ["A) Jan Kowalski może wnieść zażalenie.", "B) Jan Kowalski wygrał postępowanie.", "C) Organ wszczął postępowanie w sprawie Jana Kowalskiego.", "D) Jan Kowalski nie może wnieść żadnego pisma."],
-      correct: 0,
-      explanation: "Modus ponens: wniosek po terminie → odmowa wszczęcia → możliwość zażalenia; Jan złożył po terminie → organ wyda postanowienie o odmowie → Jan może wnieść zażalenie. Opcje B i C są sprzeczne z przesłankami, D jest ich zaprzeczeniem."
+      options: [
+        "A) Jan Kowalski wygrał postępowanie.",
+        "B) Jan Kowalski może wnieść zażalenie.",
+        "C) Organ wszczął postępowanie w sprawie Jana Kowalskiego.",
+        "D) Jan Kowalski nie może wnieść żadnego pisma."
+      ],
+      correct: 1,
+      explanation: "Modus ponens: wniosek po terminie → odmowa wszczęcia → możliwość zażalenia; Jan złożył po terminie → organ wyda postanowienie o odmowie → Jan może wnieść zażalenie. Opcje A i C są sprzeczne z przesłankami, D jest ich zaprzeczeniem."
     },
     {
       id: "t5_007", typeId: 5,
       instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
       premises: ["Jeśli decyzja zawiera błąd formalny, podlega uchyleniu przez organ wyższej instancji.", "Jeśli decyzja podlega uchyleniu, postępowanie jest prowadzone ponownie.", "Decyzja urzędu w sprawie Nowaka zawierała błąd formalny."],
       syllogismVariant: "modus_ponens",
-      options: ["A) Postępowanie w sprawie Nowaka będzie prowadzone ponownie.", "B) Organ wyższej instancji zatwierdził decyzję w sprawie Nowaka.", "C) Nowak wygrał sprawę.", "D) Decyzja w sprawie Nowaka nie zostanie uchylona."],
-      correct: 0,
-      explanation: "Modus ponens: błąd formalny → uchylenie → ponowne postępowanie; decyzja Nowaka ma błąd → zostanie uchylona → postępowanie ponowne. Opcje B i D są sprzeczne z przesłankami, C wykracza poza informacje z przesłanek."
+      options: [
+        "A) Organ wyższej instancji zatwierdził decyzję w sprawie Nowaka.",
+        "B) Nowak wygrał sprawę.",
+        "C) Postępowanie w sprawie Nowaka będzie prowadzone ponownie.",
+        "D) Decyzja w sprawie Nowaka nie zostanie uchylona."
+      ],
+      correct: 2,
+      explanation: "Modus ponens: błąd formalny → uchylenie → ponowne postępowanie; decyzja Nowaka ma błąd → zostanie uchylona → postępowanie ponowne. Opcje A i D są sprzeczne z przesłankami, B wykracza poza informacje z przesłanek."
     },
     {
       id: "t5_008", typeId: 5,
       instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
       premises: ["Jeśli pracownik naruszył tajemnicę służbową, wszczynane jest postępowanie dyscyplinarne.", "Jeśli postępowanie dyscyplinarne zostaje wszczęte, pracownik ma prawo do obrony.", "Pani Wiśniewska naruszyła tajemnicę służbową."],
       syllogismVariant: "modus_ponens",
-      options: ["A) Pani Wiśniewska ma prawo do obrony.", "B) Pani Wiśniewska zostanie zwolniona.", "C) Naruszenie tajemnicy służbowej nie skutkuje konsekwencjami.", "D) Postępowanie dyscyplinarne wobec pani Wiśniewskiej nie zostanie wszczęte."],
-      correct: 0,
-      explanation: "Modus ponens: naruszenie tajemnicy → wszczęcie postępowania dyscyplinarnego → prawo do obrony; Wiśniewska naruszyła tajemnicę → wszczęto postępowanie → ma prawo do obrony. Opcje B i D są niezgodne z przesłankami, C im zaprzecza."
+      options: [
+        "A) Pani Wiśniewska zostanie zwolniona.",
+        "B) Naruszenie tajemnicy służbowej nie skutkuje konsekwencjami.",
+        "C) Postępowanie dyscyplinarne wobec pani Wiśniewskiej nie zostanie wszczęte.",
+        "D) Pani Wiśniewska ma prawo do obrony."
+      ],
+      correct: 3,
+      explanation: "Modus ponens: naruszenie tajemnicy → wszczęcie postępowania dyscyplinarnego → prawo do obrony; Wiśniewska naruszyła tajemnicę → wszczęto postępowanie → ma prawo do obrony. Opcje A i C są niezgodne z przesłankami, B im zaprzecza."
     },
     {
       id: "t5_009", typeId: 5,
@@ -998,27 +1106,42 @@ const QUESTIONS = {
       instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
       premises: ["Jeśli urzędnik posiada wyższe wykształcenie kierunkowe, kwalifikuje się na wyższe stanowisko.", "Jeśli urzędnik kwalifikuje się na wyższe stanowisko, może złożyć wniosek o awans.", "Tomasz Maj posiada wyższe wykształcenie kierunkowe."],
       syllogismVariant: "modus_ponens",
-      options: ["A) Tomasz Maj może złożyć wniosek o awans.", "B) Tomasz Maj zostanie automatycznie awansowany.", "C) Tomasz Maj nie kwalifikuje się na wyższe stanowisko.", "D) Posiadanie wyższego wykształcenia nie ma znaczenia dla awansu."],
-      correct: 0,
-      explanation: "Modus ponens: wykształcenie kierunkowe → kwalifikacja na wyższe stanowisko → możliwość złożenia wniosku o awans; Tomasz Ma kwalifikacje → może złożyć wniosek. Opcja B wykracza poza przesłanki (nie gwarantują automatycznego awansu), C i D zaprzeczają przesłankom."
+      options: [
+        "A) Tomasz Maj zostanie automatycznie awansowany.",
+        "B) Tomasz Maj może złożyć wniosek o awans.",
+        "C) Tomasz Maj nie kwalifikuje się na wyższe stanowisko.",
+        "D) Posiadanie wyższego wykształcenia nie ma znaczenia dla awansu."
+      ],
+      correct: 1,
+      explanation: "Modus ponens: wykształcenie kierunkowe → kwalifikacja na wyższe stanowisko → możliwość złożenia wniosku o awans; Tomasz Ma kwalifikacje → może złożyć wniosek. Opcja A wykracza poza przesłanki (nie gwarantują automatycznego awansu), C i D zaprzeczają przesłankom."
     },
     {
       id: "t5_011", typeId: 5,
       instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
       premises: ["Wszystkie akty administracyjne mają formę pisemną.", "Niektóre akty administracyjne są decyzjami."],
       syllogismVariant: "some",
-      options: ["A) Niektóre decyzje mają formę pisemną.", "B) Wszystkie decyzje mają formę pisemną.", "C) Żadna decyzja nie ma formy pisemnej.", "D) Wszystkie pisma to akty administracyjne."],
-      correct: 0,
-      explanation: "Z przesłanek: wszystkie akty administracyjne mają formę pisemną, a niektóre akty administracyjne są decyzjami — zatem przynajmniej te decyzje, które są aktami administracyjnymi, mają formę pisemną → niektóre decyzje mają formę pisemną. Opcja B jest zbyt mocna (nie wynika z 'niektóre'), D odwraca relację."
+      options: [
+        "A) Wszystkie decyzje mają formę pisemną.",
+        "B) Żadna decyzja nie ma formy pisemnej.",
+        "C) Niektóre decyzje mają formę pisemną.",
+        "D) Wszystkie pisma to akty administracyjne."
+      ],
+      correct: 2,
+      explanation: "Z przesłanek: wszystkie akty administracyjne mają formę pisemną, a niektóre akty administracyjne są decyzjami — zatem przynajmniej te decyzje, które są aktami administracyjnymi, mają formę pisemną → niektóre decyzje mają formę pisemną. Opcja A jest zbyt mocna (nie wynika z 'niektóre'), D odwraca relację."
     },
     {
       id: "t5_012", typeId: 5,
       instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
       premises: ["Wszyscy pracownicy urzędu przeszli szkolenie z ochrony danych osobowych.", "Niektórzy pracownicy urzędu pracują w wydziale informatyki."],
       syllogismVariant: "some",
-      options: ["A) Niektórzy pracownicy wydziału informatyki przeszli szkolenie z ochrony danych.", "B) Wszyscy pracownicy wydziału informatyki to specjaliści od ochrony danych.", "C) Żaden pracownik wydziału informatyki nie przeszedł szkolenia.", "D) Tylko pracownicy wydziału informatyki przechodzą szkolenie z ochrony danych."],
-      correct: 0,
-      explanation: "Wszyscy pracownicy urzędu przeszli szkolenie; niektórzy pracownicy to pracownicy informatyki — ci niektórzy, będąc pracownikami urzędu, przeszli szkolenie. Zatem niektórzy pracownicy informatyki przeszli szkolenie. Opcja B wykracza poza przesłanki, C im zaprzecza, D jest zawężeniem nieobjętym przesłankami."
+      options: [
+        "A) Wszyscy pracownicy wydziału informatyki to specjaliści od ochrony danych.",
+        "B) Żaden pracownik wydziału informatyki nie przeszedł szkolenia.",
+        "C) Tylko pracownicy wydziału informatyki przechodzą szkolenie z ochrony danych.",
+        "D) Niektórzy pracownicy wydziału informatyki przeszli szkolenie z ochrony danych."
+      ],
+      correct: 3,
+      explanation: "Wszyscy pracownicy urzędu przeszli szkolenie; niektórzy pracownicy to pracownicy informatyki — ci niektórzy, będąc pracownikami urzędu, przeszli szkolenie. Zatem niektórzy pracownicy informatyki przeszli szkolenie. Opcja A wykracza poza przesłanki, B im zaprzecza, C jest zawężeniem nieobjętym przesłankami."
     },
     {
       id: "t5_013", typeId: 5,
@@ -1034,18 +1157,28 @@ const QUESTIONS = {
       instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
       premises: ["Wszyscy dyrektorzy departamentu mają dostęp do rejestrów niejawnych.", "Niektórzy dyrektorzy departamentu uczestniczą w posiedzeniach kolegium ministerialnego."],
       syllogismVariant: "some",
-      options: ["A) Niektórzy uczestnicy posiedzeń kolegium mają dostęp do rejestrów niejawnych.", "B) Wszyscy uczestnicy posiedzeń kolegium mają dostęp do rejestrów niejawnych.", "C) Żaden uczestnik kolegium nie ma dostępu do rejestrów niejawnych.", "D) Dostęp do rejestrów jest przyznawany wyłącznie przez kolegium."],
-      correct: 0,
-      explanation: "Wszyscy dyrektorzy mają dostęp do rejestrów; niektórzy dyrektorzy uczestniczą w kolegium — ci dyrektorzy w kolegium mają dostęp do rejestrów. Zatem niektórzy uczestnicy kolegium mają dostęp do rejestrów niejawnych. Opcja B jest zbyt mocna, C i D są niezgodne z przesłankami."
+      options: [
+        "A) Wszyscy uczestnicy posiedzeń kolegium mają dostęp do rejestrów niejawnych.",
+        "B) Niektórzy uczestnicy posiedzeń kolegium mają dostęp do rejestrów niejawnych.",
+        "C) Żaden uczestnik kolegium nie ma dostępu do rejestrów niejawnych.",
+        "D) Dostęp do rejestrów jest przyznawany wyłącznie przez kolegium."
+      ],
+      correct: 1,
+      explanation: "Wszyscy dyrektorzy mają dostęp do rejestrów; niektórzy dyrektorzy uczestniczą w kolegium — ci dyrektorzy w kolegium mają dostęp do rejestrów. Zatem niektórzy uczestnicy kolegium mają dostęp do rejestrów niejawnych. Opcja A jest zbyt mocna, C i D są niezgodne z przesłankami."
     },
     {
       id: "t5_015", typeId: 5,
       instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
       premises: ["Wszyscy, którzy złożyli odwołanie od decyzji, mają zagwarantowane prawo do bycia wysłuchanym.", "Niektórzy wnioskodawcy złożyli odwołanie od decyzji."],
       syllogismVariant: "some",
-      options: ["A) Niektórzy wnioskodawcy mają zagwarantowane prawo do bycia wysłuchanym.", "B) Wszyscy wnioskodawcy złożyli odwołanie.", "C) Prawo do wysłuchania przysługuje tylko tym, którzy złożyli odwołanie.", "D) Żaden wnioskodawca nie ma prawa do bycia wysłuchanym."],
-      correct: 0,
-      explanation: "Wszyscy składający odwołanie mają prawo do wysłuchania; niektórzy wnioskodawcy złożyli odwołanie — ci wnioskodawcy mają prawo do wysłuchania. Wniosek: niektórzy wnioskodawcy mają prawo do wysłuchania. Opcja B jest zbyt mocna, C i D są niezgodne z przesłankami."
+      options: [
+        "A) Wszyscy wnioskodawcy złożyli odwołanie.",
+        "B) Prawo do wysłuchania przysługuje tylko tym, którzy złożyli odwołanie.",
+        "C) Niektórzy wnioskodawcy mają zagwarantowane prawo do bycia wysłuchanym.",
+        "D) Żaden wnioskodawca nie ma prawa do bycia wysłuchanym."
+      ],
+      correct: 2,
+      explanation: "Wszyscy składający odwołanie mają prawo do wysłuchania; niektórzy wnioskodawcy złożyli odwołanie — ci wnioskodawcy mają prawo do wysłuchania. Wniosek: niektórzy wnioskodawcy mają prawo do wysłuchania. Opcja A jest zbyt mocna, B i D są niezgodne z przesłankami."
     },
     {
       id: "t5_016", typeId: 5,
@@ -1054,13 +1187,13 @@ const QUESTIONS = {
       syllogismVariant: "full_eval",
       options: [
         "A) Wniosek pani Zielińskiej nie zostanie rozpatrzony.",
-        "B) Wniosek pani Zielińskiej zostanie rozpatrzony w ciągu 30 dni.",
-        "C) Wniosek pani Zielińskiej zostanie rozpatrzony po 30 dniach.",
-        "D) Pani Zielińska powinna złożyć wniosek ponownie.",
+        "B) Wniosek pani Zielińskiej zostanie rozpatrzony po 30 dniach.",
+        "C) Pani Zielińska powinna złożyć wniosek ponownie.",
+        "D) Wniosek pani Zielińskiej zostanie rozpatrzony w ciągu 30 dni.",
         "E) Termin złożenia wniosku nie ma znaczenia dla rozpatrzenia."
       ],
-      correct: 1,
-      explanation: "Przesłanka 3 stwierdza, że wniosek złożono w terminie. Przesłanka 2 mówi, że wnioski złożone w terminie są rozpatrywane w 30 dni. Zatem wniosek pani Zielińskiej zostanie rozpatrzony w ciągu 30 dni. Opcja A jest sprzeczna z przesłankami 2 i 3, C sugeruje przekroczenie terminu 30 dni, D i E są niezgodne z przesłankami."
+      correct: 3,
+      explanation: "Przesłanka 3 stwierdza, że wniosek złożono w terminie. Przesłanka 2 mówi, że wnioski złożone w terminie są rozpatrywane w 30 dni. Zatem wniosek pani Zielińskiej zostanie rozpatrzony w ciągu 30 dni. Opcja A jest sprzeczna z przesłankami 2 i 3, B sugeruje przekroczenie terminu 30 dni, C i E są niezgodne z przesłankami."
     },
     {
       id: "t5_017", typeId: 5,
@@ -1068,14 +1201,14 @@ const QUESTIONS = {
       premises: ["Każdy pracownik zatrudniony na stanowisku specjalisty musi posiadać co najmniej 3 lata stażu.", "Żaden pracownik bez stażu nie może kierować projektem.", "Anna Kowalczyk ma 5 lat stażu i jest zatrudniona na stanowisku specjalisty."],
       syllogismVariant: "full_eval",
       options: [
-        "A) Anna Kowalczyk nie spełnia wymogów stażowych dla stanowiska specjalisty.",
-        "B) Anna Kowalczyk może kierować projektem.",
-        "C) Anna Kowalczyk spełnia wymóg stażowy dla stanowiska specjalisty.",
+        "A) Anna Kowalczyk spełnia wymóg stażowy dla stanowiska specjalisty.",
+        "B) Anna Kowalczyk nie spełnia wymogów stażowych dla stanowiska specjalisty.",
+        "C) Anna Kowalczyk może kierować projektem.",
         "D) Anna Kowalczyk zostanie awansowana.",
         "E) Staż nie ma znaczenia dla stanowiska specjalisty."
       ],
-      correct: 2,
-      explanation: "Przesłanka 1 wymaga co najmniej 3 lat stażu dla specjalisty; Anna ma 5 lat — spełnia ten wymóg (C). Opcja A jest fałszywa (5 lat ≥ 3 lata). Opcja B nie wynika pewnie z przesłanek (przesłanka 2 mówi o braku stażu, a nie wprost daje prawo kierowania). D wykracza poza przesłanki, E im zaprzecza."
+      correct: 0,
+      explanation: "Przesłanka 1 wymaga co najmniej 3 lat stażu dla specjalisty; Anna ma 5 lat — spełnia ten wymóg (A). Opcja B jest fałszywa (5 lat ≥ 3 lata). Opcja C nie wynika pewnie z przesłanek (przesłanka 2 mówi o braku stażu, a nie wprost daje prawo kierowania). D wykracza poza przesłanki, E im zaprzecza."
     },
     {
       id: "t5_018", typeId: 5,
@@ -1115,12 +1248,12 @@ const QUESTIONS = {
       options: [
         "A) Organ prowadzący sprawę Nowackiego nie narazi się na zarzut bezczynności.",
         "B) Postępowanie w sprawie Nowackiego zakończyło się w terminie.",
-        "C) Organ prowadzący sprawę Nowackiego naraża się na zarzut bezczynności.",
-        "D) Nowacki stracił prawo do odwołania.",
+        "C) Nowacki stracił prawo do odwołania.",
+        "D) Organ prowadzący sprawę Nowackiego naraża się na zarzut bezczynności.",
         "E) KPA nie określa terminów postępowania."
       ],
-      correct: 2,
-      explanation: "Przesłanka 3 mówi, że postępowanie nie zakończyło się w terminie. Przesłanka 2 stwierdza, że każde nieterminowe postępowanie naraża organ na zarzut bezczynności. Zatem organ prowadzący sprawę Nowackiego naraża się na zarzut bezczynności (C). A i B są sprzeczne z przesłankami, D i E wykraczają poza przesłanki."
+      correct: 3,
+      explanation: "Przesłanka 3 mówi, że postępowanie nie zakończyło się w terminie. Przesłanka 2 stwierdza, że każde nieterminowe postępowanie naraża organ na zarzut bezczynności. Zatem organ prowadzący sprawę Nowackiego naraża się na zarzut bezczynności (D). A i B są sprzeczne z przesłankami, C i E wykraczają poza przesłanki."
     }
   ],
 
@@ -1138,8 +1271,14 @@ const QUESTIONS = {
           ["Suma", "24", "16", "19", "59"]
         ]
       },
-      options: ["A) 5", "B) 6", "C) 7", "D) 8", "E) 9"],
-      correct: 2,
+      options: [
+        "A) 7",
+        "B) 5",
+        "C) 6",
+        "D) 8",
+        "E) 9"
+      ],
+      correct: 0,
       explanation: "Suma Referatu A = 20. Meldunkowe: 8, Budowlane: 5. Zatem Komunikacyjne: 20 − 8 − 5 = 7. Sprawdzenie sumy komunikacyjnych: 7 + 4 + 8 = 19. Suma kolumny się zgadza. Poprawna odpowiedź: 7."
     },
     {
@@ -1155,8 +1294,14 @@ const QUESTIONS = {
           ["Suma", "24", "18", "32", "74"]
         ]
       },
-      options: ["A) 4", "B) 5", "C) 6", "D) 7", "E) 8"],
-      correct: 2,
+      options: [
+        "A) 4",
+        "B) 6",
+        "C) 5",
+        "D) 7",
+        "E) 8"
+      ],
+      correct: 1,
       explanation: "Suma zezwoleń wynosi 18. Wydział I: 7, Wydział III: 5. Zatem Wydział II: 18 − 7 − 5 = 6. Sprawdzenie sumy Wydziału II: 8 + 6 + 14 = 28. Poprawna odpowiedź: 6."
     },
     {
@@ -1172,8 +1317,14 @@ const QUESTIONS = {
           ["Suma", "20", "13", "14", "47"]
         ]
       },
-      options: ["A) 3", "B) 4", "C) 5", "D) 6", "E) 7"],
-      correct: 3,
+      options: [
+        "A) 3",
+        "B) 4",
+        "C) 6",
+        "D) 5",
+        "E) 7"
+      ],
+      correct: 2,
       explanation: "Suma Referatu 2 = 20. Nieograniczony: 8, Negocjacyjny: 6. Zatem Zapytanie o cenę: 20 − 8 − 6 = 6. Sprawdzenie sumy zapytań o cenę: 4 + 6 + 4 = 14. Suma kolumny się zgadza. Poprawna odpowiedź: 6."
     },
     {
@@ -1189,8 +1340,14 @@ const QUESTIONS = {
           ["Suma", "24", "36", "33", "93"]
         ]
       },
-      options: ["A) 10", "B) 11", "C) 12", "D) 13", "E) 14"],
-      correct: 2,
+      options: [
+        "A) 10",
+        "B) 11",
+        "C) 13",
+        "D) 12",
+        "E) 14"
+      ],
+      correct: 3,
       explanation: "Suma w czerwcu wynosi 24. Sekcja X: 5, Sekcja Z: 7. Zatem Sekcja Y w czerwcu: 24 − 5 − 7 = 12. Sprawdzenie sumy Sekcji Y: 12 + 12 + 11 = 35. Suma wiersza się zgadza. Poprawna odpowiedź: 12."
     },
     {
@@ -1206,8 +1363,14 @@ const QUESTIONS = {
           ["Suma", "23", "24", "23", "70"]
         ]
       },
-      options: ["A) 8", "B) 9", "C) 10", "D) 11", "E) 12"],
-      correct: 2,
+      options: [
+        "A) 8",
+        "B) 9",
+        "C) 11",
+        "D) 12",
+        "E) 10"
+      ],
+      correct: 4,
       explanation: "Suma usług = 24. Biuro A: 8, Biuro C: 6. Zatem Biuro B: 24 − 8 − 6 = 10. Sprawdzenie sumy Biura B: 5 + 10 + 10 = 25. Suma się zgadza. Poprawna odpowiedź: 10."
     },
     {
@@ -1223,8 +1386,14 @@ const QUESTIONS = {
           ["Suma", "33", "30", "27", "90"]
         ]
       },
-      options: ["A) 6", "B) 7", "C) 8", "D) 9", "E) 10"],
-      correct: 2,
+      options: [
+        "A) 8",
+        "B) 6",
+        "C) 7",
+        "D) 9",
+        "E) 10"
+      ],
+      correct: 0,
       explanation: "Suma kultury = 27. Referat I: 10, Referat III: 9. Zatem Referat II: 27 − 10 − 9 = 8. Sprawdzenie sumy Referatu II: 11 + 11 + 8 = 30. Suma się zgadza. Poprawna odpowiedź: 8."
     },
     {
@@ -1240,8 +1409,14 @@ const QUESTIONS = {
           ["Suma", "43", "45", "24", "112"]
         ]
       },
-      options: ["A) 13", "B) 14", "C) 15", "D) 16", "E) 17"],
-      correct: 2,
+      options: [
+        "A) 13",
+        "B) 15",
+        "C) 14",
+        "D) 16",
+        "E) 17"
+      ],
+      correct: 1,
       explanation: "Suma sekcji II = 40. Małe: 15, Duże: 10. Zatem Średnie sekcji II: 40 − 15 − 10 = 15. Sprawdzenie sumy średnich: 18 + 15 + 12 = 45. Suma się zgadza. Poprawna odpowiedź: 15."
     },
     {
@@ -1274,8 +1449,14 @@ const QUESTIONS = {
           ["Suma", "64", "38", "43", "145"]
         ]
       },
-      options: ["A) 10", "B) 11", "C) 12", "D) 13", "E) 14"],
-      correct: 2,
+      options: [
+        "A) 10",
+        "B) 11",
+        "C) 13",
+        "D) 12",
+        "E) 14"
+      ],
+      correct: 3,
       explanation: "Suma referatu beta = 42. PIT: 18, CIT: 12. Zatem VAT referatu beta: 42 − 18 − 12 = 12. Sprawdzenie sumy VAT: 15 + 12 + 16 = 43. Suma się zgadza. Poprawna odpowiedź: 12."
     },
     {
@@ -1291,8 +1472,14 @@ const QUESTIONS = {
           ["Suma", "38", "37", "24", "99"]
         ]
       },
-      options: ["A) 12", "B) 13", "C) 14", "D) 15", "E) 16"],
-      correct: 2,
+      options: [
+        "A) 12",
+        "B) 13",
+        "C) 15",
+        "D) 16",
+        "E) 14"
+      ],
+      correct: 4,
       explanation: "Suma oddziału II = 40. Przemysłowy: 12, Handlowy: 14. Zatem Budowlany: 40 − 12 − 14 = 14. Sprawdzenie sumy kolumny budowlanej: 6 + 14 + 4 = 24. Suma się zgadza. Poprawna odpowiedź: 14."
     },
     {
@@ -1308,8 +1495,14 @@ const QUESTIONS = {
           ["Suma", "42", "36", "24", "102"]
         ]
       },
-      options: ["A) 16", "B) 18", "C) 20", "D) 22", "E) 24"],
-      correct: 2,
+      options: [
+        "A) 20",
+        "B) 16",
+        "C) 18",
+        "D) 22",
+        "E) 24"
+      ],
+      correct: 0,
       explanation: "Suma wydziału Q = 38. Mianowany: 10, Kontrakt: 8. Zatem Nieokreślona: 38 − 10 − 8 = 20. Sprawdzenie sumy kolumny Nieokreślona: 6 + 20 + 10 = 36. Suma się zgadza. Poprawna odpowiedź: 20."
     },
     {
@@ -1325,8 +1518,14 @@ const QUESTIONS = {
           ["Suma", "59", "42", "27", "128"]
         ]
       },
-      options: ["A) 10", "B) 11", "C) 12", "D) 13", "E) 14"],
-      correct: 2,
+      options: [
+        "A) 10",
+        "B) 12",
+        "C) 11",
+        "D) 13",
+        "E) 14"
+      ],
+      correct: 1,
       explanation: "Suma departamentu B = 42. Bieżące: 16, Archiwalne: 14. Zatem Historyczne: 42 − 16 − 14 = 12. Sprawdzenie sumy kolumny Historyczne: 12 + 12 + 3 = 27. Suma się zgadza. Poprawna odpowiedź: 12."
     },
     {
@@ -1359,8 +1558,14 @@ const QUESTIONS = {
           ["Suma", "49", "39", "30", "118"]
         ]
       },
-      options: ["A) 11", "B) 12", "C) 13", "D) 14", "E) 15"],
-      correct: 2,
+      options: [
+        "A) 11",
+        "B) 12",
+        "C) 14",
+        "D) 13",
+        "E) 15"
+      ],
+      correct: 3,
       explanation: "Suma grupy II = 38. Techniczne: 12, Środowiskowe: 13. Zatem Jakościowe: 38 − 12 − 13 = 13. Sprawdzenie sumy kolumny Jakościowe: 9 + 13 + 8 = 30. Suma się zgadza. Poprawna odpowiedź: 13."
     },
     {
@@ -1376,8 +1581,14 @@ const QUESTIONS = {
           ["Suma", "62", "35", "46", "143"]
         ]
       },
-      options: ["A) 12", "B) 13", "C) 14", "D) 15", "E) 16"],
-      correct: 2,
+      options: [
+        "A) 12",
+        "B) 13",
+        "C) 15",
+        "D) 16",
+        "E) 14"
+      ],
+      correct: 4,
       explanation: "Suma centrum B = 45. Stacjonarne: 16, E-learning: 15. Zatem Hybrydowe: 45 − 16 − 15 = 14. Sprawdzenie sumy kolumny Hybrydowe: 24 + 14 + 8 = 46. Suma się zgadza. Poprawna odpowiedź: 14."
     },
     {
@@ -1393,8 +1604,14 @@ const QUESTIONS = {
           ["Suma", "48", "39", "25", "112"]
         ]
       },
-      options: ["A) 10", "B) 11", "C) 12", "D) 13", "E) 14"],
-      correct: 2,
+      options: [
+        "A) 12",
+        "B) 10",
+        "C) 11",
+        "D) 13",
+        "E) 14"
+      ],
+      correct: 0,
       explanation: "Suma sekcji 2 = 38. Własność: 14, Hipoteka: 12. Zatem Użytkowanie wieczyste: 38 − 14 − 12 = 12. Sprawdzenie sumy kolumny Użytkowanie wieczyste: 7 + 12 + 6 = 25. Suma się zgadza. Poprawna odpowiedź: 12."
     },
     {
@@ -1410,8 +1627,14 @@ const QUESTIONS = {
           ["Suma", "51", "37", "27", "115"]
         ]
       },
-      options: ["A) 12", "B) 13", "C) 14", "D) 15", "E) 16"],
-      correct: 2,
+      options: [
+        "A) 12",
+        "B) 14",
+        "C) 13",
+        "D) 15",
+        "E) 16"
+      ],
+      correct: 1,
       explanation: "Suma referatu Y = 40. Meldunek stały: 12, Tymczasowy: 14. Zatem Wymeldowanie: 40 − 12 − 14 = 14. Sprawdzenie sumy kolumny Wymeldowanie: 6 + 14 + 7 = 27. Suma się zgadza. Poprawna odpowiedź: 14."
     },
     {
@@ -1444,8 +1667,14 @@ const QUESTIONS = {
           ["Suma", "56", "50", "20", "126"]
         ]
       },
-      options: ["A) 8", "B) 9", "C) 10", "D) 11", "E) 12"],
-      correct: 2,
+      options: [
+        "A) 8",
+        "B) 9",
+        "C) 11",
+        "D) 10",
+        "E) 12"
+      ],
+      correct: 3,
       explanation: "Suma departamentu 2 = 44. Publiczny: 16, Prywatny: 18. Zatem NGO: 44 − 16 − 18 = 10. Sprawdzenie sumy kolumny NGO: 3 + 10 + 7 = 20. Suma się zgadza. Poprawna odpowiedź: 10."
     },
     {
@@ -1461,8 +1690,14 @@ const QUESTIONS = {
           ["Suma", "47", "45", "25", "117"]
         ]
       },
-      options: ["A) 11", "B) 12", "C) 13", "D) 14", "E) 15"],
-      correct: 2,
+      options: [
+        "A) 11",
+        "B) 12",
+        "C) 14",
+        "D) 15",
+        "E) 13"
+      ],
+      correct: 4,
       explanation: "Suma sekcji beta = 42. Ustawy: 13, Rozporządzenia: 16. Zatem Zarządzenia: 42 − 13 − 16 = 13. Sprawdzenie sumy kolumny Zarządzenia: 5 + 13 + 7 = 25. Suma się zgadza. Poprawna odpowiedź: 13."
     }
   ],
@@ -1481,14 +1716,14 @@ const QUESTIONS = {
         ]
       },
       options: [
-        "A) Liczba wniosków o pozwolenie jest zawsze wyższa niż liczba wydanych decyzji.",
-        "B) Liczba wydanych decyzji jest najwyższa wiosną.",
-        "C) Latem liczba wniosków o pozwolenie (150) jest wyższa niż liczba wydanych decyzji (110).",
+        "A) Latem liczba wniosków o pozwolenie (150) jest wyższa niż liczba wydanych decyzji (110).",
+        "B) Liczba wniosków o pozwolenie jest zawsze wyższa niż liczba wydanych decyzji.",
+        "C) Liczba wydanych decyzji jest najwyższa wiosną.",
         "D) Liczba wniosków spada od wiosny, a liczba decyzji rośnie przez cały rok.",
         "E) Jesienią liczba wydanych decyzji jest niższa niż liczba wniosków."
       ],
-      correct: 2,
-      explanation: "Latem wnioski wynoszą 150, a decyzje 110 — opcja C jest wprost weryfikowalna z danych. Opcja A jest fałszywa: jesienią decyzje (95) przewyższają wnioski (80). Opcja B jest fałszywa: decyzje są najwyższe latem (110). Opcja D jest fałszywa: decyzje nie rosną przez cały rok. Opcja E jest fałszywa: jesienią decyzje (95) są wyższe niż wnioski (80)."
+      correct: 0,
+      explanation: "Latem wnioski wynoszą 150, a decyzje 110 — opcja A jest wprost weryfikowalna z danych. Opcja B jest fałszywa: jesienią decyzje (95) przewyższają wnioski (80). Opcja C jest fałszywa: decyzje są najwyższe latem (110). Opcja D jest fałszywa: decyzje nie rosną przez cały rok. Opcja E jest fałszywa: jesienią decyzje (95) są wyższe niż wnioski (80)."
     },
     {
       id: "t7_002", typeId: 7,
@@ -1548,13 +1783,13 @@ const QUESTIONS = {
       },
       options: [
         "A) Liczba nowych pracowników jest zawsze wyższa niż liczba odejść.",
-        "B) W 2021 roku liczba odejść (310) przewyższała liczbę nowych pracowników (280).",
-        "C) Liczba odejść systematycznie rośnie przez cały okres.",
-        "D) W 2022 roku więcej osób dołączyło niż odeszło.",
+        "B) Liczba odejść systematycznie rośnie przez cały okres.",
+        "C) W 2022 roku więcej osób dołączyło niż odeszło.",
+        "D) W 2021 roku liczba odejść (310) przewyższała liczbę nowych pracowników (280).",
         "E) Liczba nowych pracowników jest najwyższa w 2020 roku."
       ],
-      correct: 1,
-      explanation: "W 2021 odejścia (310) > nowi pracownicy (280) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: w 2021 odejścia przekroczyły nowych pracowników. Opcja C jest fałszywa: odejścia w 2023 (200) są niższe niż w 2021 (310). Opcja D jest prawdziwa, ale D nie jest oznaczone jako poprawne — weryfikacja: 2022 nowi=350 > odejścia=290 ✓. Zarówno B jak i D są prawdziwe. Przyjmujemy B jako opcję zaproponowaną."
+      correct: 3,
+      explanation: "W 2021 odejścia (310) > nowi pracownicy (280) — opcja D jest wprost weryfikowalna. Opcja A jest fałszywa: w 2021 odejścia przekroczyły nowych pracowników. Opcja B jest fałszywa: odejścia w 2023 (200) są niższe niż w 2021 (310). Opcja C jest prawdziwa, ale D nie jest oznaczone jako poprawne — weryfikacja: 2022 nowi=350 > odejścia=290 ✓. Zarówno B jak i D są prawdziwe. Przyjmujemy B jako opcję zaproponowaną."
     },
     {
       id: "t7_005", typeId: 7,
@@ -1570,13 +1805,13 @@ const QUESTIONS = {
       },
       options: [
         "A) Zrealizowane wydatki zawsze są niższe niż przyznany budżet.",
-        "B) W II kwartale zrealizowane wydatki (210) przekroczyły przyznany budżet (180).",
-        "C) Przyznany budżet jest najwyższy w II kwartale.",
-        "D) Wydatki rosną równomiernie przez cały rok.",
-        "E) Budżet i wydatki mają taki sam przebieg przez cały rok."
+        "B) Przyznany budżet jest najwyższy w II kwartale.",
+        "C) Wydatki rosną równomiernie przez cały rok.",
+        "D) Budżet i wydatki mają taki sam przebieg przez cały rok.",
+        "E) W II kwartale zrealizowane wydatki (210) przekroczyły przyznany budżet (180)."
       ],
-      correct: 1,
-      explanation: "W II kwartale wydatki (210) przewyższają budżet (180) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: w II kw. wydatki > budżet. Opcja C jest fałszywa: budżet jest najwyższy w IV kw. (300). Opcja D jest fałszywa: wydatki w III kw. (190) są niższe niż w II kw. (210). Opcja E jest fałszywa: serie krzyżują się."
+      correct: 4,
+      explanation: "W II kwartale wydatki (210) przewyższają budżet (180) — opcja E jest wprost weryfikowalna. Opcja A jest fałszywa: w II kw. wydatki > budżet. Opcja B jest fałszywa: budżet jest najwyższy w IV kw. (300). Opcja C jest fałszywa: wydatki w III kw. (190) są niższe niż w II kw. (210). Opcja D jest fałszywa: serie krzyżują się."
     },
     {
       id: "t7_006", typeId: 7,
@@ -1591,14 +1826,14 @@ const QUESTIONS = {
         ]
       },
       options: [
-        "A) Liczba wniosków złożonych jest zawsze wyższa niż rozpatrzonych.",
-        "B) Jesienią liczba wniosków rozpatrzonych (360) przekracza liczbę złożonych (310).",
+        "A) Jesienią liczba wniosków rozpatrzonych (360) przekracza liczbę złożonych (310).",
+        "B) Liczba wniosków złożonych jest zawsze wyższa niż rozpatrzonych.",
         "C) Latem liczba wniosków rozpatrzonych jest wyższa niż zimą złożonych.",
         "D) Wnioski złożone i rozpatrzone osiągają szczyt równocześnie jesienią.",
         "E) Liczba wniosków rozpatrzonych jest najniższa latem."
       ],
-      correct: 1,
-      explanation: "Jesienią rozpatrzone (360) > złożone (310) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: jesienią rozpatrzone (360) > złożone (310). Opcja C jest prawdziwa też, ale opcja B jest bardziej precyzyjna z konkretnymi wartościami. Opcja D jest fałszywa: złożone są najwyższe latem (520). Opcja E jest fałszywa: rozpatrzone są najniższe zimą (220)."
+      correct: 0,
+      explanation: "Jesienią rozpatrzone (360) > złożone (310) — opcja A jest wprost weryfikowalna. Opcja B jest fałszywa: jesienią rozpatrzone (360) > złożone (310). Opcja C jest prawdziwa też, ale opcja A jest bardziej precyzyjna z konkretnymi wartościami. Opcja D jest fałszywa: złożone są najwyższe latem (520). Opcja E jest fałszywa: rozpatrzone są najniższe zimą (220)."
     },
     {
       id: "t7_007", typeId: 7,
@@ -1636,13 +1871,13 @@ const QUESTIONS = {
       },
       options: [
         "A) Liczba urlopów i zwolnień lekarskich osiąga szczyt w tym samym sezonie.",
-        "B) Latem jest więcej urlopów (95) niż zwolnień lekarskich (25).",
-        "C) Liczba zwolnień lekarskich jest zawsze wyższa niż liczba urlopów.",
+        "B) Liczba zwolnień lekarskich jest zawsze wyższa niż liczba urlopów.",
+        "C) Latem jest więcej urlopów (95) niż zwolnień lekarskich (25).",
         "D) Jesienią urlopy przewyższają zwolnienia lekarskie.",
         "E) Wiosną zwolnienia lekarskie (55) są niższe niż urlopy (40)."
       ],
-      correct: 1,
-      explanation: "Latem urlopy (95) > zwolnienia (25) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: urlopy szczytują latem, zwolnienia zimą. Opcja C jest fałszywa: latem urlopy (95) > zwolnienia (25). Opcja D jest fałszywa: jesienią zwolnienia (60) > urlopy (30). Opcja E jest fałszywa: wiosną zwolnienia (55) > urlopy (40)."
+      correct: 2,
+      explanation: "Latem urlopy (95) > zwolnienia (25) — opcja C jest wprost weryfikowalna. Opcja A jest fałszywa: urlopy szczytują latem, zwolnienia zimą. Opcja B jest fałszywa: latem urlopy (95) > zwolnienia (25). Opcja D jest fałszywa: jesienią zwolnienia (60) > urlopy (30). Opcja E jest fałszywa: wiosną zwolnienia (55) > urlopy (40)."
     },
     {
       id: "t7_009", typeId: 7,
@@ -1658,13 +1893,13 @@ const QUESTIONS = {
       },
       options: [
         "A) Liczba przetargów ogłoszonych jest zawsze wyższa niż rozstrzygniętych.",
-        "B) W IV kwartale liczba rozstrzygniętych przetargów (58) jest wyższa niż ogłoszonych (42).",
-        "C) Przetargi ogłoszone i rozstrzygnięte osiągają szczyt w tym samym kwartale.",
-        "D) Liczba przetargów rozstrzygniętych spada w IV kwartale.",
+        "B) Przetargi ogłoszone i rozstrzygnięte osiągają szczyt w tym samym kwartale.",
+        "C) Liczba przetargów rozstrzygniętych spada w IV kwartale.",
+        "D) W IV kwartale liczba rozstrzygniętych przetargów (58) jest wyższa niż ogłoszonych (42).",
         "E) W I kwartale ogłoszono więcej przetargów (30) niż rozstrzygnięto (20)."
       ],
-      correct: 1,
-      explanation: "W IV kwartale rozstrzygnięte (58) > ogłoszone (42) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: w IV kw. rozstrzygnięte (58) > ogłoszone (42). Opcja C jest fałszywa: ogłoszone szczytują w III kw. (55), rozstrzygnięte w IV kw. (58). Opcja D jest fałszywa: rozstrzygnięte rosną w IV kw. Opcja E jest prawdziwa, ale B jest jedyną oznaczoną jako correct."
+      correct: 3,
+      explanation: "W IV kwartale rozstrzygnięte (58) > ogłoszone (42) — opcja D jest wprost weryfikowalna. Opcja A jest fałszywa: w IV kw. rozstrzygnięte (58) > ogłoszone (42). Opcja B jest fałszywa: ogłoszone szczytują w III kw. (55), rozstrzygnięte w IV kw. (58). Opcja C jest fałszywa: rozstrzygnięte rosną w IV kw. Opcja E jest prawdziwa, ale B jest jedyną oznaczoną jako correct."
     },
     {
       id: "t7_010", typeId: 7,
@@ -1680,13 +1915,13 @@ const QUESTIONS = {
       },
       options: [
         "A) Liczba wniosków o zasiłki jest zawsze wyższa niż wypłaconych świadczeń.",
-        "B) Jesienią liczba wypłaconych świadczeń (200) jest wyższa niż złożonych wniosków (180).",
-        "C) Latem jest więcej wniosków niż świadczeń.",
-        "D) Liczba wniosków i świadczeń rośnie przez cały rok.",
-        "E) Zimą wnioski i świadczenia są na tym samym poziomie."
+        "B) Latem jest więcej wniosków niż świadczeń.",
+        "C) Liczba wniosków i świadczeń rośnie przez cały rok.",
+        "D) Zimą wnioski i świadczenia są na tym samym poziomie.",
+        "E) Jesienią liczba wypłaconych świadczeń (200) jest wyższa niż złożonych wniosków (180)."
       ],
-      correct: 1,
-      explanation: "Jesienią świadczenia (200) > wnioski (180) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: jesienią świadczenia (200) > wnioski (180). Opcja C jest fałszywa: latem wnioski (140) < świadczenia (160). Opcja D jest fałszywa: latem obie wartości są niższe niż wiosną. Opcja E jest fałszywa: zimą wnioski (310) ≠ świadczenia (270)."
+      correct: 4,
+      explanation: "Jesienią świadczenia (200) > wnioski (180) — opcja E jest wprost weryfikowalna. Opcja A jest fałszywa: jesienią świadczenia (200) > wnioski (180). Opcja B jest fałszywa: latem wnioski (140) < świadczenia (160). Opcja C jest fałszywa: latem obie wartości są niższe niż wiosną. Opcja D jest fałszywa: zimą wnioski (310) ≠ świadczenia (270)."
     },
     {
       id: "t7_011", typeId: 7,
@@ -1701,14 +1936,14 @@ const QUESTIONS = {
         ]
       },
       options: [
-        "A) Liczba uwzględnionych odwołań zawsze rośnie, gdy rosną skargi.",
-        "B) W III kwartale liczba uwzględnionych odwołań (52) jest wyższa niż skarg (45).",
+        "A) W III kwartale liczba uwzględnionych odwołań (52) jest wyższa niż skarg (45).",
+        "B) Liczba uwzględnionych odwołań zawsze rośnie, gdy rosną skargi.",
         "C) Skargi na administrację są zawsze wyższe niż uwzględnione odwołania.",
         "D) Szczyt skarg i odwołań przypada na ten sam kwartał.",
         "E) W IV kwartale skargi i odwołania osiągają swoje minima."
       ],
-      correct: 1,
-      explanation: "W III kwartale odwołania (52) > skargi (45) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: w III kw. skargi spadają (45), a odwołania rosną (52). Opcja C jest fałszywa: w III kw. odwołania (52) > skargi (45). Opcja D jest fałszywa: skargi szczytują w II kw. (70), odwołania w III kw. (52). Opcja E jest fałszywa: minimum skarg jest w III kw. (45)."
+      correct: 0,
+      explanation: "W III kwartale odwołania (52) > skargi (45) — opcja A jest wprost weryfikowalna. Opcja B jest fałszywa: w III kw. skargi spadają (45), a odwołania rosną (52). Opcja C jest fałszywa: w III kw. odwołania (52) > skargi (45). Opcja D jest fałszywa: skargi szczytują w II kw. (70), odwołania w III kw. (52). Opcja E jest fałszywa: minimum skarg jest w III kw. (45)."
     },
     {
       id: "t7_012", typeId: 7,
@@ -1724,13 +1959,13 @@ const QUESTIONS = {
       },
       options: [
         "A) Dochody gminy zawsze przewyższają wydatki.",
-        "B) W II kwartale wydatki (18 mln) były równe dochodom (15 mln).",
-        "C) W II kwartale wydatki gminy (18 mln zł) były wyższe niż dochody (15 mln zł).",
+        "B) W II kwartale wydatki gminy (18 mln zł) były wyższe niż dochody (15 mln zł).",
+        "C) W II kwartale wydatki (18 mln) były równe dochodom (15 mln).",
         "D) Dochody i wydatki rosną równomiernie przez cały rok.",
         "E) Wydatki gminy są najniższe w IV kwartale."
       ],
-      correct: 2,
-      explanation: "W II kwartale wydatki (18) > dochody (15) — opcja C jest wprost weryfikowalna. Opcja A jest fałszywa: w II kw. wydatki (18) > dochody (15). Opcja B jest błędna: wydatki (18) ≠ dochody (15). Opcja D jest fałszywa: wydatki w III kw. (14) są niższe niż w II (18). Opcja E jest fałszywa: wydatki są najniższe w I kw. (10)."
+      correct: 1,
+      explanation: "W II kwartale wydatki (18) > dochody (15) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: w II kw. wydatki (18) > dochody (15). Opcja C jest błędna: wydatki (18) ≠ dochody (15). Opcja D jest fałszywa: wydatki w III kw. (14) są niższe niż w II (18). Opcja E jest fałszywa: wydatki są najniższe w I kw. (10)."
     },
     {
       id: "t7_013", typeId: 7,
@@ -1746,13 +1981,13 @@ const QUESTIONS = {
       },
       options: [
         "A) Liczba nowych rejestracji zawsze przewyższa wyrejestrowania.",
-        "B) W 2021 roku wyrejestrowania (420) przewyższyły nowe rejestracje (380).",
-        "C) Liczba wyrejestrowań systematycznie spada przez cały okres.",
+        "B) Liczba wyrejestrowań systematycznie spada przez cały okres.",
+        "C) W 2021 roku wyrejestrowania (420) przewyższyły nowe rejestracje (380).",
         "D) W 2022 roku więcej podmiotów wyrejestrowało się niż zarejestrowało.",
         "E) Wyrejestrowania i rejestracje osiągają szczyt w tym samym roku."
       ],
-      correct: 1,
-      explanation: "W 2021 wyrejestrowania (420) > rejestracje (380) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: w 2021 wyrejestrowania (420) > rejestracje (380). Opcja C jest fałszywa: wyrejestrowania rosną w 2021 (420) a potem znów w 2023 (390). Opcja D jest fałszywa: w 2022 rejestracje (510) > wyrejestrowania (360). Opcja E jest fałszywa: rejestracje szczytują w 2022, wyrejestrowania w 2021."
+      correct: 2,
+      explanation: "W 2021 wyrejestrowania (420) > rejestracje (380) — opcja C jest wprost weryfikowalna. Opcja A jest fałszywa: w 2021 wyrejestrowania (420) > rejestracje (380). Opcja B jest fałszywa: wyrejestrowania rosną w 2021 (420) a potem znów w 2023 (390). Opcja D jest fałszywa: w 2022 rejestracje (510) > wyrejestrowania (360). Opcja E jest fałszywa: rejestracje szczytują w 2022, wyrejestrowania w 2021."
     },
     {
       id: "t7_014", typeId: 7,
@@ -1768,13 +2003,13 @@ const QUESTIONS = {
       },
       options: [
         "A) Zatrudnienie w sektorze publicznym jest zawsze niższe niż w prywatnym.",
-        "B) W 2022 roku zatrudnienie w sektorze prywatnym (620 tys.) było wyższe niż w 2021 (550 tys.).",
-        "C) Sektor publiczny i prywatny rosną równolegle przez cały okres.",
-        "D) Sektor prywatny osiągnął minimum w 2022 roku.",
+        "B) Sektor publiczny i prywatny rosną równolegle przez cały okres.",
+        "C) Sektor prywatny osiągnął minimum w 2022 roku.",
+        "D) W 2022 roku zatrudnienie w sektorze prywatnym (620 tys.) było wyższe niż w 2021 (550 tys.).",
         "E) W 2023 roku sektor publiczny (240) przewyższył sektor prywatny (590)."
       ],
-      correct: 1,
-      explanation: "W 2022 sektor prywatny (620) > 2021 (550) — opcja B jest wprost weryfikowalna z danych. Opcja A jest fałszywa: w 2022 sektor publiczny (640) przewyższa prywatny (620). Opcja C jest fałszywa: w 2021 publiczny rośnie, prywatny spada; w 2022 publiczny gwałtownie rośnie, a sektor prywatny też rośnie, lecz wolniej. Opcja D jest fałszywa: minimum prywatnego jest w 2021 (550). Opcja E jest fałszywa: 240 < 590."
+      correct: 3,
+      explanation: "W 2022 sektor prywatny (620) > 2021 (550) — opcja D jest wprost weryfikowalna z danych. Opcja A jest fałszywa: w 2022 sektor publiczny (640) przewyższa prywatny (620). Opcja B jest fałszywa: w 2021 publiczny rośnie, prywatny spada; w 2022 publiczny gwałtownie rośnie, a sektor prywatny też rośnie, lecz wolniej. Opcja C jest fałszywa: minimum prywatnego jest w 2021 (550). Opcja E jest fałszywa: 240 < 590."
     },
     {
       id: "t7_015", typeId: 7,
@@ -1790,13 +2025,13 @@ const QUESTIONS = {
       },
       options: [
         "A) Interpelacje są zawsze wyższe niż zapytania poselskie.",
-        "B) W II kwartale interpelacje (120) przewyższają zapytania poselskie (90).",
-        "C) Interpelacje i zapytania poselskie osiągają szczyt w tym samym kwartale.",
-        "D) Zapytania poselskie mają stale rosnący trend przez cały rok.",
-        "E) W III kwartale interpelacje i zapytania osiągają swoje maksima."
+        "B) Interpelacje i zapytania poselskie osiągają szczyt w tym samym kwartale.",
+        "C) Zapytania poselskie mają stale rosnący trend przez cały rok.",
+        "D) W III kwartale interpelacje i zapytania osiągają swoje maksima.",
+        "E) W II kwartale interpelacje (120) przewyższają zapytania poselskie (90)."
       ],
-      correct: 1,
-      explanation: "W II kwartale interpelacje (120) > zapytania (90) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: w I kw. zapytania (110) > interpelacje (85), w IV kw. zapytania (130) > interpelacje (95). Opcja C jest fałszywa: interpelacje szczytują w II kw. (120), zapytania w IV kw. (130). Opcja D jest fałszywa: zapytania w III kw. (75) są niższe niż w I kw. (110). Opcja E jest fałszywa: III kwartał to minimum obu serii."
+      correct: 4,
+      explanation: "W II kwartale interpelacje (120) > zapytania (90) — opcja E jest wprost weryfikowalna. Opcja A jest fałszywa: w I kw. zapytania (110) > interpelacje (85), w IV kw. zapytania (130) > interpelacje (95). Opcja B jest fałszywa: interpelacje szczytują w II kw. (120), zapytania w IV kw. (130). Opcja C jest fałszywa: zapytania w III kw. (75) są niższe niż w I kw. (110). Opcja D jest fałszywa: III kwartał to minimum obu serii."
     },
     {
       id: "t7_016", typeId: 7,
@@ -1811,14 +2046,14 @@ const QUESTIONS = {
         ]
       },
       options: [
-        "A) Liczba przyznanych dotacji zawsze jest niższa niż wniosków o dofinansowanie.",
-        "B) Jesienią dotacje (120) przewyższają wnioski o dofinansowanie (110).",
+        "A) Jesienią dotacje (120) przewyższają wnioski o dofinansowanie (110).",
+        "B) Liczba przyznanych dotacji zawsze jest niższa niż wniosków o dofinansowanie.",
         "C) Wnioski i dotacje osiągają szczyt w tym samym sezonie.",
         "D) Liczba wniosków o dofinansowanie systematycznie rośnie przez cały rok.",
         "E) Zimą dotacje i wnioski o dofinansowanie są na tym samym poziomie."
       ],
-      correct: 1,
-      explanation: "Jesienią dotacje (120) > wnioski (110) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: jesienią dotacje (120) > wnioski (110). Opcja C jest fałszywa: wnioski szczytują latem (140), dotacje jesienią (120). Opcja D jest fałszywa: zimą wnioski (60) są niższe niż wiosną (90). Opcja E jest fałszywa: zimą wnioski (60) ≠ dotacje (70)."
+      correct: 0,
+      explanation: "Jesienią dotacje (120) > wnioski (110) — opcja A jest wprost weryfikowalna. Opcja B jest fałszywa: jesienią dotacje (120) > wnioski (110). Opcja C jest fałszywa: wnioski szczytują latem (140), dotacje jesienią (120). Opcja D jest fałszywa: zimą wnioski (60) są niższe niż wiosną (90). Opcja E jest fałszywa: zimą wnioski (60) ≠ dotacje (70)."
     },
     {
       id: "t7_017", typeId: 7,
@@ -1856,13 +2091,13 @@ const QUESTIONS = {
       },
       options: [
         "A) Liczba nowych rejestracji jest zawsze wyższa niż zawieszonych działalności.",
-        "B) Zimą liczba zawieszonych działalności (200) jest wyższa niż nowych rejestracji (160).",
-        "C) Nowe rejestracje i zawieszone działalności osiągają szczyt w tym samym sezonie.",
+        "B) Nowe rejestracje i zawieszone działalności osiągają szczyt w tym samym sezonie.",
+        "C) Zimą liczba zawieszonych działalności (200) jest wyższa niż nowych rejestracji (160).",
         "D) Zawieszone działalności systematycznie maleją przez cały rok.",
         "E) Latem zawieszone działalności (70) są wyższe niż zimą (200)."
       ],
-      correct: 1,
-      explanation: "Zimą zawieszone (200) > nowe rejestracje (160) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: zimą zawieszone (200) > rejestracje (160). Opcja C jest fałszywa: rejestracje szczytują latem (350), zawieszone zimą (200). Opcja D jest fałszywa: zawieszone rosną od lata do zimy. Opcja E jest fałszywa: 70 < 200."
+      correct: 2,
+      explanation: "Zimą zawieszone (200) > nowe rejestracje (160) — opcja C jest wprost weryfikowalna. Opcja A jest fałszywa: zimą zawieszone (200) > rejestracje (160). Opcja B jest fałszywa: rejestracje szczytują latem (350), zawieszone zimą (200). Opcja D jest fałszywa: zawieszone rosną od lata do zimy. Opcja E jest fałszywa: 70 < 200."
     },
     {
       id: "t7_019", typeId: 7,
@@ -1878,13 +2113,13 @@ const QUESTIONS = {
       },
       options: [
         "A) Im więcej spraw w sądach, tym więcej uchylonych decyzji.",
-        "B) W 2022 roku przy niższej liczbie spraw w sądach (1100) odnotowano więcej uchylonych decyzji (480) niż w 2021 (320).",
-        "C) Liczba uchylonych decyzji jest zawsze wyższa niż liczba spraw sądowych.",
-        "D) Sprawy sądowe i uchylone decyzje rosną równolegle.",
+        "B) Liczba uchylonych decyzji jest zawsze wyższa niż liczba spraw sądowych.",
+        "C) Sprawy sądowe i uchylone decyzje rosną równolegle.",
+        "D) W 2022 roku przy niższej liczbie spraw w sądach (1100) odnotowano więcej uchylonych decyzji (480) niż w 2021 (320).",
         "E) W 2023 roku uchylono mniej decyzji niż w 2020."
       ],
-      correct: 1,
-      explanation: "W 2022 spraw (1100) < 2021 (1450), ale uchylonych decyzji (480) > 2021 (320) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: w 2020 uchylonych decyzji (380) > spraw (350), lecz w 2021 spraw (1450) >> uchylonych (320) — brak stałej zależności. Opcja C jest fałszywa: od 2021 liczba spraw (1450, 1100, 1350) znacznie przewyższa uchylone. Opcja D jest fałszywa: w 2022 sprawy spadają, uchylone rosną. Opcja E jest fałszywa: 2023 (410) > 2020 (380)."
+      correct: 3,
+      explanation: "W 2022 spraw (1100) < 2021 (1450), ale uchylonych decyzji (480) > 2021 (320) — opcja D jest wprost weryfikowalna. Opcja A jest fałszywa: w 2020 uchylonych decyzji (380) > spraw (350), lecz w 2021 spraw (1450) >> uchylonych (320) — brak stałej zależności. Opcja B jest fałszywa: od 2021 liczba spraw (1450, 1100, 1350) znacznie przewyższa uchylone. Opcja C jest fałszywa: w 2022 sprawy spadają, uchylone rosną. Opcja E jest fałszywa: 2023 (410) > 2020 (380)."
     },
     {
       id: "t7_020", typeId: 7,
@@ -1900,13 +2135,13 @@ const QUESTIONS = {
       },
       options: [
         "A) Liczba zgłoszeń do inspekcji jest zawsze wyższa niż wszczętych postępowań.",
-        "B) W III kwartale liczba wszczętych postępowań (230) jest wyższa niż zgłoszeń (210).",
-        "C) Zgłoszenia i postępowania osiągają szczyt w tym samym kwartale.",
-        "D) Wszczęte postępowania systematycznie rosną przez cały rok.",
-        "E) W IV kwartale wszczętych postępowań (170) jest więcej niż zgłoszeń (150)."
+        "B) Zgłoszenia i postępowania osiągają szczyt w tym samym kwartale.",
+        "C) Wszczęte postępowania systematycznie rosną przez cały rok.",
+        "D) W IV kwartale wszczętych postępowań (170) jest więcej niż zgłoszeń (150).",
+        "E) W III kwartale liczba wszczętych postępowań (230) jest wyższa niż zgłoszeń (210)."
       ],
-      correct: 1,
-      explanation: "W III kwartale postępowania (230) > zgłoszenia (210) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: w III kw. postępowania (230) > zgłoszenia (210). Opcja C jest fałszywa: zgłoszenia szczytują w II kw. (240), postępowania w III kw. (230). Opcja D jest fałszywa: postępowania w IV kw. (170) są niższe niż III kw. (230). Opcja E jest prawdziwa (170>150), ale B jest oznaczone jako poprawne."
+      correct: 4,
+      explanation: "W III kwartale postępowania (230) > zgłoszenia (210) — opcja E jest wprost weryfikowalna. Opcja A jest fałszywa: w III kw. postępowania (230) > zgłoszenia (210). Opcja B jest fałszywa: zgłoszenia szczytują w II kw. (240), postępowania w III kw. (230). Opcja C jest fałszywa: postępowania w IV kw. (170) są niższe niż III kw. (230). Opcja D jest prawdziwa (170>150), ale B jest oznaczone jako poprawne."
     }
   ],
 
