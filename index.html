@@ -55,6 +55,13 @@
     button.secondary {
       background: #6b7280;
     }
+    button.ghost {
+      background: transparent;
+      color: #2563eb;
+      border: 1.5px solid #2563eb;
+      font-weight: 400;
+    }
+    button.ghost:active { background: #eff6ff; }
     button.btn-sm {
       min-height: 36px;
       padding: 6px 14px;
@@ -911,7 +918,7 @@
   <h1>Sprawdzian Umiejętności KSAP</h1>
   <p class="subtitle">Pomoc do nauki egzaminu kompetencyjnego</p>
   <button id="btn-new-session" onclick="goSetup()">Nowa sesja</button>
-  <button id="btn-history" onclick="showScreen('history'); loadHistory();">Historia sesji</button>
+  <button id="btn-history" class="ghost" onclick="showScreen('history'); loadHistory();">Historia sesji</button>
 </div>
 
 <!-- ==================== SETUP ==================== -->
