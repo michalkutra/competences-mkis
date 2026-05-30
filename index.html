@@ -1342,7 +1342,6 @@
     if (!q) return;
 
     if (state.mode === 'learning') {
-      // Phase 1: just mark selection, activate "Sprawdź" — don't record yet
       state.pendingAnswer = index;
       const container = document.getElementById('options-container');
       if (container) {
@@ -1352,6 +1351,7 @@
         if (sel) sel.classList.add('selected');
       }
       document.getElementById('btn-next').disabled = false;
+      if (state.autoAdvance) checkAnswer();
     } else {
       // Exam mode: record immediately, enable "Dalej →"
       state.answered = true;
@@ -1364,7 +1364,6 @@
         timeSpentSec: timeSpent
       });
       document.getElementById('btn-next').disabled = false;
-      if (state.autoAdvance) setTimeout(nextQuestion, 700);
     }
   }
 
