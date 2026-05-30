@@ -19,7 +19,8 @@
 | 11 | PWA install prompt | Zwiększa powroty mobilnych użytkowników (fundament już jest) | ~2h | SHOULD |
 | 12 | Podstrona "O aplikacji" | Buduje zaufanie + kluczowa notka o localStorage | ~2h | SHOULD |
 | 13 | Przycisk powrotu do pytania | UX improvement — przeżyją bez tego | ~3h | SKIP |
-| 14 | Autentykacja Google | Aktywnie szkodliwa — dodaje friction, zmniejszy adopcję | dni | **SKIP** |
+| 14 | Routing + nawigacja przeglądarki | Back/forward działa, URL odzwierciedla ekran — możliwe po przejściu na deploy | ~4h | SHOULD (po launchu) |
+| 15 | Autentykacja Google | Aktywnie szkodliwa — dodaje friction, zmniejszy adopcję | dni | **SKIP** |
 
 **MUSTs łącznie:** ~2-3h (poza deploy). **SHOULDs:** kolejne ~4-5h.
 
@@ -205,3 +206,39 @@ Przygotować treść posta na grupę ~700 osób zdających egzamin KSAP.
 **Do przygotowania:**
 - wersja na FB (dłuższa, z kontekstem)
 - opcjonalnie: krótka wersja do WhatsApp/Messenger dla znajomych
+
+---
+
+## Trwałość danych (alternatywa dla localStorage)
+
+Zwiększyć szanse, że użytkownicy nie stracą postępu przy czyszczeniu danych przeglądarki.
+
+**Priorytet:** nice to have
+
+**Opcje (od najbardziej do najmniej praktycznej):**
+- **IndexedDB** — drop-in za localStorage, większy limit, przeglądarki rzadziej czyszczą automatycznie; biblioteka `idb` (1 kb wrapper) upraszcza API
+- **Export/Import JSON** — przy kluczowych momentach (zakończenie modułu) propozycja "zapisz backup" → user pobiera plik i może go załadować; prosto w implementacji, wymaga akcji od usera
+- **File System Access API** — zapis bezpośrednio na dysk po jednorazowym przyznaniu uprawnień; bardzo niezawodny, ale Chrome/Edge only (Safari nie obsługuje)
+- **Shareable URL z zakodowanym stanem** — progress zakodowany base64 w URL/hash; działa cross-device, ale rośnie z ilością danych
+
+**Zalecane podejście:** IndexedDB jako główny magazyn + prosty export JSON jako ubezpieczenie.
+
+---
+
+## Routing + nawigacja przeglądarki
+
+Przerobić system nawigacji między ekranami tak, żeby przyciski back/forward przeglądarki działały poprawnie i URL odzwierciedlał aktualny widok.
+
+**Kontekst:** oryginalnie aplikacja była budowana z myślą o `file://` (portability na lokalny dysk) — hash routing nie był priorytetem. Po przejściu na deploy (Vercel/Netlify) ten constraint odpada.
+
+**Zakres zmiany:**
+- dodać hash routing (`#home`, `#setup`, `#question`, `#results`) lub History API (`/`, `/setup`, `/question`, `/results`)
+- każde przejście między ekranami = `pushState` / zmiana hasha
+- `popstate` / `hashchange` event obsługuje cofnięcie się
+- deep link na konkretny ekran powinien działać (lub przynajmniej nie crashować)
+
+**Decyzja do podjęcia przed implementacją:**
+- Hash routing (`#`) — prostszy, nie wymaga konfiguracji serwera (Vercel i tak to ogarnia)
+- History API (`/`) — czystsze URL-e, wymaga `rewrite` reguły na hostingu (jedna linijka w `vercel.json`)
+
+**Kiedy:** po test launchu, gdy wiadomo czy aplikacja ma trakcję — refaktor nawigacji to kilka godzin i warto poczekać na sygnał z GA4 (czy użytkownicy faktycznie gubią się bez back buttona).

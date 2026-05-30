@@ -93,6 +93,16 @@
     #screen-home button {
       max-width: 300px;
     }
+    #exam-countdown {
+      color: #555;
+      font-size: 1rem;
+      min-height: 1.5em;
+      animation: countdown-pulse 3s ease-in-out infinite;
+    }
+    @keyframes countdown-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
 
     /* ===== SETUP SCREEN ===== */
     #screen-setup {
@@ -313,6 +323,12 @@
       display: block;
       margin-bottom: 6px;
       color: #92400e;
+    }
+
+    .report-bar {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 8px;
     }
 
     /* ===== ABORT BUTTON (in question header) ===== */
@@ -895,6 +911,7 @@
 <div id="screen-home" class="screen">
   <h1>Sprawdzian Umiejętności KSAP</h1>
   <p class="subtitle">Pomoc do nauki egzaminu kompetencyjnego</p>
+  <p id="exam-countdown"></p>
   <button id="btn-new-session" onclick="goSetup()">Nowa sesja</button>
   <button id="btn-history" class="ghost" onclick="showScreen('history'); loadHistory();">Historia sesji</button>
 </div>
@@ -995,6 +1012,22 @@
     window.scrollTo(0, 0);
   }
 
+  function initCountdown() {
+    const el = document.getElementById('exam-countdown');
+    const now = new Date();
+    const examDay = new Date(2026, 6, 4);
+    const examDate = new Date(2026, 6, 5);
+    const isExamDay = now >= examDay && now < examDate;
+    const daysLeft = Math.ceil((examDay - now) / 86400000);
+    if (isExamDay) {
+      el.textContent = 'To już dziś';
+    } else if (daysLeft > 0) {
+      el.textContent = `Egzamin za ${daysLeft} dni`;
+    } else {
+      el.style.display = 'none';
+    }
+  }
+
   function toggleAccountMenu() {
     const menu = document.getElementById('account-menu');
     if (menu.hasAttribute('hidden')) {
@@ -1033,6 +1066,7 @@
     }
 
     showScreen('home');
+    initCountdown();
     document.addEventListener('click', function(e) {
       const accountEl = document.getElementById('header-account');
       if (accountEl && !accountEl.contains(e.target)) {
@@ -1623,7 +1657,8 @@
     }
 
     // Show explanation
-    const expHtml = '<div class="explanation-box"><strong>Wyjaśnienie:</strong>' + escHtml(q.explanation) + '</div>';
+    const expHtml = '<div class="explanation-box"><strong>Wyjaśnienie:</strong>' + escHtml(q.explanation) + '</div>'
+      + '<div class="report-bar"><button class="btn-sm ghost" onclick="reportQuestion(\'' + q.id + '\')">Zgłoś błąd w pytaniu</button></div>';
     document.getElementById('q-body').insertAdjacentHTML('beforeend', expHtml);
 
     // Transform button to "Dalej →"
@@ -1656,6 +1691,11 @@
       });
     }
     nextQuestion();
+  }
+
+  function reportQuestion(id) {
+    var subject = encodeURIComponent('Zgłoszenie błędu – pytanie #' + id);
+    window.location.href = 'mailto:michal@kutra.pl?cc=ewelina.wegrocka%40gmail.com&subject=' + subject;
   }
 
   /* ================================================================
@@ -1780,7 +1820,8 @@
     let html = buildSummaryHtml(items, meta);
     html += '<div class="summary-buttons">';
     html += '<button onclick="goSetup()">Nowa sesja</button>';
-    html += '<button class="secondary" onclick="showScreen(\'history\'); loadHistory();">Historia</button>';
+    html += '<button class="ghost" onclick="showScreen(\'history\'); loadHistory();">Historia</button>';
+    html += '<button class="ghost" onclick="showScreen(\'stats\'); loadStats();">Statystyki</button>';
     html += '</div>';
 
     document.getElementById('summary-content').innerHTML = html;
