@@ -117,7 +117,9 @@
     .checkbox-label input[type="checkbox"] {
       width: 20px;
       height: 20px;
+      min-width: 20px;
       cursor: pointer;
+      flex-shrink: 0;
     }
     .advanced-settings {
       margin-top: 8px;
@@ -148,17 +150,6 @@
       padding: 0 16px 8px;
       border-top: 1px solid #e5e7eb;
     }
-    .active-notice {
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
-      border-radius: 8px;
-      padding: 10px 14px;
-      font-size: 0.88rem;
-      color: #1e40af;
-      margin-top: 12px;
-    }
-    .active-notice strong { font-weight: 700; }
-
     /* ===== QUESTION SCREEN ===== */
     #screen-question {
       padding: 0;
@@ -724,9 +715,6 @@
       </label>
     </div>
   </details>
-  <div id="active-notice" class="active-notice" style="display:none">
-    Aktywne: <span id="active-notice-list"></span>
-  </div>
   <button onclick="startSession()">Rozpocznij &rarr;</button>
   <button class="secondary" onclick="showScreen('home')">Powrót</button>
 </div>
@@ -836,7 +824,6 @@
     if (hardBtn) hardBtn.disabled = (typeof QUESTIONS_HARD === 'undefined');
     document.getElementById('timer-checkbox').checked = state.timerEnabled;
     document.getElementById('autoadvance-checkbox').checked = state.autoAdvance;
-    updateActiveNotice();
     showScreen('setup');
   }
 
@@ -857,26 +844,10 @@
 
   function onTimerChange(checked) {
     state.timerEnabled = checked;
-    updateActiveNotice();
   }
 
   function onAutoAdvanceChange(checked) {
     state.autoAdvance = checked;
-    updateActiveNotice();
-  }
-
-  function updateActiveNotice() {
-    const items = [];
-    if (state.timerEnabled) items.push('Licznik czasu (60s)');
-    if (state.autoAdvance) items.push('Auto-przejście');
-    const notice = document.getElementById('active-notice');
-    if (!notice) return;
-    if (items.length) {
-      document.getElementById('active-notice-list').textContent = items.join(' · ');
-      notice.style.display = 'block';
-    } else {
-      notice.style.display = 'none';
-    }
   }
 
   function getQuestionBank() {
