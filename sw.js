@@ -1,9 +1,9 @@
-const CACHE = 'ksap-v1';
+const CACHE = 'ksap-v2';
 const ASSETS = [
   './',
   './index.html',
-  './questions.js',
-  './questions-hard.js',
+  './questions-unified.js',
+  './bg.png',
   './manifest.json',
   './icons/icon-192.png',
   './icons/icon-512.png',

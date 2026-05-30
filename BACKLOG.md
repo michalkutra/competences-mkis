@@ -1,5 +1,30 @@
 # Backlog
 
+## Priorytetyzacja — test launch
+
+**Kontekst:** darmowa wersja dla ~700 osób zdających egzamin KSAP, egzamin za miesiąc. Cel: zmaksymalizować wiedzę (adopcja, feedback, co się podoba) + 100 PLN zebranych z wirtualnych kaw jako proxy "ktoś to ceni".
+
+| # | Pozycja | Wpływ | Wysiłek | Priorytet |
+|---|---|---|---|---|
+| 1 | Domena i deploy | Prerequisit — bez tego nic nie istnieje | ~30 min | **MUST** |
+| 2 | Komunikacja (post na grupie) | Bez dobrego posta nikt nie kliknie — treść, ton, timing | ~1h | **MUST** |
+| 3 | Open Graph tags | Podwaja CTR z linku na grupie FB — pierwsza linia kontaktu z 700 os. | ~15 min | **MUST** |
+| 4 | "Postaw mi kawę" | Bezpośrednia ścieżka do benchmarku 100 PLN | ~15 min | **MUST** |
+| 5 | Zgłoś błąd | Damage control — przy 700 osobach ktoś znajdzie błąd; lepiej mail niż komentarz na grupie | ~15 min | **MUST** |
+| 6 | Analityka GA4 | Bez tego nie wiesz CO się dzieje — adopcja, drop-off, które tryby | ~1h | **MUST** |
+| 7 | NPS / CSAT (Tally) | Bez tego nie wiesz CO MYŚLĄ — liczby bez kontekstu nic nie mówią | ~30 min | **MUST** |
+| 8 | Informacja o puli pytań | Ustawia oczekiwania, zapobiega "to za mało" | ~15 min | SHOULD |
+| 9 | Odliczanie do egzaminu | Emocjonalny hak, przypomina dlaczego tu są | ~30 min | SHOULD |
+| 10 | Podziel się wynikiem | Jedyny mechanizm wyjścia poza te 700 osób | ~1h | SHOULD |
+| 11 | PWA install prompt | Zwiększa powroty mobilnych użytkowników (fundament już jest) | ~2h | SHOULD |
+| 12 | Podstrona "O aplikacji" | Buduje zaufanie + kluczowa notka o localStorage | ~2h | SHOULD |
+| 13 | Przycisk powrotu do pytania | UX improvement — przeżyją bez tego | ~3h | SKIP |
+| 14 | Autentykacja Google | Aktywnie szkodliwa — dodaje friction, zmniejszy adopcję | dni | **SKIP** |
+
+**MUSTs łącznie:** ~2-3h (poza deploy). **SHOULDs:** kolejne ~4-5h.
+
+---
+
 ## Analityka (GA + GTM)
 
 Wdrożyć Google Tag Manager jako kontener, a przez niego Google Analytics 4.
@@ -155,3 +180,26 @@ Wyświetlać ile pytań jest dostępnych w banku, np. "Pula: 80 pytań (łatwy) 
 - Pomaga użytkownikom ocenić wartość aplikacji przed pierwszą sesją
 - Zapobiega rozczarowaniu ("znam już wszystkie odpowiedzi") — użytkownicy wiedzą czego się spodziewać
 - Warto też sprawdzić realny rozmiar puli: przy sesjach 15-pytaniowych i małej puli użytkownicy szybko widzą powtórki
+
+---
+
+## Komunikacja (post na grupie FB)
+
+**TODO:** Przygotować i przejrzeć draft posta przed publishem — po wdrożeniu wszystkich MUSTs.
+
+Przygotować treść posta na grupę ~700 osób zdających egzamin KSAP.
+
+**Co powinien zawierać post:**
+- kim jesteśmy (żona zdaje ten sam egzamin — wiarygodność "z wewnątrz")
+- co to jest i po co (bezpłatne narzędzie do ćwiczeń, 8 typów zadań)
+- jak zacząć (jeden link, zero rejestracji)
+- co chcemy w zamian (feedback — co działa, co nie; opcjonalnie: kawa)
+- prośba o udostępnienie jeśli ktoś zna inne osoby zdające
+
+**Ton:** osobisty, nie marketingowy. Piszemy jako ludzie, nie jako produkt.
+
+**Timing:** opublikować gdy wszystkie MUSTs są gotowe — nie wcześniej, żeby pierwsze wrażenie było dobre.
+
+**Do przygotowania:**
+- wersja na FB (dłuższa, z kontekstem)
+- opcjonalnie: krótka wersja do WhatsApp/Messenger dla znajomych
