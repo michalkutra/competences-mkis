@@ -29,6 +29,7 @@
       transition: opacity 0.2s;
     }
     body.hide-bg #bg-illustration { opacity: 0; }
+    body.on-question .q-header { top: 0; }
 
     .screen { display: none; max-width: 800px; margin: 0 auto; padding: 16px; }
 
@@ -71,7 +72,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
+      padding-top: 20vh;
       min-height: calc(100vh - 48px);
       text-align: center;
       gap: 4px;
@@ -171,6 +173,7 @@
       position: sticky;
       top: 48px;
       background: white;
+      /* top overridden to 0 when global header is hidden (question screen) */
       border-bottom: 1px solid #eee;
       padding: 10px 16px;
       display: flex;
@@ -733,7 +736,8 @@
       }
       #screen-home {
         justify-content: flex-start;
-        padding-top: 20vh;
+        padding-top: 10vh;
+        padding-bottom: 0;
       }
     }
     @media (min-width: 1024px) {
@@ -755,6 +759,7 @@
         z-index: 10;
       }
       .q-header { top: 48px; }
+      body.on-question .q-header { top: 0; }
       .btn-next-bar { bottom: 0; }
       #screen-question {
         padding-top: 70px;
@@ -772,8 +777,7 @@
       justify-content: flex-end;
       height: 48px;
       padding: 0 16px;
-      background: white;
-      border-bottom: 1px solid #e5e7eb;
+      background: #f0f2f5;
     }
     .header-brand {
       font-weight: 700;
@@ -996,6 +1000,7 @@
     document.getElementById('screen-' + name).style.display = name === 'home' ? 'flex' : 'block';
     state.screen = name;
     document.body.classList.toggle('hide-bg', name !== 'home' && name !== 'setup');
+    document.body.classList.toggle('on-question', name === 'question');
     document.getElementById('global-header').style.display = name === 'question' ? 'none' : 'flex';
     window.scrollTo(0, 0);
   }
@@ -1419,7 +1424,9 @@
     '</svg>';
   }
 
-  function renderBarChart(chart) {
+  function renderBarChart(chart, opts) {
+    opts = opts || {};
+    const barWidthFactor = opts.barWidthFactor !== undefined ? opts.barWidthFactor : 0.75;
     const W = 500, H = 260;
     const padL = 50, padR = 20, padT = 20, padB = 60;
     const plotW = W - padL - padR;
@@ -1436,8 +1443,12 @@
     const nGroups = chart.xLabels.length;
     const nSeries = chart.datasets.length;
     const groupW = plotW / nGroups;
-    const barW = Math.min((groupW / nSeries) * 0.75, 40);
+    const barW = Math.min((groupW / nSeries) * barWidthFactor, 40);
     const barGap = (groupW - barW * nSeries) / (nSeries + 1);
+    // pairGap: gap between bars *within* a group (defaults to barGap)
+    const pairGap = opts.pairGap !== undefined ? opts.pairGap : barGap;
+    const totalPairW = barW * nSeries + pairGap * (nSeries - 1);
+    const outerPad = (groupW - totalPairW) / 2;
 
     let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="100%" xmlns="http://www.w3.org/2000/svg">';
 
@@ -1461,7 +1472,7 @@
       chart.xLabels.forEach(function(lbl, gi) {
         const v = ds.data[gi];
         const barH = (v / maxVal) * plotH;
-        const x = padL + gi * groupW + barGap * (si + 1) + barW * si;
+        const x = padL + gi * groupW + outerPad + si * (barW + pairGap);
         const y = padT + plotH - barH;
         svg += '<rect x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + barW.toFixed(1) + '" height="' + barH.toFixed(1) + '" fill="' + ds.color + '" opacity="0.85" rx="2"/>';
         // Value label above bar
@@ -1471,11 +1482,15 @@
       });
     });
 
-    // X labels
+    // X labels — xLabels entries may be strings or { label, title } objects
     chart.xLabels.forEach(function(lbl, gi) {
       const x = padL + gi * groupW + groupW / 2;
       const y = padT + plotH + 16;
-      svg += '<text x="' + x.toFixed(1) + '" y="' + y + '" text-anchor="middle" font-size="10" fill="#374151">' + escHtml(lbl) + '</text>';
+      const labelText = (typeof lbl === 'object') ? lbl.label : lbl;
+      const labelTitle = (typeof lbl === 'object' && lbl.title) ? lbl.title : null;
+      svg += '<text x="' + x.toFixed(1) + '" y="' + y + '" text-anchor="middle" font-size="10" fill="#374151">';
+      if (labelTitle) svg += '<title>' + escHtml(labelTitle) + '</title>';
+      svg += escHtml(labelText) + '</text>';
     });
 
     svg += '</svg>';
@@ -1897,8 +1912,16 @@
       }
     });
 
+    // Main score metric
+    var scorePct = Math.round(correct / total * 100);
+    var scoreColor = scorePct >= 80 ? '#27ae60' : scorePct >= 50 ? '#e67e22' : '#e74c3c';
+    var html = '<div style="text-align:center;margin-bottom:20px">';
+    html += '<div style="font-size:3.5rem;font-weight:700;line-height:1;color:' + scoreColor + '">' + scorePct + '%</div>';
+    html += '<div style="font-size:0.8rem;color:#6b7280;text-transform:uppercase;letter-spacing:0.06em;margin-top:4px">Skuteczność ogólna</div>';
+    html += '</div>';
+
     // Stat cards
-    var html = '<div class="stat-cards">';
+    html += '<div class="stat-cards">';
     html += '<div class="stat-card"><div class="stat-value">' + total + '</div><div class="stat-label">Odpowiedzi</div></div>';
     html += '<div class="stat-card stat-card-good"><div class="stat-value">' + correct + '</div><div class="stat-label">Poprawne</div></div>';
     html += '<div class="stat-card stat-card-bad"><div class="stat-value">' + wrong + '</div><div class="stat-label">Błędne</div></div>';
@@ -1909,13 +1932,15 @@
     html += '<p style="font-size:0.78rem;color:#6b7280;margin-bottom:8px">Cyfry 1–8 = typy opisane w tabeli poniżej</p>';
     var chartData = {
       type: 'bar',
-      xLabels: ['1','2','3','4','5','6','7','8'],
+      xLabels: [1,2,3,4,5,6,7,8].map(function(t) {
+        return { label: 'Typ ' + t, title: TYPE_NAMES[t] || 'Typ ' + t };
+      }),
       datasets: [
         { label: 'Poprawne', data: [1,2,3,4,5,6,7,8].map(function(t) { return byType[t].correct; }), color: '#27ae60' },
         { label: 'Błędne',   data: [1,2,3,4,5,6,7,8].map(function(t) { return byType[t].wrong;   }), color: '#e74c3c' }
       ]
     };
-    html += renderBarChart(chartData);
+    html += renderBarChart(chartData, { barWidthFactor: 0.45, pairGap: 2 });
 
     // Per-type table
     html += '<div class="data-table-wrap" style="margin-top:24px"><table class="summary-table">';
@@ -1927,7 +1952,7 @@
       var correctPct = tot ? Math.round(c / tot * 100) + '%' : '—';
       var wrongPct   = tot ? Math.round(w / tot * 100) + '%' : '—';
       html += '<tr>';
-      html += '<td style="font-size:0.78rem">' + escHtml(TYPE_NAMES[ti] || ('Typ ' + ti)) + '</td>';
+      html += '<td style="font-size:0.78rem"><span style="color:#6b7280;font-weight:600">Typ ' + ti + ':</span> ' + escHtml(TYPE_NAMES[ti] || ('Typ ' + ti)) + '</td>';
       html += '<td style="text-align:center">' + (tot || '—') + '</td>';
       html += '<td style="text-align:center;color:#27ae60;font-weight:600">' + correctPct + '</td>';
       html += '<td style="text-align:center;color:#e74c3c;font-weight:600">' + wrongPct   + '</td>';
