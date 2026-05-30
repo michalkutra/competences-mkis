@@ -790,9 +790,9 @@
   ================================================================ */
   function showScreen(name) {
     document.querySelectorAll('.screen').forEach(el => el.style.display = 'none');
-    document.getElementById('screen-' + name).style.display = 'block';
+    document.getElementById('screen-' + name).style.display = name === 'home' ? 'flex' : 'block';
     state.screen = name;
-    document.body.classList.toggle('hide-bg', name === 'question');
+    document.body.classList.toggle('hide-bg', name !== 'home' && name !== 'setup');
     window.scrollTo(0, 0);
   }
 
