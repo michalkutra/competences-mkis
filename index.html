@@ -88,6 +88,15 @@
       color: white;
       border-color: #2563eb;
     }
+    .setup-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin-bottom: 8px;
+      margin-top: 8px;
+    }
     .checkbox-label {
       display: flex;
       align-items: center;
@@ -184,7 +193,8 @@
       transition: border-color 0.15s, background 0.15s;
     }
     .option:focus { outline: none; }
-    .option:hover:not(.correct):not(.wrong):not(.disabled) { border-color: #93c5fd; background: #f0f7ff; }
+    .option:hover:not(.correct):not(.wrong):not(.disabled):not(.selected) { border-color: #93c5fd; background: #f0f7ff; }
+    .option.selected { border-color: #2563eb; background: #eff6ff; }
     .option.correct { border-color: #27ae60; background: #eafaf1; }
     .option.wrong { border-color: #e74c3c; background: #fdf0ef; }
     .option.disabled { cursor: default; opacity: 0.7; }
@@ -207,7 +217,8 @@
       transition: border-color 0.15s, background 0.15s;
     }
     .figure-option:focus { outline: none; }
-    .figure-option:hover:not(.correct):not(.wrong):not(.disabled) { border-color: #93c5fd; background: #f0f7ff; }
+    .figure-option:hover:not(.correct):not(.wrong):not(.disabled):not(.selected) { border-color: #93c5fd; background: #f0f7ff; }
+    .figure-option.selected { border-color: #2563eb; background: #eff6ff; }
     .figure-option.correct { border-color: #27ae60; background: #eafaf1; }
     .figure-option.wrong { border-color: #e74c3c; background: #fdf0ef; }
     .figure-option.disabled { cursor: default; opacity: 0.7; }
@@ -642,9 +653,15 @@
 <!-- ==================== SETUP ==================== -->
 <div id="screen-setup" class="screen">
   <h2>Nowa sesja</h2>
+  <p class="setup-label">Tryb</p>
   <div class="toggle-group" id="mode-toggle">
     <button class="toggle-btn active" data-mode="learning" onclick="setMode('learning')">Nauka</button>
     <button class="toggle-btn" data-mode="exam" onclick="setMode('exam')">Egzamin</button>
+  </div>
+  <p class="setup-label">Poziom trudności</p>
+  <div class="toggle-group" id="difficulty-toggle">
+    <button class="toggle-btn active" data-diff="easy" onclick="setDifficulty('easy')">Łatwy</button>
+    <button class="toggle-btn" data-diff="hard" onclick="setDifficulty('hard')">Trudny</button>
   </div>
   <label class="checkbox-label">
     <input type="checkbox" id="timer-checkbox" checked onchange="state.timerEnabled = this.checked">
@@ -664,7 +681,7 @@
   </div>
   <div id="q-body"></div>
   <div class="btn-next-bar">
-    <button id="btn-next" disabled onclick="nextQuestion()">Dalej &rarr;</button>
+    <button id="btn-next" disabled onclick="onBtnNext()">Dalej &rarr;</button>
   </div>
 </div>
 
@@ -683,6 +700,7 @@
 
 <!-- questions data -->
 <script src="questions.js"></script>
+<script src="questions-hard.js"></script>
 
 <!-- main script -->
 <script>
@@ -692,6 +710,7 @@
   const state = {
     screen: 'home',
     mode: 'learning',
+    difficulty: 'easy',
     timerEnabled: true,
     session: [],
     currentIndex: 0,
@@ -700,6 +719,7 @@
     timerSeconds: 60,
     sessionStartTime: null,
     answered: false,
+    pendingAnswer: null,
   };
 
   /* ================================================================
@@ -726,6 +746,7 @@
     try {
       const saved = JSON.parse(localStorage.getItem('ksap_settings') || '{}');
       if (saved.mode) state.mode = saved.mode;
+      if (saved.difficulty) state.difficulty = saved.difficulty;
       if (typeof saved.timerEnabled === 'boolean') state.timerEnabled = saved.timerEnabled;
     } catch(e) {}
 
@@ -742,10 +763,15 @@
      SETUP
   ================================================================ */
   function goSetup() {
-    // Sync UI with current state
     document.querySelectorAll('#mode-toggle .toggle-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.mode === state.mode);
     });
+    document.querySelectorAll('#difficulty-toggle .toggle-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.diff === state.difficulty);
+    });
+    // Disable hard if not loaded yet
+    const hardBtn = document.querySelector('[data-diff="hard"]');
+    if (hardBtn) hardBtn.disabled = (typeof QUESTIONS_HARD === 'undefined');
     document.getElementById('timer-checkbox').checked = state.timerEnabled;
     showScreen('setup');
   }
@@ -755,6 +781,19 @@
     document.querySelectorAll('#mode-toggle .toggle-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.mode === m);
     });
+  }
+
+  function setDifficulty(d) {
+    if (d === 'hard' && typeof QUESTIONS_HARD === 'undefined') return;
+    state.difficulty = d;
+    document.querySelectorAll('#difficulty-toggle .toggle-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.diff === d);
+    });
+  }
+
+  function getQuestionBank() {
+    if (state.difficulty === 'hard' && typeof QUESTIONS_HARD !== 'undefined') return QUESTIONS_HARD;
+    return QUESTIONS;
   }
 
   /* ================================================================
@@ -768,13 +807,14 @@
   }
 
   function buildSession() {
+    const bank = getQuestionBank();
     const guaranteed = [];
     for (let t = 1; t <= 8; t++) {
-      const pool = QUESTIONS['type' + t];
+      const pool = bank['type' + t];
       guaranteed.push(pool[Math.floor(Math.random() * pool.length)]);
     }
     const usedIds = new Set(guaranteed.map(q => q.id));
-    const allQs = Object.values(QUESTIONS).flat().filter(q => !usedIds.has(q.id));
+    const allQs = Object.values(bank).flat().filter(q => !usedIds.has(q.id));
     shuffle(allQs);
     const session = [...guaranteed, ...allQs.slice(0, 7)];
     shuffle(session);
@@ -784,7 +824,7 @@
   function startSession() {
     // Save settings
     try {
-      localStorage.setItem('ksap_settings', JSON.stringify({ mode: state.mode, timerEnabled: state.timerEnabled }));
+      localStorage.setItem('ksap_settings', JSON.stringify({ mode: state.mode, difficulty: state.difficulty, timerEnabled: state.timerEnabled }));
     } catch(e) {}
 
     state.session = buildSession();
@@ -812,12 +852,14 @@
       updateTimerDisplay();
       if (state.timerSeconds <= 0) {
         clearInterval(state.timerInterval);
-        // Time expired — auto-record no-answer and move on
         state.answered = true;
+        // In learning mode, pendingAnswer may be set but not checked — record it as answered (not null)
+        const pendingIdx = state.mode === 'learning' ? state.pendingAnswer : null;
+        const q = state.session[state.currentIndex];
         state.answers.push({
-          questionId: state.session[state.currentIndex].id,
-          userAnswer: null,
-          correct: false,
+          questionId: q ? q.id : null,
+          userAnswer: pendingIdx,
+          correct: pendingIdx !== null && q ? pendingIdx === q.correct : false,
           timeSpentSec: 60
         });
         nextQuestion();
@@ -899,8 +941,11 @@
       bodyHtml += '</div>';
     }
 
+    state.pendingAnswer = null;
     document.getElementById('q-body').innerHTML = bodyHtml;
-    document.getElementById('btn-next').disabled = true;
+    const btn = document.getElementById('btn-next');
+    btn.disabled = true;
+    btn.textContent = state.mode === 'learning' ? 'Sprawdź odpowiedź' : 'Dalej →';
 
     // Start timer
     stopTimer();
@@ -1204,59 +1249,85 @@
      ANSWER HANDLING
   ================================================================ */
   function selectAnswer(index) {
-    // Prevent double-answering
     if (state.answered) return;
-    state.answered = true;
     const q = state.session[state.currentIndex];
     if (!q) return;
 
+    if (state.mode === 'learning') {
+      // Phase 1: just mark selection, activate "Sprawdź" — don't record yet
+      state.pendingAnswer = index;
+      const container = document.getElementById('options-container');
+      if (container) {
+        const els = container.querySelectorAll('.option, .figure-option');
+        els.forEach(function(el) { el.classList.remove('selected'); });
+        const sel = container.querySelector('[data-index="' + index + '"]');
+        if (sel) sel.classList.add('selected');
+      }
+      document.getElementById('btn-next').disabled = false;
+    } else {
+      // Exam mode: record immediately, enable "Dalej →"
+      state.answered = true;
+      const timeSpent = state.timerEnabled ? (60 - state.timerSeconds) : null;
+      stopTimer();
+      state.answers.push({
+        questionId: q.id,
+        userAnswer: index,
+        correct: index === q.correct,
+        timeSpentSec: timeSpent
+      });
+      document.getElementById('btn-next').disabled = false;
+    }
+  }
+
+  function checkAnswer() {
+    if (state.answered || state.pendingAnswer === null) return;
+    state.answered = true;
+    const q = state.session[state.currentIndex];
+    const index = state.pendingAnswer;
     const timeSpent = state.timerEnabled ? (60 - state.timerSeconds) : null;
     stopTimer();
 
-    const isCorrect = index === q.correct;
     state.answers.push({
       questionId: q.id,
       userAnswer: index,
-      correct: isCorrect,
-      timeSpentSec: timeSpent !== null ? timeSpent : null
+      correct: index === q.correct,
+      timeSpentSec: timeSpent
     });
 
-    if (state.mode === 'learning') {
-      // Highlight options
-      const container = document.getElementById('options-container');
-      if (container) {
-        if (q.typeId !== 8) {
-          container.querySelectorAll('.option').forEach(function(el) {
-            el.classList.add('disabled');
-            el.onclick = null;
-            const i = parseInt(el.dataset.index);
-            if (i === q.correct) el.classList.add('correct');
-            else if (i === index) el.classList.add('wrong');
-          });
-        } else {
-          container.querySelectorAll('.figure-option').forEach(function(el) {
-            el.classList.add('disabled');
-            el.onclick = null;
-            const i = parseInt(el.dataset.index);
-            if (i === q.correct) el.classList.add('correct');
-            else if (i === index) el.classList.add('wrong');
-          });
-        }
-      }
+    // Show green/red on options
+    const container = document.getElementById('options-container');
+    if (container) {
+      const selector = q.typeId !== 8 ? '.option' : '.figure-option';
+      container.querySelectorAll(selector).forEach(function(el) {
+        el.classList.remove('selected');
+        el.classList.add('disabled');
+        el.onclick = null;
+        const i = parseInt(el.dataset.index);
+        if (i === q.correct) el.classList.add('correct');
+        else if (i === index) el.classList.add('wrong');
+      });
+    }
 
-      // Show explanation
-      const expHtml = '<div class="explanation-box"><strong>Wyjaśnienie:</strong>' + escHtml(q.explanation) + '</div>';
-      document.getElementById('q-body').insertAdjacentHTML('beforeend', expHtml);
-      document.getElementById('btn-next').disabled = false;
+    // Show explanation
+    const expHtml = '<div class="explanation-box"><strong>Wyjaśnienie:</strong>' + escHtml(q.explanation) + '</div>';
+    document.getElementById('q-body').insertAdjacentHTML('beforeend', expHtml);
 
-      // Scroll to see explanation
-      setTimeout(function() {
-        const exp = document.querySelector('.explanation-box');
-        if (exp) exp.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }, 100);
+    // Transform button to "Dalej →"
+    const btn = document.getElementById('btn-next');
+    btn.textContent = 'Dalej →';
+    btn.disabled = false;
+
+    setTimeout(function() {
+      const exp = document.querySelector('.explanation-box');
+      if (exp) exp.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 100);
+  }
+
+  function onBtnNext() {
+    if (state.mode === 'learning' && !state.answered) {
+      checkAnswer();
     } else {
-      // Exam mode — require explicit confirmation to advance (no feedback shown)
-      document.getElementById('btn-next').disabled = false;
+      nextQuestion();
     }
   }
 
