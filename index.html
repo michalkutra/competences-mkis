@@ -6,7 +6,7 @@
   <title>Sprawdzian Umiejętności KSAP</title>
   <style>
     /* ===== RESET & BASE (mobile-first) ===== */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body { font-family: sans-serif; font-size: 16px; background: #f0f2f5; color: #1a1a1a; }
 
     .screen { display: none; max-width: 800px; margin: 0 auto; padding: 16px; }
@@ -183,7 +183,7 @@
       line-height: 1.4;
       transition: border-color 0.15s, background 0.15s;
     }
-    .option:active { background: #e8f0fe; }
+    .option:focus { outline: none; }
     .option:hover:not(.correct):not(.wrong):not(.disabled) { border-color: #93c5fd; background: #f0f7ff; }
     .option.correct { border-color: #27ae60; background: #eafaf1; }
     .option.wrong { border-color: #e74c3c; background: #fdf0ef; }
@@ -206,6 +206,7 @@
       min-height: 60px;
       transition: border-color 0.15s, background 0.15s;
     }
+    .figure-option:focus { outline: none; }
     .figure-option:hover:not(.correct):not(.wrong):not(.disabled) { border-color: #93c5fd; background: #f0f7ff; }
     .figure-option.correct { border-color: #27ae60; background: #eafaf1; }
     .figure-option.wrong { border-color: #e74c3c; background: #fdf0ef; }
@@ -242,10 +243,37 @@
       color: #92400e;
     }
 
-    /* ===== NEXT BUTTON (inside question screen) ===== */
-    #btn-next {
-      margin: 16px;
+    /* ===== ABORT BUTTON (in question header) ===== */
+    .btn-abort {
+      background: none;
+      border: 1px solid #d1d5db;
+      color: #6b7280;
+      min-height: 32px;
+      padding: 4px 10px;
+      font-size: 0.85rem;
+      width: auto;
       margin-top: 0;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+    .btn-abort:active { background: #fee2e2; border-color: #fca5a5; color: #dc2626; }
+
+    /* ===== NEXT BUTTON BAR (sticky bottom) ===== */
+    .btn-next-bar {
+      position: sticky;
+      bottom: 0;
+      background: white;
+      border-top: 1px solid #eee;
+      padding: 12px 16px;
+      padding-bottom: max(12px, env(safe-area-inset-bottom));
+    }
+    #btn-next {
+      margin: 0;
+      width: 100%;
+    }
+    #btn-next:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
     }
 
     /* ===== TYPE 1: ANALOGY GRID ===== */
@@ -629,12 +657,15 @@
 <!-- ==================== QUESTION ==================== -->
 <div id="screen-question" class="screen">
   <div class="q-header" id="q-header">
+    <button class="btn-abort" onclick="abortSession()" title="Zakończ sesję">✕</button>
     <span id="q-counter">Pytanie 1 z 15</span>
     <div id="q-progress"><div id="q-progress-bar" style="width:0%"></div></div>
     <span id="q-timer" class="timer"></span>
   </div>
   <div id="q-body"></div>
-  <button id="btn-next" style="display:none" onclick="nextQuestion()">Dalej &rarr;</button>
+  <div class="btn-next-bar">
+    <button id="btn-next" disabled onclick="nextQuestion()">Dalej &rarr;</button>
+  </div>
 </div>
 
 <!-- ==================== SUMMARY ==================== -->
@@ -869,7 +900,7 @@
     }
 
     document.getElementById('q-body').innerHTML = bodyHtml;
-    document.getElementById('btn-next').style.display = 'none';
+    document.getElementById('btn-next').disabled = true;
 
     // Start timer
     stopTimer();
@@ -1216,7 +1247,7 @@
       // Show explanation
       const expHtml = '<div class="explanation-box"><strong>Wyjaśnienie:</strong>' + escHtml(q.explanation) + '</div>';
       document.getElementById('q-body').insertAdjacentHTML('beforeend', expHtml);
-      document.getElementById('btn-next').style.display = '';
+      document.getElementById('btn-next').disabled = false;
 
       // Scroll to see explanation
       setTimeout(function() {
@@ -1224,8 +1255,18 @@
         if (exp) exp.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }, 100);
     } else {
-      // Exam mode — move on immediately
-      nextQuestion();
+      // Exam mode — require explicit confirmation to advance (no feedback shown)
+      document.getElementById('btn-next').disabled = false;
+    }
+  }
+
+  /* ================================================================
+     ABORT SESSION
+  ================================================================ */
+  function abortSession() {
+    if (confirm('Przerwać sesję? Postęp zostanie utracony.')) {
+      stopTimer();
+      showScreen('home');
     }
   }
 
