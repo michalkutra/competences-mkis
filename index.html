@@ -1410,20 +1410,6 @@
       if (exp) exp.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }, 100);
 
-    if (state.autoAdvance) {
-      let secs = 3;
-      btn.textContent = 'Dalej → (' + secs + ')';
-      const countdown = setInterval(function() {
-        secs--;
-        if (secs <= 0) {
-          clearInterval(countdown);
-          nextQuestion();
-        } else {
-          const b = document.getElementById('btn-next');
-          if (b) b.textContent = 'Dalej → (' + secs + ')';
-        }
-      }, 1000);
-    }
   }
 
   function onBtnNext() {
