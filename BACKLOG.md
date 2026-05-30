@@ -14,7 +14,6 @@
 | 6 | Analityka GA4 | Bez tego nie wiesz CO się dzieje — adopcja, drop-off, które tryby | ~1h | **MUST** |
 | 7 | NPS / CSAT (Tally) | Bez tego nie wiesz CO MYŚLĄ — liczby bez kontekstu nic nie mówią | ~30 min | **MUST** |
 | 8 | Informacja o puli pytań | Ustawia oczekiwania, zapobiega "to za mało" | ~15 min | SHOULD |
-| 9 | Odliczanie do egzaminu | Emocjonalny hak, przypomina dlaczego tu są | ~30 min | SHOULD | [spec](docs/superpowers/specs/2026-05-30-exam-countdown-design.md) · [plan](docs/superpowers/plans/2026-05-30-exam-countdown.md) |
 | 10 | Podziel się wynikiem | Jedyny mechanizm wyjścia poza te 700 osób | ~1h | SHOULD |
 | 11 | PWA install prompt | Zwiększa powroty mobilnych użytkowników (fundament już jest) | ~2h | SHOULD |
 | 12 | Podstrona "O aplikacji" | Buduje zaufanie + kluczowa notka o localStorage | ~2h | SHOULD |
@@ -151,28 +150,6 @@ Na ekranie wyników dodać przycisk "Podziel się wynikiem", który kopiuje goto
 - Użyć `navigator.clipboard.writeText()`
 - Fallback: `<textarea>` z zaznaczonym tekstem dla starszych przeglądarek
 - Jedyny naturalny mechanizm który może wynieść aplikację poza pierwotną grupę docelową
-
----
-
-## Odliczanie do egzaminu (countdown na home screenie)
-
-Wyświetlać liczbę dni do egzaminu na ekranie głównym, np. "Egzamin za 28 dni".
-
-- Data egzaminu hardcoded w kodzie (można zmienić przy kolejnym sezonie)
-- Ukryć/zmienić komunikat po dniu egzaminu
-- Emocjonalny hak — przypomina użytkownikom po co tu są
-
----
-
-## Zgłoś błąd / zakwestionuj odpowiedź
-
-> **Plan gotowy:** [docs/superpowers/plans/2026-05-30-report-error.md](docs/superpowers/plans/2026-05-30-report-error.md) · [Spec](docs/superpowers/specs/2026-05-30-report-error-design.md)
-
-Przy każdym pytaniu (lub na ekranie wyników) dać możliwość zgłoszenia błędu w treści pytania lub niezgody z odpowiedzią.
-
-- Najprostszy wariant: link `mailto:` z pre-wypełnionym tematem zawierającym ID pytania
-- Bez tego: niezadowoleni użytkownicy piszą negatywne komentarze na grupie zamiast do twórcy
-- Ważne przy 700 użytkownikach — ktoś na pewno znajdzie błąd lub zakwestionuje odpowiedź
 
 ---
 

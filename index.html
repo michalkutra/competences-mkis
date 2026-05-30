@@ -97,6 +97,7 @@
       color: #555;
       font-size: 1rem;
       min-height: 1.5em;
+      margin-top: 32px;
       animation: countdown-pulse 3s ease-in-out infinite;
     }
     @keyframes countdown-pulse {
@@ -911,9 +912,9 @@
 <div id="screen-home" class="screen">
   <h1>Sprawdzian Umiejętności KSAP</h1>
   <p class="subtitle">Pomoc do nauki egzaminu kompetencyjnego</p>
-  <p id="exam-countdown"></p>
   <button id="btn-new-session" onclick="goSetup()">Nowa sesja</button>
   <button id="btn-history" class="ghost" onclick="showScreen('history'); loadHistory();">Historia sesji</button>
+  <p id="exam-countdown"></p>
 </div>
 
 <!-- ==================== SETUP ==================== -->
