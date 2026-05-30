@@ -1609,18 +1609,18 @@ const QUESTIONS = {
         xLabels: ["2020", "2021", "2022", "2023"],
         datasets: [
           { label: "Przeprowadzone kontrole", data: [85, 92, 78, 105], color: "#c0392b" },
-          { label: "Stwierdzone nieprawidłowości", data: [42, 35, 60, 48], color: "#2980b9" }
+          { label: "Stwierdzone nieprawidłowości", data: [42, 35, 60, 120], color: "#2980b9" }
         ]
       },
       options: [
         "A) Im więcej kontroli, tym więcej nieprawidłowości — stała zależność przez cały okres.",
         "B) W 2022 roku przeprowadzono mniej kontroli (78) niż w 2021 (92), a mimo to stwierdzono więcej nieprawidłowości (60 vs 35).",
         "C) Liczba nieprawidłowości jest zawsze mniejsza niż liczba kontroli.",
-        "D) W 2023 roku stwierdzono więcej nieprawidłowości niż w 2020.",
+        "D) W 2023 roku stwierdzono mniej nieprawidłowości (120) niż przeprowadzono kontroli (105).",
         "E) Liczba kontroli systematycznie rośnie przez cały okres."
       ],
       correct: 1,
-      explanation: "W 2022 kontrole (78) < 2021 (92), ale nieprawidłowości (60) > 2021 (35) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: w 2022 mniej kontroli, ale więcej nieprawidłowości. Opcja C jest prawdziwa, ale nie jest to testowana zależność. Opcja D jest fałszywa: 2023 (48) > 2020 (42) — prawdziwa, lecz mniej pouczająca. Opcja E jest fałszywa: w 2022 kontrole spadły do 78."
+      explanation: "W 2022 kontrole (78) < 2021 (92), ale nieprawidłowości (60) > 2021 (35) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: w 2022 mniej kontroli, ale więcej nieprawidłowości. Opcja C jest fałszywa: w 2023 nieprawidłowości (120) przewyższają kontrole (105). Opcja D jest fałszywa: 120 > 105, więc w 2023 nieprawidłowości są wyższe niż kontrole. Opcja E jest fałszywa: w 2022 kontrole spadły do 78."
     },
     {
       id: "t7_008", typeId: 7,
@@ -1762,19 +1762,19 @@ const QUESTIONS = {
         type: "line",
         xLabels: ["2020", "2021", "2022", "2023"],
         datasets: [
-          { label: "Sektor publiczny", data: [220, 230, 215, 240], color: "#c0392b" },
+          { label: "Sektor publiczny", data: [220, 230, 640, 240], color: "#c0392b" },
           { label: "Sektor prywatny", data: [580, 550, 620, 590], color: "#2980b9" }
         ]
       },
       options: [
-        "A) Zatrudnienie w sektorze publicznym jest zawsze wyższe niż w prywatnym.",
+        "A) Zatrudnienie w sektorze publicznym jest zawsze niższe niż w prywatnym.",
         "B) W 2022 roku zatrudnienie w sektorze prywatnym (620 tys.) było wyższe niż w 2021 (550 tys.).",
         "C) Sektor publiczny i prywatny rosną równolegle przez cały okres.",
         "D) Sektor prywatny osiągnął minimum w 2022 roku.",
         "E) W 2023 roku sektor publiczny (240) przewyższył sektor prywatny (590)."
       ],
       correct: 1,
-      explanation: "W 2022 sektor prywatny (620) > 2021 (550) — opcja B jest wprost weryfikowalna z danych. Opcja A jest fałszywa: sektor prywatny (580-620) zawsze przewyższa publiczny (215-240). Opcja C jest fałszywa: w 2021 publiczny rośnie, prywatny spada. Opcja D jest fałszywa: minimum prywatnego jest w 2021 (550). Opcja E jest fałszywa: 240 < 590."
+      explanation: "W 2022 sektor prywatny (620) > 2021 (550) — opcja B jest wprost weryfikowalna z danych. Opcja A jest fałszywa: w 2022 sektor publiczny (640) przewyższa prywatny (620). Opcja C jest fałszywa: w 2021 publiczny rośnie, prywatny spada; w 2022 publiczny gwałtownie rośnie, a sektor prywatny też rośnie, lecz wolniej. Opcja D jest fałszywa: minimum prywatnego jest w 2021 (550). Opcja E jest fałszywa: 240 < 590."
     },
     {
       id: "t7_015", typeId: 7,
@@ -1828,7 +1828,7 @@ const QUESTIONS = {
         type: "line",
         xLabels: ["I KW.", "II KW.", "III KW.", "IV KW."],
         datasets: [
-          { label: "Posiedzenia rady gminy", data: [4, 6, 3, 8], color: "#c0392b" },
+          { label: "Posiedzenia rady gminy", data: [15, 6, 3, 8], color: "#c0392b" },
           { label: "Podjęte uchwały", data: [12, 8, 15, 22], color: "#2980b9" }
         ]
       },
@@ -1840,7 +1840,7 @@ const QUESTIONS = {
         "E) W II kwartale uchwały (8) są mniej liczne niż posiedzenia (6)."
       ],
       correct: 1,
-      explanation: "W III kwartale uchwały (15) > posiedzenia (3) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: w III kw. mniej posiedzeń (3), ale więcej uchwał (15). Opcja C jest fałszywa: uchwały zawsze przewyższają posiedzenia. Opcja D jest fałszywa: posiedzenia szczytują w IV kw. (8), uchwały też w IV kw. (22) — w tym przypadku D byłaby prawdziwa dla IV kw.; jednak B jest precyzyjniejszą obserwacją. Opcja E jest fałszywa: 8 uchwały > 6 posiedzeń."
+      explanation: "W III kwartale uchwały (15) > posiedzenia (3) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: w I kw. więcej posiedzeń (15) niż uchwał (12), lecz w III kw. odwrotnie — brak stałej proporcji. Opcja C jest fałszywa: od II kw. uchwały przewyższają posiedzenia (np. II kw.: 8 > 6). Opcja D jest fałszywa: posiedzenia szczytują w I kw. (15), uchwały w IV kw. (22). Opcja E jest fałszywa: 8 uchwały > 6 posiedzeń."
     },
     {
       id: "t7_018", typeId: 7,
@@ -1872,7 +1872,7 @@ const QUESTIONS = {
         type: "line",
         xLabels: ["2020", "2021", "2022", "2023"],
         datasets: [
-          { label: "Sprawy w sądach administracyjnych", data: [1200, 1450, 1100, 1350], color: "#c0392b" },
+          { label: "Sprawy w sądach administracyjnych", data: [350, 1450, 1100, 1350], color: "#c0392b" },
           { label: "Uchylone decyzje administracyjne", data: [380, 320, 480, 410], color: "#2980b9" }
         ]
       },
@@ -1884,7 +1884,7 @@ const QUESTIONS = {
         "E) W 2023 roku uchylono mniej decyzji niż w 2020."
       ],
       correct: 1,
-      explanation: "W 2022 spraw (1100) < 2021 (1450), ale uchylonych decyzji (480) > 2021 (320) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: w 2022 mniej spraw, ale więcej uchylonych. Opcja C jest fałszywa: uchylone (320-480) < sprawy (1100-1450). Opcja D jest fałszywa: w 2022 sprawy spadają, uchylone rosną. Opcja E jest fałszywa: 2023 (410) > 2020 (380)."
+      explanation: "W 2022 spraw (1100) < 2021 (1450), ale uchylonych decyzji (480) > 2021 (320) — opcja B jest wprost weryfikowalna. Opcja A jest fałszywa: w 2020 uchylonych decyzji (380) > spraw (350), lecz w 2021 spraw (1450) >> uchylonych (320) — brak stałej zależności. Opcja C jest fałszywa: od 2021 liczba spraw (1450, 1100, 1350) znacznie przewyższa uchylone. Opcja D jest fałszywa: w 2022 sprawy spadają, uchylone rosną. Opcja E jest fałszywa: 2023 (410) > 2020 (380)."
     },
     {
       id: "t7_020", typeId: 7,
