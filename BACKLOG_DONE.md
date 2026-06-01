@@ -31,3 +31,11 @@ Przy każdym pytaniu (lub na ekranie wyników) dać możliwość zgłoszenia bł
 - Ważne przy 700 użytkownikach — ktoś na pewno znajdzie błąd lub zakwestionuje odpowiedź
 
 ---
+
+## Open Graph tags
+
+> **Ukończono:** 2026-06-01
+
+OG tagi dodane do `<head>` w index.html (`og:title`, `og:description`, `og:image`, `og:url`, `twitter:card`). Dedykowany baner `og-image.png` (1200×630px) wygenerowany z ilustracji bg.png i tytułem apki. Domena: `egzamin.kutra.pl`.
+
+---

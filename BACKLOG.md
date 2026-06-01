@@ -7,7 +7,6 @@
 | # | Pozycja | Wpływ | Wysiłek | Priorytet |
 |---|---|---|---|---|
 | 2 | Komunikacja (post na grupie) | Bez dobrego posta nikt nie kliknie — treść, ton, timing | ~1h | **MUST** |
-| 3 | Open Graph tags | Podwaja CTR z linku na grupie FB — pierwsza linia kontaktu z 700 os. | ~15 min | **MUST** |
 | 4 | "Postaw mi kawę" | Bezpośrednia ścieżka do benchmarku 100 PLN | ~15 min | **MUST** |
 | 6 | Analityka GA4 | Bez tego nie wiesz CO się dzieje — adopcja, drop-off, które tryby | ~1h | **MUST** |
 | 7 | NPS / CSAT (Tally) | Bez tego nie wiesz CO MYŚLĄ — liczby bez kontekstu nic nie mówią | ~30 min | **MUST** |
@@ -116,16 +115,6 @@ Dodać przycisk "Zainstaluj aplikację" na ekranie głównym:
 - **Android**: przechwycić `beforeinstallprompt`, podpiąć pod przycisk → natywny dialog instalacji
 - **iOS**: pokazać modal z instrukcją krok po kroku (Udostępnij → Dodaj do ekranu głównego)
 - Ukryć przycisk gdy appka działa już w trybie standalone (`display-mode: standalone`)
-
----
-
-## Open Graph tags (preview linku na Facebooku / WhatsApp)
-
-Gdy link do aplikacji jest wklejany na grupie, platformy pokazują kartę z podglądem. Bez OG tagów: goły URL. Z OG: tytuł, opis, miniaturka.
-
-- Dodać `<meta property="og:title">`, `og:description`, `og:image` do `<head>`
-- Obraz: można użyć istniejącej ikony lub prostego banera 1200×630px
-- Koszt implementacji: ~10 linii HTML
 
 ---
 
