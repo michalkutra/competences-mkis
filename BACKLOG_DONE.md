@@ -47,3 +47,16 @@ Ko-fi widget (`ko-fi.com/sprawdzianumiejetnosci`) dodany na ekranie wyników (po
 OG tagi dodane do `<head>` w index.html (`og:title`, `og:description`, `og:image`, `og:url`, `twitter:card`). Dedykowany baner `og-image.png` (1200×630px) wygenerowany z ilustracji bg.png i tytułem apki. Domena: `egzamin.kutra.pl`.
 
 ---
+
+## Podstrona "O aplikacji"
+
+> **Ukończono:** 2026-06-01
+
+Ekran `screen-about` dodany do `index.html`. Dostępny z menu (hamburger → "O aplikacji"). Zawiera:
+- historyjkę powstania aplikacji (Ewelina, egzamin KSAP, brak dobrych materiałów)
+- opis dwóch trybów nauki (Nauka z podpowiedziami / Egzamin bez podpowiedzi)
+- listę 8 typów zadań z numerkami
+- żółte ostrzeżenie o localStorage (postęp tylko lokalnie, brak synchronizacji)
+- sekcję Ko-fi z linkiem i podpisem "Powodzenia na egzaminie! — Michał"
+
+---

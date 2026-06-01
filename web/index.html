@@ -8,7 +8,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://egzamin.kutra.pl/">
   <meta property="og:title" content="Sprawdzian Umiejętności KSAP">
-  <meta property="og:description" content="Bezpłatna aplikacja do ćwiczeń przed sprawdzianem umiejętności KSAP. 8 typów zadań, tryb egzaminowy i nauki. Zero rejestracji.">
+  <meta property="og:description" content="Nie znaleźliśmy nic wystarczająco dobrego do ćwiczeń przed sprawdzianem umiejętności KSAP — więc zbudowaliśmy własne. 8 typów zadań, tryb nauki i egzaminowy. Zero rejestracji. Bezpłatne.">
   <meta property="og:image" content="https://egzamin.kutra.pl/og-image.png">
   <meta name="twitter:card" content="summary">
   <!-- PWA -->
@@ -890,6 +890,89 @@
     @media (min-width: 1024px) {
       #screen-stats { padding: 40px 32px; }
     }
+
+    /* ===== ABOUT SCREEN ===== */
+    #screen-about {
+      padding: 24px 16px;
+    }
+    .about-story {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+      color: #1e3a5f;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .about-section {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 16px 0;
+    }
+    .about-section h3 {
+      color: #1a1a1a;
+      margin-bottom: 12px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #6b7280;
+      font-weight: 600;
+    }
+    .about-types {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .about-type-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: #374151;
+      line-height: 1.4;
+    }
+    .about-type-num {
+      background: #2563eb;
+      color: white;
+      border-radius: 4px;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .about-storage-warning {
+      background: #fefce8;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 0.9rem;
+      color: #78350f;
+      line-height: 1.6;
+    }
+    .about-storage-warning strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+    }
+    @media (min-width: 480px) {
+      #screen-about { padding: 32px 24px; }
+    }
+    @media (min-width: 640px) {
+      .about-types { grid-template-columns: 1fr 1fr 1fr 1fr; }
+    }
+    @media (min-width: 1024px) {
+      #screen-about { padding: 40px 32px; }
+    }
   </style>
 </head>
 <body>
@@ -907,6 +990,8 @@
       <div class="menu-divider"></div>
       <button class="menu-item" onclick="showScreen('stats'); loadStats(); closeAccountMenu();">Statystyki</button>
       <button class="menu-item" onclick="showScreen('history'); loadHistory(); closeAccountMenu();">Historia sesji</button>
+      <div class="menu-divider"></div>
+      <button class="menu-item" onclick="showScreen('about'); closeAccountMenu();">O aplikacji</button>
     </div>
   </div>
 </header>
@@ -981,6 +1066,81 @@
 <div id="screen-history" class="screen">
   <h2>Historia sesji</h2>
   <div id="history-content"></div>
+  <button class="secondary" onclick="showScreen('home')" style="max-width:200px; margin-top:20px;">Powrót</button>
+</div>
+
+<!-- ==================== ABOUT ==================== -->
+<div id="screen-about" class="screen">
+  <h2>O aplikacji</h2>
+
+  <div class="about-story">
+    Stworzyliśmy tę aplikację, bo Ewelina przygotowuje się do egzaminu kompetencyjnego KSAP. Szukała czegoś do ćwiczeń — czegoś, co naprawdę odwzorowuje rodzaje zadań z testu. Nie znalazła nic wystarczająco dobrego. No to zbudowaliśmy coś własnego. 🙂
+    <br><br>
+    Zero rejestracji, za darmo. Po prostu ćwicz.
+  </div>
+
+  <div class="about-section">
+    <h3>Jak to działa</h3>
+    <p style="font-size:0.95rem;color:#374151;line-height:1.6;margin-bottom:12px;">
+      Masz dwa tryby nauki:
+    </p>
+    <p style="font-size:0.95rem;color:#374151;line-height:1.6;margin-bottom:8px;">
+      <strong>Nauka</strong> — po każdej odpowiedzi widzisz od razu, czy trafiłeś, i krótkie wyjaśnienie. Dobry start, żeby zrozumieć logikę zadań.
+    </p>
+    <p style="font-size:0.95rem;color:#374151;line-height:1.6;margin-bottom:12px;">
+      <strong>Egzamin</strong> — odpowiadasz na wszystkie pytania bez podpowiedzi, tak jak na prawdziwym teście. Wynik i przegląd błędów dopiero na końcu.
+    </p>
+    <p style="font-size:0.95rem;color:#374151;line-height:1.6;margin-bottom:12px;">
+      Świadomie ustawiliśmy 15 pytań na sesję. Krótka sesja, którą można wcisnąć między obowiązkami — przy kawie, w przerwie, kiedy maluch zaśnie. Regularność jest ważniejsza niż długość.
+    </p>
+    <p style="font-size:0.95rem;color:#374151;line-height:1.6;">
+      W <strong>Historii sesji</strong> znajdziesz wszystkie poprzednie podejścia z możliwością przejrzenia każdego pytania. <strong>Statystyki</strong> pokazują postępy w czasie — skuteczność per typ zadania, żebyś wiedział, nad czym warto popracować.
+    </p>
+  </div>
+
+  <div class="about-storage-warning">
+    <strong>⚠️ Twój postęp jest zapisywany lokalnie</strong>
+    Historia sesji i statystyki są przechowywane wyłącznie w pamięci tej przeglądarki na tym urządzeniu. Wyczyszczenie danych przeglądarki lub otwarcie aplikacji na innym urządzeniu — i dane znikają. Nie ma kont, nie ma chmury.
+  </div>
+
+  <div class="about-section">
+    <h3>Skąd pytania</h3>
+    <p style="font-size:0.95rem;color:#374151;line-height:1.6;">
+      Wzięliśmy oficjalne przykłady zadań ze strony KSAP — 15 próbek w 8 typach — i poprosiliśmy kilka modeli AI, żeby wygenerowały analogiczne zadania w dwóch poziomach trudności, a potem nawzajem je zweryfikowały. Każde pytanie ma wyjaśnienie odpowiedzi. To nie są oryginalne pytania egzaminacyjne, ale celowo odwzorowują ich logikę i strukturę.
+    </p>
+  </div>
+
+  <div class="about-section">
+    <h3>8 typów zadań</h3>
+    <div class="about-types">
+      <div class="about-type-item"><span class="about-type-num">1</span><span>Analogia słowna</span></div>
+      <div class="about-type-item"><span class="about-type-num">2</span><span>Wspólny wyraz</span></div>
+      <div class="about-type-item"><span class="about-type-num">3</span><span>Związek przyczynowo-skutkowy</span></div>
+      <div class="about-type-item"><span class="about-type-num">4</span><span>Analogia zdaniowa</span></div>
+      <div class="about-type-item"><span class="about-type-num">5</span><span>Wnioskowanie logiczne</span></div>
+      <div class="about-type-item"><span class="about-type-num">6</span><span>Zadanie numeryczne</span></div>
+      <div class="about-type-item"><span class="about-type-num">7</span><span>Analiza wykresu</span></div>
+      <div class="about-type-item"><span class="about-type-num">8</span><span>Powiązania figur</span></div>
+    </div>
+    <p style="font-size:0.95rem;color:#374151;line-height:1.6;margin-top:12px;">
+      Każde zadanie dostępne w dwóch poziomach trudności: łatwym i trudnym.
+    </p>
+  </div>
+
+  <div class="about-section" style="text-align:center;">
+    <h3>Wspieraj projekt</h3>
+    <p style="font-size:0.95rem;color:#374151;line-height:1.6;margin-bottom:16px;">
+      Aplikacja jest bezpłatna i taką zostanie. Jeśli pomaga Ci w nauce — możesz postawić nam kawę. To naprawdę motywuje. ☕
+    </p>
+    <a href="https://ko-fi.com/sprawdzianumiejetnosci" target="_blank" rel="noopener"
+       style="display:inline-block;background:#ff5f5f;color:#fff;font-weight:600;padding:12px 28px;border-radius:8px;text-decoration:none;font-size:1rem;">
+      ☕ Postaw nam kawę na Ko-fi
+    </a>
+    <p style="font-size:0.95rem;color:#374151;line-height:1.6;margin-top:12px;">
+      Powodzenia na egzaminie! — Ewelina &amp; Michał
+    </p>
+  </div>
+
   <button class="secondary" onclick="showScreen('home')" style="max-width:200px; margin-top:20px;">Powrót</button>
 </div>
 

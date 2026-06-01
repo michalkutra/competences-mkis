@@ -12,7 +12,6 @@
 | 8 | Informacja o puli pytań | Ustawia oczekiwania, zapobiega "to za mało" | ~15 min | SHOULD |
 | 10 | Podziel się wynikiem | Jedyny mechanizm wyjścia poza te 700 osób | ~1h | SHOULD |
 | 11 | PWA install prompt | Zwiększa powroty mobilnych użytkowników (fundament już jest) | ~2h | SHOULD |
-| 12 | Podstrona "O aplikacji" | Buduje zaufanie + kluczowa notka o localStorage | ~2h | SHOULD |
 | 13 | Przycisk powrotu do pytania | UX improvement — przeżyją bez tego | ~3h | SKIP |
 | 14 | Routing + nawigacja przeglądarki | Back/forward działa, URL odzwierciedla ekran — możliwe po przejściu na deploy | ~4h | SHOULD (po launchu) |
 | 15 | Autentykacja Google | Aktywnie szkodliwa — dodaje friction, zmniejszy adopcję | dni | **SKIP** |
@@ -63,18 +62,6 @@ Przesłonić całą stronę logowaniem przez Google — bez konta brak dostępu.
 Możliwość cofnięcia się do poprzedniego pytania i zmiany odpowiedzi.
 
 - Do ustalenia: tylko tryb Exam, czy oba tryby (Exam + Learning)?
-
-## Podstrona "O aplikacji"
-
-Podstrona opisująca jak działa system i jak został stworzony.
-
-**Do uwzględnienia:**
-- opis mechaniki (tryby, pytania, ocenianie)
-- informacja o sposobie powstania (tech stack, kontekst)
-- **ważne:** wyraźna informacja, że postęp zapisywany jest wyłącznie lokalnie w przeglądarce — wyczyszczenie danych aplikacji lub inne urządzenie = brak synchronizacji stanu
-- ta sama informacja o localStorage warto powtórzyć w UI (np. tooltip / drobna notka na ekranie głównym lub wyników)
-
----
 
 ## System oceniania (NPS / CSAT)
 
@@ -130,7 +117,8 @@ Wyświetlać ile pytań jest dostępnych w banku, np. "Pula: 80 pytań (łatwy) 
 
 ## Komunikacja (post na grupie FB)
 
-**TODO:** Przygotować i przejrzeć draft posta przed publishem — po wdrożeniu wszystkich MUSTs.
+**Status:** Drafty gotowe — do wyboru wersji i publikacji po wdrożeniu MUSTs.
+**Drafty:** [`komunikacja/`](komunikacja/) — 4 wersje (A: storytelling, B: problem→rozwiązanie ⭐, C: konkretna, D: Messenger)
 
 Przygotować treść posta na grupę ~700 osób zdających egzamin KSAP.
 
