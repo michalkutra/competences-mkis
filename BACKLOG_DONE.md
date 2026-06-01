@@ -48,6 +48,14 @@ OG tagi dodane do `<head>` w index.html (`og:title`, `og:description`, `og:image
 
 ---
 
+## Routing + nawigacja przeglądarki
+
+> **Ukończono:** 2026-06-02
+
+History API client-side routing zaimplementowane w `web/index.html`. Każdy ekran ma własny URL (`/`, `/setup`, `/history`, `/stats`, `/about`, `/session`). Netlify redirect `/* → /index.html` dodany w `netlify.toml`. Przyciski back/forward działają. Cofnięcie się w trakcie quizu pokazuje dialog "Przerwać sesję?". Deep linki do statycznych ekranów działają.
+
+---
+
 ## Podstrona "O aplikacji"
 
 > **Ukończono:** 2026-06-01

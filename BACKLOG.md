@@ -13,7 +13,6 @@
 | 10 | Podziel się wynikiem | Jedyny mechanizm wyjścia poza te 700 osób | ~1h | SHOULD |
 | 11 | PWA install prompt | Zwiększa powroty mobilnych użytkowników (fundament już jest) | ~2h | SHOULD |
 | 13 | Przycisk powrotu do pytania | UX improvement — przeżyją bez tego | ~3h | SKIP |
-| 14 | Routing + nawigacja przeglądarki | Back/forward działa, URL odzwierciedla ekran — możliwe po przejściu na deploy | ~4h | SHOULD (po launchu) |
 | 15 | Autentykacja Google | Aktywnie szkodliwa — dodaje friction, zmniejszy adopcję | dni | **SKIP** |
 
 **MUSTs łącznie:** ~2-3h (poza deploy). **SHOULDs:** kolejne ~4-5h.
@@ -153,22 +152,3 @@ Zwiększyć szanse, że użytkownicy nie stracą postępu przy czyszczeniu danyc
 
 **Zalecane podejście:** IndexedDB jako główny magazyn + prosty export JSON jako ubezpieczenie.
 
----
-
-## Routing + nawigacja przeglądarki
-
-Przerobić system nawigacji między ekranami tak, żeby przyciski back/forward przeglądarki działały poprawnie i URL odzwierciedlał aktualny widok.
-
-**Kontekst:** oryginalnie aplikacja była budowana z myślą o `file://` (portability na lokalny dysk) — hash routing nie był priorytetem. Po przejściu na deploy (Vercel/Netlify) ten constraint odpada.
-
-**Zakres zmiany:**
-- dodać hash routing (`#home`, `#setup`, `#question`, `#results`) lub History API (`/`, `/setup`, `/question`, `/results`)
-- każde przejście między ekranami = `pushState` / zmiana hasha
-- `popstate` / `hashchange` event obsługuje cofnięcie się
-- deep link na konkretny ekran powinien działać (lub przynajmniej nie crashować)
-
-**Decyzja do podjęcia przed implementacją:**
-- Hash routing (`#`) — prostszy, nie wymaga konfiguracji serwera (Vercel i tak to ogarnia)
-- History API (`/`) — czystsze URL-e, wymaga `rewrite` reguły na hostingu (jedna linijka w `vercel.json`)
-
-**Kiedy:** po test launchu, gdy wiadomo czy aplikacja ma trakcję — refaktor nawigacji to kilka godzin i warto poczekać na sygnał z GA4 (czy użytkownicy faktycznie gubią się bez back buttona).

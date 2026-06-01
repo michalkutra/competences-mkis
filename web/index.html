@@ -1170,8 +1170,14 @@
   /* ================================================================
      SCREEN MANAGEMENT
   ================================================================ */
-  function showScreen(name) {
-    document.querySelectorAll('.screen').forEach(el => el.style.display = 'none');
+  var SCREEN_PATHS = {
+    'home': '/', 'setup': '/setup', 'history': '/history',
+    'stats': '/stats', 'about': '/about',
+    'question': '/question', 'summary': '/summary', 'session-detail': '/session'
+  };
+
+  function _applyScreen(name) {
+    document.querySelectorAll('.screen').forEach(function(el) { el.style.display = 'none'; });
     document.getElementById('screen-' + name).style.display = name === 'home' ? 'flex' : 'block';
     state.screen = name;
     document.body.classList.toggle('hide-bg', name !== 'home' && name !== 'setup');
@@ -1179,6 +1185,53 @@
     document.getElementById('global-header').style.display = name === 'question' ? 'none' : 'flex';
     window.scrollTo(0, 0);
   }
+
+  var ROUTING_ENABLED = window.location.protocol !== 'file:';
+
+  function showScreen(name) {
+    _applyScreen(name);
+    if (!ROUTING_ENABLED) return;
+    var url = SCREEN_PATHS[name] || ('/' + name);
+    var s = { screen: name };
+    // question/summary are transient — replace so they don't stack in history
+    if (name === 'question' || name === 'summary') {
+      history.replaceState(s, '', url);
+    } else if (window.location.pathname !== url) {
+      history.pushState(s, '', url);
+    } else {
+      history.replaceState(s, '', url);
+    }
+  }
+
+  window.addEventListener('popstate', function(event) {
+    // Intercept back-press during an active quiz
+    if (state.screen === 'question' && state.session.length > 0) {
+      history.pushState({ screen: 'question' }, '', '/question');
+      abortSession();
+      return;
+    }
+    var s = (event.state && event.state.screen) || 'home';
+    // Transient screens with no active session → go home
+    if ((s === 'question' || s === 'summary') && state.session.length === 0) {
+      _applyScreen('home');
+      history.replaceState({ screen: 'home' }, '', '/');
+      return;
+    }
+    // session-detail needs its session index
+    if (s === 'session-detail') {
+      if (event.state && event.state.sessIndex !== undefined) {
+        _renderSessionDetail(event.state.sessIndex);
+        _applyScreen('session-detail');
+      } else {
+        _applyScreen('history');
+        loadHistory();
+      }
+      return;
+    }
+    _applyScreen(s);
+    if (s === 'history') loadHistory();
+    if (s === 'stats') loadStats();
+  });
 
   function initCountdown() {
     const el = document.getElementById('exam-countdown');
@@ -1233,7 +1286,20 @@
       document.getElementById('btn-history').style.display = 'none';
     }
 
-    showScreen('home');
+    // Route to screen based on current URL (only when served over http/https)
+    var initialScreen = 'home';
+    if (ROUTING_ENABLED) {
+      var PATH_TO_SCREEN = {
+        '/': 'home', '/setup': 'setup', '/history': 'history',
+        '/stats': 'stats', '/about': 'about'
+      };
+      initialScreen = PATH_TO_SCREEN[window.location.pathname] || 'home';
+      history.replaceState({ screen: initialScreen }, '', window.location.pathname);
+    }
+    _applyScreen(initialScreen);
+    if (initialScreen === 'history') loadHistory();
+    if (initialScreen === 'stats') loadStats();
+
     initCountdown();
     document.addEventListener('click', function(e) {
       const accountEl = document.getElementById('header-account');
@@ -1872,7 +1938,8 @@
   function abortSession() {
     if (confirm('Przerwać sesję? Postęp zostanie utracony.')) {
       stopTimer();
-      showScreen('home');
+      _applyScreen('home');
+      if (ROUTING_ENABLED) history.replaceState({ screen: 'home' }, '', '/');
     }
   }
 
@@ -2001,10 +2068,9 @@
   /* ================================================================
      LOCAL STORAGE
   ================================================================ */
-  function showSessionDetail(sessIndex) {
+  function _renderSessionDetail(sessIndex) {
     const sess = getSessions()[sessIndex];
     if (!sess) return;
-
     const items = (sess.questions || []).map(function(sq) {
       return {
         q: findQuestionById(sq.questionId),
@@ -2019,14 +2085,17 @@
       totalTimeSec: sess.totalTimeSec,
       timerEnabled: sess.timerEnabled
     };
-
     let html = buildSummaryHtml(items, meta, getSessions().length >= 3);
     html += '<div class="summary-buttons">';
     html += '<button class="secondary" onclick="showScreen(\'history\'); loadHistory();">← Wróć do historii</button>';
     html += '</div>';
-
     document.getElementById('session-detail-content').innerHTML = html;
-    showScreen('session-detail');
+  }
+
+  function showSessionDetail(sessIndex) {
+    _renderSessionDetail(sessIndex);
+    if (ROUTING_ENABLED) history.pushState({ screen: 'session-detail', sessIndex: sessIndex }, '', '/session');
+    _applyScreen('session-detail');
   }
 
   function getSessions() {
