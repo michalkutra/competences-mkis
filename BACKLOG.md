@@ -9,7 +9,6 @@
 | 2 | Komunikacja (post na grupie) | Bez dobrego posta nikt nie kliknie — treść, ton, timing | ~1h | **MUST** |
 | 3 | Open Graph tags | Podwaja CTR z linku na grupie FB — pierwsza linia kontaktu z 700 os. | ~15 min | **MUST** |
 | 4 | "Postaw mi kawę" | Bezpośrednia ścieżka do benchmarku 100 PLN | ~15 min | **MUST** |
-| 5 | Zgłoś błąd | Damage control — przy 700 osobach ktoś znajdzie błąd; lepiej mail niż komentarz na grupie | ~15 min | **MUST** |
 | 6 | Analityka GA4 | Bez tego nie wiesz CO się dzieje — adopcja, drop-off, które tryby | ~1h | **MUST** |
 | 7 | NPS / CSAT (Tally) | Bez tego nie wiesz CO MYŚLĄ — liczby bez kontekstu nic nie mówią | ~30 min | **MUST** |
 | 8 | Informacja o puli pytań | Ustawia oczekiwania, zapobiega "to za mało" | ~15 min | SHOULD |
