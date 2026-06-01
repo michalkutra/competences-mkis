@@ -1,5 +1,13 @@
 # Backlog — Ukończone
 
+## Domena i deploy
+
+> **Ukończono:** 2026-06-01
+
+Domena `egzamin.kutra.pl` skonfigurowana w OVH (CNAME → Netlify). Deploy na Netlify z automatycznym deployem z brancha `main`. HTTPS via Let's Encrypt.
+
+---
+
 ## Odliczanie do egzaminu (countdown na home screenie)
 
 > **Ukończono:** 2026-05-30 · [Spec](docs/superpowers/specs/2026-05-30-exam-countdown-design.md) · [Plan](docs/superpowers/plans/2026-05-30-exam-countdown.md)

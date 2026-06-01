@@ -6,7 +6,6 @@
 
 | # | Pozycja | Wpływ | Wysiłek | Priorytet |
 |---|---|---|---|---|
-| 1 | Domena i deploy | Prerequisit — bez tego nic nie istnieje | ~30 min | **MUST** |
 | 2 | Komunikacja (post na grupie) | Bez dobrego posta nikt nie kliknie — treść, ton, timing | ~1h | **MUST** |
 | 3 | Open Graph tags | Podwaja CTR z linku na grupie FB — pierwsza linia kontaktu z 700 os. | ~15 min | **MUST** |
 | 4 | "Postaw mi kawę" | Bezpośrednia ścieżka do benchmarku 100 PLN | ~15 min | **MUST** |
@@ -77,16 +76,6 @@ Podstrona opisująca jak działa system i jak został stworzony.
 - informacja o sposobie powstania (tech stack, kontekst)
 - **ważne:** wyraźna informacja, że postęp zapisywany jest wyłącznie lokalnie w przeglądarce — wyczyszczenie danych aplikacji lub inne urządzenie = brak synchronizacji stanu
 - ta sama informacja o localStorage warto powtórzyć w UI (np. tooltip / drobna notka na ekranie głównym lub wyników)
-
----
-
-## Domena i deploy
-
-Wybrać domenę i wdrożyć aplikację publicznie.
-
-**Do ustalenia:**
-- nazwa domeny
-- hosting — kandydaci: **Vercel** lub **Netlify** (darmowy tier, deploy z gita, HTTPS out of the box)
 
 ---
 
