@@ -32,6 +32,14 @@ Przy każdym pytaniu (lub na ekranie wyników) dać możliwość zgłoszenia bł
 
 ---
 
+## Przycisk "Postaw mi kawę"
+
+> **Ukończono:** 2026-06-01
+
+Ko-fi widget (`ko-fi.com/sprawdzianumiejetnosci`) dodany na ekranie wyników (po 1+ sesji i wyniku ≥ 50%), w historii i statystykach (po 3+ sesjach). Tekst: "Czy ta appka pomaga Ci w nauce? Jeśli tak" + czerwony przycisk + "Tworzymy ją w wolnym czasie."
+
+---
+
 ## Open Graph tags
 
 > **Ukończono:** 2026-06-01

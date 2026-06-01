@@ -7,7 +7,6 @@
 | # | Pozycja | Wpływ | Wysiłek | Priorytet |
 |---|---|---|---|---|
 | 2 | Komunikacja (post na grupie) | Bez dobrego posta nikt nie kliknie — treść, ton, timing | ~1h | **MUST** |
-| 4 | "Postaw mi kawę" | Bezpośrednia ścieżka do benchmarku 100 PLN | ~15 min | **MUST** |
 | 6 | Analityka GA4 | Bez tego nie wiesz CO się dzieje — adopcja, drop-off, które tryby | ~1h | **MUST** |
 | 7 | NPS / CSAT (Tally) | Bez tego nie wiesz CO MYŚLĄ — liczby bez kontekstu nic nie mówią | ~30 min | **MUST** |
 | 8 | Informacja o puli pytań | Ustawia oczekiwania, zapobiega "to za mało" | ~15 min | SHOULD |
@@ -94,17 +93,6 @@ Lekki widget do zbierania opinii od użytkowników — bez własnego backendu.
 - **Formbricks** — open-source, self-host lub cloud, NPS/CSAT out of the box
 
 **Miejsce wyświetlania:** ekran wyników po sesji (najwyższe zaangażowanie)
-
----
-
-## Przycisk "Postaw mi kawę"
-
-Dodać przycisk donacji w odpowiednich miejscach (np. ekran wyników, stopka).
-
-- Użyć gotowego 3rd party widgetu — bez własnego backendu
-- Kandydaci: **Ko-fi**, **Buy Me a Coffee** (buymeacoffee.com) — oba mają gotowe przyciski/widgety embed
-- Zintegrować jako prosty link lub embed script (nie pełna integracja)
-- Miejsca do rozważenia: ekran wyników po sesji, dolna część ekranu głównego
 
 ---
 

@@ -1746,7 +1746,7 @@
   /* ================================================================
      SUMMARY RENDERER (shared by summary screen and session detail)
   ================================================================ */
-  function buildSummaryHtml(items, meta) {
+  function buildSummaryHtml(items, meta, showKofi) {
     let scoreClass = 'poor';
     if (meta.score / meta.total >= 0.8) scoreClass = 'good';
     else if (meta.score / meta.total >= 0.5) scoreClass = 'ok';
@@ -1780,6 +1780,8 @@
     const wrongItems = items
       .map(function(item, i) { return { item: item, i: i }; })
       .filter(function(x) { return !x.item.correct && x.item.userAnswer !== null && x.item.q !== null; });
+
+    if (showKofi) html += kofiWidget();
 
     if (wrongItems.length > 0) {
       html += '<div class="review-section">';
@@ -1825,7 +1827,7 @@
       timerEnabled: state.timerEnabled
     };
 
-    let html = buildSummaryHtml(items, meta);
+    let html = buildSummaryHtml(items, meta, getSessions().length >= 1 && meta.score / meta.total >= 0.5);
     html += '<div class="summary-buttons">';
     html += '<button onclick="goSetup()">Nowa sesja</button>';
     html += '<button class="ghost" onclick="showScreen(\'history\'); loadHistory();">Historia</button>';
@@ -1858,7 +1860,7 @@
       timerEnabled: sess.timerEnabled
     };
 
-    let html = buildSummaryHtml(items, meta);
+    let html = buildSummaryHtml(items, meta, getSessions().length >= 3);
     html += '<div class="summary-buttons">';
     html += '<button class="secondary" onclick="showScreen(\'history\'); loadHistory();">← Wróć do historii</button>';
     html += '</div>';
@@ -1956,6 +1958,7 @@
     });
 
     html += '</tbody></table></div>';
+    if (sessions.length >= 3) html += kofiWidget();
     container.innerHTML = html;
   }
 
@@ -2031,8 +2034,17 @@
       html += '</tr>';
     }
     html += '</tbody></table></div>';
+    if (getSessions().length >= 3) html += kofiWidget();
 
     container.innerHTML = html;
+  }
+
+  function kofiWidget() {
+    return '<div style="margin-top:32px;text-align:center;padding:20px 0;border-top:1px solid #e5e7eb;">'
+      + '<p style="margin-bottom:12px;color:#374151;font-size:0.95rem;">Czy ta appka pomaga Ci w nauce? Jeśli tak</p>'
+      + '<a href="https://ko-fi.com/sprawdzianumiejetnosci" target="_blank" rel="noopener" style="display:inline-block;background:#ff5f5f;color:#fff;font-weight:600;padding:10px 20px;border-radius:8px;text-decoration:none;font-size:15px;">☕ Postaw nam kawę</a>'
+      + '<p style="margin-top:10px;color:#374151;font-size:0.95rem;">Tworzymy ją w wolnym czasie.</p>'
+      + '</div>';
   }
 
   function formatDate(iso) {
