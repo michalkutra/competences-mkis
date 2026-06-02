@@ -72,6 +72,20 @@ Google Tag Manager (`GTM-KZ9NMFFK`) dodany do `web/index.html` (snippet w `<head
 
 ---
 
+## Rozszerzenie puli pytań (2× w każdym poziomie)
+
+> **Ukończono:** 2026-06-02
+
+Pula pytań podwojona w obu poziomach trudności. Wygenerowano 320 nowych pytań (Opus 4.8, jeden agent na typ, równolegle), trzymając się `specyfikacja_pytan.md` i unikając duplikatów istniejących treści/ID.
+
+- Z 320 → **640 pytań**: 8 typów × 40 łatwych + 8 typów × 40 trudnych
+- Łatwe: wiedza ogólna + podstawy administracji; trudne: terminologia prawnicza, łacińskie maksymy, złożona logika
+- Walidacja 100%: 640 unikalnych ID, 0 duplikatów, poprawne indeksy `correct`, spójność matematyczna tabel (typ 6), zweryfikowane dystraktory wykresów (typ 7) i reguły transformacji figur (typ 8)
+- Bump cache service workera `ksap-v2` → `ksap-v3`, żeby PWA pobrało nową pulę
+- Mniej powtórek przy sesjach 15-pytaniowych (powiązane z otwartym taskiem o wyświetlaniu rozmiaru puli)
+
+---
+
 ## Podstrona "O aplikacji"
 
 > **Ukończono:** 2026-06-01

@@ -1,4 +1,4 @@
-const CACHE = 'ksap-v2';
+const CACHE = 'ksap-v3';
 const ASSETS = [
   './',
   './index.html',

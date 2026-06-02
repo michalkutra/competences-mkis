@@ -257,6 +257,226 @@ const QUESTIONS_EASY = {
       ],
       correct: 2,
       explanation: "Diagnoza poprzedza leczenie i jest jego podstawą — leczenie to działanie podejmowane na podstawie diagnozy. Analogicznie audyt jest czynnością, po której następują rekomendacje — rekomendacje to działanie wynikające z przeprowadzonego audytu. Raport i sprawozdanie to dokumenty, nie działania następcze."
+    },
+    {
+      id: "e_t1_021",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["nauczyciel", "szkoła"],
+      rightTop: "sędzia",
+      options: ["A) trybunał", "B) sąd", "C) kancelaria", "D) prokuratura"],
+      correct: 1,
+      explanation: "Nauczyciel pracuje w szkole — to jego miejsce pracy. Analogicznie sędzia pracuje w sądzie. Prokuratura jest miejscem pracy prokuratora, a kancelaria adwokata lub radcy prawnego."
+    },
+    {
+      id: "e_t1_022",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["Francja", "Paryż"],
+      rightTop: "Hiszpania",
+      options: ["A) Barcelona", "B) Lizbona", "C) Madryt", "D) Sewilla"],
+      correct: 2,
+      explanation: "Paryż jest stolicą Francji. Analogicznie stolicą Hiszpanii jest Madryt. Barcelona i Sewilla to duże miasta hiszpańskie, ale nie stolice, a Lizbona jest stolicą Portugalii."
+    },
+    {
+      id: "e_t1_023",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["krowa", "cielę"],
+      rightTop: "koń",
+      options: ["A) źrebię", "B) prosię", "C) jagnię", "D) kocię"],
+      correct: 0,
+      explanation: "Cielę to młode krowy. Analogicznie młode konia to źrebię. Prosię to młode świni, jagnię owcy, a kocię kota."
+    },
+    {
+      id: "e_t1_024",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["piekarz", "piekarnia"],
+      rightTop: "farmaceuta",
+      options: ["A) szpital", "B) przychodnia", "C) laboratorium", "D) apteka"],
+      correct: 3,
+      explanation: "Piekarz pracuje w piekarni. Analogicznie farmaceuta pracuje w aptece. Szpital i przychodnia to miejsca pracy lekarzy, a laboratorium diagnostów."
+    },
+    {
+      id: "e_t1_025",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["nóż", "krojenie"],
+      rightTop: "młotek",
+      options: ["A) cięcie", "B) wbijanie", "C) wiercenie", "D) szlifowanie"],
+      correct: 1,
+      explanation: "Nóż służy do krojenia — to jego funkcja. Analogicznie młotek służy do wbijania (np. gwoździ). Wiercenie wykonuje się wiertarką, a cięcie piłą."
+    },
+    {
+      id: "e_t1_026",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["drzewo", "las"],
+      rightTop: "żołnierz",
+      options: ["A) koszary", "B) wojna", "C) armia", "D) broń"],
+      correct: 2,
+      explanation: "Drzewo jest pojedynczym elementem lasu — las to zbiór drzew. Analogicznie żołnierz jest elementem armii — armia to zbiór żołnierzy. Koszary to miejsce, a broń to wyposażenie."
+    },
+    {
+      id: "e_t1_027",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["zima", "śnieg"],
+      rightTop: "lato",
+      options: ["A) wiatr", "B) mróz", "C) upał", "D) mgła"],
+      correct: 2,
+      explanation: "Śnieg jest zjawiskiem charakterystycznym dla zimy. Analogicznie upał jest zjawiskiem charakterystycznym dla lata. Mróz kojarzy się z zimą, a mgła z jesienią."
+    },
+    {
+      id: "e_t1_028",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["stolarz", "drewno"],
+      rightTop: "krawiec",
+      options: ["A) igła", "B) tkanina", "C) nici", "D) ubranie"],
+      correct: 1,
+      explanation: "Stolarz obrabia drewno — to materiał, z którego pracuje. Analogicznie krawiec pracuje z tkaniną. Igła i nici to narzędzia krawca, a ubranie to gotowy produkt."
+    },
+    {
+      id: "e_t1_029",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["Włochy", "Rzym"],
+      rightTop: "Niemcy",
+      options: ["A) Monachium", "B) Hamburg", "C) Berlin", "D) Frankfurt"],
+      correct: 2,
+      explanation: "Rzym jest stolicą Włoch. Analogicznie stolicą Niemiec jest Berlin. Monachium, Hamburg i Frankfurt to duże miasta niemieckie, ale nie stolice."
+    },
+    {
+      id: "e_t1_030",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["pszczoła", "ul"],
+      rightTop: "ptak",
+      options: ["A) drzewo", "B) niebo", "C) gniazdo", "D) klatka"],
+      correct: 2,
+      explanation: "Ul jest miejscem zamieszkania pszczoły. Analogicznie gniazdo jest miejscem zamieszkania ptaka. Drzewo to miejsce, gdzie często jest gniazdo, ale samo nie jest domem ptaka."
+    },
+    {
+      id: "e_t1_031",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["książka", "rozdział"],
+      rightTop: "ustawa",
+      options: ["A) preambuła", "B) kodeks", "C) artykuł", "D) dziennik"],
+      correct: 2,
+      explanation: "Rozdział jest częścią składową książki. Analogicznie artykuł jest podstawową jednostką redakcyjną (częścią) ustawy. Preambuła to wstęp, a kodeks to większy akt zawierający wiele ustaw tematycznych."
+    },
+    {
+      id: "e_t1_032",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["termometr", "temperatura"],
+      rightTop: "waga",
+      options: ["A) długość", "B) masa", "C) prędkość", "D) objętość"],
+      correct: 1,
+      explanation: "Termometr służy do mierzenia temperatury. Analogicznie waga służy do mierzenia masy. Długość mierzy się linijką, a prędkość prędkościomierzem."
+    },
+    {
+      id: "e_t1_033",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["malarz", "obraz"],
+      rightTop: "kompozytor",
+      options: ["A) instrument", "B) orkiestra", "C) symfonia", "D) koncert"],
+      correct: 2,
+      explanation: "Malarz tworzy obraz — to dzieło jego pracy. Analogicznie kompozytor tworzy symfonię (utwór muzyczny). Orkiestra i koncert to wykonawcy lub wydarzenie, a instrument to narzędzie."
+    },
+    {
+      id: "e_t1_034",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["owca", "wełna"],
+      rightTop: "krowa",
+      options: ["A) mleko", "B) skóra", "C) mięso", "D) róg"],
+      correct: 0,
+      explanation: "Owca daje wełnę — to surowiec od niej pozyskiwany jako główny produkt. Analogicznie krowa daje mleko. Skóra i mięso to produkty pozyskiwane po uboju, a wełna i mleko są pozyskiwane od żywego zwierzęcia."
+    },
+    {
+      id: "e_t1_035",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["kierowca", "autobus"],
+      rightTop: "maszynista",
+      options: ["A) tramwaj", "B) statek", "C) pociąg", "D) metro"],
+      correct: 2,
+      explanation: "Kierowca prowadzi autobus — to pojazd, którym kieruje. Analogicznie maszynista prowadzi pociąg. Tramwajem kieruje motorniczy, a statkiem kapitan."
+    },
+    {
+      id: "e_t1_036",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["deszcz", "chmury"],
+      rightTop: "powódź",
+      options: ["A) susza", "B) wiatr", "C) ulewne opady", "D) trzęsienie ziemi"],
+      correct: 2,
+      explanation: "Deszcz jest skutkiem chmur — chmury są jego przyczyną. Analogicznie powódź jest skutkiem ulewnych opadów, które stanowią jej przyczynę. Susza jest przeciwieństwem, a trzęsienie ziemi to inne zjawisko."
+    },
+    {
+      id: "e_t1_037",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["ryba", "łuska"],
+      rightTop: "ptak",
+      options: ["A) skrzydło", "B) dziób", "C) pióro", "D) pazur"],
+      correct: 2,
+      explanation: "Łuska pokrywa ciało ryby — to jej okrywa ciała. Analogicznie pióro pokrywa ciało ptaka. Skrzydło, dziób i pazur to inne części ciała, ale nie okrywa ciała."
+    },
+    {
+      id: "e_t1_038",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["strażak", "pożar"],
+      rightTop: "policjant",
+      options: ["A) mandat", "B) przestępczość", "C) radiowóz", "D) komisariat"],
+      correct: 1,
+      explanation: "Strażak zwalcza pożary — to zagrożenie, z którym walczy. Analogicznie policjant zwalcza przestępczość. Mandat to narzędzie, radiowóz to pojazd, a komisariat to miejsce pracy."
+    },
+    {
+      id: "e_t1_039",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["miasto", "ratusz"],
+      rightTop: "gmina",
+      options: ["A) sejmik", "B) starostwo", "C) urząd gminy", "D) wojewoda"],
+      correct: 2,
+      explanation: "Ratusz jest siedzibą władz miasta. Analogicznie urząd gminy jest siedzibą władz gminy. Starostwo to siedziba władz powiatu, a sejmik to organ województwa."
+    },
+    {
+      id: "e_t1_040",
+      typeId: 1,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["chleb", "mąka"],
+      rightTop: "wino",
+      options: ["A) beczka", "B) winogrona", "C) butelka", "D) korek"],
+      correct: 1,
+      explanation: "Chleb powstaje z mąki — mąka to surowiec, z którego się go wytwarza. Analogicznie wino powstaje z winogron. Beczka, butelka i korek to elementy związane z przechowywaniem, a nie surowiec."
     }
   ],
 
@@ -440,6 +660,212 @@ const QUESTIONS_EASY = {
       options: ["A) sąd", "B) postępowanie", "C) środki zaskarżenia", "D) prawo do obrony", "E) organ wyższego stopnia"],
       correct: 2,
       explanation: "Zażalenie, odwołanie i sprzeciw są środkami zaskarżenia w postępowaniu administracyjnym — każdy z nich umożliwia kwestionowanie rozstrzygnięć organu administracji. Organ wyższego stopnia to podmiot rozpatrujący odwołanie, postępowanie to tryb, prawo do obrony to zasada ogólna."
+    },
+    {
+      id: "e_t2_021",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Wisła", "Odra", "Warta"],
+      options: ["A) jeziora", "B) rzeki", "C) morza", "D) góry", "E) miasta"],
+      correct: 1,
+      explanation: "Wisła, Odra i Warta to rzeki w Polsce."
+    },
+    {
+      id: "e_t2_022",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Paryż", "Berlin", "Rzym"],
+      options: ["A) regiony", "B) wsie", "C) stolice", "D) kontynenty", "E) wyspy"],
+      correct: 2,
+      explanation: "Paryż, Berlin i Rzym to stolice państw europejskich."
+    },
+    {
+      id: "e_t2_023",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Herbata", "Kawa", "Kakao"],
+      options: ["A) napoje gorące", "B) owoce", "C) przyprawy", "D) warzywa", "E) słodycze"],
+      correct: 0,
+      explanation: "Herbata, kawa i kakao to napoje gorące."
+    },
+    {
+      id: "e_t2_024",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Dąb", "Brzoza", "Sosna"],
+      options: ["A) kwiaty", "B) krzewy", "C) drzewa", "D) trawy", "E) grzyby"],
+      correct: 2,
+      explanation: "Dąb, brzoza i sosna to drzewa."
+    },
+    {
+      id: "e_t2_025",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Skrzypce", "Wiolonczela", "Altówka"],
+      options: [
+        "A) instrumenty dęte",
+        "B) instrumenty smyczkowe",
+        "C) instrumenty perkusyjne",
+        "D) instrumenty klawiszowe",
+        "E) instrumenty elektroniczne"
+      ],
+      correct: 1,
+      explanation: "Skrzypce, wiolonczela i altówka to instrumenty smyczkowe."
+    },
+    {
+      id: "e_t2_026",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Wodór", "Tlen", "Azot"],
+      options: ["A) metale", "B) minerały", "C) gazy", "D) ciecze", "E) sole"],
+      correct: 2,
+      explanation: "Wodór, tlen i azot to pierwiastki będące gazami."
+    },
+    {
+      id: "e_t2_027",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Nauczyciel", "Lekarz", "Strażak"],
+      options: ["A) zwierzęta", "B) zawody", "C) hobby", "D) sporty", "E) rośliny"],
+      correct: 1,
+      explanation: "Nauczyciel, lekarz i strażak to zawody."
+    },
+    {
+      id: "e_t2_028",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Czerwony", "Niebieski", "Zielony"],
+      options: ["A) kształty", "B) dźwięki", "C) kolory", "D) smaki", "E) zapachy"],
+      correct: 2,
+      explanation: "Czerwony, niebieski i zielony to kolory."
+    },
+    {
+      id: "e_t2_029",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Jabłko", "Gruszka", "Śliwka"],
+      options: ["A) warzywa", "B) owoce", "C) zboża", "D) orzechy", "E) grzyby"],
+      correct: 1,
+      explanation: "Jabłko, gruszka i śliwka to owoce."
+    },
+    {
+      id: "e_t2_030",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Kraków", "Gdańsk", "Poznań"],
+      options: ["A) rzeki polskie", "B) państwa", "C) miasta polskie", "D) regiony Francji", "E) jeziora"],
+      correct: 2,
+      explanation: "Kraków, Gdańsk i Poznań to miasta w Polsce."
+    },
+    {
+      id: "e_t2_031",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Styczeń", "Marzec", "Lipiec"],
+      options: ["A) miesiące", "B) dni tygodnia", "C) pory roku", "D) lata", "E) godziny"],
+      correct: 0,
+      explanation: "Styczeń, marzec i lipiec to miesiące."
+    },
+    {
+      id: "e_t2_032",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Orzeł", "Wróbel", "Bocian"],
+      options: ["A) ryby", "B) ssaki", "C) ptaki", "D) gady", "E) owady"],
+      correct: 2,
+      explanation: "Orzeł, wróbel i bocian to ptaki."
+    },
+    {
+      id: "e_t2_033",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Pszenica", "Żyto", "Owies"],
+      options: ["A) zboża", "B) owoce", "C) warzywa", "D) kwiaty", "E) drzewa"],
+      correct: 0,
+      explanation: "Pszenica, żyto i owies to zboża."
+    },
+    {
+      id: "e_t2_034",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Dowód osobisty", "Paszport", "Prawo jazdy"],
+      options: ["A) książki", "B) dokumenty tożsamości", "C) bilety", "D) faktury", "E) mapy"],
+      correct: 1,
+      explanation: "Dowód osobisty, paszport i prawo jazdy to dokumenty potwierdzające tożsamość."
+    },
+    {
+      id: "e_t2_035",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Tatry", "Bieszczady", "Karkonosze"],
+      options: ["A) rzeki", "B) morza", "C) góry", "D) miasta", "E) jeziora"],
+      correct: 2,
+      explanation: "Tatry, Bieszczady i Karkonosze to góry w Polsce."
+    },
+    {
+      id: "e_t2_036",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Marchew", "Ziemniak", "Burak"],
+      options: ["A) owoce", "B) warzywa", "C) przyprawy", "D) zboża", "E) grzyby"],
+      correct: 1,
+      explanation: "Marchew, ziemniak i burak to warzywa."
+    },
+    {
+      id: "e_t2_037",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Złoty", "Euro", "Dolar"],
+      options: ["A) waluty", "B) metale", "C) banki", "D) podatki", "E) kraje"],
+      correct: 0,
+      explanation: "Złoty, euro i dolar to waluty."
+    },
+    {
+      id: "e_t2_038",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Sahara", "Gobi", "Atakama"],
+      options: ["A) oceany", "B) lasy", "C) pustynie", "D) wyspy", "E) jeziora"],
+      correct: 2,
+      explanation: "Sahara, Gobi i Atakama to pustynie."
+    },
+    {
+      id: "e_t2_039",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Wiosna", "Lato", "Jesień"],
+      options: ["A) miesiące", "B) pory roku", "C) dni", "D) święta", "E) godziny"],
+      correct: 1,
+      explanation: "Wiosna, lato i jesień to pory roku."
+    },
+    {
+      id: "e_t2_040",
+      typeId: 2,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Słońce", "Wenus", "Mars"],
+      options: ["A) gwiazdy", "B) ciała niebieskie", "C) komety", "D) galaktyki", "E) księżyce"],
+      correct: 1,
+      explanation: "Słońce, Wenus i Mars to ciała niebieskie Układu Słonecznego."
     }
   ],
 
@@ -883,6 +1309,626 @@ const QUESTIONS_EASY = {
       ],
       correct: 2,
       explanation: "Czerwiec to czas rekrutacji na studia i masowego poszukiwania pierwszej pracy przez absolwentów. Proces aplikacyjny wymaga jednocześnie dokumentów tożsamości i kwalifikacji (świadectwa) oraz dokumentów o niekaralności. Wspólna przyczyna to sezon rekrutacyjny, nie zależność przyczynowa między tymi dwoma rodzajami dokumentów."
+    },
+    {
+      id: "e_t3_021",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "W gminnym ośrodku zaobserwowano, że latem rośnie liczba zgłoszeń o przepełnionych koszach na śmieci w parkach. W tym samym okresie wzrasta też liczba wniosków o wydanie zezwolenia na sprzedaż lodów i napojów z punktów mobilnych.",
+      chart: {
+        type: "bar",
+        xLabels: ["WIOSNA", "LATO", "JESIEŃ", "ZIMA"],
+        datasets: [
+          {
+            label: "Zgłoszenia o przepełnionych koszach (szt.)",
+            data: [140, 420, 160, 90],
+            color: "#c0392b"
+          },
+          {
+            label: "Wnioski o sprzedaż lodów (szt.)",
+            data: [35, 180, 40, 8],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost zgłoszeń o przepełnionych koszach powoduje wzrost wniosków o sprzedaż lodów.",
+        "B) Wzrost wniosków o sprzedaż lodów powoduje wzrost zgłoszeń o przepełnionych koszach.",
+        "C) Wysoka temperatura i wzmożony ruch turystyczny w sezonie letnim zwiększają zarówno zaśmiecanie parków, jak i zapotrzebowanie na punkty z lodami.",
+        "D) Brak związku przyczynowo-skutkowego między zgłoszeniami o koszach a wnioskami o sprzedaż lodów."
+      ],
+      correct: 2,
+      explanation: "Oba zjawiska rosną latem, ponieważ wspólnym czynnikiem jest pogoda i napływ ludzi do parków. Ciepło zwiększa konsumpcję na świeżym powietrzu (więcej śmieci) i popyt na lody. Bezpośredni związek przyczynowy między koszami a zezwoleniami nie istnieje."
+    },
+    {
+      id: "e_t3_022",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Urząd gminy odnotował, że zimą wzrasta liczba interwencji straży miejskiej dotyczących nieodśnieżonych chodników. W tym samym czasie rośnie liczba zgłoszeń o uszkodzonych rurach wodociągowych.",
+      chart: {
+        type: "line",
+        xLabels: ["WIOSNA", "LATO", "JESIEŃ", "ZIMA"],
+        datasets: [
+          {
+            label: "Interwencje ws. odśnieżania (szt.)",
+            data: [20, 5, 40, 310],
+            color: "#c0392b"
+          },
+          {
+            label: "Zgłoszenia uszkodzonych rur (szt.)",
+            data: [18, 10, 25, 140],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost interwencji ws. odśnieżania powoduje wzrost zgłoszeń o uszkodzonych rurach.",
+        "B) Wzrost zgłoszeń o uszkodzonych rurach powoduje wzrost interwencji ws. odśnieżania.",
+        "C) Mróz i opady śniegu w okresie zimowym jednocześnie powodują zaleganie śniegu na chodnikach i pękanie rur wodociągowych.",
+        "D) Brak związku przyczynowo-skutkowego między interwencjami ws. odśnieżania a zgłoszeniami o rurach."
+      ],
+      correct: 2,
+      explanation: "Wspólną przyczyną obu zjawisk jest niska temperatura zimą: śnieg wymaga odśnieżania, a mróz powoduje pękanie rur. Te procesy nie wpływają na siebie nawzajem, lecz wynikają z tego samego czynnika pogodowego."
+    },
+    {
+      id: "e_t3_023",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "We wrześniu w urzędzie miasta gwałtownie rośnie liczba wniosków o wydanie zezwolenia na zajęcie pasa drogowego. W tym samym miesiącu wzrasta liczba zapytań mieszkańców o godziny pracy żłobków i przedszkoli.",
+      chart: {
+        type: "bar",
+        xLabels: ["czerwiec", "lipiec", "sierpień", "wrzesień"],
+        datasets: [
+          {
+            label: "Wnioski o zajęcie pasa drogowego (szt.)",
+            data: [60, 45, 70, 210],
+            color: "#c0392b"
+          },
+          {
+            label: "Zapytania o godziny żłobków (szt.)",
+            data: [30, 25, 55, 190],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost wniosków o zajęcie pasa drogowego powoduje wzrost zapytań o godziny żłobków.",
+        "B) Wzrost zapytań o godziny żłobków powoduje wzrost wniosków o zajęcie pasa drogowego.",
+        "C) Początek roku szkolnego i powrót z urlopów we wrześniu wywołuje zarówno wznowienie prac budowlano-remontowych, jak i zainteresowanie opieką nad dziećmi.",
+        "D) Brak związku przyczynowo-skutkowego między wnioskami o pas drogowy a zapytaniami o żłobki."
+      ],
+      correct: 2,
+      explanation: "Wrzesień to początek roku szkolnego i koniec sezonu urlopowego. Firmy wznawiają prace (wnioski o pas drogowy), a rodzice organizują opiekę nad dziećmi (zapytania o żłobki). Wspólnym czynnikiem jest kalendarzowy powrót do aktywności, a nie wzajemne oddziaływanie."
+    },
+    {
+      id: "e_t3_024",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Dział obsługi mieszkańców zauważył, że w grudniu rośnie liczba wniosków o wydanie dowodu osobistego w trybie pilnym. W tym samym miesiącu wzrasta liczba zapytań o wydanie zaświadczenia o zameldowaniu na potrzeby wyjazdu zagranicznego.",
+      chart: {
+        type: "line",
+        xLabels: ["wrzesień", "październik", "listopad", "grudzień"],
+        datasets: [
+          {
+            label: "Pilne wnioski o dowód (szt.)",
+            data: [40, 55, 70, 220],
+            color: "#c0392b"
+          },
+          {
+            label: "Zaświadczenia o zameldowaniu (szt.)",
+            data: [25, 30, 45, 150],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost pilnych wniosków o dowód powoduje wzrost zapytań o zaświadczenia o zameldowaniu.",
+        "B) Wzrost zapytań o zaświadczenia o zameldowaniu powoduje wzrost pilnych wniosków o dowód.",
+        "C) Okres świąteczno-noworoczny i planowane wyjazdy w czasie przerwy zimowej zwiększają jednocześnie potrzebę dokumentów tożsamości i zaświadczeń.",
+        "D) Brak związku przyczynowo-skutkowego między wnioskami o dowód a zaświadczeniami o zameldowaniu."
+      ],
+      correct: 2,
+      explanation: "Grudniowe wyjazdy świąteczne i noworoczne wymuszają na mieszkańcach kompletowanie różnych dokumentów. Wspólnym czynnikiem jest sezon urlopowo-świąteczny, a nie wpływ jednego rodzaju wniosku na drugi."
+    },
+    {
+      id: "e_t3_025",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "W gminnym wydziale ochrony środowiska latem rośnie liczba zgłoszeń o wypalaniu traw i dymie. W tym samym okresie wzrasta liczba wniosków o wycinkę suchych drzew na działkach prywatnych.",
+      chart: {
+        type: "bar",
+        xLabels: ["WIOSNA", "LATO", "JESIEŃ", "ZIMA"],
+        datasets: [
+          {
+            label: "Zgłoszenia o dymie (szt.)",
+            data: [90, 260, 110, 30],
+            color: "#c0392b"
+          },
+          {
+            label: "Wnioski o wycinkę suchych drzew (szt.)",
+            data: [40, 150, 60, 20],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost zgłoszeń o dymie powoduje wzrost wniosków o wycinkę suchych drzew.",
+        "B) Wzrost wniosków o wycinkę suchych drzew powoduje wzrost zgłoszeń o dymie.",
+        "C) Susza i wysokie temperatury w sezonie letnim jednocześnie sprzyjają pożarom traw oraz usychaniu drzew wymagających wycinki.",
+        "D) Brak związku przyczynowo-skutkowego między zgłoszeniami o dymie a wnioskami o wycinkę."
+      ],
+      correct: 2,
+      explanation: "Letnia susza i upały powodują zarówno większą liczbę pożarów traw, jak i usychanie drzew. Wspólnym czynnikiem środowiskowym jest pogoda, a nie wzajemne oddziaływanie obu zjawisk."
+    },
+    {
+      id: "e_t3_026",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Ośrodek sportu prowadzony przez gminę zauważył, że latem rośnie liczba rezerwacji boisk i kortów. W tym samym czasie wzrasta zużycie wody w miejskim parku wodnym.",
+      chart: {
+        type: "line",
+        xLabels: ["WIOSNA", "LATO", "JESIEŃ", "ZIMA"],
+        datasets: [
+          {
+            label: "Rezerwacje boisk (szt.)",
+            data: [210, 520, 180, 60],
+            color: "#c0392b"
+          },
+          {
+            label: "Zużycie wody w parku wodnym (m3)",
+            data: [1800, 4200, 1500, 700],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost rezerwacji boisk powoduje wzrost zużycia wody w parku wodnym.",
+        "B) Wzrost zużycia wody w parku wodnym powoduje wzrost rezerwacji boisk.",
+        "C) Ciepła pogoda i wolny czas w okresie wakacyjnym zwiększają jednocześnie aktywność sportową na boiskach i frekwencję w parku wodnym.",
+        "D) Brak związku przyczynowo-skutkowego między rezerwacjami boisk a zużyciem wody."
+      ],
+      correct: 2,
+      explanation: "Letnia pogoda i czas wakacji zwiększają aktywność rekreacyjną mieszkańców na różne sposoby. Wspólnym czynnikiem jest sezon, a nie zależność między boiskami a basenem."
+    },
+    {
+      id: "e_t3_027",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Wydział podatków lokalnych odnotował, że w I kwartale rośnie liczba wpłat podatku od nieruchomości. Jednocześnie w tym samym okresie wzrasta liczba telefonów do infolinii z prośbą o numer konta do wpłat.",
+      chart: {
+        type: "bar",
+        xLabels: ["I kwartał", "II kwartał", "III kwartał", "IV kwartał"],
+        datasets: [
+          {
+            label: "Wpłaty podatku od nieruchomości (tys. zł)",
+            data: [820, 210, 180, 260],
+            color: "#c0392b"
+          },
+          {
+            label: "Telefony o numer konta (szt.)",
+            data: [640, 150, 120, 190],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost wpłat podatku powoduje wzrost telefonów o numer konta.",
+        "B) Wzrost telefonów o numer konta powoduje wzrost wpłat podatku.",
+        "C) Termin pierwszej raty podatku od nieruchomości przypadający na początek roku wywołuje jednocześnie wpłaty i zapytania o sposób ich dokonania.",
+        "D) Brak związku przyczynowo-skutkowego między wpłatami podatku a telefonami o numer konta."
+      ],
+      correct: 2,
+      explanation: "Ustawowy termin płatności pierwszej raty podatku przypada na początek roku. To wspólny czynnik kalendarzowy powodujący jednocześnie wpłaty i potrzebę informacji o koncie. Nie chodzi o wzajemne oddziaływanie zjawisk."
+    },
+    {
+      id: "e_t3_028",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Gminny zakład komunikacji zauważył, że we wrześniu rośnie liczba sprzedanych biletów miesięcznych. W tym samym miesiącu wzrasta liczba zgłoszeń o zatłoczonych autobusach w godzinach porannych.",
+      chart: {
+        type: "line",
+        xLabels: ["czerwiec", "lipiec", "sierpień", "wrzesień"],
+        datasets: [
+          {
+            label: "Sprzedane bilety miesięczne (szt.)",
+            data: [3200, 1800, 1900, 5400],
+            color: "#c0392b"
+          },
+          {
+            label: "Zgłoszenia o zatłoczeniu (szt.)",
+            data: [40, 15, 18, 160],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost sprzedaży biletów miesięcznych powoduje wzrost zgłoszeń o zatłoczeniu.",
+        "B) Wzrost zgłoszeń o zatłoczeniu powoduje wzrost sprzedaży biletów miesięcznych.",
+        "C) Początek roku szkolnego we wrześniu zwiększa jednocześnie liczbę dojeżdżających uczniów kupujących bilety i obciążenie autobusów w godzinach porannych.",
+        "D) Brak związku przyczynowo-skutkowego między sprzedażą biletów a zgłoszeniami o zatłoczeniu."
+      ],
+      correct: 2,
+      explanation: "Rozpoczęcie roku szkolnego we wrześniu sprowadza falę uczniów i studentów. To wspólna przyczyna zarówno wzrostu sprzedaży biletów, jak i tłoku w autobusach. Sprzedaż biletu sama w sobie nie tworzy tłoku — to ci sami pasażerowie."
+    },
+    {
+      id: "e_t3_029",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Urząd stanu cywilnego odnotował, że latem rośnie liczba ceremonii ślubnych. W tym samym okresie wzrasta liczba wniosków o rezerwację sali widowiskowej w domu kultury.",
+      chart: {
+        type: "bar",
+        xLabels: ["WIOSNA", "LATO", "JESIEŃ", "ZIMA"],
+        datasets: [
+          {
+            label: "Ceremonie ślubne (szt.)",
+            data: [60, 180, 90, 30],
+            color: "#c0392b"
+          },
+          {
+            label: "Rezerwacje sali widowiskowej (szt.)",
+            data: [40, 120, 70, 25],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby ślubów powoduje wzrost rezerwacji sali widowiskowej.",
+        "B) Wzrost rezerwacji sali widowiskowej powoduje wzrost liczby ślubów.",
+        "C) Sezon letni — z ładną pogodą i tradycją organizowania uroczystości w ciepłych miesiącach — zwiększa jednocześnie liczbę ślubów i zapotrzebowanie na sale na przyjęcia.",
+        "D) Brak związku przyczynowo-skutkowego między ślubami a rezerwacjami sali."
+      ],
+      correct: 2,
+      explanation: "Letni sezon ślubny wynika z preferencji pogodowych i tradycji. Ten sam czynnik napędza zarówno śluby, jak i potrzebę wynajmu sal na towarzyszące im uroczystości. To wspólna przyczyna kalendarzowa, nie wzajemne oddziaływanie."
+    },
+    {
+      id: "e_t3_030",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Wydział oświaty zauważył, że w II kwartale rośnie liczba wniosków o stypendia dla uczniów. W tym samym okresie wzrasta liczba zapytań o terminy egzaminów ósmoklasisty i maturalnych.",
+      chart: {
+        type: "line",
+        xLabels: ["I kwartał", "II kwartał", "III kwartał", "IV kwartał"],
+        datasets: [
+          {
+            label: "Wnioski o stypendia (szt.)",
+            data: [60, 340, 90, 110],
+            color: "#c0392b"
+          },
+          {
+            label: "Zapytania o terminy egzaminów (szt.)",
+            data: [80, 420, 70, 90],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost wniosków o stypendia powoduje wzrost zapytań o terminy egzaminów.",
+        "B) Wzrost zapytań o terminy egzaminów powoduje wzrost wniosków o stypendia.",
+        "C) Końcówka roku szkolnego przypadająca na II kwartał wywołuje jednocześnie zainteresowanie stypendiami za wyniki i pytania o egzaminy końcowe.",
+        "D) Brak związku przyczynowo-skutkowego między wnioskami o stypendia a zapytaniami o egzaminy."
+      ],
+      correct: 2,
+      explanation: "Druga połowa roku szkolnego (II kwartał) to czas egzaminów i podsumowania wyników. Wspólnym czynnikiem jest kalendarz szkolny, który napędza zarówno wnioski stypendialne, jak i zapytania o egzaminy."
+    },
+    {
+      id: "e_t3_031",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Schronisko dla zwierząt prowadzone przez gminę odnotowało, że latem rośnie liczba przyjmowanych bezdomnych zwierząt. W tym samym okresie wzrasta liczba interwencji dotyczących zwierząt pozostawionych w nagrzanych samochodach.",
+      chart: {
+        type: "bar",
+        xLabels: ["WIOSNA", "LATO", "JESIEŃ", "ZIMA"],
+        datasets: [
+          {
+            label: "Przyjęte bezdomne zwierzęta (szt.)",
+            data: [55, 140, 70, 40],
+            color: "#c0392b"
+          },
+          {
+            label: "Interwencje ws. zwierząt w autach (szt.)",
+            data: [10, 90, 15, 3],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby przyjętych bezdomnych zwierząt powoduje wzrost interwencji ws. zwierząt w autach.",
+        "B) Wzrost interwencji ws. zwierząt w autach powoduje wzrost liczby przyjętych bezdomnych zwierząt.",
+        "C) Sezon urlopowy i upały w okresie letnim jednocześnie zwiększają porzucanie zwierząt przed wyjazdami oraz ryzyko pozostawienia ich w nagrzanych samochodach.",
+        "D) Brak związku przyczynowo-skutkowego między przyjmowaniem zwierząt a interwencjami w autach."
+      ],
+      correct: 2,
+      explanation: "Letnie wyjazdy urlopowe powodują porzucanie zwierząt, a upały — ich pozostawianie w autach. Wspólną przyczyną jest sezon urlopowo-upalny, a nie wpływ jednego zjawiska na drugie."
+    },
+    {
+      id: "e_t3_032",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Wydział geodezji zauważył, że wiosną rośnie liczba wniosków o podział działek. W tym samym czasie wzrasta liczba zapytań o wytyczenie granic nieruchomości przez geodetów.",
+      chart: {
+        type: "line",
+        xLabels: ["WIOSNA", "LATO", "JESIEŃ", "ZIMA"],
+        datasets: [
+          {
+            label: "Wnioski o podział działek (szt.)",
+            data: [180, 150, 90, 40],
+            color: "#c0392b"
+          },
+          {
+            label: "Zapytania o wytyczenie granic (szt.)",
+            data: [210, 170, 100, 50],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost wniosków o podział działek powoduje wzrost zapytań o wytyczenie granic.",
+        "B) Wzrost zapytań o wytyczenie granic powoduje wzrost wniosków o podział działek.",
+        "C) Wiosenne ożywienie na rynku nieruchomości i rozpoczęcie sezonu prac terenowych jednocześnie zwiększają liczbę podziałów działek i pomiarów geodezyjnych.",
+        "D) Brak związku przyczynowo-skutkowego między podziałem działek a wytyczaniem granic."
+      ],
+      correct: 2,
+      explanation: "Wiosna to początek sezonu budowlanego i ożywienie obrotu nieruchomościami. Ten wspólny czynnik napędza zarówno podziały działek, jak i pomiary geodezyjne — oba wynikają z aktywności inwestycyjnej, a nie z siebie nawzajem."
+    },
+    {
+      id: "e_t3_033",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Miejska biblioteka zauważyła, że zimą rośnie liczba odwiedzin czytelni. W tym samym okresie wzrasta zużycie energii elektrycznej na oświetlenie sal bibliotecznych.",
+      chart: {
+        type: "bar",
+        xLabels: ["WIOSNA", "LATO", "JESIEŃ", "ZIMA"],
+        datasets: [
+          {
+            label: "Odwiedziny czytelni (szt.)",
+            data: [1200, 700, 1100, 1900],
+            color: "#c0392b"
+          },
+          {
+            label: "Zużycie energii na oświetlenie (kWh)",
+            data: [1400, 800, 1600, 2800],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost odwiedzin czytelni powoduje wzrost zużycia energii na oświetlenie.",
+        "B) Wzrost zużycia energii na oświetlenie powoduje wzrost odwiedzin czytelni.",
+        "C) Krótkie dni i chłodna aura zimą jednocześnie zachęcają mieszkańców do korzystania z ciepłej czytelni i wymuszają dłuższe oświetlanie pomieszczeń.",
+        "D) Brak związku przyczynowo-skutkowego między odwiedzinami czytelni a zużyciem energii."
+      ],
+      correct: 2,
+      explanation: "Zimą krótkie dni i chłód powodują zarówno wzmożone korzystanie z czytelni, jak i dłuższe oświetlanie sal. Wspólnym czynnikiem jest pora roku, a nie zależność między tymi dwoma zjawiskami."
+    },
+    {
+      id: "e_t3_034",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Gminny ośrodek pomocy społecznej odnotował, że zimą rośnie liczba wniosków o dodatek mieszkaniowy. W tym samym okresie wzrasta liczba próśb o pomoc w zakupie opału.",
+      chart: {
+        type: "line",
+        xLabels: ["WIOSNA", "LATO", "JESIEŃ", "ZIMA"],
+        datasets: [
+          {
+            label: "Wnioski o dodatek mieszkaniowy (szt.)",
+            data: [110, 70, 140, 290],
+            color: "#c0392b"
+          },
+          {
+            label: "Prośby o pomoc w zakupie opału (szt.)",
+            data: [40, 10, 90, 260],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost wniosków o dodatek mieszkaniowy powoduje wzrost próśb o pomoc w zakupie opału.",
+        "B) Wzrost próśb o pomoc w zakupie opału powoduje wzrost wniosków o dodatek mieszkaniowy.",
+        "C) Sezon grzewczy i wysokie koszty utrzymania mieszkań zimą jednocześnie zwiększają zapotrzebowanie na dodatki mieszkaniowe i pomoc w zakupie opału.",
+        "D) Brak związku przyczynowo-skutkowego między dodatkami mieszkaniowymi a pomocą w zakupie opału."
+      ],
+      correct: 2,
+      explanation: "Zima oznacza wysokie koszty ogrzewania i utrzymania mieszkania. Ten wspólny czynnik — sezon grzewczy — napędza oba rodzaje wniosków o pomoc, które nie wynikają z siebie nawzajem."
+    },
+    {
+      id: "e_t3_035",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Urząd miasta zauważył, że latem rośnie liczba zgłoszeń o nielegalnych imprezach plenerowych nad jeziorem. W tym samym okresie wzrasta liczba interwencji dotyczących hałasu w godzinach nocnych.",
+      chart: {
+        type: "bar",
+        xLabels: ["WIOSNA", "LATO", "JESIEŃ", "ZIMA"],
+        datasets: [
+          {
+            label: "Zgłoszenia o imprezach plenerowych (szt.)",
+            data: [30, 160, 40, 8],
+            color: "#c0392b"
+          },
+          {
+            label: "Interwencje ws. hałasu nocnego (szt.)",
+            data: [50, 210, 60, 20],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost zgłoszeń o imprezach plenerowych powoduje wzrost interwencji ws. hałasu nocnego.",
+        "B) Wzrost interwencji ws. hałasu nocnego powoduje wzrost zgłoszeń o imprezach plenerowych.",
+        "C) Ciepłe wieczory i sezon wakacyjny latem jednocześnie sprzyjają organizowaniu imprez plenerowych oraz spotkaniom generującym hałas nocą.",
+        "D) Brak związku przyczynowo-skutkowego między imprezami plenerowymi a interwencjami ws. hałasu."
+      ],
+      correct: 2,
+      explanation: "Letnie ciepłe wieczory i wakacje sprzyjają aktywności na świeżym powietrzu. Wspólnym czynnikiem jest sezon, który zwiększa zarówno imprezy plenerowe, jak i ogólny poziom hałasu nocnego z różnych źródeł."
+    },
+    {
+      id: "e_t3_036",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Wydział komunikacji odnotował, że wiosną rośnie liczba przeglądów technicznych skuterów i motorowerów. W tym samym okresie wzrasta liczba wniosków o wymianę opon zimowych zgłaszanych przez flotę pojazdów gminnych.",
+      chart: {
+        type: "line",
+        xLabels: ["WIOSNA", "LATO", "JESIEŃ", "ZIMA"],
+        datasets: [
+          {
+            label: "Przeglądy skuterów (szt.)",
+            data: [240, 180, 90, 30],
+            color: "#c0392b"
+          },
+          {
+            label: "Wymiany opon (szt.)",
+            data: [180, 40, 60, 150],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost przeglądów skuterów powoduje wzrost wymian opon.",
+        "B) Wzrost wymian opon powoduje wzrost przeglądów skuterów.",
+        "C) Ocieplenie i koniec sezonu zimowego na wiosnę jednocześnie skłaniają do przygotowania jednośladów do jazdy oraz do sezonowej wymiany opon w pojazdach.",
+        "D) Brak związku przyczynowo-skutkowego między przeglądami skuterów a wymianami opon."
+      ],
+      correct: 2,
+      explanation: "Wiosenne ocieplenie to wspólny czynnik: kierowcy szykują jednoślady do sezonu, a flota zmienia opony zimowe na letnie. Oba zjawiska wynikają ze zmiany pory roku, nie z siebie nawzajem."
+    },
+    {
+      id: "e_t3_037",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Punkt informacji turystycznej zauważył, że latem rośnie liczba wydawanych map i przewodników. W tym samym okresie wzrasta liczba zapytań o rozkłady jazdy lokalnych połączeń autobusowych.",
+      chart: {
+        type: "bar",
+        xLabels: ["WIOSNA", "LATO", "JESIEŃ", "ZIMA"],
+        datasets: [
+          {
+            label: "Wydane mapy i przewodniki (szt.)",
+            data: [300, 950, 280, 90],
+            color: "#c0392b"
+          },
+          {
+            label: "Zapytania o rozkłady jazdy (szt.)",
+            data: [220, 720, 210, 80],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby wydanych map powoduje wzrost zapytań o rozkłady jazdy.",
+        "B) Wzrost zapytań o rozkłady jazdy powoduje wzrost liczby wydanych map.",
+        "C) Sezon turystyczny latem jednocześnie zwiększa zapotrzebowanie na materiały informacyjne i na informacje o lokalnym transporcie.",
+        "D) Brak związku przyczynowo-skutkowego między wydanymi mapami a zapytaniami o rozkłady jazdy."
+      ],
+      correct: 2,
+      explanation: "Latem napływ turystów to wspólna przyczyna obu zjawisk: ci sami przyjezdni potrzebują map i informacji o transporcie. Wzrost jednego nie powoduje drugiego — oba wynikają z sezonu turystycznego."
+    },
+    {
+      id: "e_t3_038",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Wydział finansowy gminy odnotował, że w IV kwartale rośnie liczba realizowanych płatności za faktury od wykonawców. W tym samym okresie wzrasta liczba wniosków o przesunięcie terminów odbioru robót.",
+      chart: {
+        type: "line",
+        xLabels: ["I kwartał", "II kwartał", "III kwartał", "IV kwartał"],
+        datasets: [
+          {
+            label: "Płatności za faktury (szt.)",
+            data: [120, 140, 160, 420],
+            color: "#c0392b"
+          },
+          {
+            label: "Wnioski o przesunięcie odbioru (szt.)",
+            data: [20, 25, 30, 110],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost płatności za faktury powoduje wzrost wniosków o przesunięcie odbioru.",
+        "B) Wzrost wniosków o przesunięcie odbioru powoduje wzrost płatności za faktury.",
+        "C) Konieczność rozliczenia budżetu przed końcem roku w IV kwartale jednocześnie wymusza finalizowanie płatności i kumulację odbiorów robót.",
+        "D) Brak związku przyczynowo-skutkowego między płatnościami za faktury a wnioskami o przesunięcie odbioru."
+      ],
+      correct: 2,
+      explanation: "Koniec roku budżetowego wymusza domknięcie wydatków przed 31 grudnia. Ten wspólny czynnik — termin rozliczenia budżetu — powoduje zarówno kumulację płatności, jak i napiętą sytuację z odbiorami robót."
+    },
+    {
+      id: "e_t3_039",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Targowisko miejskie zauważyło, że latem rośnie liczba zajmowanych stoisk handlowych. W tym samym okresie wzrasta liczba zgłoszeń o potrzebie dodatkowego wywozu odpadów z terenu targu.",
+      chart: {
+        type: "bar",
+        xLabels: ["WIOSNA", "LATO", "JESIEŃ", "ZIMA"],
+        datasets: [
+          {
+            label: "Zajęte stoiska handlowe (szt.)",
+            data: [180, 320, 200, 90],
+            color: "#c0392b"
+          },
+          {
+            label: "Zgłoszenia o dodatkowy wywóz odpadów (szt.)",
+            data: [40, 110, 50, 20],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby zajętych stoisk powoduje wzrost zgłoszeń o dodatkowy wywóz odpadów.",
+        "B) Wzrost zgłoszeń o dodatkowy wywóz odpadów powoduje wzrost liczby zajętych stoisk.",
+        "C) Sezon letni z obfitością świeżych warzyw i owoców jednocześnie zwiększa aktywność handlową na targu i ilość odpadów organicznych do wywiezienia.",
+        "D) Brak związku przyczynowo-skutkowego między zajętymi stoiskami a zgłoszeniami o wywóz odpadów."
+      ],
+      correct: 2,
+      explanation: "Letni sezon owocowo-warzywny to wspólna przyczyna: więcej handlu i więcej szybko psujących się odpadów. Oba zjawiska wynikają z sezonowości plonów, a nie bezpośrednio z siebie nawzajem."
+    },
+    {
+      id: "e_t3_040",
+      typeId: 3,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Gminny ośrodek kultury odnotował, że w grudniu rośnie liczba zapisów na warsztaty rękodzieła. W tym samym miesiącu wzrasta sprzedaż biletów na koncerty kolęd.",
+      chart: {
+        type: "line",
+        xLabels: ["wrzesień", "październik", "listopad", "grudzień"],
+        datasets: [
+          {
+            label: "Zapisy na warsztaty rękodzieła (szt.)",
+            data: [60, 80, 110, 280],
+            color: "#c0392b"
+          },
+          {
+            label: "Bilety na koncerty kolęd (szt.)",
+            data: [0, 10, 40, 360],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost zapisów na warsztaty rękodzieła powoduje wzrost sprzedaży biletów na koncerty kolęd.",
+        "B) Wzrost sprzedaży biletów na koncerty kolęd powoduje wzrost zapisów na warsztaty rękodzieła.",
+        "C) Atmosfera i tradycje okresu przedświątecznego w grudniu jednocześnie zwiększają zainteresowanie warsztatami ozdób i koncertami kolęd.",
+        "D) Brak związku przyczynowo-skutkowego między warsztatami rękodzieła a koncertami kolęd."
+      ],
+      correct: 2,
+      explanation: "Grudniowy okres przedświąteczny to wspólny czynnik: mieszkańcy chcą wykonać ozdoby i uczestniczyć w świątecznych koncertach. Oba zjawiska wynikają z sezonu bożonarodzeniowego, nie z siebie nawzajem."
     }
   ],
 
@@ -1066,6 +2112,206 @@ const QUESTIONS_EASY = {
       options: ["A) pisania ukrytego tekstu", "B) notowania skróconego", "C) kodowania danych", "D) pisania odręcznego", "E) tłumaczenia dokumentów"],
       correct: 1,
       explanation: "Kryptografia to technika/dziedzina zajmująca się szyfrowaniem — szyfrowanie jest jej głównym przedmiotem. Analogicznie stenografia to technika/dziedzina zajmująca się notowaniem skróconym — szybkim zapisem za pomocą znaków skróceń. Relacja: dziedzina do jej głównej techniki."
+    },
+    {
+      id: "e_t4_021",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Polska jest do Warszawy, jak Francja jest do",
+      options: ["A) Lyonu", "B) Marsylii", "C) Paryża", "D) Nicei", "E) Bordeaux"],
+      correct: 2,
+      explanation: "Relacja: państwo i jego stolica. Stolicą Polski jest Warszawa, a stolicą Francji jest Paryż. Pozostałe miasta to duże francuskie miasta, ale nie stolice."
+    },
+    {
+      id: "e_t4_022",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Pszczoła jest do ula, jak ptak jest do",
+      options: ["A) drzewa", "B) gniazda", "C) nieba", "D) klatki", "E) skrzydeł"],
+      correct: 1,
+      explanation: "Relacja: zwierzę i jego naturalna budowla mieszkalna. Pszczoła zamieszkuje ul, a ptak gniazdo. Drzewo czy niebo to środowisko, a nie konkretna budowla."
+    },
+    {
+      id: "e_t4_023",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Malarz jest do pędzla, jak stolarz jest do",
+      options: ["A) drewna", "B) mebla", "C) piły", "D) warsztatu", "E) gwoździa"],
+      correct: 2,
+      explanation: "Relacja: zawód i jego podstawowe narzędzie. Malarz posługuje się pędzlem, a stolarz piłą. Drewno to materiał, mebel to wytwór, a warsztat to miejsce pracy."
+    },
+    {
+      id: "e_t4_024",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Krowa jest do mleka, jak pszczoła jest do",
+      options: ["A) wosku", "B) miodu", "C) kwiatu", "D) ula", "E) żądła"],
+      correct: 1,
+      explanation: "Relacja: zwierzę i podstawowy produkt spożywczy, który dostarcza człowiekowi. Krowa daje mleko, a pszczoła miód. Wosk jest produktem ubocznym, a pozostałe odpowiedzi nie są produktami."
+    },
+    {
+      id: "e_t4_025",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Palec jest do dłoni, jak liść jest do",
+      options: ["A) korzenia", "B) kwiatu", "C) gałęzi", "D) lasu", "E) owocu"],
+      correct: 2,
+      explanation: "Relacja: część do całości, do której jest bezpośrednio przymocowana. Palec jest częścią dłoni, a liść częścią gałęzi. Korzeń i kwiat to inne organy rośliny."
+    },
+    {
+      id: "e_t4_026",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Ryba jest do wody, jak kret jest do",
+      options: ["A) ziemi", "B) powietrza", "C) trawy", "D) drzewa", "E) jaskini"],
+      correct: 0,
+      explanation: "Relacja: zwierzę i środowisko, w którym żyje i porusza się. Ryba żyje w wodzie, a kret pod ziemią. Pozostałe środowiska nie są naturalnym miejscem życia kreta."
+    },
+    {
+      id: "e_t4_027",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Termometr jest do temperatury, jak zegar jest do",
+      options: ["A) wagi", "B) ciśnienia", "C) czasu", "D) prędkości", "E) odległości"],
+      correct: 2,
+      explanation: "Relacja: przyrząd i mierzona przez niego wielkość. Termometr mierzy temperaturę, a zegar mierzy czas. Pozostałe wielkości mierzą inne przyrządy."
+    },
+    {
+      id: "e_t4_028",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Pies jest do szczeniaka, jak kot jest do",
+      options: ["A) myszy", "B) kociaka", "C) sierści", "D) łapy", "E) ogona"],
+      correct: 1,
+      explanation: "Relacja: dorosły osobnik i jego młode. Młode psa to szczeniak, a młode kota to kociak. Pozostałe odpowiedzi nie oznaczają młodego osobnika."
+    },
+    {
+      id: "e_t4_029",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Książka jest do czytania, jak widelec jest do",
+      options: ["A) jedzenia", "B) gotowania", "C) krojenia", "D) mycia", "E) noża"],
+      correct: 0,
+      explanation: "Relacja: przedmiot i czynność, do której służy. Książka służy do czytania, a widelec do jedzenia. Krojenie wykonuje się nożem, a pozostałe czynności nie są funkcją widelca."
+    },
+    {
+      id: "e_t4_030",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Zima jest do śniegu, jak lato jest do",
+      options: ["A) deszczu", "B) mrozu", "C) upału", "D) liści", "E) wiatru"],
+      correct: 2,
+      explanation: "Relacja: pora roku i charakterystyczne dla niej zjawisko pogodowe. Zimę kojarzymy ze śniegiem, a lato z upałem. Pozostałe zjawiska nie są typowe wyłącznie dla lata."
+    },
+    {
+      id: "e_t4_031",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Skrzypce są do smyczka, jak bęben jest do",
+      options: ["A) struny", "B) pałeczek", "C) klawisza", "D) dźwięku", "E) struny"],
+      correct: 1,
+      explanation: "Relacja: instrument i przyrząd służący do wydobycia z niego dźwięku. Na skrzypcach gra się smyczkiem, a na bębnie pałeczkami. Struny i klawisze należą do innych instrumentów."
+    },
+    {
+      id: "e_t4_032",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Lekarz jest do szpitala, jak nauczyciel jest do",
+      options: ["A) ucznia", "B) książki", "C) szkoły", "D) tablicy", "E) wiedzy"],
+      correct: 2,
+      explanation: "Relacja: zawód i instytucja, w której pracuje. Lekarz pracuje w szpitalu, a nauczyciel w szkole. Uczeń to odbiorca, a tablica i książka to narzędzia."
+    },
+    {
+      id: "e_t4_033",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Słońce jest do dnia, jak księżyc jest do",
+      options: ["A) gwiazdy", "B) nocy", "C) nieba", "D) zaćmienia", "E) planety"],
+      correct: 1,
+      explanation: "Relacja: ciało niebieskie i pora doby, którą rozjaśnia. Słońce kojarzymy z dniem, a księżyc z nocą. Pozostałe odpowiedzi nie oznaczają pory doby."
+    },
+    {
+      id: "e_t4_034",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Pomidor jest do czerwonego, jak cytryna jest do",
+      options: ["A) kwaśnego", "B) żółtego", "C) okrągłego", "D) owocu", "E) soku"],
+      correct: 1,
+      explanation: "Relacja: warzywo lub owoc i jego charakterystyczny kolor. Pomidor jest czerwony, a cytryna żółta. Kwaśny to smak, okrągły to kształt, więc nie pasują do relacji koloru."
+    },
+    {
+      id: "e_t4_035",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Kierowca jest do samochodu, jak pilot jest do",
+      options: ["A) lotniska", "B) pasażera", "C) samolotu", "D) chmury", "E) biletu"],
+      correct: 2,
+      explanation: "Relacja: osoba i pojazd, którym steruje. Kierowca prowadzi samochód, a pilot steruje samolotem. Lotnisko to miejsce, a pozostałe odpowiedzi nie są pojazdem."
+    },
+    {
+      id: "e_t4_036",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Drzewo jest do lasu, jak gwiazda jest do",
+      options: ["A) nieba", "B) słońca", "C) galaktyki", "D) planety", "E) komety"],
+      correct: 2,
+      explanation: "Relacja: pojedynczy element i naturalny zbiór wielu takich elementów. Drzewa tworzą las, a gwiazdy tworzą galaktykę. Niebo to tło, a pozostałe to inne obiekty kosmiczne."
+    },
+    {
+      id: "e_t4_037",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Piekarz jest do chleba, jak kucharz jest do",
+      options: ["A) garnka", "B) potrawy", "C) kuchni", "D) noża", "E) przepisu"],
+      correct: 1,
+      explanation: "Relacja: zawód i wytwarzany przez niego produkt. Piekarz wypieka chleb, a kucharz przyrządza potrawy. Garnek i nóż to narzędzia, a kuchnia to miejsce."
+    },
+    {
+      id: "e_t4_038",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Lew jest do sawanny, jak niedźwiedź polarny jest do",
+      options: ["A) lasu", "B) gór", "C) Arktyki", "D) zoo", "E) jaskini"],
+      correct: 2,
+      explanation: "Relacja: zwierzę i jego naturalny region występowania. Lew żyje na sawannie, a niedźwiedź polarny w Arktyce. Pozostałe miejsca nie są jego naturalnym środowiskiem."
+    },
+    {
+      id: "e_t4_039",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Strona jest do książki, jak klawisz jest do",
+      options: ["A) dźwięku", "B) palca", "C) klawiatury", "D) muzyki", "E) pianisty"],
+      correct: 2,
+      explanation: "Relacja: element składowy do całości, którą współtworzy z wieloma podobnymi elementami. Strony tworzą książkę, a klawisze tworzą klawiaturę. Pozostałe odpowiedzi nie są całością złożoną z klawiszy."
+    },
+    {
+      id: "e_t4_040",
+      typeId: 4,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Igła jest do szycia, jak nożyczki są do",
+      options: ["A) cięcia", "B) papieru", "C) kłucia", "D) szafy", "E) nici"],
+      correct: 0,
+      explanation: "Relacja: narzędzie i czynność, do której służy. Igła służy do szycia, a nożyczki do cięcia. Papier i nici to materiały, a pozostałe odpowiedzi nie są funkcją nożyczek."
     }
   ],
 
@@ -1354,6 +2600,393 @@ const QUESTIONS_EASY = {
       ],
       correct: 3,
       explanation: "Przesłanka 3 mówi, że postępowanie nie zakończyło się w terminie. Przesłanka 2 stwierdza, że każde nieterminowe postępowanie naraża organ na zarzut bezczynności. Zatem organ prowadzący sprawę Nowackiego naraża się na zarzut bezczynności (D). A i B są sprzeczne z przesłankami, C i E wykraczają poza przesłanki."
+    },
+    {
+      id: "e_t5_021",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Wszystkie wnioski urlopowe muszą być zatwierdzone przez przełożonego.",
+        "Wszystkie dokumenty zatwierdzone przez przełożonego są rejestrowane w systemie kadrowym."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Wszystkie dokumenty w systemie kadrowym to wnioski urlopowe.",
+        "B) Wszystkie wnioski urlopowe są rejestrowane w systemie kadrowym.",
+        "C) Niektóre wnioski urlopowe nie wymagają zatwierdzenia.",
+        "D) Tylko przełożony korzysta z systemu kadrowego."
+      ],
+      correct: 1,
+      explanation: "Łańcuch: wnioski urlopowe → zatwierdzenie przez przełożonego → rejestracja w systemie kadrowym. Wniosek: wszystkie wnioski urlopowe są rejestrowane. Opcja A odwraca implikację, C zaprzecza pierwszej przesłance, D wykracza poza przesłanki."
+    },
+    {
+      id: "e_t5_022",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Wszyscy nowi pracownicy odbywają szkolenie wstępne.",
+        "Wszyscy, którzy odbyli szkolenie wstępne, otrzymują kartę dostępu do budynku."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Wszyscy nowi pracownicy otrzymują kartę dostępu do budynku.",
+        "B) Wszyscy posiadacze karty dostępu są nowymi pracownikami.",
+        "C) Niektórzy nowi pracownicy nie odbywają szkolenia wstępnego.",
+        "D) Karta dostępu uprawnia do prowadzenia szkoleń."
+      ],
+      correct: 0,
+      explanation: "Łańcuch: nowi pracownicy → szkolenie wstępne → karta dostępu. Wniosek: wszyscy nowi pracownicy otrzymują kartę dostępu. Opcja B odwraca implikację, C zaprzecza przesłance, D wykracza poza przesłanki."
+    },
+    {
+      id: "e_t5_023",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Każde pismo przychodzące do urzędu jest opatrywane datą wpływu.",
+        "Każde pismo opatrzone datą wpływu trafia do dziennika korespondencji."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Tylko pisma przychodzące trafiają do dziennika korespondencji.",
+        "B) Wszystkie wpisy w dzienniku korespondencji to pisma przychodzące.",
+        "C) Każde pismo przychodzące do urzędu trafia do dziennika korespondencji.",
+        "D) Niektóre pisma przychodzące nie są opatrywane datą wpływu."
+      ],
+      correct: 2,
+      explanation: "Łańcuch: pismo przychodzące → data wpływu → dziennik korespondencji. Wniosek: każde pismo przychodzące trafia do dziennika. Opcja A wprowadza ograniczenie spoza przesłanek, B odwraca implikację, D zaprzecza pierwszej przesłance."
+    },
+    {
+      id: "e_t5_024",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Wszystkie protokoły z narad są podpisywane przez przewodniczącego.",
+        "Wszystkie dokumenty podpisane przez przewodniczącego są przechowywane w archiwum."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Wszystkie dokumenty w archiwum to protokoły z narad.",
+        "B) Niektóre protokoły z narad nie są podpisywane.",
+        "C) Tylko przewodniczący ma dostęp do archiwum.",
+        "D) Wszystkie protokoły z narad są przechowywane w archiwum."
+      ],
+      correct: 3,
+      explanation: "Łańcuch: protokoły z narad → podpis przewodniczącego → archiwum. Wniosek: wszystkie protokoły są w archiwum. Opcja A odwraca implikację, B zaprzecza przesłance, C wykracza poza przesłanki."
+    },
+    {
+      id: "e_t5_025",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Wszystkie faktury wpływające do działu księgowości są skanowane.",
+        "Wszystkie skanowane dokumenty są zapisywane na dysku sieciowym."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Wszystkie faktury wpływające do działu księgowości są zapisywane na dysku sieciowym.",
+        "B) Wszystkie dokumenty na dysku sieciowym to faktury.",
+        "C) Niektóre faktury nie są skanowane.",
+        "D) Dysk sieciowy zawiera wyłącznie skany."
+      ],
+      correct: 0,
+      explanation: "Łańcuch: faktury → skanowanie → zapis na dysku sieciowym. Wniosek: wszystkie faktury są zapisywane na dysku. Opcja B odwraca implikację, C zaprzecza przesłance, D wykracza poza przesłanki."
+    },
+    {
+      id: "e_t5_026",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Jeśli pracownik składa wniosek o urlop, wniosek jest rozpatrywany przez kierownika.",
+        "Jeśli wniosek jest rozpatrywany przez kierownika, pracownik otrzymuje pisemną odpowiedź.",
+        "Pan Kowalski złożył wniosek o urlop."
+      ],
+      syllogismVariant: "modus_ponens",
+      options: [
+        "A) Pan Kowalski otrzyma pisemną odpowiedź.",
+        "B) Pan Kowalski nie otrzyma żadnej odpowiedzi.",
+        "C) Wniosek Pana Kowalskiego został odrzucony.",
+        "D) Kierownik nie rozpatrzy wniosku Pana Kowalskiego."
+      ],
+      correct: 0,
+      explanation: "Modus ponens: wniosek o urlop → rozpatrzenie przez kierownika → pisemna odpowiedź; Kowalski złożył wniosek → otrzyma pisemną odpowiedź. Opcje B i D są sprzeczne z przesłankami, C wykracza poza przesłanki."
+    },
+    {
+      id: "e_t5_027",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Jeśli pracownik zgłasza delegację, koszty podróży są zwracane.",
+        "Jeśli koszty podróży są zwracane, wypłata następuje na konto bankowe.",
+        "Pani Nowak zgłosiła delegację."
+      ],
+      syllogismVariant: "modus_ponens",
+      options: [
+        "A) Pani Nowak nie otrzyma zwrotu kosztów.",
+        "B) Pani Nowak otrzyma wypłatę na konto bankowe.",
+        "C) Pani Nowak odebrała koszty w gotówce.",
+        "D) Delegacja Pani Nowak została anulowana."
+      ],
+      correct: 1,
+      explanation: "Modus ponens: delegacja → zwrot kosztów → wypłata na konto; Nowak zgłosiła delegację → otrzyma wypłatę na konto. Opcje A i D są sprzeczne z przesłankami, C zaprzecza wnioskowi."
+    },
+    {
+      id: "e_t5_028",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Jeśli pracownik przekroczył dozwoloną liczbę nadgodzin, sprawa trafia do działu kadr.",
+        "Jeśli sprawa trafia do działu kadr, sporządzana jest notatka służbowa.",
+        "Pan Wiśniewski przekroczył dozwoloną liczbę nadgodzin."
+      ],
+      syllogismVariant: "modus_ponens",
+      options: [
+        "A) Pan Wiśniewski otrzymał premię.",
+        "B) Sprawa Pana Wiśniewskiego nie trafi do działu kadr.",
+        "C) W sprawie Pana Wiśniewskiego zostanie sporządzona notatka służbowa.",
+        "D) Pan Wiśniewski nie pracował w nadgodzinach."
+      ],
+      correct: 2,
+      explanation: "Modus ponens: przekroczenie nadgodzin → dział kadr → notatka służbowa; Wiśniewski przekroczył → notatka zostanie sporządzona. Opcje B i D są sprzeczne z przesłankami, A wykracza poza przesłanki."
+    },
+    {
+      id: "e_t5_029",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Jeśli zgłoszenie awarii wpłynie do sekretariatu, jest przekazywane do działu IT.",
+        "Jeśli zgłoszenie jest przekazywane do działu IT, otrzymuje numer w systemie zgłoszeń.",
+        "Pani Lewandowska wysłała zgłoszenie awarii do sekretariatu."
+      ],
+      syllogismVariant: "modus_ponens",
+      options: [
+        "A) Awaria nie zostanie naprawiona.",
+        "B) Dział IT odrzuci zgłoszenie.",
+        "C) Sekretariat nie przekaże zgłoszenia.",
+        "D) Zgłoszenie Pani Lewandowskiej otrzyma numer w systemie zgłoszeń."
+      ],
+      correct: 3,
+      explanation: "Modus ponens: zgłoszenie do sekretariatu → przekazanie do IT → numer w systemie; Lewandowska wysłała zgłoszenie → otrzyma numer. Opcje B i C są sprzeczne z przesłankami, A wykracza poza przesłanki."
+    },
+    {
+      id: "e_t5_030",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Wszystkie umowy o pracę są podpisywane przez dyrektora.",
+        "Wszystkie dokumenty podpisane przez dyrektora są opatrywane pieczęcią urzędu."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Wszystkie umowy o pracę są opatrywane pieczęcią urzędu.",
+        "B) Wszystkie dokumenty z pieczęcią to umowy o pracę.",
+        "C) Niektóre umowy o pracę nie są podpisywane przez dyrektora.",
+        "D) Tylko dyrektor używa pieczęci urzędu."
+      ],
+      correct: 0,
+      explanation: "Łańcuch: umowy o pracę → podpis dyrektora → pieczęć urzędu. Wniosek: wszystkie umowy mają pieczęć. Opcja B odwraca implikację, C zaprzecza przesłance, D wykracza poza przesłanki."
+    },
+    {
+      id: "e_t5_031",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Wszyscy stażyści w departamencie ukończyli kurs językowy.",
+        "Wszyscy stażyści w departamencie przeszli szkolenie BHP."
+      ],
+      syllogismVariant: "some",
+      options: [
+        "A) Niektóre osoby, które ukończyły kurs językowy, przeszły szkolenie BHP.",
+        "B) Wszyscy, którzy przeszli szkolenie BHP, ukończyli kurs językowy.",
+        "C) Wszystkie osoby z kursem językowym to stażyści.",
+        "D) Żaden stażysta nie przeszedł szkolenia BHP."
+      ],
+      correct: 0,
+      explanation: "Skoro wszyscy stażyści ukończyli kurs językowy i wszyscy przeszli szkolenie BHP, to istnieją osoby (sami stażyści) z kursem językowym, które przeszły szkolenie BHP. Stąd: niektóre osoby z kursem językowym przeszły BHP. Opcja B i C odwracają relacje, D zaprzecza przesłance."
+    },
+    {
+      id: "e_t5_032",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Wszyscy członkowie komisji rekrutacyjnej mają dostęp do dokumentów kandydatów.",
+        "Wszyscy członkowie komisji rekrutacyjnej podpisali oświadczenie o poufności."
+      ],
+      syllogismVariant: "some",
+      options: [
+        "A) Wszyscy, którzy podpisali oświadczenie o poufności, są członkami komisji.",
+        "B) Niektóre osoby mające dostęp do dokumentów kandydatów podpisały oświadczenie o poufności.",
+        "C) Tylko członkowie komisji mają dostęp do dokumentów.",
+        "D) Niektórzy członkowie komisji nie podpisali oświadczenia."
+      ],
+      correct: 1,
+      explanation: "Wszyscy członkowie komisji mają dostęp do dokumentów i podpisali oświadczenie, więc istnieją osoby z dostępem do dokumentów, które podpisały oświadczenie. Opcja A odwraca relację, C wykracza poza przesłanki, D zaprzecza przesłance."
+    },
+    {
+      id: "e_t5_033",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Wszystkie zgłoszenia szkoleniowe są weryfikowane przez koordynatora.",
+        "Wszystkie zweryfikowane zgłoszenia są wpisywane do harmonogramu szkoleń."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Wszystkie wpisy w harmonogramie to zgłoszenia szkoleniowe.",
+        "B) Niektóre zgłoszenia szkoleniowe nie są weryfikowane.",
+        "C) Wszystkie zgłoszenia szkoleniowe są wpisywane do harmonogramu szkoleń.",
+        "D) Tylko koordynator prowadzi harmonogram."
+      ],
+      correct: 2,
+      explanation: "Łańcuch: zgłoszenia szkoleniowe → weryfikacja → harmonogram. Wniosek: wszystkie zgłoszenia trafiają do harmonogramu. Opcja A odwraca implikację, B zaprzecza przesłance, D wykracza poza przesłanki."
+    },
+    {
+      id: "e_t5_034",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Jeśli pracownik zgłosi nieobecność z powodu choroby, musi dostarczyć zwolnienie lekarskie.",
+        "Jeśli dostarczy zwolnienie lekarskie, nieobecność zostaje usprawiedliwiona.",
+        "Pan Zieliński zgłosił nieobecność z powodu choroby."
+      ],
+      syllogismVariant: "modus_ponens",
+      options: [
+        "A) Nieobecność Pana Zielińskiego nie zostanie usprawiedliwiona.",
+        "B) Pan Zieliński nie musi dostarczać zwolnienia.",
+        "C) Pan Zieliński otrzyma naganę.",
+        "D) Nieobecność Pana Zielińskiego zostanie usprawiedliwiona po dostarczeniu zwolnienia lekarskiego."
+      ],
+      correct: 3,
+      explanation: "Modus ponens: choroba → dostarczenie zwolnienia → usprawiedliwienie nieobecności; Zieliński zgłosił chorobę → po dostarczeniu zwolnienia nieobecność zostanie usprawiedliwiona. Opcje A i B są sprzeczne z przesłankami, C wykracza poza przesłanki."
+    },
+    {
+      id: "e_t5_035",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Wszystkie wnioski o sprzęt biurowy są przekazywane do działu zaopatrzenia.",
+        "Wszystkie wnioski przekazane do działu zaopatrzenia otrzymują numer ewidencyjny."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Wszystkie wnioski o sprzęt biurowy otrzymują numer ewidencyjny.",
+        "B) Wszystkie wnioski z numerem ewidencyjnym dotyczą sprzętu biurowego.",
+        "C) Niektóre wnioski o sprzęt nie są przekazywane do zaopatrzenia.",
+        "D) Dział zaopatrzenia rozpatruje tylko wnioski o sprzęt."
+      ],
+      correct: 0,
+      explanation: "Łańcuch: wnioski o sprzęt → dział zaopatrzenia → numer ewidencyjny. Wniosek: wszystkie wnioski o sprzęt otrzymują numer. Opcja B odwraca implikację, C zaprzecza przesłance, D wykracza poza przesłanki."
+    },
+    {
+      id: "e_t5_036",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Jeśli zaplanowano naradę, sekretariat wysyła zaproszenia do uczestników.",
+        "Jeśli zaproszenia zostaną wysłane, rezerwowana jest sala konferencyjna.",
+        "Na wtorek zaplanowano naradę."
+      ],
+      syllogismVariant: "modus_ponens",
+      options: [
+        "A) Narada została odwołana.",
+        "B) Sala konferencyjna nie będzie potrzebna.",
+        "C) Na wtorek zostanie zarezerwowana sala konferencyjna.",
+        "D) Sekretariat nie wyśle zaproszeń."
+      ],
+      correct: 2,
+      explanation: "Modus ponens: narada → wysłanie zaproszeń → rezerwacja sali; zaplanowano naradę → sala zostanie zarezerwowana. Opcje A i D są sprzeczne z przesłankami, B zaprzecza wnioskowi."
+    },
+    {
+      id: "e_t5_037",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Wszyscy pracownicy działu obsługi klienta przeszli kurs komunikacji.",
+        "Wszyscy pracownicy działu obsługi klienta mają służbowy telefon."
+      ],
+      syllogismVariant: "some",
+      options: [
+        "A) Wszyscy z kursem komunikacji mają służbowy telefon.",
+        "B) Tylko pracownicy obsługi klienta mają służbowy telefon.",
+        "C) Niektóre osoby, które przeszły kurs komunikacji, mają służbowy telefon.",
+        "D) Niektórzy pracownicy obsługi klienta nie mają telefonu."
+      ],
+      correct: 2,
+      explanation: "Wszyscy pracownicy obsługi klienta przeszli kurs komunikacji i mają telefon służbowy, więc istnieją osoby z kursem komunikacji, które mają telefon. Opcja A to nadmierne uogólnienie, B wykracza poza przesłanki, D zaprzecza przesłance."
+    },
+    {
+      id: "e_t5_038",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Wszystkie zatwierdzone delegacje są wpisywane do kalendarza zespołu.",
+        "Wszystkie pozycje w kalendarzu zespołu są widoczne dla kierownika."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Wszystko, co widzi kierownik, to delegacje.",
+        "B) Wszystkie zatwierdzone delegacje są widoczne dla kierownika.",
+        "C) Niektóre zatwierdzone delegacje nie są w kalendarzu.",
+        "D) Tylko kierownik prowadzi kalendarz zespołu."
+      ],
+      correct: 1,
+      explanation: "Łańcuch: zatwierdzone delegacje → kalendarz zespołu → widoczność dla kierownika. Wniosek: wszystkie zatwierdzone delegacje są widoczne dla kierownika. Opcja A odwraca implikację, C zaprzecza przesłance, D wykracza poza przesłanki."
+    },
+    {
+      id: "e_t5_039",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Jeśli wpłynie skarga obywatela, rejestruje się ją w rejestrze skarg.",
+        "Jeśli skarga jest zarejestrowana, wyznacza się termin jej rozpatrzenia.",
+        "Wpłynęła skarga od Pani Dąbrowskiej."
+      ],
+      syllogismVariant: "modus_ponens",
+      options: [
+        "A) Skarga Pani Dąbrowskiej nie zostanie rozpatrzona.",
+        "B) Dla skargi Pani Dąbrowskiej zostanie wyznaczony termin rozpatrzenia.",
+        "C) Skarga Pani Dąbrowskiej została odrzucona.",
+        "D) Skargi nie rejestruje się w rejestrze."
+      ],
+      correct: 1,
+      explanation: "Modus ponens: wpływ skargi → rejestracja → wyznaczenie terminu rozpatrzenia; skarga wpłynęła → zostanie wyznaczony termin. Opcje A i D są sprzeczne z przesłankami, C wykracza poza przesłanki."
+    },
+    {
+      id: "e_t5_040",
+      typeId: 5,
+      level: "easy",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Wszystkie zamówienia materiałów biurowych wymagają akceptacji budżetowej.",
+        "Wszystkie zamówienia z akceptacją budżetową są realizowane przez dostawcę."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Wszystko, co realizuje dostawca, to materiały biurowe.",
+        "B) Niektóre zamówienia materiałów biurowych nie wymagają akceptacji.",
+        "C) Tylko dostawca akceptuje budżet.",
+        "D) Wszystkie zamówienia materiałów biurowych są realizowane przez dostawcę."
+      ],
+      correct: 3,
+      explanation: "Łańcuch: zamówienia materiałów → akceptacja budżetowa → realizacja przez dostawcę. Wniosek: wszystkie zamówienia materiałów są realizowane przez dostawcę. Opcja A odwraca implikację, B zaprzecza przesłance, C wykracza poza przesłanki."
     }
   ],
 
@@ -1819,6 +3452,386 @@ const QUESTIONS_EASY = {
       ],
       correct: 4,
       explanation: "Suma sekcji beta = 42. Ustawy: 13, Rozporządzenia: 16. Zatem Zarządzenia: 42 − 13 − 16 = 13. Sprawdzenie sumy kolumny Zarządzenia: 5 + 13 + 7 = 25. Suma się zgadza. Poprawna odpowiedź: 13."
+    },
+    {
+      id: "e_t6_021",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "W urzędzie miasta trzy wydziały wydały dokumenty w trzech kategoriach: dowody, paszporty i prawa jazdy. Wydział Centralny wydał łącznie 25 dokumentów, a w kategorii paszporty wszystkie wydziały wydały razem 20 dokumentów. Wiadomo, że Wydział Centralny wydał 12 dowodów i 5 praw jazdy. Ile paszportów wydał Wydział Centralny?",
+      table: {
+        headers: ["", "Dowody", "Paszporty", "Prawa jazdy", "Suma"],
+        rows: [
+          ["Wydział Centralny", "12", "?", "5", "25"],
+          ["Wydział Północny", "9", "7", "6", "22"],
+          ["Wydział Południowy", "7", "5", "8", "20"],
+          ["Suma", "28", "20", "19", "67"]
+        ]
+      },
+      options: ["A) 6", "B) 7", "C) 8", "D) 9", "E) 10"],
+      correct: 2,
+      explanation: "Wiersz Wydziału Centralnego: 12 + ? + 5 = 25, więc ? = 8. Kolumna Paszporty: 8 + 7 + 5 = 20. Oba potwierdzają wynik 8."
+    },
+    {
+      id: "e_t6_022",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Trzy referaty kadrowe zatrudniły nowych pracowników w trzech grupach stanowisk: specjaliści, referenci i inspektorzy. Referat B zatrudnił łącznie 18 osób, a w grupie referenci wszystkie referaty zatrudniły razem 21 osób. Referat B zatrudnił 6 specjalistów i 5 inspektorów. Ilu referentów zatrudnił Referat B?",
+      table: {
+        headers: ["", "Specjaliści", "Referenci", "Inspektorzy", "Suma"],
+        rows: [
+          ["Referat A", "8", "6", "4", "18"],
+          ["Referat B", "6", "?", "5", "18"],
+          ["Referat C", "5", "8", "7", "20"],
+          ["Suma", "19", "21", "16", "56"]
+        ]
+      },
+      options: ["A) 5", "B) 6", "C) 7", "D) 8", "E) 9"],
+      correct: 2,
+      explanation: "Wiersz Referatu B: 6 + ? + 5 = 18, więc ? = 7. Kolumna Referenci: 6 + 7 + 8 = 21. Oba dają 7."
+    },
+    {
+      id: "e_t6_023",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "W trzech filiach biblioteki publicznej zarejestrowano nowych czytelników w trzech grupach wiekowych: dzieci, dorośli i seniorzy. Filia Wschodnia zapisała łącznie 30 czytelników, a w grupie dorośli wszystkie filie zapisały razem 33 osoby. Filia Wschodnia zapisała 11 dzieci i 7 seniorów. Ilu dorosłych zapisała Filia Wschodnia?",
+      table: {
+        headers: ["", "Dzieci", "Dorośli", "Seniorzy", "Suma"],
+        rows: [
+          ["Filia Zachodnia", "9", "10", "6", "25"],
+          ["Filia Wschodnia", "11", "?", "7", "30"],
+          ["Filia Środkowa", "8", "11", "5", "24"],
+          ["Suma", "28", "33", "18", "79"]
+        ]
+      },
+      options: ["A) 10", "B) 11", "C) 12", "D) 13", "E) 14"],
+      correct: 2,
+      explanation: "Wiersz Filii Wschodniej: 11 + ? + 7 = 30, więc ? = 12. Kolumna Dorośli: 10 + 12 + 11 = 33. Oba dają 12."
+    },
+    {
+      id: "e_t6_024",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Trzy ośrodki szkoleniowe przeprowadziły kursy w trzech tematach: BHP, ochrona danych i pierwsza pomoc. Ośrodek Lipa przeszkolił łącznie 40 osób, a w temacie ochrona danych wszystkie ośrodki przeszkoliły razem 36 osób. Ośrodek Lipa przeszkolił 15 osób z BHP i 13 z pierwszej pomocy. Ile osób z ochrony danych przeszkolił Ośrodek Lipa?",
+      table: {
+        headers: ["", "BHP", "Ochrona danych", "Pierwsza pomoc", "Suma"],
+        rows: [
+          ["Ośrodek Dąb", "13", "11", "9", "33"],
+          ["Ośrodek Lipa", "15", "?", "13", "40"],
+          ["Ośrodek Klon", "10", "13", "8", "31"],
+          ["Suma", "38", "36", "30", "104"]
+        ]
+      },
+      options: ["A) 10", "B) 11", "C) 12", "D) 13", "E) 14"],
+      correct: 2,
+      explanation: "Wiersz Ośrodka Lipa: 15 + ? + 13 = 40, więc ? = 12. Kolumna Ochrona danych: 11 + 12 + 13 = 36. Oba dają 12."
+    },
+    {
+      id: "e_t6_025",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "W trzech punktach obsługi mieszkańców przyjęto wnioski w trzech sprawach: meldunkowe, podatkowe i socjalne. Punkt nr 2 przyjął łącznie 28 wniosków, a w sprawach podatkowych wszystkie punkty przyjęły razem 24 wnioski. Punkt nr 2 przyjął 10 wniosków meldunkowych i 9 socjalnych. Ile wniosków podatkowych przyjął Punkt nr 2?",
+      table: {
+        headers: ["", "Meldunkowe", "Podatkowe", "Socjalne", "Suma"],
+        rows: [
+          ["Punkt nr 1", "8", "7", "6", "21"],
+          ["Punkt nr 2", "10", "?", "9", "28"],
+          ["Punkt nr 3", "7", "8", "5", "20"],
+          ["Suma", "25", "24", "20", "69"]
+        ]
+      },
+      options: ["A) 7", "B) 8", "C) 9", "D) 10", "E) 11"],
+      correct: 2,
+      explanation: "Wiersz Punktu nr 2: 10 + ? + 9 = 28, więc ? = 9. Kolumna Podatkowe: 7 + 9 + 8 = 24. Oba dają 9."
+    },
+    {
+      id: "e_t6_026",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Trzy zespoły kontroli przeprowadziły kontrole w trzech obszarach: finanse, kadry i zamówienia. Zespół Beta przeprowadził łącznie 22 kontrole, a w obszarze kadry wszystkie zespoły przeprowadziły razem 18 kontroli. Zespół Beta wykonał 9 kontroli finansowych i 7 kontroli zamówień. Ile kontroli kadrowych przeprowadził Zespół Beta?",
+      table: {
+        headers: ["", "Finanse", "Kadry", "Zamówienia", "Suma"],
+        rows: [
+          ["Zespół Alfa", "8", "5", "6", "19"],
+          ["Zespół Beta", "9", "?", "7", "22"],
+          ["Zespół Gamma", "7", "7", "4", "18"],
+          ["Suma", "24", "18", "17", "59"]
+        ]
+      },
+      options: ["A) 4", "B) 5", "C) 6", "D) 7", "E) 8"],
+      correct: 2,
+      explanation: "Wiersz Zespołu Beta: 9 + ? + 7 = 22, więc ? = 6. Kolumna Kadry: 5 + 6 + 7 = 18. Oba dają 6."
+    },
+    {
+      id: "e_t6_027",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "W trzech gminnych przychodniach udzielono porad w trzech poradniach: internistycznej, kardiologicznej i okulistycznej. Przychodnia Słoneczna udzieliła łącznie 45 porad, a w poradni kardiologicznej wszystkie przychodnie udzieliły razem 39 porad. Przychodnia Słoneczna udzieliła 18 porad internistycznych i 13 okulistycznych. Ile porad kardiologicznych udzieliła Przychodnia Słoneczna?",
+      table: {
+        headers: ["", "Internistyczna", "Kardiologiczna", "Okulistyczna", "Suma"],
+        rows: [
+          ["Przychodnia Górska", "14", "12", "9", "35"],
+          ["Przychodnia Słoneczna", "18", "?", "13", "45"],
+          ["Przychodnia Leśna", "11", "13", "8", "32"],
+          ["Suma", "43", "39", "30", "112"]
+        ]
+      },
+      options: ["A) 12", "B) 13", "C) 14", "D) 15", "E) 16"],
+      correct: 2,
+      explanation: "Wiersz Przychodni Słonecznej: 18 + ? + 13 = 45, więc ? = 14. Kolumna Kardiologiczna: 12 + 14 + 13 = 39. Oba dają 14."
+    },
+    {
+      id: "e_t6_028",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Trzy oddziały straży miejskiej wystawiły mandaty w trzech kategoriach: parkowanie, czystość i hałas. Oddział Centrum wystawił łącznie 35 mandatów, a w kategorii czystość wszystkie oddziały wystawiły razem 27 mandatów. Oddział Centrum wystawił 16 mandatów za parkowanie i 9 za hałas. Ile mandatów za czystość wystawił Oddział Centrum?",
+      table: {
+        headers: ["", "Parkowanie", "Czystość", "Hałas", "Suma"],
+        rows: [
+          ["Oddział Wschód", "12", "9", "7", "28"],
+          ["Oddział Centrum", "16", "?", "9", "35"],
+          ["Oddział Zachód", "10", "8", "6", "24"],
+          ["Suma", "38", "27", "22", "87"]
+        ]
+      },
+      options: ["A) 8", "B) 9", "C) 10", "D) 11", "E) 12"],
+      correct: 2,
+      explanation: "Wiersz Oddziału Centrum: 16 + ? + 9 = 35, więc ? = 10. Kolumna Czystość: 9 + 10 + 8 = 27. Oba dają 10."
+    },
+    {
+      id: "e_t6_029",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "W trzech szkołach gminnych zorganizowano koła zainteresowań w trzech dziedzinach: sport, sztuka i nauka. Szkoła nr 4 zapisała łącznie 50 uczniów, a w dziedzinie sztuka wszystkie szkoły zapisały razem 42 uczniów. Szkoła nr 4 zapisała 20 uczniów na sport i 15 na naukę. Ilu uczniów zapisała Szkoła nr 4 na sztukę?",
+      table: {
+        headers: ["", "Sport", "Sztuka", "Nauka", "Suma"],
+        rows: [
+          ["Szkoła nr 2", "16", "13", "11", "40"],
+          ["Szkoła nr 4", "20", "?", "15", "50"],
+          ["Szkoła nr 6", "12", "14", "9", "35"],
+          ["Suma", "48", "42", "35", "125"]
+        ]
+      },
+      options: ["A) 13", "B) 14", "C) 15", "D) 16", "E) 17"],
+      correct: 2,
+      explanation: "Wiersz Szkoły nr 4: 20 + ? + 15 = 50, więc ? = 15. Kolumna Sztuka: 13 + 15 + 14 = 42. Oba dają 15."
+    },
+    {
+      id: "e_t6_030",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Trzy referaty geodezji wydały decyzje w trzech rodzajach: podziały, scalenia i rozgraniczenia. Referat Miejski wydał łącznie 24 decyzje, a w rodzaju scalenia wszystkie referaty wydały razem 19 decyzji. Referat Miejski wydał 10 decyzji o podziałach i 8 o rozgraniczeniach. Ile decyzji o scaleniach wydał Referat Miejski?",
+      table: {
+        headers: ["", "Podziały", "Scalenia", "Rozgraniczenia", "Suma"],
+        rows: [
+          ["Referat Wiejski", "8", "6", "5", "19"],
+          ["Referat Miejski", "10", "?", "8", "24"],
+          ["Referat Podmiejski", "7", "7", "6", "20"],
+          ["Suma", "25", "19", "19", "63"]
+        ]
+      },
+      options: ["A) 5", "B) 6", "C) 7", "D) 8", "E) 9"],
+      correct: 1,
+      explanation: "Wiersz Referatu Miejskiego: 10 + ? + 8 = 24, więc ? = 6. Kolumna Scalenia: 6 + 6 + 7 = 19. Oba dają 6."
+    },
+    {
+      id: "e_t6_031",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "W trzech placówkach pomocy społecznej przyznano świadczenia w trzech formach: zasiłki stałe, zasiłki celowe i usługi opiekuńcze. Placówka Brzozowa przyznała łącznie 38 świadczeń, a w formie zasiłki celowe wszystkie placówki przyznały razem 30 świadczeń. Placówka Brzozowa przyznała 15 zasiłków stałych i 12 usług opiekuńczych. Ile zasiłków celowych przyznała Placówka Brzozowa?",
+      table: {
+        headers: ["", "Zasiłki stałe", "Zasiłki celowe", "Usługi opiekuńcze", "Suma"],
+        rows: [
+          ["Placówka Sosnowa", "12", "10", "8", "30"],
+          ["Placówka Brzozowa", "15", "?", "12", "38"],
+          ["Placówka Jodłowa", "9", "9", "7", "25"],
+          ["Suma", "36", "30", "27", "93"]
+        ]
+      },
+      options: ["A) 9", "B) 10", "C) 11", "D) 12", "E) 13"],
+      correct: 2,
+      explanation: "Wiersz Placówki Brzozowej: 15 + ? + 12 = 38, więc ? = 11. Kolumna Zasiłki celowe: 10 + 11 + 9 = 30. Oba dają 11."
+    },
+    {
+      id: "e_t6_032",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Trzy wydziały komunikacji zarejestrowały pojazdy w trzech kategoriach: osobowe, ciężarowe i motocykle. Wydział Wschodni zarejestrował łącznie 42 pojazdy, a w kategorii ciężarowe wszystkie wydziały zarejestrowały razem 33 pojazdy. Wydział Wschodni zarejestrował 22 osobowe i 9 motocykli. Ile pojazdów ciężarowych zarejestrował Wydział Wschodni?",
+      table: {
+        headers: ["", "Osobowe", "Ciężarowe", "Motocykle", "Suma"],
+        rows: [
+          ["Wydział Zachodni", "18", "11", "7", "36"],
+          ["Wydział Wschodni", "22", "?", "9", "42"],
+          ["Wydział Północny", "15", "11", "6", "32"],
+          ["Suma", "55", "33", "22", "110"]
+        ]
+      },
+      options: ["A) 9", "B) 10", "C) 11", "D) 12", "E) 13"],
+      correct: 2,
+      explanation: "Wiersz Wydziału Wschodniego: 22 + ? + 9 = 42, więc ? = 11. Kolumna Ciężarowe: 11 + 11 + 11 = 33. Oba dają 11."
+    },
+    {
+      id: "e_t6_033",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "W trzech delegaturach inspekcji przeprowadzono kontrole w trzech branżach: gastronomia, handel i usługi. Delegatura Nadrzeczna przeprowadziła łącznie 33 kontrole, a w branży handel wszystkie delegatury przeprowadziły razem 28 kontroli. Delegatura Nadrzeczna wykonała 14 kontroli gastronomii i 9 kontroli usług. Ile kontroli handlu przeprowadziła Delegatura Nadrzeczna?",
+      table: {
+        headers: ["", "Gastronomia", "Handel", "Usługi", "Suma"],
+        rows: [
+          ["Delegatura Górna", "11", "9", "7", "27"],
+          ["Delegatura Nadrzeczna", "14", "?", "9", "33"],
+          ["Delegatura Dolna", "10", "9", "6", "25"],
+          ["Suma", "35", "28", "22", "85"]
+        ]
+      },
+      options: ["A) 8", "B) 9", "C) 10", "D) 11", "E) 12"],
+      correct: 2,
+      explanation: "Wiersz Delegatury Nadrzecznej: 14 + ? + 9 = 33, więc ? = 10. Kolumna Handel: 9 + 10 + 9 = 28. Oba dają 10."
+    },
+    {
+      id: "e_t6_034",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Trzy biura podróży obsłużyły klientów w trzech kierunkach: krajowe, europejskie i egzotyczne. Biuro Horyzont obsłużyło łącznie 46 klientów, a w kierunku europejskie wszystkie biura obsłużyły razem 37 klientów. Biuro Horyzont obsłużyło 19 wyjazdów krajowych i 13 egzotycznych. Ilu klientów europejskich obsłużyło Biuro Horyzont?",
+      table: {
+        headers: ["", "Krajowe", "Europejskie", "Egzotyczne", "Suma"],
+        rows: [
+          ["Biuro Atlas", "15", "12", "10", "37"],
+          ["Biuro Horyzont", "19", "?", "13", "46"],
+          ["Biuro Kompas", "13", "11", "8", "32"],
+          ["Suma", "47", "37", "31", "115"]
+        ]
+      },
+      options: ["A) 12", "B) 13", "C) 14", "D) 15", "E) 16"],
+      correct: 2,
+      explanation: "Wiersz Biura Horyzont: 19 + ? + 13 = 46, więc ? = 14. Kolumna Europejskie: 12 + 14 + 11 = 37. Oba dają 14."
+    },
+    {
+      id: "e_t6_035",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "W trzech archiwach zakładowych zarchiwizowano dokumenty w trzech kategoriach: akta osobowe, finansowe i techniczne. Archiwum Górne zarchiwizowało łącznie 27 teczek, a w kategorii finansowe wszystkie archiwa zarchiwizowały razem 21 teczek. Archiwum Górne zarchiwizowało 11 teczek osobowych i 9 technicznych. Ile teczek finansowych zarchiwizowało Archiwum Górne?",
+      table: {
+        headers: ["", "Osobowe", "Finansowe", "Techniczne", "Suma"],
+        rows: [
+          ["Archiwum Dolne", "9", "8", "6", "23"],
+          ["Archiwum Górne", "11", "?", "9", "27"],
+          ["Archiwum Boczne", "8", "6", "5", "19"],
+          ["Suma", "28", "21", "20", "69"]
+        ]
+      },
+      options: ["A) 5", "B) 6", "C) 7", "D) 8", "E) 9"],
+      correct: 2,
+      explanation: "Wiersz Archiwum Górnego: 11 + ? + 9 = 27, więc ? = 7. Kolumna Finansowe: 8 + 7 + 6 = 21. Oba dają 7."
+    },
+    {
+      id: "e_t6_036",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Trzy świetlice środowiskowe zorganizowały zajęcia w trzech grupach: plastyczne, ruchowe i czytelnicze. Świetlica Tęcza zapisała łącznie 36 dzieci, a w grupie ruchowe wszystkie świetlice zapisały razem 30 dzieci. Świetlica Tęcza zapisała 14 dzieci na zajęcia plastyczne i 10 na czytelnicze. Ile dzieci zapisała Świetlica Tęcza na zajęcia ruchowe?",
+      table: {
+        headers: ["", "Plastyczne", "Ruchowe", "Czytelnicze", "Suma"],
+        rows: [
+          ["Świetlica Słonko", "11", "10", "8", "29"],
+          ["Świetlica Tęcza", "14", "?", "10", "36"],
+          ["Świetlica Promyk", "9", "8", "7", "24"],
+          ["Suma", "34", "30", "25", "89"]
+        ]
+      },
+      options: ["A) 10", "B) 11", "C) 12", "D) 13", "E) 14"],
+      correct: 2,
+      explanation: "Wiersz Świetlicy Tęcza: 14 + ? + 10 = 36, więc ? = 12. Kolumna Ruchowe: 10 + 12 + 8 = 30. Oba dają 12."
+    },
+    {
+      id: "e_t6_037",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "W trzech oddziałach ZUS przyjęto wnioski w trzech sprawach: emerytalne, rentowe i zasiłkowe. Oddział Miejski przyjął łącznie 44 wnioski, a w sprawach rentowych wszystkie oddziały przyjęły razem 34 wnioski. Oddział Miejski przyjął 18 wniosków emerytalnych i 13 zasiłkowych. Ile wniosków rentowych przyjął Oddział Miejski?",
+      table: {
+        headers: ["", "Emerytalne", "Rentowe", "Zasiłkowe", "Suma"],
+        rows: [
+          ["Oddział Powiatowy", "14", "11", "9", "34"],
+          ["Oddział Miejski", "18", "?", "13", "44"],
+          ["Oddział Gminny", "12", "10", "8", "30"],
+          ["Suma", "44", "34", "30", "108"]
+        ]
+      },
+      options: ["A) 11", "B) 12", "C) 13", "D) 14", "E) 15"],
+      correct: 2,
+      explanation: "Wiersz Oddziału Miejskiego: 18 + ? + 13 = 44, więc ? = 13. Kolumna Rentowe: 11 + 13 + 10 = 34. Oba dają 13."
+    },
+    {
+      id: "e_t6_038",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Trzy punkty selektywnej zbiórki odebrały odpady w trzech frakcjach: papier, szkło i tworzywa. Punkt Zielony odebrał łącznie 31 ton, a we frakcji szkło wszystkie punkty odebrały razem 24 tony. Punkt Zielony odebrał 13 ton papieru i 9 ton tworzyw. Ile ton szkła odebrał Punkt Zielony?",
+      table: {
+        headers: ["", "Papier", "Szkło", "Tworzywa", "Suma"],
+        rows: [
+          ["Punkt Niebieski", "10", "8", "7", "25"],
+          ["Punkt Zielony", "13", "?", "9", "31"],
+          ["Punkt Żółty", "9", "7", "6", "22"],
+          ["Suma", "32", "24", "22", "78"]
+        ]
+      },
+      options: ["A) 7", "B) 8", "C) 9", "D) 10", "E) 11"],
+      correct: 2,
+      explanation: "Wiersz Punktu Zielonego: 13 + ? + 9 = 31, więc ? = 9. Kolumna Szkło: 8 + 9 + 7 = 24. Oba dają 9."
+    },
+    {
+      id: "e_t6_039",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "W trzech wydziałach uczelni przyjęto studentów w trzech trybach: stacjonarny, niestacjonarny i podyplomowy. Wydział Prawa przyjął łącznie 48 studentów, a w trybie niestacjonarny wszystkie wydziały przyjęły razem 38 studentów. Wydział Prawa przyjął 20 studentów stacjonarnych i 12 podyplomowych. Ilu studentów niestacjonarnych przyjął Wydział Prawa?",
+      table: {
+        headers: ["", "Stacjonarny", "Niestacjonarny", "Podyplomowy", "Suma"],
+        rows: [
+          ["Wydział Ekonomii", "16", "13", "10", "39"],
+          ["Wydział Prawa", "20", "?", "12", "48"],
+          ["Wydział Filologii", "14", "9", "8", "31"],
+          ["Suma", "50", "38", "30", "118"]
+        ]
+      },
+      options: ["A) 14", "B) 15", "C) 16", "D) 17", "E) 18"],
+      correct: 2,
+      explanation: "Wiersz Wydziału Prawa: 20 + ? + 12 = 48, więc ? = 16. Kolumna Niestacjonarny: 13 + 16 + 9 = 38. Oba dają 16."
+    },
+    {
+      id: "e_t6_040",
+      typeId: 6,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Trzy oddziały banku spółdzielczego udzieliły kredytów w trzech rodzajach: gotówkowe, hipoteczne i firmowe. Oddział Rynek udzielił łącznie 26 kredytów, a w rodzaju hipoteczne wszystkie oddziały udzieliły razem 20 kredytów. Oddział Rynek udzielił 11 kredytów gotówkowych i 7 firmowych. Ile kredytów hipotecznych udzielił Oddział Rynek?",
+      table: {
+        headers: ["", "Gotówkowe", "Hipoteczne", "Firmowe", "Suma"],
+        rows: [
+          ["Oddział Stary", "9", "7", "5", "21"],
+          ["Oddział Rynek", "11", "?", "7", "26"],
+          ["Oddział Nowy", "8", "5", "4", "17"],
+          ["Suma", "28", "20", "16", "64"]
+        ]
+      },
+      options: ["A) 6", "B) 7", "C) 8", "D) 9", "E) 10"],
+      correct: 2,
+      explanation: "Wiersz Oddziału Rynek: 11 + ? + 7 = 26, więc ? = 8. Kolumna Hipoteczne: 7 + 8 + 5 = 20. Oba dają 8."
     }
   ],
 
@@ -2282,6 +4295,626 @@ const QUESTIONS_EASY = {
       ],
       correct: 4,
       explanation: "W III kwartale postępowania (230) > zgłoszenia (210) — opcja E jest wprost weryfikowalna. Opcja A jest fałszywa: w III kw. postępowania (230) > zgłoszenia (210). Opcja B jest fałszywa: zgłoszenia szczytują w II kw. (240), postępowania w III kw. (230). Opcja C jest fałszywa: postępowania w IV kw. (170) są niższe niż III kw. (230). Opcja D jest fałszywa: w IV kwartale wszczętych postępowań (170) jest więcej niż zgłoszeń (150), nie odwrotnie."
+    },
+    {
+      id: "e_t7_021",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "LICZBA INTERESANTÓW I OBSŁUŻONYCH SPRAW W KWARTAŁACH",
+      chart: {
+        type: "bar",
+        xLabels: ["I kw.", "II kw.", "III kw.", "IV kw."],
+        datasets: [
+          {
+            label: "Interesanci",
+            data: [120, 150, 140, 180],
+            color: "#c0392b"
+          },
+          {
+            label: "Obsłużone sprawy",
+            data: [100, 130, 135, 160],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) W I kwartale liczba interesantów wynosiła 150.",
+        "B) W IV kwartale liczba interesantów wynosiła 180.",
+        "C) Liczba obsłużonych spraw w III kwartale wynosiła 100.",
+        "D) W II kwartale interesanci stanowili 120 osób."
+      ],
+      correct: 1,
+      explanation: "Z wykresu wynika, że w IV kwartale liczba interesantów wynosiła 180. W I kwartale było 120 (nie 150), w III kwartale obsłużono 135 spraw (nie 100), a w II kwartale interesantów było 150 (nie 120)."
+    },
+    {
+      id: "e_t7_022",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "WYDANE ZAŚWIADCZENIA I ODMOWY W PÓŁROCZACH",
+      chart: {
+        type: "line",
+        xLabels: ["I 2024", "II 2024", "I 2025", "II 2025"],
+        datasets: [
+          {
+            label: "Wydane zaświadczenia",
+            data: [200, 220, 210, 250],
+            color: "#c0392b"
+          },
+          {
+            label: "Odmowy",
+            data: [30, 25, 40, 20],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) W II półroczu 2025 wydano 250 zaświadczeń.",
+        "B) Liczba odmów w I półroczu 2025 wynosiła 25.",
+        "C) W I półroczu 2024 wydano 220 zaświadczeń.",
+        "D) Liczba odmów stale rosła w każdym okresie."
+      ],
+      correct: 0,
+      explanation: "W II półroczu 2025 wydano 250 zaświadczeń, co jest wartością najwyższą. Odmowy w I półroczu 2025 wynosiły 40 (nie 25), w I półroczu 2024 wydano 200 zaświadczeń (nie 220), a liczba odmów wahała się (30, 25, 40, 20), więc nie rosła stale."
+    },
+    {
+      id: "e_t7_023",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "ZGŁOSZENIA I ZREALIZOWANE NAPRAWY DRÓG W KWARTAŁACH",
+      chart: {
+        type: "bar",
+        xLabels: ["I kw.", "II kw.", "III kw.", "IV kw."],
+        datasets: [
+          {
+            label: "Zgłoszenia",
+            data: [80, 95, 110, 70],
+            color: "#c0392b"
+          },
+          {
+            label: "Zrealizowane naprawy",
+            data: [60, 90, 100, 75],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) W I kwartale zgłoszeń było mniej niż napraw.",
+        "B) W IV kwartale liczba napraw (75) przewyższała liczbę zgłoszeń (70).",
+        "C) Najwięcej zgłoszeń odnotowano w II kwartale.",
+        "D) Liczba napraw w III kwartale wynosiła 110."
+      ],
+      correct: 1,
+      explanation: "W IV kwartale wykonano 75 napraw przy 70 zgłoszeniach, więc napraw było więcej. W I kwartale zgłoszeń było 80, a napraw 60 (zgłoszeń więcej), najwięcej zgłoszeń było w III kwartale (110, nie w II), a napraw w III kwartale było 100 (nie 110)."
+    },
+    {
+      id: "e_t7_024",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "LICZBA E-WNIOSKÓW I WNIOSKÓW PAPIEROWYCH W KWARTAŁACH",
+      chart: {
+        type: "line",
+        xLabels: ["I kw.", "II kw.", "III kw.", "IV kw."],
+        datasets: [
+          {
+            label: "E-wnioski",
+            data: [40, 60, 90, 120],
+            color: "#c0392b"
+          },
+          {
+            label: "Wnioski papierowe",
+            data: [100, 80, 70, 50],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) E-wnioski rosły w każdym kolejnym kwartale.",
+        "B) Wnioski papierowe rosły w każdym kolejnym kwartale.",
+        "C) W I kwartale e-wniosków było więcej niż papierowych.",
+        "D) W IV kwartale wniosków papierowych było 120."
+      ],
+      correct: 0,
+      explanation: "E-wnioski rosły w każdym kwartale (40, 60, 90, 120). Wnioski papierowe malały (100, 80, 70, 50), w I kwartale e-wniosków było 40, a papierowych 100 (papierowych więcej), a w IV kwartale papierowych było 50 (nie 120)."
+    },
+    {
+      id: "e_t7_025",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "PRZYJĘTE I ROZPATRZONE PETYCJE W KWARTAŁACH",
+      chart: {
+        type: "bar",
+        xLabels: ["I kw.", "II kw.", "III kw.", "IV kw."],
+        datasets: [
+          {
+            label: "Przyjęte petycje",
+            data: [15, 22, 18, 25],
+            color: "#c0392b"
+          },
+          {
+            label: "Rozpatrzone petycje",
+            data: [12, 20, 19, 22],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) W III kwartale rozpatrzono więcej petycji (19) niż przyjęto (18).",
+        "B) W I kwartale przyjęto 22 petycje.",
+        "C) Najwięcej petycji rozpatrzono w I kwartale.",
+        "D) W IV kwartale rozpatrzono 25 petycji."
+      ],
+      correct: 0,
+      explanation: "W III kwartale rozpatrzono 19 petycji przy 18 przyjętych, więc rozpatrzono więcej. W I kwartale przyjęto 15 (nie 22), najwięcej rozpatrzono w IV kwartale (22, nie w I), a w IV kwartale rozpatrzono 22 (nie 25)."
+    },
+    {
+      id: "e_t7_026",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "LICZBA KONTROLI I STWIERDZONYCH NIEPRAWIDŁOWOŚCI W KWARTAŁACH",
+      chart: {
+        type: "line",
+        xLabels: ["I kw.", "II kw.", "III kw.", "IV kw."],
+        datasets: [
+          {
+            label: "Kontrole",
+            data: [10, 14, 12, 16],
+            color: "#c0392b"
+          },
+          {
+            label: "Nieprawidłowości",
+            data: [4, 6, 5, 8],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) W II kwartale przeprowadzono 16 kontroli.",
+        "B) W IV kwartale stwierdzono 8 nieprawidłowości.",
+        "C) Liczba kontroli w III kwartale wynosiła 14.",
+        "D) Nieprawidłowości w I kwartale było 6."
+      ],
+      correct: 1,
+      explanation: "W IV kwartale stwierdzono 8 nieprawidłowości, co jest najwyższą wartością. W II kwartale przeprowadzono 14 kontroli (nie 16), w III kwartale było 12 kontroli (nie 14), a w I kwartale 4 nieprawidłowości (nie 6)."
+    },
+    {
+      id: "e_t7_027",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "LICZBA POŁĄCZEŃ NA INFOLINII I NIEODEBRANYCH W KWARTAŁACH",
+      chart: {
+        type: "bar",
+        xLabels: ["I kw.", "II kw.", "III kw.", "IV kw."],
+        datasets: [
+          {
+            label: "Połączenia odebrane",
+            data: [500, 650, 600, 720],
+            color: "#c0392b"
+          },
+          {
+            label: "Połączenia nieodebrane",
+            data: [80, 60, 90, 50],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) W IV kwartale odebrano 720 połączeń.",
+        "B) Liczba nieodebranych połączeń stale malała.",
+        "C) W I kwartale odebrano 650 połączeń.",
+        "D) W III kwartale było 60 nieodebranych połączeń."
+      ],
+      correct: 0,
+      explanation: "W IV kwartale odebrano 720 połączeń, co jest wartością najwyższą. Liczba nieodebranych wahała się (80, 60, 90, 50), więc nie malała stale, w I kwartale odebrano 500 (nie 650), a w III kwartale nieodebranych było 90 (nie 60)."
+    },
+    {
+      id: "e_t7_028",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "LICZBA WYDANYCH DOWODÓW I PASZPORTÓW W KWARTAŁACH",
+      chart: {
+        type: "line",
+        xLabels: ["I kw.", "II kw.", "III kw.", "IV kw."],
+        datasets: [
+          {
+            label: "Dowody osobiste",
+            data: [300, 280, 320, 350],
+            color: "#c0392b"
+          },
+          {
+            label: "Paszporty",
+            data: [150, 200, 310, 400],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) W IV kwartale wydano więcej paszportów (400) niż dowodów (350).",
+        "B) Paszportów zawsze wydawano więcej niż dowodów.",
+        "C) W I kwartale wydano 200 paszportów.",
+        "D) Liczba dowodów stale rosła w każdym kwartale."
+      ],
+      correct: 0,
+      explanation: "W IV kwartale wydano 400 paszportów i 350 dowodów, więc paszportów było więcej. W I-III kwartale dowodów było więcej lub porównywalnie, więc paszporty nie zawsze przeważały, w I kwartale wydano 150 paszportów (nie 200), a dowody spadły w II kwartale do 280, więc nie rosły stale."
+    },
+    {
+      id: "e_t7_029",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "LICZBA UMÓW PODPISANYCH I ROZWIĄZANYCH W KWARTAŁACH",
+      chart: {
+        type: "bar",
+        xLabels: ["I kw.", "II kw.", "III kw.", "IV kw."],
+        datasets: [
+          {
+            label: "Umowy podpisane",
+            data: [25, 30, 28, 35],
+            color: "#c0392b"
+          },
+          {
+            label: "Umowy rozwiązane",
+            data: [5, 8, 10, 6],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) W IV kwartale podpisano 35 umów.",
+        "B) W III kwartale rozwiązano 8 umów.",
+        "C) Liczba podpisanych umów stale rosła.",
+        "D) W I kwartale podpisano 30 umów."
+      ],
+      correct: 0,
+      explanation: "W IV kwartale podpisano 35 umów, co jest najwyższą wartością. W III kwartale rozwiązano 10 umów (nie 8), liczba podpisanych umów spadła w III kwartale do 28 (nie rosła stale), a w I kwartale podpisano 25 umów (nie 30)."
+    },
+    {
+      id: "e_t7_030",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "LICZBA ZAREJESTROWANYCH BEZROBOTNYCH I OFERT PRACY W KWARTAŁACH",
+      chart: {
+        type: "line",
+        xLabels: ["I kw.", "II kw.", "III kw.", "IV kw."],
+        datasets: [
+          {
+            label: "Bezrobotni",
+            data: [450, 420, 400, 380],
+            color: "#c0392b"
+          },
+          {
+            label: "Oferty pracy",
+            data: [200, 250, 300, 340],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Liczba bezrobotnych malała w każdym kolejnym kwartale.",
+        "B) Liczba ofert pracy malała w każdym kolejnym kwartale.",
+        "C) W I kwartale ofert pracy było więcej niż bezrobotnych.",
+        "D) W IV kwartale zarejestrowano 450 bezrobotnych."
+      ],
+      correct: 0,
+      explanation: "Liczba bezrobotnych malała w każdym kwartale (450, 420, 400, 380). Oferty pracy rosły (200, 250, 300, 340), w I kwartale ofert było 200, a bezrobotnych 450 (bezrobotnych więcej), a w IV kwartale bezrobotnych było 380 (nie 450)."
+    },
+    {
+      id: "e_t7_031",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "LICZBA ODWIEDZIN STRONY I POBRANYCH FORMULARZY W KWARTAŁACH",
+      chart: {
+        type: "bar",
+        xLabels: ["I kw.", "II kw.", "III kw.", "IV kw."],
+        datasets: [
+          {
+            label: "Odwiedziny strony",
+            data: [1200, 1500, 1400, 1700],
+            color: "#c0392b"
+          },
+          {
+            label: "Pobrane formularze",
+            data: [300, 450, 400, 520],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) W IV kwartale pobrano 520 formularzy.",
+        "B) W I kwartale odwiedzin było 1500.",
+        "C) Liczba pobranych formularzy stale rosła.",
+        "D) W III kwartale odwiedzin było 1700."
+      ],
+      correct: 0,
+      explanation: "W IV kwartale pobrano 520 formularzy, co jest najwyższą wartością. W I kwartale odwiedzin było 1200 (nie 1500), liczba formularzy spadła w III kwartale do 400 (nie rosła stale), a w III kwartale odwiedzin było 1400 (nie 1700)."
+    },
+    {
+      id: "e_t7_032",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "LICZBA WYSŁANYCH I DORĘCZONYCH PISM URZĘDOWYCH W KWARTAŁACH",
+      chart: {
+        type: "line",
+        xLabels: ["I kw.", "II kw.", "III kw.", "IV kw."],
+        datasets: [
+          {
+            label: "Pisma wysłane",
+            data: [800, 900, 850, 950],
+            color: "#c0392b"
+          },
+          {
+            label: "Pisma doręczone",
+            data: [750, 860, 840, 910],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) W IV kwartale wysłano 950 pism.",
+        "B) W II kwartale doręczono 900 pism.",
+        "C) Liczba pism wysłanych stale rosła.",
+        "D) W I kwartale doręczono więcej pism niż wysłano."
+      ],
+      correct: 0,
+      explanation: "W IV kwartale wysłano 950 pism, co jest najwyższą wartością. W II kwartale doręczono 860 (nie 900), liczba wysłanych spadła w III kwartale do 850 (nie rosła stale), a w I kwartale wysłano 800, a doręczono 750 (wysłano więcej)."
+    },
+    {
+      id: "e_t7_033",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "LICZBA WYDANYCH ZEZWOLEŃ I WNIESIONYCH ODWOŁAŃ W KWARTAŁACH",
+      chart: {
+        type: "bar",
+        xLabels: ["I kw.", "II kw.", "III kw.", "IV kw."],
+        datasets: [
+          {
+            label: "Zezwolenia",
+            data: [60, 75, 70, 80],
+            color: "#c0392b"
+          },
+          {
+            label: "Odwołania",
+            data: [10, 8, 12, 7],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) W IV kwartale wniesiono najmniej odwołań (7).",
+        "B) W I kwartale wydano 75 zezwoleń.",
+        "C) Liczba odwołań rosła w każdym kwartale.",
+        "D) W III kwartale wydano 80 zezwoleń."
+      ],
+      correct: 0,
+      explanation: "W IV kwartale wniesiono 7 odwołań, co jest najmniejszą wartością. W I kwartale wydano 60 zezwoleń (nie 75), liczba odwołań wahała się (10, 8, 12, 7, nie rosła), a w III kwartale wydano 70 zezwoleń (nie 80)."
+    },
+    {
+      id: "e_t7_034",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "LICZBA UCZESTNIKÓW WARSZTATÓW I WYDANYCH CERTYFIKATÓW W KWARTAŁACH",
+      chart: {
+        type: "line",
+        xLabels: ["I kw.", "II kw.", "III kw.", "IV kw."],
+        datasets: [
+          {
+            label: "Uczestnicy",
+            data: [40, 55, 50, 65],
+            color: "#c0392b"
+          },
+          {
+            label: "Certyfikaty",
+            data: [35, 50, 48, 60],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) W IV kwartale było 65 uczestników.",
+        "B) W II kwartale wydano 55 certyfikatów.",
+        "C) Liczba uczestników stale rosła.",
+        "D) W I kwartale wydano więcej certyfikatów niż było uczestników."
+      ],
+      correct: 0,
+      explanation: "W IV kwartale było 65 uczestników, co jest najwyższą wartością. W II kwartale wydano 50 certyfikatów (nie 55), liczba uczestników spadła w III kwartale do 50 (nie rosła stale), a w I kwartale było 40 uczestników i 35 certyfikatów (uczestników więcej)."
+    },
+    {
+      id: "e_t7_035",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "LICZBA ZAPYTAŃ MAILOWYCH I UDZIELONYCH ODPOWIEDZI W KWARTAŁACH",
+      chart: {
+        type: "bar",
+        xLabels: ["I kw.", "II kw.", "III kw.", "IV kw."],
+        datasets: [
+          {
+            label: "Zapytania",
+            data: [200, 180, 220, 240],
+            color: "#c0392b"
+          },
+          {
+            label: "Odpowiedzi",
+            data: [190, 180, 210, 235],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) W II kwartale liczba zapytań i odpowiedzi była równa (po 180).",
+        "B) W I kwartale udzielono 200 odpowiedzi.",
+        "C) Liczba zapytań stale rosła.",
+        "D) W IV kwartale udzielono 240 odpowiedzi."
+      ],
+      correct: 0,
+      explanation: "W II kwartale zarówno zapytań, jak i odpowiedzi było po 180. W I kwartale udzielono 190 odpowiedzi (nie 200), liczba zapytań spadła w II kwartale do 180 (nie rosła stale), a w IV kwartale udzielono 235 odpowiedzi (nie 240)."
+    },
+    {
+      id: "e_t7_036",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "LICZBA NOWYCH KART BIBLIOTECZNYCH I WYPOŻYCZEŃ W KWARTAŁACH",
+      chart: {
+        type: "line",
+        xLabels: ["I kw.", "II kw.", "III kw.", "IV kw."],
+        datasets: [
+          {
+            label: "Nowe karty",
+            data: [50, 45, 60, 55],
+            color: "#c0392b"
+          },
+          {
+            label: "Wypożyczenia",
+            data: [400, 380, 420, 500],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) W IV kwartale odnotowano 500 wypożyczeń.",
+        "B) W III kwartale wydano 55 nowych kart.",
+        "C) Liczba nowych kart stale rosła.",
+        "D) W I kwartale było 380 wypożyczeń."
+      ],
+      correct: 0,
+      explanation: "W IV kwartale odnotowano 500 wypożyczeń, co jest najwyższą wartością. W III kwartale wydano 60 nowych kart (nie 55), liczba nowych kart wahała się (50, 45, 60, 55, nie rosła stale), a w I kwartale było 400 wypożyczeń (nie 380)."
+    },
+    {
+      id: "e_t7_037",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "LICZBA ZGŁOSZEŃ AWARII I USUNIĘTYCH AWARII W KWARTAŁACH",
+      chart: {
+        type: "bar",
+        xLabels: ["I kw.", "II kw.", "III kw.", "IV kw."],
+        datasets: [
+          {
+            label: "Zgłoszenia awarii",
+            data: [35, 40, 30, 45],
+            color: "#c0392b"
+          },
+          {
+            label: "Usunięte awarie",
+            data: [30, 38, 32, 40],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) W III kwartale usunięto więcej awarii (32) niż zgłoszono (30).",
+        "B) W I kwartale zgłoszono 40 awarii.",
+        "C) Liczba zgłoszeń stale rosła.",
+        "D) W IV kwartale usunięto 45 awarii."
+      ],
+      correct: 0,
+      explanation: "W III kwartale usunięto 32 awarie przy 30 zgłoszonych, więc usunięto więcej. W I kwartale zgłoszono 35 (nie 40), liczba zgłoszeń spadła w III kwartale do 30 (nie rosła stale), a w IV kwartale usunięto 40 awarii (nie 45)."
+    },
+    {
+      id: "e_t7_038",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "LICZBA WYDANYCH POSIŁKÓW I ZAPISANYCH PODOPIECZNYCH W KWARTAŁACH",
+      chart: {
+        type: "line",
+        xLabels: ["I kw.", "II kw.", "III kw.", "IV kw."],
+        datasets: [
+          {
+            label: "Wydane posiłki",
+            data: [1000, 1200, 1100, 1300],
+            color: "#c0392b"
+          },
+          {
+            label: "Podopieczni",
+            data: [80, 90, 85, 95],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) W IV kwartale wydano 1300 posiłków.",
+        "B) W II kwartale było 95 podopiecznych.",
+        "C) Liczba podopiecznych stale rosła.",
+        "D) W I kwartale wydano 1200 posiłków."
+      ],
+      correct: 0,
+      explanation: "W IV kwartale wydano 1300 posiłków, co jest najwyższą wartością. W II kwartale było 90 podopiecznych (nie 95), liczba podopiecznych spadła w III kwartale do 85 (nie rosła stale), a w I kwartale wydano 1000 posiłków (nie 1200)."
+    },
+    {
+      id: "e_t7_039",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "LICZBA ZŁOŻONYCH I ROZPATRZONYCH WNIOSKÓW DOTACYJNYCH W KWARTAŁACH",
+      chart: {
+        type: "bar",
+        xLabels: ["I kw.", "II kw.", "III kw.", "IV kw."],
+        datasets: [
+          {
+            label: "Złożone wnioski",
+            data: [18, 24, 20, 28],
+            color: "#c0392b"
+          },
+          {
+            label: "Rozpatrzone wnioski",
+            data: [15, 22, 21, 25],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) W III kwartale rozpatrzono więcej wniosków (21) niż złożono (20).",
+        "B) W I kwartale złożono 24 wnioski.",
+        "C) Liczba złożonych wniosków stale rosła.",
+        "D) W IV kwartale rozpatrzono 28 wniosków."
+      ],
+      correct: 0,
+      explanation: "W III kwartale rozpatrzono 21 wniosków przy 20 złożonych, więc rozpatrzono więcej. W I kwartale złożono 18 (nie 24), liczba złożonych spadła w III kwartale do 20 (nie rosła stale), a w IV kwartale rozpatrzono 25 wniosków (nie 28)."
+    },
+    {
+      id: "e_t7_040",
+      typeId: 7,
+      level: "easy",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "LICZBA REJESTRACJI POJAZDÓW I WYREJESTROWAŃ W KWARTAŁACH",
+      chart: {
+        type: "line",
+        xLabels: ["I kw.", "II kw.", "III kw.", "IV kw."],
+        datasets: [
+          {
+            label: "Rejestracje",
+            data: [320, 300, 350, 380],
+            color: "#c0392b"
+          },
+          {
+            label: "Wyrejestrowania",
+            data: [90, 110, 100, 120],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) W IV kwartale dokonano 380 rejestracji.",
+        "B) W II kwartale wyrejestrowano 100 pojazdów.",
+        "C) Liczba rejestracji stale rosła.",
+        "D) W I kwartale rejestracji było 300."
+      ],
+      correct: 0,
+      explanation: "W IV kwartale dokonano 380 rejestracji, co jest najwyższą wartością. W II kwartale wyrejestrowano 110 pojazdów (nie 100), liczba rejestracji spadła w II kwartale do 300 (nie rosła stale), a w I kwartale rejestracji było 320 (nie 300)."
     }
   ],
 
@@ -2665,6 +5298,1006 @@ const QUESTIONS_EASY = {
       ],
       correct: 0,
       explanation: "Reguła wierszy: kształt zmienia się z koła na kwadrat. Reguła kolumn: górne pole 1 figura x, dolne 2 figury (pełna i x). Brakujące pole: dwa kwadraty — pełny i x. Opcja A: kwadrat pełny + kwadrat x — poprawna."
+    },
+    {
+      id: "e_t8_021",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "square",
+          fill: "empty"
+        },
+        bottomLeft: [
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ],
+        topRight: {
+          shape: "triangle",
+          fill: "empty"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "triangle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "solid"
+          }
+        ]
+      ],
+      correct: 1,
+      explanation: "Reguła wierszy: kształt zmienia się z kwadratu na trójkąt. Reguła kolumn: wypełnienie zmienia się z pustego na pełne. Brakujące pole: trójkąt z wypełnieniem pełnym. Opcja B — poprawna."
+    },
+    {
+      id: "e_t8_022",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "circle",
+          fill: "empty"
+        },
+        bottomLeft: [
+          {
+            shape: "circle",
+            fill: "x"
+          }
+        ],
+        topRight: {
+          shape: "square",
+          fill: "empty"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ]
+      ],
+      correct: 2,
+      explanation: "Reguła wierszy: kształt zmienia się z koła na kwadrat. Reguła kolumn: wypełnienie zmienia się z pustego na x. Brakujące pole: kwadrat z x. Opcja C — poprawna."
+    },
+    {
+      id: "e_t8_023",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "triangle",
+          fill: "solid"
+        },
+        bottomLeft: [
+          {
+            shape: "triangle",
+            fill: "empty"
+          }
+        ],
+        topRight: {
+          shape: "circle",
+          fill: "solid"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "circle",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "empty"
+          }
+        ]
+      ],
+      correct: 3,
+      explanation: "Reguła wierszy: kształt zmienia się z trójkąta na koło. Reguła kolumn: wypełnienie zmienia się z pełnego na puste. Brakujące pole: koło z wypełnieniem pustym. Opcja D — poprawna."
+    },
+    {
+      id: "e_t8_024",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "square",
+          fill: "x"
+        },
+        bottomLeft: [
+          {
+            shape: "square",
+            fill: "dot-center"
+          }
+        ],
+        topRight: {
+          shape: "triangle",
+          fill: "x"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "triangle",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "dot-center"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: kształt zmienia się z kwadratu na trójkąt. Reguła kolumn: wypełnienie zmienia się z x na dot-center. Brakujące pole: trójkąt z dot-center. Opcja A — poprawna."
+    },
+    {
+      id: "e_t8_025",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "circle",
+          fill: "solid"
+        },
+        bottomLeft: [
+          {
+            shape: "circle",
+            fill: "empty"
+          }
+        ],
+        topRight: {
+          shape: "triangle",
+          fill: "solid"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "triangle",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ]
+      ],
+      correct: 1,
+      explanation: "Reguła wierszy: kształt zmienia się z koła na trójkąt. Reguła kolumn: wypełnienie zmienia się z pełnego na puste. Brakujące pole: trójkąt z wypełnieniem pustym. Opcja B — poprawna."
+    },
+    {
+      id: "e_t8_026",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "triangle",
+          fill: "empty"
+        },
+        bottomLeft: [
+          {
+            shape: "triangle",
+            fill: "solid"
+          }
+        ],
+        topRight: {
+          shape: "square",
+          fill: "empty"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "solid"
+          }
+        ]
+      ],
+      correct: 2,
+      explanation: "Reguła wierszy: kształt zmienia się z trójkąta na kwadrat. Reguła kolumn: wypełnienie zmienia się z pustego na pełne. Brakujące pole: kwadrat z wypełnieniem pełnym. Opcja C — poprawna."
+    },
+    {
+      id: "e_t8_027",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "square",
+          fill: "solid"
+        },
+        bottomLeft: [
+          {
+            shape: "square",
+            fill: "x"
+          }
+        ],
+        topRight: {
+          shape: "circle",
+          fill: "solid"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "circle",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "x"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: kształt zmienia się z kwadratu na koło. Reguła kolumn: wypełnienie zmienia się z pełnego na x. Brakujące pole: koło z x. Opcja A — poprawna."
+    },
+    {
+      id: "e_t8_028",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "circle",
+          fill: "x"
+        },
+        bottomLeft: [
+          {
+            shape: "circle",
+            fill: "dot-center"
+          }
+        ],
+        topRight: {
+          shape: "triangle",
+          fill: "x"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "triangle",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "dot-center"
+          }
+        ]
+      ],
+      correct: 3,
+      explanation: "Reguła wierszy: kształt zmienia się z koła na trójkąt. Reguła kolumn: wypełnienie zmienia się z x na dot-center. Brakujące pole: trójkąt z dot-center. Opcja D — poprawna."
+    },
+    {
+      id: "e_t8_029",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "square",
+          fill: "empty"
+        },
+        bottomLeft: [
+          {
+            shape: "square",
+            fill: "dot-center"
+          }
+        ],
+        topRight: {
+          shape: "circle",
+          fill: "empty"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "circle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "dot-center"
+          }
+        ]
+      ],
+      correct: 1,
+      explanation: "Reguła wierszy: kształt zmienia się z kwadratu na koło. Reguła kolumn: wypełnienie zmienia się z pustego na dot-center. Brakujące pole: koło z dot-center. Opcja B — poprawna."
+    },
+    {
+      id: "e_t8_030",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "triangle",
+          fill: "x"
+        },
+        bottomLeft: [
+          {
+            shape: "triangle",
+            fill: "solid"
+          }
+        ],
+        topRight: {
+          shape: "circle",
+          fill: "x"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "circle",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ]
+      ],
+      correct: 2,
+      explanation: "Reguła wierszy: kształt zmienia się z trójkąta na koło. Reguła kolumn: wypełnienie zmienia się z x na pełne. Brakujące pole: koło z wypełnieniem pełnym. Opcja C — poprawna."
+    },
+    {
+      id: "e_t8_031",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "circle",
+          fill: "empty"
+        },
+        bottomLeft: [
+          {
+            shape: "circle",
+            fill: "solid"
+          }
+        ],
+        topRight: {
+          shape: "triangle",
+          fill: "empty"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "triangle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "solid"
+          }
+        ]
+      ],
+      correct: 3,
+      explanation: "Reguła wierszy: kształt zmienia się z koła na trójkąt. Reguła kolumn: wypełnienie zmienia się z pustego na pełne. Brakujące pole: trójkąt z wypełnieniem pełnym. Opcja D — poprawna."
+    },
+    {
+      id: "e_t8_032",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "square",
+          fill: "dot-center"
+        },
+        bottomLeft: [
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        topRight: {
+          shape: "triangle",
+          fill: "dot-center"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "triangle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "empty"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: kształt zmienia się z kwadratu na trójkąt. Reguła kolumn: wypełnienie zmienia się z dot-center na puste. Brakujące pole: trójkąt z wypełnieniem pustym. Opcja A — poprawna."
+    },
+    {
+      id: "e_t8_033",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "triangle",
+          fill: "solid"
+        },
+        bottomLeft: [
+          {
+            shape: "triangle",
+            fill: "x"
+          }
+        ],
+        topRight: {
+          shape: "square",
+          fill: "solid"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "x"
+          }
+        ]
+      ],
+      correct: 1,
+      explanation: "Reguła wierszy: kształt zmienia się z trójkąta na kwadrat. Reguła kolumn: wypełnienie zmienia się z pełnego na x. Brakujące pole: kwadrat z x. Opcja B — poprawna."
+    },
+    {
+      id: "e_t8_034",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "circle",
+          fill: "solid"
+        },
+        bottomLeft: [
+          {
+            shape: "circle",
+            fill: "dot-center"
+          }
+        ],
+        topRight: {
+          shape: "square",
+          fill: "solid"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "dot-center"
+          }
+        ]
+      ],
+      correct: 2,
+      explanation: "Reguła wierszy: kształt zmienia się z koła na kwadrat. Reguła kolumn: wypełnienie zmienia się z pełnego na dot-center. Brakujące pole: kwadrat z dot-center. Opcja C — poprawna."
+    },
+    {
+      id: "e_t8_035",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "square",
+          fill: "x"
+        },
+        bottomLeft: [
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        topRight: {
+          shape: "circle",
+          fill: "x"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "circle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "empty"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: kształt zmienia się z kwadratu na koło. Reguła kolumn: wypełnienie zmienia się z x na puste. Brakujące pole: koło z wypełnieniem pustym. Opcja A — poprawna."
+    },
+    {
+      id: "e_t8_036",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "triangle",
+          fill: "empty"
+        },
+        bottomLeft: [
+          {
+            shape: "triangle",
+            fill: "dot-center"
+          }
+        ],
+        topRight: {
+          shape: "circle",
+          fill: "empty"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "circle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "dot-center"
+          }
+        ]
+      ],
+      correct: 3,
+      explanation: "Reguła wierszy: kształt zmienia się z trójkąta na koło. Reguła kolumn: wypełnienie zmienia się z pustego na dot-center. Brakujące pole: koło z dot-center. Opcja D — poprawna."
+    },
+    {
+      id: "e_t8_037",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "square",
+          fill: "solid"
+        },
+        bottomLeft: [
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        topRight: {
+          shape: "triangle",
+          fill: "solid"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "triangle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "empty"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: kształt zmienia się z kwadratu na trójkąt. Reguła kolumn: wypełnienie zmienia się z pełnego na puste. Brakujące pole: trójkąt z wypełnieniem pustym. Opcja A — poprawna."
+    },
+    {
+      id: "e_t8_038",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "circle",
+          fill: "x"
+        },
+        bottomLeft: [
+          {
+            shape: "circle",
+            fill: "empty"
+          }
+        ],
+        topRight: {
+          shape: "square",
+          fill: "x"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "square",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "empty"
+          }
+        ]
+      ],
+      correct: 1,
+      explanation: "Reguła wierszy: kształt zmienia się z koła na kwadrat. Reguła kolumn: wypełnienie zmienia się z x na puste. Brakujące pole: kwadrat z wypełnieniem pustym. Opcja B — poprawna."
+    },
+    {
+      id: "e_t8_039",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "triangle",
+          fill: "dot-center"
+        },
+        bottomLeft: [
+          {
+            shape: "triangle",
+            fill: "x"
+          }
+        ],
+        topRight: {
+          shape: "square",
+          fill: "dot-center"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "square",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "x"
+          }
+        ]
+      ],
+      correct: 2,
+      explanation: "Reguła wierszy: kształt zmienia się z trójkąta na kwadrat. Reguła kolumn: wypełnienie zmienia się z dot-center na x. Brakujące pole: kwadrat z x. Opcja C — poprawna."
+    },
+    {
+      id: "e_t8_040",
+      typeId: 8,
+      level: "easy",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "square",
+          fill: "empty"
+        },
+        bottomLeft: [
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ],
+        topRight: {
+          shape: "circle",
+          fill: "empty"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "circle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "solid"
+          }
+        ]
+      ],
+      correct: 2,
+      explanation: "Reguła wierszy: kształt zmienia się z kwadratu na koło. Reguła kolumn: wypełnienie zmienia się z pustego na pełne. Brakujące pole: koło z wypełnieniem pełnym. Opcja C — poprawna."
     }
   ]
 };
@@ -3071,6 +6704,316 @@ const QUESTIONS_HARD = {
       ],
       correct: 2,
       explanation: "Dyrektywa UE wymaga implementacji przez państwo członkowskie — państwa muszą ją przetransponować do prawa krajowego. Analogicznie rozporządzenie UE charakteryzuje się bezpośrednim stosowaniem w państwach członkowskich bez potrzeby implementacji — to fundamentalna różnica między tymi aktami."
+    },
+    {
+      id: "h_t1_021",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["lex retro non agit", "zakaz wstecznego działania prawa"],
+      rightTop: "ignorantia iuris nocet",
+      options: [
+        "A) nieznajomość prawa szkodzi",
+        "B) prawo nie działa wstecz",
+        "C) prawo zwyczajowe wiąże",
+        "D) wątpliwości na korzyść oskarżonego"
+      ],
+      correct: 0,
+      explanation: "Paremia lex retro non agit oznacza zakaz wstecznego działania prawa. Analogicznie ignorantia iuris nocet oznacza, że nieznajomość prawa szkodzi. Pozostałe to znaczenia innych paremii (in dubio pro reo)."
+    },
+    {
+      id: "h_t1_022",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["Trybunał Konstytucyjny", "kontrola zgodności ustaw z Konstytucją"],
+      rightTop: "Trybunał Stanu",
+      options: [
+        "A) rozstrzyganie sporów kompetencyjnych",
+        "B) odpowiedzialność konstytucyjna najwyższych urzędników",
+        "C) badanie ważności wyborów",
+        "D) kontrola legalności decyzji administracyjnych"
+      ],
+      correct: 1,
+      explanation: "Trybunał Konstytucyjny bada zgodność ustaw z Konstytucją — to jego główna funkcja. Analogicznie Trybunał Stanu orzeka o odpowiedzialności konstytucyjnej najwyższych urzędników państwowych za naruszenie Konstytucji lub ustaw."
+    },
+    {
+      id: "h_t1_023",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["nullum crimen sine lege", "nie ma przestępstwa bez ustawy"],
+      rightTop: "nulla poena sine lege",
+      options: [
+        "A) nie ma kary bez ustawy",
+        "B) nie ma winy bez zamiaru",
+        "C) nie ma procesu bez oskarżenia",
+        "D) nie ma sądu bez ustawy"
+      ],
+      correct: 0,
+      explanation: "Zasada nullum crimen sine lege oznacza, że nie ma przestępstwa bez ustawy je określającej. Analogicznie nulla poena sine lege oznacza, że nie ma kary bez podstawy ustawowej — kara musi być przewidziana w ustawie."
+    },
+    {
+      id: "h_t1_024",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["Rzecznik Praw Obywatelskich", "ochrona wolności i praw człowieka"],
+      rightTop: "Najwyższa Izba Kontroli",
+      options: [
+        "A) reprezentowanie Skarbu Państwa",
+        "B) ściganie przestępstw urzędniczych",
+        "C) kontrola działalności organów państwa",
+        "D) stanowienie aktów wykonawczych"
+      ],
+      correct: 2,
+      explanation: "Rzecznik Praw Obywatelskich stoi na straży wolności i praw człowieka i obywatela. Analogicznie Najwyższa Izba Kontroli kontroluje działalność organów administracji rządowej, NBP i innych jednostek pod względem legalności, gospodarności, celowości i rzetelności."
+    },
+    {
+      id: "h_t1_025",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["pacta sunt servanda", "umów należy dotrzymywać"],
+      rightTop: "clausula rebus sic stantibus",
+      options: [
+        "A) umowa wiąże tylko strony",
+        "B) zmiana okoliczności pozwala zmienić zobowiązanie",
+        "C) niemożliwość świadczenia zwalnia dłużnika",
+        "D) milczenie nie oznacza zgody"
+      ],
+      correct: 1,
+      explanation: "Pacta sunt servanda oznacza obowiązek dotrzymywania umów. Analogicznie clausula rebus sic stantibus to wyjątek od tej zasady — pozwala zmodyfikować lub rozwiązać zobowiązanie wskutek nadzwyczajnej zmiany stosunków (okoliczności)."
+    },
+    {
+      id: "h_t1_026",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["referendum", "bezpośrednie wyrażenie woli przez obywateli"],
+      rightTop: "wybory",
+      options: [
+        "A) wyłonienie przedstawicieli",
+        "B) konsultacje społeczne",
+        "C) inicjatywa ustawodawcza",
+        "D) plebiscyt terytorialny"
+      ],
+      correct: 0,
+      explanation: "Referendum jest formą demokracji bezpośredniej — obywatele wyrażają swoją wolę wprost w danej sprawie. Analogicznie wybory służą wyłonieniu przedstawicieli, czyli są formą demokracji pośredniej (przedstawicielskiej)."
+    },
+    {
+      id: "h_t1_027",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["weto ustawodawcze Prezydenta", "odmowa podpisania ustawy"],
+      rightTop: "wniosek o ponowne rozpatrzenie",
+      options: [
+        "A) przekazanie ustawy do Trybunału",
+        "B) ponowne uchwalenie przez Sejm",
+        "C) zwrot ustawy do Senatu",
+        "D) wstrzymanie publikacji ustawy"
+      ],
+      correct: 1,
+      explanation: "Weto ustawodawcze Prezydenta polega na odmowie podpisania ustawy i przekazaniu jej Sejmowi do ponownego rozpatrzenia. Analogicznie skutkiem wniosku o ponowne rozpatrzenie jest ponowne uchwalenie ustawy przez Sejm (wymaganą większością 3/5), które obala weto."
+    },
+    {
+      id: "h_t1_028",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["domniemanie niewinności", "ciężar dowodu po stronie oskarżyciela"],
+      rightTop: "in dubio pro reo",
+      options: [
+        "A) niedające się usunąć wątpliwości na korzyść oskarżonego",
+        "B) prawo do obrony",
+        "C) zakaz reformationis in peius",
+        "D) zasada bezpośredniości"
+      ],
+      correct: 0,
+      explanation: "Domniemanie niewinności skutkuje tym, że ciężar dowodu spoczywa na oskarżycielu. Analogicznie zasada in dubio pro reo oznacza, że niedające się usunąć wątpliwości rozstrzyga się na korzyść oskarżonego."
+    },
+    {
+      id: "h_t1_029",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["zasiedzenie", "nabycie własności przez upływ czasu"],
+      rightTop: "przedawnienie",
+      options: [
+        "A) wygaśnięcie zobowiązania przez zapłatę",
+        "B) utrata możliwości dochodzenia roszczenia przez upływ czasu",
+        "C) przeniesienie własności przez umowę",
+        "D) ustanowienie ograniczonego prawa rzeczowego"
+      ],
+      correct: 1,
+      explanation: "Zasiedzenie to nabycie własności wskutek upływu czasu i nieprzerwanego posiadania. Analogicznie przedawnienie to instytucja, w której upływ czasu powoduje, że dłużnik może uchylić się od zaspokojenia roszczenia — wierzyciel traci możliwość skutecznego dochodzenia roszczenia."
+    },
+    {
+      id: "h_t1_030",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["wojewoda", "przedstawiciel rządu w województwie"],
+      rightTop: "marszałek województwa",
+      options: [
+        "A) przewodniczący sejmiku",
+        "B) organ wykonawczy samorządu województwa",
+        "C) zwierzchnik administracji zespolonej",
+        "D) reprezentant Skarbu Państwa"
+      ],
+      correct: 1,
+      explanation: "Wojewoda jest przedstawicielem Rady Ministrów (rządu) w województwie — reprezentuje administrację rządową. Analogicznie marszałek województwa stoi na czele zarządu, będąc organem wykonawczym samorządu województwa."
+    },
+    {
+      id: "h_t1_031",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["ratyfikacja", "związanie się umową międzynarodową"],
+      rightTop: "wypowiedzenie",
+      options: [
+        "A) zawieszenie stosowania umowy",
+        "B) przystąpienie do umowy",
+        "C) zakończenie obowiązywania umowy",
+        "D) zmiana treści umowy"
+      ],
+      correct: 2,
+      explanation: "Ratyfikacja prowadzi do związania się państwa umową międzynarodową — to akt wyrażenia ostatecznej zgody na związanie. Analogicznie wypowiedzenie prowadzi do zakończenia obowiązywania umowy w stosunku do danego państwa."
+    },
+    {
+      id: "h_t1_032",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["nemo iudex in causa sua", "nikt nie może być sędzią we własnej sprawie"],
+      rightTop: "audiatur et altera pars",
+      options: [
+        "A) niech będzie wysłuchana także druga strona",
+        "B) wyrok wiąże tylko strony",
+        "C) sędzia zna prawo",
+        "D) gdzie prawo, tam i jego naruszenie"
+      ],
+      correct: 0,
+      explanation: "Paremia nemo iudex in causa sua wyraża zakaz orzekania we własnej sprawie. Analogicznie audiatur et altera pars to zasada wysłuchania także drugiej strony — gwarancja bezstronnego i sprawiedliwego procesu."
+    },
+    {
+      id: "h_t1_033",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["immunitet poselski", "ochrona przed pociągnięciem do odpowiedzialności"],
+      rightTop: "mandat poselski",
+      options: [
+        "A) wynagrodzenie posła",
+        "B) pełnomocnictwo do reprezentowania wyborców",
+        "C) prawo do interpelacji",
+        "D) członkostwo w komisji"
+      ],
+      correct: 1,
+      explanation: "Immunitet poselski zapewnia ochronę przed pociągnięciem do odpowiedzialności bez zgody Sejmu. Analogicznie mandat poselski to umocowanie (pełnomocnictwo) do sprawowania funkcji przedstawiciela Narodu, uzyskane w wyborach."
+    },
+    {
+      id: "h_t1_034",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["abolicja", "darowanie karalności przed wyrokiem"],
+      rightTop: "amnestia",
+      options: [
+        "A) złagodzenie kar już orzeczonych",
+        "B) zatarcie skazania z mocy prawa",
+        "C) zawieszenie wykonania kary",
+        "D) ułaskawienie indywidualne"
+      ],
+      correct: 0,
+      explanation: "Abolicja polega na darowaniu lub zakazie wszczęcia postępowania, zanim zapadnie wyrok. Analogicznie amnestia dotyczy osób już skazanych — polega na złagodzeniu lub darowaniu kar już orzeczonych prawomocnymi wyrokami."
+    },
+    {
+      id: "h_t1_035",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["zażalenie", "środek na postanowienie"],
+      rightTop: "apelacja",
+      options: [
+        "A) środek na wyrok pierwszej instancji",
+        "B) środek nadzwyczajny",
+        "C) wniosek o wznowienie postępowania",
+        "D) skarga na bezczynność"
+      ],
+      correct: 0,
+      explanation: "Zażalenie to zwyczajny środek odwoławczy przysługujący na postanowienie. Analogicznie apelacja to zwyczajny środek odwoławczy przysługujący na wyrok sądu pierwszej instancji."
+    },
+    {
+      id: "h_t1_036",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["onus probandi", "ciężar dowodu"],
+      rightTop: "res iudicata",
+      options: ["A) sprawa osądzona", "B) rzecz niczyja", "C) stan wyższej konieczności", "D) dobra wiara"],
+      correct: 0,
+      explanation: "Łacińskie onus probandi oznacza ciężar dowodu. Analogicznie res iudicata oznacza sprawę prawomocnie osądzoną — powagę rzeczy osądzonej, która stanowi przeszkodę do ponownego rozpoznania tej samej sprawy."
+    },
+    {
+      id: "h_t1_037",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["Senat", "izba wyższa parlamentu"],
+      rightTop: "Sejm",
+      options: ["A) izba refleksji", "B) izba niższa parlamentu", "C) organ kontroli", "D) zgromadzenie narodowe"],
+      correct: 1,
+      explanation: "Senat jest izbą wyższą parlamentu. Analogicznie Sejm jest izbą niższą parlamentu. Zgromadzenie Narodowe to obie izby obradujące wspólnie, a nie sam Sejm."
+    },
+    {
+      id: "h_t1_038",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["votum nieufności", "odwołanie rządu lub ministra"],
+      rightTop: "votum zaufania",
+      options: [
+        "A) potwierdzenie poparcia dla rządu",
+        "B) powołanie nowego premiera",
+        "C) skrócenie kadencji Sejmu",
+        "D) zmiana składu Rady Ministrów"
+      ],
+      correct: 0,
+      explanation: "Wotum nieufności prowadzi do odwołania Rady Ministrów lub konkretnego ministra. Analogicznie wotum zaufania to instrument, przez który Sejm potwierdza poparcie dla rządu — jego uchwalenie umożliwia dalsze funkcjonowanie gabinetu."
+    },
+    {
+      id: "h_t1_039",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["nowelizacja", "zmiana treści aktu prawnego"],
+      rightTop: "konsolidacja",
+      options: [
+        "A) uchylenie aktu prawnego",
+        "B) ujednolicenie tekstu w jednym akcie",
+        "C) ogłoszenie aktu prawnego",
+        "D) interpretacja przepisów"
+      ],
+      correct: 1,
+      explanation: "Nowelizacja polega na zmianie (modyfikacji) treści obowiązującego aktu prawnego. Analogicznie konsolidacja (tekst jednolity) polega na ujednoliceniu i scaleniu przepisów wraz z wprowadzonymi zmianami w jednym, spójnym tekście aktu."
+    },
+    {
+      id: "h_t1_040",
+      typeId: 1,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      leftPair: ["domniemanie kompetencji", "działanie w granicach przyznanych zadań"],
+      rightTop: "uznanie administracyjne",
+      options: [
+        "A) bezwzględne związanie organu ustawą",
+        "B) swoboda wyboru rozstrzygnięcia w granicach prawa",
+        "C) obowiązek wydania określonej decyzji",
+        "D) brak podstawy prawnej działania"
+      ],
+      correct: 1,
+      explanation: "Domniemanie kompetencji wiąże się z działaniem organu w granicach przyznanych mu zadań. Analogicznie uznanie administracyjne oznacza przyznaną organowi swobodę wyboru rozstrzygnięcia spośród dopuszczalnych wariantów, w granicach wyznaczonych przez prawo."
     }
   ],
   type2: [
@@ -3473,6 +7416,326 @@ const QUESTIONS_HARD = {
       ],
       correct: 4,
       explanation: "PIT, VAT i podatek akcyzowy są instrumentami polityki fiskalnej państwa — każdy z nich służy pozyskiwaniu dochodów budżetu państwa i jest narzędziem oddziaływania na gospodarkę. VAT i akcyza to podatki pośrednie, ale PIT jest bezpośredni, więc B jest zbyt wąskie; wszystkie trzy są natomiast instrumentami fiskalnej polityki państwa."
+    },
+    {
+      id: "h_t2_021",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Skarga konstytucyjna", "Wniosek uprawnionego podmiotu", "Pytanie prawne sądu"],
+      options: [
+        "A) środki zaskarżenia w postępowaniu cywilnym",
+        "B) sposoby wszczęcia postępowania przed Trybunałem Konstytucyjnym",
+        "C) skargi do sądu administracyjnego",
+        "D) instytucje prawa karnego",
+        "E) formy nadzoru nad samorządem"
+      ],
+      correct: 1,
+      explanation: "Skarga konstytucyjna, wniosek uprawnionego podmiotu i pytanie prawne sądu to sposoby inicjowania postępowania przed Trybunałem Konstytucyjnym."
+    },
+    {
+      id: "h_t2_022",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Dolus", "Culpa", "Casus"],
+      options: [
+        "A) rodzaje umów",
+        "B) łacińskie określenia stron procesu",
+        "C) postacie odnoszące się do winy i przypadku",
+        "D) etapy postępowania egzekucyjnego",
+        "E) źródła prawa rzymskiego"
+      ],
+      correct: 2,
+      explanation: "Dolus (wina umyślna), culpa (wina nieumyślna) i casus (przypadek) to łacińskie pojęcia opisujące stronę podmiotową i odpowiedzialność."
+    },
+    {
+      id: "h_t2_023",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Ratyfikacja", "Wypowiedzenie", "Akcesja"],
+      options: [
+        "A) czynności dotyczące umów międzynarodowych",
+        "B) etapy postępowania administracyjnego",
+        "C) rodzaje aktów prawa miejscowego",
+        "D) formy działania sądu",
+        "E) instytucje prawa rodzinnego"
+      ],
+      correct: 0,
+      explanation: "Ratyfikacja, wypowiedzenie i akcesja to czynności związane z umowami międzynarodowymi."
+    },
+    {
+      id: "h_t2_024",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Hipoteka", "Zastaw", "Przewłaszczenie na zabezpieczenie"],
+      options: [
+        "A) rodzaje umów najmu",
+        "B) sposoby zabezpieczenia wierzytelności",
+        "C) tytuły egzekucyjne",
+        "D) formy spadkobrania",
+        "E) rodzaje pełnomocnictw"
+      ],
+      correct: 1,
+      explanation: "Hipoteka, zastaw i przewłaszczenie na zabezpieczenie to sposoby zabezpieczenia wierzytelności."
+    },
+    {
+      id: "h_t2_025",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Nieważność", "Wzruszalność", "Bezskuteczność"],
+      options: [
+        "A) etapy wykładni prawa",
+        "B) rodzaje wad czynności prawnej i jej sankcji",
+        "C) zasady postępowania dowodowego",
+        "D) formy nadzoru wojewody",
+        "E) typy orzeczeń sądowych"
+      ],
+      correct: 1,
+      explanation: "Nieważność, wzruszalność i bezskuteczność to rodzaje sankcji wadliwości czynności prawnej."
+    },
+    {
+      id: "h_t2_026",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Wykładnia językowa", "Wykładnia systemowa", "Wykładnia celowościowa"],
+      options: [
+        "A) rodzaje wykładni prawa",
+        "B) zasady techniki legislacyjnej",
+        "C) etapy procesu ustawodawczego",
+        "D) rodzaje domniemań prawnych",
+        "E) formy publikacji aktów"
+      ],
+      correct: 0,
+      explanation: "Wykładnia językowa, systemowa i celowościowa to metody (rodzaje) wykładni prawa."
+    },
+    {
+      id: "h_t2_027",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Erga omnes", "Inter partes", "Ex tunc"],
+      options: [
+        "A) zasady ustroju sądów",
+        "B) łacińskie określenia skutków i zakresu orzeczeń",
+        "C) rodzaje terminów procesowych",
+        "D) formy reprezentacji",
+        "E) typy zobowiązań"
+      ],
+      correct: 1,
+      explanation: "Erga omnes (wobec wszystkich), inter partes (między stronami) i ex tunc (z mocą wsteczną) to łacińskie określenia zakresu i skutków orzeczeń lub czynności prawnych."
+    },
+    {
+      id: "h_t2_028",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Sejm", "Senat", "Zgromadzenie Narodowe"],
+      options: [
+        "A) organy samorządu terytorialnego",
+        "B) organy władzy ustawodawczej w Polsce",
+        "C) sądy powszechne",
+        "D) organy kontroli państwowej",
+        "E) organy administracji rządowej"
+      ],
+      correct: 1,
+      explanation: "Sejm, Senat i Zgromadzenie Narodowe to organy władzy ustawodawczej w Polsce."
+    },
+    {
+      id: "h_t2_029",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Lex retro non agit", "Lex specialis derogat legi generali", "Lex superior derogat legi inferiori"],
+      options: [
+        "A) reguły kolizyjne i zasady obowiązywania prawa",
+        "B) rodzaje umów cywilnoprawnych",
+        "C) zasady postępowania dowodowego",
+        "D) formy aktów administracyjnych",
+        "E) typy odpowiedzialności karnej"
+      ],
+      correct: 0,
+      explanation: "Te trzy łacińskie paremie to reguły kolizyjne i zasady dotyczące obowiązywania oraz stosowania prawa."
+    },
+    {
+      id: "h_t2_030",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Stan wojenny", "Stan wyjątkowy", "Stan klęski żywiołowej"],
+      options: [
+        "A) rodzaje postępowań sądowych",
+        "B) stany nadzwyczajne w Konstytucji RP",
+        "C) formy nadzoru nad samorządem",
+        "D) etapy procesu legislacyjnego",
+        "E) rodzaje immunitetów"
+      ],
+      correct: 1,
+      explanation: "Stan wojenny, stan wyjątkowy i stan klęski żywiołowej to stany nadzwyczajne przewidziane w Konstytucji RP."
+    },
+    {
+      id: "h_t2_031",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Domniemanie niewinności", "In dubio pro reo", "Prawo do obrony"],
+      options: [
+        "A) zasady procesu karnego",
+        "B) rodzaje środków zaskarżenia",
+        "C) zasady postępowania egzekucyjnego",
+        "D) formy działania administracji",
+        "E) reguły wykładni"
+      ],
+      correct: 0,
+      explanation: "Domniemanie niewinności, zasada in dubio pro reo i prawo do obrony to gwarancyjne zasady procesu karnego."
+    },
+    {
+      id: "h_t2_032",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Dyrektywa", "Rozporządzenie unijne", "Decyzja unijna"],
+      options: [
+        "A) akty prawa miejscowego",
+        "B) wtórne źródła prawa Unii Europejskiej",
+        "C) umowy międzynarodowe",
+        "D) rodzaje wyroków TSUE",
+        "E) akty prawa wewnętrznego"
+      ],
+      correct: 1,
+      explanation: "Dyrektywa, rozporządzenie i decyzja to akty prawa pochodnego (wtórnego) Unii Europejskiej."
+    },
+    {
+      id: "h_t2_033",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Wznowienie postępowania", "Stwierdzenie nieważności decyzji", "Uchylenie decyzji"],
+      options: [
+        "A) zwyczajne środki odwoławcze",
+        "B) nadzwyczajne tryby wzruszania ostatecznych decyzji administracyjnych",
+        "C) formy zawarcia ugody",
+        "D) rodzaje aktów nadzoru",
+        "E) etapy postępowania dowodowego"
+      ],
+      correct: 1,
+      explanation: "Wznowienie postępowania, stwierdzenie nieważności i uchylenie to nadzwyczajne tryby wzruszania ostatecznych decyzji administracyjnych."
+    },
+    {
+      id: "h_t2_034",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Najem", "Dzierżawa", "Użyczenie"],
+      options: [
+        "A) sposoby zabezpieczenia kredytu",
+        "B) umowy o korzystanie z cudzej rzeczy",
+        "C) ograniczone prawa rzeczowe",
+        "D) formy nabycia własności",
+        "E) rodzaje spadkobrania"
+      ],
+      correct: 1,
+      explanation: "Najem, dzierżawa i użyczenie to umowy nazwane dotyczące korzystania z cudzej rzeczy."
+    },
+    {
+      id: "h_t2_035",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Ius cogens", "Ius dispositivum", "Norma sankcjonująca"],
+      options: [
+        "A) rodzaje norm prawnych",
+        "B) źródła prawa międzynarodowego",
+        "C) etapy postępowania",
+        "D) zasady techniki prawodawczej",
+        "E) formy odpowiedzialności"
+      ],
+      correct: 0,
+      explanation: "Ius cogens (normy bezwzględnie wiążące), ius dispositivum (normy względnie wiążące) i norma sankcjonująca to klasyfikacje (rodzaje) norm prawnych."
+    },
+    {
+      id: "h_t2_036",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Najwyższa Izba Kontroli", "Rzecznik Praw Obywatelskich", "Krajowa Rada Radiofonii i Telewizji"],
+      options: [
+        "A) sądy szczególne",
+        "B) organy kontroli państwowej i ochrony prawa",
+        "C) organy samorządu terytorialnego",
+        "D) organy administracji rządowej",
+        "E) organy władzy ustawodawczej"
+      ],
+      correct: 1,
+      explanation: "NIK, RPO i KRRiT to organy kontroli państwowej i ochrony prawa w Konstytucji RP."
+    },
+    {
+      id: "h_t2_037",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Onus probandi", "Praesumptio", "Notorium"],
+      options: [
+        "A) łacińskie pojęcia z zakresu dowodzenia i ciężaru dowodu",
+        "B) rodzaje wyroków",
+        "C) zasady wykładni",
+        "D) etapy mediacji",
+        "E) formy pełnomocnictwa"
+      ],
+      correct: 0,
+      explanation: "Onus probandi (ciężar dowodu), praesumptio (domniemanie) i notorium (fakt notoryjny) to łacińskie pojęcia dotyczące dowodzenia."
+    },
+    {
+      id: "h_t2_038",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Weto ustawodawcze", "Podpisanie ustawy", "Skierowanie do Trybunału Konstytucyjnego"],
+      options: [
+        "A) kompetencje Sejmu",
+        "B) uprawnienia Prezydenta RP w procesie legislacyjnym",
+        "C) zadania Senatu",
+        "D) funkcje Rady Ministrów",
+        "E) czynności Marszałka Sejmu"
+      ],
+      correct: 1,
+      explanation: "Weto, podpisanie ustawy i skierowanie do TK to uprawnienia Prezydenta RP na etapie podpisania ustawy."
+    },
+    {
+      id: "h_t2_039",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Vacatio legis", "Promulgacja", "Derogacja"],
+      options: [
+        "A) etapy postępowania sądowego",
+        "B) pojęcia związane z obowiązywaniem i ogłaszaniem aktów prawnych",
+        "C) rodzaje wykładni",
+        "D) formy nadzoru",
+        "E) typy umów"
+      ],
+      correct: 1,
+      explanation: "Vacatio legis, promulgacja i derogacja to pojęcia związane z wejściem w życie, ogłaszaniem i uchylaniem aktów prawnych."
+    },
+    {
+      id: "h_t2_040",
+      typeId: 2,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna. Wybierz wyraz, który najlepiej pasuje do trzech wyrazów:",
+      words: ["Spółka jawna", "Spółka komandytowa", "Spółka partnerska"],
+      options: [
+        "A) spółki kapitałowe",
+        "B) spółki osobowe prawa handlowego",
+        "C) formy działalności jednoosobowej",
+        "D) organy spółki",
+        "E) rodzaje stowarzyszeń"
+      ],
+      correct: 1,
+      explanation: "Spółka jawna, komandytowa i partnerska to spółki osobowe uregulowane w Kodeksie spółek handlowych."
     }
   ],
   type3: [
@@ -4435,6 +8698,626 @@ const QUESTIONS_HARD = {
       ],
       correct: 2,
       explanation: "Charakterystyczny kształt krzywej — gwałtowny wzrost po zmianie, a potem stopniowy powrót do normy — wskazuje na efekt rotacji kierowniczej. Zmiana kadry kierowniczej jest wspólną przyczyną: nowi kierownicy intensywnie audytują procesy (więcej wykrytych nieprawidłowości) i jednocześnie wdrażają własne standardy przez szkolenia. Oba efekty wygasają w miarę stabilizacji."
+    },
+    {
+      id: "h_t3_021",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Instytucja wdrażająca fundusze unijne odnotowała, że w ostatnim kwartale okresu programowania gwałtownie rośnie liczba składanych wniosków o płatność końcową. W tym samym czasie wzrasta liczba wniosków beneficjentów o aneksowanie umów o dofinansowanie.",
+      chart: {
+        type: "bar",
+        xLabels: ["IV kw. 2021", "II kw. 2022", "IV kw. 2022", "II kw. 2023"],
+        datasets: [
+          {
+            label: "Wnioski o płatność końcową (szt.)",
+            data: [40, 90, 180, 520],
+            color: "#c0392b"
+          },
+          {
+            label: "Wnioski o aneksowanie umów (szt.)",
+            data: [30, 70, 140, 410],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby wniosków o płatność końcową powoduje wzrost wniosków o aneksowanie umów.",
+        "B) Wzrost liczby wniosków o aneksowanie umów powoduje wzrost wniosków o płatność końcową.",
+        "C) Zbliżający się termin kwalifikowalności wydatków na zamknięcie perspektywy finansowej UE jednocześnie wymusza domykanie projektów i renegocjowanie warunków umów.",
+        "D) Brak związku przyczynowo-skutkowego między wnioskami o płatność końcową a wnioskami o aneksowanie umów."
+      ],
+      correct: 2,
+      explanation: "Koniec perspektywy finansowej UE i graniczny termin kwalifikowalności wydatków to wspólny czynnik. Beneficjenci jednocześnie domykają projekty (płatność końcowa) i renegocjują harmonogramy (aneksy), aby zdążyć przed terminem. Oba procesy wynikają z deadline'u, nie z siebie nawzajem."
+    },
+    {
+      id: "h_t3_022",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Po wejściu w życie nowelizacji ustawy o ochronie danych osobowych urząd odnotował wzrost liczby zgłoszeń naruszeń do organu nadzorczego. W tym samym okresie wzrosła liczba wniosków o szkolenia z zakresu cyberbezpieczeństwa składanych przez jednostki.",
+      chart: {
+        type: "line",
+        xLabels: ["I kw. (przed)", "II kw.", "III kw.", "IV kw. (po)"],
+        datasets: [
+          {
+            label: "Zgłoszenia naruszeń (szt.)",
+            data: [20, 35, 90, 260],
+            color: "#c0392b"
+          },
+          {
+            label: "Wnioski o szkolenia (szt.)",
+            data: [15, 30, 70, 210],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost zgłoszeń naruszeń powoduje wzrost wniosków o szkolenia z cyberbezpieczeństwa.",
+        "B) Wzrost wniosków o szkolenia powoduje wzrost zgłoszeń naruszeń.",
+        "C) Wejście w życie nowych obowiązków prawnych z zakresu ochrony danych jednocześnie zwiększa świadomość zgłaszania naruszeń i potrzebę podnoszenia kompetencji personelu.",
+        "D) Brak związku przyczynowo-skutkowego między zgłoszeniami naruszeń a wnioskami o szkolenia."
+      ],
+      correct: 2,
+      explanation: "Nowelizacja ustawy to wspólny czynnik regulacyjny. Nowe obowiązki sprawozdawcze podnoszą liczbę zgłaszanych naruszeń i jednocześnie wymuszają szkolenia. Korelacja wynika ze zmiany prawa, a nie z bezpośredniego oddziaływania jednego procesu na drugi."
+    },
+    {
+      id: "h_t3_023",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Regionalna izba obrachunkowa zauważyła, że pod koniec kadencji samorządu rośnie liczba uchwał o zaciągnięciu zobowiązań inwestycyjnych. W tym samym okresie wzrasta liczba wniosków o wydanie opinii o możliwości spłaty zadłużenia.",
+      chart: {
+        type: "bar",
+        xLabels: ["1. rok kadencji", "2. rok", "3. rok", "4. rok"],
+        datasets: [
+          {
+            label: "Uchwały o zobowiązaniach (szt.)",
+            data: [40, 55, 70, 150],
+            color: "#c0392b"
+          },
+          {
+            label: "Wnioski o opinię o spłacie (szt.)",
+            data: [35, 50, 65, 140],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby uchwał o zobowiązaniach powoduje wzrost wniosków o opinię o spłacie zadłużenia.",
+        "B) Wzrost wniosków o opinię o spłacie powoduje wzrost uchwał o zobowiązaniach.",
+        "C) Presja na realizację obietnic wyborczych przed końcem kadencji samorządu jednocześnie napędza zaciąganie zobowiązań inwestycyjnych i konieczność opiniowania ich finansowania.",
+        "D) Brak związku przyczynowo-skutkowego między uchwałami o zobowiązaniach a wnioskami o opinię o spłacie."
+      ],
+      correct: 2,
+      explanation: "Cykl polityczny — koniec kadencji — to wspólny czynnik. Samorządy domykają inwestycje przed wyborami, co zwiększa zarówno zobowiązania, jak i procedury opiniodawcze. Choć formalnie powiązane proceduralnie, źródłem obu jest presja kadencyjna, czyli ukryty czynnik wspólny."
+    },
+    {
+      id: "h_t3_024",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Urząd skarbowy odnotował, że w okresie rozliczeń rocznych rośnie liczba korekt deklaracji podatkowych. W tym samym czasie wzrasta liczba wniosków o wydanie zaświadczenia o niezaleganiu w podatkach.",
+      chart: {
+        type: "line",
+        xLabels: ["styczeń", "luty", "marzec", "kwiecień"],
+        datasets: [
+          {
+            label: "Korekty deklaracji (szt.)",
+            data: [80, 140, 260, 520],
+            color: "#c0392b"
+          },
+          {
+            label: "Wnioski o zaświadczenie o niezaleganiu (szt.)",
+            data: [60, 120, 210, 430],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby korekt deklaracji powoduje wzrost wniosków o zaświadczenie o niezaleganiu.",
+        "B) Wzrost wniosków o zaświadczenie o niezaleganiu powoduje wzrost korekt deklaracji.",
+        "C) Termin rocznego rozliczenia podatkowego jednocześnie skłania podatników do poprawiania deklaracji i do pozyskiwania zaświadczeń potrzebnych m.in. do kredytów i przetargów.",
+        "D) Brak związku przyczynowo-skutkowego między korektami deklaracji a wnioskami o zaświadczenie o niezaleganiu."
+      ],
+      correct: 2,
+      explanation: "Okres rozliczeń rocznych (kwiecień) to wspólny czynnik kalendarzowo-regulacyjny. Podatnicy porządkują rozliczenia (korekty) i jednocześnie potrzebują zaświadczeń do innych celów. Korelacja wynika z terminu, nie z wpływu jednego rodzaju czynności na drugi."
+    },
+    {
+      id: "h_t3_025",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Po ogłoszeniu nowego programu dotacji na fotowoltaikę gmina odnotowała wzrost liczby wniosków o warunki przyłączenia mikroinstalacji. W tym samym okresie wzrosła liczba zgłoszeń budowy instalacji do nadzoru budowlanego.",
+      chart: {
+        type: "bar",
+        xLabels: ["przed naborem", "start naboru", "szczyt naboru", "koniec naboru"],
+        datasets: [
+          {
+            label: "Wnioski o warunki przyłączenia (szt.)",
+            data: [30, 180, 420, 540],
+            color: "#c0392b"
+          },
+          {
+            label: "Zgłoszenia budowy instalacji (szt.)",
+            data: [20, 140, 360, 480],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby wniosków o warunki przyłączenia powoduje wzrost zgłoszeń budowy instalacji.",
+        "B) Wzrost zgłoszeń budowy instalacji powoduje wzrost wniosków o warunki przyłączenia.",
+        "C) Uruchomienie programu dotacji do fotowoltaiki jednocześnie napędza wnioski o przyłączenie i zgłoszenia budowy, bo obie czynności są elementami tej samej inwestycji dotowanej.",
+        "D) Brak związku przyczynowo-skutkowego między wnioskami o przyłączenie a zgłoszeniami budowy."
+      ],
+      correct: 2,
+      explanation: "Program dotacji to ukryty czynnik wspólny napędzający całą inwestycję. Choć przyłączenie i zgłoszenie budowy są etapami procesu, ich wspólnym źródłem jest decyzja właściciela o skorzystaniu z dofinansowania — to ona, nie jeden etap, wywołuje drugi."
+    },
+    {
+      id: "h_t3_026",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Inspekcja sanitarna zauważyła, że w sezonie przedwakacyjnym rośnie liczba kontroli punktów gastronomicznych. W tym samym okresie wzrasta liczba wniosków przedsiębiorców o wpis do rejestru zakładów żywieniowych.",
+      chart: {
+        type: "line",
+        xLabels: ["I kwartał", "II kwartał", "III kwartał", "IV kwartał"],
+        datasets: [
+          {
+            label: "Kontrole gastronomii (szt.)",
+            data: [120, 380, 290, 90],
+            color: "#c0392b"
+          },
+          {
+            label: "Wnioski o wpis do rejestru (szt.)",
+            data: [90, 320, 240, 70],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby kontroli gastronomii powoduje wzrost wniosków o wpis do rejestru.",
+        "B) Wzrost wniosków o wpis do rejestru powoduje wzrost liczby kontroli gastronomii.",
+        "C) Zbliżający się sezon turystyczny jednocześnie uruchamia wzmożone kontrole inspekcji oraz otwieranie nowych lokali wymagających rejestracji.",
+        "D) Brak związku przyczynowo-skutkowego między kontrolami gastronomii a wnioskami o wpis do rejestru."
+      ],
+      correct: 2,
+      explanation: "Nadchodzący sezon turystyczny to wspólny czynnik. Inspekcja planuje kontrole przed napływem klientów, a przedsiębiorcy otwierają lokale na sezon (wpisy). Oba zjawiska wynikają z kalendarza turystycznego, a nie z wzajemnego oddziaływania."
+    },
+    {
+      id: "h_t3_027",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Po wprowadzeniu obowiązku raportowania emisji do nowego systemu unijnego przedsiębiorstwa odnotowały wzrost liczby zleceń na audyty energetyczne. W tym samym okresie wzrosła liczba wniosków o pozwolenia zintegrowane składanych do urzędu.",
+      chart: {
+        type: "bar",
+        xLabels: ["rok przed", "I półrocze", "II półrocze", "rok po"],
+        datasets: [
+          {
+            label: "Zlecenia audytów energetycznych (szt.)",
+            data: [50, 120, 260, 470],
+            color: "#c0392b"
+          },
+          {
+            label: "Wnioski o pozwolenia zintegrowane (szt.)",
+            data: [40, 100, 210, 390],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby audytów energetycznych powoduje wzrost wniosków o pozwolenia zintegrowane.",
+        "B) Wzrost wniosków o pozwolenia zintegrowane powoduje wzrost audytów energetycznych.",
+        "C) Nowe wymogi sprawozdawczości emisyjnej UE jednocześnie skłaniają firmy do zlecania audytów i do aktualizacji pozwoleń środowiskowych.",
+        "D) Brak związku przyczynowo-skutkowego między audytami energetycznymi a wnioskami o pozwolenia zintegrowane."
+      ],
+      correct: 2,
+      explanation: "Nowy obowiązek raportowania emisji UE to wspólna przyczyna regulacyjna. Firmy reagują na niego z dwóch stron: audytami i aktualizacją pozwoleń. Korelacja wynika ze zmiany przepisów, nie z bezpośredniego związku między tymi działaniami."
+    },
+    {
+      id: "h_t3_028",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Wojewódzki urząd pracy odnotował, że pod koniec roku rozliczeniowego projektów EFS rośnie liczba zatwierdzanych wniosków o refundację. W tym samym okresie wzrasta liczba kontroli na miejscu realizacji projektów.",
+      chart: {
+        type: "line",
+        xLabels: ["I kwartał", "II kwartał", "III kwartał", "IV kwartał"],
+        datasets: [
+          {
+            label: "Zatwierdzone wnioski o refundację (szt.)",
+            data: [60, 90, 130, 340],
+            color: "#c0392b"
+          },
+          {
+            label: "Kontrole na miejscu (szt.)",
+            data: [20, 35, 50, 140],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby zatwierdzonych refundacji powoduje wzrost kontroli na miejscu.",
+        "B) Wzrost liczby kontroli na miejscu powoduje wzrost zatwierdzonych refundacji.",
+        "C) Termin rozliczenia rocznego projektów EFS jednocześnie wymusza intensyfikację zatwierdzania refundacji i wzmożenie czynności kontrolnych przed zamknięciem roku.",
+        "D) Brak związku przyczynowo-skutkowego między refundacjami a kontrolami na miejscu."
+      ],
+      correct: 2,
+      explanation: "Roczny termin rozliczenia projektów EFS to wspólny czynnik. Instytucja zatwierdza wydatki i jednocześnie nasila kontrole przed zamknięciem roku. Oba procesy wynikają z deadline'u rozliczeniowego, nie z bezpośredniej zależności."
+    },
+    {
+      id: "h_t3_029",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Po nowelizacji prawa zamówień publicznych podnoszącej progi unijne instytucja zamawiająca odnotowała wzrost liczby postępowań prowadzonych w trybie krajowym. W tym samym okresie wzrosła liczba zapytań do działu prawnego o interpretację nowych przepisów.",
+      chart: {
+        type: "bar",
+        xLabels: ["przed nowelizacją", "1. miesiąc", "2. miesiąc", "3. miesiąc"],
+        datasets: [
+          {
+            label: "Postępowania w trybie krajowym (szt.)",
+            data: [40, 110, 180, 250],
+            color: "#c0392b"
+          },
+          {
+            label: "Zapytania o interpretację (szt.)",
+            data: [30, 90, 150, 210],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby postępowań krajowych powoduje wzrost zapytań o interpretację przepisów.",
+        "B) Wzrost zapytań o interpretację przepisów powoduje wzrost postępowań krajowych.",
+        "C) Wejście w życie nowelizacji progów zamówień jednocześnie przesuwa część postępowań do trybu krajowego i generuje wątpliwości interpretacyjne wśród pracowników.",
+        "D) Brak związku przyczynowo-skutkowego między postępowaniami krajowymi a zapytaniami o interpretację."
+      ],
+      correct: 2,
+      explanation: "Nowelizacja progów to wspólny czynnik regulacyjny. Zmiana przepisów przesuwa postępowania do trybu krajowego i jednocześnie rodzi wątpliwości wymagające interpretacji. Korelacja wynika ze zmiany prawa, a nie z wzajemnego oddziaływania zjawisk."
+    },
+    {
+      id: "h_t3_030",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Narodowy fundusz zdrowia odnotował, że pod koniec okresu rozliczeniowego z placówkami rośnie liczba korekt sprawozdań o wykonanych świadczeniach. W tym samym czasie wzrasta liczba wniosków placówek o zapłatę za świadczenia ponadlimitowe.",
+      chart: {
+        type: "line",
+        xLabels: ["I kwartał", "II kwartał", "III kwartał", "IV kwartał"],
+        datasets: [
+          {
+            label: "Korekty sprawozdań (szt.)",
+            data: [70, 90, 120, 310],
+            color: "#c0392b"
+          },
+          {
+            label: "Wnioski o zapłatę za nadwykonania (szt.)",
+            data: [40, 60, 80, 260],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby korekt sprawozdań powoduje wzrost wniosków o zapłatę za nadwykonania.",
+        "B) Wzrost wniosków o zapłatę za nadwykonania powoduje wzrost korekt sprawozdań.",
+        "C) Termin rocznego rozliczenia kontraktów z płatnikiem jednocześnie wymusza korygowanie sprawozdań i występowanie o zapłatę za świadczenia ponad limit.",
+        "D) Brak związku przyczynowo-skutkowego między korektami sprawozdań a wnioskami o zapłatę za nadwykonania."
+      ],
+      correct: 2,
+      explanation: "Koniec okresu rozliczeniowego z płatnikiem to wspólny czynnik. Placówki domykają sprawozdawczość (korekty) i upominają się o zapłatę za nadwykonania przed zamknięciem roku. Oba procesy wynikają z terminu rozliczenia, nie z siebie nawzajem."
+    },
+    {
+      id: "h_t3_031",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Po wprowadzeniu rządowego programu wsparcia dla rodzin urząd gminy odnotował wzrost liczby wniosków o świadczenia rodzinne. W tym samym okresie wzrosła liczba wniosków o wydanie odpisów aktów urodzenia z urzędu stanu cywilnego.",
+      chart: {
+        type: "bar",
+        xLabels: ["przed programem", "1. miesiąc", "2. miesiąc", "3. miesiąc"],
+        datasets: [
+          {
+            label: "Wnioski o świadczenia rodzinne (szt.)",
+            data: [120, 640, 580, 520],
+            color: "#c0392b"
+          },
+          {
+            label: "Wnioski o odpisy aktów urodzenia (szt.)",
+            data: [90, 520, 470, 420],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby wniosków o świadczenia rodzinne powoduje wzrost wniosków o odpisy aktów urodzenia.",
+        "B) Wzrost liczby wniosków o odpisy aktów urodzenia powoduje wzrost wniosków o świadczenia rodzinne.",
+        "C) Uruchomienie nowego programu wsparcia dla rodzin jednocześnie generuje wnioski o świadczenia i potrzebę kompletowania dokumentów dzieci, w tym odpisów aktów urodzenia.",
+        "D) Brak związku przyczynowo-skutkowego między wnioskami o świadczenia a wnioskami o odpisy aktów urodzenia."
+      ],
+      correct: 2,
+      explanation: "Wprowadzenie programu wsparcia to ukryty czynnik wspólny. To on wywołuje falę wniosków oraz potrzebę dokumentów potwierdzających prawo do świadczeń. Choć powiązane proceduralnie, źródłem obu jest decyzja programowa, nie jeden rodzaj wniosku."
+    },
+    {
+      id: "h_t3_032",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Wojewódzki inspektorat transportu drogowego odnotował, że w okresie wzmożonych przewozów świątecznych rośnie liczba kontroli czasu pracy kierowców. W tym samym czasie wzrasta liczba zgłaszanych przez przewoźników wniosków o zezwolenia na przejazd pojazdów nienormatywnych.",
+      chart: {
+        type: "line",
+        xLabels: ["wrzesień", "październik", "listopad", "grudzień"],
+        datasets: [
+          {
+            label: "Kontrole czasu pracy kierowców (szt.)",
+            data: [210, 240, 300, 560],
+            color: "#c0392b"
+          },
+          {
+            label: "Wnioski o zezwolenia nienormatywne (szt.)",
+            data: [150, 180, 230, 440],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby kontroli czasu pracy kierowców powoduje wzrost wniosków o zezwolenia nienormatywne.",
+        "B) Wzrost wniosków o zezwolenia nienormatywne powoduje wzrost kontroli czasu pracy kierowców.",
+        "C) Szczyt przewozów towarowych przed świętami jednocześnie zwiększa natężenie kontroli transportu i liczbę przejazdów ładunków wymagających zezwoleń.",
+        "D) Brak związku przyczynowo-skutkowego między kontrolami czasu pracy a wnioskami o zezwolenia nienormatywne."
+      ],
+      correct: 2,
+      explanation: "Przedświąteczny szczyt logistyczny to wspólny czynnik. Większy ruch towarowy zwiększa zarówno kontrole kierowców, jak i transport ponadgabarytowy wymagający zezwoleń. Oba zjawiska wynikają z sezonowego natężenia przewozów, nie z siebie nawzajem."
+    },
+    {
+      id: "h_t3_033",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Po opublikowaniu przez ministerstwo nowych wytycznych dotyczących dostępności cyfrowej instytucje publiczne odnotowały wzrost zleceń na audyty stron internetowych. W tym samym okresie wzrosła liczba zamówień na napisy i tłumaczenia migowe materiałów wideo.",
+      chart: {
+        type: "bar",
+        xLabels: ["przed wytycznymi", "I kwartał", "II kwartał", "III kwartał"],
+        datasets: [
+          {
+            label: "Audyty dostępności stron (szt.)",
+            data: [20, 90, 160, 240],
+            color: "#c0392b"
+          },
+          {
+            label: "Zamówienia na napisy i tłumaczenia (szt.)",
+            data: [15, 70, 130, 200],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby audytów dostępności stron powoduje wzrost zamówień na napisy i tłumaczenia.",
+        "B) Wzrost zamówień na napisy i tłumaczenia powoduje wzrost audytów dostępności stron.",
+        "C) Nowe wymogi dostępności cyfrowej ogłoszone przez ministerstwo jednocześnie wymuszają audyty serwisów i dostosowywanie materiałów multimedialnych.",
+        "D) Brak związku przyczynowo-skutkowego między audytami stron a zamówieniami na napisy i tłumaczenia."
+      ],
+      correct: 2,
+      explanation: "Nowe wytyczne dostępności to wspólna przyczyna regulacyjna. Instytucje reagują na nie zarówno audytami stron, jak i dostosowaniem wideo. Korelacja wynika z obowiązku prawnego, a nie z wpływu jednego rodzaju działań na drugi."
+    },
+    {
+      id: "h_t3_034",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Urząd marszałkowski odnotował, że przed terminem składania sprawozdań z gospodarki odpadami rośnie liczba korekt rejestrowanych w systemie BDO. W tym samym okresie wzrasta liczba zapytań przedsiębiorców o sposób klasyfikacji odpadów.",
+      chart: {
+        type: "line",
+        xLabels: ["listopad", "grudzień", "styczeń", "luty"],
+        datasets: [
+          {
+            label: "Korekty w systemie BDO (szt.)",
+            data: [60, 80, 140, 420],
+            color: "#c0392b"
+          },
+          {
+            label: "Zapytania o klasyfikację odpadów (szt.)",
+            data: [50, 70, 120, 360],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby korekt w systemie BDO powoduje wzrost zapytań o klasyfikację odpadów.",
+        "B) Wzrost zapytań o klasyfikację odpadów powoduje wzrost korekt w systemie BDO.",
+        "C) Zbliżający się ustawowy termin rocznego sprawozdania o odpadach jednocześnie wymusza korygowanie danych i wyjaśnianie wątpliwości klasyfikacyjnych.",
+        "D) Brak związku przyczynowo-skutkowego między korektami w BDO a zapytaniami o klasyfikację odpadów."
+      ],
+      correct: 2,
+      explanation: "Ustawowy termin sprawozdania o odpadach (marzec) to wspólny czynnik. Przedsiębiorcy przed deadline'em porządkują dane (korekty) i wyjaśniają wątpliwości (zapytania). Oba zjawiska wynikają z terminu sprawozdawczego, nie z bezpośredniej zależności."
+    },
+    {
+      id: "h_t3_035",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Po ogłoszeniu naboru wniosków o granty na cyfryzację bibliotek samorządowych instytucja odnotowała wzrost liczby zapytań o kwalifikowalność sprzętu. W tym samym okresie wzrosła liczba wniosków o zaświadczenia o statusie instytucji kultury.",
+      chart: {
+        type: "bar",
+        xLabels: ["przed naborem", "start naboru", "połowa naboru", "koniec naboru"],
+        datasets: [
+          {
+            label: "Zapytania o kwalifikowalność sprzętu (szt.)",
+            data: [15, 120, 210, 380],
+            color: "#c0392b"
+          },
+          {
+            label: "Wnioski o zaświadczenia o statusie (szt.)",
+            data: [10, 90, 170, 310],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby zapytań o kwalifikowalność sprzętu powoduje wzrost wniosków o zaświadczenia o statusie.",
+        "B) Wzrost wniosków o zaświadczenia o statusie powoduje wzrost zapytań o kwalifikowalność sprzętu.",
+        "C) Ogłoszenie naboru grantowego jednocześnie generuje pytania o zasady wydatkowania i konieczność udokumentowania uprawnień do udziału w naborze.",
+        "D) Brak związku przyczynowo-skutkowego między zapytaniami o kwalifikowalność a wnioskami o zaświadczenia o statusie."
+      ],
+      correct: 2,
+      explanation: "Nabór grantowy to ukryty czynnik wspólny. Wywołuje on zarówno pytania o zasady wydatkowania, jak i kompletowanie dokumentów uprawniających do udziału. Korelacja wynika z naboru, a nie z wzajemnego oddziaływania obu czynności."
+    },
+    {
+      id: "h_t3_036",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Komisja nadzoru finansowego odnotowała, że w okresie publikacji raportów rocznych spółek rośnie liczba zgłoszeń o podejrzeniach manipulacji kursami. W tym samym czasie wzrasta liczba wniosków inwestorów o dostęp do informacji poufnych.",
+      chart: {
+        type: "line",
+        xLabels: ["styczeń", "luty", "marzec", "kwiecień"],
+        datasets: [
+          {
+            label: "Zgłoszenia podejrzeń manipulacji (szt.)",
+            data: [30, 50, 90, 180],
+            color: "#c0392b"
+          },
+          {
+            label: "Wnioski o dostęp do informacji (szt.)",
+            data: [25, 45, 80, 160],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby zgłoszeń podejrzeń manipulacji powoduje wzrost wniosków o dostęp do informacji.",
+        "B) Wzrost wniosków o dostęp do informacji powoduje wzrost zgłoszeń podejrzeń manipulacji.",
+        "C) Sezon publikacji raportów rocznych spółek jednocześnie zwiększa zmienność rynku rodzącą podejrzenia manipulacji i zainteresowanie inwestorów informacjami o spółkach.",
+        "D) Brak związku przyczynowo-skutkowego między zgłoszeniami manipulacji a wnioskami o dostęp do informacji."
+      ],
+      correct: 2,
+      explanation: "Sezon raportów rocznych to wspólny czynnik. Publikacja wyników zwiększa zmienność kursów (podejrzenia manipulacji) i jednocześnie zainteresowanie inwestorów. Oba zjawiska wynikają z kalendarza sprawozdawczego spółek, a nie z siebie nawzajem."
+    },
+    {
+      id: "h_t3_037",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Po wejściu w życie reformy oświaty zmieniającej strukturę szkół kuratorium odnotowało wzrost liczby wniosków o zatwierdzenie arkuszy organizacyjnych. W tym samym okresie wzrosła liczba postępowań w sprawie przeniesień nauczycieli między placówkami.",
+      chart: {
+        type: "bar",
+        xLabels: ["rok przed", "I półrocze", "II półrocze", "rok po"],
+        datasets: [
+          {
+            label: "Wnioski o zatwierdzenie arkuszy (szt.)",
+            data: [80, 160, 280, 460],
+            color: "#c0392b"
+          },
+          {
+            label: "Postępowania ws. przeniesień nauczycieli (szt.)",
+            data: [60, 130, 230, 390],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby wniosków o zatwierdzenie arkuszy powoduje wzrost postępowań ws. przeniesień nauczycieli.",
+        "B) Wzrost postępowań ws. przeniesień nauczycieli powoduje wzrost wniosków o zatwierdzenie arkuszy.",
+        "C) Reforma struktury szkół jednocześnie wymusza nowe arkusze organizacyjne i reorganizację kadry nauczycielskiej między placówkami.",
+        "D) Brak związku przyczynowo-skutkowego między wnioskami o arkusze a postępowaniami ws. przeniesień nauczycieli."
+      ],
+      correct: 2,
+      explanation: "Reforma oświaty to wspólna przyczyna systemowa. Zmiana struktury szkół wymusza zarówno nowe arkusze organizacyjne, jak i przesunięcia kadrowe. Korelacja wynika z reformy, a nie z bezpośredniego wpływu jednego procesu na drugi."
+    },
+    {
+      id: "h_t3_038",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Agencja restrukturyzacji rolnictwa odnotowała, że w okresie składania wniosków o dopłaty bezpośrednie rośnie liczba wniosków o aktualizację danych w ewidencji producentów. W tym samym czasie wzrasta liczba zapytań o granice działek rolnych.",
+      chart: {
+        type: "line",
+        xLabels: ["luty", "marzec", "kwiecień", "maj"],
+        datasets: [
+          {
+            label: "Wnioski o aktualizację ewidencji (szt.)",
+            data: [120, 260, 540, 820],
+            color: "#c0392b"
+          },
+          {
+            label: "Zapytania o granice działek rolnych (szt.)",
+            data: [90, 210, 430, 680],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby wniosków o aktualizację ewidencji powoduje wzrost zapytań o granice działek.",
+        "B) Wzrost zapytań o granice działek powoduje wzrost wniosków o aktualizację ewidencji.",
+        "C) Zbliżający się termin składania wniosków o dopłaty bezpośrednie jednocześnie wymusza aktualizację danych producentów i weryfikację granic uprawnianych działek.",
+        "D) Brak związku przyczynowo-skutkowego między aktualizacją ewidencji a zapytaniami o granice działek."
+      ],
+      correct: 2,
+      explanation: "Termin składania wniosków o dopłaty (maj) to wspólny czynnik. Rolnicy przed deadline'em porządkują dane (aktualizacja ewidencji) i weryfikują powierzchnię działek. Oba zjawiska wynikają z terminu dopłatowego, a nie z wzajemnego oddziaływania."
+    },
+    {
+      id: "h_t3_039",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Po wprowadzeniu obowiązku e-fakturowania w zamówieniach publicznych urząd odnotował wzrost liczby zgłoszeń problemów technicznych z platformą. W tym samym okresie wzrosła liczba wniosków dostawców o przedłużenie terminów płatności.",
+      chart: {
+        type: "bar",
+        xLabels: ["przed obowiązkiem", "1. miesiąc", "2. miesiąc", "3. miesiąc"],
+        datasets: [
+          {
+            label: "Zgłoszenia problemów technicznych (szt.)",
+            data: [10, 160, 210, 140],
+            color: "#c0392b"
+          },
+          {
+            label: "Wnioski o przedłużenie płatności (szt.)",
+            data: [20, 130, 170, 110],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby zgłoszeń problemów technicznych powoduje wzrost wniosków o przedłużenie płatności.",
+        "B) Wzrost wniosków o przedłużenie płatności powoduje wzrost zgłoszeń problemów technicznych.",
+        "C) Wejście w życie obowiązku e-fakturowania jednocześnie wywołuje trudności techniczne z platformą i opóźnienia w obiegu faktur skutkujące prośbami o przedłużenie płatności.",
+        "D) Brak związku przyczynowo-skutkowego między zgłoszeniami problemów technicznych a wnioskami o przedłużenie płatności."
+      ],
+      correct: 2,
+      explanation: "Wprowadzenie obowiązku e-fakturowania to wspólny czynnik regulacyjny. Nowy system rodzi problemy techniczne i jednocześnie spowalnia obieg faktur, co skutkuje prośbami o przesunięcie terminów. Choć pozornie ciąg przyczynowy, źródłem obu jest zmiana systemu."
+    },
+    {
+      id: "h_t3_040",
+      typeId: 3,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź. Na podstawie informacji, wybierz najbardziej prawdopodobny związek przyczynowo-skutkowy. Tylko jedna odpowiedź jest poprawna.",
+      text: "Główny urząd statystyczny odnotował, że w roku spisu powszechnego rośnie liczba wniosków obywateli o sprostowanie danych adresowych. W tym samym okresie wzrasta liczba zapytań do urzędów gmin o potwierdzenie zameldowania.",
+      chart: {
+        type: "line",
+        xLabels: ["rok przed spisem", "I półrocze spisu", "II półrocze spisu", "rok po spisie"],
+        datasets: [
+          {
+            label: "Wnioski o sprostowanie danych adresowych (szt.)",
+            data: [140, 460, 520, 180],
+            color: "#c0392b"
+          },
+          {
+            label: "Zapytania o potwierdzenie zameldowania (szt.)",
+            data: [110, 390, 430, 150],
+            color: "#2980b9"
+          }
+        ]
+      },
+      options: [
+        "A) Wzrost liczby wniosków o sprostowanie danych adresowych powoduje wzrost zapytań o potwierdzenie zameldowania.",
+        "B) Wzrost zapytań o potwierdzenie zameldowania powoduje wzrost wniosków o sprostowanie danych adresowych.",
+        "C) Przeprowadzenie spisu powszechnego jednocześnie ujawnia rozbieżności w danych adresowych i skłania obywateli oraz urzędy do weryfikacji informacji o zameldowaniu.",
+        "D) Brak związku przyczynowo-skutkowego między wnioskami o sprostowanie danych a zapytaniami o potwierdzenie zameldowania."
+      ],
+      correct: 2,
+      explanation: "Spis powszechny to wspólny czynnik zdarzeniowy. Spis ujawnia niespójności w danych, co prowadzi zarówno do wniosków o sprostowanie, jak i do weryfikacji zameldowania. Oba zjawiska wynikają z przeprowadzenia spisu, a nie z wzajemnego oddziaływania."
     }
   ],
   type4: [
@@ -4757,6 +9640,308 @@ const QUESTIONS_HARD = {
       ],
       correct: 0,
       explanation: "Skarb Państwa jest osobą prawną, poprzez którą Państwo jako podmiot bierze udział w stosunkach cywilnoprawnych. Analogicznie gmina jest jednostką samorządu terytorialnego posiadającą osobowość prawną — jest osobą prawną, poprzez którą samorząd terytorialny uczestniczy w obrocie cywilnoprawnym."
+    },
+    {
+      id: "h_t4_021",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Ignorantia iuris nocet jest do nieusprawiedliwiania nieznajomością prawa, jak vacatio legis jest do",
+      options: [
+        "A) wstecznego działania ustawy",
+        "B) okresu spoczywania ustawy przed wejściem w życie",
+        "C) uchylenia przepisu",
+        "D) wykładni celowościowej",
+        "E) domniemania niewinności"
+      ],
+      correct: 1,
+      explanation: "Relacja: łacińska instytucja prawna i jej znaczenie. Ignorantia iuris nocet oznacza, że nieznajomość prawa szkodzi (nie usprawiedliwia), a vacatio legis to okres spoczywania ustawy między ogłoszeniem a wejściem w życie. Pozostałe pojęcia opisują inne instytucje."
+    },
+    {
+      id: "h_t4_022",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Rozporządzenie jest do Rady Ministrów, jak ustawa jest do",
+      options: ["A) Prezydenta RP", "B) Trybunału Konstytucyjnego", "C) Sejmu", "D) Senatu", "E) Ministra"],
+      correct: 2,
+      explanation: "Relacja: akt normatywny i organ właściwy do jego stanowienia. Rozporządzenia wydaje m.in. Rada Ministrów, a ustawy uchwala Sejm. Pozostałe organy nie stanowią ustaw."
+    },
+    {
+      id: "h_t4_023",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Apelacja jest do środka odwoławczego zwyczajnego, jak skarga kasacyjna jest do",
+      options: [
+        "A) środka odwoławczego nadzwyczajnego",
+        "B) pisma przygotowawczego",
+        "C) wniosku dowodowego",
+        "D) zarzutu procesowego",
+        "E) postanowienia wpadkowego"
+      ],
+      correct: 0,
+      explanation: "Relacja: konkretny środek zaskarżenia i jego kategoria. Apelacja jest zwyczajnym środkiem odwoławczym (od nieprawomocnego orzeczenia), a skarga kasacyjna nadzwyczajnym (od prawomocnego). Pozostałe pojęcia nie są kategoriami środków zaskarżenia."
+    },
+    {
+      id: "h_t4_024",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Dolus jest do umyślności, jak culpa jest do",
+      options: [
+        "A) bezprawności",
+        "B) nieumyślności",
+        "C) winy obiektywnej",
+        "D) zamiaru bezpośredniego",
+        "E) szkody"
+      ],
+      correct: 1,
+      explanation: "Relacja: łaciński termin i jego polskie znaczenie w nauce o winie. Dolus oznacza umyślność (zamiar), a culpa nieumyślność (niedbalstwo, lekkomyślność). Pozostałe pojęcia opisują inne elementy odpowiedzialności."
+    },
+    {
+      id: "h_t4_025",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Powództwo jest do wszczęcia procesu cywilnego, jak akt oskarżenia jest do",
+      options: [
+        "A) zawieszenia postępowania",
+        "B) wszczęcia postępowania sądowego karnego",
+        "C) umorzenia śledztwa",
+        "D) wydania wyroku",
+        "E) wniesienia apelacji"
+      ],
+      correct: 1,
+      explanation: "Relacja: pismo inicjujące i etap postępowania, który ono otwiera. Powództwo wszczyna proces cywilny przed sądem, a akt oskarżenia wszczyna sądowe postępowanie karne. Pozostałe odpowiedzi dotyczą innych etapów."
+    },
+    {
+      id: "h_t4_026",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Lex specialis jest do przepisu szczególnego, jak lex generalis jest do",
+      options: [
+        "A) przepisu ogólnego",
+        "B) przepisu uchylonego",
+        "C) przepisu blankietowego",
+        "D) przepisu przejściowego",
+        "E) przepisu kompetencyjnego"
+      ],
+      correct: 0,
+      explanation: "Relacja: łacińska nazwa i jej polskie znaczenie w regułach kolizyjnych. Lex specialis to przepis szczególny, a lex generalis to przepis ogólny. Pozostałe odpowiedzi oznaczają inne rodzaje przepisów."
+    },
+    {
+      id: "h_t4_027",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Wojewoda jest do organu administracji rządowej w terenie, jak marszałek województwa jest do",
+      options: [
+        "A) organu samorządu województwa",
+        "B) organu kontroli skarbowej",
+        "C) organu sądowego",
+        "D) organu administracji rządowej",
+        "E) organu nadzoru bankowego"
+      ],
+      correct: 0,
+      explanation: "Relacja: stanowisko i charakter reprezentowanej administracji w województwie. Wojewoda reprezentuje administrację rządową, a marszałek województwa stoi na czele organu samorządu województwa. Pozostałe odpowiedzi błędnie kwalifikują marszałka."
+    },
+    {
+      id: "h_t4_028",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Animus jest do elementu woli w posiadaniu, jak corpus jest do",
+      options: [
+        "A) elementu fizycznego władztwa nad rzeczą",
+        "B) tytułu prawnego",
+        "C) dobrej wiary",
+        "D) zasiedzenia",
+        "E) służebności"
+      ],
+      correct: 0,
+      explanation: "Relacja: łaciński termin i element posiadania, który oznacza. Animus to wola władania rzeczą jak właściciel, a corpus to fizyczne, faktyczne władztwo nad rzeczą. Pozostałe odpowiedzi nie są elementami konstrukcyjnymi posiadania."
+    },
+    {
+      id: "h_t4_029",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Quorum jest do wymaganej liczby obecnych, jak większość kwalifikowana jest do",
+      options: [
+        "A) wymaganego stosunku głosów za",
+        "B) liczby wstrzymujących się",
+        "C) kworum negatywnego",
+        "D) prawa weta",
+        "E) reasumpcji głosowania"
+      ],
+      correct: 0,
+      explanation: "Relacja: pojęcie proceduralne i to, co określa w głosowaniu. Quorum określa minimalną liczbę obecnych potrzebną do ważności obrad, a większość kwalifikowana określa podwyższony wymagany stosunek głosów oddanych za. Pozostałe odpowiedzi dotyczą innych elementów procedury."
+    },
+    {
+      id: "h_t4_030",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Ratio legis jest do celu ustawy, jak ratio decidendi jest do",
+      options: [
+        "A) podstawy rozstrzygnięcia orzeczenia",
+        "B) sentencji wyroku",
+        "C) uzasadnienia pozwu",
+        "D) wykładni językowej",
+        "E) zdania odrębnego"
+      ],
+      correct: 0,
+      explanation: "Relacja: łacińska zwrot z 'ratio' i pojęcie, które oznacza. Ratio legis to cel (sens) ustawy, a ratio decidendi to podstawa prawna rozstrzygnięcia, kluczowy argument orzeczenia. Pozostałe odpowiedzi to inne elementy."
+    },
+    {
+      id: "h_t4_031",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Wykładnia autentyczna jest do interpretacji dokonywanej przez prawodawcę, jak wykładnia legalna jest do",
+      options: [
+        "A) interpretacji dokonywanej przez organ upoważniony mocą prawa",
+        "B) interpretacji nielegalnej",
+        "C) interpretacji doktrynalnej",
+        "D) interpretacji sądowej incydentalnej",
+        "E) interpretacji historycznej"
+      ],
+      correct: 0,
+      explanation: "Relacja: rodzaj wykładni i podmiot, który jej dokonuje. Wykładnia autentyczna pochodzi od samego twórcy normy (prawodawcy), a wykładnia legalna od organu szczególnie do tego upoważnionego przepisami prawa. Pozostałe odpowiedzi opisują inne rodzaje wykładni."
+    },
+    {
+      id: "h_t4_032",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Skarga konstytucyjna jest do Trybunału Konstytucyjnego, jak skarga na bezczynność organu jest do",
+      options: [
+        "A) Sądu Najwyższego",
+        "B) wojewódzkiego sądu administracyjnego",
+        "C) prokuratury",
+        "D) Rzecznika Praw Obywatelskich",
+        "E) Trybunału Stanu"
+      ],
+      correct: 1,
+      explanation: "Relacja: środek prawny i organ właściwy do jego rozpoznania. Skargę konstytucyjną rozpoznaje Trybunał Konstytucyjny, a skargę na bezczynność organu administracji rozpoznaje wojewódzki sąd administracyjny. Pozostałe organy nie są tu właściwe."
+    },
+    {
+      id: "h_t4_033",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "De lege lata jest do stanu prawa obowiązującego, jak de lege ferenda jest do",
+      options: [
+        "A) postulatu prawa przyszłego",
+        "B) prawa zwyczajowego",
+        "C) prawa uchylonego",
+        "D) prawa międzynarodowego",
+        "E) prawa naturalnego"
+      ],
+      correct: 0,
+      explanation: "Relacja: łacińska formuła i pojęcie, które oznacza. De lege lata odnosi się do obowiązującego stanu prawnego, a de lege ferenda do postulatów dotyczących prawa, które dopiero powinno być ustanowione. Pozostałe odpowiedzi to inne kategorie prawa."
+    },
+    {
+      id: "h_t4_034",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "In dubio pro reo jest do prawa karnego, jak in dubio pro tributario jest do",
+      options: [
+        "A) prawa podatkowego",
+        "B) prawa rodzinnego",
+        "C) prawa morskiego",
+        "D) prawa autorskiego",
+        "E) prawa pracy"
+      ],
+      correct: 0,
+      explanation: "Relacja: łacińska zasada rozstrzygania wątpliwości i gałąź prawa, w której obowiązuje. In dubio pro reo (wątpliwości na korzyść oskarżonego) działa w prawie karnym, a in dubio pro tributario (wątpliwości na korzyść podatnika) w prawie podatkowym. Pozostałe gałęzie nie są właściwe."
+    },
+    {
+      id: "h_t4_035",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Veto jest do sprzeciwu wobec ustawy, jak prerogatywa jest do",
+      options: [
+        "A) uprawnienia osobistego głowy państwa",
+        "B) obowiązku sprawozdawczego",
+        "C) immunitetu parlamentarnego",
+        "D) zakazu reformationis in peius",
+        "E) inicjatywy ustawodawczej obywateli"
+      ],
+      correct: 0,
+      explanation: "Relacja: termin ustrojowy i jego znaczenie. Veto to sprzeciw (Prezydenta) wobec ustawy, a prerogatywa to osobiste uprawnienie głowy państwa wykonywane bez kontrasygnaty. Pozostałe odpowiedzi opisują inne instytucje."
+    },
+    {
+      id: "h_t4_036",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Bona fides jest do dobrej wiary, jak mala fides jest do",
+      options: ["A) złej wiary", "B) siły wyższej", "C) niedbalstwa", "D) bezprawności", "E) winy umyślnej"],
+      correct: 0,
+      explanation: "Relacja: łaciński zwrot i jego polskie znaczenie. Bona fides oznacza dobrą wiarę, a mala fides złą wiarę. Pozostałe odpowiedzi to inne pojęcia z zakresu odpowiedzialności i okoliczności."
+    },
+    {
+      id: "h_t4_037",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Wniosek o ukaranie jest do postępowania w sprawach o wykroczenia, jak pozew jest do",
+      options: [
+        "A) postępowania cywilnego",
+        "B) postępowania dyscyplinarnego",
+        "C) postępowania egzekucyjnego",
+        "D) postępowania mediacyjnego",
+        "E) postępowania administracyjnego"
+      ],
+      correct: 0,
+      explanation: "Relacja: pismo inicjujące i rodzaj postępowania, które ono wszczyna. Wniosek o ukaranie inicjuje postępowanie w sprawach o wykroczenia, a pozew inicjuje postępowanie cywilne. Pozostałe postępowania wszczyna się innymi pismami."
+    },
+    {
+      id: "h_t4_038",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Erga omnes jest do skuteczności wobec wszystkich, jak inter partes jest do",
+      options: [
+        "A) skuteczności tylko między stronami",
+        "B) skuteczności wstecznej",
+        "C) nieważności bezwzględnej",
+        "D) skuteczności wobec następców prawnych",
+        "E) skuteczności zawieszonej"
+      ],
+      correct: 0,
+      explanation: "Relacja: łacińska formuła określająca zakres skuteczności i jej znaczenie. Erga omnes oznacza skuteczność wobec wszystkich (np. praw rzeczowych), a inter partes skuteczność ograniczoną do stron stosunku (np. zobowiązań). Pozostałe odpowiedzi opisują inne cechy."
+    },
+    {
+      id: "h_t4_039",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Nasciturus jest do dziecka poczętego, lecz nienarodzonego, jak de cuius jest do",
+      options: ["A) spadkodawcy", "B) wierzyciela", "C) pełnomocnika", "D) zastawnika", "E) dłużnika solidarnego"],
+      correct: 0,
+      explanation: "Relacja: łacińskie określenie podmiotu i jego znaczenie. Nasciturus to dziecko poczęte, ale jeszcze nienarodzone, a de cuius to osoba zmarła, po której dziedziczy się spadek (spadkodawca). Pozostałe odpowiedzi oznaczają innych uczestników obrotu prawnego."
+    },
+    {
+      id: "h_t4_040",
+      typeId: 4,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
+      stem: "Audiatur et altera pars jest do wysłuchania drugiej strony, jak nemo iudex in causa sua jest do",
+      options: [
+        "A) zakazu bycia sędzią we własnej sprawie",
+        "B) jawności rozprawy",
+        "C) dwuinstancyjności postępowania",
+        "D) prawa do obrony",
+        "E) niezawisłości sędziowskiej"
+      ],
+      correct: 0,
+      explanation: "Relacja: łacińska paremia procesowa i wyrażana przez nią zasada. Audiatur et altera pars to nakaz wysłuchania także drugiej strony, a nemo iudex in causa sua to zakaz orzekania we własnej sprawie (bezstronność). Pozostałe odpowiedzi to inne zasady procesowe."
     }
   ],
   type5: [
@@ -5161,6 +10346,401 @@ const QUESTIONS_HARD = {
       ],
       correct: 1,
       explanation: "Łańcuch: art. 15a sprzeczne z Konstytucją → uznane przez TK za niezgodne → tracą moc → przestają wiązać sądy i organy administracji (B). Opcja A częściowo stosuje przesłankę 3, ale błędnie — utrata mocy dotyczy zarówno sądów, jak i organów. C, D i E nie wynikają z przesłanek lub im przeczą."
+    },
+    {
+      id: "h_t5_021",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Każdy akt normatywny powszechnie obowiązujący podlega ogłoszeniu w dzienniku urzędowym.",
+        "Każdy akt ogłoszony w dzienniku urzędowym wchodzi w życie po upływie vacatio legis.",
+        "Każdy akt, który wchodzi w życie po upływie vacatio legis, wiąże adresatów od dnia jego wejścia w życie."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Każdy akt normatywny powszechnie obowiązujący wiąże adresatów od dnia wejścia w życie.",
+        "B) Każdy akt wiążący adresatów jest aktem powszechnie obowiązującym.",
+        "C) Niektóre akty powszechnie obowiązujące nie podlegają ogłoszeniu.",
+        "D) Akty ogłoszone w dzienniku urzędowym wiążą adresatów od dnia ogłoszenia."
+      ],
+      correct: 0,
+      explanation: "Łańcuch trzech przesłanek: akt powszechnie obowiązujący → ogłoszenie → wejście w życie po vacatio legis → wiązanie adresatów od wejścia w życie. Wniosek A wynika pewnie. Opcja B odwraca implikację, C zaprzecza przesłance, D myli wejście w życie z dniem ogłoszenia."
+    },
+    {
+      id: "h_t5_022",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Jeśli decyzja administracyjna została wydana z naruszeniem przepisów o właściwości, podlega stwierdzeniu nieważności.",
+        "Jeśli decyzja podlega stwierdzeniu nieważności, organ wyższego stopnia wszczyna postępowanie nadzwyczajne.",
+        "Decyzja w sprawie podatkowej została wydana z naruszeniem przepisów o właściwości."
+      ],
+      syllogismVariant: "modus_ponens",
+      options: [
+        "A) Decyzja w sprawie podatkowej jest zgodna z prawem.",
+        "B) Organ wyższego stopnia wszczął postępowanie zwyczajne.",
+        "C) Organ wyższego stopnia wszczyna postępowanie nadzwyczajne w tej sprawie.",
+        "D) Decyzja nie podlega weryfikacji."
+      ],
+      correct: 2,
+      explanation: "Modus ponens: naruszenie właściwości → stwierdzenie nieważności → postępowanie nadzwyczajne; decyzja narusza właściwość → organ wszczyna postępowanie nadzwyczajne. Opcje A i D są sprzeczne z przesłankami, B podmienia rodzaj postępowania."
+    },
+    {
+      id: "h_t5_023",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Każde rozporządzenie wydawane jest na podstawie szczegółowego upoważnienia ustawowego.",
+        "Każdy akt wydany na podstawie upoważnienia ustawowego musi mieścić się w granicach tego upoważnienia.",
+        "Każdy akt mieszczący się w granicach upoważnienia podlega kontroli Trybunału Konstytucyjnego."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Każdy akt kontrolowany przez Trybunał Konstytucyjny jest rozporządzeniem.",
+        "B) Niektóre rozporządzenia nie wymagają upoważnienia ustawowego.",
+        "C) Rozporządzenia mogą wykraczać poza granice upoważnienia.",
+        "D) Każde rozporządzenie podlega kontroli Trybunału Konstytucyjnego."
+      ],
+      correct: 3,
+      explanation: "Łańcuch: rozporządzenie → upoważnienie ustawowe → granice upoważnienia → kontrola TK. Wniosek: każde rozporządzenie podlega kontroli TK. Opcja A odwraca implikację, B i C zaprzeczają przesłankom."
+    },
+    {
+      id: "h_t5_024",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Jeśli wartość zamówienia przekracza próg unijny, zamawiający publikuje ogłoszenie w Dzienniku Urzędowym Unii Europejskiej.",
+        "Jeśli ogłoszenie ukazuje się w Dzienniku Urzędowym Unii Europejskiej, termin składania ofert wynosi co najmniej 35 dni.",
+        "Wartość zamówienia na budowę drogi przekracza próg unijny."
+      ],
+      syllogismVariant: "modus_ponens",
+      options: [
+        "A) Termin składania ofert w tym zamówieniu wynosi co najmniej 35 dni.",
+        "B) Ogłoszenia nie publikuje się w Dzienniku Urzędowym UE.",
+        "C) Termin składania ofert wynosi mniej niż 35 dni.",
+        "D) Zamówienie nie podlega procedurze unijnej."
+      ],
+      correct: 0,
+      explanation: "Modus ponens: przekroczenie progu unijnego → ogłoszenie w Dz.U.UE → termin co najmniej 35 dni; wartość przekracza próg → termin wynosi co najmniej 35 dni. Opcje B i D są sprzeczne z przesłankami, C zaprzecza wnioskowi."
+    },
+    {
+      id: "h_t5_025",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Każde zobowiązanie podatkowe powstaje z dniem zaistnienia zdarzenia, z którym ustawa wiąże powstanie obowiązku podatkowego.",
+        "Każde zobowiązanie, które powstało, podlega przedawnieniu.",
+        "Każde zobowiązanie podlegające przedawnieniu wygasa po upływie terminu przedawnienia."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Zobowiązania, które wygasły, nie powstały.",
+        "B) Każde zobowiązanie podatkowe wygasa po upływie terminu przedawnienia.",
+        "C) Niektóre zobowiązania podatkowe nie podlegają przedawnieniu.",
+        "D) Każde przedawnione zobowiązanie jest zobowiązaniem podatkowym."
+      ],
+      correct: 1,
+      explanation: "Łańcuch: zobowiązanie podatkowe → powstaje → podlega przedawnieniu → wygasa po terminie. Wniosek: każde zobowiązanie podatkowe wygasa po przedawnieniu. Opcja A myli kierunki, C zaprzecza przesłance, D odwraca implikację."
+    },
+    {
+      id: "h_t5_026",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Jeśli strona wniosła odwołanie w terminie, organ odwoławczy rozpatruje sprawę merytorycznie.",
+        "Jeśli organ rozpatruje sprawę merytorycznie, wydaje decyzję kończącą postępowanie odwoławcze.",
+        "Skarżący wniósł odwołanie w terminie."
+      ],
+      syllogismVariant: "modus_ponens",
+      options: [
+        "A) Organ pozostawi odwołanie bez rozpoznania.",
+        "B) Skarżący nie wniósł odwołania.",
+        "C) Organ odwoławczy wyda decyzję kończącą postępowanie odwoławcze.",
+        "D) Sprawa nie zostanie rozpatrzona merytorycznie."
+      ],
+      correct: 2,
+      explanation: "Modus ponens: odwołanie w terminie → rozpatrzenie merytoryczne → decyzja kończąca; skarżący wniósł w terminie → organ wyda decyzję kończącą. Opcje A i D są sprzeczne z przesłankami, B zaprzecza przesłance."
+    },
+    {
+      id: "h_t5_027",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Wszystkie ustawy uchwalone przez Sejm są przekazywane Marszałkowi Senatu.",
+        "Wszystkie ustawy przekazane Marszałkowi Senatu mogą być przedmiotem uchwały Senatu."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Wszystkie ustawy, które mogą być przedmiotem uchwały Senatu, uchwalił Sejm.",
+        "B) Niektóre ustawy uchwalone przez Sejm nie są przekazywane Marszałkowi Senatu.",
+        "C) Wszystkie ustawy uchwalone przez Sejm mogą być przedmiotem uchwały Senatu.",
+        "D) Marszałek Senatu uchwala ustawy."
+      ],
+      correct: 2,
+      explanation: "Łańcuch: ustawy Sejmu → przekazanie Marszałkowi Senatu → możliwość uchwały Senatu. Wniosek: wszystkie ustawy Sejmu mogą być przedmiotem uchwały Senatu. Opcja A odwraca implikację, B zaprzecza przesłance, D wykracza poza przesłanki."
+    },
+    {
+      id: "h_t5_028",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Wszystkie akty prawa miejscowego wydane przez radę gminy są publikowane w wojewódzkim dzienniku urzędowym.",
+        "Wszystkie akty prawa miejscowego wydane przez radę gminy podlegają nadzorowi wojewody."
+      ],
+      syllogismVariant: "some",
+      options: [
+        "A) Niektóre akty publikowane w wojewódzkim dzienniku urzędowym podlegają nadzorowi wojewody.",
+        "B) Wszystkie akty podlegające nadzorowi wojewody wydała rada gminy.",
+        "C) Tylko akty rady gminy są publikowane w dzienniku wojewódzkim.",
+        "D) Niektóre akty rady gminy nie podlegają nadzorowi wojewody."
+      ],
+      correct: 0,
+      explanation: "Wszystkie akty prawa miejscowego rady gminy są publikowane w dzienniku wojewódzkim i podlegają nadzorowi wojewody, więc istnieją akty publikowane w tym dzienniku, które podlegają nadzorowi. Opcja B i C odwracają relacje, D zaprzecza przesłance."
+    },
+    {
+      id: "h_t5_029",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Jeśli wykonawca nie wniósł wadium, jego oferta podlega odrzuceniu.",
+        "Jeśli oferta podlega odrzuceniu, nie jest brana pod uwagę przy wyborze najkorzystniejszej oferty.",
+        "Wykonawca w postępowaniu o roboty budowlane nie wniósł wadium."
+      ],
+      syllogismVariant: "modus_ponens",
+      options: [
+        "A) Oferta wykonawcy zostanie wybrana jako najkorzystniejsza.",
+        "B) Oferta wykonawcy nie będzie brana pod uwagę przy wyborze najkorzystniejszej oferty.",
+        "C) Oferta wykonawcy nie podlega odrzuceniu.",
+        "D) Wykonawca wniósł wadium w innej formie."
+      ],
+      correct: 1,
+      explanation: "Modus ponens: brak wadium → odrzucenie oferty → pominięcie przy wyborze; wykonawca nie wniósł wadium → oferta nie będzie brana pod uwagę. Opcje A i C są sprzeczne z przesłankami, D zaprzecza przesłance."
+    },
+    {
+      id: "h_t5_030",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Każda umowa międzynarodowa ratyfikowana za uprzednią zgodą wyrażoną w ustawie ma pierwszeństwo przed ustawą.",
+        "Każda norma mająca pierwszeństwo przed ustawą jest stosowana bezpośrednio przez sądy.",
+        "Każda norma stosowana bezpośrednio przez sądy może być powołana przez stronę postępowania."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Każda norma powoływana przez stronę jest umową międzynarodową.",
+        "B) Niektóre ratyfikowane umowy nie mają pierwszeństwa przed ustawą.",
+        "C) Każda umowa międzynarodowa ratyfikowana za uprzednią zgodą w ustawie może być powołana przez stronę postępowania.",
+        "D) Sądy nie stosują bezpośrednio umów międzynarodowych."
+      ],
+      correct: 2,
+      explanation: "Łańcuch: umowa ratyfikowana za zgodą ustawową → pierwszeństwo → bezpośrednie stosowanie → możliwość powołania przez stronę. Wniosek C wynika pewnie. Opcja A odwraca implikację, B i D zaprzeczają przesłankom."
+    },
+    {
+      id: "h_t5_031",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Jeśli organ nie załatwił sprawy w terminie, stronie przysługuje ponaglenie.",
+        "Jeśli stronie przysługuje ponaglenie, organ wyższego stopnia wyznacza dodatkowy termin załatwienia sprawy.",
+        "Organ nie załatwił sprawy w terminie ustawowym."
+      ],
+      syllogismVariant: "modus_ponens",
+      options: [
+        "A) Organ wyższego stopnia wyznaczy dodatkowy termin załatwienia sprawy.",
+        "B) Stronie nie przysługują żadne środki.",
+        "C) Sprawa została załatwiona w terminie.",
+        "D) Ponaglenie nie jest dopuszczalne."
+      ],
+      correct: 0,
+      explanation: "Modus ponens: brak załatwienia w terminie → ponaglenie → wyznaczenie dodatkowego terminu; organ nie załatwił w terminie → organ wyższy wyznaczy dodatkowy termin. Opcje B i D są sprzeczne z przesłankami, C zaprzecza przesłance."
+    },
+    {
+      id: "h_t5_032",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Wszystkie skargi kasacyjne wymagają sporządzenia przez adwokata lub radcę prawnego.",
+        "Wszystkie pisma sporządzone przez adwokata lub radcę prawnego zawierają podpis profesjonalnego pełnomocnika."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Wszystkie pisma z podpisem pełnomocnika to skargi kasacyjne.",
+        "B) Wszystkie skargi kasacyjne zawierają podpis profesjonalnego pełnomocnika.",
+        "C) Niektóre skargi kasacyjne nie wymagają sporządzenia przez pełnomocnika.",
+        "D) Tylko adwokaci sporządzają skargi kasacyjne."
+      ],
+      correct: 1,
+      explanation: "Łańcuch: skarga kasacyjna → sporządzenie przez adwokata/radcę → podpis profesjonalnego pełnomocnika. Wniosek: wszystkie skargi kasacyjne zawierają podpis pełnomocnika. Opcja A odwraca implikację, C zaprzecza przesłance, D zawęża przesłankę (pomija radców)."
+    },
+    {
+      id: "h_t5_033",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Jeśli przepis budzi poważne wątpliwości co do zgodności z Konstytucją, sąd może przedstawić pytanie prawne Trybunałowi Konstytucyjnemu.",
+        "Jeśli sąd przedstawi pytanie prawne, postępowanie w sprawie ulega zawieszeniu.",
+        "Przepis stosowany w rozpoznawanej sprawie budzi poważne wątpliwości co do zgodności z Konstytucją, a sąd przedstawił pytanie prawne."
+      ],
+      syllogismVariant: "modus_ponens",
+      options: [
+        "A) Postępowanie w sprawie toczy się dalej bez przeszkód.",
+        "B) Trybunał odmówił rozpoznania pytania.",
+        "C) Postępowanie w sprawie ulega zawieszeniu.",
+        "D) Sąd nie miał podstaw do pytania prawnego."
+      ],
+      correct: 2,
+      explanation: "Modus ponens: przedstawienie pytania prawnego → zawieszenie postępowania; sąd przedstawił pytanie → postępowanie ulega zawieszeniu. Opcje A i D są sprzeczne z przesłankami, B wykracza poza przesłanki."
+    },
+    {
+      id: "h_t5_034",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Każde rozstrzygnięcie nadzorcze wojewody dotyczące uchwały rady gminy może być zaskarżone do sądu administracyjnego.",
+        "Każda sprawa zaskarżona do sądu administracyjnego jest rozpoznawana przez wojewódzki sąd administracyjny.",
+        "Każda sprawa rozpoznawana przez wojewódzki sąd administracyjny kończy się wydaniem orzeczenia."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Każde orzeczenie sądu administracyjnego dotyczy rozstrzygnięcia nadzorczego.",
+        "B) Każde rozstrzygnięcie nadzorcze wojewody dotyczące uchwały rady gminy może doprowadzić do wydania orzeczenia.",
+        "C) Niektóre rozstrzygnięcia nadzorcze nie mogą być zaskarżone.",
+        "D) Wojewódzki sąd administracyjny nie wydaje orzeczeń."
+      ],
+      correct: 1,
+      explanation: "Łańcuch: rozstrzygnięcie nadzorcze → zaskarżenie do sądu → rozpoznanie przez WSA → wydanie orzeczenia. Wniosek B wynika pewnie. Opcja A odwraca implikację, C i D zaprzeczają przesłankom."
+    },
+    {
+      id: "h_t5_035",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Wszyscy członkowie korpusu służby cywilnej zatrudnieni na stanowiskach kierowniczych składają oświadczenia majątkowe.",
+        "Wszyscy członkowie korpusu służby cywilnej zatrudnieni na stanowiskach kierowniczych podlegają okresowej ocenie."
+      ],
+      syllogismVariant: "some",
+      options: [
+        "A) Wszyscy składający oświadczenia majątkowe podlegają okresowej ocenie.",
+        "B) Tylko osoby na stanowiskach kierowniczych podlegają ocenie.",
+        "C) Niektóre osoby składające oświadczenia majątkowe podlegają okresowej ocenie.",
+        "D) Niektórzy kierownicy nie podlegają okresowej ocenie."
+      ],
+      correct: 2,
+      explanation: "Wszyscy kierownicy korpusu składają oświadczenia majątkowe i podlegają ocenie, więc istnieją osoby składające oświadczenia, które podlegają ocenie. Opcja A to nadmierne uogólnienie, B wykracza poza przesłanki, D zaprzecza przesłance."
+    },
+    {
+      id: "h_t5_036",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Jeśli podatnik złoży korektę deklaracji przed wszczęciem kontroli, nie nakłada się sankcji karnej skarbowej.",
+        "Jeśli nie nakłada się sankcji karnej skarbowej, postępowanie karne skarbowe nie jest wszczynane.",
+        "Podatnik złożył korektę deklaracji przed wszczęciem kontroli."
+      ],
+      syllogismVariant: "modus_ponens",
+      options: [
+        "A) Wobec podatnika wszczęto postępowanie karne skarbowe.",
+        "B) Postępowanie karne skarbowe wobec podatnika nie jest wszczynane.",
+        "C) Podatnik nie złożył korekty deklaracji.",
+        "D) Na podatnika nałożono sankcję karną skarbową."
+      ],
+      correct: 1,
+      explanation: "Modus ponens: korekta przed kontrolą → brak sankcji karnej skarbowej → niewszczynanie postępowania; podatnik złożył korektę → postępowanie nie jest wszczynane. Opcje A i D są sprzeczne z przesłankami, C zaprzecza przesłance."
+    },
+    {
+      id: "h_t5_037",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Każdy projekt ustawy wniesiony do Sejmu jest kierowany do pierwszego czytania.",
+        "Każdy projekt skierowany do pierwszego czytania może zostać przekazany do komisji.",
+        "Każdy projekt przekazany do komisji jest przedmiotem sprawozdania komisji."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Każdy projekt będący przedmiotem sprawozdania komisji został wniesiony do Sejmu.",
+        "B) Niektóre projekty wniesione do Sejmu nie trafiają do pierwszego czytania.",
+        "C) Każdy projekt ustawy wniesiony do Sejmu może być przedmiotem sprawozdania komisji.",
+        "D) Komisje nie sporządzają sprawozdań."
+      ],
+      correct: 2,
+      explanation: "Łańcuch: projekt wniesiony → pierwsze czytanie → możliwość przekazania do komisji → sprawozdanie komisji. Wniosek C wynika pewnie (z zachowaniem modalności możliwości). Opcja A odwraca implikację, B i D zaprzeczają przesłankom."
+    },
+    {
+      id: "h_t5_038",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Jeśli decyzja została doręczona stronie wadliwie, termin do wniesienia odwołania nie rozpoczyna biegu.",
+        "Jeśli termin do wniesienia odwołania nie rozpoczyna biegu, odwołanie wniesione później jest dopuszczalne.",
+        "Decyzja została doręczona stronie wadliwie."
+      ],
+      syllogismVariant: "modus_ponens",
+      options: [
+        "A) Odwołanie wniesione później jest dopuszczalne.",
+        "B) Termin do odwołania już upłynął.",
+        "C) Odwołanie jest niedopuszczalne.",
+        "D) Decyzja została doręczona prawidłowo."
+      ],
+      correct: 0,
+      explanation: "Modus ponens: wadliwe doręczenie → termin nie biegnie → dopuszczalność późniejszego odwołania; doręczenie było wadliwe → odwołanie wniesione później jest dopuszczalne. Opcje B i C są sprzeczne z przesłankami, D zaprzecza przesłance."
+    },
+    {
+      id: "h_t5_039",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Wszystkie zamówienia udzielane w trybie z wolnej ręki wymagają uprzedniego zaproszenia do negocjacji.",
+        "Wszystkie zamówienia wymagające zaproszenia do negocjacji są dokumentowane w protokole postępowania."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Wszystkie zamówienia dokumentowane w protokole są udzielane z wolnej ręki.",
+        "B) Niektóre zamówienia z wolnej ręki nie wymagają zaproszenia do negocjacji.",
+        "C) Wszystkie zamówienia udzielane w trybie z wolnej ręki są dokumentowane w protokole postępowania.",
+        "D) Protokół postępowania sporządza się wyłącznie w trybie z wolnej ręki."
+      ],
+      correct: 2,
+      explanation: "Łańcuch: zamówienie z wolnej ręki → zaproszenie do negocjacji → dokumentacja w protokole. Wniosek: wszystkie zamówienia z wolnej ręki są dokumentowane w protokole. Opcja A odwraca implikację, B zaprzecza przesłance, D wykracza poza przesłanki."
+    },
+    {
+      id: "h_t5_040",
+      typeId: 5,
+      level: "hard",
+      instruction: "W tym zadaniu musisz założyć, że podane przesłanki są prawdziwe i wskazać jaki pewny wniosek może z nich wynikać. Na podstawie powyższych przesłanek, wybierz poprawny wniosek. Tylko jedna odpowiedź jest poprawna.",
+      premises: [
+        "Każde świadczenie nienależnie pobrane podlega zwrotowi wraz z odsetkami.",
+        "Każde świadczenie podlegające zwrotowi jest dochodzone w trybie egzekucji administracyjnej.",
+        "Każda należność dochodzona w trybie egzekucji administracyjnej wymaga uprzedniego tytułu wykonawczego."
+      ],
+      syllogismVariant: "chain",
+      options: [
+        "A) Każda należność wymagająca tytułu wykonawczego jest świadczeniem nienależnie pobranym.",
+        "B) Każde świadczenie nienależnie pobrane wymaga uprzedniego tytułu wykonawczego.",
+        "C) Niektóre świadczenia nienależnie pobrane nie podlegają zwrotowi.",
+        "D) Egzekucja administracyjna nie wymaga tytułu wykonawczego."
+      ],
+      correct: 1,
+      explanation: "Łańcuch: świadczenie nienależnie pobrane → zwrot → egzekucja administracyjna → tytuł wykonawczy. Wniosek: każde świadczenie nienależnie pobrane wymaga tytułu wykonawczego. Opcja A odwraca implikację, C i D zaprzeczają przesłankom."
     }
   ],
   type6: [
@@ -6338,6 +11918,406 @@ const QUESTIONS_HARD = {
       ],
       correct: 2,
       explanation: "Suma Departamentu III = 260. Udzielono: 150, wybrano ofertę: 44, inne: 26. Unieważniono: 260 − 150 − 44 − 26 = 40. Sprawdzenie sumy kolumny unieważnień: 48 + 38 + 40 = 126 ≠ 110. Sprawdzenie przez kolumnę: 110 − 48 − 38 = 24. Suma Departamentu III = 150+24+44+26=244≠260. Poprawna odpowiedź przez wiersz: 260−150−44−26=40. Kolumna: 48+38+40=126. Poprawna odpowiedź: 40."
+    },
+    {
+      id: "h_t6_021",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Departament budżetu rozliczył wydatki czterech jednostek w czterech kategoriach (w tys. zł): wynagrodzenia, inwestycje, materiały i szkolenia. Jednostka II wydała łącznie 480 tys. zł. W kategorii materiały wszystkie jednostki wydały razem 240 tys. zł. Jednostka II wydała 200 na wynagrodzenia, 130 na inwestycje i 90 na szkolenia. Ile Jednostka II wydała na materiały?",
+      table: {
+        headers: ["", "Wynagrodzenia", "Inwestycje", "Materiały", "Szkolenia", "Suma"],
+        rows: [
+          ["Jednostka I", "180", "110", "55", "70", "415"],
+          ["Jednostka II", "200", "130", "?", "90", "480"],
+          ["Jednostka III", "160", "100", "50", "60", "370"],
+          ["Jednostka IV", "150", "90", "75", "55", "370"],
+          ["Suma", "690", "430", "240", "275", "1635"]
+        ]
+      },
+      options: ["A) 55", "B) 60", "C) 65", "D) 70", "E) 75"],
+      correct: 1,
+      explanation: "Wiersz Jednostki II: 200+130+?+90 = 480, więc ? = 60. Kolumna Materiały: 55+60+50+75 = 240. Oba dają 60."
+    },
+    {
+      id: "h_t6_022",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Urząd skarbowy przyjął deklaracje od czterech grup podatników w czterech formularzach: PIT-37, PIT-36, PIT-28 i VAT-7. Grupa B złożyła łącznie 350 deklaracji. W formularzu PIT-36 wszystkie grupy złożyły razem 230 deklaracji. Grupa B złożyła 120 deklaracji PIT-37, 70 deklaracji PIT-28 i 90 deklaracji VAT-7. Ile deklaracji PIT-36 złożyła Grupa B?",
+      table: {
+        headers: ["", "PIT-37", "PIT-36", "PIT-28", "VAT-7", "Suma"],
+        rows: [
+          ["Grupa A", "100", "60", "50", "60", "270"],
+          ["Grupa B", "120", "?", "70", "90", "350"],
+          ["Grupa C", "90", "55", "45", "55", "245"],
+          ["Grupa D", "80", "45", "40", "50", "215"],
+          ["Suma", "390", "230", "205", "255", "1080"]
+        ]
+      },
+      options: ["A) 60", "B) 65", "C) 70", "D) 75", "E) 80"],
+      correct: 2,
+      explanation: "Wiersz Grupy B: 120+?+70+90 = 350, więc ? = 70. Kolumna PIT-36: 60+70+55+45 = 230. Oba dają 70."
+    },
+    {
+      id: "h_t6_023",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Regionalny ośrodek zdrowia wykonał świadczenia w czterech poradniach: POZ, specjalistyka, rehabilitacja i diagnostyka, w czterech kwartałach. W II kwartale wykonano łącznie 520 świadczeń. W poradni rehabilitacja przez wszystkie cztery kwartały wykonano razem 360 świadczeń. W II kwartale wykonano 200 świadczeń POZ, 150 specjalistyki i 80 diagnostyki. Ile świadczeń rehabilitacji wykonano w II kwartale?",
+      table: {
+        headers: ["", "POZ", "Specjalistyka", "Rehabilitacja", "Diagnostyka", "Suma"],
+        rows: [
+          ["I kwartał", "180", "140", "90", "70", "480"],
+          ["II kwartał", "200", "150", "?", "80", "520"],
+          ["III kwartał", "170", "130", "85", "65", "450"],
+          ["IV kwartał", "160", "120", "95", "60", "435"],
+          ["Suma", "710", "540", "360", "275", "1885"]
+        ]
+      },
+      options: ["A) 80", "B) 85", "C) 90", "D) 95", "E) 100"],
+      correct: 2,
+      explanation: "Wiersz II kwartału: 200+150+?+80 = 520, więc ? = 90. Kolumna Rehabilitacja: 90+90+85+95 = 360. Oba dają 90."
+    },
+    {
+      id: "h_t6_024",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Wydział zamówień publicznych przeprowadził postępowania w czterech trybach: przetarg, zapytanie, negocjacje i tryb podstawowy, dla czterech działów. Dział Logistyki przeprowadził łącznie 145 postępowań. W trybie negocjacje wszystkie działy przeprowadziły razem 100 postępowań. Dział Logistyki przeprowadził 50 przetargów, 40 zapytań i 30 postępowań w trybie podstawowym. Ile postępowań w trybie negocjacje przeprowadził Dział Logistyki?",
+      table: {
+        headers: ["", "Przetarg", "Zapytanie", "Negocjacje", "Tryb podstawowy", "Suma"],
+        rows: [
+          ["Dział Logistyki", "50", "40", "?", "30", "145"],
+          ["Dział IT", "45", "35", "30", "28", "138"],
+          ["Dział Inwestycji", "40", "30", "25", "22", "117"],
+          ["Dział Administracji", "35", "25", "20", "18", "98"],
+          ["Suma", "170", "130", "100", "98", "498"]
+        ]
+      },
+      options: ["A) 20", "B) 25", "C) 28", "D) 30", "E) 35"],
+      correct: 1,
+      explanation: "Wiersz Działu Logistyki: 50+40+?+30 = 145, więc ? = 25. Kolumna Negocjacje: 25+30+25+20 = 100. Oba dają 25."
+    },
+    {
+      id: "h_t6_025",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Centrum kształcenia rozliczyło uczestników kursów w czterech modułach: językowy, informatyczny, menedżerski i prawny, dla czterech grup. Grupa III liczyła łącznie 240 uczestników. W module informatycznym wszystkie grupy liczyły razem 250 uczestników. Grupa III miała 70 uczestników w module językowym, 60 w menedżerskim i 50 w prawnym. Ilu uczestników miała Grupa III w module informatycznym?",
+      table: {
+        headers: ["", "Językowy", "Informatyczny", "Menedżerski", "Prawny", "Suma"],
+        rows: [
+          ["Grupa I", "65", "70", "55", "45", "235"],
+          ["Grupa II", "60", "65", "50", "40", "215"],
+          ["Grupa III", "70", "?", "60", "50", "240"],
+          ["Grupa IV", "55", "55", "45", "35", "190"],
+          ["Suma", "250", "250", "210", "170", "880"]
+        ]
+      },
+      options: ["A) 55", "B) 60", "C) 65", "D) 70", "E) 75"],
+      correct: 1,
+      explanation: "Wiersz Grupy III: 70+?+60+50 = 240, więc ? = 60. Kolumna Informatyczny: 70+65+60+55 = 250. Oba dają 60."
+    },
+    {
+      id: "h_t6_026",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Inspektorat pracy odnotował naruszenia w czterech obszarach: czas pracy, BHP, wynagrodzenia i umowy, w czterech sektorach. Sektor Budownictwo odnotował łącznie 195 naruszeń. W obszarze wynagrodzenia wszystkie sektory odnotowały razem 150 naruszeń. Sektor Budownictwo miał 60 naruszeń czasu pracy, 70 BHP i 30 dotyczących umów. Ile naruszeń wynagrodzeń odnotowano w sektorze Budownictwo?",
+      table: {
+        headers: ["", "Czas pracy", "BHP", "Wynagrodzenia", "Umowy", "Suma"],
+        rows: [
+          ["Budownictwo", "60", "70", "?", "30", "195"],
+          ["Handel", "50", "45", "40", "25", "160"],
+          ["Produkcja", "55", "60", "35", "28", "178"],
+          ["Usługi", "45", "40", "40", "20", "145"],
+          ["Suma", "210", "215", "150", "103", "678"]
+        ]
+      },
+      options: ["A) 30", "B) 35", "C) 40", "D) 45", "E) 50"],
+      correct: 1,
+      explanation: "Wiersz Budownictwa: 60+70+?+30 = 195, więc ? = 35. Kolumna Wynagrodzenia: 35+40+35+40 = 150. Oba dają 35."
+    },
+    {
+      id: "h_t6_027",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Agencja rozwoju regionalnego rozdysponowała dotacje w czterech programach: A, B, C i D (w tys. zł), dla czterech powiatów. Powiat Wschodni otrzymał łącznie 760 tys. zł. W programie C wszystkie powiaty otrzymały razem 470 tys. zł. Powiat Wschodni otrzymał 250 w programie A, 180 w programie B i 200 w programie D. Ile w programie C otrzymał Powiat Wschodni?",
+      table: {
+        headers: ["", "Program A", "Program B", "Program C", "Program D", "Suma"],
+        rows: [
+          ["Powiat Północny", "220", "160", "120", "180", "680"],
+          ["Powiat Wschodni", "250", "180", "?", "200", "760"],
+          ["Powiat Południowy", "200", "150", "110", "170", "630"],
+          ["Powiat Zachodni", "190", "140", "110", "160", "600"],
+          ["Suma", "860", "630", "470", "710", "2670"]
+        ]
+      },
+      options: ["A) 120", "B) 125", "C) 130", "D) 135", "E) 140"],
+      correct: 2,
+      explanation: "Wiersz Powiatu Wschodniego: 250+180+?+200 = 760, więc ? = 130. Kolumna Program C: 120+130+110+110 = 470. Oba dają 130."
+    },
+    {
+      id: "h_t6_028",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Wojewódzki urząd pracy zarejestrował bezrobotnych w czterech grupach: do 30 lat, 31-45 lat, 46-60 lat i powyżej 60 lat, w czterech rejonach. Rejon Miejski zarejestrował łącznie 430 osób. W grupie 31-45 lat wszystkie rejony zarejestrowały razem 380 osób. Rejon Miejski zarejestrował 110 osób do 30 lat, 90 w grupie 46-60 lat i 80 powyżej 60 lat. Ile osób w grupie 31-45 lat zarejestrował Rejon Miejski?",
+      table: {
+        headers: ["", "Do 30 lat", "31-45 lat", "46-60 lat", "Powyżej 60 lat", "Suma"],
+        rows: [
+          ["Rejon Miejski", "110", "?", "90", "80", "430"],
+          ["Rejon Wiejski", "95", "100", "85", "70", "350"],
+          ["Rejon Górski", "85", "90", "75", "60", "310"],
+          ["Rejon Nadmorski", "80", "40", "65", "55", "240"],
+          ["Suma", "370", "380", "315", "265", "1330"]
+        ]
+      },
+      options: ["A) 140", "B) 145", "C) 150", "D) 155", "E) 160"],
+      correct: 2,
+      explanation: "Wiersz Rejonu Miejskiego: 110+?+90+80 = 430, więc ? = 150. Kolumna 31-45 lat: 150+100+90+40 = 380. Oba dają 150."
+    },
+    {
+      id: "h_t6_029",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Departament dróg rozliczył kilometry remontów w czterech kategoriach: krajowe, wojewódzkie, powiatowe i gminne, w czterech regionach. Region Wschodni wyremontował łącznie 290 km. W kategorii powiatowe wszystkie regiony wyremontowały razem 240 km. Region Wschodni wyremontował 80 km dróg krajowych, 90 km wojewódzkich i 50 km gminnych. Ile km dróg powiatowych wyremontował Region Wschodni?",
+      table: {
+        headers: ["", "Krajowe", "Wojewódzkie", "Powiatowe", "Gminne", "Suma"],
+        rows: [
+          ["Region Północny", "75", "85", "65", "45", "270"],
+          ["Region Wschodni", "80", "90", "?", "50", "290"],
+          ["Region Południowy", "70", "80", "60", "40", "250"],
+          ["Region Zachodni", "65", "75", "45", "38", "223"],
+          ["Suma", "290", "330", "240", "173", "1033"]
+        ]
+      },
+      options: ["A) 60", "B) 65", "C) 70", "D) 75", "E) 80"],
+      correct: 2,
+      explanation: "Wiersz Regionu Wschodniego: 80+90+?+50 = 290, więc ? = 70. Kolumna Powiatowe: 65+70+60+45 = 240. Oba dają 70."
+    },
+    {
+      id: "h_t6_030",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Fundusz stypendialny przyznał stypendia w czterech kategoriach: naukowe, socjalne, sportowe i artystyczne, dla czterech uczelni. Uczelnia B przyznała łącznie 320 stypendiów. W kategorii sportowe wszystkie uczelnie przyznały razem 200 stypendiów. Uczelnia B przyznała 110 stypendiów naukowych, 90 socjalnych i 65 artystycznych. Ile stypendiów sportowych przyznała Uczelnia B?",
+      table: {
+        headers: ["", "Naukowe", "Socjalne", "Sportowe", "Artystyczne", "Suma"],
+        rows: [
+          ["Uczelnia A", "100", "85", "50", "60", "295"],
+          ["Uczelnia B", "110", "90", "?", "65", "320"],
+          ["Uczelnia C", "95", "80", "45", "55", "275"],
+          ["Uczelnia D", "85", "70", "50", "50", "255"],
+          ["Suma", "390", "325", "200", "230", "1145"]
+        ]
+      },
+      options: ["A) 45", "B) 50", "C) 55", "D) 60", "E) 65"],
+      correct: 2,
+      explanation: "Wiersz Uczelni B: 110+90+?+65 = 320, więc ? = 55. Kolumna Sportowe: 50+55+45+50 = 200. Oba dają 55."
+    },
+    {
+      id: "h_t6_031",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Wydział ochrony środowiska wydał decyzje w czterech rodzajach: środowiskowe, odpadowe, wodnoprawne i emisyjne, dla czterech gmin. Gmina Lipowa otrzymała łącznie 175 decyzji. W rodzaju wodnoprawne wszystkie gminy otrzymały razem 130 decyzji. Gmina Lipowa otrzymała 55 decyzji środowiskowych, 45 odpadowych i 35 emisyjnych. Ile decyzji wodnoprawnych otrzymała Gmina Lipowa?",
+      table: {
+        headers: ["", "Środowiskowe", "Odpadowe", "Wodnoprawne", "Emisyjne", "Suma"],
+        rows: [
+          ["Gmina Lipowa", "55", "45", "?", "35", "175"],
+          ["Gmina Dębowa", "50", "40", "35", "30", "155"],
+          ["Gmina Brzozowa", "45", "38", "30", "28", "141"],
+          ["Gmina Sosnowa", "40", "35", "25", "22", "122"],
+          ["Suma", "190", "158", "130", "115", "593"]
+        ]
+      },
+      options: ["A) 35", "B) 40", "C) 45", "D) 50", "E) 55"],
+      correct: 1,
+      explanation: "Wiersz Gminy Lipowej: 55+45+?+35 = 175, więc ? = 40. Kolumna Wodnoprawne: 40+35+30+25 = 130. Oba dają 40."
+    },
+    {
+      id: "h_t6_032",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Krajowa administracja celna odprawiła zgłoszenia w czterech kategoriach towarów: spożywcze, przemysłowe, chemiczne i tekstylne, na czterech przejściach. Przejście Wschód odprawiło łącznie 540 zgłoszeń. W kategorii chemiczne wszystkie przejścia odprawiły razem 360 zgłoszeń. Przejście Wschód odprawiło 180 zgłoszeń spożywczych, 150 przemysłowych i 110 tekstylnych. Ile zgłoszeń chemicznych odprawiło Przejście Wschód?",
+      table: {
+        headers: ["", "Spożywcze", "Przemysłowe", "Chemiczne", "Tekstylne", "Suma"],
+        rows: [
+          ["Przejście Wschód", "180", "150", "?", "110", "540"],
+          ["Przejście Zachód", "160", "140", "90", "100", "490"],
+          ["Przejście Północ", "150", "130", "85", "90", "455"],
+          ["Przejście Południe", "140", "120", "85", "80", "425"],
+          ["Suma", "630", "540", "360", "380", "1910"]
+        ]
+      },
+      options: ["A) 90", "B) 95", "C) 100", "D) 105", "E) 110"],
+      correct: 2,
+      explanation: "Wiersz Przejścia Wschód: 180+150+?+110 = 540, więc ? = 100. Kolumna Chemiczne: 100+90+85+85 = 360. Oba dają 100."
+    },
+    {
+      id: "h_t6_033",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Miejski zarząd dróg zarejestrował zdarzenia w czterech kategoriach: kolizje, awarie, zgłoszenia mieszkańców i interwencje, w czterech dzielnicach. Dzielnica Centrum odnotowała łącznie 360 zdarzeń. W kategorii awarie wszystkie dzielnice odnotowały razem 270 zdarzeń. Dzielnica Centrum miała 120 kolizji, 90 zgłoszeń mieszkańców i 70 interwencji. Ile awarii odnotowała Dzielnica Centrum?",
+      table: {
+        headers: ["", "Kolizje", "Awarie", "Zgłoszenia", "Interwencje", "Suma"],
+        rows: [
+          ["Centrum", "120", "?", "90", "70", "360"],
+          ["Stare Miasto", "100", "75", "80", "60", "315"],
+          ["Przedmieście", "90", "70", "70", "50", "280"],
+          ["Osiedle", "80", "45", "60", "45", "230"],
+          ["Suma", "390", "270", "300", "225", "1185"]
+        ]
+      },
+      options: ["A) 75", "B) 80", "C) 85", "D) 90", "E) 95"],
+      correct: 1,
+      explanation: "Wiersz Centrum: 120+?+90+70 = 360, więc ? = 80. Kolumna Awarie: 80+75+70+45 = 270. Oba dają 80."
+    },
+    {
+      id: "h_t6_034",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Wojewódzki fundusz ochrony zdrowia rozliczył wydatki w czterech programach: profilaktyka, leczenie, rehabilitacja i edukacja (w tys. zł), w czterech powiatach. Powiat Górski wydał łącznie 690 tys. zł. W programie leczenie wszystkie powiaty wydały razem 720 tys. zł. Powiat Górski wydał 150 na profilaktykę, 120 na rehabilitację i 200 na edukację. Ile na leczenie wydał Powiat Górski?",
+      table: {
+        headers: ["", "Profilaktyka", "Leczenie", "Rehabilitacja", "Edukacja", "Suma"],
+        rows: [
+          ["Powiat Górski", "150", "?", "120", "200", "690"],
+          ["Powiat Nizinny", "140", "200", "110", "180", "630"],
+          ["Powiat Leśny", "130", "180", "100", "160", "570"],
+          ["Powiat Rzeczny", "120", "120", "90", "150", "480"],
+          ["Suma", "540", "720", "420", "690", "2370"]
+        ]
+      },
+      options: ["A) 210", "B) 215", "C) 220", "D) 225", "E) 230"],
+      correct: 2,
+      explanation: "Wiersz Powiatu Górskiego: 150+?+120+200 = 690, więc ? = 220. Kolumna Leczenie: 220+200+180+120 = 720. Oba dają 220."
+    },
+    {
+      id: "h_t6_035",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Centralny rejestr przedsiębiorców odnotował wpisy w czterech formach prawnych: jednoosobowe, spółki cywilne, spółki z o.o. i spółki akcyjne, w czterech województwach. Województwo II odnotowało łącznie 415 wpisów. W formie spółki z o.o. wszystkie województwa odnotowały razem 300 wpisów. Województwo II odnotowało 150 wpisów jednoosobowych, 100 spółek cywilnych i 80 spółek akcyjnych. Ile wpisów spółek z o.o. odnotowało Województwo II?",
+      table: {
+        headers: ["", "Jednoosobowe", "Spółki cywilne", "Sp. z o.o.", "Sp. akcyjne", "Suma"],
+        rows: [
+          ["Województwo I", "140", "95", "80", "75", "390"],
+          ["Województwo II", "150", "100", "?", "80", "415"],
+          ["Województwo III", "130", "90", "75", "70", "365"],
+          ["Województwo IV", "120", "85", "60", "65", "330"],
+          ["Suma", "540", "370", "300", "290", "1500"]
+        ]
+      },
+      options: ["A) 75", "B) 80", "C) 85", "D) 90", "E) 95"],
+      correct: 2,
+      explanation: "Wiersz Województwa II: 150+100+?+80 = 415, więc ? = 85. Kolumna Sp. z o.o.: 80+85+75+60 = 300. Oba dają 85."
+    },
+    {
+      id: "h_t6_036",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Departament edukacji rozliczył uczniów szkół w czterech typach: podstawowe, licea, technika i branżowe, w czterech powiatach. Powiat Zachodni miał łącznie 880 uczniów. W typie technika wszystkie powiaty miały razem 640 uczniów. Powiat Zachodni miał 300 uczniów w podstawowych, 220 w liceach i 180 w branżowych. Ilu uczniów techników miał Powiat Zachodni?",
+      table: {
+        headers: ["", "Podstawowe", "Licea", "Technika", "Branżowe", "Suma"],
+        rows: [
+          ["Powiat Wschodni", "280", "200", "170", "160", "810"],
+          ["Powiat Zachodni", "300", "220", "?", "180", "880"],
+          ["Powiat Północny", "260", "190", "160", "150", "760"],
+          ["Powiat Południowy", "240", "180", "130", "140", "690"],
+          ["Suma", "1080", "790", "640", "630", "3140"]
+        ]
+      },
+      options: ["A) 170", "B) 175", "C) 180", "D) 185", "E) 190"],
+      correct: 2,
+      explanation: "Wiersz Powiatu Zachodniego: 300+220+?+180 = 880, więc ? = 180. Kolumna Technika: 170+180+160+130 = 640. Oba dają 180."
+    },
+    {
+      id: "h_t6_037",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Inspekcja sanitarna pobrała próbki w czterech kategoriach: woda, żywność, kosmetyki i powietrze, w czterech okręgach. Okręg Centralny pobrał łącznie 245 próbek. W kategorii kosmetyki wszystkie okręgi pobrały razem 180 próbek. Okręg Centralny pobrał 80 próbek wody, 70 żywności i 40 powietrza. Ile próbek kosmetyków pobrał Okręg Centralny?",
+      table: {
+        headers: ["", "Woda", "Żywność", "Kosmetyki", "Powietrze", "Suma"],
+        rows: [
+          ["Okręg Centralny", "80", "70", "?", "40", "245"],
+          ["Okręg Wschodni", "70", "60", "50", "35", "215"],
+          ["Okręg Zachodni", "65", "55", "45", "30", "195"],
+          ["Okręg Górski", "60", "50", "30", "28", "168"],
+          ["Suma", "275", "235", "180", "133", "823"]
+        ]
+      },
+      options: ["A) 50", "B) 55", "C) 60", "D) 65", "E) 70"],
+      correct: 1,
+      explanation: "Wiersz Okręgu Centralnego: 80+70+?+40 = 245, więc ? = 55. Kolumna Kosmetyki: 55+50+45+30 = 180. Oba dają 55."
+    },
+    {
+      id: "h_t6_038",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Krajowy fundusz drogowy rozdzielił środki w czterech zadaniach: budowa, modernizacja, utrzymanie i oznakowanie (w tys. zł), dla czterech oddziałów. Oddział II otrzymał łącznie 850 tys. zł. W zadaniu modernizacja wszystkie oddziały otrzymały razem 620 tys. zł. Oddział II otrzymał 320 na budowę, 130 na utrzymanie i 240 na oznakowanie. Ile na modernizację otrzymał Oddział II?",
+      table: {
+        headers: ["", "Budowa", "Modernizacja", "Utrzymanie", "Oznakowanie", "Suma"],
+        rows: [
+          ["Oddział I", "300", "150", "120", "220", "790"],
+          ["Oddział II", "320", "?", "130", "240", "850"],
+          ["Oddział III", "280", "140", "110", "200", "730"],
+          ["Oddział IV", "260", "170", "100", "190", "720"],
+          ["Suma", "1160", "620", "460", "850", "3090"]
+        ]
+      },
+      options: ["A) 150", "B) 155", "C) 160", "D) 165", "E) 170"],
+      correct: 2,
+      explanation: "Wiersz Oddziału II: 320+?+130+240 = 850, więc ? = 160. Kolumna Modernizacja: 150+160+140+170 = 620. Oba dają 160."
+    },
+    {
+      id: "h_t6_039",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Wojewódzkie centrum zarządzania kryzysowego odnotowało interwencje w czterech rodzajach: pożary, powodzie, wichury i wypadki, w czterech powiatach. Powiat Nizinny odnotował łącznie 305 interwencji. W rodzaju wichury wszystkie powiaty odnotowały razem 220 interwencji. Powiat Nizinny odnotował 100 pożarów, 80 powodzi i 65 wypadków. Ile interwencji przy wichurach odnotował Powiat Nizinny?",
+      table: {
+        headers: ["", "Pożary", "Powodzie", "Wichury", "Wypadki", "Suma"],
+        rows: [
+          ["Powiat Nizinny", "100", "80", "?", "65", "305"],
+          ["Powiat Górski", "90", "70", "55", "60", "275"],
+          ["Powiat Leśny", "85", "65", "50", "55", "255"],
+          ["Powiat Rzeczny", "80", "60", "55", "50", "245"],
+          ["Suma", "355", "275", "220", "230", "1080"]
+        ]
+      },
+      options: ["A) 55", "B) 60", "C) 65", "D) 70", "E) 75"],
+      correct: 1,
+      explanation: "Wiersz Powiatu Nizinnego: 100+80+?+65 = 305, więc ? = 60. Kolumna Wichury: 60+55+50+55 = 220. Oba dają 60."
+    },
+    {
+      id: "h_t6_040",
+      typeId: 6,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować tekst i wskazać poprawną odpowiedź w miejscu oznaczonym '?'. Do zadania dołączona jest tabela. Może ułatwić Ci znalezienie prawidłowej odpowiedzi. Nie musisz jej jednak wypełniać. Tylko jedna odpowiedź jest poprawna.",
+      narrative: "Agencja restrukturyzacji rolnictwa rozpatrzyła wnioski w czterech działaniach: dopłaty bezpośrednie, modernizacja, rolnośrodowiskowe i młody rolnik, w czterech biurach. Biuro Wschodnie rozpatrzyło łącznie 470 wniosków. W działaniu modernizacja wszystkie biura rozpatrzyły razem 340 wniosków. Biuro Wschodnie rozpatrzyło 180 wniosków o dopłaty bezpośrednie, 100 rolnośrodowiskowych i 100 młodego rolnika. Ile wniosków o modernizację rozpatrzyło Biuro Wschodnie?",
+      table: {
+        headers: ["", "Dopłaty", "Modernizacja", "Rolnośrodowiskowe", "Młody rolnik", "Suma"],
+        rows: [
+          ["Biuro Wschodnie", "180", "?", "100", "100", "470"],
+          ["Biuro Zachodnie", "160", "85", "90", "90", "425"],
+          ["Biuro Północne", "150", "80", "85", "80", "395"],
+          ["Biuro Południowe", "140", "85", "75", "70", "370"],
+          ["Suma", "630", "340", "350", "340", "1660"]
+        ]
+      },
+      options: ["A) 80", "B) 85", "C) 90", "D) 95", "E) 100"],
+      correct: 2,
+      explanation: "Wiersz Biura Wschodniego: 180+?+100+100 = 470, więc ? = 90. Kolumna Modernizacja: 90+85+80+85 = 340. Oba dają 90."
     }
   ],
   type7: [
@@ -7370,6 +13350,746 @@ const QUESTIONS_HARD = {
       ],
       correct: 1,
       explanation: "W 2020 spłaty (32) > zadłużenie (28); w 2021 zadłużenie (34) > spłaty (28) — relacja odwraca się (krzyżowanie serii), co opisuje opcja B wprost. Opcja A jest fałszywa: wartości różnią się we wszystkich latach. Opcja C jest fałszywa: w 2021 zadłużenie (34) > spłaty (28). Opcja D jest fałszywa: zadłużenie szczytuje w 2022 (42), spłaty w 2023 (45). Opcja E jest prawdziwa: 42 > 38 — ale B opisuje bardziej złożone krzyżowanie serii. Poprawna odpowiedź: B."
+    },
+    {
+      id: "h_t7_021",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "DOCHODY, WYDATKI I NADWYŻKA BUDŻETOWA (W MLN ZŁ)",
+      chart: {
+        type: "bar",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "Dochody",
+            data: [120, 135, 150, 160],
+            color: "#c0392b"
+          },
+          {
+            label: "Wydatki",
+            data: [110, 140, 145, 155],
+            color: "#2980b9"
+          },
+          {
+            label: "Nadwyżka",
+            data: [10, -5, 5, 5],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) W 2021 r. wydatki (140) przewyższyły dochody (135), dając ujemną nadwyżkę.",
+        "B) Dochody przewyższały wydatki w każdym roku.",
+        "C) Najwyższą nadwyżkę odnotowano w 2022 r.",
+        "D) W 2023 r. wydatki wyniosły 160 mln zł.",
+        "E) Nadwyżka w 2020 r. wynosiła 5 mln zł."
+      ],
+      correct: 0,
+      explanation: "W 2021 r. wydatki (140) przewyższyły dochody (135), co dało ujemną nadwyżkę -5 mln zł. Dochody nie przewyższały wydatków w 2021 r., najwyższą nadwyżkę (10) odnotowano w 2020 r. (nie 2022), w 2023 r. wydatki wyniosły 155 (nie 160), a nadwyżka w 2020 r. wynosiła 10 (nie 5)."
+    },
+    {
+      id: "h_t7_022",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "POSTĘPOWANIA ADMINISTRACYJNE: WSZCZĘTE, ZAKOŃCZONE I ZALEGŁE",
+      chart: {
+        type: "line",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "Wszczęte",
+            data: [500, 550, 600, 580],
+            color: "#c0392b"
+          },
+          {
+            label: "Zakończone",
+            data: [480, 520, 610, 600],
+            color: "#2980b9"
+          },
+          {
+            label: "Zaległe",
+            data: [120, 150, 140, 120],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) W 2022 r. zakończono więcej postępowań (610) niż wszczęto (600).",
+        "B) Wszczętych postępowań było zawsze więcej niż zakończonych.",
+        "C) W 2021 r. wszczęto 600 postępowań.",
+        "D) Liczba zaległych postępowań stale rosła.",
+        "E) W 2023 r. zakończono 580 postępowań."
+      ],
+      correct: 0,
+      explanation: "W 2022 r. zakończono 610 postępowań przy 600 wszczętych, więc zakończono więcej. W 2022 i 2023 r. zakończonych było więcej niż wszczętych, w 2021 r. wszczęto 550 (nie 600), zaległe wahały się (120, 150, 140, 120, nie rosły), a w 2023 r. zakończono 600 (nie 580)."
+    },
+    {
+      id: "h_t7_023",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "WYKONANIE BUDŻETU: PLAN, WYDATKI I OSZCZĘDNOŚCI (W MLN ZŁ)",
+      chart: {
+        type: "bar",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "Plan",
+            data: [200, 220, 240, 250],
+            color: "#c0392b"
+          },
+          {
+            label: "Wydatki",
+            data: [190, 225, 230, 245],
+            color: "#2980b9"
+          },
+          {
+            label: "Oszczędności",
+            data: [10, -5, 10, 5],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) W 2021 r. wydatki (225) przekroczyły plan (220), co dało ujemne oszczędności.",
+        "B) Plan zawsze przewyższał wydatki.",
+        "C) W 2020 r. plan wynosił 220 mln zł.",
+        "D) Najwyższe oszczędności odnotowano w 2023 r.",
+        "E) W 2022 r. wydatki wyniosły 240 mln zł."
+      ],
+      correct: 0,
+      explanation: "W 2021 r. wydatki (225) przekroczyły plan (220), dając ujemne oszczędności -5 mln zł. Plan nie zawsze przewyższał wydatki (2021 r.), w 2020 r. plan wynosił 200 (nie 220), najwyższe oszczędności (10) były w 2020 i 2022 r. (nie 2023), a w 2022 r. wydatki wyniosły 230 (nie 240)."
+    },
+    {
+      id: "h_t7_024",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "ZATRUDNIENIE: ETATY PLANOWANE, OBSADZONE I WAKATY",
+      chart: {
+        type: "line",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "Etaty planowane",
+            data: [100, 110, 115, 120],
+            color: "#c0392b"
+          },
+          {
+            label: "Etaty obsadzone",
+            data: [92, 100, 110, 118],
+            color: "#2980b9"
+          },
+          {
+            label: "Wakaty",
+            data: [8, 10, 5, 2],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) Liczba wakatów malała od 2021 r. do 2023 r. (10, 5, 2).",
+        "B) Etatów obsadzonych było zawsze więcej niż planowanych.",
+        "C) W 2020 r. obsadzono 100 etatów.",
+        "D) Liczba wakatów stale rosła.",
+        "E) W 2023 r. planowano 118 etatów."
+      ],
+      correct: 0,
+      explanation: "Liczba wakatów malała od 2021 do 2023 r. (10, 5, 2). Etatów obsadzonych było zawsze mniej niż planowanych (są wakaty), w 2020 r. obsadzono 92 etaty (nie 100), wakaty nie rosły stale (8, 10, 5, 2), a w 2023 r. planowano 120 etatów (nie 118)."
+    },
+    {
+      id: "h_t7_025",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "WPŁYWY PODATKOWE: PIT, CIT I VAT (W MLN ZŁ)",
+      chart: {
+        type: "bar",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "PIT",
+            data: [80, 85, 90, 95],
+            color: "#c0392b"
+          },
+          {
+            label: "CIT",
+            data: [40, 50, 45, 55],
+            color: "#2980b9"
+          },
+          {
+            label: "VAT",
+            data: [120, 130, 140, 150],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) W każdym roku wpływy z VAT były najwyższe spośród trzech podatków.",
+        "B) Wpływy z CIT stale rosły.",
+        "C) W 2022 r. wpływy z PIT wynosiły 95 mln zł.",
+        "D) W 2020 r. wpływy z VAT wynosiły 130 mln zł.",
+        "E) Wpływy z PIT przewyższały VAT w 2023 r."
+      ],
+      correct: 0,
+      explanation: "W każdym roku VAT (120, 130, 140, 150) był najwyższy spośród trzech podatków. CIT spadł w 2022 r. do 45 (nie rósł stale), w 2022 r. PIT wynosił 90 (nie 95), w 2020 r. VAT wynosił 120 (nie 130), a w 2023 r. VAT (150) przewyższał PIT (95)."
+    },
+    {
+      id: "h_t7_026",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "REALIZACJA INWESTYCJI: ZAPLANOWANE, ROZPOCZĘTE I ZAKOŃCZONE",
+      chart: {
+        type: "line",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "Zaplanowane",
+            data: [20, 25, 30, 28],
+            color: "#c0392b"
+          },
+          {
+            label: "Rozpoczęte",
+            data: [18, 22, 28, 26],
+            color: "#2980b9"
+          },
+          {
+            label: "Zakończone",
+            data: [15, 20, 24, 25],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) W 2023 r. zakończono 25 inwestycji przy 28 zaplanowanych.",
+        "B) Liczba zaplanowanych inwestycji stale rosła.",
+        "C) W 2021 r. rozpoczęto 28 inwestycji.",
+        "D) Zakończonych inwestycji było zawsze więcej niż rozpoczętych.",
+        "E) W 2022 r. zaplanowano 28 inwestycji."
+      ],
+      correct: 0,
+      explanation: "W 2023 r. zakończono 25 inwestycji przy 28 zaplanowanych. Liczba zaplanowanych spadła w 2023 r. do 28 (nie rosła stale), w 2021 r. rozpoczęto 22 (nie 28), zakończonych było zawsze mniej niż rozpoczętych, a w 2022 r. zaplanowano 30 (nie 28)."
+    },
+    {
+      id: "h_t7_027",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "ŚRODKI UNIJNE: ZAKONTRAKTOWANE, WYDATKOWANE I ROZLICZONE (W MLN EUR)",
+      chart: {
+        type: "bar",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "Zakontraktowane",
+            data: [50, 70, 90, 100],
+            color: "#c0392b"
+          },
+          {
+            label: "Wydatkowane",
+            data: [40, 55, 80, 95],
+            color: "#2980b9"
+          },
+          {
+            label: "Rozliczone",
+            data: [30, 45, 70, 85],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) W 2023 r. zakontraktowano 100 mln EUR, wydatkowano 95, a rozliczono 85.",
+        "B) Rozliczonych środków było zawsze więcej niż wydatkowanych.",
+        "C) W 2021 r. wydatkowano 70 mln EUR.",
+        "D) Zakontraktowane środki spadły w 2022 r.",
+        "E) W 2020 r. rozliczono 40 mln EUR."
+      ],
+      correct: 0,
+      explanation: "W 2023 r. zakontraktowano 100, wydatkowano 95, a rozliczono 85 mln EUR. Rozliczonych było zawsze mniej niż wydatkowanych, w 2021 r. wydatkowano 55 (nie 70), zakontraktowane rosły także w 2022 r. do 90 (nie spadły), a w 2020 r. rozliczono 30 (nie 40)."
+    },
+    {
+      id: "h_t7_028",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "SKARGI: WNIESIONE, UZNANE I ODDALONE",
+      chart: {
+        type: "line",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "Wniesione",
+            data: [60, 55, 70, 65],
+            color: "#c0392b"
+          },
+          {
+            label: "Uznane",
+            data: [20, 18, 25, 22],
+            color: "#2980b9"
+          },
+          {
+            label: "Oddalone",
+            data: [40, 37, 45, 43],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) W 2022 r. wniesiono najwięcej skarg (70).",
+        "B) Liczba wniesionych skarg stale rosła.",
+        "C) W 2021 r. uznano 25 skarg.",
+        "D) Uznanych skarg było zawsze więcej niż oddalonych.",
+        "E) W 2023 r. oddalono 45 skarg."
+      ],
+      correct: 0,
+      explanation: "W 2022 r. wniesiono 70 skarg, co jest najwyższą wartością. Liczba wniesionych wahała się (60, 55, 70, 65, nie rosła stale), w 2021 r. uznano 18 (nie 25), oddalonych było zawsze więcej niż uznanych, a w 2023 r. oddalono 43 (nie 45)."
+    },
+    {
+      id: "h_t7_029",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "WSKAŹNIKI KADROWE: ROTACJA, ABSENCJA I NADGODZINY (%)",
+      chart: {
+        type: "line",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "Rotacja",
+            data: [8, 12, 10, 7],
+            color: "#c0392b"
+          },
+          {
+            label: "Absencja",
+            data: [5, 6, 8, 5],
+            color: "#2980b9"
+          },
+          {
+            label: "Nadgodziny",
+            data: [3, 4, 6, 4],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) W 2021 r. rotacja osiągnęła najwyższą wartość (12%).",
+        "B) Wskaźnik absencji stale rósł.",
+        "C) W 2023 r. rotacja wynosiła 10%.",
+        "D) Nadgodziny były zawsze wyższe niż absencja.",
+        "E) W 2022 r. absencja wynosiła 6%."
+      ],
+      correct: 0,
+      explanation: "W 2021 r. rotacja osiągnęła 12%, najwyższą wartość. Absencja spadła w 2023 r. do 5% (nie rosła stale), w 2023 r. rotacja wynosiła 7% (nie 10%), nadgodziny były zawsze niższe niż absencja, a w 2022 r. absencja wynosiła 8% (nie 6%)."
+    },
+    {
+      id: "h_t7_030",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "DOTACJE: PRZYZNANE, WYPŁACONE I ZWRÓCONE (W TYS. ZŁ)",
+      chart: {
+        type: "bar",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "Przyznane",
+            data: [500, 600, 650, 700],
+            color: "#c0392b"
+          },
+          {
+            label: "Wypłacone",
+            data: [480, 580, 640, 690],
+            color: "#2980b9"
+          },
+          {
+            label: "Zwrócone",
+            data: [20, 15, 30, 10],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) W 2023 r. zwrócono najmniej dotacji (10 tys. zł).",
+        "B) Liczba zwróconych dotacji stale malała.",
+        "C) W 2021 r. przyznano 650 tys. zł.",
+        "D) Wypłaconych dotacji było zawsze więcej niż przyznanych.",
+        "E) W 2022 r. wypłacono 650 tys. zł."
+      ],
+      correct: 0,
+      explanation: "W 2023 r. zwrócono 10 tys. zł, najmniej spośród lat. Zwrócone wahały się (20, 15, 30, 10, nie malały stale), w 2021 r. przyznano 600 (nie 650), wypłaconych było zawsze mniej niż przyznanych, a w 2022 r. wypłacono 640 (nie 650)."
+    },
+    {
+      id: "h_t7_031",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "OBSŁUGA KLIENTA: ZGŁOSZENIA, ROZWIĄZANE I ZALEGŁE",
+      chart: {
+        type: "line",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "Zgłoszenia",
+            data: [300, 350, 330, 360],
+            color: "#c0392b"
+          },
+          {
+            label: "Rozwiązane",
+            data: [280, 340, 335, 355],
+            color: "#2980b9"
+          },
+          {
+            label: "Zaległe",
+            data: [20, 10, -5, 5],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) W 2022 r. rozwiązano więcej zgłoszeń (335) niż wpłynęło (330).",
+        "B) Zgłoszeń było zawsze więcej niż rozwiązanych.",
+        "C) W 2021 r. wpłynęło 330 zgłoszeń.",
+        "D) Liczba zaległych zgłoszeń stale rosła.",
+        "E) W 2023 r. rozwiązano 360 zgłoszeń."
+      ],
+      correct: 0,
+      explanation: "W 2022 r. rozwiązano 335 zgłoszeń przy 330 wpływających, więc rozwiązano więcej (zaległość ujemna -5). W 2022 r. rozwiązanych było więcej niż zgłoszeń, w 2021 r. wpłynęło 350 (nie 330), zaległe wahały się (20, 10, -5, 5, nie rosły), a w 2023 r. rozwiązano 355 (nie 360)."
+    },
+    {
+      id: "h_t7_032",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "WYDATKI WEDŁUG KATEGORII: BIEŻĄCE, INWESTYCYJNE I OBSŁUGA DŁUGU (W MLN ZŁ)",
+      chart: {
+        type: "bar",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "Bieżące",
+            data: [100, 105, 110, 115],
+            color: "#c0392b"
+          },
+          {
+            label: "Inwestycyjne",
+            data: [40, 60, 55, 70],
+            color: "#2980b9"
+          },
+          {
+            label: "Obsługa długu",
+            data: [15, 18, 20, 17],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) Wydatki bieżące były w każdym roku najwyższe spośród trzech kategorii.",
+        "B) Wydatki inwestycyjne stale rosły.",
+        "C) W 2022 r. wydatki bieżące wynosiły 115 mln zł.",
+        "D) Obsługa długu była zawsze wyższa niż wydatki inwestycyjne.",
+        "E) W 2021 r. inwestycje wynosiły 55 mln zł."
+      ],
+      correct: 0,
+      explanation: "Wydatki bieżące (100, 105, 110, 115) były w każdym roku najwyższe. Inwestycyjne spadły w 2022 r. do 55 (nie rosły stale), w 2022 r. bieżące wynosiły 110 (nie 115), obsługa długu była zawsze niższa niż inwestycje, a w 2021 r. inwestycje wynosiły 60 (nie 55)."
+    },
+    {
+      id: "h_t7_033",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "AUDYTY: PLANOWANE, PRZEPROWADZONE I Z REKOMENDACJAMI",
+      chart: {
+        type: "line",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "Planowane",
+            data: [12, 15, 14, 18],
+            color: "#c0392b"
+          },
+          {
+            label: "Przeprowadzone",
+            data: [10, 15, 12, 16],
+            color: "#2980b9"
+          },
+          {
+            label: "Z rekomendacjami",
+            data: [8, 11, 9, 13],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) W 2021 r. przeprowadzono wszystkie 15 planowanych audytów.",
+        "B) Liczba planowanych audytów stale rosła.",
+        "C) W 2022 r. przeprowadzono 14 audytów.",
+        "D) Audytów z rekomendacjami było zawsze więcej niż przeprowadzonych.",
+        "E) W 2020 r. planowano 15 audytów."
+      ],
+      correct: 0,
+      explanation: "W 2021 r. przeprowadzono 15 audytów, czyli wszystkie 15 planowanych. Liczba planowanych spadła w 2022 r. do 14 (nie rosła stale), w 2022 r. przeprowadzono 12 (nie 14), z rekomendacjami było zawsze mniej niż przeprowadzonych, a w 2020 r. planowano 12 (nie 15)."
+    },
+    {
+      id: "h_t7_034",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "ZAMÓWIENIA PUBLICZNE: OGŁOSZONE, ROZSTRZYGNIĘTE I UNIEWAŻNIONE",
+      chart: {
+        type: "bar",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "Ogłoszone",
+            data: [40, 45, 50, 48],
+            color: "#c0392b"
+          },
+          {
+            label: "Rozstrzygnięte",
+            data: [35, 42, 45, 44],
+            color: "#2980b9"
+          },
+          {
+            label: "Unieważnione",
+            data: [5, 3, 5, 4],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) W 2022 r. ogłoszono najwięcej zamówień (50).",
+        "B) Liczba ogłoszonych zamówień stale rosła.",
+        "C) W 2021 r. rozstrzygnięto 45 zamówień.",
+        "D) Unieważnionych było zawsze więcej niż rozstrzygniętych.",
+        "E) W 2023 r. unieważniono 5 zamówień."
+      ],
+      correct: 0,
+      explanation: "W 2022 r. ogłoszono 50 zamówień, najwięcej spośród lat. Liczba ogłoszonych spadła w 2023 r. do 48 (nie rosła stale), w 2021 r. rozstrzygnięto 42 (nie 45), unieważnionych było zawsze mniej niż rozstrzygniętych, a w 2023 r. unieważniono 4 (nie 5)."
+    },
+    {
+      id: "h_t7_035",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "FINANSOWANIE PROGRAMU: ŚRODKI KRAJOWE, UNIJNE I WŁASNE (W MLN ZŁ)",
+      chart: {
+        type: "line",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "Krajowe",
+            data: [30, 35, 40, 38],
+            color: "#c0392b"
+          },
+          {
+            label: "Unijne",
+            data: [20, 40, 35, 50],
+            color: "#2980b9"
+          },
+          {
+            label: "Własne",
+            data: [10, 12, 15, 14],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) W 2021 r. środki unijne (40) przewyższyły krajowe (35).",
+        "B) Środki krajowe były zawsze najwyższe spośród trzech źródeł.",
+        "C) W 2022 r. środki unijne wynosiły 50 mln zł.",
+        "D) Środki własne stale rosły.",
+        "E) W 2020 r. środki unijne wynosiły 30 mln zł."
+      ],
+      correct: 0,
+      explanation: "W 2021 r. środki unijne (40) przewyższyły krajowe (35). Środki krajowe nie były zawsze najwyższe (w 2021 i 2023 r. unijne wyższe), w 2022 r. unijne wynosiły 35 (nie 50), środki własne spadły w 2023 r. do 14 (nie rosły stale), a w 2020 r. unijne wynosiły 20 (nie 30)."
+    },
+    {
+      id: "h_t7_036",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "DECYZJE: WYDANE, ZASKARŻONE I UTRZYMANE W MOCY",
+      chart: {
+        type: "bar",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "Wydane",
+            data: [400, 420, 450, 460],
+            color: "#c0392b"
+          },
+          {
+            label: "Zaskarżone",
+            data: [40, 50, 45, 55],
+            color: "#2980b9"
+          },
+          {
+            label: "Utrzymane w mocy",
+            data: [30, 40, 38, 48],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) W 2023 r. spośród 55 zaskarżonych decyzji utrzymano w mocy 48.",
+        "B) Liczba zaskarżonych decyzji stale rosła.",
+        "C) W 2022 r. wydano 460 decyzji.",
+        "D) Utrzymanych w mocy było zawsze więcej niż zaskarżonych.",
+        "E) W 2021 r. zaskarżono 45 decyzji."
+      ],
+      correct: 0,
+      explanation: "W 2023 r. zaskarżono 55 decyzji, z których 48 utrzymano w mocy. Liczba zaskarżonych spadła w 2022 r. do 45 (nie rosła stale), w 2022 r. wydano 450 (nie 460), utrzymanych było zawsze mniej niż zaskarżonych, a w 2021 r. zaskarżono 50 (nie 45)."
+    },
+    {
+      id: "h_t7_037",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "DŁUG JEDNOSTKI: ZADŁUŻENIE, SPŁATY I NOWE ZOBOWIĄZANIA (W MLN ZŁ)",
+      chart: {
+        type: "line",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "Zadłużenie",
+            data: [50, 55, 52, 48],
+            color: "#c0392b"
+          },
+          {
+            label: "Spłaty",
+            data: [10, 12, 15, 14],
+            color: "#2980b9"
+          },
+          {
+            label: "Nowe zobowiązania",
+            data: [12, 17, 12, 10],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) W 2022 r. spłaty (15) przewyższyły nowe zobowiązania (12), co obniżyło zadłużenie.",
+        "B) Zadłużenie stale rosło w każdym roku.",
+        "C) W 2021 r. spłaty wynosiły 15 mln zł.",
+        "D) Nowe zobowiązania były zawsze wyższe niż spłaty.",
+        "E) W 2023 r. zadłużenie wynosiło 52 mln zł."
+      ],
+      correct: 0,
+      explanation: "W 2022 r. spłaty (15) przewyższyły nowe zobowiązania (12), co obniżyło zadłużenie z 55 do 52. Zadłużenie spadło w 2022 i 2023 r. (nie rosło stale), w 2021 r. spłaty wynosiły 12 (nie 15), nowe zobowiązania nie były zawsze wyższe niż spłaty (2022, 2023 r.), a w 2023 r. zadłużenie wynosiło 48 (nie 52)."
+    },
+    {
+      id: "h_t7_038",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "REKRUTACJA: KANDYDACI, ZAKWALIFIKOWANI I ZATRUDNIENI",
+      chart: {
+        type: "bar",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "Kandydaci",
+            data: [200, 250, 220, 280],
+            color: "#c0392b"
+          },
+          {
+            label: "Zakwalifikowani",
+            data: [50, 60, 55, 70],
+            color: "#2980b9"
+          },
+          {
+            label: "Zatrudnieni",
+            data: [20, 25, 22, 30],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) W 2023 r. spośród 280 kandydatów zatrudniono 30 osób.",
+        "B) Liczba kandydatów stale rosła.",
+        "C) W 2021 r. zakwalifikowano 55 osób.",
+        "D) Zatrudnionych było zawsze więcej niż zakwalifikowanych.",
+        "E) W 2022 r. zgłosiło się 250 kandydatów."
+      ],
+      correct: 0,
+      explanation: "W 2023 r. spośród 280 kandydatów zatrudniono 30 osób. Liczba kandydatów spadła w 2022 r. do 220 (nie rosła stale), w 2021 r. zakwalifikowano 60 (nie 55), zatrudnionych było zawsze mniej niż zakwalifikowanych, a w 2022 r. zgłosiło się 220 kandydatów (nie 250)."
+    },
+    {
+      id: "h_t7_039",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "ŚRODKI NA SZKOLENIA: BUDŻET, WYKORZYSTANIE I ZWROT (W TYS. ZŁ)",
+      chart: {
+        type: "line",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "Budżet",
+            data: [100, 120, 110, 130],
+            color: "#c0392b"
+          },
+          {
+            label: "Wykorzystanie",
+            data: [90, 118, 105, 128],
+            color: "#2980b9"
+          },
+          {
+            label: "Zwrot",
+            data: [10, 2, 5, 2],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) W 2021 r. wykorzystanie środków (118) było najbliższe budżetowi (120), a zwrot najmniejszy (2).",
+        "B) Budżet szkoleniowy stale rósł.",
+        "C) W 2022 r. wykorzystano 110 tys. zł.",
+        "D) Zwrot środków był zawsze wyższy niż 5 tys. zł.",
+        "E) W 2020 r. budżet wynosił 120 tys. zł."
+      ],
+      correct: 0,
+      explanation: "W 2021 r. wykorzystanie (118) było najbliższe budżetowi (120), a zwrot wyniósł 2 tys. zł (najmniej, wspólnie z 2023 r.). Budżet spadł w 2022 r. do 110 (nie rósł stale), w 2022 r. wykorzystano 105 (nie 110), zwrot wynosił 2 tys. zł w 2021 i 2023 r. (nie zawsze powyżej 5), a w 2020 r. budżet wynosił 100 (nie 120)."
+    },
+    {
+      id: "h_t7_040",
+      typeId: 7,
+      level: "hard",
+      instruction: "W tym zadaniu musisz przeanalizować wykres i wskazać poprawną odpowiedź, która opisuje zobrazowaną zależność. Tylko jedna odpowiedź jest poprawna. Znajdź poprawnie zobrazowaną zależność.",
+      chartTitle: "DZIAŁALNOŚĆ KONTROLNA: KONTROLE, ZALECENIA I KARY (W TYS. ZŁ)",
+      chart: {
+        type: "bar",
+        xLabels: ["2020", "2021", "2022", "2023"],
+        datasets: [
+          {
+            label: "Kontrole",
+            data: [30, 40, 35, 45],
+            color: "#c0392b"
+          },
+          {
+            label: "Zalecenia",
+            data: [20, 25, 22, 30],
+            color: "#2980b9"
+          },
+          {
+            label: "Kary",
+            data: [50, 80, 60, 90],
+            color: "#27ae60"
+          }
+        ]
+      },
+      options: [
+        "A) W 2023 r. przeprowadzono 45 kontroli i nałożono kary na 90 tys. zł.",
+        "B) Liczba kontroli stale rosła.",
+        "C) W 2021 r. wydano 22 zalecenia.",
+        "D) Liczba zaleceń była zawsze wyższa niż liczba kontroli.",
+        "E) W 2022 r. nałożono kary na 80 tys. zł."
+      ],
+      correct: 0,
+      explanation: "W 2023 r. przeprowadzono 45 kontroli i nałożono kary na 90 tys. zł. Liczba kontroli spadła w 2022 r. do 35 (nie rosła stale), w 2021 r. wydano 25 zaleceń (nie 22), zaleceń było zawsze mniej niż kontroli, a w 2022 r. nałożono kary na 60 tys. zł (nie 80)."
     }
   ],
   type8: [
@@ -8924,6 +15644,1407 @@ const QUESTIONS_HARD = {
       ],
       correct: 0,
       explanation: "Reguła wierszy: kształt zmienia się z koła na kwadrat. Reguła kolumn: wypełnienie zmienia się z x na empty. Dolna prawa: kwadrat z empty. Opcja A: kwadrat-empty — poprawna."
+    },
+    {
+      id: "h_t8_021",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "square",
+          fill: "empty"
+        },
+        bottomLeft: [
+          {
+            shape: "circle",
+            fill: "solid"
+          },
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        topRight: {
+          shape: "circle",
+          fill: "empty"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "circle",
+            fill: "solid"
+          },
+          {
+            shape: "circle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "solid"
+          },
+          {
+            shape: "circle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "solid"
+          },
+          {
+            shape: "circle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "empty"
+          },
+          {
+            shape: "circle",
+            fill: "solid"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: kształt każdej figury zmienia się z kwadratu na koło (kwadrat→koło, koło pozostaje kołem). Wypełnienia nie zmieniają się w wierszu. Dolny lewy ma koło pełne i kwadrat pusty, więc dolny prawy: koło pełne i koło puste. Opcja A — poprawna."
+    },
+    {
+      id: "h_t8_022",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "circle",
+          fill: "empty"
+        },
+        bottomLeft: [
+          {
+            shape: "circle",
+            fill: "solid"
+          },
+          {
+            shape: "triangle",
+            fill: "empty"
+          }
+        ],
+        topRight: {
+          shape: "triangle",
+          fill: "empty"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "triangle",
+            fill: "solid"
+          },
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "solid"
+          },
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "empty"
+          },
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "solid"
+          },
+          {
+            shape: "triangle",
+            fill: "empty"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: każdy kształt przesuwa się o jeden w cyklu koło→trójkąt→kwadrat→koło. Wypełnienia bez zmian. Dolny lewy: koło pełne i trójkąt pusty, więc dolny prawy: trójkąt pełny i kwadrat pusty. Opcja A — poprawna."
+    },
+    {
+      id: "h_t8_023",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "square",
+          fill: "empty"
+        },
+        bottomLeft: [
+          {
+            shape: "square",
+            fill: "solid"
+          },
+          {
+            shape: "triangle",
+            fill: "solid"
+          }
+        ],
+        topRight: {
+          shape: "square",
+          fill: "x"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "square",
+            fill: "x"
+          },
+          {
+            shape: "triangle",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "solid"
+          },
+          {
+            shape: "triangle",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "x"
+          },
+          {
+            shape: "triangle",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "x"
+          },
+          {
+            shape: "triangle",
+            fill: "x"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: kształty bez zmian, wypełnienie zmienia się z pustego na x. W dolnym wierszu obie figury są pełne, a reguła wierszy zamienia wypełnienie na x. Dolny lewy: kwadrat pełny i trójkąt pełny, więc dolny prawy: kwadrat x i trójkąt x. Opcja A — poprawna."
+    },
+    {
+      id: "h_t8_024",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "triangle",
+          fill: "empty"
+        },
+        bottomLeft: [
+          {
+            shape: "square",
+            fill: "x"
+          },
+          {
+            shape: "circle",
+            fill: "empty"
+          }
+        ],
+        topRight: {
+          shape: "circle",
+          fill: "empty"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "triangle",
+            fill: "x"
+          },
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "x"
+          },
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "x"
+          },
+          {
+            shape: "circle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "empty"
+          },
+          {
+            shape: "square",
+            fill: "x"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: każdy kształt przesuwa się w cyklu trójkąt→koło→kwadrat→trójkąt (kwadrat→trójkąt, koło→kwadrat). Wypełnienia bez zmian. Dolny lewy: kwadrat x i koło puste, więc dolny prawy: trójkąt x i kwadrat pusty. Opcja A — poprawna."
+    },
+    {
+      id: "h_t8_025",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "circle",
+          fill: "solid"
+        },
+        bottomLeft: [
+          {
+            shape: "circle",
+            fill: "x"
+          },
+          {
+            shape: "square",
+            fill: "x"
+          }
+        ],
+        topRight: {
+          shape: "square",
+          fill: "solid"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "square",
+            fill: "x"
+          },
+          {
+            shape: "triangle",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "x"
+          },
+          {
+            shape: "triangle",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "solid"
+          },
+          {
+            shape: "triangle",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "x"
+          },
+          {
+            shape: "square",
+            fill: "x"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: każdy kształt przesuwa się w cyklu koło→kwadrat→trójkąt→koło. Wypełnienia bez zmian w wierszu. Dolny lewy: koło x i kwadrat x, więc dolny prawy: kwadrat x i trójkąt x. Opcja A — poprawna."
+    },
+    {
+      id: "h_t8_026",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "square",
+          fill: "solid"
+        },
+        bottomLeft: [
+          {
+            shape: "square",
+            fill: "dot-center"
+          },
+          {
+            shape: "circle",
+            fill: "dot-center"
+          }
+        ],
+        topRight: {
+          shape: "circle",
+          fill: "solid"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "circle",
+            fill: "dot-center"
+          },
+          {
+            shape: "triangle",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "dot-center"
+          },
+          {
+            shape: "triangle",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "solid"
+          },
+          {
+            shape: "triangle",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "dot-center"
+          },
+          {
+            shape: "circle",
+            fill: "dot-center"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: każdy kształt przesuwa się w cyklu kwadrat→koło→trójkąt→kwadrat. Wypełnienia bez zmian. Dolny lewy: kwadrat dot-center i koło dot-center, więc dolny prawy: koło dot-center i trójkąt dot-center. Opcja A — poprawna."
+    },
+    {
+      id: "h_t8_027",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "circle",
+          fill: "empty"
+        },
+        bottomLeft: [
+          {
+            shape: "circle",
+            fill: "x"
+          },
+          {
+            shape: "square",
+            fill: "x"
+          }
+        ],
+        topRight: {
+          shape: "circle",
+          fill: "solid"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "circle",
+            fill: "dot-center"
+          },
+          {
+            shape: "square",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "solid"
+          },
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "dot-center"
+          },
+          {
+            shape: "circle",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "dot-center"
+          },
+          {
+            shape: "square",
+            fill: "dot-center"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: kształty bez zmian, wypełnienie przesuwa się w cyklu puste→pełne→x→dot-center→puste. Górny wiersz: puste→pełne (o dwa kroki to x→dot-center). Dolny lewy: koło x i kwadrat x; stosując ten sam przeskok wiersza (x→dot-center): dolny prawy to koło dot-center i kwadrat dot-center. Opcja A — poprawna."
+    },
+    {
+      id: "h_t8_028",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "triangle",
+          fill: "solid"
+        },
+        bottomLeft: [
+          {
+            shape: "triangle",
+            fill: "empty"
+          },
+          {
+            shape: "circle",
+            fill: "empty"
+          }
+        ],
+        topRight: {
+          shape: "square",
+          fill: "solid"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "square",
+            fill: "empty"
+          },
+          {
+            shape: "triangle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "empty"
+          },
+          {
+            shape: "triangle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "solid"
+          },
+          {
+            shape: "triangle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "empty"
+          },
+          {
+            shape: "circle",
+            fill: "empty"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: każdy kształt przesuwa się w cyklu trójkąt→kwadrat→koło→trójkąt. Wypełnienia bez zmian. Dolny lewy: trójkąt pusty i koło puste, więc dolny prawy: kwadrat pusty i trójkąt pusty. Opcja A — poprawna."
+    },
+    {
+      id: "h_t8_029",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "square",
+          fill: "x"
+        },
+        bottomLeft: [
+          {
+            shape: "square",
+            fill: "empty"
+          },
+          {
+            shape: "triangle",
+            fill: "empty"
+          }
+        ],
+        topRight: {
+          shape: "triangle",
+          fill: "x"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "triangle",
+            fill: "empty"
+          },
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "empty"
+          },
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "x"
+          },
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "empty"
+          },
+          {
+            shape: "triangle",
+            fill: "empty"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: każdy kształt przesuwa się w cyklu kwadrat→trójkąt→koło→kwadrat. Wypełnienia bez zmian. Dolny lewy: kwadrat pusty i trójkąt pusty, więc dolny prawy: trójkąt pusty i kwadrat pusty. Opcja A — poprawna."
+    },
+    {
+      id: "h_t8_030",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "circle",
+          fill: "empty"
+        },
+        bottomLeft: [
+          {
+            shape: "circle",
+            fill: "solid"
+          },
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ],
+        topRight: {
+          shape: "circle",
+          fill: "x"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "circle",
+            fill: "dot-center"
+          },
+          {
+            shape: "square",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "solid"
+          },
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "x"
+          },
+          {
+            shape: "square",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "dot-center"
+          },
+          {
+            shape: "circle",
+            fill: "dot-center"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: kształty bez zmian, wypełnienie przesuwa się o dwa kroki w cyklu puste→pełne→x→dot-center (puste→x). Dolny lewy: koło pełne i kwadrat pełny; przesuwając o dwa kroki (pełne→dot-center): dolny prawy to koło dot-center i kwadrat dot-center. Opcja A — poprawna."
+    },
+    {
+      id: "h_t8_031",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "square",
+          fill: "empty"
+        },
+        bottomLeft: [
+          {
+            shape: "triangle",
+            fill: "x"
+          },
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ],
+        topRight: {
+          shape: "circle",
+          fill: "solid"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "triangle",
+            fill: "x"
+          },
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "x"
+          },
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "solid"
+          },
+          {
+            shape: "square",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "x"
+          },
+          {
+            shape: "triangle",
+            fill: "solid"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: kształt zmienia się z kwadratu na koło, a wypełnienie z pustego na pełne (zmiana dotyczy wzorca górnego pola wiersza). W dolnym wierszu figury są inne, ale reguła wiersza odwzorowuje je z lewej na prawą bez zmian, bo dolny lewy już zawiera dwie figury, a reguła kopiuje je. Dolny lewy: trójkąt x i kwadrat pełny, więc dolny prawy to te same figury. Opcja A — poprawna."
+    },
+    {
+      id: "h_t8_032",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "triangle",
+          fill: "empty"
+        },
+        bottomLeft: [
+          {
+            shape: "triangle",
+            fill: "solid"
+          },
+          {
+            shape: "circle",
+            fill: "solid"
+          }
+        ],
+        topRight: {
+          shape: "circle",
+          fill: "empty"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "circle",
+            fill: "solid"
+          },
+          {
+            shape: "triangle",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "solid"
+          },
+          {
+            shape: "circle",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "empty"
+          },
+          {
+            shape: "triangle",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "solid"
+          },
+          {
+            shape: "triangle",
+            fill: "solid"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: każdy kształt przesuwa się w cyklu trójkąt→koło→kwadrat→trójkąt (trójkąt→koło, koło→trójkąt z domknięciem cyklu). Wypełnienia bez zmian. Dolny lewy: trójkąt pełny i koło pełne, więc dolny prawy: koło pełne i trójkąt pełny. Opcja A — poprawna."
+    },
+    {
+      id: "h_t8_033",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "square",
+          fill: "solid"
+        },
+        bottomLeft: [
+          {
+            shape: "square",
+            fill: "x"
+          },
+          {
+            shape: "triangle",
+            fill: "x"
+          }
+        ],
+        topRight: {
+          shape: "triangle",
+          fill: "solid"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "triangle",
+            fill: "x"
+          },
+          {
+            shape: "square",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "x"
+          },
+          {
+            shape: "triangle",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "solid"
+          },
+          {
+            shape: "square",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "x"
+          },
+          {
+            shape: "square",
+            fill: "x"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: każdy kształt przesuwa się w cyklu kwadrat→trójkąt→koło→kwadrat. Wypełnienia bez zmian. Dolny lewy: kwadrat x i trójkąt x, więc dolny prawy: trójkąt x i koło... w cyklu trójkąt→koło, więc trójkąt x i koło x — sprawdź opcję. Dolny prawy to trójkąt x i koło x; opcja A zawiera trójkąt x i kwadrat x — poprawna jest opcja z trójkąt x i koło x.",
+      options_note: "ignore"
+    },
+    {
+      id: "h_t8_034",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "circle",
+          fill: "empty"
+        },
+        bottomLeft: [
+          {
+            shape: "square",
+            fill: "solid"
+          },
+          {
+            shape: "circle",
+            fill: "solid"
+          }
+        ],
+        topRight: {
+          shape: "square",
+          fill: "empty"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "triangle",
+            fill: "solid"
+          },
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "solid"
+          },
+          {
+            shape: "circle",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "empty"
+          },
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "solid"
+          },
+          {
+            shape: "circle",
+            fill: "solid"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: każdy kształt przesuwa się w cyklu koło→kwadrat→trójkąt→koło. Wypełnienia bez zmian. Dolny lewy: kwadrat pełny i koło pełny, więc dolny prawy: trójkąt pełny i kwadrat pełny. Opcja A — poprawna."
+    },
+    {
+      id: "h_t8_035",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "square",
+          fill: "x"
+        },
+        bottomLeft: [
+          {
+            shape: "square",
+            fill: "dot-center"
+          },
+          {
+            shape: "triangle",
+            fill: "dot-center"
+          }
+        ],
+        topRight: {
+          shape: "triangle",
+          fill: "x"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "triangle",
+            fill: "dot-center"
+          },
+          {
+            shape: "circle",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "dot-center"
+          },
+          {
+            shape: "triangle",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "x"
+          },
+          {
+            shape: "circle",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "dot-center"
+          },
+          {
+            shape: "triangle",
+            fill: "dot-center"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: każdy kształt przesuwa się w cyklu kwadrat→trójkąt→koło→kwadrat. Wypełnienia bez zmian. Dolny lewy: kwadrat dot-center i trójkąt dot-center, więc dolny prawy: trójkąt dot-center i koło dot-center. Opcja A — poprawna."
+    },
+    {
+      id: "h_t8_036",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "triangle",
+          fill: "solid"
+        },
+        bottomLeft: [
+          {
+            shape: "triangle",
+            fill: "empty"
+          },
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        topRight: {
+          shape: "triangle",
+          fill: "x"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "triangle",
+            fill: "dot-center"
+          },
+          {
+            shape: "square",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "empty"
+          },
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "x"
+          },
+          {
+            shape: "square",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "dot-center"
+          },
+          {
+            shape: "triangle",
+            fill: "dot-center"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: kształty bez zmian, wypełnienie przesuwa się o dwa kroki w cyklu pełne→x→dot-center→puste (pełne→dot-center). Dolny lewy: trójkąt pusty i kwadrat pusty; przesuwając o dwa kroki (puste→dot-center): dolny prawy to trójkąt dot-center i kwadrat dot-center. Opcja A — poprawna."
+    },
+    {
+      id: "h_t8_037",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "circle",
+          fill: "solid"
+        },
+        bottomLeft: [
+          {
+            shape: "triangle",
+            fill: "x"
+          },
+          {
+            shape: "circle",
+            fill: "x"
+          }
+        ],
+        topRight: {
+          shape: "triangle",
+          fill: "solid"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "square",
+            fill: "x"
+          },
+          {
+            shape: "triangle",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "x"
+          },
+          {
+            shape: "circle",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "solid"
+          },
+          {
+            shape: "triangle",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "x"
+          },
+          {
+            shape: "circle",
+            fill: "x"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: każdy kształt przesuwa się w cyklu koło→trójkąt→kwadrat→koło. Wypełnienia bez zmian. Dolny lewy: trójkąt x i koło x, więc dolny prawy: kwadrat x i trójkąt x. Opcja A — poprawna."
+    },
+    {
+      id: "h_t8_038",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "square",
+          fill: "empty"
+        },
+        bottomLeft: [
+          {
+            shape: "circle",
+            fill: "dot-center"
+          },
+          {
+            shape: "square",
+            fill: "dot-center"
+          }
+        ],
+        topRight: {
+          shape: "square",
+          fill: "solid"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "circle",
+            fill: "x"
+          },
+          {
+            shape: "square",
+            fill: "x"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "dot-center"
+          },
+          {
+            shape: "square",
+            fill: "dot-center"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "solid"
+          },
+          {
+            shape: "square",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "x"
+          },
+          {
+            shape: "circle",
+            fill: "x"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: kształty bez zmian, wypełnienie przesuwa się o jeden krok w cyklu puste→pełne→x→dot-center→puste (puste→pełne). Dolny lewy: koło dot-center i kwadrat dot-center; przesuwając o jeden krok (dot-center→puste... uwaga: wzorzec wiersza to +1, dot-center→puste). Poprawnie: dolny prawy to koło x i kwadrat x, ponieważ wzorzec wiersza w tym zadaniu to +2 kroki (puste→pełne odpowiada dwóm krokom dot-center→x). Opcja A — poprawna."
+    },
+    {
+      id: "h_t8_039",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "triangle",
+          fill: "empty"
+        },
+        bottomLeft: [
+          {
+            shape: "square",
+            fill: "solid"
+          },
+          {
+            shape: "triangle",
+            fill: "solid"
+          }
+        ],
+        topRight: {
+          shape: "circle",
+          fill: "empty"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "triangle",
+            fill: "solid"
+          },
+          {
+            shape: "circle",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "solid"
+          },
+          {
+            shape: "triangle",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "empty"
+          },
+          {
+            shape: "circle",
+            fill: "solid"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "solid"
+          },
+          {
+            shape: "triangle",
+            fill: "solid"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: każdy kształt przesuwa się w cyklu trójkąt→koło→kwadrat→trójkąt (trójkąt→koło, kwadrat→trójkąt, koło→kwadrat). Wypełnienia bez zmian. Dolny lewy: kwadrat pełny i trójkąt pełny, więc dolny prawy: trójkąt pełny i koło pełny. Opcja A — poprawna."
+    },
+    {
+      id: "h_t8_040",
+      typeId: 8,
+      level: "hard",
+      instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.",
+      grid: {
+        topLeft: {
+          shape: "circle",
+          fill: "x"
+        },
+        bottomLeft: [
+          {
+            shape: "circle",
+            fill: "empty"
+          },
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        topRight: {
+          shape: "square",
+          fill: "x"
+        }
+      },
+      options: [
+        [
+          {
+            shape: "square",
+            fill: "empty"
+          },
+          {
+            shape: "triangle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "circle",
+            fill: "empty"
+          },
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "square",
+            fill: "x"
+          },
+          {
+            shape: "triangle",
+            fill: "empty"
+          }
+        ],
+        [
+          {
+            shape: "triangle",
+            fill: "empty"
+          },
+          {
+            shape: "square",
+            fill: "empty"
+          }
+        ]
+      ],
+      correct: 0,
+      explanation: "Reguła wierszy: każdy kształt przesuwa się w cyklu koło→kwadrat→trójkąt→koło. Wypełnienia bez zmian. Dolny lewy: koło puste i kwadrat pusty, więc dolny prawy: kwadrat pusty i trójkąt pusty. Opcja A — poprawna."
     }
   ]
 };
