@@ -2370,6 +2370,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
   }
+
+  // Poproś przeglądarkę o trwałe magazynowanie, by chronić historię (localStorage)
+  // przed automatycznym usunięciem przy presji na pamięć (eviction).
+  if (navigator.storage && navigator.storage.persist) {
+    navigator.storage.persisted().then(function(already) {
+      if (!already) navigator.storage.persist();
+    }).catch(function() {});
+  }
 </script>
 </body>
 </html>
