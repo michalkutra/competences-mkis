@@ -2918,19 +2918,19 @@ const QUESTIONS_HARD = {
       level: "hard",
       instruction: "W tym zadaniu musisz ustalić odpowiednie powiązania między słowami. Uzupełnij brakującą odpowiedź. Tylko jedna odpowiedź jest poprawna.",
       leftPair: [
-        "referendum ogólnokrajowe",
-        "art. 125 Konstytucji RP"
+        "exposé",
+        "Premier"
       ],
-      rightTop: "inicjatywa ustawodawcza obywateli",
+      rightTop: "orędzie",
       options: [
-        "A) art. 118 ust. 2 Konstytucji RP",
-        "B) art. 235 Konstytucji RP",
-        "C) art. 90 Konstytucji RP",
-        "D) art. 144 Konstytucji RP",
-        "E) art. 87 Konstytucji RP"
+        "A) Prezydent RP",
+        "B) Marszałek Sejmu",
+        "C) Marszałek Senatu",
+        "D) Prezes NIK",
+        "E) Rzecznik Praw Obywatelskich"
       ],
       correct: 0,
-      explanation: "Referendum ogólnokrajowe jest uregulowane w art. 125 Konstytucji RP — ten artykuł jest jego podstawą konstytucyjną. Analogicznie inicjatywa ustawodawcza obywateli (100 tys. podpisów) jest uregulowana w art. 118 ust. 2 Konstytucji RP — to jest jej konstytucyjna podstawa."
+      explanation: "Exposé jest przemówieniem wygłaszanym przez Premiera (Prezesa Rady Ministrów) przed Sejmem — przedstawia w nim program działania rządu i ubiega się o votum zaufania. Analogicznie orędzie jest formalnym przemówieniem wygłaszanym przez Prezydenta RP — to wyłączna forma jego publicznego wystąpienia do Zgromadzenia Narodowego, Sejmu lub Senatu."
     },
     {
       id: "h_t1_014",

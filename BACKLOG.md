@@ -7,7 +7,6 @@
 | # | Pozycja | Wpływ | Wysiłek | Priorytet |
 |---|---|---|---|---|
 | 2 | Komunikacja (post na grupie) | Bez dobrego posta nikt nie kliknie — treść, ton, timing | ~1h | **MUST** |
-| 6 | Analityka GA4 | Bez tego nie wiesz CO się dzieje — adopcja, drop-off, które tryby | ~1h | **MUST** |
 | 7 | NPS / CSAT (Tally) | Bez tego nie wiesz CO MYŚLĄ — liczby bez kontekstu nic nie mówią | ~30 min | **MUST** |
 | 8 | Informacja o puli pytań | Ustawia oczekiwania, zapobiega "to za mało" | ~15 min | SHOULD |
 | 10 | Podziel się wynikiem | Jedyny mechanizm wyjścia poza te 700 osób | ~1h | SHOULD |
@@ -16,32 +15,6 @@
 | 15 | Autentykacja Google | Aktywnie szkodliwa — dodaje friction, zmniejszy adopcję | dni | **SKIP** |
 
 **MUSTs łącznie:** ~2-3h (poza deploy). **SHOULDs:** kolejne ~4-5h.
-
----
-
-## Analityka (GA + GTM)
-
-Wdrożyć Google Tag Manager jako kontener, a przez niego Google Analytics 4.
-
-**Zdarzenia do śledzenia (poza domyślnymi GA):**
-
-Sesje:
-- rozpoczęcie sesji (tryb, poziom trudności, liczba pytań)
-- ukończenie sesji (dotarcie do ekranu wyników)
-- porzucenie sesji — kiedy i na którym pytaniu
-
-Pytania:
-- liczba odpowiedzi w sesji
-- odpowiedź poprawna / błędna (per pytanie, per typ pytania)
-
-Nawigacja:
-- które widoki (ekrany) odwiedza użytkownik
-
-Interakcje:
-- najczęściej klikane elementy strony
-
-**Narzędzia 3rd party przez GTM:**
-- Inspectlet (nagrania sesji, heatmapy) — podłączyć przez GTM tag
 
 ---
 

@@ -56,6 +56,22 @@ History API client-side routing zaimplementowane w `web/index.html`. Każdy ekra
 
 ---
 
+## Analityka GA4 + GTM
+
+> **Ukończono:** 2026-06-02
+
+Google Tag Manager (`GTM-KZ9NMFFK`) dodany do `web/index.html` (snippet w `<head>` i noscript w `<body>`). Przez GTM podłączony GA4 (`G-5ZLD2PHTNE`). Eventy `dataLayer.push()` zaimplementowane w kodzie:
+
+- `screen_view` — każda zmiana ekranu (screen_name)
+- `session_started` — klik Rozpocznij (mode, difficulty, timer_enabled)
+- `question_answered` — każda odpowiedź (question_type, is_correct, question_index, time_spent_sec)
+- `session_completed` — koniec sesji (score, score_pct, questions_total, mode, difficulty)
+- `session_aborted` — porzucenie sesji (at_question_index, questions_total)
+- `error_reported` — zgłoszenie błędu w pytaniu (question_id, question_type)
+- `donation_clicked` — klik Ko-fi (source: 'about' lub 'widget')
+
+---
+
 ## Podstrona "O aplikacji"
 
 > **Ukończono:** 2026-06-01
