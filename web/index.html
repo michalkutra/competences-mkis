@@ -974,8 +974,19 @@
       #screen-about { padding: 40px 32px; }
     }
   </style>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KZ9NMFFK');</script>
+  <!-- End Google Tag Manager -->
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZ9NMFFK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <header id="global-header">
   <div id="header-account">
@@ -1133,6 +1144,7 @@
       Aplikacja jest bezpłatna. Jeśli pomaga Ci w nauce — możesz postawić nam kawę. To naprawdę motywuje. ☕
     </p>
     <a href="https://ko-fi.com/sprawdzianumiejetnosci" target="_blank" rel="noopener"
+       onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'donation_clicked',source:'about'})"
        style="display:inline-block;background:#ff5f5f;color:#fff;font-weight:600;padding:12px 28px;border-radius:8px;text-decoration:none;font-size:1rem;">
       ☕ Postaw nam kawę na Ko-fi
     </a>
@@ -1189,6 +1201,8 @@
   var ROUTING_ENABLED = window.location.protocol !== 'file:';
 
   function showScreen(name) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'screen_view', screen_name: name });
     _applyScreen(name);
     if (!ROUTING_ENABLED) return;
     var url = SCREEN_PATHS[name] || ('/' + name);
@@ -1381,6 +1395,14 @@
     state.currentIndex = 0;
     state.answers = [];
     state.sessionStartTime = Date.now();
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'session_started',
+      session_mode: state.mode,
+      session_difficulty: state.difficulty,
+      timer_enabled: state.timerEnabled
+    });
 
     showScreen('question');
     renderQuestion();
@@ -1876,6 +1898,15 @@
       timeSpentSec: timeSpent
     });
 
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'question_answered',
+      question_type: q.typeId,
+      is_correct: index === q.correct,
+      question_index: state.currentIndex,
+      time_spent_sec: timeSpent
+    });
+
     // Show green/red on options
     const container = document.getElementById('options-container');
     if (container) {
@@ -1923,11 +1954,26 @@
         correct: state.pendingAnswer === q.correct,
         timeSpentSec: timeSpent
       });
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'question_answered',
+        question_type: q.typeId,
+        is_correct: state.pendingAnswer === q.correct,
+        question_index: state.currentIndex,
+        time_spent_sec: timeSpent
+      });
     }
     nextQuestion();
   }
 
   function reportQuestion(id) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'error_reported',
+      question_id: id,
+      question_index: state.currentIndex,
+      question_type: state.session[state.currentIndex] ? state.session[state.currentIndex].typeId : null
+    });
     var subject = encodeURIComponent('Zgłoszenie błędu – pytanie #' + id);
     window.location.href = 'mailto:michal@kutra.pl?cc=ewelina.wegrocka%40gmail.com&subject=' + subject;
   }
@@ -1937,6 +1983,14 @@
   ================================================================ */
   function abortSession() {
     if (confirm('Przerwać sesję? Postęp zostanie utracony.')) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'session_aborted',
+        at_question_index: state.currentIndex,
+        questions_total: state.session.length,
+        session_mode: state.mode,
+        session_difficulty: state.difficulty
+      });
       stopTimer();
       _applyScreen('home');
       if (ROUTING_ENABLED) history.replaceState({ screen: 'home' }, '', '/');
@@ -2053,6 +2107,17 @@
       totalTimeSec: state.sessionStartTime ? Math.floor((Date.now() - state.sessionStartTime) / 1000) : null,
       timerEnabled: state.timerEnabled
     };
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'session_completed',
+      session_mode: state.mode,
+      session_difficulty: state.difficulty,
+      score: meta.score,
+      questions_total: meta.total,
+      score_pct: Math.round(meta.score / meta.total * 100),
+      timer_enabled: state.timerEnabled
+    });
 
     let html = buildSummaryHtml(items, meta, getSessions().length >= 1 && meta.score / meta.total >= 0.5);
     html += '<div class="summary-buttons">';
@@ -2271,7 +2336,7 @@
   function kofiWidget() {
     return '<div style="margin-top:32px;text-align:center;padding:20px 0;border-top:1px solid #e5e7eb;">'
       + '<p style="margin-bottom:12px;color:#374151;font-size:0.95rem;">Czy ta appka pomaga Ci w nauce? Jeśli tak</p>'
-      + '<a href="https://ko-fi.com/sprawdzianumiejetnosci" target="_blank" rel="noopener" style="display:inline-block;background:#ff5f5f;color:#fff;font-weight:600;padding:10px 20px;border-radius:8px;text-decoration:none;font-size:15px;">☕ Postaw nam kawę</a>'
+      + '<a href="https://ko-fi.com/sprawdzianumiejetnosci" target="_blank" rel="noopener" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\'donation_clicked\',source:\'widget\'})" style="display:inline-block;background:#ff5f5f;color:#fff;font-weight:600;padding:10px 20px;border-radius:8px;text-decoration:none;font-size:15px;">☕ Postaw nam kawę</a>'
       + '<p style="margin-top:10px;color:#374151;font-size:0.95rem;">Tworzymy ją w wolnym czasie.</p>'
       + '</div>';
   }
