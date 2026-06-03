@@ -107,6 +107,12 @@
       margin-top: 32px;
       animation: countdown-pulse 3s ease-in-out infinite;
     }
+    #question-count {
+      display: block;
+      color: #555;
+      font-size: 1rem;
+      margin-top: 4px;
+    }
     @keyframes countdown-pulse {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.04); }
@@ -1015,7 +1021,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ==================== HOME ==================== -->
 <div id="screen-home" class="screen">
   <h1>Sprawdzian Umiejętności</h1>
-  <p class="subtitle">Pomoc do nauki egzaminu kompetencyjnego KSAP</p>
+  <p class="subtitle">Pomoc do nauki egzaminu kompetencyjnego KSAP<span id="question-count"></span></p>
   <button id="btn-new-session" onclick="goSetup()">Nowa sesja</button>
   <button id="btn-history" class="ghost" onclick="showScreen('history'); loadHistory();">Historia sesji</button>
   <p id="exam-countdown"></p>
@@ -1264,6 +1270,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   }
 
+  function initQuestionCount() {
+    const el = document.getElementById('question-count');
+    if (!el) return;
+    const banks = [QUESTIONS_EASY];
+    if (typeof QUESTIONS_HARD !== 'undefined') banks.push(QUESTIONS_HARD);
+    let total = 0;
+    banks.forEach(function(bank) {
+      Object.values(bank).forEach(function(pool) { total += pool.length; });
+    });
+    const mod10 = total % 10, mod100 = total % 100;
+    let word = 'pytań';
+    if (total === 1) word = 'pytanie';
+    else if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) word = 'pytania';
+    el.textContent = total + ' ' + word + ' w bazie';
+  }
+
   function toggleAccountMenu() {
     const menu = document.getElementById('account-menu');
     if (menu.hasAttribute('hidden')) {
@@ -1316,6 +1338,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (initialScreen === 'stats') loadStats();
 
     initCountdown();
+    initQuestionCount();
     document.addEventListener('click', function(e) {
       const accountEl = document.getElementById('header-account');
       if (accountEl && !accountEl.contains(e.target)) {

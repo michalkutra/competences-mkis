@@ -79,6 +79,12 @@ function buildOptions(g, optCount, seed) {
     const c = BR.map((f) => Object.assign({}, f, { fill: FILLS[(FILLS.indexOf(f.fill) + extra) % 4] }));
     const k = cellKey(c); if (!used.has(k)) { used.add(k); distract.push(c); } extra++;
   }
+  // szerszy fallback: zmiana kształtu pozycji 0 (gdy fill nie wystarczył)
+  for (let si = 1; si < SHAPES.length && distract.length < optCount - 1; si++) {
+    const c = BR.map((f, idx) => idx === 0 ? Object.assign({}, f, { shape: SHAPES[(SHAPES.indexOf(f.shape) + si) % 3] }) : f);
+    const k = cellKey(c); if (!used.has(k)) { used.add(k); distract.push(c); }
+  }
+  if (distract.length < optCount - 1) throw new Error(`za mało dystraktorów (${distract.length}/${optCount - 1}) dla BR ${cellKey(BR)}`);
   const pos = seed % optCount;
   const opts = distract.slice(); opts.splice(pos, 0, BR);
   return { options: opts, correct: pos };
@@ -125,6 +131,7 @@ function generateAll(path) {
   const outHard = hard.type8.map((tmpl, h) => {
     let bump = 0, q = buildQuestion(tmpl, h, 0);
     while (seen.has(sig(q)) && bump < 50) { bump++; q = buildQuestion(tmpl, h, bump); }
+    if (seen.has(sig(q))) throw new Error(`nie udało się uzyskać unikalnego układu dla ${tmpl.id} po 50 próbach`);
     seen.add(sig(q)); return q;
   });
   return { easy: easy.type8, hard: outHard };

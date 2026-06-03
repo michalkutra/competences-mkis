@@ -84,7 +84,7 @@ function main() {
   h8.forEach((q) => { const n = norm(q.grid.topLeft).length; Ncount[n] = (Ncount[n] || 0) + 1; });
   if (Ncount[1] !== 15 || Ncount[2] !== 15 || Ncount[3] !== 10) errors.push(`HARD rozkład N = ${Ncount[1]}/${Ncount[2]}/${Ncount[3]} (oczekiwano 15/15/10)`);
   const rotQ = h8.filter((q) => norm(q.grid.topLeft).some((f) => f.rot !== undefined)).length;
-  if (rotQ < 6) errors.push(`HARD pytań z obrotem: ${rotQ} (oczekiwano >=6)`);
+  if (rotQ !== 7) errors.push(`HARD pytań z obrotem: ${rotQ} (oczekiwano 7)`);
   for (const [lvl, arr] of [['easy', e8], ['hard', h8]]) {
     const c4 = arr.filter((q) => q.options.length === 4).length;
     const c5 = arr.filter((q) => q.options.length === 5).length;
