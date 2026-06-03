@@ -104,7 +104,7 @@
       color: #555;
       font-size: 1rem;
       min-height: 1.5em;
-      margin-top: 32px;
+      margin-top: 8px;
       animation: countdown-pulse 3s ease-in-out infinite;
     }
     #question-count {
@@ -112,6 +112,11 @@
       color: #555;
       font-size: 1rem;
       margin-top: 4px;
+    }
+    #social-proof {
+      color: #555;
+      font-size: 1rem;
+      margin-top: 32px;
     }
     @keyframes countdown-pulse {
       0%, 100% { transform: scale(1); }
@@ -1024,6 +1029,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="subtitle">Pomoc do nauki egzaminu kompetencyjnego KSAP<span id="question-count"></span></p>
   <button id="btn-new-session" onclick="goSetup()">Nowa sesja</button>
   <button id="btn-history" class="ghost" onclick="showScreen('history'); loadHistory();">Historia sesji</button>
+  <p id="social-proof"></p>
   <p id="exam-countdown"></p>
 </div>
 
@@ -1111,8 +1117,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p style="font-size:0.95rem;color:#374151;line-height:1.6;margin-bottom:12px;">
       Świadomie ustawiliśmy 15 pytań na sesję. Krótka sesja, którą można wcisnąć między obowiązkami — przy kawie, w przerwie, kiedy maluch zaśnie. Regularność jest ważniejsza niż długość.
     </p>
+    <p style="font-size:0.95rem;color:#374151;line-height:1.6;margin-bottom:12px;">
+      Skład sesji odzwierciedla proporcje prawdziwego egzaminu KSAP — typy zadań losujemy w takich samych udziałach, jakie czekają Cię na teście. Dlatego niektóre pojawiają się częściej: najwięcej jest <strong>wnioskowania logicznego (sylogizmów) — po 4 w każdej sesji</strong>, większość pozostałych typów po 2, a analogia zdaniowa, analiza wykresu i powiązania figur po 1. Ćwiczysz więc w rozkładzie, który realnie spotkasz na egzaminie.
+    </p>
     <p style="font-size:0.95rem;color:#374151;line-height:1.6;">
       W <strong>Historii sesji</strong> znajdziesz wszystkie poprzednie podejścia z możliwością przejrzenia każdego pytania. <strong>Statystyki</strong> pokazują postępy w czasie — skuteczność per typ zadania, żebyś wiedział, nad czym warto popracować.
+    </p>
+    <p style="font-size:0.95rem;color:#374151;line-height:1.6;margin-top:12px;">
+      <strong>Bez powtórek</strong> — aplikacja zapamiętuje, które pytania już widziałeś, i w kolejnych sesjach dobiera najpierw te, których jeszcze nie miałeś. Przy obecnej puli zrobisz <strong>około 25 sesji</strong>, zanim pytania zaczną się powtarzać. Gdy wyczerpiesz pulę, jako pierwsze wracają te widziane najdawniej.
     </p>
   </div>
 
@@ -1125,6 +1137,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h3>Skąd pytania</h3>
     <p style="font-size:0.95rem;color:#374151;line-height:1.6;">
       Wzięliśmy oficjalne przykłady zadań ze strony KSAP — 15 próbek w 8 typach — i poprosiliśmy kilka modeli AI, żeby wygenerowały analogiczne zadania w dwóch poziomach trudności, a potem nawzajem je zweryfikowały. Każde pytanie ma wyjaśnienie odpowiedzi. To nie są oryginalne pytania egzaminacyjne, ale celowo odwzorowują ich logikę i strukturę.
+    </p>
+    <p style="font-size:0.95rem;color:#374151;line-height:1.6;margin-top:12px;">
+      AI potrafi się pomylić — mimo wzajemnej weryfikacji w pojedynczych pytaniach może trafić się błąd. Jeśli coś wygląda nie tak, użyj przycisku <strong>„Zgłoś błąd w pytaniu"</strong> przy danym pytaniu. Każde zgłoszenie sprawdzamy, wspierając się modelami AI do jego weryfikacji — dzięki temu baza pytań się poprawia.
     </p>
   </div>
 
@@ -1165,6 +1180,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- questions data -->
 <script src="questions-unified.js"></script>
+
+<!-- social proof: dane + czysta logika (ładowane przed main script) -->
+<script src="stats.js"></script>
+<script src="social-proof.js"></script>
 
 <!-- main script -->
 <script>
@@ -1286,6 +1305,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     el.textContent = total + ' ' + word + ' w bazie';
   }
 
+  function initSocialProof() {
+    const el = document.getElementById('social-proof');
+    if (!el) return;
+    const stats = window.SITE_STATS;
+    const text = (typeof buildSocialProofText === 'function' && stats)
+      ? buildSocialProofText(stats.answered, 300)
+      : null;
+    if (!text) { el.style.display = 'none'; return; }
+    el.textContent = '✦ ' + text + ' ✦';
+  }
+
   function toggleAccountMenu() {
     const menu = document.getElementById('account-menu');
     if (menu.hasAttribute('hidden')) {
@@ -1356,6 +1386,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     initCountdown();
     initQuestionCount();
+    initSocialProof();
     document.addEventListener('click', function(e) {
       const accountEl = document.getElementById('header-account');
       if (accountEl && !accountEl.contains(e.target)) {
@@ -1411,18 +1442,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   }
 
+  // Mapa qId -> najnowszy timestamp (ISO) z historii odpowiedzi.
+  // Jeden przebieg po ksap_answer_log; brak qId w mapie = pytanie nigdy nie widziane.
+  function getLastSeenMap() {
+    const log = getAnswerLog();
+    const map = Object.create(null);
+    for (let i = 0; i < log.length; i++) {
+      const e = log[i];
+      if (!e || !e.qId || !e.ts) continue;
+      const prev = map[e.qId];
+      if (prev === undefined || e.ts > prev) map[e.qId] = e.ts;
+    }
+    return map;
+  }
+
+  // Least-recently-seen: niewidziane pytania najpierw (kolejność losowa),
+  // potem widziane najdawniej (rosnąco wg ts). Zwraca pierwsze `need` pytań.
+  // shuffle() przed stabilnym sort() daje losowy tie-break i losowy dobór
+  // wśród pytań o równym statusie.
+  function pickLeastRecentlySeen(pool, need, lastSeen) {
+    shuffle(pool);
+    pool.sort(function(a, b) {
+      const ta = lastSeen[a.id], tb = lastSeen[b.id];
+      const ua = (ta === undefined), ub = (tb === undefined);
+      if (ua && ub) return 0;
+      if (ua) return -1;
+      if (ub) return 1;
+      if (ta < tb) return -1;
+      if (ta > tb) return 1;
+      return 0;
+    });
+    return pool.slice(0, need);
+  }
+
   // Rozkład typów w sesji odzwierciedla strukturę prawdziwego egzaminu KSAP
   // (patrz docs/specyfikacja_pytan.md): 15 pytań, z czego sylogizmy 4×.
   const SESSION_BLUEPRINT = { 1: 2, 2: 2, 3: 2, 4: 1, 5: 4, 6: 2, 7: 1, 8: 1 };
 
   function buildSession() {
     const bank = getQuestionBank();
+    const lastSeen = getLastSeenMap();
     const session = [];
     for (let t = 1; t <= 8; t++) {
       const pool = (bank['type' + t] || []).slice();
-      shuffle(pool);
       const need = SESSION_BLUEPRINT[t] || 0;
-      session.push(...pool.slice(0, need));
+      session.push.apply(session, pickLeastRecentlySeen(pool, need, lastSeen));
     }
     shuffle(session);
     return session;

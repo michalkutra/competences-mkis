@@ -11,10 +11,19 @@
 | 8 | Informacja o puli pytań | Ustawia oczekiwania, zapobiega "to za mało" | ~15 min | SHOULD |
 | 10 | Podziel się wynikiem | Jedyny mechanizm wyjścia poza te 700 osób | ~1h | SHOULD |
 | 11 | PWA install prompt | Zwiększa powroty mobilnych użytkowników (fundament już jest) | ~2h | SHOULD |
+| 16 | Licznik social proof na home | Pokazuje, że appka żyje — zachęta do startu | ~30 min | SHOULD |
 | 13 | Przycisk powrotu do pytania | UX improvement — przeżyją bez tego | ~3h | SKIP |
 | 15 | Autentykacja Google | Aktywnie szkodliwa — dodaje friction, zmniejszy adopcję | dni | **SKIP** |
 
 **MUSTs łącznie:** ~2-3h (poza deploy). **SHOULDs:** kolejne ~4-5h.
+
+---
+
+## Licznik social proof na home (#16)
+
+**Status:** zaprojektowane + plan gotowy — [spec](docs/superpowers/specs/2026-06-03-social-proof-counter-design.md), [plan](docs/superpowers/plans/2026-06-03-social-proof-counter.md).
+
+Subtelna linijka „✦ Odpowiedzieliście już na ponad X pytań" pod przyciskami na home (Wariant A). Liczba ręcznie aktualizowana w `web/stats.js` (odczyt z GA: suma eventów `question_answered`, start = 508 → „ponad 500"). Zaokrąglanie w dół do ładnego progu, próg widoczności 300 (poniżej — linijka ukryta). Bez backendu, bez GA Data API (świadomie). Czysta logika w `web/social-proof.js` (testowana `tools/test-social-proof.js`).
 
 ---
 
@@ -51,7 +60,9 @@ Możliwość cofnięcia się do poprzedniego pytania i zmiany odpowiedzi.
 
 - Do ustalenia: tylko tryb Exam, czy oba tryby (Exam + Learning)?
 
-## System oceniania (NPS / CSAT)
+## System oceniania (CSAT) + wall testimoniali
+
+**Status:** zaprojektowane + rozpisany plan (do wdrożenia) — [spec](docs/superpowers/specs/2026-06-03-csat-testimonials-design.md), [plan](docs/superpowers/plans/2026-06-03-csat-testimonials.md). Decyzje: **Tally** (CSAT 1–5 + komentarz + zgoda RODO), trigger na summary po 2. sesji + link „Oceń appkę" w menu, GA `feedback_submitted`. Wall testimoniali: ręczna kuracja → `web/testimonials.js`, render na About (lista) i Home (efekt sticky-reveal z `web/bg.png`). Licznik kaw świadomie poza zakresem (osobna iteracja — kawy na zerze szkodzą social proofowi).
 
 Lekki widget do zbierania opinii od użytkowników — bez własnego backendu.
 
@@ -61,13 +72,13 @@ Lekki widget do zbierania opinii od użytkowników — bez własnego backendu.
 - NPS (0–10) lub CSAT (gwiazdki / emoji)
 - opcjonalnie: zapis tekstowej opinii + możliwość wyświetlenia wybranych recenzji publicznie
 
-**Kandydaci do sprawdzenia:**
-- **Senja** — darmowy plan, widget embed, zbiera opinie tekstowe, ma publiczną ścianę recenzji gotową do embed
-- **Testimonial.to** — podobny profil, darmowy tier, wall of love do osadzenia
-- **Tally.so** — darmowy formularz NPS/CSAT, odpowiedzi w dashboardzie (bez publicznego wall)
-- **Formbricks** — open-source, self-host lub cloud, NPS/CSAT out of the box
+**Kandydaci (sprawdzone — wybrano Tally):**
+- **Tally.so** ⭐ — darmowy formularz CSAT, odpowiedzi w dashboardzie, pełna kontrola nad danymi i wyglądem walla (potrzebne do efektu na Home)
+- **Senja** — darmowy plan, publiczny wall gotowy do embed; odrzucone (trudny do zintegrowania z efektem sticky-reveal)
+- **Testimonial.to** — podobny profil; odrzucone z tego samego powodu
+- **Formbricks** — open-source, self-host lub cloud
 
-**Miejsce wyświetlania:** ekran wyników po sesji (najwyższe zaangażowanie)
+**Miejsce wyświetlania:** prompt CSAT na ekranie wyników po sesji (najwyższe zaangażowanie) + link w menu; wall testimoniali na About i Home
 
 ---
 
@@ -100,6 +111,8 @@ Wyświetlać ile pytań jest dostępnych w banku, np. "Pula: 80 pytań (łatwy) 
 - Pomaga użytkownikom ocenić wartość aplikacji przed pierwszą sesją
 - Zapobiega rozczarowaniu ("znam już wszystkie odpowiedzi") — użytkownicy wiedzą czego się spodziewać
 - Warto też sprawdzić realny rozmiar puli: przy sesjach 15-pytaniowych i małej puli użytkownicy szybko widzą powtórki
+
+**Powiązane (przyczyna powtórek):** feedback Eweliny „pytania powtarzają się" zaadresowany planem anty-powtórek (LRS + powiększenie banku do ~25 sesji bez powtórki) — [spec](docs/superpowers/specs/2026-06-03-anti-repeat-question-variety-design.md), [plan](docs/superpowers/plans/2026-06-03-anti-repeat-question-variety.md). Po wdrożeniu zaktualizować podawany rozmiar puli (640 → 840).
 
 ---
 
@@ -188,4 +201,24 @@ Zwiększyć szanse, że użytkownicy nie stracą postępu przy czyszczeniu/evict
 - **Shareable URL z zakodowanym stanem** — base64 w URL/hash, cross-device, ale rośnie z ilością danych.
 
 **Zalecane podejście:** najpierw potwierdzić eviction przez `/debug.html`, potem dźwignia trwałości = PWA install prompt; export/import JSON jako opcjonalne ubezpieczenie.
+
+---
+
+## Dobór pytań wg słabości — „częściej losuj te, na które odpowiedziałem błędnie"
+
+Wariant/rozszerzenie silnika doboru pytań w `buildSession()` — obok logiki anty-powtórek (least-recently-seen, w trakcie wdrażania): ważyć losowanie tak, by pytania źle zaliczone w przeszłości pojawiały się częściej (spaced repetition / nauka na błędach).
+
+**Priorytet:** rozszerzenie po wdrożeniu anty-powtórek (ten sam silnik i te same dane).
+
+**Kontekst danych:** `ksap_answer_log` w localStorage ma już per odpowiedź pola `qId`, `tid`, `ok` (poprawność) i `ts` — wystarczające, żeby policzyć dla każdego pytania historię trafień/pomyłek bez żadnej nowej infrastruktury.
+
+**Pomysł na mechanikę (do doprecyzowania w brainstormingu):**
+- Każdemu pytaniu nadać wagę losowania rosnącą przy błędnych odpowiedziach, malejącą przy serii poprawnych (np. waga ∝ liczba pomyłek; pytanie kilkukrotnie zaliczone poprawnie schodzi do wagi bazowej).
+- **Napięcie z anty-powtórkami:** czysty LRS maksymalizuje świeżość (unikaj powtórek), a dobór wg słabości celowo *powtarza* trudne pytania. Trzeba pogodzić — np. tryb przełączany przez użytkownika („nowe pytania" vs „ćwicz błędy"), albo waga = kompromis (świeżość × słabość).
+- Rozważyć osobny tryb sesji „Powtórka błędów" zamiast modyfikować domyślny dobór.
+
+**Otwarte pytania:**
+- Czy to globalny tryb, czy miks w każdej sesji?
+- Jak szybko pytanie „wraca do normy" po poprawnych odpowiedziach (krzywa zapominania)?
+- Czy respektować blueprint egzaminu (rozkład typów), czy dobór wg słabości może go naruszać?
 
