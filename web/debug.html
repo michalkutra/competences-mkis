@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Diagnostyka storage — KSAP</title>
+  <style>
+    body { font-family: -apple-system, system-ui, sans-serif; margin: 0; padding: 16px;
+           background: #f0f2f5; color: #1f2937; line-height: 1.5; }
+    h1 { font-size: 20px; margin: 0 0 4px; }
+    .sub { color: #6b7280; font-size: 13px; margin: 0 0 20px; }
+    .card { background: #fff; border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+    .card h2 { font-size: 14px; text-transform: uppercase; letter-spacing: .04em;
+               color: #6b7280; margin: 0 0 10px; }
+    .row { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0;
+           border-bottom: 1px solid #f3f4f6; font-size: 14px; }
+    .row:last-child { border-bottom: 0; }
+    .k { color: #4b5563; }
+    .v { font-weight: 600; text-align: right; word-break: break-word; }
+    .ok { color: #059669; }
+    .bad { color: #dc2626; }
+    .warn { color: #d97706; }
+    button { background: #2563eb; color: #fff; border: 0; border-radius: 8px;
+             padding: 11px 16px; font-size: 14px; font-weight: 600; cursor: pointer;
+             width: 100%; margin-top: 6px; }
+    button.secondary { background: #e5e7eb; color: #1f2937; }
+    pre { background: #111827; color: #d1d5db; padding: 12px; border-radius: 8px;
+          overflow-x: auto; font-size: 11px; margin: 0; }
+    .verdict { font-size: 15px; font-weight: 600; }
+    .hint { font-size: 12px; color: #6b7280; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <h1>🔧 Diagnostyka storage</h1>
+  <p class="sub">Strona wewnętrzna (noindex, nielinkowana). Sprawdza, dlaczego znika historia sesji.</p>
+
+  <div class="card">
+    <h2>Werdykt</h2>
+    <div id="verdict" class="verdict">Sprawdzam…</div>
+    <div id="verdict-hint" class="hint"></div>
+  </div>
+
+  <div class="card">
+    <h2>Trwałość magazynu</h2>
+    <div class="row"><span class="k">Storage trwały (persisted)</span><span class="v" id="persisted">—</span></div>
+    <div class="row"><span class="k">Zajęte</span><span class="v" id="usage">—</span></div>
+    <div class="row"><span class="k">Limit (quota)</span><span class="v" id="quota">—</span></div>
+    <div class="row"><span class="k">Wykorzystanie</span><span class="v" id="usagePct">—</span></div>
+    <button id="btn-persist">Poproś o trwały storage (persist)</button>
+    <div class="hint">Chrome przyzna trwały storage głównie po dodaniu aplikacji do ekranu głównego lub przy wysokim zaangażowaniu.</div>
+  </div>
+
+  <div class="card">
+    <h2>Dane aplikacji (localStorage)</h2>
+    <div class="row"><span class="k">Sesje (ksap_sessions)</span><span class="v" id="sessions">—</span></div>
+    <div class="row"><span class="k">Log odpowiedzi (ksap_answer_log)</span><span class="v" id="answerlog">—</span></div>
+    <div class="row"><span class="k">Ustawienia (ksap_settings)</span><span class="v" id="settings">—</span></div>
+    <div class="row"><span class="k">Łączny rozmiar localStorage</span><span class="v" id="totalSize">—</span></div>
+  </div>
+
+  <div class="card">
+    <h2>Czujnik przeżywalności (ksap_meta)</h2>
+    <div class="row"><span class="k">Pierwsza wizyta (firstSeen)</span><span class="v" id="firstSeen">—</span></div>
+    <div class="row"><span class="k">Ostatnia wizyta (lastSeen)</span><span class="v" id="lastSeen">—</span></div>
+    <div class="row"><span class="k">Liczba uruchomień (loads)</span><span class="v" id="loads">—</span></div>
+    <div class="hint">Jeśli „loads” spada do 1, a sesje znikają — to dowód, że cały localStorage został wyczyszczony (eviction), a nie błąd aplikacji.</div>
+  </div>
+
+  <div class="card">
+    <h2>Środowisko</h2>
+    <div class="row"><span class="k">Tryb wyświetlania</span><span class="v" id="displayMode">—</span></div>
+    <div class="row"><span class="k">Service worker</span><span class="v" id="sw">—</span></div>
+    <div class="row"><span class="k">Origin</span><span class="v" id="origin">—</span></div>
+    <div class="row"><span class="k">User agent</span><span class="v" id="ua" style="font-size:11px;font-weight:400">—</span></div>
+  </div>
+
+  <div class="card">
+    <h2>Surowy zrzut (do skopiowania)</h2>
+    <pre id="dump">—</pre>
+    <button id="btn-copy" class="secondary">Skopiuj zrzut do schowka</button>
+  </div>
+
+<script>
+  function fmtBytes(n) {
+    if (n == null) return '—';
+    if (n < 1024) return n + ' B';
+    if (n < 1024 * 1024) return (n / 1024).toFixed(1) + ' KB';
+    return (n / 1024 / 1024).toFixed(2) + ' MB';
+  }
+  function safeParse(key) {
+    try { return JSON.parse(localStorage.getItem(key) || 'null'); } catch (e) { return undefined; }
+  }
+  function lsBytes(key) {
+    var v = localStorage.getItem(key);
+    return v == null ? 0 : v.length;
+  }
+  function set(id, text, cls) {
+    var el = document.getElementById(id);
+    el.textContent = text;
+    if (cls) el.className = 'v ' + cls;
+  }
+
+  var report = {};
+
+  // --- Dane aplikacji ---
+  var sessions = safeParse('ksap_sessions');
+  var answerLog = safeParse('ksap_answer_log');
+  var settings = safeParse('ksap_settings');
+  var meta = safeParse('ksap_meta') || {};
+
+  var nSessions = Array.isArray(sessions) ? sessions.length : 0;
+  var nLog = Array.isArray(answerLog) ? answerLog.length : 0;
+  set('sessions', nSessions + ' szt. (' + fmtBytes(lsBytes('ksap_sessions')) + ')', nSessions ? 'ok' : 'bad');
+  set('answerlog', nLog + ' wpisów (' + fmtBytes(lsBytes('ksap_answer_log')) + ')');
+  set('settings', settings ? 'obecne' : 'brak', settings ? 'ok' : 'warn');
+
+  var total = 0;
+  for (var i = 0; i < localStorage.length; i++) total += lsBytes(localStorage.key(i));
+  set('totalSize', fmtBytes(total));
+
+  // --- Czujnik przeżywalności ---
+  set('firstSeen', meta.firstSeen || 'brak');
+  set('lastSeen', meta.lastSeen || 'brak');
+  set('loads', meta.loads != null ? String(meta.loads) : 'brak');
+
+  // --- Środowisko ---
+  var standalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) ||
+                   window.navigator.standalone === true;
+  set('displayMode', standalone ? 'standalone (PWA)' : 'przeglądarka (zakładka)', standalone ? 'ok' : 'warn');
+  set('origin', location.origin);
+  set('ua', navigator.userAgent);
+  if (navigator.serviceWorker) {
+    navigator.serviceWorker.getRegistrations().then(function (regs) {
+      set('sw', regs.length ? (regs.length + ' zarejestrowany/e') : 'brak');
+    }).catch(function () { set('sw', 'błąd odczytu'); });
+  } else { set('sw', 'nieobsługiwany'); }
+
+  report.app = { sessions: nSessions, answerLog: nLog, hasSettings: !!settings, totalBytes: total };
+  report.meta = meta;
+  report.env = { standalone: standalone, origin: location.origin, ua: navigator.userAgent };
+
+  // --- Trwałość ---
+  function renderVerdict(persisted, usagePct) {
+    var v = document.getElementById('verdict');
+    var h = document.getElementById('verdict-hint');
+    if (persisted === true) {
+      v.textContent = '✅ Storage jest TRWAŁY — Chrome nie powinien sam kasować danych.';
+      v.className = 'verdict ok';
+      h.textContent = 'Jeśli mimo to historia znika, sprawdź czy ktoś nie czyści ręcznie danych przeglądarki.';
+    } else if (persisted === false) {
+      v.textContent = '⚠️ Storage NIE jest trwały (best-effort) — Chrome może go skasować przy presji na pamięć.';
+      v.className = 'verdict bad';
+      h.textContent = 'To najprawdopodobniejsza przyczyna znikania historii. Naprawa: dodaj aplikację do ekranu głównego (PWA) i kliknij przycisk „Poproś o trwały storage” powyżej.';
+    } else {
+      v.textContent = 'ℹ️ Przeglądarka nie udostępnia API trwałości (Storage Manager).';
+      v.className = 'verdict warn';
+    }
+  }
+
+  if (navigator.storage && navigator.storage.estimate) {
+    Promise.all([
+      navigator.storage.persisted ? navigator.storage.persisted() : Promise.resolve(null),
+      navigator.storage.estimate()
+    ]).then(function (res) {
+      var persisted = res[0];
+      var est = res[1] || {};
+      set('persisted', persisted === true ? 'TAK' : persisted === false ? 'NIE' : '—',
+          persisted === true ? 'ok' : persisted === false ? 'bad' : 'warn');
+      set('usage', fmtBytes(est.usage));
+      set('quota', fmtBytes(est.quota));
+      var pct = (est.usage && est.quota) ? (est.usage / est.quota * 100) : null;
+      set('usagePct', pct != null ? pct.toFixed(2) + '%' : '—');
+      report.storage = { persisted: persisted, usage: est.usage, quota: est.quota };
+      renderVerdict(persisted, pct);
+      document.getElementById('dump').textContent = JSON.stringify(report, null, 2);
+    }).catch(function () {
+      set('persisted', 'błąd'); renderVerdict(null);
+    });
+  } else {
+    set('persisted', 'nieobsługiwane'); set('usage', 'nieobsługiwane'); set('quota', 'nieobsługiwane');
+    renderVerdict(null);
+    document.getElementById('dump').textContent = JSON.stringify(report, null, 2);
+  }
+
+  // --- Akcje ---
+  document.getElementById('btn-persist').addEventListener('click', function () {
+    if (navigator.storage && navigator.storage.persist) {
+      navigator.storage.persist().then(function (granted) {
+        alert(granted
+          ? 'Przyznano trwały storage! Dane nie powinny już znikać.'
+          : 'Chrome odmówił. Dodaj aplikację do ekranu głównego i spróbuj ponownie.');
+        location.reload();
+      });
+    } else { alert('Ta przeglądarka nie obsługuje persist().'); }
+  });
+  document.getElementById('btn-copy').addEventListener('click', function () {
+    var txt = document.getElementById('dump').textContent;
+    if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function () {
+      alert('Skopiowano.');
+    }); else alert(txt);
+  });
+</script>
+</body>
+</html>

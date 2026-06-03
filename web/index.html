@@ -1317,6 +1317,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (typeof saved.timerEnabled === 'boolean') state.timerEnabled = saved.timerEnabled;
     } catch(e) {}
 
+    // DIAGNOSTYKA TRWAŁOŚCI (czytane przez /debug.html). Lekki "czujnik": jeśli firstSeen
+    // się zresetuje, to dowód że cały localStorage został wyczyszczony (eviction Chrome).
+    try {
+      var _meta = JSON.parse(localStorage.getItem('ksap_meta') || 'null') || {};
+      var _now = new Date().toISOString();
+      if (!_meta.firstSeen) _meta.firstSeen = _now;
+      _meta.lastSeen = _now;
+      _meta.loads = (_meta.loads || 0) + 1;
+      localStorage.setItem('ksap_meta', JSON.stringify(_meta));
+      if (navigator.storage && navigator.storage.persisted) {
+        navigator.storage.persisted().then(function(p) {
+          _meta.persisted = p;
+          try { localStorage.setItem('ksap_meta', JSON.stringify(_meta)); } catch(e) {}
+        }).catch(function() {});
+      }
+    } catch(e) {}
+
     // Hide history button if no sessions
     const sessions = getSessions();
     if (!sessions.length) {

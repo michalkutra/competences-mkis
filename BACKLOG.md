@@ -173,15 +173,19 @@ Podpiąć Google Analytics do Claude Code przez serwer MCP, żeby móc na żąda
 
 ## Trwałość danych (alternatywa dla localStorage)
 
-Zwiększyć szanse, że użytkownicy nie stracą postępu przy czyszczeniu danych przeglądarki.
+Zwiększyć szanse, że użytkownicy nie stracą postępu przy czyszczeniu/eviction danych przeglądarki.
 
-**Priorytet:** nice to have
+**Priorytet:** nice to have (ale realny problem — zgłoszony przez Ewelinę, „kilka razy" znika cała historia)
 
-**Opcje (od najbardziej do najmniej praktycznej):**
-- **IndexedDB** — drop-in za localStorage, większy limit, przeglądarki rzadziej czyszczą automatycznie; biblioteka `idb` (1 kb wrapper) upraszcza API
-- **Export/Import JSON** — przy kluczowych momentach (zakończenie modułu) propozycja "zapisz backup" → user pobiera plik i może go załadować; prosto w implementacji, wymaga akcji od usera
-- **File System Access API** — zapis bezpośrednio na dysk po jednorazowym przyznaniu uprawnień; bardzo niezawodny, ale Chrome/Edge only (Safari nie obsługuje)
-- **Shareable URL z zakodowanym stanem** — progress zakodowany base64 w URL/hash; działa cross-device, ale rośnie z ilością danych
+**Diagnoza (2026-06-03):** historia znika, bo cały localStorage origin jest kasowany przez Chrome (eviction) — dane są w trybie „best-effort", nie „trwałym". Wykluczono: kod (zero `removeItem`/`clear`), service worker (rusza tylko cache assetów), zmianę origin (stała domena), `Clear-Site-Data` (brak), Safari ITP (to Chrome Android). Korelacja z deployem prawdopodobnie pozorna. Dodano stronę diagnostyczną [`web/debug.html`](web/debug.html) (`/debug.html`, noindex, nielinkowana) + czujnik `ksap_meta` w [web/index.html](web/index.html) — potwierdzi `persisted()`/quota na urządzeniu Ewelin.
 
-**Zalecane podejście:** IndexedDB jako główny magazyn + prosty export JSON jako ubezpieczenie.
+**WAŻNE — sprostowanie wcześniejszej notatki:** IndexedDB **NIE** jest odporniejszy na eviction — siedzi w tym samym buckecie per-origin i jest kasowany razem z localStorage. Migracja storage technologii nie rozwiązuje problemu. Na eviction działają tylko: (a) uzyskanie trwałego storage (`navigator.storage.persist()` przyznawany przy instalacji PWA / wysokim zaangażowaniu — patrz „PWA install prompt"), (b) kopia poza przeglądarką.
+
+**Opcje:**
+- **Trwały storage przez instalację PWA** — NAJWIĘKSZY realny zysk; instalacja na ekranie głównym to główny sygnał, po którym Chrome przyznaje `persist()`. Łączy się z wpisem „Zainstaluj aplikację (PWA install prompt)". *(NIE usuwać PWA — to usunęłoby najlepszą dźwignię na trwałość.)*
+- **Export/Import JSON** — ręczna kopia na czarną godzinę (user pobiera plik JSON do Pobranych, może wczytać z powrotem). Świadomie tylko jako *sieć ratunkowa*, nie codzienny sync — na mobile zarządzanie plikiem jest słabe (user musi pamiętać i nie zgubić pliku). Zero ryzyka dla zasady „bez rejestracji".
+- **File System Access API** — Chrome/Edge only, Safari nie obsługuje; raczej pomijamy.
+- **Shareable URL z zakodowanym stanem** — base64 w URL/hash, cross-device, ale rośnie z ilością danych.
+
+**Zalecane podejście:** najpierw potwierdzić eviction przez `/debug.html`, potem dźwignia trwałości = PWA install prompt; export/import JSON jako opcjonalne ubezpieczenie.
 
