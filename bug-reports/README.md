@@ -4,12 +4,12 @@ Archiwum zgłoszeń błędów (mail, grupa FB, formularz „Zgłoś błąd") wra
 
 ## Konwencja
 
-- Jeden plik na zgłoszenie/sprawę: `RRRR-MM-DD-<id-lub-temat>.md`.
-- Każdy plik zawiera: oryginalne zgłoszenie, analizę przyczyny (root cause), opis rozwiązania, linki do spec/planu i ewentualnego podglądu.
+- Jeden **folder na sprawę**: `RRRR-MM-DD-<temat>/`, w którym trzymamy **wszystkie artefakty** związane z rozwiązaniem (zgłoszenie, analiza, spec, plan, podglądy HTML, mockupy).
+- W środku `README.md` jako indeks sprawy.
 - Po dowiezieniu naprawy: skrótowy wpis historyczny trafia też do [`BACKLOG_DONE.md`](../BACKLOG_DONE.md).
 
 ## Spis
 
-| Data | Zgłoszenie | Status | Plik |
+| Data | Sprawa | Status | Folder |
 |---|---|---|---|
-| 2026-06-03 | Pytanie `h_t8_037` — „zależność dopiero przy trzecim oknie" | ✅ Naprawione | [2026-06-03-h_t8_037.md](2026-06-03-h_t8_037.md) |
+| 2026-06-03 | Pytania typu 8 (figury) — zgłoszenie `h_t8_037` „zależność dopiero przy trzecim oknie" | ✅ Naprawione | [2026-06-03-typ8-figury/](2026-06-03-typ8-figury/README.md) |

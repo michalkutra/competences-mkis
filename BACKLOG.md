@@ -131,6 +131,30 @@ Wewnętrzne narzędzie do szybkiego obejrzenia dowolnego pytania po ID — np. �
 
 ---
 
+## Analityka — dostęp do danych GA4 przez MCP
+
+Podpiąć Google Analytics do Claude Code przez serwer MCP, żeby móc na żądanie wyciągać dane (ruch, źródła, zachowanie na quizach, konwersje) i budować z nich raporty/analizy — bez ręcznego klikania w interfejsie GA.
+
+**Priorytet:** internal tooling / nice to have (nie blokuje launchu; przydatne do mierzenia adopcji po publikacji posta)
+
+**Kontekst:** w [web/index.html](web/index.html) wpięty jest GTM (`GTM-KZ9NMFFK`), pod nim najprawdopodobniej GA4 — dane już się zbierają.
+
+**Rekomendacja:** oficjalny **Google Analytics MCP** (Python, GA4 Data API + Admin API)
+- **Koszt: w pełni darmowy** dla naszej skali — GA4, Data API i projekt GCP nie są billowane (tylko limity zapytań/dzień)
+- Charakter: read-only / raportowy — idealny do wyciągania danych i analiz
+- ⚠️ NIE tworzy dashboardów w UI Analytics (API GA4 jest do czytania raportów); trwały dashboard można zrobić jako raport HTML/markdown w repo zasilany z API
+
+**Do przygotowania (po stronie usera):**
+- projekt w Google Cloud + włączone Analytics Data API
+- **GA4 Property ID** (numer, np. `properties/123456789`) — NIE GTM ID
+- autoryzacja (OAuth lub service account)
+
+**Kroki konfiguracji:** włączenie API → `claude mcp add` → autoryzacja (rozpisać krok po kroku)
+
+**Alternatywa:** Amplitude MCP jest już podłączony w sesji (darmowy Starter plan), ale prawdopodobnie nie ma naszych danych, bo zbieramy przez GTM/GA4 — nie przez SDK Amplitude.
+
+---
+
 ## Trwałość danych (alternatywa dla localStorage)
 
 Zwiększyć szanse, że użytkownicy nie stracą postępu przy czyszczeniu danych przeglądarki.

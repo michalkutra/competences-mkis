@@ -282,6 +282,7 @@
     .figure-option {
       display: inline-flex;
       flex-direction: column;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
       gap: 4px;
@@ -1494,8 +1495,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       q.options.forEach(function(specs, i) {
         const letter = letters[i] || (i + 1).toString();
         bodyHtml += '<div class="figure-option" data-index="' + i + '" onclick="selectAnswer(' + i + ')">';
+        var osz = specs.length >= 3 ? 34 : (specs.length === 2 ? 40 : 52);
         specs.forEach(function(spec) {
-          bodyHtml += renderFigure(spec);
+          bodyHtml += renderFigure(spec, osz);
         });
         bodyHtml += '<span class="figure-option-label">' + letter + ')</span>';
         bodyHtml += '</div>';
@@ -1610,24 +1612,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return html;
   }
 
+  function figureCount(c) { return Array.isArray(c) ? c.length : 1; }
+  function sizeForCount(n) { return n >= 3 ? 42 : (n === 2 ? 50 : 64); }
+  function renderCell(c, size) {
+    var arr = Array.isArray(c) ? c : [c];
+    return arr.map(function(spec) { return renderFigure(spec, size); }).join('');
+  }
   function renderType8(q) {
     const g = q.grid;
-    // topLeft cell
-    let tlHtml = renderFigure(g.topLeft);
-    // bottomLeft: array of figures
-    let blHtml = '';
-    if (Array.isArray(g.bottomLeft)) {
-      g.bottomLeft.forEach(function(spec) { blHtml += renderFigure(spec); });
-    } else {
-      blHtml = renderFigure(g.bottomLeft);
-    }
-    // topRight
-    let trHtml = renderFigure(g.topRight);
-
+    const n = Math.max(figureCount(g.topLeft), figureCount(g.topRight), figureCount(g.bottomLeft));
+    const size = sizeForCount(n);
     return '<div class="figure-grid">' +
-      '<div class="figure-cell">' + tlHtml + '</div>' +
-      '<div class="figure-cell">' + trHtml + '</div>' +
-      '<div class="figure-cell">' + blHtml + '</div>' +
+      '<div class="figure-cell">' + renderCell(g.topLeft, size) + '</div>' +
+      '<div class="figure-cell">' + renderCell(g.topRight, size) + '</div>' +
+      '<div class="figure-cell">' + renderCell(g.bottomLeft, size) + '</div>' +
       '<div class="figure-cell bottom-right">?</div>' +
     '</div>';
   }
@@ -1655,8 +1653,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         if (i === q.correct) cls += ' correct';
         else if (i === userAnswer) cls += ' wrong';
         html += '<div class="' + cls + '">';
+        var osz = specs.length >= 3 ? 34 : (specs.length === 2 ? 40 : 52);
         specs.forEach(function(spec) {
-          html += renderFigure(spec);
+          html += renderFigure(spec, osz);
         });
         html += '<span class="figure-option-label">' + letter + ')</span>';
         html += '</div>';
@@ -1669,7 +1668,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   /* ================================================================
      SVG RENDERERS
   ================================================================ */
-  function renderFigure(spec) {
+  function renderFigure(spec, size) {
+    size = size || 64;
     const stroke = '#333';
     const strokeWidth = '2.5';
     let interior = '';
@@ -1705,8 +1705,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       interior = '<circle cx="40" cy="' + dotCy + '" r="8" fill="#333"/>';
     }
 
-    return '<svg viewBox="0 0 80 80" width="64" height="64" xmlns="http://www.w3.org/2000/svg">' +
-      shapeHtml + interior +
+    var inner = shapeHtml + interior;
+    var rot = spec.rot || 0;
+    if (rot) inner = '<g transform="rotate(' + rot + ',40,40)">' + inner + '</g>';
+    return '<svg viewBox="0 0 80 80" width="' + size + '" height="' + size + '" xmlns="http://www.w3.org/2000/svg">' +
+      inner +
     '</svg>';
   }
 

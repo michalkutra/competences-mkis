@@ -6,109 +6,107 @@ const FILLS  = ['empty', 'solid', 'x', 'dot-center'];
 const SHAPE_PL = { circle: 'koło', triangle: 'trójkąt', square: 'kwadrat' };
 const FILL_PL  = { empty: 'puste', solid: 'pełne', x: 'przekreślone', 'dot-center': 'z kropką' };
 const LETTERS  = ['A', 'B', 'C', 'D', 'E'];
+function rotCycle(shape){ return shape === 'square' ? [0,45] : [0,90,180,270]; }
+function opp(ax){ return ax === 'row' ? 'col' : 'row'; }
 
-function cellAt(i, j, p) {
-  const fillAxis = p.shapeAxis === 'row' ? 'col' : 'row';
-  const sAdvance = (p.shapeAxis === 'row' ? j : i) * p.shapeStep;
-  const fAdvance = (fillAxis     === 'row' ? j : i) * p.fillStep;
-  const sIdx = (SHAPES.indexOf(p.startShape) + sAdvance) % 3;
-  const fIdx = (FILLS.indexOf(p.startFill)   + fAdvance) % 4;
-  return { shape: SHAPES[sIdx], fill: FILLS[fIdx] };
+function figAt(rule, i, j) {
+  const sAdd = (rule.shapeAxis === 'row' ? j : i) * rule.shapeStep;
+  const fAdd = (rule.fillAxis  === 'row' ? j : i) * rule.fillStep;
+  const fig = {
+    shape: SHAPES[(SHAPES.indexOf(rule.startShape) + sAdd) % 3],
+    fill:  FILLS[(FILLS.indexOf(rule.startFill)   + fAdd) % 4],
+  };
+  if (rule.startRot !== undefined) {
+    const cyc = rotCycle(rule.startShape);
+    const rAdd = (rule.rotAxis === 'row' ? j : i) * rule.rotStep;
+    fig.rot = cyc[(cyc.indexOf(rule.startRot) + rAdd) % cyc.length];
+  }
+  return fig;
+}
+function cellAt(rules, i, j){ return rules.map((r) => figAt(r, i, j)); }
+
+function plainRule(seed) {
+  const shapeAxis = (Math.floor(seed / 12) % 2) ? 'col' : 'row';
+  return {
+    startShape: SHAPES[seed % 3],
+    startFill:  FILLS[Math.floor(seed / 3) % 4],
+    shapeAxis, fillAxis: opp(shapeAxis),
+    shapeStep: 1 + (Math.floor(seed / 2) % 2),
+    fillStep:  1 + (Math.floor(seed / 5) % 3),
+  };
+}
+function rotRule(seed) {
+  const shape = (seed % 2) ? 'square' : 'triangle';
+  const fillAxis = (Math.floor(seed / 4) % 2) ? 'row' : 'col';
+  return {
+    startShape: shape, startRot: 0,
+    shapeAxis: 'row', shapeStep: 0,
+    fillAxis, fillStep: 1 + (Math.floor(seed / 3) % 3),
+    rotAxis: opp(fillAxis),
+    rotStep: shape === 'square' ? 1 : (1 + (seed % 2)),
+    startFill: FILLS[seed % 4],
+  };
 }
 
-// Deterministyczna lista parametrów.
-function paramSpace(level) {
+function rulesFor(h, bump) {
+  const b = bump * 17;
+  if (h < 15)      return [plainRule(h * 7 + 1 + b)];
+  if (h < 30)      { const s = h - 15; return [plainRule(s * 7 + 3 + b), plainRule(s * 7 + 11 + b)]; }
+  const s = h - 30;
+  if (s < 7)       return [rotRule(s * 5 + 1 + b), rotRule(s * 5 + 2 + b), rotRule(s * 5 + 4 + b)];
+  return [plainRule(s * 7 + 2 + b), plainRule(s * 7 + 9 + b), plainRule(s * 7 + 5 + b)];
+}
+
+function cellKey(c){ return c.map((f) => f.shape + '/' + f.fill + '/' + (f.rot || 0)).join('|'); }
+
+function buildOptions(g, optCount, seed) {
+  const BR = g.BR;
+  const cands = [];
+  for (let p = 0; p < BR.length; p++) {
+    const mk = (mut) => BR.map((f, idx) => idx === p ? Object.assign({}, f, mut) : f);
+    cands.push(mk({ fill: g.TL[p].fill }));
+    if (BR[p].rot !== undefined) cands.push(mk({ rot: g.TL[p].rot }));
+    else cands.push(mk({ shape: g.TL[p].shape }));
+    cands.push(mk({ fill: FILLS[(FILLS.indexOf(BR[p].fill) + 2) % 4] }));
+    cands.push(BR.map((f, idx) => idx === p ? g.BL[p] : f));
+  }
+  cands.push(g.TL.slice(), g.BL.slice(), g.TR.slice());
+  const used = new Set([cellKey(BR)]);
+  const distract = [];
+  for (const c of cands) { if (distract.length >= optCount - 1) break; const k = cellKey(c); if (used.has(k)) continue; used.add(k); distract.push(c); }
+  let extra = 1;
+  while (distract.length < optCount - 1 && extra <= 8) {
+    const c = BR.map((f) => Object.assign({}, f, { fill: FILLS[(FILLS.indexOf(f.fill) + extra) % 4] }));
+    const k = cellKey(c); if (!used.has(k)) { used.add(k); distract.push(c); } extra++;
+  }
+  const pos = seed % optCount;
+  const opts = distract.slice(); opts.splice(pos, 0, BR);
+  return { options: opts, correct: pos };
+}
+
+function attrsOnAxis(r, axis) {
   const out = [];
-  const orientations = level === 'easy' ? ['row'] : ['row', 'col'];
-  const shapeSteps = [1, 2];
-  const fillSteps  = level === 'easy' ? [1, 2] : [2, 3, 1];
-  for (const startShape of SHAPES)
-    for (const startFill of FILLS)
-      for (const shapeStep of shapeSteps)
-        for (const fillStep of fillSteps)
-          for (const shapeAxis of orientations)
-            out.push({ startShape, startFill, shapeAxis, shapeStep, fillStep });
+  if (r.shapeAxis === axis && r.shapeStep) out.push('kształt');
+  if (r.fillAxis  === axis && r.fillStep)  out.push('wypełnienie');
+  if (r.startRot !== undefined && r.rotAxis === axis && r.rotStep) out.push('obrót');
   return out;
 }
-
-function buildOptions(p, optCount, posSeed) {
-  const TL = cellAt(0, 0, p), TR = cellAt(0, 1, p), BL = cellAt(1, 0, p), BR = cellAt(1, 1, p);
-  const fillAxis = p.shapeAxis === 'row' ? 'col' : 'row';
-  const key = (f) => f.shape + '/' + f.fill;
-  const cands = [
-    { shape: BR.shape, fill: TL.fill },
-    { shape: TL.shape, fill: BR.fill },
-    { shape: BR.shape, fill: FILLS[(FILLS.indexOf(BR.fill) + 2) % 4] },
-    BL,
-    TR,
-    { shape: SHAPES[(SHAPES.indexOf(BR.shape) + 1) % 3], fill: BR.fill },
-    { shape: SHAPES[(SHAPES.indexOf(BR.shape) + 2) % 3], fill: BR.fill },
-    { shape: BR.shape, fill: FILLS[(FILLS.indexOf(BR.fill) + 1) % 4] },
-  ];
-  const distractors = [];
-  const used = new Set([key(BR)]);
-  for (const c of cands) {
-    if (distractors.length >= optCount - 1) break;
-    if (used.has(key(c))) continue;
-    used.add(key(c));
-    distractors.push(c);
-  }
-  const pos = posSeed % optCount;
-  const opts = distractors.slice();
-  opts.splice(pos, 0, BR);
-  return { options: opts.map((f) => [f]), correct: pos, BR, TL, TR, BL, fillAxis };
+function describeFig(f){ let s = SHAPE_PL[f.shape] + ' ' + FILL_PL[f.fill]; if (f.rot) s += ' (obrót ' + f.rot + '°)'; return s; }
+function explain(rules, BR, correct) {
+  const lead = rules.length === 1 ? 'Jedna figura.' : rules.length + ' niezależne figury, każda z własną regułą.';
+  const parts = rules.map((r, i) => `figura ${i + 1}: wiersz → ${attrsOnAxis(r, 'row').join('+') || '—'}, kolumna → ${attrsOnAxis(r, 'col').join('+') || '—'}`);
+  return `${lead} ${parts.join(' · ')}. Brakujące pole: ${BR.map(describeFig).join('; ')}. Opcja ${LETTERS[correct]} — poprawna.`;
 }
 
-function explain(meta) {
-  const { TL, TR, BL, BR, p, correct } = meta;
-  const shapeRow = p.shapeAxis === 'row';
-  const rowDim = shapeRow ? 'kształt' : 'wypełnienie';
-  const colDim = shapeRow ? 'wypełnienie' : 'kształt';
-  const rowFrom = shapeRow ? SHAPE_PL[TL.shape] : FILL_PL[TL.fill];
-  const rowTo   = shapeRow ? SHAPE_PL[TR.shape] : FILL_PL[TR.fill];
-  const colFrom = shapeRow ? FILL_PL[TL.fill]  : SHAPE_PL[TL.shape];
-  const colTo   = shapeRow ? FILL_PL[BL.fill]  : SHAPE_PL[BL.shape];
-  return `Reguła wierszy: ${rowDim} zmienia się (${rowFrom} → ${rowTo}). ` +
-         `Reguła kolumn: ${colDim} zmienia się (${colFrom} → ${colTo}). ` +
-         `Brakujące pole: ${SHAPE_PL[BR.shape]} ${FILL_PL[BR.fill]}. ` +
-         `Opcja ${LETTERS[correct]} — poprawna.`;
-}
-
-function generateForLevel(templates, level) {
-  const space = paramSpace(level);
-  const startCount = {};
-  const params = [];
-  let idx = 0;
-  while (params.length < templates.length) {
-    const p = space[idx % space.length];
-    const sk = p.startShape + '/' + p.startFill;
-    const cap = Math.ceil(templates.length / 12) + 1;
-    if ((startCount[sk] || 0) < cap || idx >= space.length * 3) {
-      startCount[sk] = (startCount[sk] || 0) + 1;
-      params.push(p);
-    }
-    idx++;
-  }
-  return templates.map((tmpl, k) => {
-    const p = params[k];
-    const optCount = tmpl.options.length;
-    const built = buildOptions(p, optCount, k);
-    const meta = { TL: built.TL, TR: built.TR, BL: built.BL, BR: built.BR, p, correct: built.correct };
-    return {
-      id: tmpl.id,
-      typeId: 8,
-      level: tmpl.level,
-      instruction: tmpl.instruction,
-      grid: {
-        topLeft: built.TL,
-        bottomLeft: [built.BL],
-        topRight: built.TR,
-      },
-      options: built.options,
-      correct: built.correct,
-      explanation: explain(meta),
-    };
-  });
+function buildQuestion(tmpl, h, bump) {
+  const rules = rulesFor(h, bump);
+  const N = rules.length;
+  const TL = cellAt(rules, 0, 0), TR = cellAt(rules, 0, 1), BL = cellAt(rules, 1, 0), BR = cellAt(rules, 1, 1);
+  const { options, correct } = buildOptions({ TL, TR, BL, BR }, tmpl.options.length, h + bump);
+  const grid = N === 1
+    ? { topLeft: TL[0], bottomLeft: [BL[0]], topRight: TR[0] }
+    : { topLeft: TL, bottomLeft: BL, topRight: TR };
+  return { id: tmpl.id, typeId: 8, level: tmpl.level, instruction: tmpl.instruction, grid, options, correct, explanation: explain(rules, BR, correct) };
 }
 
 function loadQuestions(path) {
@@ -118,12 +116,18 @@ function loadQuestions(path) {
   return { easy: ctx.__E, hard: ctx.__H };
 }
 
+function require_norm(c){ return Array.isArray(c) ? c : [c]; }
+function sig(q){ return cellKey(require_norm(q.grid.topLeft)) + '#' + cellKey(require_norm(q.grid.topRight)) + '#' + cellKey(require_norm(q.grid.bottomLeft)); }
+
 function generateAll(path) {
   const { easy, hard } = loadQuestions(path);
-  return {
-    easy: generateForLevel(easy.type8, 'easy'),
-    hard: generateForLevel(hard.type8, 'hard'),
-  };
+  const seen = new Set();
+  const outHard = hard.type8.map((tmpl, h) => {
+    let bump = 0, q = buildQuestion(tmpl, h, 0);
+    while (seen.has(sig(q)) && bump < 50) { bump++; q = buildQuestion(tmpl, h, bump); }
+    seen.add(sig(q)); return q;
+  });
+  return { easy: easy.type8, hard: outHard };
 }
 
 module.exports = { generateAll };
@@ -131,5 +135,5 @@ module.exports = { generateAll };
 if (require.main === module) {
   const out = generateAll(process.argv[2] || 'web/questions-unified.js');
   fs.writeFileSync('tools/generated-type8.json', JSON.stringify(out, null, 2));
-  console.log(`Wygenerowano easy=${out.easy.length}, hard=${out.hard.length} → tools/generated-type8.json`);
+  console.log(`Wygenerowano easy=${out.easy.length} (bez zmian), hard=${out.hard.length}`);
 }

@@ -2,15 +2,14 @@
 
 ## Naprawa pytań typu 8 (zgłoszenie `h_t8_037`)
 
-> **Ukończono:** 2026-06-03 · [Spec](docs/superpowers/specs/2026-06-03-fix-type8-figure-questions-design.md) · [Plan](docs/superpowers/plans/2026-06-03-fix-type8-figure-questions.md) · [Zgłoszenie](bug-reports/2026-06-03-h_t8_037.md)
+> **Ukończono:** 2026-06-03 · [Spec](bug-reports/2026-06-03-typ8-figury/2026-06-03-typ8-wariant2-design.md) · [Plan](bug-reports/2026-06-03-typ8-figury/2026-06-03-typ8-wariant2-plan.md) · [Zgłoszenie](bug-reports/2026-06-03-typ8-figury/2026-06-03-h_t8_037.md)
 
-Zgłoszenie mailem („zależność dopiero przy trzecim oknie") ujawniło dwa defekty w pytaniach typu 8. Naprawione w całości.
+Zgłoszenie mailem („zależność dopiero przy trzecim oknie") ujawniło defekt w pytaniach typu 8 (niejednorodne komórki — reguły nie dało się wydedukować przed trzecim oknem) oraz trójkąt renderowany jako koło. Naprawione.
 
-- **Defekt strukturalny:** 41 pytań miało niejednorodne pola (górny wiersz pojedyncze figury, dolny pary/trójki) — reguły nie dało się wydedukować przed trzecim oknem. Naruszało `docs/specyfikacja_pytan.md`.
-- **Defekt renderera:** `triangle` renderował się jako koło (36 pytań z trójkątami wizualnie zepsutych).
-- **Rozwiązanie:** wszystkie 80 pytań typu 8 przepisane na czyste macierze 2×2 (jedna figura/pole) przez **generator deterministyczny** (kształt wzdłuż jednej osi, wypełnienie wzdłuż drugiej; easy = orientacja kanoniczna, hard = większe kroki + subtelne wypełnienia + zamiana orientacji). **Walidator** niezależnie potwierdza 80/80 poprawnych; **integrator** podmienił bloki `type8` bez ruszania typów 1–7. Narzędzia w `tools/` (poza deployem).
-- `renderFigure` w `web/index.html` rysuje teraz trójkąt (polygon + krzyżyk + kropka). Bump cache `ksap-v3` → `ksap-v4`.
-- Zachowane: ID pytań, poziomy, polecenia, liczba opcji (20×4 + 20×5 na poziom).
+- Pytania typu 8 przebudowane na macierze 2×2 o **jednorodnych komórkach** (każda pozycja = niezależna podmacierz → jednoznaczna rozwiązywalność). Bank easy: 1 figura. Hard z gradientem: **T1** (1 figura, 15), **T2** (2 figury, 15), **T3** (3 figury, 10; w 7 reguła obrotu trójkąt/kwadrat).
+- Renderer (`web/index.html`): `renderFigure` rysuje trójkąt, obsługuje obrót i skalowanie; `renderType8` renderuje komórki wielofigurowe.
+- Generator/walidator/integrator w `tools/` (deterministyczne; walidacja 80/80). Bump cache `ksap-v4` → `ksap-v5`.
+- Zachowane: ID, poziomy, polecenia, liczba opcji (20×4 + 20×5 na poziom).
 
 ---
 
