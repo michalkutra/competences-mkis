@@ -1,0 +1,37 @@
+# Sprawdzian Umiejętności KSAP
+
+> Bezpłatna aplikacja do przygotowania się do Sprawdzianu Umiejętności KSAP (Krajowa Szkoła Administracji Publicznej). Zero rejestracji, działa w przeglądarce.
+
+## Co to jest
+
+Interaktywny quiz z 8 typami zadań, które pojawiają się na egzaminie KSAP:
+
+1. Analogia słowna — macierz
+2. Wspólny wyraz
+3. Związek przyczynowo-skutkowy
+4. Analogia zdaniowa
+5. Wnioskowanie logiczne
+6. Zadanie numeryczne
+7. Analiza wykresu
+8. Powiązania figur
+
+## Tryby nauki
+
+- **Tryb nauki** — po każdej odpowiedzi natychmiastowe wyjaśnienie
+- **Tryb egzaminowy** — bez podpowiedzi, symulacja prawdziwego egzaminu
+- Dwa poziomy trudności: łatwy i trudny
+- Opcjonalny timer 60 sekund na pytanie
+
+## Dla kogo
+
+Osoby przygotowujące się do Sprawdzianu Umiejętności KSAP. Egzamin sprawdza zdolności analityczne i logiczne myślenie — nie wiedzę encyklopedyczną.
+
+## Dane techniczne
+
+- Aplikacja działa lokalnie w przeglądarce (PWA, działa offline)
+- Wyniki i historia sesji zapisywane lokalnie (localStorage)
+- Bez rejestracji, bez backendu, bez śledzenia danych osobowych
+
+## URL
+
+https://egzamin.kutra.pl
