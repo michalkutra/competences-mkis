@@ -2,7 +2,7 @@
 
 **Date:** 2026-05-30  
 **Source exam:** KSAP "Przykłady zadań do sprawdzianu umiejętności" (urzędnik mianowany)  
-**Quality guidelines:** `specyfikacja_pytan.md` (analiza typów poznawczych)  
+**Quality guidelines:** `docs/specyfikacja_pytan.md` (analiza typów poznawczych)  
 **Goal:** Portable offline HTML study app — 160 questions across 8 cognitive types, mobile-first, exam-session mode, timer, history.
 
 ---
@@ -22,7 +22,7 @@ No build step. No server. No internet required.
 
 ## 2. Question Types
 
-The 15 PDF sample questions represent **8 distinct cognitive types**. Each type gets exactly **20 questions** = 160 total. Quality guidelines for each type come from `specyfikacja_pytan.md`.
+The 15 PDF sample questions represent **8 distinct cognitive types**. Each type gets exactly **20 questions** = 160 total. Quality guidelines for each type come from `docs/specyfikacja_pytan.md`.
 
 | # | Type name | PDF examples | Options | Visual | Questions |
 |---|---|---|---|---|---|
@@ -35,7 +35,7 @@ The 15 PDF sample questions represent **8 distinct cognitive types**. Each type 
 | 7 | Analiza wykresu | Q13 | 5 | SVG chart | 20 |
 | 8 | Powiązania między figurami | Q15 | 5 | SVG figures | 20 |
 
-### Quality guidelines per type (from `specyfikacja_pytan.md`)
+### Quality guidelines per type (from `docs/specyfikacja_pytan.md`)
 
 **Typ 1 — Macierz słowna 2×2**
 - Relacja między parą lewą musi być jednoznaczna i symetryczna (zawód→miejsce, kraj→kontynent, narzędzie→zastosowanie, całość→część)
@@ -399,9 +399,9 @@ All charts and figures rendered as inline SVG via JS — no external charting li
 Two separate coding prompts (two Claude sessions):
 
 ### Prompt 1 — Generate `questions.js`
-Input: this spec (sections 2–3) + `specyfikacja_pytan.md`  
+Input: this spec (sections 2–3) + `docs/specyfikacja_pytan.md`  
 Output: `questions.js` with `const QUESTIONS = { type1: [...20], ..., type8: [...20] }`  
-Constraint: Claude must apply quality guidelines from `specyfikacja_pytan.md` per type. All questions in Polish. Civil-service-appropriate context.
+Constraint: Claude must apply quality guidelines from `docs/specyfikacja_pytan.md` per type. All questions in Polish. Civil-service-appropriate context.
 
 ### Prompt 2 — Generate `index.html`
 Input: this spec (sections 4–8)  

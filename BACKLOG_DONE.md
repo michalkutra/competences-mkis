@@ -1,5 +1,19 @@
 # Backlog — Ukończone
 
+## Naprawa pytań typu 8 (zgłoszenie `h_t8_037`)
+
+> **Ukończono:** 2026-06-03 · [Spec](docs/superpowers/specs/2026-06-03-fix-type8-figure-questions-design.md) · [Plan](docs/superpowers/plans/2026-06-03-fix-type8-figure-questions.md) · [Zgłoszenie](bug-reports/2026-06-03-h_t8_037.md)
+
+Zgłoszenie mailem („zależność dopiero przy trzecim oknie") ujawniło dwa defekty w pytaniach typu 8. Naprawione w całości.
+
+- **Defekt strukturalny:** 41 pytań miało niejednorodne pola (górny wiersz pojedyncze figury, dolny pary/trójki) — reguły nie dało się wydedukować przed trzecim oknem. Naruszało `docs/specyfikacja_pytan.md`.
+- **Defekt renderera:** `triangle` renderował się jako koło (36 pytań z trójkątami wizualnie zepsutych).
+- **Rozwiązanie:** wszystkie 80 pytań typu 8 przepisane na czyste macierze 2×2 (jedna figura/pole) przez **generator deterministyczny** (kształt wzdłuż jednej osi, wypełnienie wzdłuż drugiej; easy = orientacja kanoniczna, hard = większe kroki + subtelne wypełnienia + zamiana orientacji). **Walidator** niezależnie potwierdza 80/80 poprawnych; **integrator** podmienił bloki `type8` bez ruszania typów 1–7. Narzędzia w `tools/` (poza deployem).
+- `renderFigure` w `web/index.html` rysuje teraz trójkąt (polygon + krzyżyk + kropka). Bump cache `ksap-v3` → `ksap-v4`.
+- Zachowane: ID pytań, poziomy, polecenia, liczba opcji (20×4 + 20×5 na poziom).
+
+---
+
 ## Domena i deploy
 
 > **Ukończono:** 2026-06-01
@@ -76,7 +90,7 @@ Google Tag Manager (`GTM-KZ9NMFFK`) dodany do `web/index.html` (snippet w `<head
 
 > **Ukończono:** 2026-06-02
 
-Pula pytań podwojona w obu poziomach trudności. Wygenerowano 320 nowych pytań (Opus 4.8, jeden agent na typ, równolegle), trzymając się `specyfikacja_pytan.md` i unikając duplikatów istniejących treści/ID.
+Pula pytań podwojona w obu poziomach trudności. Wygenerowano 320 nowych pytań (Opus 4.8, jeden agent na typ, równolegle), trzymając się `docs/specyfikacja_pytan.md` i unikając duplikatów istniejących treści/ID.
 
 - Z 320 → **640 pytań**: 8 typów × 40 łatwych + 8 typów × 40 trudnych
 - Łatwe: wiedza ogólna + podstawy administracji; trudne: terminologia prawnicza, łacińskie maksymy, złożona logika

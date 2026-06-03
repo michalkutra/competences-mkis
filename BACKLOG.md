@@ -90,7 +90,7 @@ Wyświetlać ile pytań jest dostępnych w banku, np. "Pula: 80 pytań (łatwy) 
 ## Komunikacja (post na grupie FB)
 
 **Status:** Drafty gotowe — do wyboru wersji i publikacji po wdrożeniu MUSTs.
-**Drafty:** [`komunikacja/`](komunikacja/) — 4 wersje (A: storytelling, B: problem→rozwiązanie ⭐, C: konkretna, D: Messenger)
+**Drafty:** [`communication/`](communication/) — 4 wersje (A: storytelling, B: problem→rozwiązanie ⭐, C: konkretna, D: Messenger)
 
 Przygotować treść posta na grupę ~700 osób zdających egzamin KSAP.
 
@@ -108,6 +108,26 @@ Przygotować treść posta na grupę ~700 osób zdających egzamin KSAP.
 **Do przygotowania:**
 - wersja na FB (dłuższa, z kontekstem)
 - opcjonalnie: krótka wersja do WhatsApp/Messenger dla znajomych
+
+---
+
+## Podgląd pojedynczego pytania (strona QA, nielinkowana)
+
+Wewnętrzne narzędzie do szybkiego obejrzenia dowolnego pytania po ID — np. żeby zweryfikować zgłoszenie błędu (jak #h_t8_037), bez przeklikiwania sesji.
+
+**Priorytet:** internal tooling (nie blokuje launchu; przydatne do obsługi feedbacku)
+
+**Zakres:**
+- Nigdzie nielinkowana strona/ekran (np. `/podglad` lub `/debug`) — dostępna tylko przez bezpośredni URL
+- Pole z autocomplete po ID pytania (640 pozycji z `QUESTIONS_EASY` + `QUESTIONS_HARD`) **lub** ręczne wpisanie ID
+- Po wybraniu renderuje pełne pytanie: treść, opcje, **zaznaczona poprawna odpowiedź + `explanation`** (tryb review, nie egzamin)
+- Reużyć istniejące renderery z [index.html](web/index.html) (`renderQuestion`, `renderType8`, `renderOptionsStatic`, `renderFigure`) — bez duplikacji logiki
+
+**Otwarte pytania:**
+- Routing: nowy ekran w `PATH_TO_SCREEN` / `ROUTING_ENABLED` czy parametr `?id=` na osobnej stronie?
+- Czy autocomplete ma pokazywać też typ/poziom obok ID (np. „h_t8_037 — typ 8, hard")?
+- Dostęp: „security by obscurity" (sam brak linku) wystarczy, czy ukryć za prostym hasłem/flagą?
+- Czy strona ma trafić do `robots.txt` (noindex), żeby nie wpadła do wyszukiwarek?
 
 ---
 

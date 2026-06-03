@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Podgląd błędu — pytanie h_t8_037 (typ 8)</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; max-width: 880px; margin: 0 auto; padding: 24px; color: #1a1a1a; line-height: 1.5; }
+  h1 { font-size: 22px; }
+  h2 { font-size: 18px; margin-top: 40px; border-bottom: 2px solid #eee; padding-bottom: 6px; }
+  h3 { font-size: 15px; margin-bottom: 6px; }
+  .card { border: 1px solid #ddd; border-radius: 10px; padding: 16px 20px; margin: 16px 0; background: #fafafa; }
+  .bad { border-left: 4px solid #e04848; }
+  .good { border-left: 4px solid #2e9d52; }
+  .note { border-left: 4px solid #d39a00; }
+  .figure-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 8px; max-width: 320px; margin: 12px 0; }
+  .figure-cell { border: 2px solid #bbb; border-radius: 8px; min-height: 90px; display: flex; align-items: center; justify-content: center; gap: 6px; background: #fff; position: relative; flex-wrap: wrap; }
+  .figure-cell .win { position: absolute; top: 3px; left: 6px; font-size: 11px; color: #888; font-weight: 600; }
+  .bottom-right { font-size: 32px; color: #c0392b; font-weight: 700; }
+  .figure-options-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 8px 0; }
+  .figure-option { border: 2px solid #bbb; border-radius: 8px; padding: 8px 12px; display: flex; align-items: center; gap: 4px; background: #fff; }
+  .figure-option.correct { border-color: #2e9d52; background: #eefaf0; }
+  .figure-option-label { font-weight: 600; color: #555; margin-left: 4px; }
+  .row { display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start; }
+  .strip { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .strip figure { margin: 0; text-align: center; font-size: 12px; color: #666; }
+  table.cmp { border-collapse: collapse; margin: 10px 0; }
+  table.cmp td, table.cmp th { border: 1px solid #ddd; padding: 8px 10px; text-align: center; }
+  table.cmp th { background: #f0f0f0; }
+  code { background: #f0f0f0; padding: 1px 5px; border-radius: 4px; font-size: 13px; }
+  .legend { font-size: 13px; color: #555; }
+</style>
+</head>
+<body>
+<h1>Podgląd błędu — pytanie <code>h_t8_037</code> (typ 8: powiązania między figurami)</h1>
+<p class="legend">Plik diagnostyczny, nielinkowany. Używa <strong>tego samego renderera co aplikacja</strong> (po lewej, „buggy") oraz wersji naprawionej (po prawej), żeby pokazać dwa nakładające się błędy.</p>
+
+<h2>Błąd #1 — struktura single → para (treść zgłoszenia)</h2>
+<div class="card bad">
+  <p><strong>Zgłoszenie:</strong> „Taka zależność można wysnuć dopiero przy trzecim oknie."</p>
+  <h3>Pytanie tak, jak widzi je użytkownik (renderer aplikacji):</h3>
+  <div id="grid-037" class="figure-grid"></div>
+  <h3>Opcje odpowiedzi:</h3>
+  <div id="opts-037" class="figure-options-row"></div>
+  <p class="legend"><em>correct: A</em> — wg explanation: „każdy kształt przesuwa się w cyklu koło→trójkąt→kwadrat, wypełnienia bez zmian".</p>
+  <p><strong>Dlaczego to błąd:</strong> okno 1 i 2 to <strong>pojedyncze</strong> figury, a okno 3 to nagle <strong>para</strong>. Rozwiązujący nie wie ani że odpowiedź jest parą, ani że wypełnienie zmienia się solid→x — dopóki nie dojdzie do okna 3. Reguły nie da się wydedukować z górnego wiersza; trzeba ją odgadnąć wstecz z jedynej pełnej kolumny. Stąd „zależność dopiero przy trzecim oknie".</p>
+</div>
+
+<h2>Błąd #2 — trójkąt renderuje się jako koło</h2>
+<div class="card note">
+  <p>Renderer aplikacji rysuje tylko <code>square</code> i „wszystko inne jako koło". <code>shape: "triangle"</code> → <strong>koło</strong>. Zwróć uwagę: w pytaniu wyżej okno 1 (<code>koło solid</code>) i okno 2 (<code>trójkąt solid</code>) wyglądają <strong>identycznie</strong>.</p>
+  <h3>Te same figury: renderer aplikacji vs naprawiony</h3>
+  <table class="cmp">
+    <tr><th>spec</th><th>aplikacja (buggy)</th><th>naprawiony</th></tr>
+    <tr><td><code>circle / solid</code></td><td id="c1a"></td><td id="c1b"></td></tr>
+    <tr><td><code>triangle / solid</code></td><td id="c2a"></td><td id="c2b"></td></tr>
+    <tr><td><code>triangle / empty</code></td><td id="c3a"></td><td id="c3b"></td></tr>
+    <tr><td><code>triangle / x</code></td><td id="c4a"></td><td id="c4b"></td></tr>
+    <tr><td><code>square / solid</code></td><td id="c5a"></td><td id="c5b"></td></tr>
+  </table>
+</div>
+
+<h2>Przykład pytania z trójkątem — <code>e_t8_021</code></h2>
+<div class="card">
+  <p class="legend">Reguła: kształt kwadrat→trójkąt (wiersz), wypełnienie puste→pełne (kolumna). <em>correct: B (trójkąt solid)</em>.</p>
+  <div class="row">
+    <div>
+      <h3 style="color:#e04848">Renderer aplikacji (buggy)</h3>
+      <div id="grid-021-bad" class="figure-grid"></div>
+      <div id="opts-021-bad" class="figure-options-row"></div>
+      <p class="legend">Reguła „zmiana na trójkąt" jest niewidoczna — wszystko to koła. Opcje A (trójkąt pusty) i D (koło pełne) nie do odróżnienia od trójkątów.</p>
+    </div>
+    <div>
+      <h3 style="color:#2e9d52">Renderer naprawiony</h3>
+      <div id="grid-021-good" class="figure-grid"></div>
+      <div id="opts-021-good" class="figure-options-row"></div>
+      <p class="legend">Teraz widać kwadrat → trójkąt; reguła czytelna.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---- DANE PYTAŃ (skopiowane z questions-unified.js) ---- */
+var Q037 = {
+  grid: {
+    topLeft:  { shape:"circle",   fill:"solid" },
+    topRight: { shape:"triangle", fill:"solid" },
+    bottomLeft: [ { shape:"triangle", fill:"x" }, { shape:"circle", fill:"x" } ]
+  },
+  options: [
+    [ {shape:"square",fill:"x"}, {shape:"triangle",fill:"x"} ],
+    [ {shape:"triangle",fill:"x"}, {shape:"circle",fill:"x"} ],
+    [ {shape:"square",fill:"solid"}, {shape:"triangle",fill:"x"} ],
+    [ {shape:"square",fill:"x"}, {shape:"circle",fill:"x"} ]
+  ],
+  correct: 0
+};
+var Q021 = {
+  grid: {
+    topLeft:  { shape:"square",   fill:"empty" },
+    topRight: { shape:"triangle", fill:"empty" },
+    bottomLeft: [ { shape:"square", fill:"solid" } ]
+  },
+  options: [
+    [ {shape:"triangle",fill:"empty"} ],
+    [ {shape:"triangle",fill:"solid"} ],
+    [ {shape:"square",fill:"solid"} ],
+    [ {shape:"circle",fill:"solid"} ]
+  ],
+  correct: 1
+};
+
+/* ---- RENDERER APLIKACJI (dokładna kopia renderFigure z index.html) ---- */
+function buggyRenderFigure(spec) {
+  var stroke = '#333', strokeWidth = '2.5', interior = '', shapeFill = 'white';
+  if (spec.fill === 'solid') shapeFill = '#333';
+  var shapeHtml = '';
+  if (spec.shape === 'square') {
+    shapeHtml = '<rect x="10" y="10" width="60" height="60" fill="'+shapeFill+'" stroke="'+stroke+'" stroke-width="'+strokeWidth+'"/>';
+  } else { // <-- trójkąt też trafia tutaj => koło
+    shapeHtml = '<circle cx="40" cy="40" r="30" fill="'+shapeFill+'" stroke="'+stroke+'" stroke-width="'+strokeWidth+'"/>';
+  }
+  if (spec.fill === 'x') {
+    if (spec.shape === 'square') {
+      interior = '<line x1="12" y1="12" x2="68" y2="68" stroke="'+stroke+'" stroke-width="2"/><line x1="68" y1="12" x2="12" y2="68" stroke="'+stroke+'" stroke-width="2"/>';
+    } else {
+      interior = '<line x1="19" y1="19" x2="61" y2="61" stroke="'+stroke+'" stroke-width="2"/><line x1="61" y1="19" x2="19" y2="61" stroke="'+stroke+'" stroke-width="2"/>';
+    }
+  } else if (spec.fill === 'dot-center') {
+    interior = '<circle cx="40" cy="40" r="8" fill="#333"/>';
+  }
+  return '<svg viewBox="0 0 80 80" width="56" height="56">'+shapeHtml+interior+'</svg>';
+}
+
+/* ---- RENDERER NAPRAWIONY (proponowany — z trójkątem) ---- */
+function fixedRenderFigure(spec) {
+  var stroke = '#333', strokeWidth = '2.5', interior = '', shapeFill = 'white';
+  if (spec.fill === 'solid') shapeFill = '#333';
+  var shapeHtml = '';
+  if (spec.shape === 'square') {
+    shapeHtml = '<rect x="10" y="10" width="60" height="60" fill="'+shapeFill+'" stroke="'+stroke+'" stroke-width="'+strokeWidth+'"/>';
+  } else if (spec.shape === 'triangle') {
+    shapeHtml = '<polygon points="40,10 70,68 10,68" fill="'+shapeFill+'" stroke="'+stroke+'" stroke-width="'+strokeWidth+'" stroke-linejoin="round"/>';
+  } else {
+    shapeHtml = '<circle cx="40" cy="40" r="30" fill="'+shapeFill+'" stroke="'+stroke+'" stroke-width="'+strokeWidth+'"/>';
+  }
+  if (spec.fill === 'x') {
+    if (spec.shape === 'square') {
+      interior = '<line x1="12" y1="12" x2="68" y2="68" stroke="'+stroke+'" stroke-width="2"/><line x1="68" y1="12" x2="12" y2="68" stroke="'+stroke+'" stroke-width="2"/>';
+    } else if (spec.shape === 'triangle') {
+      interior = '<line x1="30" y1="44" x2="50" y2="60" stroke="'+stroke+'" stroke-width="2"/><line x1="50" y1="44" x2="30" y2="60" stroke="'+stroke+'" stroke-width="2"/>';
+    } else {
+      interior = '<line x1="19" y1="19" x2="61" y2="61" stroke="'+stroke+'" stroke-width="2"/><line x1="61" y1="19" x2="19" y2="61" stroke="'+stroke+'" stroke-width="2"/>';
+    }
+  } else if (spec.fill === 'dot-center') {
+    var cy = spec.shape === 'triangle' ? 52 : 40;
+    interior = '<circle cx="40" cy="'+cy+'" r="8" fill="#333"/>';
+  }
+  return '<svg viewBox="0 0 80 80" width="56" height="56">'+shapeHtml+interior+'</svg>';
+}
+
+function renderGrid(elId, q, rf) {
+  var g = q.grid;
+  var bl = (Array.isArray(g.bottomLeft) ? g.bottomLeft : [g.bottomLeft]).map(rf).join('');
+  document.getElementById(elId).innerHTML =
+    '<div class="figure-cell"><span class="win">okno 1</span>'+rf(g.topLeft)+'</div>'+
+    '<div class="figure-cell"><span class="win">okno 2</span>'+rf(g.topRight)+'</div>'+
+    '<div class="figure-cell"><span class="win">okno 3</span>'+bl+'</div>'+
+    '<div class="figure-cell bottom-right"><span class="win">okno 4</span>?</div>';
+}
+function renderOpts(elId, q, rf) {
+  var letters = ['A','B','C','D','E'];
+  document.getElementById(elId).innerHTML = q.options.map(function(specs,i){
+    var cls = 'figure-option' + (i===q.correct ? ' correct' : '');
+    return '<div class="'+cls+'">'+specs.map(rf).join('')+'<span class="figure-option-label">'+letters[i]+')</span></div>';
+  }).join('');
+}
+
+renderGrid('grid-037', Q037, buggyRenderFigure);
+renderOpts('opts-037', Q037, buggyRenderFigure);
+
+var cmp = [
+  ['c1', {shape:'circle',fill:'solid'}],
+  ['c2', {shape:'triangle',fill:'solid'}],
+  ['c3', {shape:'triangle',fill:'empty'}],
+  ['c4', {shape:'triangle',fill:'x'}],
+  ['c5', {shape:'square',fill:'solid'}]
+];
+cmp.forEach(function(p){
+  document.getElementById(p[0]+'a').innerHTML = buggyRenderFigure(p[1]);
+  document.getElementById(p[0]+'b').innerHTML = fixedRenderFigure(p[1]);
+});
+
+renderGrid('grid-021-bad', Q021, buggyRenderFigure);
+renderOpts('opts-021-bad', Q021, buggyRenderFigure);
+renderGrid('grid-021-good', Q021, fixedRenderFigure);
+renderOpts('opts-021-good', Q021, fixedRenderFigure);
+</script>
+</body>
+</html>

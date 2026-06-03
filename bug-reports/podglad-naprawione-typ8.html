@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Podgląd naprawionych pytań typu 8</title>
+<style>
+body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;max-width:760px;margin:0 auto;padding:24px;color:#1a1a1a;line-height:1.5}
+h1{font-size:22px}
+.card{border:1px solid #ddd;border-radius:12px;padding:18px 20px;margin:18px 0;background:#fafafa}
+.meta{font-size:12px;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.instr{font-size:14px;color:#444;margin:6px 0 14px}
+.figure-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:8px;max-width:300px}
+.figure-cell{border:2px solid #bbb;border-radius:8px;min-height:90px;display:flex;align-items:center;justify-content:center;gap:6px;background:#fff}
+.bottom-right{font-size:30px;color:#c0392b;font-weight:700}
+.opts{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 0}
+.opt{border:2px solid #bbb;border-radius:8px;padding:8px 12px;display:flex;align-items:center;gap:4px;background:#fff}
+.opt.correct{border-color:#2e9d52;background:#eefaf0}
+.lbl{font-weight:600;color:#555;margin-left:4px}
+.exp{font-size:13px;color:#333;background:#fff;border-left:3px solid #2e9d52;padding:8px 12px;margin-top:14px;border-radius:4px}
+</style></head><body>
+<h1>Podgląd naprawionych pytań typu 8</h1>
+<p style="font-size:13px;color:#666">Dane wczytane 1:1 z <code>web/questions-unified.js</code>, render naprawionym <code>renderFigure</code> (trójkąt = trójkąt). Tryb review: poprawna odpowiedź na zielono + objaśnienie.</p>
+<div id="root"></div>
+<script>
+var QUESTIONS=[{"id":"e_t8_001","typeId":8,"level":"easy","instruction":"W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.","grid":{"topLeft":{"shape":"circle","fill":"empty"},"bottomLeft":[{"shape":"circle","fill":"solid"}],"topRight":{"shape":"triangle","fill":"empty"}},"options":[[{"shape":"triangle","fill":"solid"}],[{"shape":"triangle","fill":"empty"}],[{"shape":"circle","fill":"solid"}],[{"shape":"triangle","fill":"dot-center"}],[{"shape":"square","fill":"solid"}]],"correct":0,"explanation":"Reguła wierszy: kształt zmienia się (koło → trójkąt). Reguła kolumn: wypełnienie zmienia się (puste → pełne). Brakujące pole: trójkąt pełne. Opcja A — poprawna."},{"id":"e_t8_010","typeId":8,"level":"easy","instruction":"W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.","grid":{"topLeft":{"shape":"circle","fill":"x"},"bottomLeft":[{"shape":"circle","fill":"empty"}],"topRight":{"shape":"triangle","fill":"x"}},"options":[[{"shape":"triangle","fill":"x"}],[{"shape":"circle","fill":"empty"}],[{"shape":"square","fill":"empty"}],[{"shape":"triangle","fill":"solid"}],[{"shape":"triangle","fill":"empty"}]],"correct":4,"explanation":"Reguła wierszy: kształt zmienia się (koło → trójkąt). Reguła kolumn: wypełnienie zmienia się (przekreślone → puste). Brakujące pole: trójkąt puste. Opcja E — poprawna."},{"id":"h_t8_037","typeId":8,"level":"hard","instruction":"W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.","grid":{"topLeft":{"shape":"triangle","fill":"dot-center"},"bottomLeft":[{"shape":"square","fill":"dot-center"}],"topRight":{"shape":"triangle","fill":"solid"}},"options":[[{"shape":"square","fill":"solid"}],[{"shape":"square","fill":"dot-center"}],[{"shape":"triangle","fill":"solid"}],[{"shape":"circle","fill":"solid"}]],"correct":0,"explanation":"Reguła wierszy: wypełnienie zmienia się (z kropką → pełne). Reguła kolumn: kształt zmienia się (trójkąt → kwadrat). Brakujące pole: kwadrat pełne. Opcja A — poprawna."},{"id":"h_t8_002","typeId":8,"level":"hard","instruction":"W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.","grid":{"topLeft":{"shape":"circle","fill":"empty"},"bottomLeft":[{"shape":"triangle","fill":"empty"}],"topRight":{"shape":"circle","fill":"x"}},"options":[[{"shape":"triangle","fill":"empty"}],[{"shape":"triangle","fill":"x"}],[{"shape":"circle","fill":"x"}],[{"shape":"square","fill":"x"}],[{"shape":"triangle","fill":"dot-center"}]],"correct":1,"explanation":"Reguła wierszy: wypełnienie zmienia się (puste → przekreślone). Reguła kolumn: kształt zmienia się (koło → trójkąt). Brakujące pole: trójkąt przekreślone. Opcja B — poprawna."},{"id":"h_t8_001","typeId":8,"level":"hard","instruction":"W tym zadaniu musisz ustalić odpowiednie powiązania między figurami. Tylko jedna odpowiedź jest poprawna. Uzupełnij brakującą odpowiedź.","grid":{"topLeft":{"shape":"circle","fill":"empty"},"bottomLeft":[{"shape":"circle","fill":"x"}],"topRight":{"shape":"triangle","fill":"empty"}},"options":[[{"shape":"triangle","fill":"x"}],[{"shape":"triangle","fill":"empty"}],[{"shape":"circle","fill":"x"}],[{"shape":"square","fill":"x"}],[{"shape":"triangle","fill":"dot-center"}]],"correct":0,"explanation":"Reguła wierszy: kształt zmienia się (koło → trójkąt). Reguła kolumn: wypełnienie zmienia się (puste → przekreślone). Brakujące pole: trójkąt przekreślone. Opcja A — poprawna."}];
+function renderFigure(spec){
+  var stroke='#333',strokeWidth='2.5',interior='',shapeFill='white';
+  if(spec.fill==='solid')shapeFill='#333';
+  var shapeHtml='';
+  if(spec.shape==='square'){shapeHtml='<rect x="10" y="10" width="60" height="60" fill="'+shapeFill+'" stroke="'+stroke+'" stroke-width="'+strokeWidth+'"/>';}
+  else if(spec.shape==='triangle'){shapeHtml='<polygon points="40,10 70,68 10,68" fill="'+shapeFill+'" stroke="'+stroke+'" stroke-width="'+strokeWidth+'" stroke-linejoin="round"/>';}
+  else{shapeHtml='<circle cx="40" cy="40" r="30" fill="'+shapeFill+'" stroke="'+stroke+'" stroke-width="'+strokeWidth+'"/>';}
+  if(spec.fill==='x'){
+    if(spec.shape==='square'){interior='<line x1="12" y1="12" x2="68" y2="68" stroke="'+stroke+'" stroke-width="2"/><line x1="68" y1="12" x2="12" y2="68" stroke="'+stroke+'" stroke-width="2"/>';}
+    else if(spec.shape==='triangle'){interior='<line x1="30" y1="44" x2="50" y2="60" stroke="'+stroke+'" stroke-width="2"/><line x1="50" y1="44" x2="30" y2="60" stroke="'+stroke+'" stroke-width="2"/>';}
+    else{interior='<line x1="19" y1="19" x2="61" y2="61" stroke="'+stroke+'" stroke-width="2"/><line x1="61" y1="19" x2="19" y2="61" stroke="'+stroke+'" stroke-width="2"/>';}
+  }else if(spec.fill==='dot-center'){var cy=spec.shape==='triangle'?52:40;interior='<circle cx="40" cy="'+cy+'" r="8" fill="#333"/>';}
+  return '<svg viewBox="0 0 80 80" width="58" height="58">'+shapeHtml+interior+'</svg>';
+}
+function cellHtml(c){return (Array.isArray(c)?c:[c]).map(renderFigure).join('');}
+var L=['A','B','C','D','E'];
+document.getElementById('root').innerHTML=QUESTIONS.map(function(q){
+  var g=q.grid;
+  var grid='<div class="figure-grid">'+
+    '<div class="figure-cell">'+cellHtml(g.topLeft)+'</div>'+
+    '<div class="figure-cell">'+cellHtml(g.topRight)+'</div>'+
+    '<div class="figure-cell">'+cellHtml(g.bottomLeft)+'</div>'+
+    '<div class="figure-cell bottom-right">?</div></div>';
+  var opts='<div class="opts">'+q.options.map(function(o,i){
+    return '<div class="opt'+(i===q.correct?' correct':'')+'">'+cellHtml(o)+'<span class="lbl">'+L[i]+')</span></div>';
+  }).join('')+'</div>';
+  return '<div class="card"><div class="meta">'+q.id+' · '+q.level+'</div>'+
+    '<div class="instr">'+q.instruction+'</div>'+grid+opts+
+    '<div class="exp">'+q.explanation+'</div></div>';
+}).join('');
+</script></body></html>

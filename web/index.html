@@ -1683,6 +1683,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     let shapeHtml = '';
     if (spec.shape === 'square') {
       shapeHtml = '<rect x="10" y="10" width="60" height="60" fill="' + shapeFill + '" stroke="' + stroke + '" stroke-width="' + strokeWidth + '"/>';
+    } else if (spec.shape === 'triangle') {
+      shapeHtml = '<polygon points="40,10 70,68 10,68" fill="' + shapeFill + '" stroke="' + stroke + '" stroke-width="' + strokeWidth + '" stroke-linejoin="round"/>';
     } else {
       shapeHtml = '<circle cx="40" cy="40" r="30" fill="' + shapeFill + '" stroke="' + stroke + '" stroke-width="' + strokeWidth + '"/>';
     }
@@ -1691,12 +1693,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (spec.shape === 'square') {
         interior = '<line x1="12" y1="12" x2="68" y2="68" stroke="' + stroke + '" stroke-width="2"/>' +
                    '<line x1="68" y1="12" x2="12" y2="68" stroke="' + stroke + '" stroke-width="2"/>';
+      } else if (spec.shape === 'triangle') {
+        interior = '<line x1="30" y1="44" x2="50" y2="60" stroke="' + stroke + '" stroke-width="2"/>' +
+                   '<line x1="50" y1="44" x2="30" y2="60" stroke="' + stroke + '" stroke-width="2"/>';
       } else {
         interior = '<line x1="19" y1="19" x2="61" y2="61" stroke="' + stroke + '" stroke-width="2"/>' +
                    '<line x1="61" y1="19" x2="19" y2="61" stroke="' + stroke + '" stroke-width="2"/>';
       }
     } else if (spec.fill === 'dot-center') {
-      interior = '<circle cx="40" cy="40" r="8" fill="#333"/>';
+      const dotCy = spec.shape === 'triangle' ? 52 : 40;
+      interior = '<circle cx="40" cy="' + dotCy + '" r="8" fill="#333"/>';
     }
 
     return '<svg viewBox="0 0 80 80" width="64" height="64" xmlns="http://www.w3.org/2000/svg">' +
