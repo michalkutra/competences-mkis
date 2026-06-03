@@ -1,5 +1,18 @@
 # Backlog — Ukończone
 
+## Dobór pytań do sesji wg blueprintu egzaminu (feedback: „mało sylogizmów")
+
+> **Ukończono:** 2026-06-03
+
+Feedback testerów (Ewelina i in.): sylogizmów w sesjach za mało; w trybie trudnym powinny być złożone, 3-przesłankowe. Diagnoza: baza była OK (80 sylogizmów; w hard 30/40 ma ≥3 przesłanki), problem leżał w `buildSession` — losowanie było równomierne (każdy typ ~1,9 pytania na sesję), więc sylogizmy były niedoważone względem prawdziwego egzaminu.
+
+- `buildSession` (`web/index.html`) przepisana na `SESSION_BLUEPRINT` odzwierciedlający strukturę egzaminu KSAP: Typ1=2, Typ2=2, Typ3=2, Typ4=1, **Typ5 (sylogizmy)=4**, Typ6=2, Typ7=1, Typ8=1 → 15 pytań.
+- Efekt (symulacja 2000 sesji): dokładnie 4 sylogizmy/sesję (było ~1,9), 0 duplikatów, stała długość 15. Zero zmian w bazie pytań.
+- Postulat „3-przesłankowe sylogizmy w trybie trudnym" już spełniony przez istniejącą bazę.
+- Wątek „relacje liczbowe/kontekstowe" → przeniesiony do BACKLOG.md (wymaga doprecyzowania z recenzentem).
+
+---
+
 ## Naprawa pytań typu 8 (zgłoszenie `h_t8_037`)
 
 > **Ukończono:** 2026-06-03 · [Spec](bug-reports/2026-06-03-typ8-figury/2026-06-03-typ8-wariant2-design.md) · [Plan](bug-reports/2026-06-03-typ8-figury/2026-06-03-typ8-wariant2-plan.md) · [Zgłoszenie](bug-reports/2026-06-03-typ8-figury/2026-06-03-h_t8_037.md)

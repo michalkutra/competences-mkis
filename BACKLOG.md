@@ -18,6 +18,22 @@
 
 ---
 
+## Relacje liczbowe / kontekstowe — nowa grupa pytań (do doprecyzowania)
+
+**Źródło:** feedback testerów (2026-06-03). Recenzent: „brakuje relacji liczbowych czy kontekstowych". Ewelina osobno: sylogizmów mało (→ rozwiązane przez dobór sesji wg blueprintu, patrz BACKLOG_DONE.md).
+
+**Stan obecny:** Typ 6 (zadania numeryczne z tabelą) i Typ 3 (przyczyna-skutek / kontekstowe) już istnieją (po 80 pytań). Ich udział w sesji podniesiono blueprintem egzaminu.
+
+**Hipoteza:** recenzentowi mogło chodzić o **relacje/ciągi liczbowe jako analogie** (np. `2:6 = 5:?`, ciągi liczbowe, proporcje) — klasyczna kategoria testów poznawczych, której **obecnie brak**. Typ 6 to zadania tekstowo-tabelaryczne, nie „relacje liczbowe" w tym sensie.
+
+**Następny krok (BLOCKER):** dopytać autora feedbacku, co dokładnie miał na myśli, zanim zbudujemy nową kategorię:
+- czy chodzi o brakujące analogie/ciągi liczbowe (nowy typ pytań + generator + walidacja),
+- czy o istniejący Typ 6 (wtedy wystarczy obecna poprawka udziału w sesji).
+
+**Wysiłek:** jeśli nowy typ — porównywalny z generatorem Typ 8 (generate/integrate/validate). Jeśli tylko udział — zrobione.
+
+---
+
 ## Autentykacja przez Google (bramka dostępu)
 
 Przesłonić całą stronę logowaniem przez Google — bez konta brak dostępu.

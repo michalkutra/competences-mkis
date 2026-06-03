@@ -1394,17 +1394,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   }
 
+  // Rozkład typów w sesji odzwierciedla strukturę prawdziwego egzaminu KSAP
+  // (patrz docs/specyfikacja_pytan.md): 15 pytań, z czego sylogizmy 4×.
+  const SESSION_BLUEPRINT = { 1: 2, 2: 2, 3: 2, 4: 1, 5: 4, 6: 2, 7: 1, 8: 1 };
+
   function buildSession() {
     const bank = getQuestionBank();
-    const guaranteed = [];
+    const session = [];
     for (let t = 1; t <= 8; t++) {
-      const pool = bank['type' + t];
-      guaranteed.push(pool[Math.floor(Math.random() * pool.length)]);
+      const pool = (bank['type' + t] || []).slice();
+      shuffle(pool);
+      const need = SESSION_BLUEPRINT[t] || 0;
+      session.push(...pool.slice(0, need));
     }
-    const usedIds = new Set(guaranteed.map(q => q.id));
-    const allQs = Object.values(bank).flat().filter(q => !usedIds.has(q.id));
-    shuffle(allQs);
-    const session = [...guaranteed, ...allQs.slice(0, 7)];
     shuffle(session);
     return session;
   }
