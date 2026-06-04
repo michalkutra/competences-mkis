@@ -1,5 +1,21 @@
 # Backlog — Ukończone
 
+## Komunikacja (post na grupie FB)
+
+> **Ukończono:** 2026-06-04
+
+Post na grupę ~700 osób zdających egzamin KSAP przygotowany i opublikowany. Drafty (4 wersje) w [`communication/`](communication/) — A: storytelling, B: problem→rozwiązanie ⭐, C: konkretna, D: Messenger. Ton osobisty (żona zdaje ten sam egzamin — wiarygodność „z wewnątrz"), jeden link, zero rejestracji, prośba o feedback i udostępnienie.
+
+---
+
+## Licznik social proof na home (#16)
+
+> **Ukończono:** 2026-06-04 · [Spec](docs/superpowers/specs/2026-06-03-social-proof-counter-design.md) · [Plan](docs/superpowers/plans/2026-06-03-social-proof-counter.md)
+
+Subtelna linijka „✦ Odpowiedzieliście już na ponad X pytań" pod przyciskami na home (Wariant A). POC, ale robi robotę. Liczba ręcznie aktualizowana w `web/stats.js` (odczyt z GA: suma eventów `question_answered`). Zaokrąglanie w dół do ładnego progu (`web/social-proof.js`, <1000 → pełne setki), próg widoczności 300. Bez backendu, bez GA Data API (świadomie). Czysta logika testowana w `tools/test-social-proof.js`.
+
+---
+
 ## Dobór pytań do sesji wg blueprintu egzaminu (feedback: „mało sylogizmów")
 
 > **Ukończono:** 2026-06-03

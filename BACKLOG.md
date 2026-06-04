@@ -6,24 +6,14 @@
 
 | # | Pozycja | Wpływ | Wysiłek | Priorytet |
 |---|---|---|---|---|
-| 2 | Komunikacja (post na grupie) | Bez dobrego posta nikt nie kliknie — treść, ton, timing | ~1h | **MUST** |
 | 7 | NPS / CSAT (Tally) | Bez tego nie wiesz CO MYŚLĄ — liczby bez kontekstu nic nie mówią | ~30 min | **MUST** |
 | 8 | Informacja o puli pytań | Ustawia oczekiwania, zapobiega "to za mało" | ~15 min | SHOULD |
 | 10 | Podziel się wynikiem | Jedyny mechanizm wyjścia poza te 700 osób | ~1h | SHOULD |
 | 11 | PWA install prompt | Zwiększa powroty mobilnych użytkowników (fundament już jest) | ~2h | SHOULD |
-| 16 | Licznik social proof na home | Pokazuje, że appka żyje — zachęta do startu | ~30 min | SHOULD |
 | 13 | Przycisk powrotu do pytania | UX improvement — przeżyją bez tego | ~3h | SKIP |
 | 15 | Autentykacja Google | Aktywnie szkodliwa — dodaje friction, zmniejszy adopcję | dni | **SKIP** |
 
 **MUSTs łącznie:** ~2-3h (poza deploy). **SHOULDs:** kolejne ~4-5h.
-
----
-
-## Licznik social proof na home (#16)
-
-**Status:** zaprojektowane + plan gotowy — [spec](docs/superpowers/specs/2026-06-03-social-proof-counter-design.md), [plan](docs/superpowers/plans/2026-06-03-social-proof-counter.md).
-
-Subtelna linijka „✦ Odpowiedzieliście już na ponad X pytań" pod przyciskami na home (Wariant A). Liczba ręcznie aktualizowana w `web/stats.js` (odczyt z GA: suma eventów `question_answered`, start = 508 → „ponad 500"). Zaokrąglanie w dół do ładnego progu, próg widoczności 300 (poniżej — linijka ukryta). Bez backendu, bez GA Data API (świadomie). Czysta logika w `web/social-proof.js` (testowana `tools/test-social-proof.js`).
 
 ---
 
@@ -113,30 +103,6 @@ Wyświetlać ile pytań jest dostępnych w banku, np. "Pula: 80 pytań (łatwy) 
 - Warto też sprawdzić realny rozmiar puli: przy sesjach 15-pytaniowych i małej puli użytkownicy szybko widzą powtórki
 
 **Powiązane (przyczyna powtórek):** feedback Eweliny „pytania powtarzają się" zaadresowany planem anty-powtórek (LRS + powiększenie banku do ~25 sesji bez powtórki) — [spec](docs/superpowers/specs/2026-06-03-anti-repeat-question-variety-design.md), [plan](docs/superpowers/plans/2026-06-03-anti-repeat-question-variety.md). Po wdrożeniu zaktualizować podawany rozmiar puli (640 → 840).
-
----
-
-## Komunikacja (post na grupie FB)
-
-**Status:** Drafty gotowe — do wyboru wersji i publikacji po wdrożeniu MUSTs.
-**Drafty:** [`communication/`](communication/) — 4 wersje (A: storytelling, B: problem→rozwiązanie ⭐, C: konkretna, D: Messenger)
-
-Przygotować treść posta na grupę ~700 osób zdających egzamin KSAP.
-
-**Co powinien zawierać post:**
-- kim jesteśmy (żona zdaje ten sam egzamin — wiarygodność "z wewnątrz")
-- co to jest i po co (bezpłatne narzędzie do ćwiczeń, 8 typów zadań)
-- jak zacząć (jeden link, zero rejestracji)
-- co chcemy w zamian (feedback — co działa, co nie; opcjonalnie: kawa)
-- prośba o udostępnienie jeśli ktoś zna inne osoby zdające
-
-**Ton:** osobisty, nie marketingowy. Piszemy jako ludzie, nie jako produkt.
-
-**Timing:** opublikować gdy wszystkie MUSTs są gotowe — nie wcześniej, żeby pierwsze wrażenie było dobre.
-
-**Do przygotowania:**
-- wersja na FB (dłuższa, z kontekstem)
-- opcjonalnie: krótka wersja do WhatsApp/Messenger dla znajomych
 
 ---
 
