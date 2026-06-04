@@ -1,19 +1,24 @@
 # Backlog
 
-## Priorytetyzacja — test launch
+## Priorytetyzacja
 
-**Kontekst:** darmowa wersja dla ~700 osób zdających egzamin KSAP, egzamin za miesiąc. Cel: zmaksymalizować wiedzę (adopcja, feedback, co się podoba) + 100 PLN zebranych z wirtualnych kaw jako proxy "ktoś to ceni".
+**Kontekst:** darmowa wersja dla ~700 osób zdających egzamin KSAP (strona live od 2026-06-03, egzamin za ~miesiąc). Cel: zmaksymalizować wiedzę (adopcja, feedback, co się podoba) + 100 PLN z wirtualnych kaw jako proxy „ktoś to ceni". Tabela to pełny indeks backlogu — każda pozycja ma sekcję z opisem niżej.
 
-| # | Pozycja | Wpływ | Wysiłek | Priorytet |
-|---|---|---|---|---|
-| 7 | NPS / CSAT (Tally) | Bez tego nie wiesz CO MYŚLĄ — liczby bez kontekstu nic nie mówią | ~30 min | **MUST** |
-| 8 | Informacja o puli pytań | Ustawia oczekiwania, zapobiega "to za mało" | ~15 min | SHOULD |
-| 10 | Podziel się wynikiem | Jedyny mechanizm wyjścia poza te 700 osób | ~1h | SHOULD |
-| 11 | PWA install prompt | Zwiększa powroty mobilnych użytkowników (fundament już jest) | ~2h | SHOULD |
-| 13 | Przycisk powrotu do pytania | UX improvement — przeżyją bez tego | ~3h | SKIP |
-| 15 | Autentykacja Google | Aktywnie szkodliwa — dodaje friction, zmniejszy adopcję | dni | **SKIP** |
+| Pozycja | Wpływ | Wysiłek | Priorytet |
+|---|---|---|---|
+| NPS / CSAT (Tally) | Bez tego nie wiesz CO MYŚLĄ — liczby bez kontekstu nic nie mówią | ~30 min | **MUST** |
+| Podziel się wynikiem | Jedyny mechanizm wyjścia poza te 700 osób | ~1h | SHOULD |
+| PWA install prompt | Powroty mobilnych + odblokowuje trwały storage (patrz „Trwałość danych") | ~2h | SHOULD |
+| Relacje liczbowe / kontekstowe | Pokrywa lukę w typach pytań (feedback recenzenta) | jak generator Typ8 | **BLOCKER** (doprecyzować) |
+| Podgląd pojedynczego pytania (QA) | Szybsza obsługa zgłoszeń błędów bez przeklikiwania sesji | mały | COULD (tooling) |
+| Analityka GA4 przez MCP | Mierzenie adopcji po poście bez klikania w GA | setup | NICE-TO-HAVE |
+| Trwałość danych (localStorage) | Realny problem (Ewelina: znika historia) — w dużej mierze łata to PWA | mały–średni | NICE-TO-HAVE |
+| Dobór wg słabości (per-pytanie) | Nauka na błędach; rozszerzenie silnika doboru | jak Typ8 | COULD (post-launch) |
+| Adaptacyjny dobór wg słabości typów | Opcja „ćwicz słabe typy" przy starcie sesji; nauka | średni | COULD (post-launch) |
+| Przycisk powrotu do pytania | UX improvement — przeżyją bez tego | ~3h | SKIP |
+| Autentykacja Google | Aktywnie szkodliwa — dodaje friction, zmniejszy adopcję | dni | **SKIP** |
 
-**MUSTs łącznie:** ~2-3h (poza deploy). **SHOULDs:** kolejne ~4-5h.
+**Legenda:** MUST = blokuje pełnię wartości launchu · SHOULD = duży zysk, robić wkrótce · COULD = wartościowe, post-launch · NICE-TO-HAVE = miłe, nie pilne · BLOCKER = czeka na decyzję/doprecyzowanie · SKIP = świadomie odpuszczone.
 
 ---
 
@@ -94,18 +99,6 @@ Na ekranie wyników dodać przycisk "Podziel się wynikiem", który kopiuje goto
 
 ---
 
-## Informacja o puli pytań na ekranie głównym lub setup
-
-Wyświetlać ile pytań jest dostępnych w banku, np. "Pula: 80 pytań (łatwy) + 40 (trudny)".
-
-- Pomaga użytkownikom ocenić wartość aplikacji przed pierwszą sesją
-- Zapobiega rozczarowaniu ("znam już wszystkie odpowiedzi") — użytkownicy wiedzą czego się spodziewać
-- Warto też sprawdzić realny rozmiar puli: przy sesjach 15-pytaniowych i małej puli użytkownicy szybko widzą powtórki
-
-**Powiązane (przyczyna powtórek):** feedback Eweliny „pytania powtarzają się" zaadresowany planem anty-powtórek (LRS + powiększenie banku do ~25 sesji bez powtórki) — [spec](docs/superpowers/specs/2026-06-03-anti-repeat-question-variety-design.md), [plan](docs/superpowers/plans/2026-06-03-anti-repeat-question-variety.md). Po wdrożeniu zaktualizować podawany rozmiar puli (640 → 840).
-
----
-
 ## Podgląd pojedynczego pytania (strona QA, nielinkowana)
 
 Wewnętrzne narzędzie do szybkiego obejrzenia dowolnego pytania po ID — np. żeby zweryfikować zgłoszenie błędu (jak #h_t8_037), bez przeklikiwania sesji.
@@ -172,9 +165,9 @@ Zwiększyć szanse, że użytkownicy nie stracą postępu przy czyszczeniu/evict
 
 ## Dobór pytań wg słabości — „częściej losuj te, na które odpowiedziałem błędnie"
 
-Wariant/rozszerzenie silnika doboru pytań w `buildSession()` — obok logiki anty-powtórek (least-recently-seen, w trakcie wdrażania): ważyć losowanie tak, by pytania źle zaliczone w przeszłości pojawiały się częściej (spaced repetition / nauka na błędach).
+Wariant/rozszerzenie silnika doboru pytań w `buildSession()` — obok logiki anty-powtórek (least-recently-seen, **wdrożona** — patrz BACKLOG_DONE.md): ważyć losowanie tak, by pytania źle zaliczone w przeszłości pojawiały się częściej (spaced repetition / nauka na błędach).
 
-**Priorytet:** rozszerzenie po wdrożeniu anty-powtórek (ten sam silnik i te same dane).
+**Priorytet:** gotowe do brainstormingu — anty-powtórki wdrożone, ten sam silnik i te same dane.
 
 **Kontekst danych:** `ksap_answer_log` w localStorage ma już per odpowiedź pola `qId`, `tid`, `ok` (poprawność) i `ts` — wystarczające, żeby policzyć dla każdego pytania historię trafień/pomyłek bez żadnej nowej infrastruktury.
 
@@ -187,4 +180,33 @@ Wariant/rozszerzenie silnika doboru pytań w `buildSession()` — obok logiki an
 - Czy to globalny tryb, czy miks w każdej sesji?
 - Jak szybko pytanie „wraca do normy" po poprawnych odpowiedziach (krzywa zapominania)?
 - Czy respektować blueprint egzaminu (rozkład typów), czy dobór wg słabości może go naruszać?
+
+---
+
+## Adaptacyjny dobór wg słabości typów — opcja przy starcie sesji (floor + flex)
+
+**Status:** pomysł (2026-06-04), do brainstormingu. Pokrewny do „Dobór pytań wg słabości" powyżej, ale na poziomie **grupy/typu**, nie pojedynczego pytania — i jako **świadomy opt-in**, nie domyślna zmiana.
+
+**Pomysł:** przy starcie nowej sesji checkbox (domyślnie **wyłączony** → zachowanie jak teraz, czysty blueprint). Po zaznaczeniu sesja przechyla dobór ku typom, w których użytkownik ma niższą skuteczność. Wstępna etykieta (do doprecyzowania): *„Dopasuj pytania do moich wyników — częściej losuj z typów, które idą mi słabiej"*.
+
+**Mechanika (floor + flex):**
+- Blueprint obecnie rozdaje wszystkie 15 slotów (Typ1=2, Typ2=2, Typ3=2, Typ4=1, Typ5=4, Typ6=2, Typ7=1, Typ8=1), więc „wolnych slotów" nie ma — trzeba je najpierw wykroić.
+- **Floor** = gwarantowane minimum na każdy typ (np. 1/typ = 8 slotów), żeby każdy typ wciąż się pojawił i sesja przypominała egzamin.
+- **Flex** = pozostałe sloty (np. 7) rozdzielane proporcjonalnie do *słabości* typu (im niższa skuteczność, tym większa waga).
+- W obrębie wybranego typu dalej działa anti-repeat (LRS) → ćwiczysz słaby obszar na **świeżych** pytaniach. **Brak konfliktu z anti-repeat** (w odróżnieniu od wariantu per-pytanie powyżej).
+
+**Dlaczego per-typ, nie per-pytanie:** sygnał (skuteczność typu) stabilizuje się szybko (starczy ~3 sesje), jest odporny na szum i komponuje się z anti-repeat. Per-pytanie zostaje jako osobny, drobniejszy wariant / tryb „Powtórka błędów".
+
+**Pułapki do rozwiązania w specu:**
+- **Próg danych:** włączać dopiero przy min. ~3 sesjach (wcześniej brak sensownych statystyk → opcja nieaktywna lub działa jak blueprint).
+- **Mała próbka na rzadkich typach:** po 3 sesjach Typ5 ma ~12 odpowiedzi, ale Typ7/Typ8 tylko ~3 → skuteczność szumna. Zastosować *shrinkage* ku 50% (Bayes/Laplace) albo próg „min N odpowiedzi, zanim typ dostaje wagę".
+- **Czapka na przechył:** limit „+max X slotów na typ", żeby jeden słaby typ nie zjadł całej sesji i została różnorodność.
+- **Transparentność (opcjonalnie):** linijka „Dziś więcej z: wnioskowanie, wykresy" — motywuje, ale może pachnieć „dobijaniem"; do przetestowania.
+
+**Kontekst danych:** te same co wyżej — `ksap_answer_log` (`tid` = typ, `ok` = poprawność). Skuteczność per typ = agregacja `ok` po `tid`. Zero nowej infrastruktury.
+
+**Otwarte pytania:**
+- Czy opcja dotyczy obu trybów (Egzamin + Nauka), czy w Egzaminie trzymamy czysty blueprint dla wierności symulacji?
+- Finalna etykieta i miejsce checkboxa na ekranie setup.
+- Wartości floor/flex (8+7? inny podział?) i kształt funkcji wagi (liniowa od skuteczności? odwrotność?).
 

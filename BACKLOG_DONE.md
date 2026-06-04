@@ -1,5 +1,21 @@
 # Backlog — Ukończone
 
+## Anti-repeat — mniej powtórek pytań w kolejnych sesjach
+
+> **Ukończono:** 2026-06-04 · [Spec](docs/superpowers/specs/2026-06-03-anti-repeat-question-variety-design.md) · [Plan](docs/superpowers/plans/2026-06-03-anti-repeat-question-variety.md)
+
+Feedback Eweliny „pytania się powtarzają" zaadresowany. `buildSession()` dobiera teraz pytania wg least-recently-seen (LRS) na bazie historii w `ksap_answer_log` — pytania widziane najdawniej (lub wcale) mają pierwszeństwo, przy zachowaniu blueprintu egzaminu (rozkład typów). Powiększenie banku (→ ~25 sesji bez powtórki) + logika LRS = realnie mniej duplikatów między sesjami. Ten sam silnik i dane (`qId`, `tid`, `ok`, `ts`) są fundamentem pod przyszły „dobór wg słabości".
+
+---
+
+## Informacja o puli pytań na ekranie głównym (#8)
+
+> **Ukończono:** 2026-06-04
+
+Na home wyświetlana liczba pytań w banku — ustawia oczekiwania i zapobiega rozczarowaniu „to za mało". `initQuestionCount` (`web/index.html`) liczy dynamicznie sumę pul z `QUESTIONS_EASY` + `QUESTIONS_HARD` (nie hardcode), renderuje „N pytań w bazie" z poprawną polską odmianą (pytanie/pytania/pytań). Liczba aktualizuje się automatycznie po rozszerzeniu banku.
+
+---
+
 ## Komunikacja (post na grupie FB)
 
 > **Ukończono:** 2026-06-04
