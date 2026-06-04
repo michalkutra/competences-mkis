@@ -5,7 +5,6 @@
 (function (root) {
   // <1000 -> w dół do pełnych setek; >=1000 -> w dół do pełnych 500.
   function floorToNice(n) {
-    if (n >= 1000) return Math.floor(n / 500) * 500;
     return Math.floor(n / 100) * 100;
   }
 
