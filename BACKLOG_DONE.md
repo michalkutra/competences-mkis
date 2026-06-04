@@ -1,5 +1,21 @@
 # Backlog — Ukończone
 
+## Rejestracja custom dimensions GA4 (error_reported)
+
+> **Ukończono:** 2026-06-04
+
+Zarejestrowane 3 custom dimensions (scope Event) w GA4 property `540012122`: `question_id`, `question_index`, `question_type` — odpowiadają parametrom pushowanym przez `reportQuestion()` ([web/index.html](web/index.html)). Od teraz każde `error_reported` jest czytelne przez Data API / MCP (`customEvent:question_id`) → wiadomo, na którym pytaniu user kliknął „Zgłoś błąd". **Ograniczenie:** brak backfillu — 4 zgłoszenia sprzed rejestracji mają `question_id = (not set)`, nieodzyskiwalne (BigQuery export nie był włączony). Pozostały follow-up (treść zgłoszenia ginie gdy `mailto` niewysłany) → BACKLOG.md „Wzmocnienie zgłaszania błędów".
+
+---
+
+## Analityka GA4 przez MCP
+
+> **Ukończono:** 2026-06-04
+
+Oficjalny serwer **`analytics-mcp`** (Google Analytics MCP, v0.6.0) podpięty do Claude Code (`claude mcp add analytics-mcp -s local`, `✓ Connected`). Auth: ADC przez **własny klient OAuth** (service account odpadł — GA4 UI twardo odrzuca konta serwisowe „nie jest powiązany z kontem Google"; domyślny klient gcloud odpadł — Google blokuje wrażliwy scope `analytics.readonly`). Projekt GCP `sprawdzian-ksap` (prywatne konto), włączone Analytics Admin + Data API, scope `analytics.readonly`. **GA4 Property ID: `540012122`** (egzamin.kutra.pl, konto „Sprawdzian Umiejetnosci KSAP"). Klient OAuth w `.ga-config/` (gitignored). Weryfikacja end-to-end: odpytano Data API (`error_reported` = 4 eventy). **Ograniczenie wykryte przy okazji** → patrz nowy task w BACKLOG.md „Rejestracja custom dimensions GA4" (parametry zdarzeń nie są czytelne bez rejestracji; brak backfillu).
+
+---
+
 ## Anti-repeat — mniej powtórek pytań w kolejnych sesjach
 
 > **Ukończono:** 2026-06-04 · [Spec](docs/superpowers/specs/2026-06-03-anti-repeat-question-variety-design.md) · [Plan](docs/superpowers/plans/2026-06-03-anti-repeat-question-variety.md)
