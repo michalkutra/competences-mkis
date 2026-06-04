@@ -92,9 +92,11 @@ Przy każdym pytaniu (lub na ekranie wyników) dać możliwość zgłoszenia bł
 
 ## Przycisk "Postaw mi kawę"
 
-> **Ukończono:** 2026-06-01
+> **Ukończono:** 2026-06-01 · **Rozszerzono o Revolut:** 2026-06-04
 
 Ko-fi widget (`ko-fi.com/sprawdzianumiejetnosci`) dodany na ekranie wyników (po 1+ sesji i wyniku ≥ 50%), w historii i statystykach (po 3+ sesjach). Tekst: "Czy ta appka pomaga Ci w nauce? Jeśli tak" + czerwony przycisk + "Tworzymy ją w wolnym czasie."
+
+**Druga metoda — Revolut (2026-06-04):** obok Ko-fi dodany `revolut.me/michald6r` we wszystkich miejscach donate (sekcja „Wspieraj projekt" na About + widget `kofiWidget()`). Powód: Ko-fi wymaga maila przy płatności (paragon PayPal/Stripe — nieusuwalne), Revolut nie wymaga maila po stronie wpłacającego. Zachowanie responsywne: **na telefonie klikalny przycisk** (otwiera apkę Revolut), **na desktopie kod QR** do zeskanowania (`web/revolut-qr.svg`, wygenerowany lokalnie, bez zewnętrznych serwisów). Klasy CSS `.donate-mobile`/`.donate-desktop` (breakpoint 768px).
 
 ---
 
@@ -126,7 +128,7 @@ Google Tag Manager (`GTM-KZ9NMFFK`) dodany do `web/index.html` (snippet w `<head
 - `session_completed` — koniec sesji (score, score_pct, questions_total, mode, difficulty)
 - `session_aborted` — porzucenie sesji (at_question_index, questions_total)
 - `error_reported` — zgłoszenie błędu w pytaniu (question_id, question_type)
-- `donation_clicked` — klik Ko-fi (source: 'about' lub 'widget')
+- `donation_clicked` — klik wsparcia; `source`: 'about'/'widget' (Ko-fi), 'revolut'/'widget_revolut' (Revolut)
 
 ---
 

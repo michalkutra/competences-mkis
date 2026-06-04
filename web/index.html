@@ -1091,6 +1091,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .backup-box { margin-top: 28px; padding: 14px 16px; background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 10px; width: 100%; box-sizing: border-box; }
   .backup-note { font-size: 0.85rem; color: #4b5563; margin: 0 0 12px; line-height: 1.5; }
   .backup-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  /* Wsparcie: telefon = klikalny link, desktop = QR do zeskanowania */
+  .donate-desktop { display: none; }
+  @media (min-width: 768px) {
+    .donate-mobile { display: none; }
+    .donate-desktop { display: block; }
+  }
 </style>
 
 <div id="screen-stats" class="screen">
@@ -1197,6 +1203,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
        style="display:inline-block;background:#ff5f5f;color:#fff;font-weight:600;padding:12px 28px;border-radius:8px;text-decoration:none;font-size:1rem;">
       ☕ Postaw nam kawę na Ko-fi
     </a>
+
+    <!-- Revolut: na telefonie klikalny przycisk -->
+    <div class="donate-mobile" style="margin-top:12px;">
+      <a href="https://revolut.me/michald6r" target="_blank" rel="noopener"
+         onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'donation_clicked',source:'revolut'})"
+         style="display:inline-block;background:#000;color:#fff;font-weight:600;padding:12px 28px;border-radius:8px;text-decoration:none;font-size:1rem;">
+        💳 Wesprzyj przez Revolut
+      </a>
+    </div>
+
+    <!-- Revolut: na desktopie kod QR do zeskanowania telefonem -->
+    <div class="donate-desktop" style="margin-top:16px;">
+      <p style="font-size:0.9rem;color:#6b7280;margin-bottom:8px;">…lub zeskanuj telefonem (Revolut):</p>
+      <img src="revolut-qr.svg" alt="Kod QR Revolut – revolut.me/michald6r" width="160" height="160"
+           style="border:1px solid #e5e7eb;border-radius:8px;padding:8px;background:#fff;" />
+    </div>
+
     <p style="font-size:0.95rem;color:#374151;line-height:1.6;margin-top:12px;">
       Powodzenia na egzaminie! — Ewelina &amp; Michał
     </p>
@@ -2579,6 +2602,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return '<div style="margin-top:32px;text-align:center;padding:20px 0;border-top:1px solid #e5e7eb;">'
       + '<p style="margin-bottom:12px;color:#374151;font-size:0.95rem;">Czy ta appka pomaga Ci w nauce? Jeśli tak</p>'
       + '<a href="https://ko-fi.com/sprawdzianumiejetnosci" target="_blank" rel="noopener" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\'donation_clicked\',source:\'widget\'})" style="display:inline-block;background:#ff5f5f;color:#fff;font-weight:600;padding:10px 20px;border-radius:8px;text-decoration:none;font-size:15px;">☕ Postaw nam kawę</a>'
+      + '<div class="donate-mobile" style="margin-top:10px;"><a href="https://revolut.me/michald6r" target="_blank" rel="noopener" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\'donation_clicked\',source:\'widget_revolut\'})" style="display:inline-block;background:#000;color:#fff;font-weight:600;padding:10px 20px;border-radius:8px;text-decoration:none;font-size:15px;">💳 Wesprzyj przez Revolut</a></div>'
+      + '<div class="donate-desktop" style="margin-top:12px;"><p style="font-size:0.85rem;color:#6b7280;margin-bottom:6px;">…lub zeskanuj telefonem (Revolut):</p><img src="revolut-qr.svg" alt="Kod QR Revolut – revolut.me/michald6r" width="140" height="140" style="border:1px solid #e5e7eb;border-radius:8px;padding:8px;background:#fff;" /></div>'
       + '<p style="margin-top:10px;color:#374151;font-size:0.95rem;">Tworzymy ją w wolnym czasie.</p>'
       + '</div>';
   }
