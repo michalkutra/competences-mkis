@@ -117,6 +117,9 @@
       color: #555;
       font-size: 1rem;
       margin-top: 32px;
+      /* Wyrównuje długość linii przy zawijaniu, żeby ✦ … ✦ łamało się symetrycznie.
+         Tam gdzie nieobsługiwane — zwykłe zawijanie; nbsp przy ✦ i tak chroni gwiazdki. */
+      text-wrap: balance;
     }
     @keyframes countdown-pulse {
       0%, 100% { transform: scale(1); }
@@ -1422,7 +1425,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       ? buildSocialProofText(stats.answered, 300)
       : null;
     if (!text) { el.style.display = 'none'; return; }
-    el.textContent = '✦ ' + text + ' ✦';
+    // Twarda spacja przykleja gwiazdkę do sąsiedniego słowa, żeby przy zawijaniu
+    // na wąskim ekranie żadna gwiazdka nie została sama w osobnej linii.
+    el.textContent = '✦\u00A0' + text + '\u00A0✦';
   }
 
   function toggleAccountMenu() {
