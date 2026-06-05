@@ -150,6 +150,31 @@
       color: white;
       border-color: #2563eb;
     }
+    /* compact pill filter (stats trend chart) — subtle, not a CTA */
+    .trend-toggle {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .trend-toggle button {
+      min-height: 0;
+      width: auto;
+      flex: 0 0 auto;
+      margin-top: 0;
+      padding: 5px 13px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border-radius: 999px;
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #e2e8f0;
+    }
+    .trend-toggle button.active {
+      background: #e0edff;
+      color: #2563eb;
+      border-color: #bfdbfe;
+    }
     .setup-label {
       font-size: 0.75rem;
       font-weight: 700;
@@ -2773,9 +2798,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       { id: 'learning', label: 'Nauka' },
       { id: 'exam',     label: 'Egzamin' }
     ];
-    var toggle = '<div class="toggle-group" style="margin-bottom:12px">';
+    var toggle = '<div class="trend-toggle">';
     modes.forEach(function(m) {
-      toggle += '<button class="toggle-btn' + (statsTrendMode === m.id ? ' active' : '') + '" onclick="setStatsTrendMode(\'' + m.id + '\')">' + m.label + '</button>';
+      toggle += '<button class="' + (statsTrendMode === m.id ? 'active' : '') + '" onclick="setStatsTrendMode(\'' + m.id + '\')">' + m.label + '</button>';
     });
     toggle += '</div>';
 
