@@ -588,7 +588,9 @@
 
     /* ===== CHARTS ===== */
     svg { max-width: 100%; height: auto; display: block; }
-    .chart-container { margin: 24px 0; }
+    .chart-container { margin: 8px 0; }
+    /* breathing room around each stats chart section (gap → headline → chart) */
+    .stats-section { margin-top: 36px; }
     .chart-legend {
       display: flex;
       flex-wrap: wrap;
@@ -2895,9 +2897,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     html += '</div>';
 
     // Accuracy-over-time trend chart
-    html += trendSectionHtml();
+    html += '<div class="stats-section">' + trendSectionHtml() + '</div>';
 
     // Bar chart (reuses existing renderBarChart)
+    html += '<div class="stats-section">';
     html += '<h3 style="margin-bottom:4px">Rozkład per typ pytania</h3>';
     html += '<p style="font-size:0.78rem;color:#6b7280;margin-bottom:8px">Cyfry 1–8 = typy opisane w tabeli poniżej</p>';
     var chartData = {
@@ -2911,6 +2914,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       ]
     };
     html += renderBarChart(chartData, { barWidthFactor: 0.45, pairGap: 2 });
+    html += '</div>';
 
     // Per-type table
     html += '<div class="data-table-wrap" style="margin-top:24px"><table class="summary-table">';
