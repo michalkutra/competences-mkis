@@ -1,5 +1,13 @@
 # Backlog — Ukończone
 
+## Zainstaluj aplikację (PWA install prompt)
+
+> **Ukończono:** 2026-06-05 · [Spec](docs/superpowers/specs/2026-06-04-pwa-install-prompt-design.md) · [Plan](docs/superpowers/plans/2026-06-04-pwa-install-prompt.md)
+
+Domyka pierwotny bug „znika historia": instalacja PWA odblokowuje trwały storage (`persisted=TAK`), więc Chrome przestaje kasować dane. Czysta logika w [`web/pwa-install.js`](web/pwa-install.js) (`detectPwaBranch`/`shouldShowResultsPrompt`/`computeDismissUntil`, test node [`tools/test-pwa-install.js`](tools/test-pwa-install.js)); kontroler `pwaInstall` inline w [web/index.html](web/index.html). **3 gałęzie wg GA4:** natywny `beforeinstallprompt` (Android/desktop ~51%), modal instrukcji iOS (~28%), wariant „Otwórz w prawdziwej przeglądarce" dla in-app webview/Chrome-iOS (~21%, instalacja niemożliwa). Trigger: karta **sticky** na dole ekranu wyników (`#screen-summary`) + przycisk w menu i w ostrzeżeniu „O aplikacji"; oba warianty karty mają „Może później" (cisza 4 dni, klucz `ksap_pwa`). Po instalacji woła `persist()` + `updateBackupNotes(true)` (synchronizacja z featurem backupu, commit `4e70db2`). Pełny pomiar `pwa_*` przez GTM (prod-only). Detekcja: **iOS ma priorytet nad `native`** (na iOS instalacja natywna nigdy nie działa). Zweryfikowane lokalnie (web + iPhone UA + in-app FBAN). **Ostatnia brama (po deployu):** natywny flow na prod — Android: instalacja → `/debug.html` pokazuje `persisted=TAK`.
+
+---
+
 ## Rejestracja custom dimensions GA4 (error_reported)
 
 > **Ukończono:** 2026-06-04

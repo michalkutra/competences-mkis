@@ -1021,6 +1021,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="menu-item" onclick="showScreen('history'); loadHistory(); closeAccountMenu();">Historia sesji</button>
       <div class="menu-divider"></div>
       <button class="menu-item" onclick="showScreen('about'); closeAccountMenu();">O aplikacji</button>
+      <button id="pwa-menu-btn" class="menu-item" style="display:none" onclick="pwaInstall.clickInstall('menu'); closeAccountMenu();">Zainstaluj aplikację</button>
     </div>
   </div>
 </header>
@@ -1078,6 +1079,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="screen-summary" class="screen">
   <h2>Wynik sesji</h2>
   <div id="summary-content"></div>
+  <!-- PWA: zachęta do instalacji (trwały storage). Sterowane przez pwaInstall. -->
+  <div id="pwa-card" class="pwa-card" style="display:none">
+    <div id="pwa-card-main">
+      <strong>📲 Nie strać swojej historii nauki</strong>
+      <p>Dodaj aplikację do ekranu głównego — to znacznie zmniejsza ryzyko, że przeglądarka usunie Twoją historię i statystyki.</p>
+      <div class="pwa-actions">
+        <button class="ghost btn-sm" onclick="pwaInstall.clickInstall('results')">Zainstaluj</button>
+        <button class="ghost btn-sm" onclick="pwaInstall.snooze()">Może później</button>
+      </div>
+    </div>
+    <div id="pwa-card-inapp" style="display:none">
+      <strong>📲 Otwórz w prawdziwej przeglądarce</strong>
+      <p>Korzystasz z przeglądarki wbudowanej w aplikację (np. Facebook) — tutaj Twoja historia łatwo znika. Otwórz tę stronę w Chrome/Safari (w&nbsp;menu&nbsp;⋯ wybierz „Otwórz&nbsp;w&nbsp;przeglądarce"), a potem dodaj ją do ekranu głównego.</p>
+      <div class="pwa-actions">
+        <button class="ghost btn-sm" onclick="pwaInstall.snooze()">Może później</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PWA: instrukcja instalacji na iOS (brak API → ręczne kroki) -->
+<div id="pwa-ios-modal" class="pwa-modal" style="display:none">
+  <div class="pwa-modal-box">
+    <strong>Dodaj do ekranu głównego (iPhone)</strong>
+    <ol>
+      <li>Dotknij <strong>Udostępnij</strong> ⬆️ na dole Safari</li>
+      <li>Wybierz <strong>„Dodaj do ekranu głównego"</strong></li>
+      <li>Potwierdź <strong>„Dodaj"</strong></li>
+    </ol>
+    <p>Dzięki temu aplikacja zachowa Twoją historię i odpala się jak zwykła apka.</p>
+    <button class="ghost btn-sm" onclick="pwaInstall.closeIosModal()">Zamknij</button>
+  </div>
 </div>
 
 <!-- ==================== SESSION DETAIL ==================== -->
@@ -1091,6 +1124,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .backup-box { margin-top: 28px; padding: 14px 16px; background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 10px; width: 100%; box-sizing: border-box; }
   .backup-note { font-size: 0.85rem; color: #4b5563; margin: 0 0 12px; line-height: 1.5; }
   .backup-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .pwa-card { position: sticky; bottom: 12px; z-index: 50; margin-top: 24px; padding: 16px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; width: 100%; box-sizing: border-box; text-align: center; box-shadow: 0 6px 20px rgba(0,0,0,.15); }
+  .pwa-card strong { display: block; font-size: 1rem; color: #1e3a8a; margin-bottom: 6px; }
+  .pwa-card p { font-size: 0.9rem; color: #374151; line-height: 1.5; margin: 0 0 12px; }
+  .pwa-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .pwa-modal { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 16px; }
+  .pwa-modal-box { background: #fff; border-radius: 12px; padding: 20px; max-width: 360px; width: 100%; }
+  .pwa-modal-box strong { display: block; font-size: 1.05rem; margin-bottom: 10px; }
+  .pwa-modal-box ol { margin: 0 0 12px; padding-left: 20px; line-height: 1.7; font-size: 0.95rem; }
+  .pwa-modal-box p { font-size: 0.9rem; color: #4b5563; margin: 0 0 14px; }
   /* Wsparcie: telefon = klikalny link, desktop = QR do zeskanowania */
   .donate-desktop { display: none; }
   @media (min-width: 768px) {
@@ -1164,6 +1206,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="about-storage-warning">
     <strong>⚠️ Twój postęp jest zapisywany lokalnie</strong>
     Historia sesji i statystyki są przechowywane wyłącznie w pamięci tej przeglądarki na tym urządzeniu. Wyczyszczenie danych przeglądarki lub otwarcie aplikacji na innym urządzeniu — i dane znikają. Nie ma kont, nie ma chmury. Dlatego pamiętaj o kopii zapasowej — w zakładce <a href="#" onclick="showScreen('history'); loadHistory(); return false;" style="color:#2563eb;text-decoration:underline;cursor:pointer;">Historia</a> lub <a href="#" onclick="showScreen('stats'); loadStats(); return false;" style="color:#2563eb;text-decoration:underline;cursor:pointer;">Statystyki</a> pobierz kopię, a w razie czego ją odtworzysz.
+    <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(0,0,0,.08)">
+      <strong style="display:block;margin-bottom:4px;color:#166534">✅ Najlepsza ochrona: zainstaluj aplikację</strong>
+      Dodaj ją do ekranu głównego — przeglądarka traktuje wtedy Twoje dane jako trwałe i znacznie rzadziej je usuwa.
+      <div style="margin-top:10px">
+        <button id="pwa-about-btn" class="ghost btn-sm" style="display:none" onclick="pwaInstall.clickInstall('about')">Zainstaluj aplikację</button>
+      </div>
+    </div>
   </div>
 
   <div class="about-section">
@@ -1234,6 +1283,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- social proof: dane + czysta logika (ładowane przed main script) -->
 <script src="stats.js"></script>
 <script src="social-proof.js"></script>
+<script src="pwa-install.js"></script>
 
 <!-- main script -->
 <script>
@@ -1380,6 +1430,158 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   /* ================================================================
+     PWA INSTALL — zachęta do instalacji (trwały storage) + pomiar.
+     Czysta logika decyzyjna: web/pwa-install.js. Tu tylko DOM/efekty.
+  ================================================================ */
+  var pwaInstall = (function () {
+    var KEY = 'ksap_pwa';
+    var DISMISS_DAYS = 4;
+    var deferredPrompt = null;
+    var branch = 'none';
+
+    function getState() { try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { return {}; } }
+    function setState(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
+    function track(event, extra) {
+      window.dataLayer = window.dataLayer || [];
+      var o = { event: event, branch: branch };
+      if (extra) for (var k in extra) o[k] = extra[k];
+      window.dataLayer.push(o);
+    }
+    function isStandalone() {
+      return (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) ||
+             window.navigator.standalone === true;
+    }
+    function recompute() {
+      branch = detectPwaBranch({
+        ua: navigator.userAgent || '',
+        standalone: isStandalone(),
+        hasInstallPrompt: !!deferredPrompt
+      });
+      return branch;
+    }
+    function refreshPersistedNote() {
+      if (navigator.storage && navigator.storage.persist) {
+        navigator.storage.persist().then(function () {
+          if (navigator.storage.persisted) navigator.storage.persisted().then(function (p) {
+            if (typeof updateBackupNotes === 'function') updateBackupNotes(p);
+          });
+        }).catch(function () {});
+      }
+    }
+
+    // Listenery rejestrowane natychmiast (zdarzenia lecą wcześnie).
+    window.addEventListener('beforeinstallprompt', function (e) {
+      e.preventDefault();
+      deferredPrompt = e;
+      recompute();
+    });
+    window.addEventListener('appinstalled', function () {
+      var s = getState(); s.installed = true; setState(s);
+      recompute();
+      track('pwa_installed', { method: 'appinstalled' });
+      var card = document.getElementById('pwa-card'); if (card) card.style.display = 'none';
+      hideInstallEntries();
+      refreshPersistedNote();
+    });
+
+    function hideInstallEntries() {
+      ['pwa-menu-btn', 'pwa-about-btn'].forEach(function (id) {
+        var el = document.getElementById(id); if (el) el.style.display = 'none';
+      });
+    }
+
+    // Karta na ekranie wyników — wybór wariantu wg gałęzi.
+    function renderResultsCard() {
+      recompute();
+      var card = document.getElementById('pwa-card');
+      if (!card) return;
+      var st = getState();
+      if (branch === 'standalone' || branch === 'none' || st.installed || !shouldShowResultsPrompt(st, Date.now())) {
+        card.style.display = 'none';
+        return;
+      }
+      var main = document.getElementById('pwa-card-main');
+      var inapp = document.getElementById('pwa-card-inapp');
+      if (!main || !inapp) return;
+      if (branch === 'open-in-browser') {
+        main.style.display = 'none'; inapp.style.display = '';
+        if (!st.inappTracked) { st.inappTracked = true; setState(st); track('pwa_inapp_detected'); }
+        track('pwa_open_in_browser_hint_shown', { placement: 'results' });
+      } else {
+        inapp.style.display = 'none'; main.style.display = '';
+        track('pwa_prompt_shown', { placement: 'results' });
+      }
+      card.style.display = '';
+    }
+
+    function clickInstall(placement) {
+      recompute();
+      track('pwa_prompt_clicked', { placement: placement });
+      if (branch === 'native' && deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(function (choice) {
+          if (choice && choice.outcome === 'accepted') {
+            track('pwa_install_accepted', { placement: placement });
+          } else {
+            track('pwa_install_dismissed', { placement: placement });
+            // nie nękaj — odłóż kartę po odrzuceniu natywnego dialogu
+            var sd = getState(); sd.dismissedUntil = computeDismissUntil(Date.now(), DISMISS_DAYS); setState(sd);
+          }
+          deferredPrompt = null;
+        });
+      } else if (branch === 'ios-instructions') {
+        openIosModal(placement);
+      } else if (branch === 'open-in-browser') {
+        alert('Korzystasz z przeglądarki wbudowanej w aplikację. Otwórz stronę w Chrome/Safari (menu ⋯ → „Otwórz w przeglądarce"), a potem dodaj do ekranu głównego.');
+      } else {
+        alert('Aby zainstalować: otwórz menu przeglądarki (⋮) i wybierz „Dodaj do ekranu głównego" / „Zainstaluj aplikację".');
+      }
+    }
+
+    function snooze() {
+      var s = getState();
+      s.dismissedUntil = computeDismissUntil(Date.now(), DISMISS_DAYS);
+      setState(s);
+      track('pwa_prompt_snoozed', { placement: 'results' });
+      var card = document.getElementById('pwa-card'); if (card) card.style.display = 'none';
+    }
+
+    function openIosModal(placement) {
+      var m = document.getElementById('pwa-ios-modal'); if (m) m.style.display = 'flex';
+      track('pwa_instructions_opened', { placement: placement || 'results' });
+    }
+    function closeIosModal() {
+      var m = document.getElementById('pwa-ios-modal'); if (m) m.style.display = 'none';
+    }
+
+    function onSummaryShown() { renderResultsCard(); }
+
+    function init() {
+      recompute();
+      if (branch === 'standalone') {
+        track('pwa_launched_standalone');
+        var s = getState();
+        if (!s.installed) { s.installed = true; setState(s); track('pwa_installed', { method: 'standalone_detected' }); }
+        hideInstallEntries();
+        return;
+      }
+      var showEntry = (branch !== 'none');
+      ['pwa-menu-btn', 'pwa-about-btn'].forEach(function (id) {
+        var el = document.getElementById(id); if (el) el.style.display = showEntry ? '' : 'none';
+      });
+    }
+
+    return {
+      init: init,
+      onSummaryShown: onSummaryShown,
+      clickInstall: clickInstall,
+      snooze: snooze,
+      openIosModal: openIosModal,
+      closeIosModal: closeIosModal
+    };
+  })();
+
+  /* ================================================================
      INIT
   ================================================================ */
   document.addEventListener('DOMContentLoaded', function() {
@@ -1414,6 +1616,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }).catch(function() {});
       }
     } catch(e) {}
+
+    // PWA: pokaż/ukryj wejścia instalacji wg kontekstu (po załadowaniu DOM).
+    if (window.pwaInstall) pwaInstall.init();
 
     // Hide history button if no sessions
     const sessions = getSessions();
@@ -2294,6 +2499,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     document.getElementById('summary-content').innerHTML = html;
     showScreen('summary');
+    if (window.pwaInstall) pwaInstall.onSummaryShown();
   }
 
   /* ================================================================
@@ -2632,6 +2838,100 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#39;');
   }
+
+  /* ================================================================
+     DEBUG PANEL — aktywny tylko z ?debug=1 w URL (działa też na file://)
+     Wypełnia sesję odpowiedziami i skacze do podsumowania, żeby szybko
+     zobaczyć wygląd summary. UWAGA: showSummary() zapisuje sesję do
+     historii (ksap_sessions) — przycisk „Wyczyść historię" ją czyści.
+  ================================================================ */
+  (function initDebugPanel() {
+    try {
+      if (new URLSearchParams(window.location.search).get('debug') !== '1') return;
+    } catch (e) { return; }
+
+    function fillSummary(mode) {
+      state.session = buildSession();
+      if (!state.session.length) { alert('Brak pytań w banku (questions-unified.js nie wczytany?).'); return; }
+      state.currentIndex = state.session.length;
+      state.sessionStartTime = Date.now() - 5 * 60 * 1000; // udawane ~5 min
+      state.answers = state.session.map(function (q, i) {
+        var len = (q.options && q.options.length) || 4;
+        var pick;
+        if (mode === 'perfect')   pick = q.correct;
+        else if (mode === 'zero') pick = (q.correct + 1) % len;
+        else if (mode === 'half') pick = (i % 2 === 0) ? q.correct : (q.correct + 1) % len;
+        else                      pick = Math.floor(Math.random() * len);
+        return {
+          questionId: q.id,
+          userAnswer: pick,
+          correct: pick === q.correct,
+          timeSpentSec: state.timerEnabled ? Math.floor(Math.random() * 60) : null
+        };
+      });
+      showSummary();
+    }
+
+    function clearHistory() {
+      if (!confirm('Wyczyścić CAŁĄ historię (ksap_sessions + ksap_answer_log)? Usunie też prawdziwe sesje.')) return;
+      try { localStorage.removeItem('ksap_sessions'); localStorage.removeItem('ksap_answer_log'); } catch (e) {}
+      alert('Wyczyszczono.');
+    }
+
+    function mkBtn(label, bg, onClick) {
+      var el = document.createElement('button');
+      el.textContent = label;
+      el.style.cssText = 'display:block;width:100%;margin:4px 0 0;padding:7px 8px;border:0;border-radius:6px;background:' + bg + ';color:#fff;font-size:12px;font-weight:600;cursor:pointer;';
+      el.onclick = onClick;
+      return el;
+    }
+
+    function build() {
+      var panel = document.createElement('div');
+      panel.id = 'debug-panel';
+      panel.style.cssText = 'position:fixed;bottom:12px;right:12px;z-index:99999;background:#111827;color:#fff;border-radius:10px;padding:10px;font:12px/1.3 -apple-system,system-ui,sans-serif;box-shadow:0 4px 16px rgba(0,0,0,.35);width:170px;';
+      var head = document.createElement('div');
+      head.style.cssText = 'font-weight:700;display:flex;justify-content:space-between;align-items:center;';
+      head.innerHTML = '<span>🔧 DEBUG</span>';
+      var ctrls = document.createElement('span');
+      ctrls.style.cssText = 'display:flex;gap:2px;';
+      var body = document.createElement('div');
+      var min = document.createElement('span');
+      min.textContent = '–';
+      min.title = 'Minimalizuj';
+      min.style.cssText = 'cursor:pointer;opacity:.6;padding:0 6px;font-weight:700;';
+      min.onclick = function () {
+        var hidden = body.style.display === 'none';
+        body.style.display = hidden ? '' : 'none';
+        min.textContent = hidden ? '–' : '+';
+        min.title = hidden ? 'Minimalizuj' : 'Rozwiń';
+      };
+      var close = document.createElement('span');
+      close.textContent = '✕';
+      close.title = 'Zamknij';
+      close.style.cssText = 'cursor:pointer;opacity:.6;padding:0 4px;';
+      close.onclick = function () { panel.remove(); };
+      ctrls.appendChild(min);
+      ctrls.appendChild(close);
+      head.appendChild(ctrls);
+      panel.appendChild(head);
+      body.style.cssText = 'margin-top:4px;';
+      body.appendChild(mkBtn('⏭️ Summary: random', '#2563eb', function () { fillSummary('random'); }));
+      body.appendChild(mkBtn('✅ Summary: 100%',  '#059669', function () { fillSummary('perfect'); }));
+      body.appendChild(mkBtn('❌ Summary: 0%',    '#b45309', function () { fillSummary('zero'); }));
+      body.appendChild(mkBtn('½ Summary: 50/50',  '#6d28d9', function () { fillSummary('half'); }));
+      var sep = document.createElement('div');
+      sep.style.cssText = 'height:1px;background:#374151;margin:8px 0 0;';
+      body.appendChild(sep);
+      body.appendChild(mkBtn('🩺 Diagnostyka storage', '#0f766e', function () { window.location.href = 'debug.html'; }));
+      body.appendChild(mkBtn('🗑️ Wyczyść historię', '#7f1d1d', clearHistory));
+      panel.appendChild(body);
+      document.body.appendChild(panel);
+    }
+
+    if (document.body) build();
+    else window.addEventListener('DOMContentLoaded', build);
+  })();
 </script>
 <script>
   if ('serviceWorker' in navigator) {

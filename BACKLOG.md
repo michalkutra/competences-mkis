@@ -8,11 +8,10 @@
 |---|---|---|---|
 | NPS / CSAT (Tally) | Bez tego nie wiesz CO MYŚLĄ — liczby bez kontekstu nic nie mówią | ~30 min | **MUST** |
 | Podziel się wynikiem | Jedyny mechanizm wyjścia poza te 700 osób | ~1h | SHOULD |
-| PWA install prompt | Powroty mobilnych + odblokowuje trwały storage (patrz „Trwałość danych") | ~2h | SHOULD |
 | Relacje liczbowe / kontekstowe | Pokrywa lukę w typach pytań (feedback recenzenta) | jak generator Typ8 | **BLOCKER** (doprecyzować) |
 | Podgląd pojedynczego pytania (QA) | Szybsza obsługa zgłoszeń błędów bez przeklikiwania sesji | mały | COULD (tooling) |
 | Wzmocnienie zgłaszania błędów (niezależnie od `mailto`) | Dziś 3 z 4 zgłoszeń nie dotarło — `mailto` zawodzi gdy user nie wyśle maila | mały–średni | COULD (tooling) |
-| Trwałość danych (localStorage) | Realny problem (Ewelina: znika historia) — w dużej mierze łata to PWA | mały–średni | NICE-TO-HAVE |
+| Trwałość danych (localStorage) | Realny problem (Ewelina) — łatają to backup (✅) + PWA install (✅ wdrożone, patrz BACKLOG_DONE) | mały–średni | NICE-TO-HAVE |
 | Dobór wg słabości (per-pytanie) | Nauka na błędach; rozszerzenie silnika doboru | jak Typ8 | COULD (post-launch) |
 | Adaptacyjny dobór wg słabości typów | Opcja „ćwicz słabe typy" przy starcie sesji; nauka | średni | COULD (post-launch) |
 | Przycisk powrotu do pytania | UX improvement — przeżyją bez tego | ~3h | SKIP |
@@ -77,18 +76,6 @@ Lekki widget do zbierania opinii od użytkowników — bez własnego backendu.
 
 ---
 
-## Zainstaluj aplikację (PWA install prompt)
-
-**Status:** zaprojektowane + rozpisany plan — [spec](docs/superpowers/specs/2026-06-04-pwa-install-prompt-design.md), [plan](docs/superpowers/plans/2026-06-04-pwa-install-prompt.md). Wynika z debugowania znikającej historii: instalacja PWA to główna dźwignia na trwały storage (`persisted=TAK`). 3 gałęzie wg konfiguracji (GA4): natywny prompt (Android/desktop ~41%+10%), instrukcja iOS (~28%), „Otwórz w przeglądarce" dla in-app webview/Chrome iOS (~21% — instalacja niemożliwa). Trigger po sesji (`#screen-summary`) + menu + scalone w ostrzeżenie w „O aplikacji"; cisza 4 dni; pełny pomiar `pwa_*` przez GTM (prod-only). Współgra z backupem (commit `4e70db2`): zapobiega (instalacja) ↔ odzyskuje (backup).
-
-Dodać przycisk "Zainstaluj aplikację" na ekranie głównym:
-
-- **Android**: przechwycić `beforeinstallprompt`, podpiąć pod przycisk → natywny dialog instalacji
-- **iOS**: pokazać modal z instrukcją krok po kroku (Udostępnij → Dodaj do ekranu głównego)
-- Ukryć przycisk gdy appka działa już w trybie standalone (`display-mode: standalone`)
-
----
-
 ## Podziel się wynikiem (share score)
 
 Na ekranie wyników dodać przycisk "Podziel się wynikiem", który kopiuje gotową wiadomość do schowka, np.:
@@ -142,16 +129,16 @@ Zwiększyć szanse, że użytkownicy nie stracą postępu przy czyszczeniu/evict
 
 **Diagnoza (2026-06-03):** historia znika, bo cały localStorage origin jest kasowany przez Chrome (eviction) — dane są w trybie „best-effort", nie „trwałym". Wykluczono: kod (zero `removeItem`/`clear`), service worker (rusza tylko cache assetów), zmianę origin (stała domena), `Clear-Site-Data` (brak), Safari ITP (to Chrome Android). Korelacja z deployem prawdopodobnie pozorna. Dodano stronę diagnostyczną [`web/debug.html`](web/debug.html) (`/debug.html`, noindex, nielinkowana) + czujnik `ksap_meta` w [web/index.html](web/index.html). **Potwierdzono (2026-06-04):** u Ewelin (częsta testerka) `persisted=TAK`, ale u Michała `persisted=NIE` i historia zniknęła **mimo** wywołania `persist()` w kodzie — czyli `persist()` sam w sobie jest odrzucany przez Chrome dla niezaangażowanego usera. Wniosek: właściwym lekarstwem jest **instalacja PWA** (odblokowuje trwały storage), nie sam `persist()`.
 
-**WAŻNE — sprostowanie wcześniejszej notatki:** IndexedDB **NIE** jest odporniejszy na eviction — siedzi w tym samym buckecie per-origin i jest kasowany razem z localStorage. Migracja storage technologii nie rozwiązuje problemu. Na eviction działają tylko: (a) uzyskanie trwałego storage (`navigator.storage.persist()` przyznawany przy instalacji PWA / wysokim zaangażowaniu — patrz „PWA install prompt"), (b) kopia poza przeglądarką.
+**WAŻNE — sprostowanie wcześniejszej notatki:** IndexedDB **NIE** jest odporniejszy na eviction — siedzi w tym samym buckecie per-origin i jest kasowany razem z localStorage. Migracja storage technologii nie rozwiązuje problemu. Na eviction działają tylko: (a) uzyskanie trwałego storage (`navigator.storage.persist()` przyznawany przy instalacji PWA / wysokim zaangażowaniu — patrz BACKLOG_DONE), (b) kopia poza przeglądarką.
 
 **Opcje:**
-- **Trwały storage przez instalację PWA** — NAJWIĘKSZY realny zysk; instalacja na ekranie głównym to główny sygnał, po którym Chrome przyznaje `persist()`. Łączy się z wpisem „Zainstaluj aplikację (PWA install prompt)". *(NIE usuwać PWA — to usunęłoby najlepszą dźwignię na trwałość.)*
+- ✅ **Trwały storage przez instalację PWA — ZROBIONE (2026-06-05).** Zachęta do instalacji wdrożona (patrz BACKLOG_DONE „Zainstaluj aplikację (PWA install prompt)") — główna dźwignia na `persisted=TAK`. *(NIE usuwać PWA — to najlepsza dźwignia na trwałość.)*
 - ✅ **Export/Import JSON — ZROBIONE (2026-06-04).** Sekcja „Kopia zapasowa" na ekranach Historia i Statystyki ([web/index.html](web/index.html), `exportBackup`/`importBackup`): pobranie pliku `ksap-backup-RRRR-MM-DD.json` (sesje + answer_log + ustawienia) i wczytanie z **mergem + dedupem** (import nigdy nie kasuje obecnych danych), z notką wyjaśniającą lokalny charakter aplikacji i zalecenie regularnego backupu. Świadomie *sieć ratunkowa*, nie codzienny sync.
   - *Opcjonalny wariant na przyszłość:* wysyłka kopii na e-mail przez **EmailJS** (bez backendu) — wygodniejsze archiwum cross-device, ale restore zostaje ręczny i wymaga podania maila; `mailto:` odpada przez limity długości treści.
 - **File System Access API** — Chrome/Edge only, Safari nie obsługuje; raczej pomijamy.
 - **Shareable URL z zakodowanym stanem** — base64 w URL/hash, cross-device, ale rośnie z ilością danych.
 
-**Zalecane podejście:** najpierw potwierdzić eviction przez `/debug.html`, potem dźwignia trwałości = PWA install prompt; export/import JSON jako opcjonalne ubezpieczenie.
+**Status:** obie realne dźwignie bez backendu wdrożone — **PWA install** (trwały storage, ✅ 2026-06-05) + **export/import JSON** (kopia, ✅ 2026-06-04). Diagnostyka przez `/debug.html` zostaje. Pozostałe opcje (File System API / shareable URL / cloud) to skip-tier — wpis trzymamy głównie dla kontekstu diagnozy.
 
 ---
 
