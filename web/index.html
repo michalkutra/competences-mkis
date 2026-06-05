@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Sprawdzian Umiejętności KSAP</title>
+  <title>Egzamin Urzędnik Mianowany</title>
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://egzamin.kutra.pl/">
-  <meta property="og:title" content="Sprawdzian Umiejętności KSAP">
+  <meta property="og:title" content="Egzamin Urzędnik Mianowany">
   <meta property="og:description" content="Nie znaleźliśmy nic wystarczająco dobrego do ćwiczeń przed sprawdzianem umiejętności KSAP — więc zbudowaliśmy własne. 8 typów zadań, tryb nauki i egzaminowy. Zero rejestracji. Bezpłatne.">
   <meta property="og:image" content="https://egzamin.kutra.pl/og-image.png">
   <meta name="twitter:card" content="summary">
@@ -17,7 +17,7 @@
   <!-- iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="KSAP Quiz">
+  <meta name="apple-mobile-web-app-title" content="Egzamin UM">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <style>
     /* ===== RESET & BASE (mobile-first) ===== */
@@ -669,6 +669,11 @@
     .review-item[open] summary::after { transform: rotate(90deg); }
     .review-summary-wrong {
       color: #e74c3c;
+      font-weight: 700;
+      margin-right: 4px;
+    }
+    .review-summary-correct {
+      color: #27ae60;
       font-weight: 700;
       margin-right: 4px;
     }
@@ -2401,6 +2406,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       .map(function(item, i) { return { item: item, i: i }; })
       .filter(function(x) { return !x.item.correct && x.item.userAnswer !== null && x.item.q !== null; });
 
+    const correctItems = items
+      .map(function(item, i) { return { item: item, i: i }; })
+      .filter(function(x) { return x.item.correct && x.item.userAnswer !== null && x.item.q !== null; });
+
     if (showKofi) html += kofiWidget();
 
     if (wrongItems.length > 0) {
@@ -2411,6 +2420,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const typeName = TYPE_NAMES[q.typeId] || ('Typ ' + q.typeId);
         html += '<details class="review-item">';
         html += '<summary><span><span class="review-summary-wrong">✗</span> Pytanie ' + (x.i + 1) + ' — ' + escHtml(typeName) + '</span></summary>';
+        html += '<div class="review-body">';
+        html += '<div class="type-label">' + escHtml(typeName) + '</div>';
+        html += '<div class="instruction">' + escHtml(q.instruction) + '</div>';
+        html += '<div class="question-body">' + renderQuestionBody(q) + '</div>';
+        html += renderOptionsStatic(q, x.item.userAnswer);
+        html += '<div class="explanation-box"><strong>Wyjaśnienie:</strong> ' + escHtml(q.explanation) + '</div>';
+        html += '</div>';
+        html += '</details>';
+      });
+      html += '</div>';
+    }
+
+    if (correctItems.length > 0) {
+      html += '<div class="review-section">';
+      html += '<h3>Przegląd poprawnych odpowiedzi</h3>';
+      correctItems.forEach(function(x) {
+        const q = x.item.q;
+        const typeName = TYPE_NAMES[q.typeId] || ('Typ ' + q.typeId);
+        html += '<details class="review-item">';
+        html += '<summary><span><span class="review-summary-correct">✓</span> Pytanie ' + (x.i + 1) + ' — ' + escHtml(typeName) + '</span></summary>';
         html += '<div class="review-body">';
         html += '<div class="type-label">' + escHtml(typeName) + '</div>';
         html += '<div class="instruction">' + escHtml(q.instruction) + '</div>';

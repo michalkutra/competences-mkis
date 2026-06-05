@@ -1,6 +1,6 @@
 {
-  "name": "Sprawdzian Umiejętności KSAP",
-  "short_name": "KSAP Quiz",
+  "name": "Egzamin Urzędnik Mianowany",
+  "short_name": "Egzamin UM",
   "description": "Sprawdzian kompetencji menedżerskich i przywódczych",
   "start_url": "./",
   "display": "standalone",

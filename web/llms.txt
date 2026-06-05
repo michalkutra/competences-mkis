@@ -1,4 +1,4 @@
-# Sprawdzian Umiejętności KSAP
+# Egzamin Urzędnik Mianowany
 
 > Bezpłatna aplikacja do przygotowania się do Sprawdzianu Umiejętności KSAP (Krajowa Szkoła Administracji Publicznej). Zero rejestracji, działa w przeglądarce.
 
