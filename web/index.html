@@ -87,7 +87,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      padding-top: 20vh;
+      padding-top: 10vh;
       min-height: calc(100vh - 48px);
       text-align: center;
       gap: 4px;
@@ -988,7 +988,10 @@
   </style>
   <!-- Google Tag Manager (ładowany TYLKO na produkcji: egzamin.kutra.pl) -->
   <script>
-  if (location.hostname === 'egzamin.kutra.pl') {
+  var KSAP_NO_TRACK = /(?:^|;\s*)ksap_no_track=1(?:;|$)/.test(document.cookie);
+  if (KSAP_NO_TRACK) {
+    if (window.console) console.info('[KSAP] Tracking WYŁĄCZONY (cookie ksap_no_track=1) — GTM/GA nie ładuje się.');
+  } else if (location.hostname === 'egzamin.kutra.pl') {
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -2878,6 +2881,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       alert('Wyczyszczono.');
     }
 
+    function isNoTrack() { return /(?:^|;\s*)ksap_no_track=1(?:;|$)/.test(document.cookie); }
+    function toggleTracking() {
+      if (isNoTrack()) {
+        document.cookie = 'ksap_no_track=; path=/; max-age=0';
+        alert('Tracking WŁĄCZONY z powrotem. Przeładuję stronę.');
+      } else {
+        // 10 lat, cała domena — odłącza też zwykłe wizyty (bez ?debug=1)
+        document.cookie = 'ksap_no_track=1; path=/; max-age=' + (60 * 60 * 24 * 3650);
+        alert('Tracking WYŁĄCZONY. Twoje wizyty (i Eweliny) nie będą już liczone w GA. Przeładuję stronę.');
+      }
+      window.location.reload();
+    }
+
     function mkBtn(label, bg, onClick) {
       var el = document.createElement('button');
       el.textContent = label;
@@ -2924,6 +2940,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       sep.style.cssText = 'height:1px;background:#374151;margin:8px 0 0;';
       body.appendChild(sep);
       body.appendChild(mkBtn('🩺 Diagnostyka storage', '#0f766e', function () { window.location.href = 'debug.html'; }));
+      var noTrack = isNoTrack();
+      body.appendChild(mkBtn(
+        noTrack ? '📊 Tracking: OFF (włącz)' : '📊 Tracking: ON (wyłącz)',
+        noTrack ? '#374151' : '#1d4ed8',
+        toggleTracking
+      ));
       body.appendChild(mkBtn('🗑️ Wyczyść historię', '#7f1d1d', clearHistory));
       panel.appendChild(body);
       document.body.appendChild(panel);
