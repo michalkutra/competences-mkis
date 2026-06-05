@@ -1,4 +1,4 @@
-const CACHE = 'ksap-v6';
+const CACHE = 'ksap-v7';
 const ASSETS = [
   './',
   './index.html',
@@ -23,9 +23,20 @@ self.addEventListener('activate', e => {
   );
 });
 
+// Network-first: zawsze próbujemy świeżej wersji (żeby deploye były widoczne od razu,
+// bez bumpowania wersji cache), a cache służy jako fallback offline. Udane odpowiedzi
+// same-origin odświeżają cache, żeby offline miało aktualną kopię.
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
   e.respondWith(
-    caches.match(e.request).then(cached => cached || fetch(e.request))
+    fetch(e.request)
+      .then(res => {
+        if (res && res.ok && res.type === 'basic') {
+          const copy = res.clone();
+          caches.open(CACHE).then(c => c.put(e.request, copy));
+        }
+        return res;
+      })
+      .catch(() => caches.match(e.request))
   );
 });
