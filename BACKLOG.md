@@ -2,42 +2,25 @@
 
 ## Priorytetyzacja
 
-**Kontekst:** darmowa wersja dla ~700 osób zdających egzamin KSAP (strona live od 2026-06-03, **egzamin 2026-07-04 → ~29 dni**). Cel: zmaksymalizować wiedzę (adopcja, feedback, co się podoba) + 100 PLN z wirtualnych kaw jako proxy „ktoś to ceni". Tabela to pełny indeks backlogu — każda pozycja ma sekcję z opisem niżej.
+**Kontekst:** darmowa wersja dla zdających egzamin KSAP — **~940 osób** zgłoszonych do egzaminu (cała populacja; wcześniej zakładaliśmy ~700). Post launchowy poszedł jednak tylko na 2 grupy FB (56 + 86, realnie ~90–140 unikalnych), więc dotychczasowy zasięg to ułamek populacji — **wyjście poza grupy FB to główna dźwignia wzrostu** (zob. „Podziel się wynikiem"). (strona live od 2026-06-03, **egzamin 2026-07-04 → ~29 dni**). Cel: zmaksymalizować wiedzę (adopcja, feedback, co się podoba) + 100 PLN z wirtualnych kaw jako proxy „ktoś to ceni". Tabela to pełny indeks backlogu — każda pozycja ma sekcję z opisem niżej.
 
 **Soczewka czasowa (refinement 2026-06-05):** zostało ~4 tygodnie do egzaminu. Wygrywają **tanie, szybkie dźwignie** trafiające w cele (feedback, adopcja). Drogie/zależne od danych rzeczy fazujemy lub przesuwamy.
 
 | Pozycja | Wpływ | Wysiłek | Priorytet |
 |---|---|---|---|
 | CSAT — zbieranie ocen (Tally, faza 1) | Bez tego nie wiesz CO MYŚLĄ — liczby bez kontekstu nic nie mówią. Zegar feedbacku rusza dopiero gdy embed jest live | ~30–45 min (spec+plan gotowe) | **MUST (następny)** |
-| Podziel się wynikiem | Jedyny mechanizm wyjścia poza te 700 osób; tani i wiralny | ~1h | **SHOULD (następny)** |
+| Podziel się wynikiem | Jedyny mechanizm wyjścia poza ~140 osób z grup FB (do pozostałych ~800 z 940 zdających); tani i wiralny | ~1h | **SHOULD (następny)** |
 | Wzmocnienie zgłaszania błędów (Google Form, niezależnie od `mailto`) | Dziś 3 z 4 zgłoszeń nie dotarło — treść feedbacku przecieka; tani fix realnej dziury | mały | **SHOULD** (bump — przeciek feedbacku) |
 | Baner zgody na cookies/śledzenie (GDPR) | Strona live śledzi przez GA4 bez zgody (opt-out ukryty w debug) — realna ekspozycja prawna; tani fix | mały (spec gotowy) | **SHOULD** (zgodność prawna) |
 | Wall testimoniali (CSAT faza 2) | Social proof na Home/About — ale nie ma czego pokazać, póki nie napłyną oceny (zależność danych) | średni | COULD (po napływie ocen z fazy 1) |
 | Adaptacyjny dobór wg słabości (per-typ floor+flex; per-pytanie = tryb „Powtórka błędów") | Nauka na błędach przed egzaminem — realna wartość edukacyjna w oknie 4 tyg. | średni | COULD (post-launch) |
 | Podgląd pojedynczego pytania (QA) | Szybsza obsługa zgłoszeń błędów bez przeklikiwania sesji | mały | COULD (tooling) |
-| Relacje liczbowe / kontekstowe | Pokrywa lukę w typach pytań (feedback recenzenta) | jak generator Typ8 | **BLOCKER** (doprecyzować z recenzentem) |
 | Przycisk powrotu do pytania | UX improvement — przeżyją bez tego | ~3h | SKIP |
 | Autentykacja Google | Aktywnie szkodliwa — dodaje friction, zmniejszy adopcję | dni | **SKIP** |
 
 **Legenda:** MUST = blokuje pełnię wartości launchu · SHOULD = duży zysk, robić wkrótce · COULD = wartościowe, post-launch · BLOCKER = czeka na decyzję/doprecyzowanie · SKIP = świadomie odpuszczone.
 
 > **Trwałość danych (localStorage)** — **rozwiązana, przeniesiona do BACKLOG_DONE.md** (2026-06-05). Obie dźwignie bez backendu wdrożone: PWA install (trwały storage) + export/import JSON (kopia). Pozostałe opcje (File System API / shareable URL / cloud) świadomie skip-tier.
-
----
-
-## Relacje liczbowe / kontekstowe — nowa grupa pytań (do doprecyzowania)
-
-**Źródło:** feedback testerów (2026-06-03). Recenzent: „brakuje relacji liczbowych czy kontekstowych". Ewelina osobno: sylogizmów mało (→ rozwiązane przez dobór sesji wg blueprintu, patrz BACKLOG_DONE.md).
-
-**Stan obecny:** Typ 6 (zadania numeryczne z tabelą) i Typ 3 (przyczyna-skutek / kontekstowe) już istnieją (po 80 pytań). Ich udział w sesji podniesiono blueprintem egzaminu.
-
-**Hipoteza:** recenzentowi mogło chodzić o **relacje/ciągi liczbowe jako analogie** (np. `2:6 = 5:?`, ciągi liczbowe, proporcje) — klasyczna kategoria testów poznawczych, której **obecnie brak**. Typ 6 to zadania tekstowo-tabelaryczne, nie „relacje liczbowe" w tym sensie.
-
-**Następny krok (BLOCKER):** dopytać autora feedbacku, co dokładnie miał na myśli, zanim zbudujemy nową kategorię:
-- czy chodzi o brakujące analogie/ciągi liczbowe (nowy typ pytań + generator + walidacja),
-- czy o istniejący Typ 6 (wtedy wystarczy obecna poprawka udziału w sesji).
-
-**Wysiłek:** jeśli nowy typ — porównywalny z generatorem Typ 8 (generate/integrate/validate). Jeśli tylko udział — zrobione.
 
 ---
 

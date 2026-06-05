@@ -9,6 +9,22 @@
 
 ---
 
+## 0. Kontekst zasięgu (jak czytać te liczby)
+
+> **Aktualizacja 2026-06-05** — zweryfikowany rynek i realny zasięg launchu. Zmienia interpretację wszystkich metryk poniżej.
+
+| | Wcześniejsze założenie | Rzeczywistość |
+|---|---|---|
+| Populacja zdających (rynek) | ~700 | **~940 osób** zgłoszonych do egzaminu KSAP |
+| Zasięg postu launchowego | ~700 (1 grupa FB) | **2 grupy: 56 + 86 = max ~142**, realnie **~90–140 unikalnych** (grupy mogą się pokrywać) |
+
+**Dlaczego to ważne — liczby wyglądają DUŻO lepiej, niż sugeruje surowy „103 userów":**
+- 🎯 **Niemal saturacja osiągalnej widowni:** 103 userów z realnego zasięgu ~90–140 osób grup FB → dotarliśmy do **~70–100%** ludzi, do których w ogóle mógł trafić post. To nie „mało userów" — to wyczerpanie kanału.
+- 🚀 **Ogromny zapas wzrostu:** wobec ~940 zdających to dopiero **~11% penetracji rynku**. Pozostałe ~800 osób jest poza zasięgiem dotychczasowych grup → **główna dźwignia to wyjście poza grupy FB** (stąd waga „Podziel się wynikiem", sekcja BACKLOG).
+- ⚖️ Realny zasięg był **~5× mniejszy** niż zakładane „~700" — więc wszystkie współczynniki konwersji/zaangażowania liczone „per dotarty" są odpowiednio mocniejsze.
+
+---
+
 ## 1. Dzień po dniu
 
 > Daty w kolumnach — skanuj wiersz (metrykę) od lewej do prawej, żeby zobaczyć trend. Nowe dni dopisują kolejne kolumny po prawej.

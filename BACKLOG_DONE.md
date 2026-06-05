@@ -1,5 +1,23 @@
 # Backlog — Ukończone
 
+## Relacje porządkujące — rozszerzenie Typ 5 (wnioskowanie logiczne)
+
+> **Ukończono:** 2026-06-05 · [Spec](docs/superpowers/specs/2026-06-05-relacje-porzadkujace-typ5-design.md) · [Plan](docs/superpowers/plans/2026-06-05-relacje-porzadkujace-typ5.md)
+
+Nowa rodzina zadań „wnioskowanie z relacji porządkujących" (`A > B < C` → wskaż pewny wniosek), zgłoszona przez 2 testerów (w tym osoba 3× na egzaminie) + screenshot „Zestaw 3". **Doprecyzowanie:** to NIE analogie/ciągi liczbowe (błędna hipoteza), tylko dedukcja na relacjach — kompetencyjnie i formatowo **Typ 5**, więc dodane jako **wariant Typ 5** (pole `variant: "sylogizm"|"relacje"`, 200 istniejących pytań zmigrowanych na `sylogizm`), rendering reużyty bez zmian. **Nie** nowy typ, **nie** Typ 6.
+
+**Bank: 140 pytań** (70 easy + 70 hard, `e_t5_101+`/`h_t5_101+`), generator deterministyczny (model-checking — wniosek „wynika" ⟺ prawdziwy w każdym modelu spełniającym przesłanki, brute-force po małej domenie). Jakość dopracowana iteracyjnie z testerami:
+- **Trudność = głębokość rozumowania** (nie operatory): EASY = jednoprzesłankowe (flip/osłabienie, banalne), HARD = dwuprzesłankowe (tranzytywne, dedukcja).
+- **Format przesłanek 50/50**: trójka `["A > B > C"]` vs dwie pary `["A > B","B > C"]` — jak egzamin.
+- **~20% hard z wnioskiem `≠`** (np. `A > B > C ⊢ A ≠ C`, bez `A > C` w opcjach) — podniesienie trudności.
+- Łączniki tylko kierunkowe `> < ≥ ≤` (bez brzydkich `≠`-łańcuchów). Poprawna odpowiedź = najmocniejszy możliwy wniosek; dystraktory z policzonym kontrprzykładem.
+
+**Nowy blueprint sesji (filozofia mirror → pokrycie+zmienność):** [`web/session-blueprint.js`](web/session-blueprint.js) `composeSession` — FIXED 3 sylogizmy + 2 relacje + po 1 z Typ 1/2/3/4/6/7/8, + 3 sloty losowe (z dedup + anti-repeat) = 15. `buildSession` w [web/index.html](web/index.html) deleguje do modułu; usunięto martwy `SESSION_BLUEPRINT`/`pickLeastRecentlySeen`/`shuffle`.
+
+**Tooling:** [`tools/relacje-solver.js`](tools/relacje-solver.js) (model-checker), [`tools/generate-type5-relacje.js`](tools/generate-type5-relacje.js) (generator), [`tools/validate-type5-relacje.js`](tools/validate-type5-relacje.js) (niezależna weryfikacja kluczy), [`tools/integrate-type5-relacje.js`](tools/integrate-type5-relacje.js) (migracja + integracja, idempotentny). `tools/validate-questions.js` uświadomiony wariantowi. Testy: solver (fixture'y wprost ze screenshotu), generator, dobór sesji. Walidacja całości: **980 pytań**, każde relacyjne z dokładnie 1 pewnym wnioskiem. Potestowane w przeglądarce (2026-06-05).
+
+---
+
 ## Trwałość danych (alternatywa dla localStorage) — rozwiązana
 
 > **Ukończono:** 2026-06-05 (obie dźwignie wdrożone)
@@ -59,6 +77,8 @@ Na home wyświetlana liczba pytań w banku — ustawia oczekiwania i zapobiega r
 > **Ukończono:** 2026-06-04
 
 Post na grupę ~700 osób zdających egzamin KSAP przygotowany i opublikowany. Drafty (4 wersje) w [`communication/`](communication/) — A: storytelling, B: problem→rozwiązanie ⭐, C: konkretna, D: Messenger. Ton osobisty (żona zdaje ten sam egzamin — wiarygodność „z wewnątrz"), jeden link, zero rejestracji, prośba o feedback i udostępnienie.
+
+> **Korekta 2026-06-05:** grupy liczyły 56 + 86 osób (realny zasięg ~90–140 unikalnych, nie ~700). Cała populacja zdających egzamin to ~940 osób — zob. „Kontekst zasięgu" w [raporcie launchu](docs/analytics/launch-report.md).
 
 ---
 

@@ -24,8 +24,14 @@ function typeFieldErrors(q) {
     case 2: if (!isArr(q.words, 3)) e.push('words != [3]'); break;
     case 3: if (!isStr(q.text)) e.push('brak text'); if (!q.chart || !isArr(q.chart.datasets)) e.push('zły chart'); break;
     case 4: if (!isStr(q.stem)) e.push('brak stem'); break;
-    case 5: if (!isArr(q.premises) || q.premises.length < 2) e.push('premises < 2');
-            if (['chain', 'modus_ponens', 'some', 'full_eval'].indexOf(q.syllogismVariant) < 0) e.push('zły syllogismVariant'); break;
+    case 5:
+      if (q.variant === 'relacje') {
+        if (!isArr(q.premises) || q.premises.length < 1) e.push('relacje: premises < 1');
+      } else { // sylogizm (lub legacy bez variant)
+        if (!isArr(q.premises) || q.premises.length < 2) e.push('premises < 2');
+        if (['chain', 'modus_ponens', 'some', 'full_eval'].indexOf(q.syllogismVariant) < 0) e.push('zły syllogismVariant');
+      }
+      break;
     case 6: if (!isStr(q.narrative)) e.push('brak narrative'); if (!q.table || !isArr(q.table.headers) || !isArr(q.table.rows)) e.push('zła table'); break;
     case 7: if (!isStr(q.chartTitle)) e.push('brak chartTitle'); if (!q.chart || !isArr(q.chart.datasets)) e.push('zły chart'); break;
     case 8: if (!q.grid) e.push('brak grid'); break;
