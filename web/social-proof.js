@@ -3,7 +3,7 @@
 // "ładnego" progu i decyzja o widoczności linijki. Bez DOM-u — testowalne.
 // Dane (liczba) są w web/stats.js; glue DOM-owy w index.html (initSocialProof).
 (function (root) {
-  // <1000 -> w dół do pełnych setek; >=1000 -> w dół do pełnych 500.
+  // Zaokrąglanie w dół do pełnych setek (np. 1422 -> 1400).
   function floorToNice(n) {
     return Math.floor(n / 100) * 100;
   }

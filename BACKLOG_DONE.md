@@ -1,5 +1,19 @@
 # Backlog — Ukończone
 
+## Trwałość danych (alternatywa dla localStorage) — rozwiązana
+
+> **Ukończono:** 2026-06-05 (obie dźwignie wdrożone)
+
+Realny problem (Ewelina: „kilka razy" znika cała historia) domknięty bez backendu dwiema dźwigniami — patrz osobne wpisy: **PWA install** (trwały storage, `persisted=TAK`, 2026-06-05) + **export/import JSON** (kopia zapasowa z merge+dedup, 2026-06-04).
+
+**Diagnoza (zachowana dla kontekstu):** historia znika, bo cały localStorage origin jest kasowany przez Chrome (eviction) — dane „best-effort", nie „trwałe". Wykluczono: kod (zero `removeItem`/`clear`), service worker, zmianę origin, `Clear-Site-Data`, Safari ITP (to Chrome Android). Potwierdzono (2026-06-04): u Michała `persisted=NIE` i historia zniknęła **mimo** wywołania `persist()` — czyli `persist()` sam w sobie jest odrzucany przez Chrome dla niezaangażowanego usera → właściwe lekarstwo to **instalacja PWA**. Diagnostyka przez [`web/debug.html`](web/debug.html) (noindex) + czujnik `ksap_meta` zostają.
+
+**Sprostowanie:** IndexedDB **NIE** jest odporniejszy na eviction (ten sam bucket per-origin). Na eviction działają tylko: (a) trwały storage przez instalację PWA, (b) kopia poza przeglądarką.
+
+**Świadomie skip-tier (nie robimy):** File System Access API (Chrome/Edge only), shareable URL z zakodowanym stanem (rośnie z danymi), wysyłka kopii e-mailem przez EmailJS (restore i tak ręczny).
+
+---
+
 ## Zainstaluj aplikację (PWA install prompt)
 
 > **Ukończono:** 2026-06-05 · [Spec](docs/superpowers/specs/2026-06-04-pwa-install-prompt-design.md) · [Plan](docs/superpowers/plans/2026-06-04-pwa-install-prompt.md)
