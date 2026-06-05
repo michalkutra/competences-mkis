@@ -1,10 +1,10 @@
 # 📊 Raport launchu — egzamin.kutra.pl
 
 > **GA4 property:** `540012122` (egzamin.kutra.pl) · **Strefa czasowa:** Europe/Warsaw
-> **Ostatnia aktualizacja:** 2026-06-04 · **Dane od:** 2026-06-03 (premiera)
+> **Ostatnia aktualizacja:** 2026-06-05 · **Dane od:** 2026-06-03 (premiera)
 > **Cel donejtów:** 100 zł łącznie
 >
-> 🔄 Aktualizuj promptem [`update-prompt.md`](update-prompt.md) (pobiera dane po GA4 MCP i **tylko dopisuje kolumnę / odświeża** — nie przepisuje historii).
+> 🔄 Aktualizuj skillem `/aktualizuj-raport-launchu` (albo napisz „zaktualizuj raport launchu") — pobiera dane po GA4 MCP i **tylko dopisuje kolumnę / odświeża**, nie przepisuje historii.
 > ⚠️ Ostatnia kolumna bywa **niepełna** (dane spływają w ciągu doby) — orientacyjnie do następnej aktualizacji.
 
 ---
@@ -13,31 +13,31 @@
 
 > Daty w kolumnach — skanuj wiersz (metrykę) od lewej do prawej, żeby zobaczyć trend. Nowe dni dopisują kolejne kolumny po prawej.
 
-| Metryka | 2026-06-03 | 2026-06-04 ⚠️ |
-|---|---|---|
-| **— Wzrost —** | | |
-| Użytkownicy | 74 | 34 |
-| Nowi | 71 | 23 |
-| Powracający | 3 | 11 |
-| Powracający % | 4% | 32% |
-| **— Wizyty (ruch na stronie) —** | | |
-| Wizyty (sesje GA) | 99 | 41 |
-| Wizyty zaang. | 82 | 19 |
-| Engagement rate | 83% | 46% |
-| Śr. czas wizyty | 8,8 min | 31,1 min* |
-| **— Nauka (quizy) —** | | |
-| Odpowiedzi (`question_answered`) | 909 | 380 |
-| Sesje nauki — start (`session_started`) | 99 | 27 |
-| Sesje nauki — ukończone (`session_completed`) | 53 | 22 |
-| Completion rate | 54% | 81% |
-| Porzucone | 13 | 1 |
-| Abort rate | 13% | 4% |
-| **— Sygnały —** | | |
-| Donate kliki | 4 | 1 |
-| Zgłoszenia błędu | 4 | 0 |
-| Udostępnienia (`result_shared`) | — | — |
+| Metryka | 2026-06-03 | 2026-06-04 | 2026-06-05 ⚠️ |
+|---|---|---|---|
+| **— Wzrost —** | | | |
+| Użytkownicy | 74 | 34 | 8 |
+| Nowi | 71 | 23 | 5 |
+| Powracający | 3 | 11 | 3 |
+| Powracający % | 4% | 32% | 38% |
+| **— Wizyty (ruch na stronie) —** | | | |
+| Wizyty (sesje GA) | 99 | 43 | 8 |
+| Wizyty zaang. | 82 | 20 | 4 |
+| Engagement rate | 83% | 47% | 50% |
+| Śr. czas wizyty | 8,8 min | 30,5 min | 13,6 min* |
+| **— Nauka (quizy) —** | | | |
+| Odpowiedzi (`question_answered`) | 909 | 398 | 53 |
+| Sesje nauki — start (`session_started`) | 99 | 28 | 5 |
+| Sesje nauki — ukończone (`session_completed`) | 53 | 24 | 2 |
+| Completion rate | 54% | 86% | 40% |
+| Porzucone | 13 | 1 | 0 |
+| Abort rate | 13% | 4% | 0% |
+| **— Sygnały —** | | | |
+| Donate kliki | 4 | 1 | 1 |
+| Zgłoszenia błędu | 4 | 0 | 0 |
+| Udostępnienia (`result_shared`) | — | — | — |
 
-\* 04.06 niepełny dzień — śr. czas zawyżony przez małą próbkę; engagement/abort/compl. ustabilizują się po pełnej dobie.
+\* 05.06 niepełny dzień — metryki z małej próbki (8 userów) są niestabilne; ustabilizują się po pełnej dobie. (04.06 to już pełna doba — completion rate 86%, abort 4%.)
 
 **Definicje:** ⚠️ **„Wizyty (sesje GA)"** = `sessions` z GA = odwiedziny strony — to CO INNEGO niż **„Sesje nauki"** = `session_started` = rozpoczęte quizy. · *Powracający* = Użytkownicy − Nowi · *Engagement rate* = wizyty zaang. / wizyty · *Śr. czas wizyty* = `averageSessionDuration` · *Completion rate* = `session_completed`/`session_started` (quizy) · *Abort rate* = `session_aborted`/`session_started` (quizy) · *Donate kliki* = `donation_clicked` (klik ≠ wpłata) · *Udostępnienia* = `result_shared` (po wdrożeniu „Podziel się wynikiem").
 
@@ -47,20 +47,20 @@
 
 | KPI | Wartość |
 |---|---|
-| Użytkownicy łącznie | **98** (94 nowych) |
-| Wizyty (sesje GA) | **140** (101 zaang. → 72% eng. rate) |
+| Użytkownicy łącznie | **103** (99 nowych) |
+| Wizyty (sesje GA) | **150** (106 zaang. → 71% eng. rate) |
 | Śr. czas wizyty | **15,3 min** |
-| Odsłony / eventy | 1 165 / 4 342 |
-| Odpowiedzi na pytania | 1 289 (≈22 / aktywnego usera) |
-| Completion rate (sesje nauki) | ~60% (75 / 126) |
+| Odsłony / eventy | 1 273 / 4 686 |
+| Odpowiedzi na pytania | 1 360 (≈22 / aktywnego usera) |
+| Completion rate (sesje nauki) | ~60% (79 / 132) |
 
 ### Lejek (userzy, narastająco)
 | Krok | Userzy | % wejść |
 |---|---|---|
-| Wszedł na stronę | 98 | 100% |
-| Zaczął sesję nauki | 66 | 67% |
-| Odpowiedział ≥1 pytanie | 59 | 60% |
-| Ukończył ≥1 sesję nauki | 39 | 40% |
+| Wszedł na stronę | 103 | 100% |
+| Zaczął sesję nauki | 69 | 67% |
+| Odpowiedział ≥1 pytanie | 63 | 61% |
+| Ukończył ≥1 sesję nauki | 40 | 39% |
 
 ---
 
@@ -70,21 +70,23 @@
 
 | Kanał | Wizyty | Userzy |
 |---|---|---|
-| Organic Social | 88 | 71 |
-| Direct | 38 | 21 |
-| Unassigned | 23 | 21 |
-| Referral | 13 | 6 |
+| Organic Social | 93 | 73 |
+| Direct | 41 | 23 |
+| Unassigned | 30 | 25 |
+| Referral | 14 | 7 |
 
-**Top źródła:** lm.facebook.com (50), (direct) (38), facebook.com (25), m.facebook.com (10), **wykop.pl (5)**, l.facebook.com (3).
-**Urządzenia:** mobile 89 / desktop 10 (**90% mobile**).
-**Top miasta:** Warszawa 27, Wrocław 8, Katowice 6, Kraków 5, Łódź 4, Rzeszów 3.
+**Top źródła:** lm.facebook.com (54), (direct) (41), (not set) (30), facebook.com (25), m.facebook.com (11), tagassistant.google.com (6).
+**Urządzenia:** mobile 93 / desktop 11 (**89% mobile**).
+**Top miasta:** Warszawa 30, Wrocław 8, Katowice 6, Kraków 6, Łódź 5.
+
+ℹ️ Ruch wciąż niemal w całości z Facebooka (lm/m/facebook.com ≈ 90 wizyt). wykop.pl wypadł z top 6 — dywersyfikacja źródeł na razie się nie utrzymała; nowych userów dochodzi mało (5 dziennie), wzrost wyhamował po pierwszym dniu.
 
 ---
 
 ## 4. Skuteczność per typ pytania
 
 > Pokazuje, które typy zadań ludzie „mielą" (niska skuteczność = kandydat do poprawy treści/wyjaśnień). Dane z `question_answered` (`question_type` + `is_correct`).
-> ⏳ **Wymaga dorejestrowania custom dimension `is_correct`** (scope Event, parametr `is_correct`) — `question_type` już jest. Do tego czasu tabela pusta.
+> ✅ `is_correct` i `question_type` są zarejestrowane (scope Event), ale API zwraca dla nich wyłącznie `(not set)` na całym `question_answered` — historyczne dane sprzed rejestracji się nie backfillują, a bieżące jeszcze nie spłynęły. Tabela wypełni się danymi „do przodu" przy kolejnych aktualizacjach.
 
 | Typ | Odpowiedzi | Poprawne | Skuteczność |
 |---|---|---|---|
@@ -103,15 +105,15 @@
 
 | | Wartość |
 |---|---|
-| `donation_clicked` (kliknięcia) | **5** (5 userów) |
-| Klik→user CTR | 5,1% wszystkich userów |
+| `donation_clicked` (kliknięcia) | **6** (6 userów) |
+| Klik→user CTR | 5,8% wszystkich userów |
 | **Realne wpłaty (ręcznie)** | **___ zł / 100 zł** |
 | **Klik→wpłata** (ręcznie) | ___ % (wpłaty / 5 kliknięć) |
 
 ⚠️ **GA widzi tylko kliknięcie, nie wpłatę** (Ko-fi/Revolut to osobne strony). Realne złotówki + współczynnik klik→wpłata uzupełniaj ręcznie z dashboardów: [Ko-fi](https://ko-fi.com/sprawdzianumiejetnosci) + Revolut.
 
 ### Kliknięcia wg lokalizacji przycisku (`source`)
-⏳ **Wymaga dorejestrowania custom dimension `source`** (scope Event, parametr `source`). Wartości: `about`, `revolut`, `widget`, `widget_revolut`.
+✅ `source` jest zarejestrowany (scope Event), ale wszystkie `donation_clicked` zwracają `(not set)` — kliknięcia sprzed rejestracji wymiaru. Breakdown wypełni się przy nowych kliknięciach (wartości: `about`, `revolut`, `widget`, `widget_revolut`).
 
 | source | Kliknięcia |
 |---|---|
