@@ -563,7 +563,7 @@
 
     /* ===== CHARTS ===== */
     svg { max-width: 100%; height: auto; display: block; }
-    .chart-container { margin: 8px 0; }
+    .chart-container { margin: 24px 0; }
     .chart-legend {
       display: flex;
       flex-wrap: wrap;
@@ -2134,18 +2134,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return '<div class="chart-container">' + svg + legend + '</div>';
   }
 
-  function renderLineChart(chart) {
+  function renderLineChart(chart, opts) {
+    opts = opts || {};
     const W = 500, H = 260;
     const padL = 50, padR = 20, padT = 20, padB = 60;
     const plotW = W - padL - padR;
     const plotH = H - padT - padB;
+    const pointR = opts.pointRadius != null ? opts.pointRadius : 5;
+    const showValueLabels = opts.showValueLabels !== false;
+    const xLabelEvery = opts.xLabelEvery && opts.xLabelEvery > 0 ? opts.xLabelEvery : 1;
+    const ySuffix = opts.ySuffix || '';
 
     let maxVal = 0;
     chart.datasets.forEach(function(ds) {
-      ds.data.forEach(function(v) { if (v > maxVal) maxVal = v; });
+      ds.data.forEach(function(v) { if (v != null && v > maxVal) maxVal = v; });
     });
-    maxVal = maxVal * 1.15;
-    if (maxVal === 0) maxVal = 1;
+    if (opts.fixedMax != null) {
+      maxVal = opts.fixedMax;
+    } else {
+      maxVal = maxVal * 1.15;
+      if (maxVal === 0) maxVal = 1;
+    }
 
     const nGroups = chart.xLabels.length;
 
@@ -2160,31 +2169,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const v = (maxVal / 4) * i;
       const y = yPos(v);
       svg += '<line x1="' + padL + '" y1="' + y.toFixed(1) + '" x2="' + (padL + plotW) + '" y2="' + y.toFixed(1) + '" stroke="#e5e7eb" stroke-width="1"/>';
-      svg += '<text x="' + (padL - 6) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="end" font-size="10" fill="#6b7280">' + Math.round(v) + '</text>';
+      svg += '<text x="' + (padL - 6) + '" y="' + (y + 4).toFixed(1) + '" text-anchor="end" font-size="10" fill="#6b7280">' + Math.round(v) + ySuffix + '</text>';
     }
 
     // Axes
     svg += '<line x1="' + padL + '" y1="' + padT + '" x2="' + padL + '" y2="' + (padT + plotH) + '" stroke="#374151" stroke-width="1.5"/>';
     svg += '<line x1="' + padL + '" y1="' + (padT + plotH) + '" x2="' + (padL + plotW) + '" y2="' + (padT + plotH) + '" stroke="#374151" stroke-width="1.5"/>';
 
-    // Lines + points
+    // Lines + points (null = gap: line breaks, point/label skipped)
     chart.datasets.forEach(function(ds) {
-      // Polyline
-      const points = ds.data.map(function(v, i) { return xPos(i).toFixed(1) + ',' + yPos(v).toFixed(1); }).join(' ');
-      svg += '<polyline points="' + points + '" fill="none" stroke="' + ds.color + '" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>';
+      // Polyline broken into segments of consecutive non-null values
+      let seg = [];
+      function flush() {
+        if (seg.length >= 2) {
+          svg += '<polyline points="' + seg.join(' ') + '" fill="none" stroke="' + ds.color + '" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>';
+        }
+        seg = [];
+      }
+      ds.data.forEach(function(v, i) {
+        if (v == null) { flush(); return; }
+        seg.push(xPos(i).toFixed(1) + ',' + yPos(v).toFixed(1));
+      });
+      flush();
       // Points + value labels
       ds.data.forEach(function(v, i) {
+        if (v == null) return;
         const cx = xPos(i);
         const cy = yPos(v);
-        svg += '<circle cx="' + cx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="5" fill="' + ds.color + '" stroke="white" stroke-width="1.5"/>';
-        // Value label
-        const labelY = cy - 9;
-        svg += '<text x="' + cx.toFixed(1) + '" y="' + labelY.toFixed(1) + '" text-anchor="middle" font-size="9" fill="#374151">' + v + '</text>';
+        svg += '<circle cx="' + cx.toFixed(1) + '" cy="' + cy.toFixed(1) + '" r="' + pointR + '" fill="' + ds.color + '" stroke="white" stroke-width="1.5"/>';
+        if (showValueLabels) {
+          const labelY = cy - 9;
+          svg += '<text x="' + cx.toFixed(1) + '" y="' + labelY.toFixed(1) + '" text-anchor="middle" font-size="9" fill="#374151">' + v + '</text>';
+        }
       });
     });
 
-    // X labels
+    // X labels (sparse: every n-th, plus first and last)
     chart.xLabels.forEach(function(lbl, i) {
+      if (i % xLabelEvery !== 0 && i !== nGroups - 1) return;
       const x = xPos(i);
       svg += '<text x="' + x.toFixed(1) + '" y="' + (padT + plotH + 16) + '" text-anchor="middle" font-size="10" fill="#374151">' + escHtml(lbl) + '</text>';
     });
@@ -2732,6 +2754,84 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   /* ================================================================
      STATS
   ================================================================ */
+  // Accuracy-over-time trend chart (stats screen)
+  var statsTrendMode = 'all'; // 'all' | 'learning' | 'exam'
+
+  function setStatsTrendMode(mode) {
+    statsTrendMode = mode;
+    var el = document.getElementById('trend-section');
+    if (el) el.innerHTML = trendInnerHtml();
+  }
+
+  function trendSectionHtml() {
+    return '<div id="trend-section">' + trendInnerHtml() + '</div>';
+  }
+
+  function trendInnerHtml() {
+    var modes = [
+      { id: 'all',      label: 'Wszystko' },
+      { id: 'learning', label: 'Nauka' },
+      { id: 'exam',     label: 'Egzamin' }
+    ];
+    var toggle = '<div class="toggle-group" style="margin-bottom:12px">';
+    modes.forEach(function(m) {
+      toggle += '<button class="toggle-btn' + (statsTrendMode === m.id ? ' active' : '') + '" onclick="setStatsTrendMode(\'' + m.id + '\')">' + m.label + '</button>';
+    });
+    toggle += '</div>';
+
+    var html = '<h3 style="margin-bottom:4px">Skuteczność w czasie</h3>';
+    html += '<p style="font-size:0.78rem;color:#6b7280;margin-bottom:8px">Wynik każdej sesji (%) i linia trendu — Twój progres sesja po sesji</p>';
+    html += toggle;
+
+    // Sessions sorted chronologically (stored newest-first), filtered by mode
+    var sessions = getSessions().slice().sort(function(a, b) {
+      return new Date(a.date) - new Date(b.date);
+    });
+    if (statsTrendMode !== 'all') {
+      sessions = sessions.filter(function(s) { return s.mode === statsTrendMode; });
+    }
+
+    if (!sessions.length) {
+      return html + '<p class="history-empty">Brak sesji w tym trybie.</p>';
+    }
+
+    var raw = sessions.map(function(s) {
+      return s.total ? Math.round(s.score / s.total * 100) : 0;
+    });
+
+    // Trailing moving average (window 5), drawn only from the 3rd session
+    var trend = raw.map(function(v, i) {
+      if (i < 2) return null;
+      var start = Math.max(0, i - 4);
+      var win = raw.slice(start, i + 1);
+      var sum = win.reduce(function(acc, x) { return acc + x; }, 0);
+      return Math.round(sum / win.length);
+    });
+
+    var n = raw.length;
+    var datasets = [
+      { label: 'Skuteczność', data: raw, color: '#94a3b8' }
+    ];
+    if (n >= 3) {
+      datasets.push({ label: 'Trend (średnia z 5 sesji)', data: trend, color: '#2563eb' });
+    }
+
+    var chartData = {
+      type: 'line',
+      xLabels: raw.map(function(_, i) { return String(i + 1); }),
+      datasets: datasets
+    };
+
+    html += renderLineChart(chartData, {
+      fixedMax: 100,
+      ySuffix: '%',
+      showValueLabels: false,
+      pointRadius: 3,
+      xLabelEvery: Math.max(1, Math.ceil(n / 12))
+    });
+    return html;
+  }
+
   function loadStats() {
     const log = getAnswerLog();
     const container = document.getElementById('stats-content');
@@ -2768,6 +2868,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     html += '<div class="stat-card stat-card-good"><div class="stat-value">' + correct + '</div><div class="stat-label">Poprawne</div></div>';
     html += '<div class="stat-card stat-card-bad"><div class="stat-value">' + wrong + '</div><div class="stat-label">Błędne</div></div>';
     html += '</div>';
+
+    // Accuracy-over-time trend chart
+    html += trendSectionHtml();
 
     // Bar chart (reuses existing renderBarChart)
     html += '<h3 style="margin-bottom:4px">Rozkład per typ pytania</h3>';

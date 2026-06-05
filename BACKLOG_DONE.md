@@ -1,5 +1,15 @@
 # Backlog — Ukończone
 
+## Wykres skuteczności w czasie (statystyki)
+
+> **Ukończono:** 2026-06-05 · [Spec](docs/superpowers/specs/2026-06-05-accuracy-over-time-chart-design.md)
+
+Nowa sekcja „Skuteczność w czasie" na ekranie statystyk, **nad** rozbiciem per typ — pokazuje progres sesja po sesji. Wykres liniowy: **surowa skuteczność** każdej sesji (`score/total`, kolor slate) + **linia trendu** (średnia krocząca z 5 sesji, kolor niebieski), rysowana dopiero od 3. sesji. Oś X = numer sesji (rzadkie etykiety przy dużej liczbie), oś Y = 0–100%. Przełącznik trybu **Wszystko / Nauka / Egzamin** (`setStatsTrendMode`). Stany brzegowe: 0 sesji w trybie → komunikat, 1–2 → same surowe punkty bez trendu.
+
+**Zero nowej infrastruktury:** dane z istniejącego `getSessions()` (localStorage `ksap_sessions`), bez zmian w modelu danych ani bibliotek. `renderLineChart()` rozszerzony wstecznie zgodnie o `opts` (`fixedMax`, `ySuffix`, `showValueLabels`, `pointRadius`, `xLabelEvery`) + obsługa `null` w serii (przerwa w linii) — użycie w Typ 7 nietknięte. Weryfikacja: harness Node na realnie wyłuskanych funkcjach (26 asercji: stany brzegowe, średnia krocząca, sortowanie chronologiczne, filtr trybu, rzadkie etykiety, regresja Typ 7).
+
+---
+
 ## Relacje porządkujące — rozszerzenie Typ 5 (wnioskowanie logiczne)
 
 > **Ukończono:** 2026-06-05 · [Spec](docs/superpowers/specs/2026-06-05-relacje-porzadkujace-typ5-design.md) · [Plan](docs/superpowers/plans/2026-06-05-relacje-porzadkujace-typ5.md)
