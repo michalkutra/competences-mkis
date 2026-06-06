@@ -1,7 +1,7 @@
 # 📊 Raport launchu — egzamin.kutra.pl
 
 > **GA4 property:** `540012122` (egzamin.kutra.pl) · **Strefa czasowa:** Europe/Warsaw
-> **Ostatnia aktualizacja:** 2026-06-05 · **Dane od:** 2026-06-03 (premiera)
+> **Ostatnia aktualizacja:** 2026-06-06 · **Dane od:** 2026-06-03 (premiera)
 > **Cel donejtów:** 100 zł łącznie
 >
 > 🔄 Aktualizuj skillem `/aktualizuj-raport-launchu` (albo napisz „zaktualizuj raport launchu") — pobiera dane po GA4 MCP i **tylko dopisuje kolumnę / odświeża**, nie przepisuje historii.
@@ -29,31 +29,31 @@
 
 > Daty w kolumnach — skanuj wiersz (metrykę) od lewej do prawej, żeby zobaczyć trend. Nowe dni dopisują kolejne kolumny po prawej.
 
-| Metryka | 2026-06-03 | 2026-06-04 | 2026-06-05 ⚠️ |
+| Metryka | 2026-06-03 | 2026-06-04 | 2026-06-05 |
 |---|---|---|---|
 | **— Wzrost —** | | | |
-| Użytkownicy | 74 | 34 | 8 |
-| Nowi | 71 | 23 | 5 |
-| Powracający | 3 | 11 | 3 |
-| Powracający % | 4% | 32% | 38% |
+| Użytkownicy | 74 | 34 | 24 |
+| Nowi | 71 | 24 | 17 |
+| Powracający | 3 | 10 | 7 |
+| Powracający % | 4% | 29% | 29% |
 | **— Wizyty (ruch na stronie) —** | | | |
-| Wizyty (sesje GA) | 99 | 43 | 8 |
-| Wizyty zaang. | 82 | 20 | 4 |
-| Engagement rate | 83% | 47% | 50% |
-| Śr. czas wizyty | 8,8 min | 30,5 min | 13,6 min* |
+| Wizyty (sesje GA) | 99 | 43 | 31 |
+| Wizyty zaang. | 82 | 33 | 15 |
+| Engagement rate | 83% | 77% | 48% |
+| Śr. czas wizyty | 8,8 min | 8,4 min | 30,2 min |
 | **— Nauka (quizy) —** | | | |
-| Odpowiedzi (`question_answered`) | 909 | 398 | 53 |
-| Sesje nauki — start (`session_started`) | 99 | 28 | 5 |
-| Sesje nauki — ukończone (`session_completed`) | 53 | 24 | 2 |
-| Completion rate | 54% | 86% | 40% |
-| Porzucone | 13 | 1 | 0 |
-| Abort rate | 13% | 4% | 0% |
+| Odpowiedzi (`question_answered`) | 909 | 436 | 363 |
+| Sesje nauki — start (`session_started`) | 99 | 33 | 32 |
+| Sesje nauki — ukończone (`session_completed`) | 53 | 29 | 22 |
+| Completion rate | 54% | 88% | 69% |
+| Porzucone | 13 | 1 | 4 |
+| Abort rate | 13% | 3% | 13% |
 | **— Sygnały —** | | | |
-| Donate kliki | 4 | 1 | 1 |
+| Donate kliki | 4 | 1 | 2 |
 | Zgłoszenia błędu | 4 | 0 | 0 |
 | Udostępnienia (`result_shared`) | — | — | — |
 
-\* 05.06 niepełny dzień — metryki z małej próbki (8 userów) są niestabilne; ustabilizują się po pełnej dobie. (04.06 to już pełna doba — completion rate 86%, abort 4%.)
+\* Wszystkie trzy dni to już **pełne doby** (stan na 2026-06-06; 06.06 bez ruchu w momencie aktualizacji — brak kolumny). 05.06 po pełnej dobie urósł z 8 do 24 userów i 363 odpowiedzi — wcześniejsza kolumna była niepełną próbką.
 
 **Definicje:** ⚠️ **„Wizyty (sesje GA)"** = `sessions` z GA = odwiedziny strony — to CO INNEGO niż **„Sesje nauki"** = `session_started` = rozpoczęte quizy. · *Powracający* = Użytkownicy − Nowi · *Engagement rate* = wizyty zaang. / wizyty · *Śr. czas wizyty* = `averageSessionDuration` · *Completion rate* = `session_completed`/`session_started` (quizy) · *Abort rate* = `session_aborted`/`session_started` (quizy) · *Donate kliki* = `donation_clicked` (klik ≠ wpłata) · *Udostępnienia* = `result_shared` (po wdrożeniu „Podziel się wynikiem").
 
@@ -63,20 +63,20 @@
 
 | KPI | Wartość |
 |---|---|
-| Użytkownicy łącznie | **103** (99 nowych) |
-| Wizyty (sesje GA) | **150** (106 zaang. → 71% eng. rate) |
-| Śr. czas wizyty | **15,3 min** |
-| Odsłony / eventy | 1 273 / 4 686 |
-| Odpowiedzi na pytania | 1 360 (≈22 / aktywnego usera) |
-| Completion rate (sesje nauki) | ~60% (79 / 132) |
+| Użytkownicy łącznie | **112** (108 nowych) |
+| Wizyty (sesje GA) | **173** (130 zaang. → 75% eng. rate) |
+| Śr. czas wizyty | **12,6 min** |
+| Odsłony / eventy | 1 590 / 5 849 |
+| Odpowiedzi na pytania | 1 708 (≈24 / aktywnego usera) |
+| Completion rate (sesje nauki) | ~63% (104 / 164) |
 
 ### Lejek (userzy, narastająco)
 | Krok | Userzy | % wejść |
 |---|---|---|
-| Wszedł na stronę | 103 | 100% |
-| Zaczął sesję nauki | 69 | 67% |
-| Odpowiedział ≥1 pytanie | 63 | 61% |
-| Ukończył ≥1 sesję nauki | 40 | 39% |
+| Wszedł na stronę | 112 | 100% |
+| Zaczął sesję nauki | 80 | 71% |
+| Odpowiedział ≥1 pytanie | 70 | 63% |
+| Ukończył ≥1 sesję nauki | 47 | 42% |
 
 ---
 
@@ -86,16 +86,16 @@
 
 | Kanał | Wizyty | Userzy |
 |---|---|---|
-| Organic Social | 93 | 73 |
-| Direct | 41 | 23 |
-| Unassigned | 30 | 25 |
-| Referral | 14 | 7 |
+| Organic Social | 103 | 78 |
+| Direct | 52 | 27 |
+| Unassigned | 24 | 19 |
+| Referral | 15 | 7 |
 
-**Top źródła:** lm.facebook.com (54), (direct) (41), (not set) (30), facebook.com (25), m.facebook.com (11), tagassistant.google.com (6).
-**Urządzenia:** mobile 93 / desktop 11 (**89% mobile**).
-**Top miasta:** Warszawa 30, Wrocław 8, Katowice 6, Kraków 6, Łódź 5.
+**Top źródła:** lm.facebook.com (57), (direct) (52), facebook.com (30), (not set) (24), m.facebook.com (11), wykop.pl (7).
+**Urządzenia:** mobile 99 / desktop 14 (**88% mobile**).
+**Top miasta:** Warszawa 31, Łódź 8, Wrocław 8, Kraków 7, Katowice 6.
 
-ℹ️ Ruch wciąż niemal w całości z Facebooka (lm/m/facebook.com ≈ 90 wizyt). wykop.pl wypadł z top 6 — dywersyfikacja źródeł na razie się nie utrzymała; nowych userów dochodzi mało (5 dziennie), wzrost wyhamował po pierwszym dniu.
+ℹ️ Ruch wciąż niemal w całości z Facebooka (lm/m/facebook.com ≈ 98 wizyt). wykop.pl wrócił do top 6 (7 wizyt), ale to nadal margines — dywersyfikacja poza FB raczkuje. Nowych userów dochodzi coraz mniej (17 dziennie 05.06 vs 71 w dniu premiery), wzrost wyraźnie wyhamował po pierwszym dniu.
 
 ---
 
@@ -121,10 +121,10 @@
 
 | | Wartość |
 |---|---|
-| `donation_clicked` (kliknięcia) | **6** (6 userów) |
-| Klik→user CTR | 5,8% wszystkich userów |
+| `donation_clicked` (kliknięcia) | **7** (7 userów) |
+| Klik→user CTR | 6,3% wszystkich userów |
 | **Realne wpłaty (ręcznie)** | **___ zł / 100 zł** |
-| **Klik→wpłata** (ręcznie) | ___ % (wpłaty / 5 kliknięć) |
+| **Klik→wpłata** (ręcznie) | ___ % (wpłaty / 7 kliknięć) |
 
 ⚠️ **GA widzi tylko kliknięcie, nie wpłatę** (Ko-fi/Revolut to osobne strony). Realne złotówki + współczynnik klik→wpłata uzupełniaj ręcznie z dashboardów: [Ko-fi](https://ko-fi.com/sprawdzianumiejetnosci) + Revolut.
 
