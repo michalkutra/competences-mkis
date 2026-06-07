@@ -11,17 +11,16 @@
 
 ## 0. Kontekst zasięgu (jak czytać te liczby)
 
-> **Aktualizacja 2026-06-05** — zweryfikowany rynek i realny zasięg launchu. Zmienia interpretację wszystkich metryk poniżej.
+> **Aktualizacja 2026-06-07** — zweryfikowany rynek i realny zasięg launchu. Zmienia interpretację wszystkich metryk poniżej.
 
-| | Wcześniejsze założenie | Rzeczywistość |
-|---|---|---|
-| Populacja zdających (rynek) | ~700 | **~940 osób** zgłoszonych do egzaminu KSAP |
-| Zasięg postu launchowego | ~700 (1 grupa FB) | **2 grupy: 56 + 86 = max ~142**, realnie **~90–140 unikalnych** (grupy mogą się pokrywać) |
+| | Wartość |
+|---|---|
+| Populacja zdających (rynek) | **~940 osób** zgłoszonych do egzaminu KSAP |
+| Zasięg postu launchowego | **2 grupy FB: 56 + 86 = max ~142**, realnie **~90–140 unikalnych** (grupy mogą się pokrywać) |
 
-**Dlaczego to ważne — liczby wyglądają DUŻO lepiej, niż sugeruje surowy „103 userów":**
-- 🎯 **Niemal saturacja osiągalnej widowni:** 103 userów z realnego zasięgu ~90–140 osób grup FB → dotarliśmy do **~70–100%** ludzi, do których w ogóle mógł trafić post. To nie „mało userów" — to wyczerpanie kanału.
-- 🚀 **Ogromny zapas wzrostu:** wobec ~940 zdających to dopiero **~11% penetracji rynku**. Pozostałe ~800 osób jest poza zasięgiem dotychczasowych grup → **główna dźwignia to wyjście poza grupy FB** (stąd waga „Podziel się wynikiem", sekcja BACKLOG).
-- ⚖️ Realny zasięg był **~5× mniejszy** niż zakładane „~700" — więc wszystkie współczynniki konwersji/zaangażowania liczone „per dotarty" są odpowiednio mocniejsze.
+**Dlaczego to ważne — liczby wyglądają DUŻO lepiej, niż sugeruje surowy „120 userów":**
+- 🎯 **Niemal saturacja osiągalnej widowni:** 120 userów z realnego zasięgu ~90–140 osób grup FB → dotarliśmy do praktycznie **całej** widowni, do której w ogóle mógł trafić post. To nie „mało userów" — to wyczerpanie kanału.
+- 🚀 **Ogromny zapas wzrostu:** wobec ~940 zdających to dopiero **~13% penetracji rynku**. Pozostałe ~820 osób jest poza zasięgiem dotychczasowych grup → **główna dźwignia to wyjście poza grupy FB** (stąd waga „Podziel się wynikiem", sekcja BACKLOG).
 
 ---
 
@@ -123,8 +122,8 @@
 |---|---|
 | `donation_clicked` (kliknięcia) | **7** (7 userów) |
 | Klik→user CTR | 5,8% wszystkich userów |
-| **Realne wpłaty (ręcznie)** | **___ zł / 100 zł** |
-| **Klik→wpłata** (ręcznie) | ___ % (wpłaty / 7 kliknięć) |
+| **Realne wpłaty (ręcznie)** | **0 zł / 100 zł** |
+| **Klik→wpłata** (ręcznie) | 0% (0 wpłat / 7 kliknięć) |
 
 ⚠️ **GA widzi tylko kliknięcie, nie wpłatę** (Ko-fi/Revolut to osobne strony). Realne złotówki + współczynnik klik→wpłata uzupełniaj ręcznie z dashboardów: [Ko-fi](https://ko-fi.com/sprawdzianumiejetnosci) + Revolut.
 
