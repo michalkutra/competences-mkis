@@ -136,10 +136,36 @@
 
 ---
 
-## 6. Notatki / ograniczenia
+## 6. PWA — instalacje i użycie jako aplikacja 📱
+
+> Ilu userów realnie „przykleiło" serwis jako appkę na ekranie głównym. Dane z eventów `pwa_*` (instalacja, uruchomienia w trybie standalone, lejek promptu). Narastająco od premiery.
+
+| Metryka | Userzy | Eventy |
+|---|---|---|
+| **Zainstalowane PWA** (`pwa_installed`) | **3** | 6 |
+| **Używa jako appka** — uruchomienia standalone (`pwa_launched_standalone`) | **3** | 16 |
+| Wejścia z in-app webview, np. FB (`pwa_inapp_detected`) | 7 | 7 |
+
+**Lejek promptu instalacji:**
+| Krok | Userzy | Eventy |
+|---|---|---|
+| Prompt pokazany (`pwa_prompt_shown`) | 8 | 10 |
+| Prompt kliknięty (`pwa_prompt_clicked`) | 2 | 2 |
+| Instalacja zaakceptowana (`pwa_install_accepted`) | 1 | 1 |
+| Prompt odłożony / snooze (`pwa_prompt_snoozed`) | 11 | 11 |
+| Podpowiedź „otwórz w przeglądarce" (`pwa_open_in_browser_hint_shown`) | 7 | 10 |
+
+ℹ️ **~3 userów używa serwisu jako zainstalowanej appki** (3 instalacje = 3 userów uruchamiających standalone; 16 uruchomień → ~5 odpaleń/usera, czyli realnie wracają). To ~2,5% ze 120 userów — mało, ale to najbardziej „lojalna" grupa. Lejek promptu wąski: z 8 userów z promptem kliknęło 2, przez prompt zainstalował 1 → pozostałe instalacje poszły „cicho" (natywne menu przeglądarki / `appinstalled`, nie nasz prompt). 11 userów odłożyło prompt.
+
+> `method` (`appinstalled` vs `standalone_detected`) niezarejestrowany jako custom dimension → bez rozbicia instalacji wg sposobu (zostaw, dopóki nie dorejestrujesz wymiaru).
+
+---
+
+## 7. Notatki / ograniczenia
 
 - **Zgłoszenia błędów:** `question_id` czytelny od 2026-06-04. 4 zgłoszenia sprzed tej daty mają `question_id = (not set)` — nieodzyskiwalne.
 - **Custom dimensions zarejestrowane (scope Event):** `question_id`, `question_index`, `question_type`.
 - **Do dorejestrowania (odblokowuje sekcje 4 i 5):** `is_correct` (skuteczność per typ), `source` (źródło donejtu). Oba: scope Event, nazwa parametru = nazwa wymiaru.
 - **Wiralność:** `result_shared` pojawi się po wdrożeniu „Podziel się wynikiem" (BACKLOG) — wtedy wiersz w sekcji 1 zacznie się wypełniać.
-- Eventy własne: `session_started`, `question_answered` (`question_type`, `is_correct`, `question_index`, `time_spent_sec`), `session_completed`, `session_aborted`, `error_reported`, `donation_clicked` (`source`), `screen_view`.
+- **PWA:** sekcja 6 z eventów `pwa_installed` (`method`), `pwa_launched_standalone`, `pwa_inapp_detected`, `pwa_prompt_shown/clicked/snoozed`, `pwa_install_accepted/dismissed`, `pwa_open_in_browser_hint_shown`, `pwa_instructions_opened`. `method` (sposób instalacji) niezarejestrowany jako wymiar → rozbicie instalacji niedostępne (do dorejestrowania, scope Event).
+- Eventy własne: `session_started`, `question_answered` (`question_type`, `is_correct`, `question_index`, `time_spent_sec`), `session_completed`, `session_aborted`, `error_reported`, `donation_clicked` (`source`), `screen_view`, eventy `pwa_*` (wyżej).

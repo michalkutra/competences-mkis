@@ -48,6 +48,7 @@ Po komunikacie „Credentials saved to file…" wznów pobieranie (token śwież
 6. **Urządzenia:** `[deviceCategory]` z `[totalUsers]`. **Geo:** `[city]` z `[totalUsers]` (top 6).
 7. **Skuteczność per typ** (tylko jeśli `is_correct` zwraca realne dane): dimensions `[customEvent:question_type, customEvent:is_correct]`, metric `[eventCount]`, filtr `eventName = question_answered`. Dla każdego typu: Odpowiedzi = suma, Poprawne = wiersz `is_correct=true`, Skuteczność = Poprawne/Odpowiedzi.
 8. **Donejty wg source** (tylko jeśli `source` zwraca realne dane): dimensions `[customEvent:source]`, metric `[eventCount]`, filtr `eventName = donation_clicked`. (Liczba userów donejtu: `[eventName]` z `[totalUsers]`, filtr `donation_clicked`.)
+9. **PWA (sekcja 6):** dimensions `[eventName]`, metrics `[eventCount, totalUsers]`, filtr `eventName` in `[pwa_installed, pwa_launched_standalone, pwa_inapp_detected, pwa_prompt_shown, pwa_prompt_clicked, pwa_install_accepted, pwa_install_dismissed, pwa_prompt_snoozed, pwa_open_in_browser_hint_shown, pwa_instructions_opened]`. Kluczowe: `pwa_installed` (userzy = liczba instalacji) i `pwa_launched_standalone` (userzy = ilu używa jako appki; eventy/userzy ≈ odpaleń na usera). `method` (`customEvent:method`) **niezarejestrowany** — pytanie o niego zwróci błąd 400, więc nie rozbijaj instalacji wg sposobu.
 
 ## Jak zaktualizować plik
 
@@ -56,6 +57,7 @@ Po komunikacie „Credentials saved to file…" wznów pobieranie (token śwież
 - **Sekcja 3 (Pozyskanie):** nadpisz kanały + linijki źródła/urządzenia/miasta. W razie widocznego trendu dopisz 1 zdanie o dywersyfikacji (udział nie-FB).
 - **Sekcja 4 (Skuteczność per typ):** jeśli `is_correct` zwraca realne dane — wypełnij tabelę typów 1–8 z zapytania 7. Jeśli zwraca tylko `(not set)`/pusto — zostaw `—` i zaktualizuj notkę, że wymiar jest zarejestrowany, ale dane jeszcze nie spływają.
 - **Sekcja 5 (Donejty):** nadpisz liczbę kliknięć i CTR (CTR = userzy `donation_clicked` / `totalUsers` narastająco, etykieta „% wszystkich userów"). Jeśli `source` zwraca realne dane — wypełnij tabelkę source z zapytania 8. **NIE zmieniaj** ręcznych pól „Realne wpłaty ___ zł / 100 zł" ani „Klik→wpłata ___ %" — zostaw jak są (uzupełnia człowiek).
+- **Sekcja 6 (PWA):** nadpisz tabele z zapytania 9 (instalacje, uruchomienia standalone, in-app, lejek promptu — userzy + eventy). Przelicz zdanie podsumowujące: ilu userów używa jako appka i jaki to % wszystkich userów (`pwa_launched_standalone` userzy / `totalUsers` narastająco). Jeśli któryś event nie występuje → `0`.
 - **Nagłówek:** zaktualizuj „Ostatnia aktualizacja" na dzisiejszą datę.
 
 ## Zasady

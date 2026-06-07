@@ -4,13 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Egzamin Urzędnik Mianowany</title>
+  <meta name="description" content="Bezpłatne ćwiczenia przed sprawdzianem umiejętności KSAP (egzamin na urzędnika mianowanego). 8 typów zadań, tryb nauki i egzaminowy, bez rejestracji.">
+  <link rel="canonical" href="https://egzamin.kutra.pl/">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Egzamin Urzędnik Mianowany">
+  <meta property="og:locale" content="pl_PL">
   <meta property="og:url" content="https://egzamin.kutra.pl/">
   <meta property="og:title" content="Egzamin Urzędnik Mianowany">
   <meta property="og:description" content="Nie znaleźliśmy nic wystarczająco dobrego do ćwiczeń przed sprawdzianem umiejętności KSAP — więc zbudowaliśmy własne. 8 typów zadań, tryb nauki i egzaminowy. Zero rejestracji. Bezpłatne.">
   <meta property="og:image" content="https://egzamin.kutra.pl/og-image.png">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Egzamin Urzędnik Mianowany — ćwiczenia przed sprawdzianem umiejętności KSAP">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Egzamin Urzędnik Mianowany">
+  <meta name="twitter:description" content="Bezpłatne ćwiczenia przed sprawdzianem umiejętności KSAP. 8 typów zadań, tryb nauki i egzaminowy, bez rejestracji.">
+  <meta name="twitter:image" content="https://egzamin.kutra.pl/og-image.png">
   <!-- PWA -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#2563eb">
@@ -1353,10 +1364,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     'question': '/question', 'summary': '/summary', 'session-detail': '/session'
   };
 
+  var SEO_ORIGIN = 'https://egzamin.kutra.pl';
+  // Only home and about are indexable, self-referencing canonical pages.
+  // App/transient screens consolidate to home to avoid duplicate content.
+  var SCREEN_SEO = {
+    'home':  { path: '/',      title: 'Egzamin Urzędnik Mianowany', desc: 'Bezpłatne ćwiczenia przed sprawdzianem umiejętności KSAP (egzamin na urzędnika mianowanego). 8 typów zadań, tryb nauki i egzaminowy, bez rejestracji.' },
+    'about': { path: '/about', title: 'O aplikacji — Egzamin Urzędnik Mianowany', desc: 'O aplikacji do ćwiczeń przed sprawdzianem umiejętności KSAP — dlaczego powstała, jakie typy zadań obejmuje i jak działają tryby nauki oraz egzaminowy.' }
+  };
+
+  function _applySeo(name) {
+    var seo = SCREEN_SEO[name] || SCREEN_SEO['home'];
+    document.title = seo.title;
+    var desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute('content', seo.desc);
+    var canon = document.querySelector('link[rel="canonical"]');
+    if (canon) canon.setAttribute('href', SEO_ORIGIN + seo.path);
+  }
+
   function _applyScreen(name) {
     document.querySelectorAll('.screen').forEach(function(el) { el.style.display = 'none'; });
     document.getElementById('screen-' + name).style.display = name === 'home' ? 'flex' : 'block';
     state.screen = name;
+    _applySeo(name);
     document.body.classList.toggle('hide-bg', name !== 'home' && name !== 'setup');
     document.body.classList.toggle('on-question', name === 'question');
     document.getElementById('global-header').style.display = name === 'question' ? 'none' : 'flex';
