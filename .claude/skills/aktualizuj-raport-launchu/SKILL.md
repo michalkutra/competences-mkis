@@ -14,9 +14,23 @@ Zaktualizuj raport analityki [`docs/analytics/launch-report.md`](../../../docs/a
 
 **Krok 0 — otwórz plik na początku.** Sam `launch-report.md` jest wzorcem: trzyma układ sekcji 1–5, nazwy wierszy, definicje pochodnych i ręczne pola. Zachowaj tę strukturę, nie wymyślaj własnej. Jeśli plik nie istnieje — przerwij i zapytaj użytkownika (nie twórz go od zera).
 
-**Źródło:** GA4 property `properties/540012122` (egzamin.kutra.pl), strefa Europe/Warsaw. Użyj narzędzi serwera MCP `analytics-mcp` (Google Analytics Data API, `run_report`). Jeśli MCP niedostępny, fallback: token z `gcloud auth application-default print-access-token` i `POST https://analyticsdata.googleapis.com/v1beta/properties/540012122:runReport`.
+**Źródło:** GA4 property `properties/540012122` (egzamin.kutra.pl), strefa Europe/Warsaw. Użyj narzędzi serwera MCP `analytics-mcp` (Google Analytics Data API, `run_report`). Jeśli MCP niedostępny, fallback: token z `gcloud auth application-default print-access-token` i `POST https://analyticsdata.googleapis.com/v1beta/properties/540012122:runReport`. Gdy którekolwiek zwróci `401`/`Reauthentication failed` → patrz **Auth** niżej.
 
 **Zakres dat:** `start_date: 2026-06-03`, `end_date: today`.
+
+## Auth do GA4 (gdy zapytanie zwróci 401 / „Reauthentication failed")
+
+Konto firmowe (`michal.kutra@itea.com.pl`) ma politykę okresowego *reauth*: token ADC żyje ~1h, a co kilka godzin odświeżenie wymaga ponownego **interaktywnego** logowania. Nie da się tego obejść nieinteraktywnie ani kontem serwisowym (GA4 blokuje dodanie konta spoza domeny). **To normalne, nie błąd konfiguracji — i nie próbuj tego naprawiać ze skilla.**
+
+Gdy `print-access-token` albo GA4 REST zwróci `401`/`Reauthentication failed` → **poinformuj użytkownika** i poproś, by uruchomił w **swoim** terminalu (otworzy przeglądarkę; wybrać konto `itea.com.pl`):
+
+```bash
+gcloud auth application-default login \
+  --client-id-file="/Users/michalkutra/Dev/competences-mkis/.ga-config/client_secret_855702922935-rffplv5flforghoc9dk2qefurjlj0jb2.apps.googleusercontent.com.json" \
+  --scopes=openid,https://www.googleapis.com/auth/userinfo.email,https://www.googleapis.com/auth/analytics.readonly,https://www.googleapis.com/auth/cloud-platform
+```
+
+Po komunikacie „Credentials saved to file…" wznów pobieranie (token świeży ~1h, więc rób to tuż przed aktualizacją). Własny OAuth client (`cloud-platform` jest formalnie wymagany przez gcloud w `--scopes`, mimo że do GA4 potrzebny jest tylko `analytics.readonly`).
 
 **Glosariusz (trzymaj te etykiety w raporcie):** GA `sessions` → **„Wizyty (sesje GA)"** (odwiedziny strony); `session_started` → **„Sesje nauki — start"** (rozpoczęte quizy); `session_completed` → **„Sesje nauki — ukończone"**. To dwa różne pojęcia — nie myl „wizyt" z „sesjami nauki".
 

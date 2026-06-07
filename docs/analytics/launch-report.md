@@ -1,7 +1,7 @@
 # 📊 Raport launchu — egzamin.kutra.pl
 
 > **GA4 property:** `540012122` (egzamin.kutra.pl) · **Strefa czasowa:** Europe/Warsaw
-> **Ostatnia aktualizacja:** 2026-06-06 · **Dane od:** 2026-06-03 (premiera)
+> **Ostatnia aktualizacja:** 2026-06-07 · **Dane od:** 2026-06-03 (premiera)
 > **Cel donejtów:** 100 zł łącznie
 >
 > 🔄 Aktualizuj skillem `/aktualizuj-raport-launchu` (albo napisz „zaktualizuj raport launchu") — pobiera dane po GA4 MCP i **tylko dopisuje kolumnę / odświeża**, nie przepisuje historii.
@@ -29,31 +29,31 @@
 
 > Daty w kolumnach — skanuj wiersz (metrykę) od lewej do prawej, żeby zobaczyć trend. Nowe dni dopisują kolejne kolumny po prawej.
 
-| Metryka | 2026-06-03 | 2026-06-04 | 2026-06-05 |
-|---|---|---|---|
-| **— Wzrost —** | | | |
-| Użytkownicy | 74 | 34 | 24 |
-| Nowi | 71 | 24 | 17 |
-| Powracający | 3 | 10 | 7 |
-| Powracający % | 4% | 29% | 29% |
-| **— Wizyty (ruch na stronie) —** | | | |
-| Wizyty (sesje GA) | 99 | 43 | 31 |
-| Wizyty zaang. | 82 | 33 | 15 |
-| Engagement rate | 83% | 77% | 48% |
-| Śr. czas wizyty | 8,8 min | 8,4 min | 30,2 min |
-| **— Nauka (quizy) —** | | | |
-| Odpowiedzi (`question_answered`) | 909 | 436 | 363 |
-| Sesje nauki — start (`session_started`) | 99 | 33 | 32 |
-| Sesje nauki — ukończone (`session_completed`) | 53 | 29 | 22 |
-| Completion rate | 54% | 88% | 69% |
-| Porzucone | 13 | 1 | 4 |
-| Abort rate | 13% | 3% | 13% |
-| **— Sygnały —** | | | |
-| Donate kliki | 4 | 1 | 2 |
-| Zgłoszenia błędu | 4 | 0 | 0 |
-| Udostępnienia (`result_shared`) | — | — | — |
+| Metryka | 2026-06-03 | 2026-06-04 | 2026-06-05 | 2026-06-06 |
+|---|---|---|---|---|
+| **— Wzrost —** | | | | |
+| Użytkownicy | 74 | 34 | 24 | 17 |
+| Nowi | 71 | 24 | 14 | 11 |
+| Powracający | 3 | 10 | 10 | 6 |
+| Powracający % | 4% | 29% | 42% | 35% |
+| **— Wizyty (ruch na stronie) —** | | | | |
+| Wizyty (sesje GA) | 99 | 43 | 31 | 25 |
+| Wizyty zaang. | 82 | 33 | 26 | 12 |
+| Engagement rate | 83% | 77% | 84% | 48% |
+| Śr. czas wizyty | 8,8 min | 8,4 min | 8,7 min | 23,4 min |
+| **— Nauka (quizy) —** | | | | |
+| Odpowiedzi (`question_answered`) | 909 | 436 | 380 | 190 |
+| Sesje nauki — start (`session_started`) | 99 | 33 | 33 | 19 |
+| Sesje nauki — ukończone (`session_completed`) | 53 | 29 | 25 | 10 |
+| Completion rate | 54% | 88% | 76% | 53% |
+| Porzucone | 13 | 1 | 4 | 3 |
+| Abort rate | 13% | 3% | 12% | 16% |
+| **— Sygnały —** | | | | |
+| Donate kliki | 4 | 1 | 2 | 0 |
+| Zgłoszenia błędu | 4 | 0 | 0 | 0 |
+| Udostępnienia (`result_shared`) | — | — | — | — |
 
-\* Wszystkie trzy dni to już **pełne doby** (stan na 2026-06-06; 06.06 bez ruchu w momencie aktualizacji — brak kolumny). 05.06 po pełnej dobie urósł z 8 do 24 userów i 363 odpowiedzi — wcześniejsza kolumna była niepełną próbką.
+\* Wszystkie cztery dni to **pełne doby** (stan na 2026-06-07; 06.07 bez ruchu w momencie aktualizacji — brak kolumny). 05.06 po dosynchronizowaniu danych: 24 userów / 380 odpowiedzi. Ruch dzienny wyraźnie maleje (74 → 34 → 24 → 17 userów).
 
 **Definicje:** ⚠️ **„Wizyty (sesje GA)"** = `sessions` z GA = odwiedziny strony — to CO INNEGO niż **„Sesje nauki"** = `session_started` = rozpoczęte quizy. · *Powracający* = Użytkownicy − Nowi · *Engagement rate* = wizyty zaang. / wizyty · *Śr. czas wizyty* = `averageSessionDuration` · *Completion rate* = `session_completed`/`session_started` (quizy) · *Abort rate* = `session_aborted`/`session_started` (quizy) · *Donate kliki* = `donation_clicked` (klik ≠ wpłata) · *Udostępnienia* = `result_shared` (po wdrożeniu „Podziel się wynikiem").
 
@@ -63,20 +63,20 @@
 
 | KPI | Wartość |
 |---|---|
-| Użytkownicy łącznie | **112** (108 nowych) |
-| Wizyty (sesje GA) | **173** (130 zaang. → 75% eng. rate) |
-| Śr. czas wizyty | **12,6 min** |
-| Odsłony / eventy | 1 590 / 5 849 |
-| Odpowiedzi na pytania | 1 708 (≈24 / aktywnego usera) |
-| Completion rate (sesje nauki) | ~63% (104 / 164) |
+| Użytkownicy łącznie | **120** (117 nowych) |
+| Wizyty (sesje GA) | **198** (153 zaang. → 77% eng. rate) |
+| Śr. czas wizyty | **10,6 min** |
+| Odsłony / eventy | 1 782 / 6 555 |
+| Odpowiedzi na pytania | 1 915 (≈26 / aktywnego usera) |
+| Completion rate (sesje nauki) | ~64% (117 / 184) |
 
 ### Lejek (userzy, narastająco)
 | Krok | Userzy | % wejść |
 |---|---|---|
-| Wszedł na stronę | 112 | 100% |
-| Zaczął sesję nauki | 80 | 71% |
-| Odpowiedział ≥1 pytanie | 70 | 63% |
-| Ukończył ≥1 sesję nauki | 47 | 42% |
+| Wszedł na stronę | 120 | 100% |
+| Zaczął sesję nauki | 84 | 70% |
+| Odpowiedział ≥1 pytanie | 73 | 61% |
+| Ukończył ≥1 sesję nauki | 49 | 41% |
 
 ---
 
@@ -86,16 +86,16 @@
 
 | Kanał | Wizyty | Userzy |
 |---|---|---|
-| Organic Social | 103 | 78 |
-| Direct | 52 | 27 |
-| Unassigned | 24 | 19 |
-| Referral | 15 | 7 |
+| Organic Social | 116 | 85 |
+| Direct | 66 | 29 |
+| Referral | 16 | 7 |
+| Unassigned | 15 | 12 |
 
-**Top źródła:** lm.facebook.com (57), (direct) (52), facebook.com (30), (not set) (24), m.facebook.com (11), wykop.pl (7).
-**Urządzenia:** mobile 99 / desktop 14 (**88% mobile**).
-**Top miasta:** Warszawa 31, Łódź 8, Wrocław 8, Kraków 7, Katowice 6.
+**Top źródła:** (direct) (66), lm.facebook.com (64), facebook.com (32), (not set) (15), m.facebook.com (14), tagassistant.google.com (7).
+**Urządzenia:** mobile 106 / desktop 15 (**88% mobile**).
+**Top miasta:** Warszawa 35, Kraków 8, Łódź 8, Wrocław 8, Katowice 6.
 
-ℹ️ Ruch wciąż niemal w całości z Facebooka (lm/m/facebook.com ≈ 98 wizyt). wykop.pl wrócił do top 6 (7 wizyt), ale to nadal margines — dywersyfikacja poza FB raczkuje. Nowych userów dochodzi coraz mniej (17 dziennie 05.06 vs 71 w dniu premiery), wzrost wyraźnie wyhamował po pierwszym dniu.
+ℹ️ Facebook wciąż dominuje (lm/m/facebook.com ≈ 110 wizyt), ale Direct urósł do 66 wizyt (powracający z zakładki/PWA). wykop.pl wypadł z top 6, tagassistant.google.com (7) to wewnętrzne testy GTM, nie realny kanał — dywersyfikacja poza FB nadal nie ruszyła. Nowych userów coraz mniej (11 dziennie 06.06 vs 71 w dniu premiery), wzrost wyhamował.
 
 ---
 
@@ -122,7 +122,7 @@
 | | Wartość |
 |---|---|
 | `donation_clicked` (kliknięcia) | **7** (7 userów) |
-| Klik→user CTR | 6,3% wszystkich userów |
+| Klik→user CTR | 5,8% wszystkich userów |
 | **Realne wpłaty (ręcznie)** | **___ zł / 100 zł** |
 | **Klik→wpłata** (ręcznie) | ___ % (wpłaty / 7 kliknięć) |
 
