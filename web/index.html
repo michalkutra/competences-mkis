@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Egzamin Urzędnik Mianowany</title>
-  <meta name="description" content="Bezpłatne ćwiczenia przed sprawdzianem umiejętności KSAP (egzamin na urzędnika mianowanego). 8 typów zadań, tryb nauki i egzaminowy, bez rejestracji.">
+  <title>Egzamin na urzędnika mianowanego — ćwiczenia (Sprawdzian KSAP)</title>
+  <meta name="description" content="Bezpłatne ćwiczenia przed egzaminem na urzędnika mianowanego — Sprawdzian Umiejętności KSAP. 8 typów zadań, tryb nauki i egzaminowy, bez rejestracji.">
   <link rel="canonical" href="https://egzamin.kutra.pl/">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -22,6 +22,21 @@
   <meta name="twitter:title" content="Egzamin Urzędnik Mianowany">
   <meta name="twitter:description" content="Bezpłatne ćwiczenia przed sprawdzianem umiejętności KSAP. 8 typów zadań, tryb nauki i egzaminowy, bez rejestracji.">
   <meta name="twitter:image" content="https://egzamin.kutra.pl/og-image.png">
+  <!-- Structured data (schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Egzamin Urzędnik Mianowany",
+    "url": "https://egzamin.kutra.pl/",
+    "description": "Bezpłatne ćwiczenia przed egzaminem na urzędnika mianowanego — Sprawdzian Umiejętności KSAP. 8 typów zadań, tryb nauki i egzaminowy, bez rejestracji.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web",
+    "inLanguage": "pl-PL",
+    "isAccessibleForFree": true,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "PLN" }
+  }
+  </script>
   <!-- PWA -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#2563eb">
@@ -1082,7 +1097,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ==================== HOME ==================== -->
 <div id="screen-home" class="screen">
   <h1>Sprawdzian Umiejętności</h1>
-  <p class="subtitle">Pomoc do nauki egzaminu kompetencyjnego KSAP<span id="question-count"></span></p>
+  <p class="subtitle">Ćwiczenia przed egzaminem na urzędnika mianowanego — Sprawdzian Umiejętności KSAP<span id="question-count"></span></p>
   <button id="btn-new-session" onclick="goSetup()">Nowa sesja</button>
   <button id="btn-history" class="ghost" onclick="showScreen('history'); loadHistory();">Historia sesji</button>
   <p id="social-proof"></p>
@@ -1222,7 +1237,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <h2>O aplikacji</h2>
 
   <div class="about-story">
-    Stworzyliśmy tę aplikację, bo Ewelina przygotowuje się do egzaminu kompetencyjnego KSAP. Szukała czegoś do ćwiczeń — czegoś, co naprawdę odwzorowuje rodzaje zadań z testu. Nie znalazła nic wystarczająco dobrego. No to zbudowaliśmy coś własnego. 🙂
+    Stworzyliśmy tę aplikację, bo Ewelina przygotowuje się do egzaminu na urzędnika mianowanego (Sprawdzianu Umiejętności KSAP). Szukała czegoś do ćwiczeń — czegoś, co naprawdę odwzorowuje rodzaje zadań z testu. Nie znalazła nic wystarczająco dobrego. No to zbudowaliśmy coś własnego. 🙂
     <br><br>
     Zero rejestracji, za darmo. Po prostu ćwicz.
   </div>
@@ -1368,8 +1383,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   // Only home and about are indexable, self-referencing canonical pages.
   // App/transient screens consolidate to home to avoid duplicate content.
   var SCREEN_SEO = {
-    'home':  { path: '/',      title: 'Egzamin Urzędnik Mianowany', desc: 'Bezpłatne ćwiczenia przed sprawdzianem umiejętności KSAP (egzamin na urzędnika mianowanego). 8 typów zadań, tryb nauki i egzaminowy, bez rejestracji.' },
-    'about': { path: '/about', title: 'O aplikacji — Egzamin Urzędnik Mianowany', desc: 'O aplikacji do ćwiczeń przed sprawdzianem umiejętności KSAP — dlaczego powstała, jakie typy zadań obejmuje i jak działają tryby nauki oraz egzaminowy.' }
+    'home':  { path: '/',      title: 'Egzamin na urzędnika mianowanego — ćwiczenia (Sprawdzian KSAP)', desc: 'Bezpłatne ćwiczenia przed egzaminem na urzędnika mianowanego — Sprawdzian Umiejętności KSAP. 8 typów zadań, tryb nauki i egzaminowy, bez rejestracji.' },
+    'about': { path: '/about', title: 'O aplikacji — ćwiczenia na egzamin na urzędnika mianowanego', desc: 'O aplikacji do ćwiczeń przed egzaminem na urzędnika mianowanego (Sprawdzian Umiejętności KSAP) — dlaczego powstała, jakie typy zadań obejmuje i jak działają tryby nauki oraz egzaminowy.' }
   };
 
   function _applySeo(name) {
