@@ -59,6 +59,7 @@ Po komunikacie „Credentials saved to file…" wznów pobieranie (token śwież
 - **Sekcja 5 (Donejty):** nadpisz liczbę kliknięć i CTR (CTR = userzy `donation_clicked` / `totalUsers` narastająco, etykieta „% wszystkich userów"). Jeśli `source` zwraca realne dane — wypełnij tabelkę source z zapytania 8. **NIE zmieniaj** ręcznych pól „Realne wpłaty ___ zł / 100 zł" ani „Klik→wpłata ___ %" — zostaw jak są (uzupełnia człowiek).
 - **Sekcja 6 (PWA):** nadpisz tabele z zapytania 9 (instalacje, uruchomienia standalone, in-app, lejek promptu — userzy + eventy). Przelicz zdanie podsumowujące: ilu userów używa jako appka i jaki to % wszystkich userów (`pwa_launched_standalone` userzy / `totalUsers` narastająco). Jeśli któryś event nie występuje → `0`.
 - **Nagłówek:** zaktualizuj „Ostatnia aktualizacja" na dzisiejszą datę.
+- **Social proof na stronie (`web/stats.js`):** podbij `window.SITE_STATS = { answered: N }` do narastającej sumy `question_answered` (ta sama liczba co „Odpowiedzi na pytania" w sekcji 2). To ręczny licznik social proofu na home — aktualizuj go przy każdym odświeżeniu raportu. (Zmiana wymaga commita + deployu, ale **nie commituj** — robi to użytkownik.)
 
 ## Zasady
 
