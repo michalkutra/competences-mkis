@@ -31,28 +31,28 @@
 | Metryka | 2026-06-03 | 2026-06-04 | 2026-06-05 | 2026-06-06 | 2026-06-07 | 2026-06-08 ⚠️ |
 |---|---|---|---|---|---|---|
 | **— Wzrost —** | | | | | | |
-| Użytkownicy | 74 | 34 | 24 | 17 | 21 | 14 |
-| Nowi | 71 | 24 | 14 | 8 | 12 | 5 |
-| Powracający | 3 | 10 | 10 | 9 | 9 | 9 |
-| Powracający % | 4% | 29% | 42% | 53% | 43% | 64% |
+| Użytkownicy | 74 | 34 | 24 | 17 | 21 | 17 |
+| Nowi | 71 | 24 | 14 | 8 | 12 | 6 |
+| Powracający | 3 | 10 | 10 | 9 | 9 | 11 |
+| Powracający % | 4% | 29% | 42% | 53% | 43% | 65% |
 | **— Wizyty (ruch na stronie) —** | | | | | | |
-| Wizyty (sesje GA) | 99 | 43 | 31 | 25 | 27 | 24 |
+| Wizyty (sesje GA) | 99 | 43 | 31 | 25 | 27 | 32 |
 | Wizyty zaang. | 82 | 33 | 26 | 21 | 20 | 7 |
-| Engagement rate | 83% | 77% | 84% | 84% | 74% | 29% |
-| Śr. czas wizyty | 8,8 min | 8,4 min | 8,7 min | 8,5 min | 12,2 min | 27,2 min* |
+| Engagement rate | 83% | 77% | 84% | 84% | 74% | 22% |
+| Śr. czas wizyty | 8,8 min | 8,4 min | 8,7 min | 8,5 min | 12,2 min | 40,1 min* |
 | **— Nauka (quizy) —** | | | | | | |
-| Odpowiedzi (`question_answered`) | 909 | 436 | 380 | 194 | 402 | 202 |
-| Sesje nauki — start (`session_started`) | 99 | 33 | 33 | 19 | 34 | 16 |
-| Sesje nauki — ukończone (`session_completed`) | 53 | 29 | 25 | 11 | 25 | 10 |
-| Completion rate | 54% | 88% | 76% | 58% | 74% | 63% |
+| Odpowiedzi (`question_answered`) | 909 | 436 | 380 | 194 | 402 | 329 |
+| Sesje nauki — start (`session_started`) | 99 | 33 | 33 | 19 | 34 | 26 |
+| Sesje nauki — ukończone (`session_completed`) | 53 | 29 | 25 | 11 | 25 | 18 |
+| Completion rate | 54% | 88% | 76% | 58% | 74% | 69% |
 | Porzucone | 13 | 1 | 4 | 3 | 3 | 2 |
-| Abort rate | 13% | 3% | 12% | 16% | 9% | 13% |
+| Abort rate | 13% | 3% | 12% | 16% | 9% | 8% |
 | **— Sygnały —** | | | | | | |
 | Donate kliki | 4 | 1 | 2 | 0 | 0 | 0 |
-| Zgłoszenia błędu | 4 | 0 | 0 | 0 | 7 | 0 |
+| Zgłoszenia błędu | 4 | 0 | 0 | 0 | 7 | 2 |
 | Udostępnienia (`result_shared`) | — | — | — | — | — | — |
 
-\* 08.06 niepełny dzień — metryki z małej próbki (14 userów) są niestabilne (śr. czas 27,2 min zawyżony przez pojedyncze długie sesje); ustabilizują się po pełnej dobie. Pięć wcześniejszych dni to pełne doby. **07.06 odbił** (21 userów / 402 odpowiedzi — drugi najmocniejszy dzień po premierze) oraz przyniósł **7 zgłoszeń błędu** (poprzednie dni 0). Retencja wysoka (powracający 43–64% w ostatnich dniach).
+\* 08.06 niepełny dzień — metryki z małej próbki (17 userów) są niestabilne (śr. czas 40,1 min mocno zawyżony przez pojedyncze długie sesje, eng. rate zaniżony); ustabilizują się po pełnej dobie. Pięć wcześniejszych dni to pełne doby. **07.06 odbił** (21 userów / 402 odpowiedzi — drugi najmocniejszy dzień po premierze) oraz przyniósł **7 zgłoszeń błędu** (poprzednie dni 0). Retencja wysoka (powracający 43–65% w ostatnich dniach).
 
 **Definicje:** ⚠️ **„Wizyty (sesje GA)"** = `sessions` z GA = odwiedziny strony — to CO INNEGO niż **„Sesje nauki"** = `session_started` = rozpoczęte quizy. · *Powracający* = Użytkownicy − Nowi · *Engagement rate* = wizyty zaang. / wizyty · *Śr. czas wizyty* = `averageSessionDuration` · *Completion rate* = `session_completed`/`session_started` (quizy) · *Abort rate* = `session_aborted`/`session_started` (quizy) · *Donate kliki* = `donation_clicked` (klik ≠ wpłata) · *Udostępnienia* = `result_shared` (po wdrożeniu „Podziel się wynikiem").
 
@@ -62,20 +62,20 @@
 
 | KPI | Wartość |
 |---|---|
-| Użytkownicy łącznie | **136** (132 nowych) |
-| Wizyty (sesje GA) | **249** (189 zaang. → 76% eng. rate) |
-| Śr. czas wizyty | **10,9 min** |
-| Odsłony / eventy | 2 190 / 8 209 |
-| Odpowiedzi na pytania | 2 523 (≈31 / aktywnego usera) |
-| Completion rate (sesje nauki) | ~65% (153 / 234) |
+| Użytkownicy łącznie | **136** (133 nowych) |
+| Wizyty (sesje GA) | **257** (189 zaang. → 74% eng. rate) |
+| Śr. czas wizyty | **13,0 min** |
+| Odsłony / eventy | 2 267 / 8 468 |
+| Odpowiedzi na pytania | 2 650 (≈32 / aktywnego usera) |
+| Completion rate (sesje nauki) | ~66% (161 / 244) |
 
 ### Lejek (userzy, narastająco)
 | Krok | Userzy | % wejść |
 |---|---|---|
 | Wszedł na stronę | 136 | 100% |
-| Zaczął sesję nauki | 92 | 68% |
-| Odpowiedział ≥1 pytanie | 82 | 60% |
-| Ukończył ≥1 sesję nauki | 57 | 42% |
+| Zaczął sesję nauki | 93 | 68% |
+| Odpowiedział ≥1 pytanie | 83 | 61% |
+| Ukończył ≥1 sesję nauki | 59 | 43% |
 
 ---
 
@@ -101,18 +101,22 @@
 ## 4. Skuteczność per typ pytania
 
 > Pokazuje, które typy zadań ludzie „mielą" (niska skuteczność = kandydat do poprawy treści/wyjaśnień). Dane z `question_answered` (`question_type` + `is_correct`).
-> ✅ **Naprawione i potwierdzone 2026-06-08 (po deployu).** Root cause: tag GA4 w GTM nie przekazywał parametrów z `dataLayer` — naprawione przez wysyłkę zdarzeń przez `gtag()` (parametry lecą automatycznie; wymiary były zarejestrowane od początku). Po deployu **realne wartości już spływają** — pierwsze przetworzone próbki z 08.06: typ 5 → 3 poprawne, typ 1 i 6 → po 1 poprawnej (reszta dnia jeszcze w przetwarzaniu, `""`). Tabela poniżej wypełni się sensownie **przy następnej aktualizacji**, gdy uzbiera się pełna doba danych post-deploy (teraz za mało punktów na miarodajną skuteczność).
+> ✅ **Naprawione i potwierdzone 2026-06-08 (po deployu).** Root cause: tag GA4 w GTM nie przekazywał parametrów z `dataLayer` — naprawione przez wysyłkę zdarzeń przez `gtag()` (parametry lecą automatycznie; wymiary były zarejestrowane od początku). Po deployu **realne wartości spływają** — tabela poniżej wypełniona pierwszą próbką (06.08, ~110 odpowiedzi z czytelnym typem). Małe N na typ → kierunkowo; pełny obraz po uzbieraniu kilku dób post-deploy.
 
-| Typ | Odpowiedzi | Poprawne | Skuteczność |
-|---|---|---|---|
-| 1 | — | — | — |
-| 2 | — | — | — |
-| 3 | — | — | — |
-| 4 | — | — | — |
-| 5 | — | — | — |
-| 6 | — | — | — |
-| 7 | — | — | — |
-| 8 | — | — | — |
+| Typ | Nazwa | Odpowiedzi | Poprawne | Skuteczność |
+|---|---|---|---|---|
+| 1 | Analogia słowna — macierz | 7 | 7 | 100% |
+| 2 | Wspólny wyraz | 8 | 4 | **50%** |
+| 3 | Związek przyczynowo-skutkowy | 11 | 9 | 82% |
+| 4 | Analogia zdaniowa | 9 | 8 | 89% |
+| 5 | Wnioskowanie logiczne | 42 | 41 | 98% |
+| 6 | Zadanie numeryczne | 11 | 11 | 100% |
+| 7 | Analiza wykresu | 13 | 12 | 92% |
+| 8 | Powiązania figur | 9 | 7 | 78% |
+
+> 🟡 **Pierwsza próbka po fixie (tylko 06.08, ~110 odpowiedzi z czytelnym typem; 219 dnia jeszcze w przetwarzaniu).** Małe N na typ (7–42) — traktuj kierunkowo, nie jako twardy wynik. Sygnał do obserwacji: **typ 2 „Wspólny wyraz" (50%)** i typ 8 „Powiązania figur" (78%) wyraźnie niżej niż reszta (82–100%) → kandydaci do przeglądu treści/wyjaśnień, gdy uzbiera się więcej danych.
+>
+> 📊 **Poziom trudności:** od 2026-06-08 zdarzenie `question_answered` niesie też `question_difficulty` (`easy`/`hard`, z prefiksu ID pytania). Po deployu + zarejestrowaniu wymiaru `question_difficulty` w GA4 dołożę rozbicie skuteczności **per typ × poziom** (np. czy niska skuteczność typu 2 bierze się z wariantu hard). Działa „do przodu" — dane zaczną spływać po wdrożeniu.
 
 ---
 
@@ -164,9 +168,10 @@
 
 ## 7. Notatki / ograniczenia
 
-- **Zgłoszenia błędów (11 łącznie: 4 w dn. 06-03 + 7 w dn. 06-07):** `question_id` **NIE jest łapany** — wszystkie zgłoszenia (także te z 06-07, już po przetworzeniu) zwracają `question_id = (not set)`, mimo że kod wypycha `question_id` do `dataLayer` ([index.html:2415](../../web/index.html#L2415)). To **luka w trackingu** (najpewniej tag GTM `error_reported` nie przekazuje parametru `question_id` do GA4) — bez tego nie wiadomo, których pytań dotyczą zgłoszenia. Do naprawy w GTM. Dodatkowo `error_reported` odpala `mailto:` (michal@kutra.pl), który user musi ręcznie wysłać — stąd event w GA bywa bez maila.
+- **Zgłoszenia błędów (13 łącznie: 4 w dn. 06-03 + 7 w dn. 06-07 + 2 w dn. 06-08):** `question_id` było `(not set)` do 06-07 (luka w trackingu — naprawiona 2026-06-08, zob. sekcja 4). **Od deployu działa:** 2 zgłoszenia z 06-08 mają realne ID — `h_t3_020` (to **test weryfikacyjny** podczas wdrożenia fixu, nie realny user) i `e_t7_037` (typ 7 „Analiza wykresu" — wygląda na realne zgłoszenie). 11 wcześniejszych ID jest nieodzyskiwalnych. Dodatkowo `error_reported` odpala `mailto:` (michal@kutra.pl), który user musi ręcznie wysłać — stąd event w GA bywa bez maila.
 - **Custom dimensions zarejestrowane (scope Event):** `question_id`, `question_index`, `question_type`.
 - **Do dorejestrowania (odblokowuje sekcje 4 i 5):** `is_correct` (skuteczność per typ), `source` (źródło donejtu). Oba: scope Event, nazwa parametru = nazwa wymiaru.
 - **Wiralność:** `result_shared` pojawi się po wdrożeniu „Podziel się wynikiem" (BACKLOG) — wtedy wiersz w sekcji 1 zacznie się wypełniać.
 - **PWA:** sekcja 6 z eventów `pwa_installed` (`method`), `pwa_launched_standalone`, `pwa_inapp_detected`, `pwa_prompt_shown/clicked/snoozed`, `pwa_install_accepted/dismissed`, `pwa_open_in_browser_hint_shown`, `pwa_instructions_opened`. `method` (sposób instalacji) niezarejestrowany jako wymiar → rozbicie instalacji niedostępne (do dorejestrowania, scope Event).
-- Eventy własne: `session_started`, `question_answered` (`question_type`, `is_correct`, `question_index`, `time_spent_sec`), `session_completed`, `session_aborted`, `error_reported`, `donation_clicked` (`source`), `screen_view`, eventy `pwa_*` (wyżej).
+- Eventy własne: `session_started`, `question_answered` (`question_type`, `question_difficulty` od 2026-06-08, `is_correct`, `question_index`, `time_spent_sec`), `session_completed`, `session_aborted`, `error_reported`, `donation_clicked` (`source`), `screen_view`, eventy `pwa_*` (wyżej).
+- **Do dorejestrowania w GA4 (Admin → Custom definitions, event scope):** `question_difficulty` (rozbicie skuteczności per typ × poziom w sekcji 4). Bez rejestracji parametr leci, ale nie pojawi się w raportach.

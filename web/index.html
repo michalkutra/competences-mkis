@@ -2377,6 +2377,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     gtag('event', 'question_answered', {
       question_type: q.typeId,
+      question_difficulty: (q.id && q.id.charAt(0) === 'h') ? 'hard' : 'easy',
       is_correct: index === q.correct,
       question_index: state.currentIndex,
       time_spent_sec: timeSpent
@@ -2431,6 +2432,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
       gtag('event', 'question_answered', {
         question_type: q.typeId,
+        question_difficulty: (q.id && q.id.charAt(0) === 'h') ? 'hard' : 'easy',
         is_correct: state.pendingAnswer === q.correct,
         question_index: state.currentIndex,
         time_spent_sec: timeSpent
