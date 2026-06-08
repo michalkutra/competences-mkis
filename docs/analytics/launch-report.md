@@ -31,28 +31,28 @@
 | Metryka | 2026-06-03 | 2026-06-04 | 2026-06-05 | 2026-06-06 | 2026-06-07 | 2026-06-08 ⚠️ |
 |---|---|---|---|---|---|---|
 | **— Wzrost —** | | | | | | |
-| Użytkownicy | 74 | 34 | 24 | 17 | 21 | 10 |
-| Nowi | 71 | 24 | 14 | 8 | 12 | 4 |
-| Powracający | 3 | 10 | 10 | 9 | 9 | 6 |
-| Powracający % | 4% | 29% | 42% | 53% | 43% | 60% |
+| Użytkownicy | 74 | 34 | 24 | 17 | 21 | 14 |
+| Nowi | 71 | 24 | 14 | 8 | 12 | 5 |
+| Powracający | 3 | 10 | 10 | 9 | 9 | 9 |
+| Powracający % | 4% | 29% | 42% | 53% | 43% | 64% |
 | **— Wizyty (ruch na stronie) —** | | | | | | |
-| Wizyty (sesje GA) | 99 | 43 | 31 | 25 | 27 | 20 |
-| Wizyty zaang. | 82 | 33 | 26 | 21 | 20 | 6 |
-| Engagement rate | 83% | 77% | 84% | 84% | 74% | 30% |
-| Śr. czas wizyty | 8,8 min | 8,4 min | 8,7 min | 8,5 min | 12,2 min | 27,5 min* |
+| Wizyty (sesje GA) | 99 | 43 | 31 | 25 | 27 | 24 |
+| Wizyty zaang. | 82 | 33 | 26 | 21 | 20 | 7 |
+| Engagement rate | 83% | 77% | 84% | 84% | 74% | 29% |
+| Śr. czas wizyty | 8,8 min | 8,4 min | 8,7 min | 8,5 min | 12,2 min | 27,2 min* |
 | **— Nauka (quizy) —** | | | | | | |
-| Odpowiedzi (`question_answered`) | 909 | 436 | 380 | 194 | 402 | 145 |
-| Sesje nauki — start (`session_started`) | 99 | 33 | 33 | 19 | 34 | 12 |
-| Sesje nauki — ukończone (`session_completed`) | 53 | 29 | 25 | 11 | 25 | 8 |
-| Completion rate | 54% | 88% | 76% | 58% | 74% | 67% |
+| Odpowiedzi (`question_answered`) | 909 | 436 | 380 | 194 | 402 | 202 |
+| Sesje nauki — start (`session_started`) | 99 | 33 | 33 | 19 | 34 | 16 |
+| Sesje nauki — ukończone (`session_completed`) | 53 | 29 | 25 | 11 | 25 | 10 |
+| Completion rate | 54% | 88% | 76% | 58% | 74% | 63% |
 | Porzucone | 13 | 1 | 4 | 3 | 3 | 2 |
-| Abort rate | 13% | 3% | 12% | 16% | 9% | 17% |
+| Abort rate | 13% | 3% | 12% | 16% | 9% | 13% |
 | **— Sygnały —** | | | | | | |
 | Donate kliki | 4 | 1 | 2 | 0 | 0 | 0 |
 | Zgłoszenia błędu | 4 | 0 | 0 | 0 | 7 | 0 |
 | Udostępnienia (`result_shared`) | — | — | — | — | — | — |
 
-\* 08.06 niepełny dzień — metryki z małej próbki (10 userów) są niestabilne (śr. czas 27,5 min zawyżony przez pojedyncze długie sesje); ustabilizują się po pełnej dobie. Pięć wcześniejszych dni to pełne doby. **07.06 odbił** (21 userów / 402 odpowiedzi — drugi najmocniejszy dzień po premierze) oraz przyniósł **7 zgłoszeń błędu** (poprzednie dni 0). Retencja wysoka (powracający 43–60% w ostatnich dniach).
+\* 08.06 niepełny dzień — metryki z małej próbki (14 userów) są niestabilne (śr. czas 27,2 min zawyżony przez pojedyncze długie sesje); ustabilizują się po pełnej dobie. Pięć wcześniejszych dni to pełne doby. **07.06 odbił** (21 userów / 402 odpowiedzi — drugi najmocniejszy dzień po premierze) oraz przyniósł **7 zgłoszeń błędu** (poprzednie dni 0). Retencja wysoka (powracający 43–64% w ostatnich dniach).
 
 **Definicje:** ⚠️ **„Wizyty (sesje GA)"** = `sessions` z GA = odwiedziny strony — to CO INNEGO niż **„Sesje nauki"** = `session_started` = rozpoczęte quizy. · *Powracający* = Użytkownicy − Nowi · *Engagement rate* = wizyty zaang. / wizyty · *Śr. czas wizyty* = `averageSessionDuration` · *Completion rate* = `session_completed`/`session_started` (quizy) · *Abort rate* = `session_aborted`/`session_started` (quizy) · *Donate kliki* = `donation_clicked` (klik ≠ wpłata) · *Udostępnienia* = `result_shared` (po wdrożeniu „Podziel się wynikiem").
 
@@ -62,20 +62,20 @@
 
 | KPI | Wartość |
 |---|---|
-| Użytkownicy łącznie | **134** (131 nowych) |
-| Wizyty (sesje GA) | **245** (188 zaang. → 77% eng. rate) |
-| Śr. czas wizyty | **10,6 min** |
-| Odsłony / eventy | 2 161 / 8 089 |
-| Odpowiedzi na pytania | 2 466 (≈30 / aktywnego usera) |
-| Completion rate (sesje nauki) | ~66% (151 / 230) |
+| Użytkownicy łącznie | **136** (132 nowych) |
+| Wizyty (sesje GA) | **249** (189 zaang. → 76% eng. rate) |
+| Śr. czas wizyty | **10,9 min** |
+| Odsłony / eventy | 2 190 / 8 209 |
+| Odpowiedzi na pytania | 2 523 (≈31 / aktywnego usera) |
+| Completion rate (sesje nauki) | ~65% (153 / 234) |
 
 ### Lejek (userzy, narastająco)
 | Krok | Userzy | % wejść |
 |---|---|---|
-| Wszedł na stronę | 134 | 100% |
-| Zaczął sesję nauki | 91 | 68% |
-| Odpowiedział ≥1 pytanie | 81 | 60% |
-| Ukończył ≥1 sesję nauki | 57 | 43% |
+| Wszedł na stronę | 136 | 100% |
+| Zaczął sesję nauki | 92 | 68% |
+| Odpowiedział ≥1 pytanie | 82 | 60% |
+| Ukończył ≥1 sesję nauki | 57 | 42% |
 
 ---
 
@@ -85,23 +85,23 @@
 
 | Kanał | Wizyty | Userzy |
 |---|---|---|
-| Organic Social | 132 | 90 |
-| Direct | 91 | 37 |
+| Organic Social | 134 | 91 |
+| Direct | 92 | 37 |
 | Referral | 19 | 8 |
-| Unassigned | 13 | 9 |
+| Unassigned | 17 | 13 |
 
-**Top źródła:** (direct) (91), lm.facebook.com (73), facebook.com (35), m.facebook.com (14), (not set) (13), l.facebook.com (10).
-**Urządzenia:** mobile 115 / desktop 21 (**85% mobile**).
-**Top miasta:** Warszawa 37, Kraków 9, Łódź 8, Wrocław 8, Katowice 6.
+**Top źródła:** (direct) (92), lm.facebook.com (73), facebook.com (35), (not set) (17), m.facebook.com (14), l.facebook.com (12).
+**Urządzenia:** mobile 115 / desktop 23 (**83% mobile**).
+**Top miasta:** Warszawa 37, Kraków 9, Łódź 8, Wrocław 8, Poznań 7.
 
-ℹ️ Direct wyszedł na **najsilniejsze źródło wizyt (91, 37 userów)** — powroty z zakładki/PWA, spójne z wysoką retencją. Facebook nadal niemal cały ruch pozyskaniowy (lm/m/l/facebook.com ≈ 132 wizyty). Pojawił się pierwszy ślad **Organic Search (2 wizyty)** — SEO ledwo drgnęło. wykop.pl wypadł z top 6 — dywersyfikacja poza FB nadal nie ruszyła. Nowych userów mało (12 dziennie 06.07), wzrost wyhamował, ale baza wraca.
+ℹ️ Direct wyszedł na **najsilniejsze źródło wizyt (92, 37 userów)** — powroty z zakładki/PWA, spójne z wysoką retencją. Facebook nadal niemal cały ruch pozyskaniowy (lm/m/l/facebook.com ≈ 132 wizyty). Pojawił się pierwszy ślad **Organic Search (2 wizyty)** — SEO ledwo drgnęło. wykop.pl wypadł z top 6 — dywersyfikacja poza FB nadal nie ruszyła. Nowych userów mało (12 dziennie 06.07), wzrost wyhamował, ale baza wraca.
 
 ---
 
 ## 4. Skuteczność per typ pytania
 
 > Pokazuje, które typy zadań ludzie „mielą" (niska skuteczność = kandydat do poprawy treści/wyjaśnień). Dane z `question_answered` (`question_type` + `is_correct`).
-> ⚠️ Cały `question_answered` zwraca `(not set)` dla `question_type`/`is_correct`. **Root cause (ustalony 2026-06-08):** tag GA4 w GTM nie przekazywał parametrów z `dataLayer` — rejestracja wymiaru nie wystarcza, parametr musi dolecieć. **Naprawione w kodzie 2026-06-08:** zdarzenia idą teraz przez `gtag()` (parametry lecą automatycznie). Wymiary `is_correct` i `question_type` są **już zarejestrowane** (potwierdzone przez API metadata 2026-06-08), więc tabela wypełni się „do przodu" **po samym deployu** — bez zmian w GA4 Admin.
+> ✅ **Naprawione i potwierdzone 2026-06-08 (po deployu).** Root cause: tag GA4 w GTM nie przekazywał parametrów z `dataLayer` — naprawione przez wysyłkę zdarzeń przez `gtag()` (parametry lecą automatycznie; wymiary były zarejestrowane od początku). Po deployu **realne wartości już spływają** — pierwsze przetworzone próbki z 08.06: typ 5 → 3 poprawne, typ 1 i 6 → po 1 poprawnej (reszta dnia jeszcze w przetwarzaniu, `""`). Tabela poniżej wypełni się sensownie **przy następnej aktualizacji**, gdy uzbiera się pełna doba danych post-deploy (teraz za mało punktów na miarodajną skuteczność).
 
 | Typ | Odpowiedzi | Poprawne | Skuteczność |
 |---|---|---|---|
@@ -121,7 +121,7 @@
 | | Wartość |
 |---|---|
 | `donation_clicked` (kliknięcia) | **7** (7 userów) |
-| Klik→user CTR | 5,2% wszystkich userów |
+| Klik→user CTR | 5,1% wszystkich userów |
 | **Realne wpłaty (ręcznie)** | **0 zł / 100 zł** |
 | **Klik→wpłata** (ręcznie) | 0% (0 wpłat / 7 kliknięć) |
 
@@ -149,14 +149,14 @@
 **Lejek promptu instalacji:**
 | Krok | Userzy | Eventy |
 |---|---|---|
-| Prompt pokazany (`pwa_prompt_shown`) | 14 | 19 |
+| Prompt pokazany (`pwa_prompt_shown`) | 15 | 20 |
 | Prompt kliknięty (`pwa_prompt_clicked`) | 3 | 3 |
 | Instalacja zaakceptowana (`pwa_install_accepted`) | 1 | 1 |
 | Instalacja odrzucona (`pwa_install_dismissed`) | 1 | 1 |
-| Prompt odłożony / snooze (`pwa_prompt_snoozed`) | 18 | 18 |
+| Prompt odłożony / snooze (`pwa_prompt_snoozed`) | 19 | 19 |
 | Podpowiedź „otwórz w przeglądarce" (`pwa_open_in_browser_hint_shown`) | 11 | 16 |
 
-ℹ️ **~3 userów używa serwisu jako zainstalowanej appki** (3 instalacje = 3 userów uruchamiających standalone; 18 uruchomień → ~6 odpaleń/usera, czyli realnie wracają). To ~2,2% ze 134 userów — mało, ale to najbardziej „lojalna" grupa. Lejek promptu wąski: z 14 userów z promptem kliknęło 3, instalację zaakceptował 1, odrzucił 1 → pozostałe instalacje poszły „cicho" (natywne menu przeglądarki / `appinstalled`, nie nasz prompt). Aż **18 userów odłożyło prompt (snooze)** — prompt pokazuje się, ale konwertuje słabo.
+ℹ️ **~3 userów używa serwisu jako zainstalowanej appki** (3 instalacje = 3 userów uruchamiających standalone; 18 uruchomień → ~6 odpaleń/usera, czyli realnie wracają). To ~2,2% ze 136 userów — mało, ale to najbardziej „lojalna" grupa. Lejek promptu wąski: z 15 userów z promptem kliknęło 3, instalację zaakceptował 1, odrzucił 1 → pozostałe instalacje poszły „cicho" (natywne menu przeglądarki / `appinstalled`, nie nasz prompt). Aż **19 userów odłożyło prompt (snooze)** — prompt pokazuje się, ale konwertuje słabo.
 
 > `method` (`appinstalled` vs `standalone_detected`) niezarejestrowany jako custom dimension → bez rozbicia instalacji wg sposobu (zostaw, dopóki nie dorejestrujesz wymiaru).
 
