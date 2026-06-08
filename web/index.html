@@ -1191,6 +1191,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
+<!-- ==================== BUG REPORT MODAL ==================== -->
+<div id="bug-report-modal" class="pwa-modal" style="display:none">
+  <div class="pwa-modal-box">
+    <div id="bug-report-form">
+      <strong id="bug-report-title">Zgłoś błąd w pytaniu</strong>
+      <p>Opisz, co jest nie tak — trafi prosto do nas. Dziękujemy!</p>
+      <textarea id="bug-report-desc" class="bug-report-input" rows="4" placeholder="Co jest nie tak z tym pytaniem?"></textarea>
+      <input type="email" id="bug-report-email" class="bug-report-input" placeholder="Twój email (opcjonalnie, jeśli możemy dopytać)">
+      <div id="bug-report-error" class="bug-report-error" style="display:none"></div>
+      <div class="pwa-actions">
+        <button class="btn-sm" id="bug-report-send" onclick="submitBugReport()">Wyślij</button>
+        <button class="ghost btn-sm" onclick="closeBugReport()">Anuluj</button>
+      </div>
+    </div>
+    <div id="bug-report-success" style="display:none">
+      <strong>Dzięki! 🙌</strong>
+      <p>Zgłoszenie wysłane.</p>
+      <button class="btn-sm" onclick="closeBugReport()">Zamknij</button>
+    </div>
+  </div>
+</div>
+
 <!-- ==================== SESSION DETAIL ==================== -->
 <div id="screen-session-detail" class="screen">
   <div id="session-detail-content"></div>
@@ -1208,6 +1230,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .pwa-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
   .pwa-modal { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 16px; }
   .pwa-modal-box { background: #fff; border-radius: 12px; padding: 20px; max-width: 360px; width: 100%; }
+  .bug-report-input { width: 100%; box-sizing: border-box; margin-bottom: 10px; padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 8px; font-family: inherit; font-size: 0.9rem; }
+  .bug-report-error { color: #b91c1c; font-size: 0.85rem; margin-bottom: 10px; line-height: 1.4; }
+  .bug-report-error a { color: #b91c1c; font-weight: 600; }
   .pwa-modal-box strong { display: block; font-size: 1.05rem; margin-bottom: 10px; }
   .pwa-modal-box ol { margin: 0 0 12px; padding-left: 20px; line-height: 1.7; font-size: 0.95rem; }
   .pwa-modal-box p { font-size: 0.9rem; color: #4b5563; margin: 0 0 14px; }
@@ -2414,14 +2439,119 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     nextQuestion();
   }
 
+  var WEB3FORMS_KEY = 'ff0f13c3-3327-447b-a35a-85a1cea95385';
+  var bugReportCtx = null;
+
   function reportQuestion(id) {
-    gtag('event', 'error_reported', {
+    var q = state.session[state.currentIndex];
+    bugReportCtx = {
       question_id: id,
       question_index: state.currentIndex,
-      question_type: state.session[state.currentIndex] ? state.session[state.currentIndex].typeId : null
+      question_type: q ? q.typeId : null,
+      mode: state.mode,
+      difficulty: state.difficulty
+    };
+    gtag('event', 'error_report_opened', {
+      question_id: bugReportCtx.question_id,
+      question_index: bugReportCtx.question_index,
+      question_type: bugReportCtx.question_type
     });
-    var subject = encodeURIComponent('Zgłoszenie błędu – pytanie #' + id);
-    window.location.href = 'mailto:michal@kutra.pl?cc=ewelina.wegrocka%40gmail.com&subject=' + subject;
+    document.getElementById('bug-report-title').textContent = 'Zgłoś błąd w pytaniu #' + id;
+    document.getElementById('bug-report-desc').value = '';
+    document.getElementById('bug-report-email').value = '';
+    var err = document.getElementById('bug-report-error');
+    err.style.display = 'none';
+    err.textContent = '';
+    document.getElementById('bug-report-form').style.display = 'block';
+    document.getElementById('bug-report-success').style.display = 'none';
+    var sendBtn = document.getElementById('bug-report-send');
+    sendBtn.disabled = false;
+    sendBtn.textContent = 'Wyślij';
+    document.getElementById('bug-report-modal').style.display = 'flex';
+  }
+
+  function closeBugReport() {
+    document.getElementById('bug-report-modal').style.display = 'none';
+  }
+
+  function buildBugReportPayload(desc, email) {
+    var c = bugReportCtx || {};
+    return {
+      access_key: WEB3FORMS_KEY,
+      subject: 'Zgłoszenie błędu – pytanie #' + (c.question_id || '?'),
+      from_name: 'egzamin.kutra.pl – zgłoszenie błędu',
+      message: desc,
+      reporter_email: email || '(nie podano)',
+      question_id: c.question_id || '',
+      question_index: c.question_index,
+      question_type: c.question_type,
+      mode: c.mode,
+      difficulty: c.difficulty
+    };
+  }
+
+  function submitBugReport() {
+    var desc = document.getElementById('bug-report-desc').value.trim();
+    var email = document.getElementById('bug-report-email').value.trim();
+    var errEl = document.getElementById('bug-report-error');
+    if (!desc) {
+      errEl.textContent = 'Opisz proszę, co jest nie tak z pytaniem.';
+      errEl.style.display = 'block';
+      return;
+    }
+    errEl.style.display = 'none';
+    errEl.textContent = '';
+    var sendBtn = document.getElementById('bug-report-send');
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Wysyłanie…';
+    postBugReport(buildBugReportPayload(desc, email), 1, desc);
+  }
+
+  function postBugReport(payload, retriesLeft, desc) {
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (data && data.success) { onBugReportSuccess(payload); }
+      else { throw new Error('web3forms returned success:false'); }
+    })
+    .catch(function() {
+      if (retriesLeft > 0) { postBugReport(payload, retriesLeft - 1, desc); }
+      else { onBugReportFailure(payload, desc); }
+    });
+  }
+
+  function onBugReportSuccess(payload) {
+    gtag('event', 'error_reported', {
+      question_id: payload.question_id,
+      question_index: payload.question_index,
+      question_type: payload.question_type
+    });
+    document.getElementById('bug-report-form').style.display = 'none';
+    document.getElementById('bug-report-success').style.display = 'block';
+  }
+
+  function onBugReportFailure(payload, desc) {
+    gtag('event', 'error_report_failed', {
+      question_id: payload.question_id,
+      question_index: payload.question_index,
+      question_type: payload.question_type
+    });
+    var sendBtn = document.getElementById('bug-report-send');
+    sendBtn.disabled = false;
+    sendBtn.textContent = 'Wyślij';
+    var subject = encodeURIComponent('Zgłoszenie błędu – pytanie #' + (payload.question_id || '?'));
+    var body = encodeURIComponent(desc);
+    var href = 'mailto:michal@kutra.pl?cc=ewelina.wegrocka%40gmail.com&subject=' + subject + '&body=' + body;
+    var errEl = document.getElementById('bug-report-error');
+    // Bezpieczeństwo: href zbudowany z wartości przepuszczonych przez encodeURIComponent
+    // (subject/body powyżej) — to ono neutralizuje znaki łamiące atrybut/HTML.
+    // Nie wstawiaj tu surowych wartości użytkownika bez enkodowania.
+    errEl.innerHTML = 'Nie udało się wysłać. <a href="' + href + '">Wyślij mailem zamiast tego »</a>';
+    errEl.style.display = 'block';
   }
 
   /* ================================================================

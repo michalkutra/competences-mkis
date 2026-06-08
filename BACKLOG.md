@@ -10,7 +10,6 @@
 |---|---|---|---|
 | CSAT — zbieranie ocen (Tally, faza 1) | Bez tego nie wiesz CO MYŚLĄ — liczby bez kontekstu nic nie mówią. Zegar feedbacku rusza dopiero gdy embed jest live | ~30–45 min (spec+plan gotowe) | **MUST (następny)** |
 | Podziel się wynikiem | Jedyny mechanizm wyjścia poza ~140 osób z grup FB (do pozostałych ~800 z 940 zdających); tani i wiralny | ~1h | **SHOULD (następny)** |
-| Wzmocnienie zgłaszania błędów (Google Form, niezależnie od `mailto`) | Dziś 3 z 4 zgłoszeń nie dotarło — treść feedbacku przecieka; tani fix realnej dziury | mały | **SHOULD** (bump — przeciek feedbacku) |
 | Baner zgody na cookies/śledzenie (GDPR) | Strona live śledzi przez GA4 bez zgody (opt-out ukryty w debug) — realna ekspozycja prawna; tani fix | mały (spec gotowy) | **SHOULD** (zgodność prawna) |
 | Wall testimoniali (CSAT faza 2) | Social proof na Home/About — ale nie ma czego pokazać, póki nie napłyną oceny (zależność danych) | średni | COULD (po napływie ocen z fazy 1) |
 | Adaptacyjny dobór wg słabości (per-typ floor+flex; per-pytanie = tryb „Powtórka błędów") | Nauka na błędach przed egzaminem — realna wartość edukacyjna w oknie 4 tyg. | średni | COULD (post-launch) |
@@ -99,21 +98,6 @@ Wewnętrzne narzędzie do szybkiego obejrzenia dowolnego pytania po ID — np. �
 - Czy autocomplete ma pokazywać też typ/poziom obok ID (np. „h_t8_037 — typ 8, hard")?
 - Dostęp: „security by obscurity" (sam brak linku) wystarczy, czy ukryć za prostym hasłem/flagą?
 - Czy strona ma trafić do `robots.txt` (noindex), żeby nie wpadła do wyszukiwarek?
-
----
-
-## Wzmocnienie zgłaszania błędów — niezależnie od `mailto`
-
-**Status:** wykryte 2026-06-04. `reportQuestion()` ([web/index.html](web/index.html)) robi dwie rzeczy: wysyła `error_reported` do GA4 **oraz** otwiera `mailto:`. Problem: z 4 zgłoszeń tylko 1 dotarło mailem — pozostałe 3 to userzy, którzy kliknęli, ale nie wysłali maila. Treść zgłoszenia z tych 3 przepadła.
-
-⚠️ **Korekta 2026-06-08:** wcześniejsze założenie „`question_id` czytelny od 2026-06-04 (bo zarejestrowano custom dimensions)" było **błędne** — wszystkie `error_reported` (także 7 z 06-07, już przetworzone) miały `question_id = (not set)`. Root cause: tag GA4 w GTM nie przekazywał parametrów z `dataLayer` — rejestracja wymiaru jest konieczna, ale niewystarczająca. **Naprawione:** zdarzenia GA4 wysyłane teraz bezpośrednio przez `gtag()` z poziomu kodu (parametry lecą automatycznie), tagi GA4 w GTM wyłączone. Wszystkie wymiary (`question_id`, `question_index`, `question_type`, `is_correct`, `source`) są już zarejestrowane (potwierdzone API 2026-06-08), więc po samym deployu `question_id` zacznie być czytelny „do przodu". To jednak **nie ratuje opisowego kontekstu** od usera — poniższy pomysł nadal aktualny.
-
-**Pomysł:** dodać kanał zgłoszenia niezależny od klienta poczty, żeby treść nie zależała od „wyślij":
-- **Google Form** (prefill `question_id` w URL) — zero backendu, zbiera też opis słowny.
-- albo **Formspree / prosty endpoint** (`fetch` POST) — zgłoszenie leci bez opuszczania strony.
-- `mailto` można zostawić jako dodatkową opcję.
-
-**Opcjonalnie (na przyszłość):** włączyć **BigQuery export** GA4 (darmowy tier) — surowe parametry wszystkich zdarzeń bez rejestrowania każdego osobno i bez limitu „brak backfillu".
 
 ---
 

@@ -1,5 +1,19 @@
 # Backlog — Ukończone
 
+## Wzmocnienie zgłaszania błędów — modal + Web3Forms (niezależnie od `mailto`)
+
+> **Ukończono:** 2026-06-08 · [Spec](docs/superpowers/specs/2026-06-08-bug-report-modal-web3forms-design.md) · [Plan](docs/superpowers/plans/2026-06-08-bug-report-modal-web3forms.md)
+
+Zatrzymanie przecieku opisowego kontekstu zgłoszeń błędów (dotąd 3 z 4 nie docierało — `mailto` wymagał przejścia do klienta poczty + ręcznego „wyślij"). `reportQuestion()` w [web/index.html](web/index.html) zamiast `mailto` otwiera **modal na stronie**: pole opisu (wymagane) + email kontaktowy (opcjonalny). Wysyłka przez `fetch POST` do **Web3Forms** (darmowy tier, 250/mies., access key publiczny by design) — zamiast Google Form, bo mniej ręcznej roboty (zero budowania formularza). User nie opuszcza appki → najwyższa kończalność.
+
+**Lejek GA (3 eventy, wszystkie z `question_id`/`question_index`/`question_type`):** `error_report_opened` (klik „Zgłoś błąd") → `error_reported` (skuteczna wysyłka) → `error_report_failed` (podwójny fail). Różnica `opened − reported` = porzucenia/awarie. Zmiana semantyki: stare `error_reported` liczyło kliknięcia, nowe liczy udane wysyłki (odpowiednik starego licznika = `error_report_opened`).
+
+**Odporność:** 1× automatyczny retry; po podwójnym faila fallback `mailto` (na oba maile, z prefillowanym opisem usera — nic nie przepada). `from_name` = „egzamin.kutra.pl – zgłoszenie błędu". `innerHTML` fallbacku bezpieczny przez `encodeURIComponent` (komentarz w kodzie).
+
+**Odbiorcy (CC w Web3Forms jest płatne):** access key na michal@kutra.pl + reguła auto-forward na ewelina.wegrocka@gmail.com (forward wymaga akceptacji maila — traktowane jako done). Wdrożone subagent-driven (implementer + spec-review ✅ + code-quality-review ✅). Web3Forms na free planie odrzuca żądania server-side → weryfikacja wyłącznie w przeglądarce; **potestowane, działa** (2026-06-08).
+
+---
+
 ## Wykres skuteczności w czasie (statystyki)
 
 > **Ukończono:** 2026-06-05 · [Spec](docs/superpowers/specs/2026-06-05-accuracy-over-time-chart-design.md)
