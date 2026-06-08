@@ -101,7 +101,7 @@
 ## 4. Skuteczność per typ pytania
 
 > Pokazuje, które typy zadań ludzie „mielą" (niska skuteczność = kandydat do poprawy treści/wyjaśnień). Dane z `question_answered` (`question_type` + `is_correct`).
-> ✅ `is_correct` i `question_type` są zarejestrowane (scope Event), ale API zwraca dla nich wyłącznie `(not set)` na całym `question_answered` — historyczne dane sprzed rejestracji się nie backfillują, a bieżące jeszcze nie spłynęły. Tabela wypełni się danymi „do przodu" przy kolejnych aktualizacjach.
+> ⚠️ Cały `question_answered` zwraca `(not set)` dla `question_type`/`is_correct`. **Root cause (ustalony 2026-06-08):** tag GA4 w GTM nie przekazywał parametrów z `dataLayer` — rejestracja wymiaru nie wystarcza, parametr musi dolecieć. **Naprawione w kodzie 2026-06-08:** zdarzenia idą teraz przez `gtag()` (parametry lecą automatycznie). Wymiary `is_correct` i `question_type` są **już zarejestrowane** (potwierdzone przez API metadata 2026-06-08), więc tabela wypełni się „do przodu" **po samym deployu** — bez zmian w GA4 Admin.
 
 | Typ | Odpowiedzi | Poprawne | Skuteczność |
 |---|---|---|---|
@@ -128,7 +128,7 @@
 ⚠️ **GA widzi tylko kliknięcie, nie wpłatę** (Ko-fi/Revolut to osobne strony). Realne złotówki + współczynnik klik→wpłata uzupełniaj ręcznie z dashboardów: [Ko-fi](https://ko-fi.com/sprawdzianumiejetnosci) + Revolut.
 
 ### Kliknięcia wg lokalizacji przycisku (`source`)
-✅ `source` jest zarejestrowany (scope Event), ale wszystkie `donation_clicked` zwracają `(not set)` — kliknięcia sprzed rejestracji wymiaru. Breakdown wypełni się przy nowych kliknięciach (wartości: `about`, `revolut`, `widget`, `widget_revolut`).
+✅ `source` jest zarejestrowany (scope Event), ale wszystkie `donation_clicked` zwracają `(not set)` — **ta sama przyczyna co w sekcji 4**: tag GA4 w GTM nie przekazywał parametrów (naprawione 2026-06-08 — zdarzenia przez `gtag()`). Breakdown wypełni się przy nowych kliknięciach **po deployu** (wartości: `about`, `revolut`, `widget`, `widget_revolut`).
 
 | source | Kliknięcia |
 |---|---|

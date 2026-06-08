@@ -104,7 +104,9 @@ Wewnętrzne narzędzie do szybkiego obejrzenia dowolnego pytania po ID — np. �
 
 ## Wzmocnienie zgłaszania błędów — niezależnie od `mailto`
 
-**Status:** wykryte 2026-06-04. `reportQuestion()` ([web/index.html](web/index.html), ~L2137) robi dwie rzeczy: push `error_reported` do `dataLayer` (→ GA4) **oraz** otwiera `mailto:`. Problem: z 4 zgłoszeń tylko 1 dotarło mailem — pozostałe 3 to userzy, którzy kliknęli, ale nie wysłali maila (brak skonfigurowanego klienta / rezygnacja). Treść zgłoszenia z tych 3 przepadła. `question_id` w GA4 jest już czytelny od 2026-06-04 (custom dimensions zarejestrowane → BACKLOG_DONE.md), więc *które* pytanie poznamy — ale opisowy kontekst od usera ginie.
+**Status:** wykryte 2026-06-04. `reportQuestion()` ([web/index.html](web/index.html)) robi dwie rzeczy: wysyła `error_reported` do GA4 **oraz** otwiera `mailto:`. Problem: z 4 zgłoszeń tylko 1 dotarło mailem — pozostałe 3 to userzy, którzy kliknęli, ale nie wysłali maila. Treść zgłoszenia z tych 3 przepadła.
+
+⚠️ **Korekta 2026-06-08:** wcześniejsze założenie „`question_id` czytelny od 2026-06-04 (bo zarejestrowano custom dimensions)" było **błędne** — wszystkie `error_reported` (także 7 z 06-07, już przetworzone) miały `question_id = (not set)`. Root cause: tag GA4 w GTM nie przekazywał parametrów z `dataLayer` — rejestracja wymiaru jest konieczna, ale niewystarczająca. **Naprawione:** zdarzenia GA4 wysyłane teraz bezpośrednio przez `gtag()` z poziomu kodu (parametry lecą automatycznie), tagi GA4 w GTM wyłączone. Wszystkie wymiary (`question_id`, `question_index`, `question_type`, `is_correct`, `source`) są już zarejestrowane (potwierdzone API 2026-06-08), więc po samym deployu `question_id` zacznie być czytelny „do przodu". To jednak **nie ratuje opisowego kontekstu** od usera — poniższy pomysł nadal aktualny.
 
 **Pomysł:** dodać kanał zgłoszenia niezależny od klienta poczty, żeby treść nie zależała od „wyślij":
 - **Google Form** (prefill `question_id` w URL) — zero backendu, zbiera też opis słowny.

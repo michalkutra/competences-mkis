@@ -1047,22 +1047,36 @@
       #screen-about { padding: 40px 32px; }
     }
   </style>
-  <!-- Google Tag Manager (ładowany TYLKO na produkcji: egzamin.kutra.pl) -->
+  <!-- Analityka: GA4 przez gtag.js (KOD jest właścicielem zdarzeń i parametrów — wymiary lecą
+       automatycznie, bez konfiguracji per-parametr w GTM) + GTM jako kontener na inne tagi/triggery.
+       Ładowane TYLKO na produkcji (egzamin.kutra.pl) i tylko bez cookie ksap_no_track=1. -->
   <script>
+  // gtag dostępny ZAWSZE (stub kolejkujący) — dzięki temu track() i inline onclick nie potrzebują guardów.
+  // Poza produkcją zdarzenia trafiają tylko do dataLayer i nigdzie nie są wysyłane.
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
   var KSAP_NO_TRACK = /(?:^|;\s*)ksap_no_track=1(?:;|$)/.test(document.cookie);
   if (KSAP_NO_TRACK) {
-    if (window.console) console.info('[KSAP] Tracking WYŁĄCZONY (cookie ksap_no_track=1) — GTM/GA nie ładuje się.');
+    if (window.console) console.info('[KSAP] Tracking WYŁĄCZONY (cookie ksap_no_track=1) — GA4/GTM nie ładuje się.');
   } else if (location.hostname === 'egzamin.kutra.pl') {
+    // GA4 (gtag.js) — wszystkie zdarzenia i ich parametry wysyła kod tej strony.
+    var gaScript = document.createElement('script'); gaScript.async = true;
+    gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-5ZLD2PHTNE';
+    document.head.appendChild(gaScript);
+    gtag('js', new Date());
+    gtag('config', 'G-5ZLD2PHTNE');
+    // GTM — kontener na tagi/triggery nie-GA4. Tagi GA4 w kontenerze muszą być WYŁĄCZONE (pauza),
+    // inaczej te same zdarzenia policzą się podwójnie (raz z gtag wyżej, raz z taga GA4 w GTM).
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KZ9NMFFK');
   } else if (window.console) {
-    console.info('[KSAP] GTM wyłączony poza produkcją (hostname: ' + location.hostname + ')');
+    console.info('[KSAP] GA4/GTM wyłączone poza produkcją (hostname: ' + location.hostname + ')');
   }
   </script>
-  <!-- End Google Tag Manager -->
+  <!-- End analityka -->
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -1312,7 +1326,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       Aplikacja jest bezpłatna. Jeśli pomaga Ci w nauce — możesz postawić nam kawę. To naprawdę motywuje. ☕
     </p>
     <a href="https://ko-fi.com/sprawdzianumiejetnosci" target="_blank" rel="noopener"
-       onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'donation_clicked',source:'about'})"
+       onclick="gtag('event','donation_clicked',{source:'about'})"
        style="display:inline-block;background:#ff5f5f;color:#fff;font-weight:600;padding:12px 28px;border-radius:8px;text-decoration:none;font-size:1rem;">
       ☕ Postaw nam kawę na Ko-fi
     </a>
@@ -1320,7 +1334,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Revolut: na telefonie klikalny przycisk -->
     <div class="donate-mobile" style="margin-top:12px;">
       <a href="https://revolut.me/michald6r" target="_blank" rel="noopener"
-         onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'donation_clicked',source:'revolut'})"
+         onclick="gtag('event','donation_clicked',{source:'revolut'})"
          style="display:inline-block;background:#000;color:#fff;font-weight:600;padding:12px 28px;border-radius:8px;text-decoration:none;font-size:1rem;">
         💳 Wesprzyj przez Revolut
       </a>
@@ -1410,8 +1424,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var ROUTING_ENABLED = window.location.protocol !== 'file:';
 
   function showScreen(name) {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'screen_view', screen_name: name });
+    gtag('event', 'screen_view', { screen_name: name });
     _applyScreen(name);
     if (!ROUTING_ENABLED) return;
     var url = SCREEN_PATHS[name] || ('/' + name);
@@ -1527,10 +1540,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function getState() { try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { return {}; } }
     function setState(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
     function track(event, extra) {
-      window.dataLayer = window.dataLayer || [];
-      var o = { event: event, branch: branch };
-      if (extra) for (var k in extra) o[k] = extra[k];
-      window.dataLayer.push(o);
+      var params = { branch: branch };
+      if (extra) for (var k in extra) params[k] = extra[k];
+      gtag('event', event, params);
     }
     function isStandalone() {
       return (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) ||
@@ -1808,9 +1820,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     state.answers = [];
     state.sessionStartTime = Date.now();
 
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'session_started',
+    gtag('event', 'session_started', {
       session_mode: state.mode,
       session_difficulty: state.difficulty,
       timer_enabled: state.timerEnabled
@@ -2340,9 +2350,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       timeSpentSec: timeSpent
     });
 
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'question_answered',
+    gtag('event', 'question_answered', {
       question_type: q.typeId,
       is_correct: index === q.correct,
       question_index: state.currentIndex,
@@ -2396,9 +2404,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         correct: state.pendingAnswer === q.correct,
         timeSpentSec: timeSpent
       });
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: 'question_answered',
+      gtag('event', 'question_answered', {
         question_type: q.typeId,
         is_correct: state.pendingAnswer === q.correct,
         question_index: state.currentIndex,
@@ -2409,9 +2415,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   function reportQuestion(id) {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'error_reported',
+    gtag('event', 'error_reported', {
       question_id: id,
       question_index: state.currentIndex,
       question_type: state.session[state.currentIndex] ? state.session[state.currentIndex].typeId : null
@@ -2425,9 +2429,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   ================================================================ */
   function abortSession() {
     if (confirm('Przerwać sesję? Postęp zostanie utracony.')) {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: 'session_aborted',
+      gtag('event', 'session_aborted', {
         at_question_index: state.currentIndex,
         questions_total: state.session.length,
         session_mode: state.mode,
@@ -2574,9 +2576,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       timerEnabled: state.timerEnabled
     };
 
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'session_completed',
+    gtag('event', 'session_completed', {
       session_mode: state.mode,
       session_difficulty: state.difficulty,
       score: meta.score,
@@ -2985,8 +2985,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   function kofiWidget() {
     return '<div style="margin-top:32px;text-align:center;padding:20px 0;border-top:1px solid #e5e7eb;">'
       + '<p style="margin-bottom:12px;color:#374151;font-size:0.95rem;">Czy ta appka pomaga Ci w nauce? Jeśli tak</p>'
-      + '<a href="https://ko-fi.com/sprawdzianumiejetnosci" target="_blank" rel="noopener" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\'donation_clicked\',source:\'widget\'})" style="display:inline-block;background:#ff5f5f;color:#fff;font-weight:600;padding:10px 20px;border-radius:8px;text-decoration:none;font-size:15px;">☕ Postaw nam kawę</a>'
-      + '<div class="donate-mobile" style="margin-top:10px;"><a href="https://revolut.me/michald6r" target="_blank" rel="noopener" onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\'donation_clicked\',source:\'widget_revolut\'})" style="display:inline-block;background:#000;color:#fff;font-weight:600;padding:10px 20px;border-radius:8px;text-decoration:none;font-size:15px;">💳 Wesprzyj przez Revolut</a></div>'
+      + '<a href="https://ko-fi.com/sprawdzianumiejetnosci" target="_blank" rel="noopener" onclick="gtag(\'event\',\'donation_clicked\',{source:\'widget\'})" style="display:inline-block;background:#ff5f5f;color:#fff;font-weight:600;padding:10px 20px;border-radius:8px;text-decoration:none;font-size:15px;">☕ Postaw nam kawę</a>'
+      + '<div class="donate-mobile" style="margin-top:10px;"><a href="https://revolut.me/michald6r" target="_blank" rel="noopener" onclick="gtag(\'event\',\'donation_clicked\',{source:\'widget_revolut\'})" style="display:inline-block;background:#000;color:#fff;font-weight:600;padding:10px 20px;border-radius:8px;text-decoration:none;font-size:15px;">💳 Wesprzyj przez Revolut</a></div>'
       + '<div class="donate-desktop" style="margin-top:12px;"><p style="font-size:0.85rem;color:#6b7280;margin-bottom:6px;">…lub zeskanuj telefonem (Revolut):</p><img src="revolut-qr.svg" alt="Kod QR Revolut – revolut.me/michald6r" width="140" height="140" style="border:1px solid #e5e7eb;border-radius:8px;padding:8px;background:#fff;" /></div>'
       + '<p style="margin-top:10px;color:#374151;font-size:0.95rem;">Tworzymy ją w wolnym czasie.</p>'
       + '</div>';
