@@ -28,31 +28,31 @@
 
 > Daty w kolumnach — skanuj wiersz (metrykę) od lewej do prawej, żeby zobaczyć trend. Nowe dni dopisują kolejne kolumny po prawej.
 
-| Metryka | 2026-06-03 | 2026-06-04 | 2026-06-05 | 2026-06-06 | 2026-06-07 | 2026-06-08 |
-|---|---|---|---|---|---|---|
-| **— Wzrost —** | | | | | | |
-| Użytkownicy | 74 | 34 | 24 | 17 | 21 | 17 |
-| Nowi | 71 | 24 | 14 | 8 | 12 | 6 |
-| Powracający | 3 | 10 | 10 | 9 | 9 | 11 |
-| Powracający % | 4% | 29% | 42% | 53% | 43% | 65% |
-| **— Wizyty (ruch na stronie) —** | | | | | | |
-| Wizyty (sesje GA) | 99 | 43 | 31 | 25 | 27 | 35 |
-| Wizyty zaang. | 82 | 33 | 26 | 21 | 20 | 8 |
-| Engagement rate | 83% | 77% | 84% | 84% | 74% | 23% |
-| Śr. czas wizyty | 8,8 min | 8,4 min | 8,7 min | 8,5 min | 12,2 min | 43,5 min* |
-| **— Nauka (quizy) —** | | | | | | |
-| Odpowiedzi (`question_answered`) | 909 | 436 | 380 | 194 | 402 | 409 |
-| Sesje nauki — start (`session_started`) | 99 | 33 | 33 | 19 | 34 | 31 |
-| Sesje nauki — ukończone (`session_completed`) | 53 | 29 | 25 | 11 | 25 | 23 |
-| Completion rate | 54% | 88% | 76% | 58% | 74% | 74% |
-| Porzucone | 13 | 1 | 4 | 3 | 3 | 2 |
-| Abort rate | 13% | 3% | 12% | 16% | 9% | 6% |
-| **— Sygnały —** | | | | | | |
-| Donate kliki | 4 | 1 | 2 | 0 | 0 | 0 |
-| Zgłoszenia błędu | 4 | 0 | 0 | 0 | 7 | 2 |
-| Udostępnienia (`result_shared`) | — | — | — | — | — | — |
+| Metryka | 2026-06-03 | 2026-06-04 | 2026-06-05 | 2026-06-06 | 2026-06-07 | 2026-06-08 | 2026-06-09 ⚠️ |
+|---|---|---|---|---|---|---|---|
+| **— Wzrost —** | | | | | | | |
+| Użytkownicy | 74 | 34 | 24 | 17 | 21 | 17 | 11 |
+| Nowi | 71 | 24 | 14 | 8 | 12 | 6 | 5 |
+| Powracający | 3 | 10 | 10 | 9 | 9 | 11 | 6 |
+| Powracający % | 4% | 29% | 42% | 53% | 43% | 65% | 55% |
+| **— Wizyty (ruch na stronie) —** | | | | | | | |
+| Wizyty (sesje GA) | 99 | 43 | 31 | 25 | 27 | 35 | 11 |
+| Wizyty zaang. | 82 | 33 | 26 | 21 | 20 | 8 | 2 |
+| Engagement rate | 83% | 77% | 84% | 84% | 74% | 23% | 18% |
+| Śr. czas wizyty | 8,8 min | 8,4 min | 8,7 min | 8,5 min | 12,2 min | 43,5 min* | 21,3 min* |
+| **— Nauka (quizy) —** | | | | | | | |
+| Odpowiedzi (`question_answered`) | 909 | 436 | 380 | 194 | 402 | 409 | 65 |
+| Sesje nauki — start (`session_started`) | 99 | 33 | 33 | 19 | 34 | 31 | 10 |
+| Sesje nauki — ukończone (`session_completed`) | 53 | 29 | 25 | 11 | 25 | 23 | 4 |
+| Completion rate | 54% | 88% | 76% | 58% | 74% | 74% | 40% |
+| Porzucone | 13 | 1 | 4 | 3 | 3 | 2 | 4 |
+| Abort rate | 13% | 3% | 12% | 16% | 9% | 6% | 40% |
+| **— Sygnały —** | | | | | | | |
+| Donate kliki | 4 | 1 | 2 | 0 | 0 | 0 | 0 |
+| Zgłoszenia błędu | 4 | 0 | 0 | 0 | 7 | 2 | 0 |
+| Udostępnienia (`result_shared`) | — | — | — | — | — | — | — |
 
-\* Wszystkie 6 dni to pełne doby (09.06 dopiero ruszył — 1 user na moment aktualizacji, pominięty). Śr. czas 08.06 (43,5 min) mocno zawyżony przez pojedyncze bardzo długie sesje (niski eng. rate 23% + wysoki czas = kilka kart zostawionych otwartych); mediana realnie niższa. **07.06 odbił** (21 userów / 402 odpowiedzi — drugi najmocniejszy dzień po premierze) i przyniósł **7 zgłoszeń błędu**; 08.06 utrzymał poziom (17 userów / 409 odpowiedzi). Retencja wysoka (powracający 43–65% w ostatnich dniach).
+\* 09.06 niepełny dzień (11 userów na moment aktualizacji) — metryki niestabilne, ustabilizują się po pełnej dobie. Dni 03–08.06 to pełne doby. Śr. czas 08.06 (43,5 min) zawyżony przez pojedyncze bardzo długie sesje (niski eng. rate + wysoki czas = karty zostawione otwarte); mediana realnie niższa. **07.06 odbił** (21 userów / 402 odpowiedzi) i przyniósł **7 zgłoszeń błędu**; 08.06 utrzymał poziom (17 userów / 409 odpowiedzi). Retencja wysoka (powracający 43–65% w ostatnich dniach).
 
 **Definicje:** ⚠️ **„Wizyty (sesje GA)"** = `sessions` z GA = odwiedziny strony — to CO INNEGO niż **„Sesje nauki"** = `session_started` = rozpoczęte quizy. · *Powracający* = Użytkownicy − Nowi · *Engagement rate* = wizyty zaang. / wizyty · *Śr. czas wizyty* = `averageSessionDuration` · *Completion rate* = `session_completed`/`session_started` (quizy) · *Abort rate* = `session_aborted`/`session_started` (quizy) · *Donate kliki* = `donation_clicked` (klik ≠ wpłata) · *Udostępnienia* = `result_shared` (po wdrożeniu „Podziel się wynikiem").
 
@@ -62,20 +62,20 @@
 
 | KPI | Wartość |
 |---|---|
-| Użytkownicy łącznie | **136** (133 nowych) |
-| Wizyty (sesje GA) | **260** (190 zaang. → 73% eng. rate) |
+| Użytkownicy łącznie | **142** (138 nowych) |
+| Wizyty (sesje GA) | **270** (192 zaang. → 71% eng. rate) |
 | Śr. czas wizyty | **14,1 min** |
-| Odsłony / eventy | 2 317 / 8 626 |
-| Odpowiedzi na pytania | 2 739 (≈33 / aktywnego usera) |
-| Completion rate (sesje nauki) | ~67% (167 / 249) |
+| Odsłony / eventy | 2 401 / 8 804 |
+| Odpowiedzi na pytania | 2 795 (≈33 / aktywnego usera) |
+| Completion rate (sesje nauki) | ~66% (170 / 259) |
 
 ### Lejek (userzy, narastająco)
 | Krok | Userzy | % wejść |
 |---|---|---|
-| Wszedł na stronę | 136 | 100% |
-| Zaczął sesję nauki | 93 | 68% |
-| Odpowiedział ≥1 pytanie | 83 | 61% |
-| Ukończył ≥1 sesję nauki | 59 | 43% |
+| Wszedł na stronę | 142 | 100% |
+| Zaczął sesję nauki | 95 | 67% |
+| Odpowiedział ≥1 pytanie | 85 | 60% |
+| Ukończył ≥1 sesję nauki | 61 | 43% |
 
 ---
 
@@ -85,16 +85,16 @@
 
 | Kanał | Wizyty | Userzy |
 |---|---|---|
-| Organic Social | 141 | 92 |
-| Direct | 93 | 37 |
-| Unassigned | 25 | 17 |
+| Organic Social | 148 | 96 |
+| Direct | 95 | 38 |
+| Unassigned | 35 | 25 |
 | Referral | 20 | 8 |
 
-**Top źródła:** (direct) (93), lm.facebook.com (75), facebook.com (35), (not set) (25), m.facebook.com (16), l.facebook.com (15).
-**Urządzenia:** mobile 116 / desktop 23 (**83% mobile**).
-**Top miasta:** Warszawa 37, Kraków 9, Łódź 8, Wrocław 8, Poznań 7.
+**Top źródła:** (direct) (95), lm.facebook.com (79), facebook.com (38), (not set) (35), m.facebook.com (16), l.facebook.com (15).
+**Urządzenia:** mobile 121 / desktop 24 (**83% mobile**).
+**Top miasta:** Warszawa 38, Kraków 10, Poznań 9, Łódź 8, Wrocław 8.
 
-ℹ️ Direct trzyma pozycję **najsilniejszego źródła wizyt (93, 37 userów)** — powroty z zakładki/PWA, spójne z wysoką retencją. Facebook nadal niemal cały ruch pozyskaniowy (lm/m/l/facebook.com ≈ 132 wizyty). Pojawił się pierwszy ślad **Organic Search (2 wizyty)** — SEO ledwo drgnęło. wykop.pl wypadł z top 6 — dywersyfikacja poza FB nadal nie ruszyła. Nowych userów mało (12 dziennie 06.07), wzrost wyhamował, ale baza wraca.
+ℹ️ Direct trzyma pozycję **najsilniejszego źródła wizyt (95, 38 userów)** — powroty z zakładki/PWA, spójne z wysoką retencją. Facebook nadal niemal cały ruch pozyskaniowy (lm/m/l/facebook.com ≈ 132 wizyty). Pojawił się pierwszy ślad **Organic Search (2 wizyty)** — SEO ledwo drgnęło. wykop.pl wypadł z top 6 — dywersyfikacja poza FB nadal nie ruszyła. Nowych userów mało (12 dziennie 06.07), wzrost wyhamował, ale baza wraca.
 
 ---
 
@@ -125,7 +125,7 @@
 | | Wartość |
 |---|---|
 | `donation_clicked` (kliknięcia) | **7** (7 userów) |
-| Klik→user CTR | 5,1% wszystkich userów |
+| Klik→user CTR | 4,9% wszystkich userów |
 | **Realne wpłaty (ręcznie)** | **0 zł / 100 zł** |
 | **Klik→wpłata** (ręcznie) | 0% (0 wpłat / 7 kliknięć) |
 
@@ -148,7 +148,7 @@
 |---|---|---|
 | **Zainstalowane PWA** (`pwa_installed`) | **4** | 7 |
 | **Używa jako appka** — uruchomienia standalone (`pwa_launched_standalone`) | **3** | 18 |
-| Wejścia z in-app webview, np. FB (`pwa_inapp_detected`) | 11 | 11 |
+| Wejścia z in-app webview, np. FB (`pwa_inapp_detected`) | 13 | 13 |
 
 **Lejek promptu instalacji:**
 | Krok | Userzy | Eventy |
@@ -157,10 +157,10 @@
 | Prompt kliknięty (`pwa_prompt_clicked`) | 4 | 4 |
 | Instalacja zaakceptowana (`pwa_install_accepted`) | 2 | 2 |
 | Instalacja odrzucona (`pwa_install_dismissed`) | 1 | 1 |
-| Prompt odłożony / snooze (`pwa_prompt_snoozed`) | 21 | 21 |
-| Podpowiedź „otwórz w przeglądarce" (`pwa_open_in_browser_hint_shown`) | 11 | 16 |
+| Prompt odłożony / snooze (`pwa_prompt_snoozed`) | 23 | 23 |
+| Podpowiedź „otwórz w przeglądarce" (`pwa_open_in_browser_hint_shown`) | 13 | 18 |
 
-ℹ️ **4 userów zainstalowało, 3 używa jako appki** (18 uruchomień standalone → ~6 odpaleń/usera, realnie wracają; 1 świeżo zainstalowany jeszcze nie odpalił w trybie app). To ~2,2% ze 136 userów — mało, ale najbardziej „lojalna" grupa. Lejek promptu: z 18 userów z promptem kliknęło 4, zaakceptowało 2, odrzucił 1 → część instalacji poszła „cicho" (natywne menu przeglądarki / `appinstalled`, nie nasz prompt). Aż **21 userów odłożyło prompt (snooze)** — prompt pokazuje się, ale konwertuje słabo.
+ℹ️ **4 userów zainstalowało, 3 używa jako appki** (18 uruchomień standalone → ~6 odpaleń/usera, realnie wracają; 1 świeżo zainstalowany jeszcze nie odpalił w trybie app). To ~2,2% ze 136 userów — mało, ale najbardziej „lojalna" grupa. Lejek promptu: z 18 userów z promptem kliknęło 4, zaakceptowało 2, odrzucił 1 → część instalacji poszła „cicho" (natywne menu przeglądarki / `appinstalled`, nie nasz prompt). Aż **23 userów odłożyło prompt (snooze)** — prompt pokazuje się, ale konwertuje słabo.
 
 > `method` (`appinstalled` vs `standalone_detected`) niezarejestrowany jako custom dimension → bez rozbicia instalacji wg sposobu (zostaw, dopóki nie dorejestrujesz wymiaru).
 
