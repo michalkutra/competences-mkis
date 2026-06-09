@@ -8,10 +8,9 @@
 
 | Pozycja | Wpływ | Wysiłek | Priorytet |
 |---|---|---|---|
-| CSAT — zbieranie ocen (Tally, faza 1) | Bez tego nie wiesz CO MYŚLĄ — liczby bez kontekstu nic nie mówią. Zegar feedbacku rusza dopiero gdy embed jest live | ~30–45 min (spec+plan gotowe) | **MUST (następny)** |
-| Podziel się wynikiem | Jedyny mechanizm wyjścia poza ~140 osób z grup FB (do pozostałych ~800 z 940 zdających); tani i wiralny | ~1h | **SHOULD (następny)** |
+| Flow satysfakcji + polecenia (Web3Forms) | Scala feedback (👍/👎 + komentarz) z poleceniami strony — jedyna dźwignia wyjścia poza ~140 osób z grup FB (do pozostałych ~800 z 940 zdających); reużywa Web3Forms, bez backendu | ~3–4h (spec+plan gotowe) | **MUST (następny)** |
 | Baner zgody na cookies/śledzenie (GDPR) | Strona live śledzi przez GA4 bez zgody (opt-out ukryty w debug) — realna ekspozycja prawna; tani fix | mały (spec gotowy) | **SHOULD** (zgodność prawna) |
-| Wall testimoniali (CSAT faza 2) | Social proof na Home/About — ale nie ma czego pokazać, póki nie napłyną oceny (zależność danych) | średni | COULD (po napływie ocen z fazy 1) |
+| Wall testimoniali (faza 2) | Social proof na Home/About — ale nie ma czego pokazać, póki nie napłyną pozytywne opinie (zależność danych); źródło = maile z Web3Forms | średni | COULD (po napływie opinii z Web3Forms) |
 | Adaptacyjny dobór wg słabości (per-typ floor+flex; per-pytanie = tryb „Powtórka błędów") | Nauka na błędach przed egzaminem — realna wartość edukacyjna w oknie 4 tyg. | średni | COULD (post-launch) |
 | Podgląd pojedynczego pytania (QA) | Szybsza obsługa zgłoszeń błędów bez przeklikiwania sesji | mały | COULD (tooling) |
 | Przycisk powrotu do pytania | UX improvement — przeżyją bez tego | ~3h | SKIP |
@@ -40,44 +39,22 @@ Możliwość cofnięcia się do poprzedniego pytania i zmiany odpowiedzi.
 
 - Do ustalenia: tylko tryb Exam, czy oba tryby (Exam + Learning)?
 
-## System oceniania (CSAT) + wall testimoniali
+## Flow satysfakcji + polecenia (Web3Forms) — scala „CSAT faza 1" + „Podziel się wynikiem"
 
-**Status:** zaprojektowane + rozpisany plan (do wdrożenia) — [spec](docs/superpowers/specs/2026-06-03-csat-testimonials-design.md), [plan](docs/superpowers/plans/2026-06-03-csat-testimonials.md). Decyzje: **Tally** (CSAT 1–5 + komentarz + zgoda RODO), trigger na summary po 2. sesji + link „Oceń appkę" w menu, GA `feedback_submitted`. Wall testimoniali: ręczna kuracja → `web/testimonials.js`, render na About (lista) i Home (efekt sticky-reveal z `web/bg.png`). Licznik kaw świadomie poza zakresem (osobna iteracja — kawy na zerze szkodzą social proofowi).
+**Status:** zaprojektowane + rozpisany plan (do wdrożenia) — [spec](docs/superpowers/specs/2026-06-09-feedback-referral-flow-design.md), [plan](docs/superpowers/plans/2026-06-09-feedback-referral-flow.md).
 
-**Refinement 2026-06-05 — fazowanie (ważne):** inicjatywa rozdzielona na dwie fazy z powodu **zależności danych** — wall testimoniali nie ma czego renderować, póki nie napłyną realne oceny:
+**Decyzja (brainstorming 2026-06-09):** dwa dawne wiersze backlogu („CSAT — zbieranie ocen" i „Podziel się wynikiem") scalone w jedną inicjatywę, bo dzielą jeden moment (ekran wyników) i jedną infrastrukturę (Web3Forms już działa dla zgłoszeń błędów). **Tally wycofane** jako wybrane narzędzie — zastąpione tym flow. Główny cel = **wzrost przez polecenia**; drugorzędny = feedback jakościowy.
 
-- **Faza 1 (MUST, następny krok):** sam mechanizm zbierania — embed Tally + trigger na summary (po 2. sesji) + link w menu + GA `feedback_submitted`. To uruchamia „zegar feedbacku". Tania, szybka (~30–45 min), spec+plan gotowe.
-- **Faza 2 (COULD, po napływie ocen):** wall testimoniali (kuracja → `web/testimonials.js`, sticky-reveal na Home + lista na About). Wdrażać dopiero gdy w dashboardzie Tally są wartościowe, pozytywne komentarze do kuracji — inaczej budujemy pustą gablotę.
+**Mechanika (skrót — pełnia w specu):**
+- Widget inline 👍/👎 zawsze na summary, wysoko. Sygnał binarny zamiast oceny 1–5.
+- Klik 👍 → modal: polecenie strony (altruistyczne) + udostępnianie (`navigator.share` + fallback Facebook / e-mail / kopiuj link) + opcjonalne „Co było najbardziej pomocne?".
+- Klik 👎 → modal: „Czego zabrakło / co poprawić?" (zawsze otwiera, omija cooldown — negatywny sygnał cenny).
+- Ukończenie → 5-dniowy cooldown na nagabywanie o share po 👍. Proaktywny modal dla osób, które po ≥45 odpowiedziach nie kliknęły ani razu łapki.
+- Stan w localStorage (`ksap_feedback_*`), GA: `feedback_vote` / `feedback_modal_opened` / `feedback_share_clicked` / `feedback_submitted` / `feedback_modal_dismissed`. Wszystko przez Web3Forms, bez backendu.
 
-> **Uwaga:** wcześniejszy wiersz w tabeli „NPS/CSAT (Tally) ~30 min" to **ta sama** inicjatywa co ta sekcja (zlikwidowany duplikat). Estymata 30 min dotyczyła tylko fazy 1; pełen zakres (CSAT + wall) jest większy.
+> Donate'y świadomie poza zakresem (osobne CTA). Stary spec Tally (`docs/superpowers/specs/2026-06-03-csat-testimonials-design.md`) pozostaje w repo jako historyczny — nie realizujemy go.
 
-Lekki widget do zbierania opinii od użytkowników — bez własnego backendu.
-
-**Wymagania:**
-- darmowy plan wystarczy
-- łatwy embed (snippet JS lub iframe)
-- NPS (0–10) lub CSAT (gwiazdki / emoji)
-- opcjonalnie: zapis tekstowej opinii + możliwość wyświetlenia wybranych recenzji publicznie
-
-**Kandydaci (sprawdzone — wybrano Tally):**
-- **Tally.so** ⭐ — darmowy formularz CSAT, odpowiedzi w dashboardzie, pełna kontrola nad danymi i wyglądem walla (potrzebne do efektu na Home)
-- **Senja** — darmowy plan, publiczny wall gotowy do embed; odrzucone (trudny do zintegrowania z efektem sticky-reveal)
-- **Testimonial.to** — podobny profil; odrzucone z tego samego powodu
-- **Formbricks** — open-source, self-host lub cloud
-
-**Miejsce wyświetlania:** prompt CSAT na ekranie wyników po sesji (najwyższe zaangażowanie) + link w menu; wall testimoniali na About i Home
-
----
-
-## Podziel się wynikiem (share score)
-
-Na ekranie wyników dodać przycisk "Podziel się wynikiem", który kopiuje gotową wiadomość do schowka, np.:
-
-> "Zrobiłem 12/15 w trybie egzaminowym! 🎯 [URL]"
-
-- Użyć `navigator.clipboard.writeText()`
-- Fallback: `<textarea>` z zaznaczonym tekstem dla starszych przeglądarek
-- Jedyny naturalny mechanizm który może wynieść aplikację poza pierwotną grupę docelową
+**Faza 2 (COULD, osobno):** wall testimoniali — ręczna kuracja → `web/testimonials.js`, render na About (lista) i Home (sticky-reveal z `web/bg.png`). Źródłem są pozytywne opinie z **maili Web3Forms** (zamiast dashboardu Tally). Wdrażać dopiero gdy napłyną wartościowe komentarze — inaczej budujemy pustą gablotę.
 
 ---
 

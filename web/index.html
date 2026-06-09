@@ -1213,6 +1213,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
+<!-- ==================== FEEDBACK MODAL ==================== -->
+<div id="feedback-modal" class="pwa-modal" style="display:none">
+  <div class="pwa-modal-box">
+    <!-- Stage 1: łapki (tylko modal proaktywny) -->
+    <div id="feedback-stage-1" style="display:none">
+      <strong>Czy ta strona pomaga Ci w przygotowaniach?</strong>
+      <div class="pwa-actions">
+        <button class="btn-sm" onclick="feedbackFlow.vote('up','proactive')">👍 Tak</button>
+        <button class="ghost btn-sm" onclick="feedbackFlow.vote('down','proactive')">👎 Nie</button>
+      </div>
+      <hr class="feedback-divider">
+      <div class="pwa-actions">
+        <button class="ghost btn-sm" onclick="feedbackFlow.close('1')">Może później</button>
+      </div>
+    </div>
+    <!-- Stage 2A: polecenie + share (po 👍) -->
+    <div id="feedback-stage-2a" style="display:none">
+      <strong>Dzięki! 🙌</strong>
+      <p>Ten projekt jest całkowicie darmowy i rozwijany po godzinach. Jeśli pomógł Ci w nauce, będzie nam bardzo miło, jeśli polecisz go choć jednej osobie przygotowującej się do egzaminu.</p>
+      <div id="feedback-share-actions" class="pwa-actions"></div>
+      <textarea id="feedback-helpful" class="bug-report-input" rows="3" placeholder="Co było najbardziej pomocne? (opcjonalnie)"></textarea>
+      <div class="pwa-actions">
+        <button class="btn-sm" id="feedback-helpful-send" onclick="feedbackFlow.submitPositive()">Wyślij opinię</button>
+        <button class="ghost btn-sm" onclick="feedbackFlow.close('2A')">Zamknij</button>
+      </div>
+    </div>
+    <!-- Stage 2B: feedback (po 👎) -->
+    <div id="feedback-stage-2b" style="display:none">
+      <strong>Dzięki za szczerość</strong>
+      <p>Czego zabrakło lub co powinniśmy poprawić?</p>
+      <textarea id="feedback-improve" class="bug-report-input" rows="4" placeholder="Twoja opinia pomoże nam ulepszyć stronę"></textarea>
+      <div id="feedback-error" class="bug-report-error" style="display:none"></div>
+      <div class="pwa-actions">
+        <button class="btn-sm" id="feedback-improve-send" onclick="feedbackFlow.submitNegative()">Wyślij</button>
+        <button class="ghost btn-sm" onclick="feedbackFlow.close('2B')">Anuluj</button>
+      </div>
+    </div>
+    <!-- Stan końcowy -->
+    <div id="feedback-done" style="display:none">
+      <strong>Dziękujemy! 💛</strong>
+      <p>Twoja opinia do nas trafiła.</p>
+      <button class="btn-sm" onclick="feedbackFlow.close('done')">Zamknij</button>
+    </div>
+  </div>
+</div>
+
 <!-- ==================== SESSION DETAIL ==================== -->
 <div id="screen-session-detail" class="screen">
   <div id="session-detail-content"></div>
@@ -1236,11 +1282,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .pwa-modal-box strong { display: block; font-size: 1.05rem; margin-bottom: 10px; }
   .pwa-modal-box ol { margin: 0 0 12px; padding-left: 20px; line-height: 1.7; font-size: 0.95rem; }
   .pwa-modal-box p { font-size: 0.9rem; color: #4b5563; margin: 0 0 14px; }
+  .feedback-inline { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; justify-content: center; margin: 18px 0; }
+  .feedback-inline-q { font-size: 0.92rem; color: #374151; font-weight: 600; }
+  .feedback-inline-btns { display: flex; gap: 8px; }
+  #feedback-inline-ack { font-size: 0.95rem; color: #166534; font-weight: 600; }
+  /* Feedback modal — mobile-first: dotykalne, przyciski pełnej szerokości / pary po pół */
+  #feedback-modal textarea.bug-report-input { min-height: 96px; }
+  #feedback-modal #feedback-share-actions { margin-bottom: 14px; }
+  #feedback-modal #feedback-share-actions button { width: 100%; }
+  #feedback-modal .pwa-actions:not(#feedback-share-actions) button { flex: 1 1 0; }
+  .feedback-divider { border: none; border-top: 1px solid #e5e7eb; margin: 18px 0 12px; }
   /* Wsparcie: telefon = klikalny link, desktop = QR do zeskanowania */
   .donate-desktop { display: none; }
   @media (min-width: 768px) {
     .donate-mobile { display: none; }
     .donate-desktop { display: block; }
+    /* Feedback modal — desktop: szerszy, luźniejszy, przyciski naturalnej szerokości */
+    #feedback-modal .pwa-modal-box { max-width: 460px; padding: 24px; }
+    #feedback-modal textarea.bug-report-input { min-height: 72px; }
+    #feedback-modal #feedback-share-actions button { width: auto; }
+    #feedback-modal .pwa-actions:not(#feedback-share-actions) button { flex: 0 1 auto; }
   }
 </style>
 
@@ -1387,6 +1448,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="stats.js"></script>
 <script src="social-proof.js"></script>
 <script src="pwa-install.js"></script>
+<script src="feedback.js"></script>
 <script src="session-blueprint.js"></script>
 
 <!-- main script -->
@@ -2557,6 +2619,228 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   /* ================================================================
+     FEEDBACK + POLECENIA (Web3Forms)
+     Czysta logika: web/feedback.js. Tu tylko DOM/efekty/fetch/GA.
+  ================================================================ */
+  function feedbackInlineHtml() {
+    return '<div id="feedback-inline" class="feedback-inline">'
+      + '<span class="feedback-inline-q">Czy ta strona pomaga Ci w przygotowaniach?</span>'
+      + '<span id="feedback-inline-btns" class="feedback-inline-btns">'
+      + '<button class="ghost btn-sm" onclick="feedbackFlow.vote(\'up\',\'inline\')">👍 Tak</button>'
+      + '<button class="ghost btn-sm" onclick="feedbackFlow.vote(\'down\',\'inline\')">👎 Nie</button>'
+      + '</span>'
+      + '<span id="feedback-inline-ack" style="display:none">Dzięki! 🙌</span>'
+      + '</div>';
+  }
+
+  var feedbackFlow = (function () {
+    function fbTrack(name, params) {
+      if (typeof gtag === 'function') gtag('event', name, params || {});
+    }
+    function lsGetNum(key) {
+      var v = parseInt(localStorage.getItem(key), 10);
+      return isNaN(v) ? 0 : v;
+    }
+    function getVoted() { return localStorage.getItem('ksap_feedback_voted') === '1'; }
+    function setVoted() { try { localStorage.setItem('ksap_feedback_voted', '1'); } catch (e) {} }
+    function getCompletedAt() { return lsGetNum('ksap_feedback_completed_at'); }
+    function setCompletedAt(ms) { try { localStorage.setItem('ksap_feedback_completed_at', String(ms)); } catch (e) {} }
+    function getProactiveAt() { return lsGetNum('ksap_feedback_proactive_at'); }
+    function setProactiveAt(ms) { try { localStorage.setItem('ksap_feedback_proactive_at', String(ms)); } catch (e) {} }
+
+    function showStage(stage) {
+      document.getElementById('feedback-stage-1').style.display = (stage === '1') ? 'block' : 'none';
+      document.getElementById('feedback-stage-2a').style.display = (stage === '2A') ? 'block' : 'none';
+      document.getElementById('feedback-stage-2b').style.display = (stage === '2B') ? 'block' : 'none';
+      document.getElementById('feedback-done').style.display = (stage === 'done') ? 'block' : 'none';
+      if (stage === '2A') {
+        renderShareActions();
+        document.getElementById('feedback-helpful').value = '';
+        var pb = document.getElementById('feedback-helpful-send');
+        pb.disabled = false; pb.textContent = 'Wyślij opinię';
+      }
+      if (stage === '2B') {
+        document.getElementById('feedback-improve').value = '';
+        document.getElementById('feedback-error').style.display = 'none';
+        var nb = document.getElementById('feedback-improve-send');
+        nb.disabled = false; nb.textContent = 'Wyślij';
+      }
+    }
+
+    function openModal(stage) {
+      showStage(stage);
+      document.getElementById('feedback-modal').style.display = 'flex';
+    }
+
+    function showInlineAck() {
+      var btns = document.getElementById('feedback-inline-btns');
+      if (btns) btns.style.display = 'none';
+      var ack = document.getElementById('feedback-inline-ack');
+      if (ack) ack.style.display = '';
+    }
+
+    function onComplete() {
+      setCompletedAt(Date.now());
+      showStage('done');
+    }
+
+    function mkShareBtn(label, handler) {
+      var b = document.createElement('button');
+      b.className = 'ghost btn-sm';
+      b.textContent = label;
+      b.onclick = handler;
+      return b;
+    }
+
+    function shareNative() {
+      navigator.share({
+        title: FEEDBACK_SHARE_TITLE,
+        text: FEEDBACK_SHARE_TEXT,
+        url: FEEDBACK_SHARE_URL
+      }).then(function () {
+        fbTrack('feedback_share_clicked', { channel: 'native' });
+        onComplete();
+      }).catch(function () { /* user anulował — nie kończ */ });
+    }
+
+    function shareFacebook() {
+      window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(FEEDBACK_SHARE_URL),
+        '_blank', 'noopener,width=600,height=500');
+      fbTrack('feedback_share_clicked', { channel: 'facebook' });
+      onComplete();
+    }
+
+    function shareEmail() {
+      var subject = encodeURIComponent(FEEDBACK_SHARE_TITLE);
+      var body = encodeURIComponent(buildShareMessage());
+      window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
+      fbTrack('feedback_share_clicked', { channel: 'email' });
+      onComplete();
+    }
+
+    function shareCopy(btn) {
+      var msg = buildShareMessage();
+      function ok() {
+        if (btn) btn.textContent = 'Skopiowano ✓';
+        fbTrack('feedback_share_clicked', { channel: 'copy' });
+        onComplete();
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(msg).then(ok).catch(function () { copyFallback(msg, ok); });
+      } else {
+        copyFallback(msg, ok);
+      }
+    }
+
+    function copyFallback(text, done) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.focus(); ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+      done();
+    }
+
+    function renderShareActions() {
+      var box = document.getElementById('feedback-share-actions');
+      box.innerHTML = '';
+      if (navigator.share) {
+        box.appendChild(mkShareBtn('📤 Udostępnij', shareNative));
+      } else {
+        box.appendChild(mkShareBtn('Facebook', shareFacebook));
+        box.appendChild(mkShareBtn('E-mail', shareEmail));
+        box.appendChild(mkShareBtn('Kopiuj link', function () { shareCopy(this); }));
+      }
+    }
+
+    function buildFeedbackPayload(sentiment, message) {
+      return {
+        access_key: WEB3FORMS_KEY,
+        subject: (sentiment === 'positive' ? 'Opinia 👍 – ' : 'Opinia 👎 – ') + 'egzamin.kutra.pl',
+        from_name: 'egzamin.kutra.pl – opinia',
+        message: message || '(bez treści)',
+        sentiment: sentiment,
+        sessions: getSessions().length,
+        answers: getAnswerLog().length
+      };
+    }
+
+    function postFeedback(payload, retriesLeft, onDone) {
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (data && data.success) { onDone(true); }
+        else { throw new Error('web3forms returned success:false'); }
+      })
+      .catch(function () {
+        if (retriesLeft > 0) { postFeedback(payload, retriesLeft - 1, onDone); }
+        else { onDone(false); }  // cichy fail — bez mailto fallback (per spec)
+      });
+    }
+
+    return {
+      vote: function (value, source) {
+        setVoted();
+        fbTrack('feedback_vote', { value: value, source: source });
+        var decision = decideThumbClick({ value: value, completedAtMs: getCompletedAt(), nowMs: Date.now() });
+        if (decision.action === 'ack') { showInlineAck(); return; }
+        if (source === 'inline') {
+          fbTrack('feedback_modal_opened', { source: 'inline', sentiment: value === 'up' ? 'positive' : 'negative' });
+        }
+        openModal(decision.stage);
+      },
+      close: function (stage) {
+        if (stage && stage !== 'done') fbTrack('feedback_modal_dismissed', { stage: stage });
+        document.getElementById('feedback-modal').style.display = 'none';
+      },
+      maybeProactive: function () {
+        if (typeof shouldShowProactive !== 'function') return;
+        var ok = shouldShowProactive({
+          voted: getVoted(),
+          proactiveAtMs: getProactiveAt(),
+          answerCount: getAnswerLog().length,
+          nowMs: Date.now()
+        });
+        if (!ok) return;
+        setProactiveAt(Date.now());
+        fbTrack('feedback_modal_opened', { source: 'proactive', sentiment: 'none' });
+        // Modal proaktywny pyta o to samo co widget inline — ukryj redundantny widget.
+        var inline = document.getElementById('feedback-inline');
+        if (inline) inline.style.display = 'none';
+        openModal('1');
+      },
+      submitPositive: function () {
+        var helpful = document.getElementById('feedback-helpful').value.trim();
+        fbTrack('feedback_submitted', { sentiment: 'positive', has_text: !!helpful });
+        if (helpful) {
+          var btn = document.getElementById('feedback-helpful-send');
+          btn.disabled = true; btn.textContent = 'Wysyłanie…';
+          postFeedback(buildFeedbackPayload('positive', helpful), 1, function () { onComplete(); });
+        } else {
+          onComplete();
+        }
+      },
+      submitNegative: function () {
+        var improve = document.getElementById('feedback-improve').value.trim();
+        var errEl = document.getElementById('feedback-error');
+        if (!improve) { errEl.textContent = 'Napisz proszę kilka słów — to nam pomoże.'; errEl.style.display = 'block'; return; }
+        errEl.style.display = 'none';
+        fbTrack('feedback_submitted', { sentiment: 'negative', has_text: true });
+        var btn = document.getElementById('feedback-improve-send');
+        btn.disabled = true; btn.textContent = 'Wysyłanie…';
+        postFeedback(buildFeedbackPayload('negative', improve), 1, function () { onComplete(); });
+      }
+    };
+  })();
+
+  /* ================================================================
      ABORT SESSION
   ================================================================ */
   function abortSession() {
@@ -2617,6 +2901,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     let html = '<div class="score-badge ' + scoreClass + '">' + meta.score + '&nbsp;/&nbsp;' + meta.total + '</div>';
     html += '<p class="summary-time">Czas całkowity: <strong>' + timeStr + '</strong></p>';
+    html += feedbackInlineHtml();
 
     html += '<div class="data-table-wrap"><table class="summary-table">';
     html += '<thead><tr><th>#</th><th>Typ</th><th>Wynik</th><th>Czas (s)</th></tr></thead><tbody>';
@@ -2727,6 +3012,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('summary-content').innerHTML = html;
     showScreen('summary');
     if (window.pwaInstall) pwaInstall.onSummaryShown();
+    feedbackFlow.maybeProactive();
   }
 
   /* ================================================================
