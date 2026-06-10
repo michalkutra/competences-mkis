@@ -1,5 +1,21 @@
 # Backlog — Ukończone
 
+## Flow satysfakcji + polecenia (Web3Forms) — faza 1
+
+> **Ukończono:** 2026-06-10 · [Spec](docs/superpowers/specs/2026-06-09-feedback-referral-flow-design.md) · [Plan](docs/superpowers/plans/2026-06-09-feedback-referral-flow.md)
+
+Scala dwa dawne wiersze backlogu („CSAT — zbieranie ocen" + „Podziel się wynikiem") w jedną inicjatywę bez backendu, reużywając Web3Forms (działa już dla zgłoszeń błędów). **Tally wycofane** jako narzędzie. Główny cel = wzrost przez polecenia; drugorzędny = feedback jakościowy.
+
+**Mechanika:** widget inline 👍/👎 zawsze na ekranie wyników (wysoko). Klik 👍 → modal z poleceniem strony (altruistyczne copy) + udostępnianie `navigator.share` z fallbackiem Facebook / e-mail / kopiuj link + opcjonalne „Co było najbardziej pomocne?". Klik 👎 → modal „Czego zabrakło / co poprawić?" (zawsze otwiera, **omija cooldown** — negatywny sygnał cenny). Ukończenie → 5-dniowy cooldown na nagabywanie o share po 👍. Proaktywny modal (z separatorem nad „Może później") dla osób, które po **≥45 odpowiedziach** nie kliknęły ani razu łapki; gdy się pokazuje, redundantny widget inline jest chowany.
+
+**Architektura:** czysta logika (cooldown, próg proaktywny, treść share) w module [`web/feedback.js`](web/feedback.js) (UMD, wzór `web/pwa-install.js`), testowana node+vm w [`tools/test-feedback.js`](tools/test-feedback.js) (17 asercji). DOM/efekty/fetch/GA w `feedbackFlow` (IIFE) w [web/index.html](web/index.html) — stan w localStorage `ksap_feedback_voted|completed_at|proactive_at`, Web3Forms POST z 1× retry (subject „Opinia 👍/👎 – egzamin.kutra.pl", odróżnialny od zgłoszeń błędów; cichy fail bez `mailto`). Modal responsywny: szerszy na desktop (460px), na mobile przyciski pełnej szerokości / pary po pół, wyższe pole feedbacku.
+
+**GA:** `feedback_vote` / `feedback_modal_opened` / `feedback_share_clicked` / `feedback_submitted` / `feedback_modal_dismissed`.
+
+**Proces:** brainstorming → spec → plan → subagent-driven (6 tasków, każdy spec-review ✅ + code-quality-review ✅; jeden flagowany „stuck button" odrzucony jako false-positive po weryfikacji kodu) → finalny holistyczny review (naprawił brak dismissu w proaktywnym stage 1) → weryfikacja na żywo w headless Chrome (Playwright, realne kliknięcia DOM, Web3Forms zamockowany → **0 realnych maili**) na desktop + mobile. Donate'y świadomie poza zakresem (osobne CTA). **Faza 2 (wall testimoniali) zostaje w BACKLOG.md** — czeka na napływ pozytywnych opinii z maili Web3Forms.
+
+---
+
 ## Wzmocnienie zgłaszania błędów — modal + Web3Forms (niezależnie od `mailto`)
 
 > **Ukończono:** 2026-06-08 · [Spec](docs/superpowers/specs/2026-06-08-bug-report-modal-web3forms-design.md) · [Plan](docs/superpowers/plans/2026-06-08-bug-report-modal-web3forms.md)
