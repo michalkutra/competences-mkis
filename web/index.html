@@ -1627,7 +1627,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function getState() { try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { return {}; } }
     function setState(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
     function track(event, extra) {
-      var params = { branch: branch };
+      var params = { pwa_branch: branch };
       if (extra) for (var k in extra) params[k] = extra[k];
       gtag('event', event, params);
     }
@@ -1662,7 +1662,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     window.addEventListener('appinstalled', function () {
       var s = getState(); s.installed = true; setState(s);
       recompute();
-      track('pwa_installed', { method: 'appinstalled' });
+      track('pwa_installed', { pwa_method: 'appinstalled' });
       var card = document.getElementById('pwa-card'); if (card) card.style.display = 'none';
       hideInstallEntries();
       refreshPersistedNote();
@@ -1690,24 +1690,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (branch === 'open-in-browser') {
         main.style.display = 'none'; inapp.style.display = '';
         if (!st.inappTracked) { st.inappTracked = true; setState(st); track('pwa_inapp_detected'); }
-        track('pwa_open_in_browser_hint_shown', { placement: 'results' });
+        track('pwa_open_in_browser_hint_shown', { pwa_placement: 'results' });
       } else {
         inapp.style.display = 'none'; main.style.display = '';
-        track('pwa_prompt_shown', { placement: 'results' });
+        track('pwa_prompt_shown', { pwa_placement: 'results' });
       }
       card.style.display = '';
     }
 
     function clickInstall(placement) {
       recompute();
-      track('pwa_prompt_clicked', { placement: placement });
+      track('pwa_prompt_clicked', { pwa_placement: placement });
       if (branch === 'native' && deferredPrompt) {
         deferredPrompt.prompt();
         deferredPrompt.userChoice.then(function (choice) {
           if (choice && choice.outcome === 'accepted') {
-            track('pwa_install_accepted', { placement: placement });
+            track('pwa_install_accepted', { pwa_placement: placement });
           } else {
-            track('pwa_install_dismissed', { placement: placement });
+            track('pwa_install_dismissed', { pwa_placement: placement });
             // nie nękaj — odłóż kartę po odrzuceniu natywnego dialogu
             var sd = getState(); sd.dismissedUntil = computeDismissUntil(Date.now(), DISMISS_DAYS); setState(sd);
           }
@@ -1726,13 +1726,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var s = getState();
       s.dismissedUntil = computeDismissUntil(Date.now(), DISMISS_DAYS);
       setState(s);
-      track('pwa_prompt_snoozed', { placement: 'results' });
+      track('pwa_prompt_snoozed', { pwa_placement: 'results' });
       var card = document.getElementById('pwa-card'); if (card) card.style.display = 'none';
     }
 
     function openIosModal(placement) {
       var m = document.getElementById('pwa-ios-modal'); if (m) m.style.display = 'flex';
-      track('pwa_instructions_opened', { placement: placement || 'results' });
+      track('pwa_instructions_opened', { pwa_placement: placement || 'results' });
     }
     function closeIosModal() {
       var m = document.getElementById('pwa-ios-modal'); if (m) m.style.display = 'none';
@@ -1745,7 +1745,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (branch === 'standalone') {
         track('pwa_launched_standalone');
         var s = getState();
-        if (!s.installed) { s.installed = true; setState(s); track('pwa_installed', { method: 'standalone_detected' }); }
+        if (!s.installed) { s.installed = true; setState(s); track('pwa_installed', { pwa_method: 'standalone_detected' }); }
         hideInstallEntries();
         return;
       }
@@ -2698,7 +2698,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         text: FEEDBACK_SHARE_TEXT,
         url: FEEDBACK_SHARE_URL
       }).then(function () {
-        fbTrack('feedback_share_clicked', { channel: 'native' });
+        fbTrack('feedback_share_clicked', { feedback_channel: 'native' });
         onComplete();
       }).catch(function () { /* user anulował — nie kończ */ });
     }
@@ -2706,7 +2706,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function shareFacebook() {
       window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(FEEDBACK_SHARE_URL),
         '_blank', 'noopener,width=600,height=500');
-      fbTrack('feedback_share_clicked', { channel: 'facebook' });
+      fbTrack('feedback_share_clicked', { feedback_channel: 'facebook' });
       onComplete();
     }
 
@@ -2714,7 +2714,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var subject = encodeURIComponent(FEEDBACK_SHARE_TITLE);
       var body = encodeURIComponent(buildShareMessage());
       window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
-      fbTrack('feedback_share_clicked', { channel: 'email' });
+      fbTrack('feedback_share_clicked', { feedback_channel: 'email' });
       onComplete();
     }
 
@@ -2722,7 +2722,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var msg = buildShareMessage();
       function ok() {
         if (btn) btn.textContent = 'Skopiowano ✓';
-        fbTrack('feedback_share_clicked', { channel: 'copy' });
+        fbTrack('feedback_share_clicked', { feedback_channel: 'copy' });
         onComplete();
       }
       if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -2788,16 +2788,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return {
       vote: function (value, source) {
         setVoted();
-        fbTrack('feedback_vote', { value: value, source: source });
+        fbTrack('feedback_vote', { feedback_vote_value: value, feedback_source: source });
         var decision = decideThumbClick({ value: value, completedAtMs: getCompletedAt(), nowMs: Date.now() });
         if (decision.action === 'ack') { showInlineAck(); return; }
         if (source === 'inline') {
-          fbTrack('feedback_modal_opened', { source: 'inline', sentiment: value === 'up' ? 'positive' : 'negative' });
+          fbTrack('feedback_modal_opened', { feedback_source: 'inline', feedback_sentiment: value === 'up' ? 'positive' : 'negative' });
         }
         openModal(decision.stage);
       },
       close: function (stage) {
-        if (stage && stage !== 'done') fbTrack('feedback_modal_dismissed', { stage: stage });
+        if (stage && stage !== 'done') fbTrack('feedback_modal_dismissed', { feedback_stage: stage });
         document.getElementById('feedback-modal').style.display = 'none';
       },
       maybeProactive: function () {
@@ -2810,7 +2810,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         });
         if (!ok) return;
         setProactiveAt(Date.now());
-        fbTrack('feedback_modal_opened', { source: 'proactive', sentiment: 'none' });
+        fbTrack('feedback_modal_opened', { feedback_source: 'proactive', feedback_sentiment: 'none' });
         // Modal proaktywny pyta o to samo co widget inline — ukryj redundantny widget.
         var inline = document.getElementById('feedback-inline');
         if (inline) inline.style.display = 'none';
@@ -2818,7 +2818,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       },
       submitPositive: function () {
         var helpful = document.getElementById('feedback-helpful').value.trim();
-        fbTrack('feedback_submitted', { sentiment: 'positive', has_text: !!helpful });
+        fbTrack('feedback_submitted', { feedback_sentiment: 'positive', feedback_has_text: !!helpful });
         if (helpful) {
           var btn = document.getElementById('feedback-helpful-send');
           btn.disabled = true; btn.textContent = 'Wysyłanie…';
@@ -2832,7 +2832,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var errEl = document.getElementById('feedback-error');
         if (!improve) { errEl.textContent = 'Napisz proszę kilka słów — to nam pomoże.'; errEl.style.display = 'block'; return; }
         errEl.style.display = 'none';
-        fbTrack('feedback_submitted', { sentiment: 'negative', has_text: true });
+        fbTrack('feedback_submitted', { feedback_sentiment: 'negative', feedback_has_text: true });
         var btn = document.getElementById('feedback-improve-send');
         btn.disabled = true; btn.textContent = 'Wysyłanie…';
         postFeedback(buildFeedbackPayload('negative', improve), 1, function () { onComplete(); });
