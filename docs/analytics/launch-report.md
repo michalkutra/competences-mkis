@@ -31,17 +31,17 @@
 | Metryka | 2026-06-03 | 2026-06-04 | 2026-06-05 | 2026-06-06 | 2026-06-07 | 2026-06-08 | 2026-06-09 | 2026-06-10 ⚠️ |
 |---|---|---|---|---|---|---|---|---|
 | **— Wzrost —** | | | | | | | | |
-| Użytkownicy | 74 | 34 | 24 | 17 | 21 | 17 | 29 | 17 |
+| Użytkownicy | 74 | 34 | 24 | 17 | 21 | 17 | 29 | 19 |
 | Nowi | 71 | 24 | 14 | 8 | 12 | 4 | 16 | 11 |
-| Powracający | 3 | 10 | 10 | 9 | 9 | 13 | 13 | 6 |
-| Powracający % | 4% | 29% | 42% | 53% | 43% | 76% | 45% | 35% |
+| Powracający | 3 | 10 | 10 | 9 | 9 | 13 | 13 | 8 |
+| Powracający % | 4% | 29% | 42% | 53% | 43% | 76% | 45% | 42% |
 | **— Wizyty (ruch na stronie) —** | | | | | | | | |
-| Wizyty (sesje GA) | 99 | 43 | 31 | 25 | 27 | 35 | 41 | 22 |
+| Wizyty (sesje GA) | 99 | 43 | 31 | 25 | 27 | 35 | 41 | 24 |
 | Wizyty zaang. | 82 | 33 | 26 | 21 | 20 | 31 | 39 | 3† |
-| Engagement rate | 83% | 77% | 84% | 84% | 74% | 89% | 95% | 14%† |
-| Śr. czas wizyty | 8,8 min | 8,4 min | 8,7 min | 8,5 min | 12,2 min | 13,4 min | 11,0 min | 102 min* |
+| Engagement rate | 83% | 77% | 84% | 84% | 74% | 89% | 95% | 13%† |
+| Śr. czas wizyty | 8,8 min | 8,4 min | 8,7 min | 8,5 min | 12,2 min | 13,4 min | 11,0 min | 96 min* |
 | **— Nauka (quizy) —** | | | | | | | | |
-| Odpowiedzi (`question_answered`) | 909 | 436 | 380 | 194 | 402 | 409 | 509 | 271 |
+| Odpowiedzi (`question_answered`) | 909 | 436 | 380 | 194 | 402 | 409 | 509 | 275 |
 | Sesje nauki — start (`session_started`) | 99 | 33 | 33 | 19 | 34 | 31 | 45 | 23 |
 | Sesje nauki — ukończone (`session_completed`) | 53 | 29 | 25 | 11 | 25 | 23 | 32 | 16 |
 | Completion rate | 54% | 88% | 76% | 58% | 74% | 74% | 71% | 70% |
@@ -64,20 +64,20 @@
 
 | KPI | Wartość |
 |---|---|
-| Użytkownicy łącznie | **162** (160 nowych) |
-| Wizyty (sesje GA) | **320** (252 zaang. → 79% eng. rate) |
-| Śr. czas wizyty | **16,3 min** |
-| Odsłony / eventy | 2 985 / 10 562 |
-| Odpowiedzi na pytania | 3 510 (≈35 / aktywnego usera) |
+| Użytkownicy łącznie | **163** (160 nowych) |
+| Wizyty (sesje GA) | **322** (252 zaang. → 78% eng. rate) |
+| Śr. czas wizyty | **16,4 min** |
+| Odsłony / eventy | 2 990 / 10 571 |
+| Odpowiedzi na pytania | 3 514 (≈35 / aktywnego usera) |
 | Completion rate (sesje nauki) | ~67% (214 / 317) |
 
 ### Lejek (userzy, narastająco)
 | Krok | Userzy | % wejść |
 |---|---|---|
-| Wszedł na stronę | 162 | 100% |
-| Zaczął sesję nauki | 111 | 69% |
+| Wszedł na stronę | 163 | 100% |
+| Zaczął sesję nauki | 111 | 68% |
 | Odpowiedział ≥1 pytanie | 101 | 62% |
-| Ukończył ≥1 sesję nauki | 74 | 46% |
+| Ukończył ≥1 sesję nauki | 74 | 45% |
 
 ---
 
