@@ -50,16 +50,35 @@
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body { font-family: sans-serif; font-size: 16px; background: #f0f2f5; color: #1a1a1a;
            padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); }
+    /* MOBILE: grafika przyklejona do dołu, PRZED treścią — treść scrolluje się pod nią.
+       Solidne tło chowa treść za stopką, a ::before daje 80px fade w kolorze tła
+       tuż nad grafiką → efekt płynnego rozpływania się treści wjeżdżającej pod spód. */
     #bg-illustration {
       position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
+      pointer-events: none;
+      z-index: 5;                 /* przed treścią (auto), pod chrome: menu z-index 100+ */
+      background: #f0f2f5;        /* == body background */
+      transition: opacity 0.2s;
+    }
+    #bg-illustration img {
+      display: block;
+      width: 100%;
       height: auto;
       mix-blend-mode: multiply;
+    }
+    #bg-illustration::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -80px;
+      height: 80px;
+      /* do rgba(...,0) zamiast `transparent`, by uniknąć szarego przejścia przez czerń */
+      background: linear-gradient(to top, #f0f2f5, rgba(240, 242, 245, 0));
       pointer-events: none;
-      z-index: -1;
-      transition: opacity 0.2s;
     }
     body.hide-bg #bg-illustration { opacity: 0; }
     body.on-question .q-header { top: 0; }
@@ -113,7 +132,10 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      padding-top: 10vh;
+      padding-top: 5vh;
+      /* miejsce na sticky-grafikę u dołu: wysokość obrazka (≈48vw przy proporcji 2.07)
+         + maska + zapas; małe ekrany dostają dłuższą maskę niżej; desktop resetuje do 0 */
+      padding-bottom: calc(48vw + 96px);
       min-height: calc(100vh - 48px);
       text-align: center;
       gap: 4px;
@@ -126,6 +148,63 @@
     #screen-home button {
       max-width: 300px;
     }
+    .part-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; max-width: 640px; margin-bottom: 20px; }
+    @media (max-width: 767px) {
+      /* MOBILE: poziomy karuzel ze swipe; skrawek drugiej karty widoczny = sygnał, że da się przesuwać */
+      .part-grid {
+        display: flex;
+        grid-template-columns: none;
+        gap: 12px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;                 /* Firefox */
+        padding-bottom: 6px;                   /* miejsce na cień karty */
+        scroll-padding-left: 0;
+      }
+      .part-grid::-webkit-scrollbar { display: none; }   /* WebKit */
+      .part-card {
+        flex: 0 0 84%;                         /* ~16% następnej karty wystaje */
+        scroll-snap-align: start;
+      }
+    }
+    @media (max-width: 767px) {
+      /* Część II: 4 poziomy mieszczą się w jednym rzędzie i wypełniają szerokość (flex:1,
+         jak wcześniej) — wystarczy zwęzić paddingi boczne + lekko zmniejszyć czcionkę,
+         żeby „Trudne" też było widać. overflow-x:auto to bezpiecznik na bardzo wąskie
+         ekrany (przewinie zamiast rozpychać stronę). Tryb (#wiedza-mode-toggle) bez zmian. */
+      #wiedza-level-toggle {
+        gap: 6px;
+        overflow-x: auto;
+        scrollbar-width: none;                 /* Firefox */
+      }
+      #wiedza-level-toggle::-webkit-scrollbar { display: none; }   /* WebKit */
+      #wiedza-level-toggle .toggle-btn {
+        flex: 1;
+        padding-left: 8px;
+        padding-right: 8px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+      }
+      /* grafika+maska są fixed na dole też na setupie → zapas, by „Rozpocznij" dało się
+         wyscrollować spod obrazka (jak na home); desktop nie ma maski, więc bez zmian */
+      #screen-setup, #screen-setup-wiedza { padding-bottom: calc(48vw + 96px); }
+    }
+    /* węższy media query PO szerszym, by na ≤540 wygrał większy zapas (maska 150px) */
+    @media (max-width: 540px) {
+      #bg-illustration::before { top: -150px; height: 150px; }
+      #screen-home, #screen-setup, #screen-setup-wiedza { padding-bottom: calc(48vw + 166px); }
+    }
+    .part-card { background: #fff; border: 1.5px solid #e5e7eb; border-radius: 14px; padding: 22px 20px; text-align: left; cursor: pointer; transition: border-color .15s, box-shadow .15s, transform .1s; }
+    .part-card:hover, .part-card:focus { border-color: #2563eb; box-shadow: 0 6px 22px rgba(37,99,235,.12); transform: translateY(-2px); outline: none; }
+    .part-eyebrow { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #2563eb; background: #eff6ff; border-radius: 4px; padding: 3px 8px; display: inline-block; margin-bottom: 12px; }
+    .part-card h3 { font-size: 1.2rem; margin-bottom: 6px; }
+    .part-card p { color: #555; font-size: 0.9rem; line-height: 1.45; margin-bottom: 14px; }
+    .part-meta { display: flex; gap: 14px; font-size: 0.8rem; color: #6b7280; flex-wrap: wrap; }
+    .part-meta span::before { content: "•"; margin-right: 6px; color: #cbd5e1; }
+    .part-meta span:first-child::before { content: ""; margin: 0; }
+    .home-links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 8px; }
+    #screen-home .home-links button { width: auto; max-width: none; }
     #exam-countdown {
       color: #555;
       font-size: 1rem;
@@ -176,6 +255,11 @@
       color: white;
       border-color: #2563eb;
     }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+    .chip { padding: 7px 13px; border-radius: 999px; background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; font-size: 0.85rem; cursor: pointer; user-select: none; }
+    .chip.active { background: #e0edff; color: #2563eb; border-color: #bfdbfe; }
+    .question-stem { font-size: 1.05rem; line-height: 1.5; font-weight: 500; }
+    .source-box { font-size: 0.8rem; color: #6b7280; margin-top: 6px; font-style: italic; }
     /* compact pill filter (stats trend chart) — subtle, not a CTA */
     .trend-toggle {
       display: inline-flex;
@@ -783,6 +867,9 @@
       padding: 2px 6px;
       font-weight: 600;
     }
+    .badge-part { font-size: 0.72rem; font-weight: 700; border-radius: 4px; padding: 2px 7px; }
+    .badge-part-i { background: #eef2ff; color: #3730a3; }
+    .badge-part-ii { background: #ecfdf5; color: #047857; }
 
     /* ===== ERROR BANNER ===== */
     #error-banner {
@@ -810,12 +897,16 @@
       #q-body { padding: 24px; }
       #btn-next { margin: 0 24px 24px; }
       .figure-grid { max-width: 320px; }
+      /* DESKTOP: bez zmian względem oryginału — grafika za treścią, wyśrodkowana, bez maski */
       #bg-illustration {
-        max-height: 50vh;
         width: auto;
         left: 50%;
         transform: translateX(-50%);
+        z-index: -1;
+        background: transparent;
       }
+      #bg-illustration img { max-height: 50vh; width: auto; }
+      #bg-illustration::before { display: none; }
       #screen-home {
         justify-content: flex-start;
         padding-top: 10vh;
@@ -1095,7 +1186,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="account-menu" class="account-menu" hidden>
       <button class="menu-item menu-item-primary" onclick="goSetup(); closeAccountMenu();">Nowa sesja</button>
       <div class="menu-divider"></div>
-      <button class="menu-item" onclick="showScreen('stats'); loadStats(); closeAccountMenu();">Statystyki</button>
+      <button class="menu-item" onclick="showScreen('stats'); setStatsPart('all'); closeAccountMenu();">Statystyki</button>
       <button class="menu-item" onclick="showScreen('history'); loadHistory(); closeAccountMenu();">Historia sesji</button>
       <div class="menu-divider"></div>
       <button class="menu-item" onclick="showScreen('about'); closeAccountMenu();">O aplikacji</button>
@@ -1104,16 +1195,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </header>
 
-<img id="bg-illustration" src="bg.png" alt="">
+<div id="bg-illustration"><img src="bg.png" alt=""></div>
 
 <div id="error-banner">Błąd: nie znaleziono pliku questions-unified.js lub dane są nieprawidłowe.</div>
 
 <!-- ==================== HOME ==================== -->
 <div id="screen-home" class="screen">
-  <h1>Sprawdzian Umiejętności</h1>
-  <p class="subtitle">Ćwiczenia przed egzaminem na urzędnika mianowanego — Sprawdzian Umiejętności KSAP<span id="question-count"></span></p>
-  <button id="btn-new-session" onclick="goSetup()">Nowa sesja</button>
-  <button id="btn-history" class="ghost" onclick="showScreen('history'); loadHistory();">Historia sesji</button>
+  <h1>Egzamin na urzędnika mianowanego</h1>
+  <p class="subtitle">Bezpłatne ćwiczenia przed postępowaniem kwalifikacyjnym KSAP — wybierz część egzaminu</p>
+  <div class="part-grid">
+    <div class="part-card" onclick="goSetup()" role="button" tabindex="0">
+      <span class="part-eyebrow">Część I</span>
+      <h3>Sprawdzian umiejętności</h3>
+      <p>Test predyspozycji: analogie, wnioskowanie logiczne, analiza danych i figur.</p>
+      <div class="part-meta"><span>8 typów zadań</span><span id="count-part-1"></span></div>
+    </div>
+    <div class="part-card" onclick="goSetupWiedza()" role="button" tabindex="0">
+      <span class="part-eyebrow">Część II</span>
+      <h3>Sprawdzian wiedzy</h3>
+      <p>Wiedza z 6 dziedzin: prawo, sprawy społ.-ekonom., administracja, finanse, polityka zagr., organizacja.</p>
+      <div class="part-meta"><span>6 dziedzin</span><span id="count-part-2"></span></div>
+    </div>
+  </div>
+  <div class="home-links">
+    <button id="btn-history" class="ghost btn-sm" onclick="showScreen('history'); loadHistory();">Historia sesji</button>
+    <button class="ghost btn-sm" onclick="showScreen('stats'); setStatsPart('all');">Statystyki</button>
+  </div>
   <p id="social-proof"></p>
   <p id="exam-countdown"></p>
 </div>
@@ -1133,6 +1240,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
   <label class="checkbox-label">
     <input type="checkbox" id="timer-checkbox" onchange="onTimerChange(this.checked)">
+    Licznik czasu (60 s/pytanie)
+  </label>
+  <button onclick="startSession()">Rozpocznij &rarr;</button>
+  <button class="secondary" onclick="showScreen('home')">Powrót</button>
+</div>
+
+<!-- ==================== SETUP CZĘŚĆ II (WIEDZA) ==================== -->
+<div id="screen-setup-wiedza" class="screen">
+  <h2>Część II — sprawdzian wiedzy</h2>
+  <p class="setup-label">Tryb</p>
+  <div class="toggle-group" id="wiedza-mode-toggle">
+    <button class="toggle-btn active" data-mode="learning" onclick="setWiedzaMode('learning')">Nauka</button>
+    <button class="toggle-btn" data-mode="exam" onclick="setWiedzaMode('exam')">Egzamin</button>
+  </div>
+  <p class="setup-label">Dziedziny <span style="text-transform:none;font-weight:400;color:#9ca3af">(puste = wszystkie)</span></p>
+  <div class="chips" id="wiedza-domains"></div>
+  <p class="setup-label">Poziom</p>
+  <div class="toggle-group" id="wiedza-level-toggle">
+    <button class="toggle-btn active" data-level="all" onclick="setWiedzaLevel('all')">Wszystkie</button>
+    <button class="toggle-btn" data-level="easy" onclick="setWiedzaLevel('easy')">Łatwe</button>
+    <button class="toggle-btn" data-level="medium" onclick="setWiedzaLevel('medium')">Średnie</button>
+    <button class="toggle-btn" data-level="hard" onclick="setWiedzaLevel('hard')">Trudne</button>
+  </div>
+  <label class="checkbox-label">
+    <input type="checkbox" id="wiedza-timer-checkbox" onchange="onTimerChange(this.checked)">
     Licznik czasu (60 s/pytanie)
   </label>
   <button onclick="startSession()">Rozpocznij &rarr;</button>
@@ -1369,7 +1501,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="about-storage-warning">
     <strong>⚠️ Twój postęp jest zapisywany lokalnie</strong>
-    Historia sesji i statystyki są przechowywane wyłącznie w pamięci tej przeglądarki na tym urządzeniu. Wyczyszczenie danych przeglądarki lub otwarcie aplikacji na innym urządzeniu — i dane znikają. Nie ma kont, nie ma chmury. Dlatego pamiętaj o kopii zapasowej — w zakładce <a href="#" onclick="showScreen('history'); loadHistory(); return false;" style="color:#2563eb;text-decoration:underline;cursor:pointer;">Historia</a> lub <a href="#" onclick="showScreen('stats'); loadStats(); return false;" style="color:#2563eb;text-decoration:underline;cursor:pointer;">Statystyki</a> pobierz kopię, a w razie czego ją odtworzysz.
+    Historia sesji i statystyki są przechowywane wyłącznie w pamięci tej przeglądarki na tym urządzeniu. Wyczyszczenie danych przeglądarki lub otwarcie aplikacji na innym urządzeniu — i dane znikają. Nie ma kont, nie ma chmury. Dlatego pamiętaj o kopii zapasowej — w zakładce <a href="#" onclick="showScreen('history'); loadHistory(); return false;" style="color:#2563eb;text-decoration:underline;cursor:pointer;">Historia</a> lub <a href="#" onclick="showScreen('stats'); setStatsPart('all'); return false;" style="color:#2563eb;text-decoration:underline;cursor:pointer;">Statystyki</a> pobierz kopię, a w razie czego ją odtworzysz.
     <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(0,0,0,.08)">
       <strong style="display:block;margin-bottom:4px;color:#166534">✅ Najlepsza ochrona: zainstaluj aplikację</strong>
       Dodaj ją do ekranu głównego — przeglądarka traktuje wtedy Twoje dane jako trwałe i znacznie rzadziej je usuwa.
@@ -1403,6 +1535,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <p style="font-size:0.95rem;color:#374151;line-height:1.6;margin-top:12px;">
       Każde zadanie dostępne w dwóch poziomach trudności: łatwym i trudnym.
+    </p>
+  </div>
+
+  <div class="about-section">
+    <h3>Część II — sprawdzian wiedzy</h3>
+    <p style="font-size:0.95rem;color:#374151;line-height:1.6;">
+      Druga część egzaminu sprawdza wiedzę z 6 dziedzin: prawa, zagadnień społeczno-ekonomicznych, administracji publicznej, finansów publicznych, polityki zagranicznej i organizacji międzynarodowych oraz organizacji i zarządzania. To pytania jednokrotnego wyboru — w aplikacji ćwiczysz je w sesjach po 15 pytań, z możliwością zawężenia do wybranych dziedzin i poziomu trudności.
     </p>
   </div>
 
@@ -1443,6 +1582,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- questions data -->
 <script src="questions-unified.js"></script>
+<script src="questions-wiedza.js"></script>
 
 <!-- social proof: dane + czysta logika (ładowane przed main script) -->
 <script src="stats.js"></script>
@@ -1450,6 +1590,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="pwa-install.js"></script>
 <script src="feedback.js"></script>
 <script src="session-blueprint.js"></script>
+<script src="session-wiedza.js"></script>
 
 <!-- main script -->
 <script>
@@ -1458,9 +1599,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   ================================================================ */
   const state = {
     screen: 'home',
+    part: 'I',                 // 'I' = umiejętności, 'II' = wiedza
     mode: 'learning',
     difficulty: 'easy',
     timerEnabled: false,
+    wiedzaDomains: [],         // [] = wszystkie dziedziny
+    wiedzaLevel: 'all',        // 'all' | 'easy' | 'medium' | 'hard'
     session: [],
     currentIndex: 0,
     answers: [],
@@ -1475,7 +1619,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      SCREEN MANAGEMENT
   ================================================================ */
   var SCREEN_PATHS = {
-    'home': '/', 'setup': '/setup', 'history': '/history',
+    'home': '/', 'setup': '/setup', 'setup-wiedza': '/wiedza', 'history': '/history',
     'stats': '/stats', 'about': '/about',
     'question': '/question', 'summary': '/summary', 'session-detail': '/session'
   };
@@ -1502,7 +1646,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('screen-' + name).style.display = name === 'home' ? 'flex' : 'block';
     state.screen = name;
     _applySeo(name);
-    document.body.classList.toggle('hide-bg', name !== 'home' && name !== 'setup');
+    document.body.classList.toggle('hide-bg', name !== 'home' && name !== 'setup' && name !== 'setup-wiedza');
     document.body.classList.toggle('on-question', name === 'question');
     document.getElementById('global-header').style.display = name === 'question' ? 'none' : 'flex';
     window.scrollTo(0, 0);
@@ -1572,20 +1716,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   }
 
+  function pytaniaWord(total) {
+    const mod10 = total % 10, mod100 = total % 100;
+    if (total === 1) return 'pytanie';
+    if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return 'pytania';
+    return 'pytań';
+  }
+
   function initQuestionCount() {
-    const el = document.getElementById('question-count');
-    if (!el) return;
+    // Część I
+    let total1 = 0;
     const banks = [QUESTIONS_EASY];
     if (typeof QUESTIONS_HARD !== 'undefined') banks.push(QUESTIONS_HARD);
-    let total = 0;
     banks.forEach(function(bank) {
-      Object.values(bank).forEach(function(pool) { total += pool.length; });
+      Object.values(bank).forEach(function(pool) { total1 += pool.length; });
     });
-    const mod10 = total % 10, mod100 = total % 100;
-    let word = 'pytań';
-    if (total === 1) word = 'pytanie';
-    else if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) word = 'pytania';
-    el.textContent = total + ' ' + word + ' w bazie';
+    const el1 = document.getElementById('count-part-1');
+    if (el1) el1.textContent = total1 + ' ' + pytaniaWord(total1);
+    // Część II
+    const total2 = (typeof QUESTIONS_WIEDZA !== 'undefined') ? QUESTIONS_WIEDZA.length : 0;
+    const el2 = document.getElementById('count-part-2');
+    if (el2) el2.textContent = total2 + ' ' + pytaniaWord(total2);
   }
 
   function initSocialProof() {
@@ -1839,6 +1990,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      SETUP
   ================================================================ */
   function goSetup() {
+    state.part = 'I';
     document.querySelectorAll('#mode-toggle .toggle-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.mode === state.mode);
     });
@@ -1867,6 +2019,54 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     state.timerEnabled = checked;
   }
 
+  function renderWiedzaDomainChips() {
+    const wrap = document.getElementById('wiedza-domains');
+    if (!wrap) return;
+    const counts = Object.create(null);
+    if (typeof QUESTIONS_WIEDZA !== 'undefined') {
+      QUESTIONS_WIEDZA.forEach(function(q) { counts[q.domain] = (counts[q.domain] || 0) + 1; });
+    }
+    wrap.innerHTML = WIEDZA_DOMAINS_ORDER.map(function(d) {
+      const on = state.wiedzaDomains.indexOf(d) !== -1;
+      return '<span class="chip' + (on ? ' active' : '') + '" data-domain="' + d + '" onclick="toggleWiedzaDomain(\'' + d + '\')">'
+        + escHtml(DOMAIN_SHORT[d] || d) + ' · ' + (counts[d] || 0) + '</span>';
+    }).join('');
+  }
+
+  function goSetupWiedza() {
+    state.part = 'II';
+    document.querySelectorAll('#wiedza-mode-toggle .toggle-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.dataset.mode === state.mode);
+    });
+    document.querySelectorAll('#wiedza-level-toggle .toggle-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.dataset.level === state.wiedzaLevel);
+    });
+    document.getElementById('wiedza-timer-checkbox').checked = state.timerEnabled;
+    renderWiedzaDomainChips();
+    showScreen('setup-wiedza');
+  }
+
+  function setWiedzaMode(m) {
+    state.mode = m;
+    document.querySelectorAll('#wiedza-mode-toggle .toggle-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.dataset.mode === m);
+    });
+  }
+
+  function setWiedzaLevel(lv) {
+    state.wiedzaLevel = lv;
+    document.querySelectorAll('#wiedza-level-toggle .toggle-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.dataset.level === lv);
+    });
+  }
+
+  function toggleWiedzaDomain(d) {
+    const i = state.wiedzaDomains.indexOf(d);
+    if (i === -1) state.wiedzaDomains.push(d);
+    else state.wiedzaDomains.splice(i, 1);
+    renderWiedzaDomainChips();
+  }
+
   function getQuestionBank() {
     if (state.difficulty === 'hard') return QUESTIONS_HARD;
     return QUESTIONS_EASY;
@@ -1890,8 +2090,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   function buildSession() {
-    const bank = getQuestionBank();
     const lastSeen = getLastSeenMap();
+    if (state.part === 'II') {
+      // composeWiedzaSession z web/session-wiedza.js — filtr dziedzin/poziomu + LRS, 15 pytań.
+      return composeWiedzaSession(
+        (typeof QUESTIONS_WIEDZA !== 'undefined') ? QUESTIONS_WIEDZA : [],
+        { domains: state.wiedzaDomains, level: state.wiedzaLevel },
+        lastSeen, Math.random
+      );
+    }
+    const bank = getQuestionBank();
     // composeSession z web/session-blueprint.js — FIXED (3 syl.+2 rel.+po 1 z reszty) + 3 losowe.
     return composeSession(bank, lastSeen, Math.random);
   }
@@ -1899,17 +2107,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   function startSession() {
     // Save settings
     try {
-      localStorage.setItem('ksap_settings', JSON.stringify({ mode: state.mode, difficulty: state.difficulty, timerEnabled: state.timerEnabled }));
+      localStorage.setItem('ksap_settings', JSON.stringify({
+        mode: state.mode, difficulty: state.difficulty, timerEnabled: state.timerEnabled,
+        part: state.part, wiedzaDomains: state.wiedzaDomains, wiedzaLevel: state.wiedzaLevel
+      }));
     } catch(e) {}
 
     state.session = buildSession();
+    if (!state.session.length) { alert('Brak pytań dla wybranych filtrów.'); return; }
     state.currentIndex = 0;
     state.answers = [];
     state.sessionStartTime = Date.now();
 
     gtag('event', 'session_started', {
+      exam_part: state.part,
       session_mode: state.mode,
-      session_difficulty: state.difficulty,
+      session_difficulty: state.part === 'II' ? state.wiedzaLevel : state.difficulty,
       timer_enabled: state.timerEnabled
     });
 
@@ -1968,6 +2181,63 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     8: 'POWIĄZANIA FIGUR',
   };
 
+  const DOMAIN_NAMES = {
+    pr: 'PRAWO',
+    ap: 'ADMINISTRACJA PUBLICZNA',
+    fp: 'FINANSE PUBLICZNE',
+    pz: 'POLITYKA ZAGRANICZNA I ORG. MIĘDZYNARODOWE',
+    oz: 'ORGANIZACJA I ZARZĄDZANIE',
+    se: 'ZAGADNIENIA SPOŁECZNE I EKONOMICZNE',
+  };
+  // krótkie etykiety do chipów / tabel
+  const DOMAIN_SHORT = {
+    pr: 'Prawo', ap: 'Administracja', fp: 'Finanse',
+    pz: 'Polityka zagr.', oz: 'Organizacja', se: 'Społ.-ekonom.',
+  };
+  const WIEDZA_DOMAINS_ORDER = ['pr', 'se', 'ap', 'fp', 'pz', 'oz'];
+
+  // Pytanie części II rozpoznajemy po obecności pola domain (cz. I go nie ma).
+  function isWiedza(q) { return !!(q && q.domain); }
+
+  // Etykieta osi/grupy: cz. I = typ, cz. II = dziedzina.
+  function questionGroupLabel(q) {
+    if (!q) return '—';
+    return isWiedza(q) ? (DOMAIN_NAMES[q.domain] || q.domain) : (TYPE_NAMES[q.typeId] || ('TYP ' + q.typeId));
+  }
+
+  // Treść pytania: cz. II = stem, cz. I = renderer typu.
+  function questionBodyHtml(q) {
+    if (isWiedza(q)) return '<div class="question-stem">' + escHtml(q.question) + '</div>';
+    return renderQuestionBody(q);
+  }
+
+  // Źródło prawne (tylko cz. II, tylko w review).
+  function sourceHtml(q) {
+    if (isWiedza(q) && q.source) return '<div class="source-box">Źródło: ' + escHtml(q.source) + '</div>';
+    return '';
+  }
+
+  // Parametry zdarzenia question_answered (uogólnione o część/dziedzinę/poziom).
+  function answerEventParams(q, isCorrect, idx, timeSpent) {
+    var p = {
+      exam_part: state.part,
+      is_correct: isCorrect,
+      question_index: idx,
+      time_spent_sec: timeSpent
+    };
+    if (isWiedza(q)) {
+      // UWAGA: NIE ustawiamy p.question_type dla cz. II — to wymiar GA4 historycznie
+      // liczbowy (typy 1–8 cz. I). Wstrzyknięcie stringów dziedzin zanieczyściłoby
+      // istniejące eksploracje. Cz. II analizujemy przez question_domain + exam_part.
+      p.question_domain = q.domain;
+      p.question_level = q.level;
+    } else {
+      p.question_type = q.typeId;
+      p.question_difficulty = (q.id && q.id.charAt(0) === 'h') ? 'hard' : 'easy';
+    }
+    return p;
+  }
+
   /* ================================================================
      RENDER QUESTION
   ================================================================ */
@@ -1983,11 +2253,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('q-progress-bar').style.width = pct + '%';
 
     // Body
-    const typeName = TYPE_NAMES[q.typeId] || ('TYP ' + q.typeId);
     let bodyHtml = '';
-    bodyHtml += '<div class="type-label">' + escHtml(typeName) + '</div>';
+    bodyHtml += '<div class="type-label">' + escHtml(questionGroupLabel(q)) + '</div>';
     bodyHtml += '<div class="instruction">' + escHtml(q.instruction) + '</div>';
-    bodyHtml += '<div class="question-body">' + renderQuestionBody(q) + '</div>';
+    bodyHtml += '<div class="question-body">' + questionBodyHtml(q) + '</div>';
 
     if (q.typeId !== 8) {
       // Standard text options
@@ -2437,13 +2706,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       timeSpentSec: timeSpent
     });
 
-    gtag('event', 'question_answered', {
-      question_type: q.typeId,
-      question_difficulty: (q.id && q.id.charAt(0) === 'h') ? 'hard' : 'easy',
-      is_correct: index === q.correct,
-      question_index: state.currentIndex,
-      time_spent_sec: timeSpent
-    });
+    gtag('event', 'question_answered', answerEventParams(q, index === q.correct, state.currentIndex, timeSpent));
 
     // Show green/red on options
     const container = document.getElementById('options-container');
@@ -2461,6 +2724,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     // Show explanation
     const expHtml = '<div class="explanation-box"><strong>Wyjaśnienie:</strong>' + escHtml(q.explanation) + '</div>'
+      + sourceHtml(q)
       + '<div class="report-bar"><button class="btn-sm ghost" onclick="reportQuestion(\'' + q.id + '\')">Zgłoś błąd w pytaniu</button></div>';
     document.getElementById('q-body').insertAdjacentHTML('beforeend', expHtml);
 
@@ -2492,13 +2756,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         correct: state.pendingAnswer === q.correct,
         timeSpentSec: timeSpent
       });
-      gtag('event', 'question_answered', {
-        question_type: q.typeId,
-        question_difficulty: (q.id && q.id.charAt(0) === 'h') ? 'hard' : 'easy',
-        is_correct: state.pendingAnswer === q.correct,
-        question_index: state.currentIndex,
-        time_spent_sec: timeSpent
-      });
+      gtag('event', 'question_answered', answerEventParams(q, state.pendingAnswer === q.correct, state.currentIndex, timeSpent));
     }
     nextQuestion();
   }
@@ -2511,14 +2769,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     bugReportCtx = {
       question_id: id,
       question_index: state.currentIndex,
-      question_type: q ? q.typeId : null,
+      exam_part: state.part,
+      // cz. I: question_type = typeId; cz. II: question_type pomijamy, kategoria = question_domain.
+      question_type: (q && !isWiedza(q)) ? q.typeId : null,
+      question_domain: (q && isWiedza(q)) ? q.domain : null,
       mode: state.mode,
       difficulty: state.difficulty
     };
     gtag('event', 'error_report_opened', {
       question_id: bugReportCtx.question_id,
       question_index: bugReportCtx.question_index,
-      question_type: bugReportCtx.question_type
+      exam_part: bugReportCtx.exam_part,
+      question_type: bugReportCtx.question_type,
+      question_domain: bugReportCtx.question_domain
     });
     document.getElementById('bug-report-title').textContent = 'Zgłoś błąd w pytaniu #' + id;
     document.getElementById('bug-report-desc').value = '';
@@ -2548,7 +2811,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       reporter_email: email || '(nie podano)',
       question_id: c.question_id || '',
       question_index: c.question_index,
+      exam_part: c.exam_part,
       question_type: c.question_type,
+      question_domain: c.question_domain,
       mode: c.mode,
       difficulty: c.difficulty
     };
@@ -2846,10 +3111,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   function abortSession() {
     if (confirm('Przerwać sesję? Postęp zostanie utracony.')) {
       gtag('event', 'session_aborted', {
+        exam_part: state.part,
         at_question_index: state.currentIndex,
         questions_total: state.session.length,
         session_mode: state.mode,
-        session_difficulty: state.difficulty
+        session_difficulty: state.part === 'II' ? state.wiedzaLevel : state.difficulty
       });
       stopTimer();
       _applyScreen('home');
@@ -2881,6 +3147,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         if (q) return q;
       }
     }
+    if (typeof QUESTIONS_WIEDZA !== 'undefined') {
+      const w = QUESTIONS_WIEDZA.find(function(q) { return q.id === id; });
+      if (w) return w;
+    }
     return null;
   }
 
@@ -2904,10 +3174,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     html += feedbackInlineHtml();
 
     html += '<div class="data-table-wrap"><table class="summary-table">';
-    html += '<thead><tr><th>#</th><th>Typ</th><th>Wynik</th><th>Czas (s)</th></tr></thead><tbody>';
+    html += '<thead><tr><th>#</th><th>Kategoria</th><th>Wynik</th><th>Czas (s)</th></tr></thead><tbody>';
 
     items.forEach(function(item, i) {
-      const typeName = item.q ? (TYPE_NAMES[item.q.typeId] || ('Typ ' + item.q.typeId)) : '—';
+      const typeName = item.q ? questionGroupLabel(item.q) : '—';
       const markHtml = item.userAnswer === null
         ? '<span class="na-mark">—</span>'
         : item.correct
@@ -2934,15 +3204,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       html += '<h3>Przegląd błędnych odpowiedzi</h3>';
       wrongItems.forEach(function(x) {
         const q = x.item.q;
-        const typeName = TYPE_NAMES[q.typeId] || ('Typ ' + q.typeId);
+        const typeName = questionGroupLabel(q);
         html += '<details class="review-item">';
         html += '<summary><span><span class="review-summary-wrong">✗</span> Pytanie ' + (x.i + 1) + ' — ' + escHtml(typeName) + '</span></summary>';
         html += '<div class="review-body">';
         html += '<div class="type-label">' + escHtml(typeName) + '</div>';
         html += '<div class="instruction">' + escHtml(q.instruction) + '</div>';
-        html += '<div class="question-body">' + renderQuestionBody(q) + '</div>';
+        html += '<div class="question-body">' + questionBodyHtml(q) + '</div>';
         html += renderOptionsStatic(q, x.item.userAnswer);
         html += '<div class="explanation-box"><strong>Wyjaśnienie:</strong> ' + escHtml(q.explanation) + '</div>';
+        html += sourceHtml(q);
         html += '</div>';
         html += '</details>';
       });
@@ -2954,15 +3225,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       html += '<h3>Przegląd poprawnych odpowiedzi</h3>';
       correctItems.forEach(function(x) {
         const q = x.item.q;
-        const typeName = TYPE_NAMES[q.typeId] || ('Typ ' + q.typeId);
+        const typeName = questionGroupLabel(q);
         html += '<details class="review-item">';
         html += '<summary><span><span class="review-summary-correct">✓</span> Pytanie ' + (x.i + 1) + ' — ' + escHtml(typeName) + '</span></summary>';
         html += '<div class="review-body">';
         html += '<div class="type-label">' + escHtml(typeName) + '</div>';
         html += '<div class="instruction">' + escHtml(q.instruction) + '</div>';
-        html += '<div class="question-body">' + renderQuestionBody(q) + '</div>';
+        html += '<div class="question-body">' + questionBodyHtml(q) + '</div>';
         html += renderOptionsStatic(q, x.item.userAnswer);
         html += '<div class="explanation-box"><strong>Wyjaśnienie:</strong> ' + escHtml(q.explanation) + '</div>';
+        html += sourceHtml(q);
         html += '</div>';
         html += '</details>';
       });
@@ -2994,8 +3266,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     };
 
     gtag('event', 'session_completed', {
+      exam_part: state.part,
       session_mode: state.mode,
-      session_difficulty: state.difficulty,
+      session_difficulty: state.part === 'II' ? state.wiedzaLevel : state.difficulty,
       score: meta.score,
       questions_total: meta.total,
       score_pct: Math.round(meta.score / meta.total * 100),
@@ -3006,7 +3279,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     html += '<div class="summary-buttons">';
     html += '<button onclick="goSetup()">Nowa sesja</button>';
     html += '<button class="ghost" onclick="showScreen(\'history\'); loadHistory();">Historia</button>';
-    html += '<button class="ghost" onclick="showScreen(\'stats\'); loadStats();">Statystyki</button>';
+    html += '<button class="ghost" onclick="showScreen(\'stats\'); setStatsPart(\'' + state.part + '\');">Statystyki</button>';
     html += '</div>';
 
     document.getElementById('summary-content').innerHTML = html;
@@ -3062,6 +3335,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     sessions.unshift({
       id: id,
       date: new Date().toISOString(),
+      part: state.part,
       mode: state.mode,
       timerEnabled: state.timerEnabled,
       totalTimeSec: state.sessionStartTime ? Math.floor((Date.now() - state.sessionStartTime) / 1000) : null,
@@ -3070,7 +3344,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       questions: state.answers.map(function(a, i) {
         const q = state.session[i];
         return {
-          typeId: q ? q.typeId : null,
+          typeId: q ? (q.typeId !== undefined ? q.typeId : null) : null,
+          domain: q ? (q.domain || null) : null,
           questionId: a.questionId,
           userAnswer: a.userAnswer,
           correct: a.correct,
@@ -3093,7 +3368,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     state.answers.forEach(function(a, i) {
       const q = state.session[i];
       if (!q) return;
-      log.push({ sid: sessionId, qId: a.questionId, tid: q.typeId, ok: a.correct, ts: ts });
+      const group = isWiedza(q) ? q.domain : q.typeId;
+      log.push({
+        sid: sessionId, qId: a.questionId,
+        tid: (q.typeId !== undefined ? q.typeId : null), // wstecznie: cz. I czyta tid
+        part: state.part, group: group,
+        ok: a.correct, ts: ts
+      });
     });
     try { localStorage.setItem('ksap_answer_log', JSON.stringify(log)); } catch(e) {}
   }
@@ -3200,20 +3481,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   /* ================================================================
      HISTORY
   ================================================================ */
+  var historyPart = 'all';
+  function setHistoryPart(p) { historyPart = p; loadHistory(); }
+  function sessionPart(s) { return s.part || 'I'; }
+  function historyPartToggleHtml() {
+    var parts = [{ id: 'all', label: 'Wszystko' }, { id: 'I', label: 'Część I · Umiejętności' }, { id: 'II', label: 'Część II · Wiedza' }];
+    var html = '<div class="trend-toggle" style="margin-bottom:16px">';
+    parts.forEach(function(p) {
+      html += '<button class="' + (historyPart === p.id ? 'active' : '') + '" onclick="setHistoryPart(\'' + p.id + '\')">' + p.label + '</button>';
+    });
+    return html + '</div>';
+  }
+
   function loadHistory() {
-    const sessions = getSessions();
+    const all = getSessions();
     const container = document.getElementById('history-content');
 
-    if (!sessions.length) {
+    if (!all.length) {
       container.innerHTML = '<p class="history-empty">Brak historii sesji.</p>';
       return;
     }
 
-    let html = '<div class="history-table-wrap"><table class="history-table">';
-    html += '<thead><tr><th>Data</th><th>Tryb</th><th>Wynik</th><th>Czas</th><th></th></tr></thead><tbody>';
+    // si = indeks w pełnej liście (showSessionDetail oczekuje indeksu z getSessions()).
+    const rows = all.map(function(sess, si) { return { sess: sess, si: si }; })
+      .filter(function(r) { return historyPart === 'all' || sessionPart(r.sess) === historyPart; });
 
-    sessions.forEach(function(sess, si) {
+    let html = historyPartToggleHtml();
+
+    if (!rows.length) {
+      container.innerHTML = html + '<p class="history-empty">Brak sesji w tej części.</p>';
+      return;
+    }
+
+    html += '<div class="history-table-wrap"><table class="history-table">';
+    html += '<thead><tr><th>Data</th><th>Część</th><th>Tryb</th><th>Wynik</th><th>Czas</th><th></th></tr></thead><tbody>';
+
+    rows.forEach(function(r) {
+      const sess = r.sess, si = r.si;
       const dateStr = formatDate(sess.date);
+      const partLabel = sessionPart(sess) === 'II'
+        ? '<span class="badge-part badge-part-ii">II</span>'
+        : '<span class="badge-part badge-part-i">I</span>';
       const modeLabel = sess.mode === 'exam'
         ? '<span class="badge-mode-exam">Egzamin</span>'
         : '<span class="badge-mode-learning">Nauka</span>';
@@ -3225,9 +3533,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         const s = sess.totalTimeSec % 60;
         timeStr = m + ':' + String(s).padStart(2, '0');
       }
-
       html += '<tr id="hist-row-' + si + '">';
       html += '<td style="font-size:0.8rem;white-space:nowrap">' + dateStr + '</td>';
+      html += '<td>' + partLabel + '</td>';
       html += '<td>' + modeLabel + '</td>';
       html += '<td style="font-weight:600">' + scoreStr + '</td>';
       html += '<td>' + timeStr + '</td>';
@@ -3236,7 +3544,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
 
     html += '</tbody></table></div>';
-    if (sessions.length >= 3) html += kofiWidget();
+    if (all.length >= 3) html += kofiWidget();
     container.innerHTML = html;
   }
 
@@ -3321,12 +3629,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return html;
   }
 
+  // Filtr części na ekranie statystyk: 'I' | 'II' | 'all'. Domyślnie kontekst wejścia.
+  var statsPart = 'I';
+
+  function setStatsPart(p) { statsPart = p; loadStats(); }
+
+  // Część wpisu logu (stare wpisy bez part = 'I'); group: cz. I = liczba (typ), cz. II = string (dziedzina).
+  function logEntryPart(e) { return e.part || 'I'; }
+  function logEntryGroup(e) {
+    if (e.group !== undefined && e.group !== null) return e.group;
+    return e.tid; // wstecznie dla starych wpisów cz. I
+  }
+
+  function statsPartToggleHtml() {
+    var parts = [
+      { id: 'I', label: 'Część I · Umiejętności' },
+      { id: 'II', label: 'Część II · Wiedza' },
+      { id: 'all', label: 'Wszystko' }
+    ];
+    var html = '<div class="trend-toggle" style="margin-bottom:16px">';
+    parts.forEach(function(p) {
+      html += '<button class="' + (statsPart === p.id ? 'active' : '') + '" onclick="setStatsPart(\'' + p.id + '\')">' + p.label + '</button>';
+    });
+    return html + '</div>';
+  }
+
   function loadStats() {
-    const log = getAnswerLog();
+    const fullLog = getAnswerLog();
     const container = document.getElementById('stats-content');
 
-    if (!log.length) {
+    if (!fullLog.length) {
       container.innerHTML = '<p class="history-empty">Brak danych — ukończ co najmniej jedną sesję, żeby zobaczyć statystyki.</p>';
+      return;
+    }
+
+    // Filtr części
+    const log = (statsPart === 'all') ? fullLog : fullLog.filter(function(e) { return logEntryPart(e) === statsPart; });
+
+    let html = statsPartToggleHtml();
+
+    if (!log.length) {
+      container.innerHTML = html + '<p class="history-empty">Brak danych dla tej części.</p>';
       return;
     }
 
@@ -3334,66 +3677,84 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const correct = log.filter(function(e) { return e.ok; }).length;
     const wrong   = total - correct;
 
-    var byType = {};
-    for (var t = 1; t <= 8; t++) byType[t] = { correct: 0, wrong: 0 };
+    // Oś grupowania zależna od widoku — KAŻDY wpis musi trafić do jakiejś grupy,
+    // żeby suma słupków bilansowała się z kartami u góry:
+    //  'I'  → typy 1–8 (log już przefiltrowany do cz. I),
+    //  'II' → dziedziny (log przefiltrowany do cz. II),
+    //  'all'→ części I/II (bez gubienia cz. II; szczegóły per typ/dziedzina w zakładkach).
+    var view = statsPart; // 'I' | 'II' | 'all'
+    var groupKeys = view === 'II'  ? WIEDZA_DOMAINS_ORDER.slice()
+                  : view === 'all' ? ['I', 'II']
+                  : [1,2,3,4,5,6,7,8];
+    function groupOf(e) { return view === 'all' ? logEntryPart(e) : logEntryGroup(e); }
+    var byGroup = {};
+    groupKeys.forEach(function(k) { byGroup[k] = { correct: 0, wrong: 0 }; });
     log.forEach(function(e) {
-      if (byType[e.tid]) {
-        if (e.ok) byType[e.tid].correct++;
-        else      byType[e.tid].wrong++;
-      }
+      var g = groupOf(e);
+      if (byGroup[g]) { if (e.ok) byGroup[g].correct++; else byGroup[g].wrong++; }
     });
 
-    // Main score metric
     var scorePct = Math.round(correct / total * 100);
     var scoreColor = scorePct >= 80 ? '#27ae60' : scorePct >= 50 ? '#e67e22' : '#e74c3c';
-    var html = '<div style="text-align:center;margin-bottom:20px">';
+    html += '<div style="text-align:center;margin-bottom:20px">';
     html += '<div style="font-size:3.5rem;font-weight:700;line-height:1;color:' + scoreColor + '">' + scorePct + '%</div>';
     html += '<div style="font-size:0.8rem;color:#6b7280;text-transform:uppercase;letter-spacing:0.06em;margin-top:4px">Skuteczność ogólna</div>';
     html += '</div>';
 
-    // Stat cards
     html += '<div class="stat-cards">';
     html += '<div class="stat-card"><div class="stat-value">' + total + '</div><div class="stat-label">Odpowiedzi</div></div>';
     html += '<div class="stat-card stat-card-good"><div class="stat-value">' + correct + '</div><div class="stat-label">Poprawne</div></div>';
     html += '<div class="stat-card stat-card-bad"><div class="stat-value">' + wrong + '</div><div class="stat-label">Błędne</div></div>';
     html += '</div>';
 
-    // Accuracy-over-time trend chart
     html += '<div class="stats-section">' + trendSectionHtml() + '</div>';
 
-    // Bar chart (reuses existing renderBarChart)
+    // Wykres słupkowy: per dziedzina (II), per część (all) lub per typ (I)
     html += '<div class="stats-section">';
-    html += '<h3 style="margin-bottom:4px">Rozkład per typ pytania</h3>';
-    html += '<p style="font-size:0.78rem;color:#6b7280;margin-bottom:8px">Cyfry 1–8 = typy opisane w tabeli poniżej</p>';
+    if (view === 'II') {
+      html += '<h3 style="margin-bottom:4px">Rozkład per dziedzina</h3>';
+      html += '<p style="font-size:0.78rem;color:#6b7280;margin-bottom:8px">Skróty dziedzin opisane w tabeli poniżej</p>';
+    } else if (view === 'all') {
+      html += '<h3 style="margin-bottom:4px">Rozkład per część</h3>';
+      html += '<p style="font-size:0.78rem;color:#6b7280;margin-bottom:8px">Skuteczność w części I (umiejętności) i II (wiedza). Szczegóły per typ/dziedzina w zakładkach części.</p>';
+    } else {
+      html += '<h3 style="margin-bottom:4px">Rozkład per typ pytania</h3>';
+      html += '<p style="font-size:0.78rem;color:#6b7280;margin-bottom:8px">Cyfry 1–8 = typy opisane w tabeli poniżej</p>';
+    }
     var chartData = {
       type: 'bar',
-      xLabels: [1,2,3,4,5,6,7,8].map(function(t) {
-        return { label: 'Typ ' + t, title: TYPE_NAMES[t] || 'Typ ' + t };
+      xLabels: groupKeys.map(function(k) {
+        if (view === 'II')  return { label: DOMAIN_SHORT[k] || k, title: DOMAIN_NAMES[k] || k };
+        if (view === 'all') return { label: 'Część ' + k, title: 'Część ' + k };
+        return { label: 'Typ ' + k, title: TYPE_NAMES[k] || 'Typ ' + k };
       }),
       datasets: [
-        { label: 'Poprawne', data: [1,2,3,4,5,6,7,8].map(function(t) { return byType[t].correct; }), color: '#27ae60' },
-        { label: 'Błędne',   data: [1,2,3,4,5,6,7,8].map(function(t) { return byType[t].wrong;   }), color: '#e74c3c' }
+        { label: 'Poprawne', data: groupKeys.map(function(k) { return byGroup[k].correct; }), color: '#27ae60' },
+        { label: 'Błędne',   data: groupKeys.map(function(k) { return byGroup[k].wrong;   }), color: '#e74c3c' }
       ]
     };
     html += renderBarChart(chartData, { barWidthFactor: 0.45, pairGap: 2 });
     html += '</div>';
 
-    // Per-type table
+    // Tabela per grupa
     html += '<div class="data-table-wrap" style="margin-top:24px"><table class="summary-table">';
-    html += '<thead><tr><th>Typ pytania</th><th style="text-align:center">Odpowiedzi</th><th style="text-align:center">✓ %</th><th style="text-align:center">✗ %</th></tr></thead><tbody>';
-    for (var ti = 1; ti <= 8; ti++) {
-      var c   = byType[ti].correct;
-      var w   = byType[ti].wrong;
-      var tot = c + w;
+    var col = view === 'II' ? 'Dziedzina' : view === 'all' ? 'Część' : 'Typ pytania';
+    html += '<thead><tr><th>' + col + '</th><th style="text-align:center">Odpowiedzi</th><th style="text-align:center">✓ %</th><th style="text-align:center">✗ %</th></tr></thead><tbody>';
+    groupKeys.forEach(function(k) {
+      var c = byGroup[k].correct, w = byGroup[k].wrong, tot = c + w;
       var correctPct = tot ? Math.round(c / tot * 100) + '%' : '—';
       var wrongPct   = tot ? Math.round(w / tot * 100) + '%' : '—';
+      var nameCell;
+      if (view === 'II')       nameCell = '<span style="color:#6b7280;font-weight:600">' + escHtml(DOMAIN_SHORT[k] || k) + ':</span> ' + escHtml(DOMAIN_NAMES[k] || k);
+      else if (view === 'all') nameCell = '<span style="color:#6b7280;font-weight:600">Część ' + k + '</span>';
+      else                     nameCell = '<span style="color:#6b7280;font-weight:600">Typ ' + k + ':</span> ' + escHtml(TYPE_NAMES[k] || ('Typ ' + k));
       html += '<tr>';
-      html += '<td style="font-size:0.78rem"><span style="color:#6b7280;font-weight:600">Typ ' + ti + ':</span> ' + escHtml(TYPE_NAMES[ti] || ('Typ ' + ti)) + '</td>';
+      html += '<td style="font-size:0.78rem">' + nameCell + '</td>';
       html += '<td style="text-align:center">' + (tot || '—') + '</td>';
       html += '<td style="text-align:center;color:#27ae60;font-weight:600">' + correctPct + '</td>';
-      html += '<td style="text-align:center;color:#e74c3c;font-weight:600">' + wrongPct   + '</td>';
+      html += '<td style="text-align:center;color:#e74c3c;font-weight:600">' + wrongPct + '</td>';
       html += '</tr>';
-    }
+    });
     html += '</tbody></table></div>';
     if (getSessions().length >= 3) html += kofiWidget();
 
