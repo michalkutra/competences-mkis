@@ -48,6 +48,9 @@
   <style>
     /* ===== RESET & BASE (mobile-first) ===== */
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    /* blokuje pull-to-refresh (Android Chrome) — przeciągnięcie w dół w trakcie testu
+       nie przeładuje strony i nie wyrzuci z sesji; normalny scroll bez zmian */
+    html, body { overscroll-behavior-y: contain; }
     body { font-family: sans-serif; font-size: 16px; background: #f0f2f5; color: #1a1a1a;
            padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); }
     /* MOBILE: grafika przyklejona do dołu, PRZED treścią — treść scrolluje się pod nią.
@@ -1929,7 +1932,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     // Load saved settings
     try {
       const saved = JSON.parse(localStorage.getItem('ksap_settings') || '{}');
-      if (saved.mode) state.mode = saved.mode;
+      // Trybu NIE przywracamy — sesja zawsze startuje w „Nauce" (preferowany domyślny tryb).
       if (saved.difficulty) state.difficulty = saved.difficulty;
       if (typeof saved.timerEnabled === 'boolean') state.timerEnabled = saved.timerEnabled;
     } catch(e) {}
