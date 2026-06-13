@@ -1,2 +1,4 @@
 .DS_Store
 .ga-config/
+data/
+__pycache__/

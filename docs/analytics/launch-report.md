@@ -1,7 +1,7 @@
 # 📊 Raport launchu — egzamin.kutra.pl
 
 > **GA4 property:** `540012122` (egzamin.kutra.pl) · **Strefa czasowa:** Europe/Warsaw
-> **Ostatnia aktualizacja:** 2026-06-10 · **Dane od:** 2026-06-03 (premiera)
+> **Ostatnia aktualizacja:** 2026-06-12 · **Dane od:** 2026-06-03 (premiera)
 > **Cel donejtów:** 100 zł łącznie
 >
 > 🔄 Aktualizuj skillem `/aktualizuj-raport-launchu` (albo napisz „zaktualizuj raport launchu") — pobiera dane po GA4 MCP i **tylko dopisuje kolumnę / odświeża**, nie przepisuje historii.
@@ -28,33 +28,33 @@
 
 > Daty w kolumnach — skanuj wiersz (metrykę) od lewej do prawej, żeby zobaczyć trend. Nowe dni dopisują kolejne kolumny po prawej.
 
-| Metryka | 2026-06-03 | 2026-06-04 | 2026-06-05 | 2026-06-06 | 2026-06-07 | 2026-06-08 | 2026-06-09 | 2026-06-10 ⚠️ |
-|---|---|---|---|---|---|---|---|---|
-| **— Wzrost —** | | | | | | | | |
-| Użytkownicy | 74 | 34 | 24 | 17 | 21 | 17 | 29 | 19 |
-| Nowi | 71 | 24 | 14 | 8 | 12 | 4 | 16 | 11 |
-| Powracający | 3 | 10 | 10 | 9 | 9 | 13 | 13 | 8 |
-| Powracający % | 4% | 29% | 42% | 53% | 43% | 76% | 45% | 42% |
-| **— Wizyty (ruch na stronie) —** | | | | | | | | |
-| Wizyty (sesje GA) | 99 | 43 | 31 | 25 | 27 | 35 | 41 | 24 |
-| Wizyty zaang. | 82 | 33 | 26 | 21 | 20 | 31 | 39 | 3† |
-| Engagement rate | 83% | 77% | 84% | 84% | 74% | 89% | 95% | 13%† |
-| Śr. czas wizyty | 8,8 min | 8,4 min | 8,7 min | 8,5 min | 12,2 min | 13,4 min | 11,0 min | 96 min* |
-| **— Nauka (quizy) —** | | | | | | | | |
-| Odpowiedzi (`question_answered`) | 909 | 436 | 380 | 194 | 402 | 409 | 509 | 275 |
-| Sesje nauki — start (`session_started`) | 99 | 33 | 33 | 19 | 34 | 31 | 45 | 23 |
-| Sesje nauki — ukończone (`session_completed`) | 53 | 29 | 25 | 11 | 25 | 23 | 32 | 16 |
-| Completion rate | 54% | 88% | 76% | 58% | 74% | 74% | 71% | 70% |
-| Porzucone | 13 | 1 | 4 | 3 | 3 | 2 | 6 | 3 |
-| Abort rate | 13% | 3% | 12% | 16% | 9% | 6% | 13% | 13% |
-| **— Sygnały —** | | | | | | | | |
-| Donate kliki | 4 | 1 | 2 | 0 | 0 | 0 | 0 | 0 |
-| Zgłoszenia błędu | 4 | 0 | 0 | 0 | 7 | 2 | 2 | 0 |
-| Udostępnienia (`result_shared`) | — | — | — | — | — | — | — | — |
+| Metryka | 2026-06-03 | 2026-06-04 | 2026-06-05 | 2026-06-06 | 2026-06-07 | 2026-06-08 | 2026-06-09 | 2026-06-10 | 2026-06-11 | 2026-06-12 ⚠️ |
+|---|---|---|---|---|---|---|---|---|---|---|
+| **— Wzrost —** | | | | | | | | | | |
+| Użytkownicy | 74 | 34 | 24 | 17 | 21 | 17 | 29 | 21 | 12 | 8 |
+| Nowi | 71 | 24 | 14 | 8 | 12 | 4 | 16 | 12 | 4 | 4 |
+| Powracający | 3 | 10 | 10 | 9 | 9 | 13 | 13 | 9 | 8 | 4 |
+| Powracający % | 4% | 29% | 42% | 53% | 43% | 76% | 45% | 43% | 67% | 50% |
+| **— Wizyty (ruch na stronie) —** | | | | | | | | | | |
+| Wizyty (sesje GA) | 99 | 43 | 31 | 25 | 27 | 35 | 41 | 28 | 17 | 12 |
+| Wizyty zaang. | 82 | 33 | 26 | 21 | 20 | 31 | 39 | 4† | 13 | 0† |
+| Engagement rate | 83% | 77% | 84% | 84% | 74% | 89% | 95% | 14%† | 76% | —† |
+| Śr. czas wizyty | 8,8 min | 8,4 min | 8,7 min | 8,5 min | 12,2 min | 13,4 min | 11,0 min | 90 min* | 5,1 min | 22,0 min* |
+| **— Nauka (quizy) —** | | | | | | | | | | |
+| Odpowiedzi (`question_answered`) | 909 | 436 | 380 | 194 | 402 | 409 | 509 | 339 | 185 | 46 |
+| Sesje nauki — start (`session_started`) | 99 | 33 | 33 | 19 | 34 | 31 | 45 | 30 | 18 | 5 |
+| Sesje nauki — ukończone (`session_completed`) | 53 | 29 | 25 | 11 | 25 | 23 | 32 | 20 | 12 | 3 |
+| Completion rate | 54% | 88% | 76% | 58% | 74% | 74% | 71% | 67% | 67% | 60% |
+| Porzucone | 13 | 1 | 4 | 3 | 3 | 2 | 6 | 4 | 3 | 1 |
+| Abort rate | 13% | 3% | 12% | 16% | 9% | 6% | 13% | 13% | 17% | 20% |
+| **— Sygnały —** | | | | | | | | | | |
+| Donate kliki | 4 | 1 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Zgłoszenia błędu | 4 | 0 | 0 | 0 | 7 | 2 | 2 | 0 | 0 | 0 |
+| Udostępnienia (`result_shared`) | — | — | — | — | — | — | — | — | — | — |
 
-\* 10.06 niepełny dzień (17 userów na moment aktualizacji) — metryki niestabilne (śr. czas 102 min skrajnie zawyżony przez karty zostawione otwarte). Dni 03–09.06 to pełne doby.
-† **Wizyty zaang./eng. rate dla 10.06 jeszcze się przeliczają** w GA4 (`engagedSessions` dochodzi z ~1-dniowym opóźnieniem). 09.06 już doszedł: **eng. rate 95%** (wcześniej pokazywał 15% — potwierdza wzorzec, tak samo było z 08.06). Realny eng. rate 10.06 też będzie znacznie wyższy.
-**07–09.06 to mocna passa:** 21 / 17 / 29 userów i 402 / 409 / 509 odpowiedzi — 09.06 najmocniejszy dzień nauki od premiery (95% eng. rate, 32 ukończone sesje). Retencja wysoka (powracający 35–76%).
+\* 12.06 niepełny dzień (8 userów na moment aktualizacji). Dni 03–11.06 to pełne doby. Śr. czas 10.06 (90 min) i 12.06 (22 min) zawyżone przez karty zostawione otwarte.
+† **Wizyty zaang./eng. rate dla 12.06 jeszcze się przeliczają** w GA4 (`engagedSessions` dochodzi z opóźnieniem). 11.06 doszedł do **76%**, 09.06 do **95%** — 10.06 wciąż pokazuje zaniżone 4 zaang. (realnie ~80%, bo 20 ukończonych sesji).
+**07–11.06 to mocna passa:** 21 / 17 / 29 / 21 / 12 userów i 402 / 409 / 509 / 339 / 185 odpowiedzi — 09.06 najmocniejszy (95% eng., 32 ukończone sesje). Retencja wysoka (powracający 43–76%).
 
 **Definicje:** ⚠️ **„Wizyty (sesje GA)"** = `sessions` z GA = odwiedziny strony — to CO INNEGO niż **„Sesje nauki"** = `session_started` = rozpoczęte quizy. · *Powracający* = Użytkownicy − Nowi · *Engagement rate* = wizyty zaang. / wizyty · *Śr. czas wizyty* = `averageSessionDuration` · *Completion rate* = `session_completed`/`session_started` (quizy) · *Abort rate* = `session_aborted`/`session_started` (quizy) · *Donate kliki* = `donation_clicked` (klik ≠ wpłata) · *Udostępnienia* = `result_shared` (po wdrożeniu „Podziel się wynikiem").
 
@@ -64,20 +64,20 @@
 
 | KPI | Wartość |
 |---|---|
-| Użytkownicy łącznie | **163** (160 nowych) |
-| Wizyty (sesje GA) | **322** (252 zaang. → 78% eng. rate) |
-| Śr. czas wizyty | **16,4 min** |
-| Odsłony / eventy | 2 990 / 10 571 |
-| Odpowiedzi na pytania | 3 514 (≈35 / aktywnego usera) |
-| Completion rate (sesje nauki) | ~67% (214 / 317) |
+| Użytkownicy łącznie | **172** (169 nowych) |
+| Wizyty (sesje GA) | **355** (288 zaang. → 81% eng. rate) |
+| Śr. czas wizyty | **10,5 min** |
+| Odsłony / eventy | 3 193 / 11 178 |
+| Odpowiedzi na pytania | 3 809 (≈36 / aktywnego usera) |
+| Completion rate (sesje nauki) | ~67% (233 / 347) |
 
 ### Lejek (userzy, narastająco)
 | Krok | Userzy | % wejść |
 |---|---|---|
-| Wszedł na stronę | 163 | 100% |
-| Zaczął sesję nauki | 111 | 68% |
-| Odpowiedział ≥1 pytanie | 101 | 62% |
-| Ukończył ≥1 sesję nauki | 74 | 45% |
+| Wszedł na stronę | 172 | 100% |
+| Zaczął sesję nauki | 117 | 68% |
+| Odpowiedział ≥1 pytanie | 106 | 62% |
+| Ukończył ≥1 sesję nauki | 79 | 46% |
 
 ---
 
@@ -87,16 +87,16 @@
 
 | Kanał | Wizyty | Userzy |
 |---|---|---|
-| Organic Social | 178 | 107 |
-| Direct | 117 | 47 |
-| Referral | 21 | 9 |
-| Unassigned | 19 | 15 |
+| Organic Social | 190 | 112 |
+| Direct | 135 | 49 |
+| Referral | 23 | 10 |
+| Unassigned | 7 | 5 |
 
-**Top źródła:** (direct) (117), lm.facebook.com (100), facebook.com (40), (not set) (19), l.facebook.com (19), m.facebook.com (19).
-**Urządzenia:** mobile 137 / desktop 28 (**83% mobile**).
-**Top miasta:** Warszawa 47, Kraków 11, Katowice 10, Poznań 10, Wrocław 9.
+**Top źródła:** (direct) (135), lm.facebook.com (103), facebook.com (40), (not set) (24), l.facebook.com (19), m.facebook.com (19).
+**Urządzenia:** mobile 145 / desktop 30 (**83% mobile**).
+**Top miasta:** Warszawa 49, Kraków 11, Katowice 10, Poznań 10, Wrocław 9.
 
-ℹ️ Direct trzyma pozycję **najsilniejszego źródła wizyt (117, 47 userów)** — powroty z zakładki/PWA, spójne z wysoką retencją. Facebook nadal niemal cały ruch pozyskaniowy (lm/m/l/facebook.com ≈ 178 wizyt). Organic Search ledwo drgnął (3 wizyty) — SEO praktycznie zero. dywersyfikacja poza FB nadal nie ruszyła. Wzrost wyhamował, ale baza mocno wraca (Direct rośnie z dnia na dzień).
+ℹ️ Direct mocno rośnie — **135 wizyt (49 userów)**, drugie po Organic Social i coraz bliżej; powroty z zakładki/PWA, spójne z wysoką retencją (baza wraca, choć nowych z FB prawie nie ma). Facebook nadal niemal cały ruch pozyskaniowy (lm/m/l/facebook.com ≈ 181 wizyt). Organic Search ledwo drgnął (3 wizyty) — SEO praktycznie zero. dywersyfikacja poza FB nadal nie ruszyła. Wzrost wyhamował, ale baza mocno wraca (Direct rośnie z dnia na dzień).
 
 ---
 
@@ -107,26 +107,26 @@
 
 | Typ | Nazwa | Odpowiedzi | Poprawne | Skuteczność |
 |---|---|---|---|---|
-| 1 | Analogia słowna — macierz | 69 | 48 | 70% |
-| 2 | Wspólny wyraz | 62 | 37 | **60%** |
-| 3 | Związek przyczynowo-skutkowy | 70 | 51 | 73% |
-| 4 | Analogia zdaniowa | 62 | 36 | **58%** |
-| 5 | Wnioskowanie logiczne | 311 | 268 | 86% |
-| 6 | Zadanie numeryczne | 68 | 58 | 85% |
-| 7 | Analiza wykresu | 68 | 61 | 90% |
-| 8 | Powiązania figur | 66 | 51 | 77% |
+| 1 | Analogia słowna — macierz | 92 | 64 | 70% |
+| 2 | Wspólny wyraz | 89 | 56 | **63%** |
+| 3 | Związek przyczynowo-skutkowy | 98 | 68 | 69% |
+| 4 | Analogia zdaniowa | 88 | 49 | **56%** |
+| 5 | Wnioskowanie logiczne | 425 | 356 | 84% |
+| 6 | Zadanie numeryczne | 96 | 76 | 79% |
+| 7 | Analiza wykresu | 91 | 78 | 86% |
+| 8 | Powiązania figur | 94 | 73 | 78% |
 
 ### Skuteczność wg poziomu trudności (`question_difficulty`)
-> 🟡 **Pierwsze dane** — `question_difficulty` działa od deployu 2026-06-10 (próbka: ~230 odpowiedzi z 10.06; będzie rosła). Docelowo połączyć z typem (typ × poziom).
+> `question_difficulty` działa od deployu 2026-06-10 — 2 pełne doby (06.10–06.11, 406 odpowiedzi z poziomem).
 
 | Poziom | Odpowiedzi | Poprawne | Skuteczność |
 |---|---|---|---|
-| Easy | 85 | 64 | 75% |
-| Hard | 145 | 99 | 68% |
+| Easy | 144 | 104 | 72% |
+| Hard | 262 | 193 | 74% |
 
-ℹ️ Zgodnie z oczekiwaniem **hard trudniejszy (68%) niż easy (75%)** — różnica 7 pkt%. Mała próbka, ale kierunek sensowny. Przy większym N dołożę rozbicie **per typ × poziom** (np. czy słaby typ 2/4 leci głównie z wariantu hard).
+ℹ️ **Niespodzianka utrzymuje się: hard NIE jest trudniejszy** — easy 72% vs hard 74% (statystycznie to samo, jak nie odwrotnie). „Trudniejsze" pytania robią pewnie bardziej zaawansowani userzy, co wyrównuje skuteczność. Wniosek produktowy: **etykieta poziomu mówi więcej o tym KTO je robi niż o realnej trudności** — sama skuteczność nie różnicuje. Warto połączyć z typem (czy słaby typ 2/4 zależy od poziomu).
 
-> 🟢 **2 pełne doby post-deploy (06.08 + 06.09 = 776 odpowiedzi z typem).** Próbka już sensowna (62–311 na typ). Wyraźny wzorzec: **typy słowno-analogiczne najtrudniejsze** — **typ 2 „Wspólny wyraz" (60%)**, **typ 4 „Analogia zdaniowa" (60%)**, a także typ 1 i 3 (po 70%). Najłatwiejsze: typ 7 „Analiza wykresu" (89%), 5 „Wnioskowanie" (87%), 6 „Zadanie numeryczne" (86%). **Priorytet przeglądu treści/wyjaśnień: typy 2 i 4.** (Skuteczność spadła vs poprzedni odczyt, bo poprzednia próbka 06.08 była mała i zawyżona — większe N urealnia.)
+> 🟢 **3 pełne doby (06.08–06.10 = 1073 odpowiedzi z typem).** Próbka solidna (88–425 na typ). Wyraźny wzorzec: **typy słowno-analogiczne najtrudniejsze** — **typ 2 „Wspólny wyraz" (60%)**, **typ 4 „Analogia zdaniowa" (60%)**, a także typ 1 i 3 (po 70%). Najłatwiejsze: typ 7 „Analiza wykresu" (89%), 5 „Wnioskowanie" (87%), 6 „Zadanie numeryczne" (86%). **Priorytet przeglądu treści/wyjaśnień: typy 2 i 4.** (Skuteczność spadła vs poprzedni odczyt, bo poprzednia próbka 06.08 była mała i zawyżona — większe N urealnia.)
 >
 > 📊 **Poziom trudności:** wymiar `question_difficulty` (`easy`/`hard`) jest **zarejestrowany w GA4 ✅**, ale wciąż zwraca `(not set)` — zmiana w kodzie dodająca ten parametr do `question_answered` **nie jest jeszcze wdrożona** (08.06 zdeployowano tylko fix gtag z `is_correct`/`question_type`). Po deployu `index.html` zacznie spływać easy/hard i dołożę rozbicie skuteczności **per typ × poziom** (np. czy niska skuteczność typu 2/4 bierze się z wariantu hard).
 
@@ -159,18 +159,18 @@
 | Metryka | Userzy | Eventy |
 |---|---|---|
 | **Zainstalowane PWA** (`pwa_installed`) | **5** | 8 |
-| **Używa jako appka** — uruchomienia standalone (`pwa_launched_standalone`) | **4** | 19 |
-| Wejścia z in-app webview, np. FB (`pwa_inapp_detected`) | 23 | 23 |
+| **Używa jako appka** — uruchomienia standalone (`pwa_launched_standalone`) | **4** | 20 |
+| Wejścia z in-app webview, np. FB (`pwa_inapp_detected`) | 27 | 27 |
 
 **Lejek promptu instalacji:**
 | Krok | Userzy | Eventy |
 |---|---|---|
-| Prompt pokazany (`pwa_prompt_shown`) | 21 | 35 |
+| Prompt pokazany (`pwa_prompt_shown`) | 23 | 40 |
 | Prompt kliknięty (`pwa_prompt_clicked`) | 5 | 5 |
 | Instalacja zaakceptowana (`pwa_install_accepted`) | 2 | 2 |
 | Instalacja odrzucona (`pwa_install_dismissed`) | 1 | 1 |
-| Prompt odłożony / snooze (`pwa_prompt_snoozed`) | 32 | 33 |
-| Podpowiedź „otwórz w przeglądarce" (`pwa_open_in_browser_hint_shown`) | 23 | 30 |
+| Prompt odłożony / snooze (`pwa_prompt_snoozed`) | 37 | 38 |
+| Podpowiedź „otwórz w przeglądarce" (`pwa_open_in_browser_hint_shown`) | 27 | 34 |
 
 ℹ️ **5 userów zainstalowało, 4 używa jako appki** (19 uruchomień standalone → realnie wracają). To ~2,5% ze 162 userów — mało, ale najbardziej „lojalna" grupa. Lejek promptu: z 21 userów z promptem kliknęło 5, zaakceptowało 2, odrzucił 1 → część instalacji poszła „cicho" (natywne menu przeglądarki / `appinstalled`, nie nasz prompt). Aż **32 userów odłożyło prompt (snooze)** — prompt pokazuje się, ale konwertuje słabo.
 
@@ -185,8 +185,8 @@
 | Metryka | Userzy | Eventy |
 |---|---|---|
 | **Głosy 👍/👎** (`feedback_vote`) | **2** | 2 |
-| Modal otwarty (`feedback_modal_opened`) | 3 | 3 |
-| Modal porzucony (`feedback_modal_dismissed`) | 2 | 2 |
+| Modal otwarty (`feedback_modal_opened`) | 5 | 5 |
+| Modal porzucony (`feedback_modal_dismissed`) | 4 | 4 |
 | **Wysłany komentarz** (`feedback_submitted`) | **1** | 1 |
 | Kliknięcia udostępnienia (`feedback_share_clicked`) | 0 | 0 |
 

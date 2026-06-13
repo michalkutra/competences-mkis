@@ -1,5 +1,22 @@
 # Backlog — Ukończone
 
+
+## Pula pytań do części II egzaminu (sprawdzian wiedzy)
+
+> **Ukończono:** 2026-06-12 (rozszerzenie pz/se: 2026-06-13) · [Plan](docs/superpowers/plans/2026-06-10-pytania-sprawdzian-wiedzy.md)
+
+**Dowiezione:** `data/wiedza/output/questions-wiedza.json` — **827 pytań** jednokrotnego wyboru (263 realne KSAP 2023–2025 zweryfikowane wobec stanu prawnego 2026-06 + 564 wygenerowane w stylu formuły 2025), pogrupowanych w **31 typów** (taksonomia z pełnym pokryciem 41/41 zagadnień Zał. 1 do Rozporządzenia, Dz.U. 2025 poz. 811), z poziomami trudności easy/medium/hard, wyjaśnieniami i referencją do źródła (akt + artykuł / Leksykon budżetowy / dane GUS-NBP).
+
+**Rozszerzenie (2026-06-13):** na życzenie użytkownika (priorytet nauki) podwojono pule dwóch domen — **pz 40→80** i **se 87→174** (+127 wygenerowanych, z czego 1 odrzucony w weryfikacji i zastąpiony). Pula wzrosła z 700 do 827 pytań.
+
+**Jakość:** alokacja per typ z empirycznych wag egzaminów (2025 ważony ×3, floor 10/typ; pz/se wzmocnione ponad wagi decyzją użytkownika); każde realne pytanie zweryfikowane wobec lokalnych tekstów jednolitych (2 odrzucone, 23 skorygowane); każde wygenerowane przeszło adwersaryjną weryfikację niezależnym subagentem (545 ok / 18 poprawionych / 1 odrzucone+dogenerowane — `data/wiedza/analysis/verify-report.md`); walidator schematu 0 błędów; rozkład poprawnych odpowiedzi 23,6–26,5% per pozycja. Statystyki i znane ograniczenia: `data/wiedza/output/stats.md`.
+
+**Proces:** potok danych wg planu — pobranie źródeł (6 PDF KSAP, 13 aktów t.j. przez ELI API, crawl 189 haseł Leksykonu przez ochronę TSPD) → parsowanie egzaminów (540 pytań, 0 błędów, niezależna re-parsacja kontrolna) → taksonomia → mapowanie + wagi → weryfikacja realnych → style guide ze zmierzonymi statystykami 2025A → generacja 48 batchy subagentami → weryfikacja adwersaryjna 47 weryfikatorów → scalenie. Narzędzia odtwarzalne w `tools/wiedza/`.
+
+**Poza zakresem (osobne pozycje):** integracja z aplikacją web (format już kompatybilny z `web/questions-unified.js`; nowość: `level: "medium"` i `topicId` zamiast `typeId`).
+
+---
+
 ## Flow satysfakcji + polecenia (Web3Forms) — faza 1
 
 > **Ukończono:** 2026-06-10 · [Spec](docs/superpowers/specs/2026-06-09-feedback-referral-flow-design.md) · [Plan](docs/superpowers/plans/2026-06-09-feedback-referral-flow.md)
