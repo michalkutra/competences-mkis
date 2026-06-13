@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wariant B — Stałe taby</title>
+<link rel="stylesheet" href="_shared.css">
+</head>
+<body>
+<div class="mock-bar">
+  <b>MOCKUP — Wariant B:</b> Stały przełącznik (taby) u góry
+  <a href="wariant-a-hub.html">→ Wariant A</a>
+  <a href="wariant-c-setup.html">→ Wariant C</a>
+</div>
+
+<header id="global-header">
+  <button id="account-btn" title="Menu konta">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+  </button>
+</header>
+
+<!-- PERSISTENT TABS -->
+<div class="part-tabs">
+  <div class="part-tab active" id="tab-I" onclick="switchPart('I')">Część I<small>umiejętności · 640</small></div>
+  <div class="part-tab" id="tab-II" onclick="switchPart('II')">Część II<small>wiedza · 827</small></div>
+</div>
+
+<!-- HOME w kontekście aktywnej części -->
+<div class="screen center-col" style="padding-top:5vh">
+  <h1 id="home-title">Sprawdzian umiejętności</h1>
+  <p class="subtitle" id="home-sub" style="margin-bottom:24px">Test predyspozycji — 8 typów zadań, sesja 15 pytań wg blueprintu egzaminu</p>
+  <button onclick="alert('→ setup aktywnej części')">Nowa sesja</button>
+  <button class="ghost" onclick="alert('Historia — domyślnie filtr = aktywna część')">Historia sesji</button>
+  <button class="ghost" onclick="alert('Statystyki — domyślnie filtr = aktywna część')">Statystyki</button>
+  <p class="muted" style="margin-top:28px; font-size:.92rem">✦ Odpowiedzieliście już na ponad 3800 pytań ✦</p>
+  <p class="muted" style="font-size:.92rem">Egzamin za 21 dni</p>
+</div>
+
+<script>
+function switchPart(p){
+  document.getElementById('tab-I').classList.toggle('active', p==='I');
+  document.getElementById('tab-II').classList.toggle('active', p==='II');
+  if(p==='I'){
+    document.getElementById('home-title').textContent='Sprawdzian umiejętności';
+    document.getElementById('home-sub').textContent='Test predyspozycji — 8 typów zadań, sesja 15 pytań wg blueprintu egzaminu';
+  } else {
+    document.getElementById('home-title').textContent='Sprawdzian wiedzy';
+    document.getElementById('home-sub').textContent='6 dziedzin, 827 pytań — tryb egzaminu (90/90 min) lub nauki z filtrem dziedzin';
+  }
+  // (w realnej apce wybór zapisujemy w localStorage i pamiętamy między wizytami)
+}
+</script>
+</body>
+</html>
