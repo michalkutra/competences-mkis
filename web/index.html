@@ -904,7 +904,7 @@
         z-index: -1;
         background: transparent;
       }
-      #bg-illustration img { max-height: 50vh; width: auto; height: auto; }
+      #bg-illustration img { max-height: 37.5vh; width: auto; height: auto; }
       #bg-illustration::before { display: none; }
       #screen-home {
         justify-content: flex-start;
@@ -1697,6 +1697,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     _applyScreen(s);
     if (s === 'history') loadHistory();
     if (s === 'stats') loadStats();
+  });
+
+  // Jesteśmy w trakcie testu (aktywna sesja na ekranie pytania)?
+  function isTestInProgress() {
+    return state.screen === 'question' && state.session.length > 0;
+  }
+
+  // Drugą warstwą do overscroll-behavior (blokada gestu): jeśli mimo wszystko dojdzie
+  // do przeładowania/zamknięcia/odejścia ze strony w trakcie testu — przeglądarka
+  // najpierw zapyta o potwierdzenie (jak X / przerwanie sesji). Tekst dialogu jest
+  // systemowy — przeglądarki nie pozwalają go nadpisać.
+  window.addEventListener('beforeunload', function(e) {
+    if (isTestInProgress()) {
+      e.preventDefault();
+      e.returnValue = '';
+      return '';
+    }
   });
 
   function initCountdown() {
