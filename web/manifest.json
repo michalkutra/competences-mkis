@@ -1,7 +1,7 @@
 {
   "name": "Egzamin Urzędnik Mianowany",
   "short_name": "Egzamin UM",
-  "description": "Sprawdzian kompetencji menedżerskich i przywódczych",
+  "description": "Ćwiczenia przed egzaminem na urzędnika mianowanego — część I (umiejętności) i część II (wiedza)",
   "start_url": "./",
   "display": "standalone",
   "orientation": "portrait",

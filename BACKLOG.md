@@ -8,9 +8,12 @@
 
 | Pozycja | Wpływ | Wysiłek | Priorytet |
 |---|---|---|---|
+| Integracja części II (sprawdzian wiedzy) | 827 pytań nowej części egzaminu wpiętych w appkę — podwaja zakres treści przed egzaminem | duży (spec + plan gotowe) | **MUST** (gotowe do implementacji) |
 | Baner zgody na cookies/śledzenie (GDPR) | Strona live śledzi przez GA4 bez zgody (opt-out ukryty w debug) — realna ekspozycja prawna; tani fix | mały (spec gotowy) | **SHOULD** (zgodność prawna) |
 | Wall testimoniali (faza 2) | Social proof na Home/About — ale nie ma czego pokazać, póki nie napłyną pozytywne opinie (zależność danych); źródło = maile z Web3Forms | średni | COULD (po napływie opinii z Web3Forms) |
 | Adaptacyjny dobór wg słabości (per-typ floor+flex; per-pytanie = tryb „Powtórka błędów") | Nauka na błędach przed egzaminem — realna wartość edukacyjna w oknie 4 tyg. | średni | COULD (post-launch) |
+| Pełny egzamin próbny 90/90 (część II) | Najwierniejsza symulacja prawdziwego egzaminu (90 pytań / 90 min) — najmocniejszy feature części II dla zdających | średni | COULD (po integracji cz. II) |
+| Odświeżanie treści wrażliwych czasowo (cykl 2027) | Część pytań cz. II poprawna tylko na stan 2026-06 — bez odświeżenia user wkuwa nieaktualne fakty (zaufanie) | średni | COULD (przed cyklem 2027) |
 | Podgląd pojedynczego pytania (QA) | Szybsza obsługa zgłoszeń błędów bez przeklikiwania sesji | mały | COULD (tooling) |
 | Hub treściowy / GEO (widoczność w Google i AI Overview) | Organic = 3 wizyty od launchu; bez treści nie ma czego cytować. Inwestycja w cykl 2027, nie w ten egzamin | średni | COULD (post-launch, działa na rocznik 2027) |
 | Przycisk powrotu do pytania | UX improvement — przeżyją bez tego | ~3h | SKIP |
@@ -19,6 +22,56 @@
 **Legenda:** MUST = blokuje pełnię wartości launchu · SHOULD = duży zysk, robić wkrótce · COULD = wartościowe, post-launch · BLOCKER = czeka na decyzję/doprecyzowanie · SKIP = świadomie odpuszczone.
 
 > **Trwałość danych (localStorage)** — **rozwiązana, przeniesiona do BACKLOG_DONE.md** (2026-06-05). Obie dźwignie bez backendu wdrożone: PWA install (trwały storage) + export/import JSON (kopia). Pozostałe opcje (File System API / shareable URL / cloud) świadomie skip-tier.
+
+---
+
+## Integracja części II (sprawdzian wiedzy)
+
+Wpięcie 827 pytań części II („sprawdzian wiedzy", 6 dziedzin) jako osobnej części egzaminu obok istniejącej części I. Nawigacja Wariant A (home = hub dwóch części), sesja 15 pytań, tryby Nauka/Egzamin jak w cz. I, filtr dziedzin + poziomu. Reużycie historii, statystyk (filtr części), GA4 i PWA.
+
+**Status:** zaprojektowane + rozpisane.
+- [Spec](docs/superpowers/specs/2026-06-13-integracja-czesc-ii-wiedza-design.md)
+- [Plan implementacji](docs/superpowers/plans/2026-06-13-integracja-czesc-ii-wiedza.md)
+- Mockupy nawigacji: branch `mockup-nawigacja-czesc-ii`, PR #2 (`web/mockups/`).
+- Pula pytań DOWIEZIONA: `data/wiedza/output/questions-wiedza.json` (handoff: `docs/superpowers/2026-06-13-handoff-integracja-pytan-wiedza.md`).
+
+---
+
+## Pełny egzamin próbny 90/90 (część II)
+
+**Kontekst:** prawdziwy egzamin części II to **90 pytań / 90 min, 6 dziedzin, jednokrotny wybór, bez punktów ujemnych**. Integracja cz. II (osobny task, MUST) dowozi tylko sesje po 15 pytań w trybach Nauka/Egzamin — mechanika jak w cz. I. Pełny mock 90/90 jest świadomie poza zakresem integracji (YAGNI, spec §11), ale to **najmocniejszy feature dla zdających** — jedyny sposób, by przećwiczyć kondycję, tempo i kompletny zakres pod presją czasu.
+
+**Priorytet:** COULD, dopiero **po** dowiezieniu integracji cz. II (zależność).
+
+**Zakres (do doprecyzowania w brainstormingu):**
+- Tryb „Egzamin próbny" na ekranie setupu cz. II (obok Nauka/Egzamin 15-pytaniowego): 90 pytań, licznik 90 min, rozkład dziedzin wg wag egzaminu (rozkład puli już je odzwierciedla).
+- Brak feedbacku per pytanie (jak realny egzamin) — wynik + review dopiero na końcu.
+- Reużyć `composeWiedzaSession` z parametrem `size: 90` (czysta funkcja już to wspiera).
+
+**Otwarte pytania:**
+- Czy licznik 90 min globalny (jak egzamin), czy nadal 60 s/pytanie? (egzamin = globalny — to istotna różnica wobec obecnego timera per-pytanie).
+- Próg zdawalności / prezentacja wyniku (egzamin ma progi punktowe).
+- Czy filtr dziedzin/poziomu dostępny, czy mock zawsze pełny przekrój?
+
+---
+
+## Odświeżanie treści wrażliwych czasowo (cykl 2027)
+
+**Kontekst:** część pytań cz. II jest poprawna **tylko na stan 2026-06** (`legalState` w danych). Bez procesu odświeżenia przed kolejnym cyklem egzaminacyjnym user uczy się nieaktualnych faktów — realny problem zaufania do appki dla rocznika 2027.
+
+**Pozycje wrażliwe (z handoffa §5, `docs/superpowers/2026-06-13-handoff-integracja-pytan-wiedza.md`):**
+- prokuratura — rozdzielenie urzędów Ministra Sprawiedliwości i Prokuratora Generalnego (reforma w toku),
+- kwoty/dane 2026 — płaca minimalna 4806 zł, wydatki budżetu ≈919 mld zł, dzietność ~1,1, mediana wieku ~43, Gini / working poor,
+- skład Komisji Europejskiej (kadencja do 2029), członkostwa NATO/UE/strefy euro (Bułgaria w euro od 2026-01),
+- mechanizm korekcyjno-wyrównawczy JST (ustawa o dochodach JST z 2024),
+- rynek pracy — ustawa z 20.03.2025 (długość zasiłku niezależna od lokalnej stopy bezrobocia).
+
+**Zakres:**
+- Przed cyklem 2027 przejść pytania z `legalState: "2026-06"` i zweryfikować/zaktualizować dane + `source`, bumpnąć `legalState`.
+- Rozważyć skrypt audytujący (grep po wartościach liczbowych / nazwach instytucji) zamiast ręcznego przeglądu 827 pytań.
+- Opcjonalnie: pokazać userowi „stan prawny: 2026-06" w UI (np. w review obok źródła) — drobny sygnał aktualności/zaufania.
+
+**Timing:** poza oknem egzaminu 2026-07-04 (te pytania są poprawne teraz). Zaplanować przed ogłoszeniem postępowania 2027.
 
 ---
 
