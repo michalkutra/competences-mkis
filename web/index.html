@@ -82,6 +82,9 @@
     }
     body.hide-bg #bg-illustration { opacity: 0; }
     body.on-question .q-header { top: 0; }
+    /* tylko w trakcie testu: blokuje pull-to-refresh (Android Chrome), żeby przeciągnięcie
+       w dół nie przeładowało strony i nie wyrzuciło z sesji. Poza testem — natywne zachowanie. */
+    body.on-question { overscroll-behavior-y: contain; }
 
     .screen { display: none; max-width: 800px; margin: 0 auto; padding: 16px; }
 
@@ -132,9 +135,8 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      padding-top: 5vh;
-      /* miejsce na sticky-grafikę u dołu: wysokość obrazka (≈48vw przy proporcji 2.07)
-         + maska + zapas; małe ekrany dostają dłuższą maskę niżej; desktop resetuje do 0 */
+      padding-top: 16px;
+      /* zapas na sticky-grafikę u dołu (≈48vw wys.) + maska; ≤540 dłuższa maska niżej; desktop → 0 */
       padding-bottom: calc(48vw + 96px);
       min-height: calc(100vh - 48px);
       text-align: center;
@@ -186,14 +188,11 @@
         font-size: 0.8rem;
         white-space: nowrap;
       }
-      /* grafika+maska są fixed na dole też na setupie → zapas, by „Rozpocznij" dało się
-         wyscrollować spod obrazka (jak na home); desktop nie ma maski, więc bez zmian */
-      #screen-setup, #screen-setup-wiedza { padding-bottom: calc(48vw + 96px); }
     }
     /* węższy media query PO szerszym, by na ≤540 wygrał większy zapas (maska 150px) */
     @media (max-width: 540px) {
       #bg-illustration::before { top: -150px; height: 150px; }
-      #screen-home, #screen-setup, #screen-setup-wiedza { padding-bottom: calc(48vw + 166px); }
+      #screen-home { padding-bottom: calc(48vw + 166px); }
     }
     .part-card { background: #fff; border: 1.5px solid #e5e7eb; border-radius: 14px; padding: 22px 20px; text-align: left; cursor: pointer; transition: border-color .15s, box-shadow .15s, transform .1s; }
     .part-card:hover, .part-card:focus { border-color: #2563eb; box-shadow: 0 6px 22px rgba(37,99,235,.12); transform: translateY(-2px); outline: none; }
@@ -905,11 +904,11 @@
         z-index: -1;
         background: transparent;
       }
-      #bg-illustration img { max-height: 50vh; width: auto; }
+      #bg-illustration img { max-height: 50vh; width: auto; height: auto; }
       #bg-illustration::before { display: none; }
       #screen-home {
         justify-content: flex-start;
-        padding-top: 10vh;
+        padding-top: 24px;
         padding-bottom: 0;
       }
     }
@@ -1646,7 +1645,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('screen-' + name).style.display = name === 'home' ? 'flex' : 'block';
     state.screen = name;
     _applySeo(name);
-    document.body.classList.toggle('hide-bg', name !== 'home' && name !== 'setup' && name !== 'setup-wiedza');
+    document.body.classList.toggle('hide-bg', name !== 'home');
     document.body.classList.toggle('on-question', name === 'question');
     document.getElementById('global-header').style.display = name === 'question' ? 'none' : 'flex';
     window.scrollTo(0, 0);

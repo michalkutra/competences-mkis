@@ -1,7 +1,7 @@
 # 📊 Raport launchu — egzamin.kutra.pl
 
 > **GA4 property:** `540012122` (egzamin.kutra.pl) · **Strefa czasowa:** Europe/Warsaw
-> **Ostatnia aktualizacja:** 2026-06-12 · **Dane od:** 2026-06-03 (premiera)
+> **Ostatnia aktualizacja:** 2026-06-13 · **Dane od:** 2026-06-03 (premiera)
 > **Cel donejtów:** 100 zł łącznie
 >
 > 🔄 Aktualizuj skillem `/aktualizuj-raport-launchu` (albo napisz „zaktualizuj raport launchu") — pobiera dane po GA4 MCP i **tylko dopisuje kolumnę / odświeża**, nie przepisuje historii.
@@ -28,33 +28,33 @@
 
 > Daty w kolumnach — skanuj wiersz (metrykę) od lewej do prawej, żeby zobaczyć trend. Nowe dni dopisują kolejne kolumny po prawej.
 
-| Metryka | 2026-06-03 | 2026-06-04 | 2026-06-05 | 2026-06-06 | 2026-06-07 | 2026-06-08 | 2026-06-09 | 2026-06-10 | 2026-06-11 | 2026-06-12 ⚠️ |
+| Metryka | 2026-06-03 | 2026-06-04 | 2026-06-05 | 2026-06-06 | 2026-06-07 | 2026-06-08 | 2026-06-09 | 2026-06-10 | 2026-06-11 | 2026-06-12 |
 |---|---|---|---|---|---|---|---|---|---|---|
 | **— Wzrost —** | | | | | | | | | | |
-| Użytkownicy | 74 | 34 | 24 | 17 | 21 | 17 | 29 | 21 | 12 | 8 |
+| Użytkownicy | 74 | 34 | 24 | 17 | 21 | 17 | 29 | 21 | 12 | 10 |
 | Nowi | 71 | 24 | 14 | 8 | 12 | 4 | 16 | 12 | 4 | 4 |
-| Powracający | 3 | 10 | 10 | 9 | 9 | 13 | 13 | 9 | 8 | 4 |
-| Powracający % | 4% | 29% | 42% | 53% | 43% | 76% | 45% | 43% | 67% | 50% |
+| Powracający | 3 | 10 | 10 | 9 | 9 | 13 | 13 | 9 | 8 | 6 |
+| Powracający % | 4% | 29% | 42% | 53% | 43% | 76% | 45% | 43% | 67% | 60% |
 | **— Wizyty (ruch na stronie) —** | | | | | | | | | | |
-| Wizyty (sesje GA) | 99 | 43 | 31 | 25 | 27 | 35 | 41 | 28 | 17 | 12 |
+| Wizyty (sesje GA) | 99 | 43 | 31 | 25 | 27 | 35 | 41 | 28 | 17 | 15 |
 | Wizyty zaang. | 82 | 33 | 26 | 21 | 20 | 31 | 39 | 4† | 13 | 0† |
 | Engagement rate | 83% | 77% | 84% | 84% | 74% | 89% | 95% | 14%† | 76% | —† |
-| Śr. czas wizyty | 8,8 min | 8,4 min | 8,7 min | 8,5 min | 12,2 min | 13,4 min | 11,0 min | 90 min* | 5,1 min | 22,0 min* |
+| Śr. czas wizyty | 8,8 min | 8,4 min | 8,7 min | 8,5 min | 12,2 min | 13,4 min | 11,0 min | 90 min* | 5,1 min | 26,3 min* |
 | **— Nauka (quizy) —** | | | | | | | | | | |
-| Odpowiedzi (`question_answered`) | 909 | 436 | 380 | 194 | 402 | 409 | 509 | 339 | 185 | 46 |
-| Sesje nauki — start (`session_started`) | 99 | 33 | 33 | 19 | 34 | 31 | 45 | 30 | 18 | 5 |
-| Sesje nauki — ukończone (`session_completed`) | 53 | 29 | 25 | 11 | 25 | 23 | 32 | 20 | 12 | 3 |
-| Completion rate | 54% | 88% | 76% | 58% | 74% | 74% | 71% | 67% | 67% | 60% |
+| Odpowiedzi (`question_answered`) | 909 | 436 | 380 | 194 | 402 | 409 | 509 | 339 | 185 | 80 |
+| Sesje nauki — start (`session_started`) | 99 | 33 | 33 | 19 | 34 | 31 | 45 | 30 | 18 | 8 |
+| Sesje nauki — ukończone (`session_completed`) | 53 | 29 | 25 | 11 | 25 | 23 | 32 | 20 | 12 | 4 |
+| Completion rate | 54% | 88% | 76% | 58% | 74% | 74% | 71% | 67% | 67% | 50% |
 | Porzucone | 13 | 1 | 4 | 3 | 3 | 2 | 6 | 4 | 3 | 1 |
-| Abort rate | 13% | 3% | 12% | 16% | 9% | 6% | 13% | 13% | 17% | 20% |
+| Abort rate | 13% | 3% | 12% | 16% | 9% | 6% | 13% | 13% | 17% | 13% |
 | **— Sygnały —** | | | | | | | | | | |
 | Donate kliki | 4 | 1 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Zgłoszenia błędu | 4 | 0 | 0 | 0 | 7 | 2 | 2 | 0 | 0 | 0 |
 | Udostępnienia (`result_shared`) | — | — | — | — | — | — | — | — | — | — |
 
-\* 12.06 niepełny dzień (8 userów na moment aktualizacji). Dni 03–11.06 to pełne doby. Śr. czas 10.06 (90 min) i 12.06 (22 min) zawyżone przez karty zostawione otwarte.
-† **Wizyty zaang./eng. rate dla 12.06 jeszcze się przeliczają** w GA4 (`engagedSessions` dochodzi z opóźnieniem). 11.06 doszedł do **76%**, 09.06 do **95%** — 10.06 wciąż pokazuje zaniżone 4 zaang. (realnie ~80%, bo 20 ukończonych sesji).
-**07–11.06 to mocna passa:** 21 / 17 / 29 / 21 / 12 userów i 402 / 409 / 509 / 339 / 185 odpowiedzi — 09.06 najmocniejszy (95% eng., 32 ukończone sesje). Retencja wysoka (powracający 43–76%).
+\* Wszystkie dni 03–12.06 to pełne doby (13.06 bez ruchu w momencie aktualizacji). Śr. czas 10.06 (90 min) i 12.06 (26 min) zawyżone przez karty zostawione otwarte.
+† **Wizyty zaang./eng. rate dla 12.06 jeszcze się przeliczają** w GA4 (pokazuje 0 zaang. przy 4 ukończonych sesjach — lag ~1 dzień). 11.06 doszedł do **76%**, 09.06 do **95%** — 10.06 wciąż pokazuje zaniżone 4 zaang.
+**Ruch wypłaszczony:** po passie 07–11.06 (21/17/29/21/12 userów) tempo spadło do ~10 userów/dobę (12.06: 10 userów / 80 odpowiedzi), głównie powracający. Retencja wysoka (powracający 43–76%).
 
 **Definicje:** ⚠️ **„Wizyty (sesje GA)"** = `sessions` z GA = odwiedziny strony — to CO INNEGO niż **„Sesje nauki"** = `session_started` = rozpoczęte quizy. · *Powracający* = Użytkownicy − Nowi · *Engagement rate* = wizyty zaang. / wizyty · *Śr. czas wizyty* = `averageSessionDuration` · *Completion rate* = `session_completed`/`session_started` (quizy) · *Abort rate* = `session_aborted`/`session_started` (quizy) · *Donate kliki* = `donation_clicked` (klik ≠ wpłata) · *Udostępnienia* = `result_shared` (po wdrożeniu „Podziel się wynikiem").
 
@@ -64,19 +64,19 @@
 
 | KPI | Wartość |
 |---|---|
-| Użytkownicy łącznie | **172** (169 nowych) |
-| Wizyty (sesje GA) | **355** (288 zaang. → 81% eng. rate) |
-| Śr. czas wizyty | **10,5 min** |
-| Odsłony / eventy | 3 193 / 11 178 |
-| Odpowiedzi na pytania | 3 809 (≈36 / aktywnego usera) |
-| Completion rate (sesje nauki) | ~67% (233 / 347) |
+| Użytkownicy łącznie | **173** (169 nowych) |
+| Wizyty (sesje GA) | **358** (288 zaang. → 80% eng. rate) |
+| Śr. czas wizyty | **10,8 min** |
+| Odsłony / eventy | 3 214 / 11 240 |
+| Odpowiedzi na pytania | 3 843 (≈36 / aktywnego usera) |
+| Completion rate (sesje nauki) | ~67% (234 / 350) |
 
 ### Lejek (userzy, narastająco)
 | Krok | Userzy | % wejść |
 |---|---|---|
-| Wszedł na stronę | 172 | 100% |
+| Wszedł na stronę | 173 | 100% |
 | Zaczął sesję nauki | 117 | 68% |
-| Odpowiedział ≥1 pytanie | 106 | 62% |
+| Odpowiedział ≥1 pytanie | 106 | 61% |
 | Ukończył ≥1 sesję nauki | 79 | 46% |
 
 ---
