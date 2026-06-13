@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wariant A — Home jako hub</title>
+<link rel="stylesheet" href="_shared.css">
+</head>
+<body>
+<div class="mock-bar">
+  <b>MOCKUP — Wariant A:</b> Home jako hub wyboru części
+  <a href="wariant-b-tabs.html">→ Wariant B</a>
+  <a href="wariant-c-setup.html">→ Wariant C</a>
+</div>
+
+<header id="global-header">
+  <button id="account-btn" title="Menu konta (Statystyki, Historia, O aplikacji)">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+  </button>
+</header>
+
+<!-- HOME = HUB -->
+<div id="home" class="screen center-col">
+  <h1>Egzamin na urzędnika mianowanego</h1>
+  <p class="subtitle" style="margin-bottom:28px">Ćwiczenia przed postępowaniem kwalifikacyjnym KSAP — wybierz część egzaminu</p>
+
+  <div class="part-grid">
+    <div class="part-card" onclick="goSetup('I')">
+      <span class="part-eyebrow">Część I</span>
+      <h3>Sprawdzian umiejętności</h3>
+      <p>Test predyspozycji: analogie, wnioskowanie logiczne, analiza danych i figur.</p>
+      <div class="part-meta"><span>8 typów zadań</span><span>640 pytań</span><span>sesja 15 pytań</span></div>
+    </div>
+    <div class="part-card" onclick="goSetup('II')">
+      <span class="part-eyebrow">Część II</span>
+      <h3>Sprawdzian wiedzy</h3>
+      <p>Wiedza z 6 dziedzin: prawo, służba cywilna, administracja, finanse, polityki, organizacja.</p>
+      <div class="part-meta"><span>6 dziedzin</span><span>827 pytań</span><span>egzamin 90 pytań</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top:34px; display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
+    <button class="ghost btn-sm" onclick="alert('Wspólna historia obu części, z filtrem Część I / II')">Historia sesji</button>
+    <button class="ghost btn-sm" onclick="alert('Wspólne statystyki, z filtrem Część I / II')">Statystyki</button>
+  </div>
+  <p class="muted" style="margin-top:28px; font-size:.92rem">✦ Odpowiedzieliście już na ponad 3800 pytań ✦</p>
+  <p class="muted" style="font-size:.92rem">Egzamin za 21 dni</p>
+</div>
+
+<!-- SETUP (kontekst wybranej części) -->
+<div id="setup" class="screen hide">
+  <h2 id="setup-title">Nowa sesja</h2>
+  <p class="muted" id="setup-sub" style="margin-bottom:8px"></p>
+
+  <!-- część I -->
+  <div id="setup-I">
+    <p class="setup-label">Tryb</p>
+    <div class="toggle-group"><button class="toggle-btn active">Nauka</button><button class="toggle-btn">Egzamin</button></div>
+    <p class="setup-label">Poziom trudności</p>
+    <div class="toggle-group"><button class="toggle-btn active">Łatwy</button><button class="toggle-btn">Trudny</button></div>
+  </div>
+
+  <!-- część II -->
+  <div id="setup-II" class="hide">
+    <p class="setup-label">Tryb</p>
+    <div class="toggle-group">
+      <button class="toggle-btn active" onclick="pickMode(this,'nauka')">Nauka (filtruj)</button>
+      <button class="toggle-btn" onclick="pickMode(this,'egzamin')">Egzamin (90 pytań / 90 min)</button>
+    </div>
+    <div id="filters">
+      <p class="setup-label">Dziedziny (puste = wszystkie)</p>
+      <div class="chips">
+        <span class="chip active">Prawo · 242</span><span class="chip">Służba cywilna · 174</span>
+        <span class="chip">Administracja · 146</span><span class="chip">Finanse · 131</span>
+        <span class="chip">Polityki publ. · 80</span><span class="chip">Organizacja · 54</span>
+      </div>
+      <p class="setup-label">Poziom</p>
+      <div class="toggle-group"><button class="toggle-btn active">Wszystkie</button><button class="toggle-btn">Łatwe</button><button class="toggle-btn">Średnie</button><button class="toggle-btn">Trudne</button></div>
+      <p class="setup-label">Liczba pytań</p>
+      <div class="toggle-group"><button class="toggle-btn">10</button><button class="toggle-btn active">20</button><button class="toggle-btn">40</button></div>
+    </div>
+  </div>
+
+  <label style="display:flex; gap:10px; align-items:center; padding:12px 0; font-size:.95rem; cursor:pointer;"><input type="checkbox"> Licznik czasu</label>
+  <button onclick="alert('→ ekran pytania (wspólny renderer)')">Rozpocznij →</button>
+  <button class="secondary" onclick="show('home')">Powrót</button>
+</div>
+
+<script>
+function show(id){ ['home','setup'].forEach(s=>document.getElementById(s).classList.toggle('hide', s!==id)); window.scrollTo(0,0); }
+function goSetup(part){
+  document.getElementById('setup-I').classList.toggle('hide', part!=='I');
+  document.getElementById('setup-II').classList.toggle('hide', part!=='II');
+  document.getElementById('setup-title').textContent = part==='I' ? 'Część I — sprawdzian umiejętności' : 'Część II — sprawdzian wiedzy';
+  document.getElementById('setup-sub').textContent = part==='I' ? 'Sesja 15 pytań wg blueprintu egzaminu' : '827 pytań, 6 dziedzin';
+  show('setup');
+}
+function pickMode(btn, mode){
+  btn.parentElement.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('filters').classList.toggle('hide', mode==='egzamin');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wariant C — Część w setupie</title>
+<link rel="stylesheet" href="_shared.css">
+</head>
+<body>
+<div class="mock-bar">
+  <b>MOCKUP — Wariant C:</b> Część jako kolejny wybór w setupie
+  <a href="wariant-a-hub.html">→ Wariant A</a>
+  <a href="wariant-b-tabs.html">→ Wariant B</a>
+</div>
+
+<header id="global-header">
+  <button id="account-btn" title="Menu konta">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+  </button>
+</header>
+
+<!-- HOME bez zmian -->
+<div id="home" class="screen center-col">
+  <h1>Sprawdzian Umiejętności</h1>
+  <p class="subtitle" style="margin-bottom:28px">Ćwiczenia przed egzaminem na urzędnika mianowanego</p>
+  <button onclick="show('setup')">Nowa sesja</button>
+  <button class="ghost" onclick="alert('Historia')">Historia sesji</button>
+  <p class="muted" style="margin-top:28px; font-size:.92rem">✦ Odpowiedzieliście już na ponad 3800 pytań ✦</p>
+</div>
+
+<!-- SETUP z dodatkowym wyborem części -->
+<div id="setup" class="screen hide">
+  <h2>Nowa sesja</h2>
+
+  <p class="setup-label">Część egzaminu</p>
+  <div class="toggle-group">
+    <button class="toggle-btn active" onclick="pickPart(this,'I')">I — umiejętności</button>
+    <button class="toggle-btn" onclick="pickPart(this,'II')">II — wiedza</button>
+  </div>
+
+  <p class="setup-label">Tryb</p>
+  <div class="toggle-group"><button class="toggle-btn active">Nauka</button><button class="toggle-btn">Egzamin</button></div>
+
+  <!-- pola zależne od części -->
+  <div id="part-I-only">
+    <p class="setup-label">Poziom trudności</p>
+    <div class="toggle-group"><button class="toggle-btn active">Łatwy</button><button class="toggle-btn">Trudny</button></div>
+  </div>
+  <div id="part-II-only" class="hide">
+    <p class="setup-label">Dziedziny (część II)</p>
+    <div class="chips">
+      <span class="chip active">Prawo</span><span class="chip">Służba cyw.</span><span class="chip">Administr.</span>
+      <span class="chip">Finanse</span><span class="chip">Polityki</span><span class="chip">Organiz.</span>
+    </div>
+    <p class="setup-label">Poziom (część II ma 3)</p>
+    <div class="toggle-group"><button class="toggle-btn active">Wszystkie</button><button class="toggle-btn">Łatwe</button><button class="toggle-btn">Średnie</button><button class="toggle-btn">Trudne</button></div>
+  </div>
+
+  <p class="muted" style="font-size:.82rem; margin-top:14px; background:#fff4f4; border-left:3px solid #ef4444; padding:8px 10px;">
+    ⚠️ Uwaga: jeden ekran obsługuje dwa bardzo różne formaty (blueprint 15 vs egzamin 90, 2 vs 3 poziomy, dziedziny vs typy) — dużo warunkowego UI. Sprzeczne z „nie mieszać" z handoffu.</p>
+
+  <button onclick="alert('→ ekran pytania')">Rozpocznij →</button>
+  <button class="secondary" onclick="show('home')">Powrót</button>
+</div>
+
+<script>
+function show(id){ ['home','setup'].forEach(s=>document.getElementById(s).classList.toggle('hide', s!==id)); window.scrollTo(0,0); }
+function pickPart(btn, part){
+  btn.parentElement.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('part-I-only').classList.toggle('hide', part!=='I');
+  document.getElementById('part-II-only').classList.toggle('hide', part!=='II');
+}
+</script>
+</body>
+</html>
