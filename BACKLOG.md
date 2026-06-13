@@ -8,7 +8,6 @@
 
 | Pozycja | Wpływ | Wysiłek | Priorytet |
 |---|---|---|---|
-| Integracja części II (sprawdzian wiedzy) | 827 pytań nowej części egzaminu wpiętych w appkę — podwaja zakres treści przed egzaminem | duży (spec + plan gotowe) | **MUST** (gotowe do implementacji) |
 | Baner zgody na cookies/śledzenie (GDPR) | Strona live śledzi przez GA4 bez zgody (opt-out ukryty w debug) — realna ekspozycja prawna; tani fix | mały (spec gotowy) | **SHOULD** (zgodność prawna) |
 | Wall testimoniali (faza 2) | Social proof na Home/About — ale nie ma czego pokazać, póki nie napłyną pozytywne opinie (zależność danych); źródło = maile z Web3Forms | średni | COULD (po napływie opinii z Web3Forms) |
 | Adaptacyjny dobór wg słabości (per-typ floor+flex; per-pytanie = tryb „Powtórka błędów") | Nauka na błędach przed egzaminem — realna wartość edukacyjna w oknie 4 tyg. | średni | COULD (post-launch) |
@@ -22,18 +21,6 @@
 **Legenda:** MUST = blokuje pełnię wartości launchu · SHOULD = duży zysk, robić wkrótce · COULD = wartościowe, post-launch · BLOCKER = czeka na decyzję/doprecyzowanie · SKIP = świadomie odpuszczone.
 
 > **Trwałość danych (localStorage)** — **rozwiązana, przeniesiona do BACKLOG_DONE.md** (2026-06-05). Obie dźwignie bez backendu wdrożone: PWA install (trwały storage) + export/import JSON (kopia). Pozostałe opcje (File System API / shareable URL / cloud) świadomie skip-tier.
-
----
-
-## Integracja części II (sprawdzian wiedzy)
-
-Wpięcie 827 pytań części II („sprawdzian wiedzy", 6 dziedzin) jako osobnej części egzaminu obok istniejącej części I. Nawigacja Wariant A (home = hub dwóch części), sesja 15 pytań, tryby Nauka/Egzamin jak w cz. I, filtr dziedzin + poziomu. Reużycie historii, statystyk (filtr części), GA4 i PWA.
-
-**Status:** zaprojektowane + rozpisane.
-- [Spec](docs/superpowers/specs/2026-06-13-integracja-czesc-ii-wiedza-design.md)
-- [Plan implementacji](docs/superpowers/plans/2026-06-13-integracja-czesc-ii-wiedza.md)
-- Mockupy nawigacji: branch `mockup-nawigacja-czesc-ii`, PR #2 (`web/mockups/`).
-- Pula pytań DOWIEZIONA: `data/wiedza/output/questions-wiedza.json` (handoff: `docs/superpowers/2026-06-13-handoff-integracja-pytan-wiedza.md`).
 
 ---
 

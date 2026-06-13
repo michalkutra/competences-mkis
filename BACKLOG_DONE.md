@@ -1,6 +1,22 @@
 # Backlog — Ukończone
 
 
+## Integracja części II (sprawdzian wiedzy) z aplikacją
+
+> **Ukończono:** 2026-06-13 · [Spec](docs/superpowers/specs/2026-06-13-integracja-czesc-ii-wiedza-design.md) · [Plan](docs/superpowers/plans/2026-06-13-integracja-czesc-ii-wiedza.md)
+
+Wpięcie 827 pytań części II („sprawdzian wiedzy", 6 dziedzin) jako osobnej części egzaminu obok części I. Nawigacja Wariant A (home = hub dwóch części), osobny ekran setupu cz. II (tryb, chipy dziedzin, filtr poziomu), routing `/wiedza`, sesja 15 pytań, render świadomy części (stem + `source` w review). Persystencja/historia/statystyki uogólnione o `part` + oś `group` (typ dla cz. I, dziedzina dla cz. II), wstecznie kompatybilne ze starymi danymi. GA4 `exam_part` + `question_domain` (bez zanieczyszczania liczbowego `question_type`). PWA: sw cache `v9`.
+
+**Architektura:** build `tools/wiedza/build-web.js` (JSON → `web/questions-wiedza.js`, 827) + czysty dobór `web/session-wiedza.js` (`composeWiedzaSession`: filtr dziedzin/poziomu + least-recently-seen, 15 pytań, graceful przy małej puli), oba z testami node (`tools/test-build-web.js`, `tools/test-session-wiedza.js`). Reszta w [web/index.html](web/index.html). Plan po adversarial review (poprawki GA / bilansowanie statystyk / atomowy commit), implementacja po niezależnym review diffu — zero blokerów.
+
+**Mobilny home:** sticky grafika footera z efektem fade (maska w kolorze tła), kafle części jako poziomy karuzel ze swipe + peek, poziomy trudności w jednym rzędzie, headline u góry. Grafika footera wyłącznie na home (usunięta z pozostałych ekranów).
+
+**Drobne poprawki UX (zgłoszenia po teście):** domyślny tryb = ostatnio wybrany (persystencja), blokada pull-to-refresh tylko na ekranie testu (`body.on-question`).
+
+**Poza zakresem (osobne pozycje w BACKLOG.md):** pełny egzamin próbny 90/90, odświeżanie treści wrażliwych czasowo (cykl 2027).
+
+---
+
 ## Pula pytań do części II egzaminu (sprawdzian wiedzy)
 
 > **Ukończono:** 2026-06-12 (rozszerzenie pz/se: 2026-06-13) · [Plan](docs/superpowers/plans/2026-06-10-pytania-sprawdzian-wiedzy.md)
