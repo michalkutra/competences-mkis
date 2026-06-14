@@ -6,6 +6,8 @@
 >
 > 🔄 Aktualizuj skillem `/aktualizuj-raport-launchu` (albo napisz „zaktualizuj raport launchu") — pobiera dane po GA4 MCP i **tylko dopisuje kolumnę / odświeża**, nie przepisuje historii.
 > ⚠️ Ostatnia kolumna bywa **niepełna** (dane spływają w ciągu doby) — orientacyjnie do następnej aktualizacji.
+>
+> 🆕 **Od ~2026-06-13 aplikacja ma 2 części:** **I — sprawdzian umiejętności** (typy pytań 1-8) i **II — sprawdzian wiedzy** (6 dziedzin, poziomy easy/medium/hard). Sekcje 1-3 (ruch, snapshot, lejek) **łączą obie części** — bo wymiar `exam_part` (I/II) **nie jest jeszcze zarejestrowany w GA4**. Sekcja 4 = część I; nowa **sekcja 5 = część II**. Wymiary `exam_part`/`question_domain`/`question_level` **zarejestrowane 2026-06-13** — ale GA4 nie jest retroaktywne, więc cała dotychczasowa historia (w tym skok 06-13) zostaje `(not set)`; sekcja 5 i podział I/II **wypełnią się od 06-14 w przód**.
 
 ---
 
@@ -28,32 +30,33 @@
 
 > Daty w kolumnach — skanuj wiersz (metrykę) od lewej do prawej, żeby zobaczyć trend. Nowe dni dopisują kolejne kolumny po prawej.
 
-| Metryka | 2026-06-03 | 2026-06-04 | 2026-06-05 | 2026-06-06 | 2026-06-07 | 2026-06-08 | 2026-06-09 | 2026-06-10 | 2026-06-11 | 2026-06-12 |
-|---|---|---|---|---|---|---|---|---|---|---|
-| **— Wzrost —** | | | | | | | | | | |
-| Użytkownicy | 74 | 34 | 24 | 17 | 21 | 17 | 29 | 21 | 12 | 10 |
-| Nowi | 71 | 24 | 14 | 8 | 12 | 4 | 16 | 12 | 4 | 4 |
-| Powracający | 3 | 10 | 10 | 9 | 9 | 13 | 13 | 9 | 8 | 6 |
-| Powracający % | 4% | 29% | 42% | 53% | 43% | 76% | 45% | 43% | 67% | 60% |
-| **— Wizyty (ruch na stronie) —** | | | | | | | | | | |
-| Wizyty (sesje GA) | 99 | 43 | 31 | 25 | 27 | 35 | 41 | 28 | 17 | 15 |
-| Wizyty zaang. | 82 | 33 | 26 | 21 | 20 | 31 | 39 | 4† | 13 | 0† |
-| Engagement rate | 83% | 77% | 84% | 84% | 74% | 89% | 95% | 14%† | 76% | —† |
-| Śr. czas wizyty | 8,8 min | 8,4 min | 8,7 min | 8,5 min | 12,2 min | 13,4 min | 11,0 min | 90 min* | 5,1 min | 26,3 min* |
-| **— Nauka (quizy) —** | | | | | | | | | | |
-| Odpowiedzi (`question_answered`) | 909 | 436 | 380 | 194 | 402 | 409 | 509 | 339 | 185 | 80 |
-| Sesje nauki — start (`session_started`) | 99 | 33 | 33 | 19 | 34 | 31 | 45 | 30 | 18 | 8 |
-| Sesje nauki — ukończone (`session_completed`) | 53 | 29 | 25 | 11 | 25 | 23 | 32 | 20 | 12 | 4 |
-| Completion rate | 54% | 88% | 76% | 58% | 74% | 74% | 71% | 67% | 67% | 50% |
-| Porzucone | 13 | 1 | 4 | 3 | 3 | 2 | 6 | 4 | 3 | 1 |
-| Abort rate | 13% | 3% | 12% | 16% | 9% | 6% | 13% | 13% | 17% | 13% |
-| **— Sygnały —** | | | | | | | | | | |
-| Donate kliki | 4 | 1 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Zgłoszenia błędu | 4 | 0 | 0 | 0 | 7 | 2 | 2 | 0 | 0 | 0 |
-| Udostępnienia (`result_shared`) | — | — | — | — | — | — | — | — | — | — |
+| Metryka | 2026-06-03 | 2026-06-04 | 2026-06-05 | 2026-06-06 | 2026-06-07 | 2026-06-08 | 2026-06-09 | 2026-06-10 | 2026-06-11 | 2026-06-12 | 2026-06-13 ⚠️ |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| **— Wzrost —** | | | | | | | | | | | |
+| Użytkownicy | 74 | 34 | 24 | 17 | 21 | 17 | 29 | 21 | 12 | 10 | 15 |
+| Nowi | 71 | 24 | 14 | 8 | 12 | 4 | 16 | 12 | 4 | 6 | 9 |
+| Powracający | 3 | 10 | 10 | 9 | 9 | 13 | 13 | 9 | 8 | 4 | 6 |
+| Powracający % | 4% | 29% | 42% | 53% | 43% | 76% | 45% | 43% | 67% | 40% | 40% |
+| **— Wizyty (ruch na stronie) —** | | | | | | | | | | | |
+| Wizyty (sesje GA) | 99 | 43 | 31 | 25 | 27 | 35 | 41 | 28 | 17 | 15 | 19 |
+| Wizyty zaang. | 82 | 33 | 26 | 21 | 20 | 31 | 39 | 4† | 13 | 11 | 2† |
+| Engagement rate | 83% | 77% | 84% | 84% | 74% | 89% | 95% | 14%† | 76% | 73% | —† |
+| Śr. czas wizyty | 8,8 min | 8,4 min | 8,7 min | 8,5 min | 12,2 min | 13,4 min | 11,0 min | 90 min* | 5,1 min | 7,8 min | 156 min* |
+| **— Nauka (quizy, I+II łącznie) —** | | | | | | | | | | | |
+| Odpowiedzi (`question_answered`) | 909 | 436 | 380 | 194 | 402 | 409 | 509 | 339 | 185 | 80 | 455 |
+| Sesje nauki — start (`session_started`) | 99 | 33 | 33 | 19 | 34 | 31 | 45 | 30 | 18 | 8 | 38 |
+| Sesje nauki — ukończone (`session_completed`) | 53 | 29 | 25 | 11 | 25 | 23 | 32 | 20 | 12 | 4 | 29 |
+| Completion rate | 54% | 88% | 76% | 58% | 74% | 74% | 71% | 67% | 67% | 50% | 76% |
+| Porzucone | 13 | 1 | 4 | 3 | 3 | 2 | 6 | 4 | 3 | 1 | 1 |
+| Abort rate | 13% | 3% | 12% | 16% | 9% | 6% | 13% | 13% | 17% | 13% | 3% |
+| **— Sygnały —** | | | | | | | | | | | |
+| Donate kliki | 4 | 1 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Zgłoszenia błędu | 4 | 0 | 0 | 0 | 7 | 2 | 2 | 0 | 0 | 0 | 1 |
+| Udostępnienia (`result_shared`) | — | — | — | — | — | — | — | — | — | — | — |
 
-\* Wszystkie dni 03–12.06 to pełne doby (13.06 bez ruchu w momencie aktualizacji). Śr. czas 10.06 (90 min) i 12.06 (26 min) zawyżone przez karty zostawione otwarte.
-† **Wizyty zaang./eng. rate dla 12.06 jeszcze się przeliczają** w GA4 (pokazuje 0 zaang. przy 4 ukończonych sesjach — lag ~1 dzień). 11.06 doszedł do **76%**, 09.06 do **95%** — 10.06 wciąż pokazuje zaniżone 4 zaang.
+\* Wszystkie dni 03–12.06 to pełne doby (13.06 niepełny — 15 userów na moment aktualizacji). Śr. czas 10.06 (90 min) i 13.06 (156 min) zawyżone przez karty zostawione otwarte.
+† **Wizyty zaang./eng. rate dla 13.06 jeszcze się przeliczają** w GA4 (lag ~1 dzień). 12.06 doszedł do **73%**, 11.06 do 76%, 09.06 do 95% — 10.06 wciąż pokazuje zaniżone 4 zaang.
+🆕 **13.06 — skok nauki:** 38 sesji / 455 odpowiedzi przy 15 userach (≈30 odp./usera) to w dużej mierze **część II (sprawdzian wiedzy)** — nowa treść napędziła intensywne sesje. Bez `exam_part` w GA nie rozdzielę I/II; część może być testowaniem własnym świeżej treści.
 **Ruch wypłaszczony:** po passie 07–11.06 (21/17/29/21/12 userów) tempo spadło do ~10 userów/dobę (12.06: 10 userów / 80 odpowiedzi), głównie powracający. Retencja wysoka (powracający 43–76%).
 
 **Definicje:** ⚠️ **„Wizyty (sesje GA)"** = `sessions` z GA = odwiedziny strony — to CO INNEGO niż **„Sesje nauki"** = `session_started` = rozpoczęte quizy. · *Powracający* = Użytkownicy − Nowi · *Engagement rate* = wizyty zaang. / wizyty · *Śr. czas wizyty* = `averageSessionDuration` · *Completion rate* = `session_completed`/`session_started` (quizy) · *Abort rate* = `session_aborted`/`session_started` (quizy) · *Donate kliki* = `donation_clicked` (klik ≠ wpłata) · *Udostępnienia* = `result_shared` (po wdrożeniu „Podziel się wynikiem").
@@ -64,20 +67,20 @@
 
 | KPI | Wartość |
 |---|---|
-| Użytkownicy łącznie | **173** (169 nowych) |
-| Wizyty (sesje GA) | **358** (288 zaang. → 80% eng. rate) |
-| Śr. czas wizyty | **10,8 min** |
-| Odsłony / eventy | 3 214 / 11 240 |
-| Odpowiedzi na pytania | 3 843 (≈36 / aktywnego usera) |
-| Completion rate (sesje nauki) | ~67% (234 / 350) |
+| Użytkownicy łącznie | **182** (180 nowych) |
+| Wizyty (sesje GA) | **378** (301 zaang. → 80% eng. rate) |
+| Śr. czas wizyty | **17,3 min** |
+| Odsłony / eventy | 3 571 / 12 225 |
+| Odpowiedzi na pytania (I+II) | 4 380 (≈39 / aktywnego usera) |
+| Completion rate (sesje nauki, I+II) | ~68% (263 / 388) |
 
 ### Lejek (userzy, narastająco)
 | Krok | Userzy | % wejść |
 |---|---|---|
-| Wszedł na stronę | 173 | 100% |
-| Zaczął sesję nauki | 117 | 68% |
-| Odpowiedział ≥1 pytanie | 106 | 61% |
-| Ukończył ≥1 sesję nauki | 79 | 46% |
+| Wszedł na stronę | 182 | 100% |
+| Zaczął sesję nauki | 123 | 68% |
+| Odpowiedział ≥1 pytanie | 111 | 61% |
+| Ukończył ≥1 sesję nauki | 82 | 45% |
 
 ---
 
@@ -100,10 +103,11 @@
 
 ---
 
-## 4. Skuteczność per typ pytania
+## 4. Skuteczność per typ pytania — **część I (umiejętności)**
 
+> Dotyczy **wyłącznie części I** (typy 1-8). Odpowiedzi części II nie mają `question_type` (mają `question_domain`) → nie wchodzą do tej tabeli. Skuteczność części II → **sekcja 5**.
 > Pokazuje, które typy zadań ludzie „mielą" (niska skuteczność = kandydat do poprawy treści/wyjaśnień). Dane z `question_answered` (`question_type` + `is_correct`).
-> ✅ **Naprawione i potwierdzone 2026-06-08 (po deployu).** Root cause: tag GA4 w GTM nie przekazywał parametrów z `dataLayer` — naprawione przez wysyłkę zdarzeń przez `gtag()` (parametry lecą automatycznie; wymiary były zarejestrowane od początku). Po deployu **realne wartości spływają** — tabela poniżej wypełniona pierwszą próbką (06.08, ~110 odpowiedzi z czytelnym typem). Małe N na typ → kierunkowo; pełny obraz po uzbieraniu kilku dób post-deploy.
+> 🟢 Próbka 06.08–06.10 (1073 odpowiedzi z typem). Pełny obraz po uzbieraniu kolejnych dób; wzorzec stabilny.
 
 | Typ | Nazwa | Odpowiedzi | Poprawne | Skuteczność |
 |---|---|---|---|---|
@@ -132,7 +136,40 @@
 
 ---
 
-## 5. Donejty (cel: 100 zł) 💰
+## 5. Część II — sprawdzian wiedzy 🧠
+
+> Druga część egzaminu (w aplikacji od ~2026-06-13): docelowo **90 pytań / 90 min, 6 dziedzin, jednokrotny wybór**; w appce sesje po 15 pytań (Nauka/Egzamin). Te same zdarzenia co część I, ale z `exam_part='II'` oraz `question_domain` (dziedzina) + `question_level` (easy/medium/hard) zamiast `question_type`/`question_difficulty`.
+>
+> ⏳ **Wymiary zarejestrowane 2026-06-13 — tabele wypełnią się od 06-14 w przód.** GA4 custom dimensions **nie są retroaktywne**: cała historia (w tym skok 06-13) zostaje `(not set)`. Liczby zbiorcze w sekcjach 1-3 **zawierają część II**, ale podziału I/II dla danych sprzed 06-14 już nie odzyskamy. Skok 13.06 (455 odpowiedzi / 38 sesji) to w dużej mierze realna nauka części II (Rybnik 116, Leszno 53 od pojedynczych userów).
+
+### Wolumen: część I vs II (po rejestracji `exam_part`)
+| Część | Sesje (start) | Odpowiedzi | Userzy |
+|---|---|---|---|
+| I — umiejętności | — | — | — |
+| II — wiedza | — | — | — |
+
+### Skuteczność per dziedzina (`question_domain`)
+| Dziedzina | Odpowiedzi | Poprawne | Skuteczność |
+|---|---|---|---|
+| Prawo (`pr`) | — | — | — |
+| Zagadnienia społ.-ekonom. (`se`) | — | — | — |
+| Administracja publiczna (`ap`) | — | — | — |
+| Finanse publiczne (`fp`) | — | — | — |
+| Polityka zagr. i org. międzynar. (`pz`) | — | — | — |
+| Organizacja i zarządzanie (`oz`) | — | — | — |
+
+### Skuteczność per poziom (`question_level`)
+| Poziom | Odpowiedzi | Poprawne | Skuteczność |
+|---|---|---|---|
+| Easy | — | — | — |
+| Medium | — | — | — |
+| Hard | — | — | — |
+
+ℹ️ Część II ma **3 poziomy** (easy/medium/hard) — inaczej niż część I (easy/hard). Tabele wypełnią się „do przodu" po rejestracji wymiarów + napływie danych (jak wcześniej sekcja 4).
+
+---
+
+## 6. Donejty (cel: 100 zł) 💰
 
 | | Wartość |
 |---|---|
@@ -152,7 +189,7 @@
 
 ---
 
-## 6. PWA — instalacje i użycie jako aplikacja 📱
+## 7. PWA — instalacje i użycie jako aplikacja 📱
 
 > Ilu userów realnie „przykleiło" serwis jako appkę na ekranie głównym. Dane z eventów `pwa_*` (instalacja, uruchomienia w trybie standalone, lejek promptu). Narastająco od premiery.
 
@@ -178,7 +215,7 @@
 
 ---
 
-## 7. Feedback — ankieta 👍/👎 + polecenia 💬
+## 8. Feedback — ankieta 👍/👎 + polecenia 💬
 
 > Flow satysfakcji na ekranie wyników (widget 👍/👎 + modal z poleceniem strony). Wdrożony 2026-06-10. Eventy `feedback_*`. **Liczby zdarzeń działają od razu; rozkład 👍/👎 i kanały — od deployu wymiarów (2026-06-10), wypełnią się „do przodu".**
 
@@ -209,12 +246,13 @@
 
 ---
 
-## 8. Notatki / ograniczenia
+## 9. Notatki / ograniczenia
 
-- **Zgłoszenia błędów (13 łącznie: 4 w dn. 06-03 + 7 w dn. 06-07 + 2 w dn. 06-08):** `question_id` było `(not set)` do 06-07 (luka w trackingu — naprawiona 2026-06-08, zob. sekcja 4). **Od deployu działa:** 2 zgłoszenia z 06-08 mają realne ID — `h_t3_020` (to **test weryfikacyjny** podczas wdrożenia fixu, nie realny user) i `e_t7_037` (typ 7 „Analiza wykresu" — wygląda na realne zgłoszenie). 11 wcześniejszych ID jest nieodzyskiwalnych. Dodatkowo `error_reported` odpala `mailto:` (michal@kutra.pl), który user musi ręcznie wysłać — stąd event w GA bywa bez maila.
-- **Custom dimensions zarejestrowane (scope Event):** `question_id`, `question_index`, `question_type`.
-- **Do dorejestrowania (odblokowuje sekcje 4 i 5):** `is_correct` (skuteczność per typ), `source` (źródło donejtu). Oba: scope Event, nazwa parametru = nazwa wymiaru.
+- **Zgłoszenia błędów (16 łącznie):** `question_id` było `(not set)` do 06-07 (luka w trackingu — naprawiona 2026-06-08), od deployu działa. Nowy flow zgłoszeń wysyła też `error_report_opened` (otwarcie formularza, 2×) i `error_report_failed` (nieudana wysyłka). `error_reported` nadal odpala `mailto:` — treść bywa bez maila, gdy user nie wyśle.
+- **Custom dimensions zarejestrowane (19, scope Event):** `question_id/index/type/difficulty`, `is_correct`, `source`, `session_mode/difficulty`, `timer_enabled`, `screen_name`, `pwa_method/placement/branch`, `feedback_sentiment/vote_value/source/channel/stage/has_text`.
+- **🆕 Do dorejestrowania w GA4 (część II — odblokowuje sekcję 5):** `exam_part` (`I`/`II` — rozdziela obie części we WSZYSTKICH zdarzeniach), `question_domain` (`pr/ap/fp/pz/oz/se`), `question_level` (`easy/medium/hard`). Wszystkie scope Event, nazwa parametru = nazwa wymiaru. Bez `exam_part` sekcje 1-3 mieszają I+II.
 - **Wiralność:** `result_shared` pojawi się po wdrożeniu „Podziel się wynikiem" (BACKLOG) — wtedy wiersz w sekcji 1 zacznie się wypełniać.
-- **PWA:** sekcja 6 z eventów `pwa_installed` (`method`), `pwa_launched_standalone`, `pwa_inapp_detected`, `pwa_prompt_shown/clicked/snoozed`, `pwa_install_accepted/dismissed`, `pwa_open_in_browser_hint_shown`, `pwa_instructions_opened`. `method` (sposób instalacji) niezarejestrowany jako wymiar → rozbicie instalacji niedostępne (do dorejestrowania, scope Event).
-- Eventy własne: `session_started`, `question_answered` (`question_type`, `question_difficulty` od 2026-06-08, `is_correct`, `question_index`, `time_spent_sec`), `session_completed`, `session_aborted`, `error_reported`, `donation_clicked` (`source`), `screen_view`, eventy `pwa_*` (wyżej).
-- **Do dorejestrowania w GA4 (Admin → Custom definitions, event scope):** `question_difficulty` (rozbicie skuteczności per typ × poziom w sekcji 4). Bez rejestracji parametr leci, ale nie pojawi się w raportach.
+- **PWA:** sekcja 7 z eventów `pwa_installed` (`method`), `pwa_launched_standalone`, `pwa_inapp_detected`, `pwa_prompt_shown/clicked/snoozed`, `pwa_install_accepted/dismissed`, `pwa_open_in_browser_hint_shown`, `pwa_instructions_opened`. `method` (sposób instalacji) niezarejestrowany jako wymiar → rozbicie instalacji niedostępne (do dorejestrowania, scope Event).
+- Eventy własne: `session_started` / `session_completed` / `session_aborted` (`exam_part`, `session_mode`, `session_difficulty`, `timer_enabled`, `score`/`score_pct`), `question_answered` (`exam_part`, `is_correct`, `question_index`, `time_spent_sec` + **cz. I:** `question_type`/`question_difficulty` lub **cz. II:** `question_domain`/`question_level`), `error_report_opened` / `error_reported` / `error_report_failed`, `donation_clicked` (`source`), `screen_view`, `feedback_*`, `pwa_*`.
+- **Wykluczenie ruchu właściciela:** właściciel ma GA wyłączone (kill-switch `ksap_no_track=1`) na obu urządzeniach — potwierdzone 2026-06-13. Czyli **ruch w raporcie to realni userzy, nie testy własne** (jedyny znany wyjątek: celowy test weryfikacyjny `h_t3_020` z 08.06 przy sprawdzaniu trackingu). Skok 13.06 jest więc realny (Rybnik 116, Leszno 53 od pojedynczych userów; desktop Windows = uczenie się przy komputerze).
+- **Dziedziny części II** (`question_domain`): `pr` Prawo · `ap` Administracja publiczna · `fp` Finanse publiczne · `pz` Polityka zagr. i org. międzynar. · `oz` Organizacja i zarządzanie · `se` Zagadnienia społ.-ekonom.
