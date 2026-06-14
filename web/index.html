@@ -388,6 +388,11 @@
       display: inline-block;
       margin-bottom: 12px;
     }
+    .origin-badge {
+      display: inline-block; margin: 0 0 10px; padding: 4px 10px; border-radius: 999px;
+      font-size: 0.74rem; font-weight: 700; letter-spacing: .02em;
+      background: #ecfdf5; color: #16a34a; border: 1px solid #bbf7d0;
+    }
     .instruction {
       color: #374151;
       font-size: 0.9rem;
@@ -1145,9 +1150,16 @@
   // Poza produkcją zdarzenia trafiają tylko do dataLayer i nigdzie nie są wysyłane.
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+  // ?admin=1 ustawia trwałą flagę admina (panel + brak GA + tryby spersonalizowane).
+  try {
+    if (/(?:^|[?&])admin=1(?:&|$)/.test(location.search)) {
+      document.cookie = 'ksap_admin=1; path=/; max-age=' + (60 * 60 * 24 * 3650);
+    }
+  } catch (e) {}
+  var KSAP_ADMIN = /(?:^|;\s*)ksap_admin=1(?:;|$)/.test(document.cookie);
   var KSAP_NO_TRACK = /(?:^|;\s*)ksap_no_track=1(?:;|$)/.test(document.cookie);
-  if (KSAP_NO_TRACK) {
-    if (window.console) console.info('[KSAP] Tracking WYŁĄCZONY (cookie ksap_no_track=1) — GA4/GTM nie ładuje się.');
+  if (KSAP_NO_TRACK || KSAP_ADMIN) {
+    if (window.console) console.info('[KSAP] Tracking WYŁĄCZONY (no_track lub admin) — GA4/GTM nie ładuje się.');
   } else if (location.hostname === 'egzamin.kutra.pl') {
     // GA4 (gtag.js) — wszystkie zdarzenia i ich parametry wysyła kod tej strony.
     var gaScript = document.createElement('script'); gaScript.async = true;
@@ -1185,6 +1197,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="account-menu" class="account-menu" hidden>
       <button class="menu-item menu-item-primary" onclick="goSetup(); closeAccountMenu();">Nowa sesja</button>
       <div class="menu-divider"></div>
+      <div class="admin-only" style="display:none">
+        <button class="menu-item" onclick="showScreen('mapa'); renderMapa(); closeAccountMenu();">🗺️ Mapa wiedzy</button>
+        <button class="menu-item" onclick="startPersonalizedSession({ realOnly: true }); closeAccountMenu();">✓ Tylko prawdziwe pytania KSAP</button>
+        <div class="menu-divider"></div>
+      </div>
       <button class="menu-item" onclick="showScreen('stats'); setStatsPart('all'); closeAccountMenu();">Statystyki</button>
       <button class="menu-item" onclick="showScreen('history'); loadHistory(); closeAccountMenu();">Historia sesji</button>
       <div class="menu-divider"></div>
@@ -1579,6 +1596,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <button class="secondary" onclick="showScreen('home')" style="max-width:200px; margin-top:20px;">Powrót</button>
 </div>
 
+<div id="screen-mapa" class="screen">
+  <h1 style="margin-bottom:4px">Mapa wiedzy</h1>
+  <p style="color:#6b7280;margin:0 0 16px">Dwie metryki: <strong>skuteczność</strong> (jak Ci idzie) i <strong>pokrycie</strong> (ile pytań poznane) — per dziedzina i temat. Sam wybierasz, co ćwiczyć.</p>
+  <div id="mapa-content"></div>
+  <button class="secondary" onclick="showScreen('home')" style="max-width:200px;margin-top:20px">Powrót</button>
+</div>
+
 <!-- questions data -->
 <script src="questions-unified.js"></script>
 <script src="questions-wiedza.js"></script>
@@ -1590,6 +1614,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="feedback.js"></script>
 <script src="session-blueprint.js"></script>
 <script src="session-wiedza.js"></script>
+  <script src="wiedza-stats.js"></script>
 
 <!-- main script -->
 <script>
@@ -1619,7 +1644,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   ================================================================ */
   var SCREEN_PATHS = {
     'home': '/', 'setup': '/setup', 'setup-wiedza': '/wiedza', 'history': '/history',
-    'stats': '/stats', 'about': '/about',
+    'stats': '/stats', 'about': '/about', 'mapa': '/mapa',
     'question': '/question', 'summary': '/summary', 'session-detail': '/session'
   };
 
@@ -1771,6 +1796,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   function toggleAccountMenu() {
     const menu = document.getElementById('account-menu');
     if (menu.hasAttribute('hidden')) {
+      document.querySelectorAll('#account-menu .admin-only').forEach(function (el) {
+        el.style.display = isAdmin() ? 'block' : 'none';
+      });
       menu.removeAttribute('hidden');
     } else {
       menu.setAttribute('hidden', '');
@@ -2146,6 +2174,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     renderQuestion();
   }
 
+  // Tryby spersonalizowane: składają 15-pyt. sesję wiedzy z filtrem i odpalają
+  // istniejącą ścieżkę sesji (render/summary/zapis). filter: { domains?, level?, realOnly? }
+  function startPersonalizedSession(filter) {
+    filter = filter || {};
+    state.part = 'II';
+    state.mode = 'learning';            // z wyjaśnieniami
+    var lastSeen = getLastSeenMap();
+    var built = composeWiedzaSession(
+      (typeof QUESTIONS_WIEDZA !== 'undefined') ? QUESTIONS_WIEDZA : [],
+      { domains: filter.domains || [], level: filter.level || 'all', realOnly: !!filter.realOnly },
+      lastSeen, Math.random
+    );
+    if (!built.length) { alert('Brak pytań dla wybranego trybu.'); return; }
+    state.session = built;
+    state.currentIndex = 0;
+    state.answers = [];
+    state.sessionStartTime = Date.now();
+    gtag('event', 'session_started', {
+      exam_part: 'II', session_mode: 'learning',
+      session_difficulty: filter.level || 'all', timer_enabled: state.timerEnabled,
+      personalized: filter.realOnly ? 'real_only' : (filter.domains && filter.domains.length ? 'domain' : 'mixed')
+    });
+    showScreen('question');
+    renderQuestion();
+  }
+
   /* ================================================================
      TIMER
   ================================================================ */
@@ -2211,6 +2265,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     pz: 'Polityka zagr.', oz: 'Organizacja', se: 'Społ.-ekonom.',
   };
   const WIEDZA_DOMAINS_ORDER = ['pr', 'se', 'ap', 'fp', 'pz', 'oz'];
+  const WIEDZA_DOMAIN_COLORS = {
+    pr: '#2563eb', se: '#0891b2', ap: '#7c3aed', fp: '#db2777', pz: '#0d9488', oz: '#ca8a04',
+  };
+  const TOPIC_NAMES = {
+    'pr.konstytucja-ustroj': 'Konstytucja i ustrój', 'pr.sluzba-cywilna': 'Służba cywilna',
+    'pr.informacja-publiczna-dane': 'Informacja publiczna i ochrona danych', 'pr.zrodla-prawa': 'Źródła prawa',
+    'pr.kpa': 'Postępowanie administracyjne (KPA)', 'pr.prawo-ue': 'Prawo UE',
+    'pr.sadownictwo': 'Sądownictwo', 'pr.prawo-miedzynarodowe': 'Prawo międzynarodowe',
+    'se.statystyka-pomiar': 'Statystyka i pomiar', 'se.makroekonomia': 'Makroekonomia',
+    'se.polityka-spoleczna-gospodarcza': 'Polityka społeczna i gospodarcza', 'se.problemy-spoleczne': 'Problemy społeczne',
+    'se.dochody-konsumpcja': 'Dochody i konsumpcja', 'se.rynek-pracy': 'Rynek pracy',
+    'ap.struktura-administracji': 'Struktura administracji', 'ap.procesy-decyzyjne': 'Procesy decyzyjne',
+    'ap.organy-wladzy': 'Organy władzy',
+    'fp.budzet-panstwa': 'Budżet państwa', 'fp.dlug-publiczny': 'Dług publiczny',
+    'fp.system-finansow': 'System finansów publicznych', 'fp.podatki': 'Podatki',
+    'fp.procedura-budzetowa': 'Procedura budżetowa', 'fp.kontrola-finansowa': 'Kontrola finansowa',
+    'fp.budzety-jst': 'Budżety JST', 'fp.fundusze-ue': 'Fundusze UE', 'fp.zamowienia-publiczne': 'Zamówienia publiczne',
+    'pz.organizacje-miedzynarodowe': 'Organizacje międzynarodowe', 'pz.polityka-zagraniczna-rp': 'Polityka zagraniczna RP',
+    'oz.zarzadzanie-podstawy': 'Podstawy zarządzania', 'oz.zzl': 'Zarządzanie zasobami ludzkimi',
+    'oz.wspoldzialanie-dialog': 'Współdziałanie i dialog',
+  };
 
   // Pytanie części II rozpoznajemy po obecności pola domain (cz. I go nie ma).
   function isWiedza(q) { return !!(q && q.domain); }
@@ -2254,6 +2329,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return p;
   }
 
+  // Badge „Pytanie z egzaminu KSAP {rok}" — tylko cz. II i tylko realne (origin ksap-YYYY).
+  // 'generated' i inne → brak badge (świadomie, bez pieczątki „gorszości").
+  function originBadgeHtml(q) {
+    if (!isWiedza(q) || !q || !q.origin) return '';
+    var m = /^ksap-(\d{4})$/.exec(q.origin);
+    if (!m) return '';
+    return '<div class="origin-badge">✓ Pytanie z egzaminu KSAP ' + m[1] + '</div>';
+  }
+
   /* ================================================================
      RENDER QUESTION
   ================================================================ */
@@ -2271,6 +2355,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     // Body
     let bodyHtml = '';
     bodyHtml += '<div class="type-label">' + escHtml(questionGroupLabel(q)) + '</div>';
+    bodyHtml += originBadgeHtml(q);
     bodyHtml += '<div class="instruction">' + escHtml(q.instruction) + '</div>';
     bodyHtml += '<div class="question-body">' + questionBodyHtml(q) + '</div>';
 
@@ -3670,6 +3755,84 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return html + '</div>';
   }
 
+  function accClassPct(a) { // a: 0..1 lub null
+    if (a == null) return { cls: 'na', color: '#94a3b8', label: '—' };
+    var pct = Math.round(a * 100);
+    var color = a >= 0.70 ? '#16a34a' : a >= 0.40 ? '#e67e22' : '#e74c3c';
+    return { cls: '', color: color, label: pct + '%' };
+  }
+  function _bar(fracPct, color) {
+    return '<div style="height:8px;border-radius:999px;background:#eef1f5;overflow:hidden">' +
+           '<i style="display:block;height:100%;width:' + fracPct + '%;background:' + color + '"></i></div>';
+  }
+
+  var _mapaStats = null;
+
+  function renderMapa() {
+    var qs = (typeof QUESTIONS_WIEDZA !== 'undefined') ? QUESTIONS_WIEDZA : [];
+    _mapaStats = aggregateWiedzaStats(getAnswerLog(), qs);
+    var doms = WIEDZA_DOMAINS_ORDER.map(function (code) {
+      return { code: code, stat: _mapaStats.domains[code] || { total: 0, seen: 0, accuracy: null } };
+    }).sort(function (a, b) {
+      var aa = a.stat.accuracy == null ? 2 : a.stat.accuracy;
+      var bb = b.stat.accuracy == null ? 2 : b.stat.accuracy;
+      return aa - bb;
+    });
+
+    var html = '';
+    doms.forEach(function (d) {
+      var s = d.stat, a = accClassPct(s.accuracy);
+      var covPct = s.total ? Math.round(s.seen / s.total * 100) : 0;
+      html +=
+        '<div class="card" style="cursor:pointer;border:1.5px solid #e5e7eb;border-radius:14px;padding:16px;margin-bottom:12px" onclick="renderMapaDomain(\'' + d.code + '\')">' +
+          '<div style="display:flex;align-items:center;gap:9px;margin-bottom:8px">' +
+            '<span style="width:10px;height:10px;border-radius:50%;background:' + (WIEDZA_DOMAIN_COLORS[d.code] || '#888') + '"></span>' +
+            '<strong style="flex:1">' + escHtml(DOMAIN_NAMES[d.code] || d.code) + '</strong>' +
+            '<span style="font-weight:700;color:' + a.color + '">' + a.label + '</span>' +
+          '</div>' +
+          '<div style="font-size:.72rem;color:#6b7280;text-transform:uppercase;margin-bottom:3px">Skuteczność</div>' +
+          _bar(s.accuracy == null ? 0 : Math.round(s.accuracy * 100), a.color) +
+          '<div style="font-size:.72rem;color:#6b7280;text-transform:uppercase;margin:8px 0 3px">Poznane ' + s.seen + ' / ' + s.total + '</div>' +
+          _bar(covPct, '#94a3b8') +
+        '</div>';
+    });
+    document.getElementById('mapa-content').innerHTML =
+      '<p style="font-size:.85rem;color:#6b7280;margin:0 0 12px">Od najsłabszej dziedziny. Kliknij, by zobaczyć tematy i zacząć ćwiczyć.</p>' + html;
+  }
+
+  function renderMapaDomain(code) {
+    if (!_mapaStats) renderMapa();
+    var qs = (typeof QUESTIONS_WIEDZA !== 'undefined') ? QUESTIONS_WIEDZA : [];
+    var topicIds = {};
+    qs.forEach(function (q) { if (q.domain === code && q.topicId) topicIds[q.topicId] = 1; });
+    var topics = Object.keys(topicIds).map(function (tid) {
+      return { id: tid, stat: _mapaStats.topics[tid] || { total: 0, seen: 0, accuracy: null } };
+    }).sort(function (a, b) {
+      var aa = a.stat.accuracy == null ? 2 : a.stat.accuracy;
+      var bb = b.stat.accuracy == null ? 2 : b.stat.accuracy;
+      return aa - bb;
+    });
+
+    var rows = topics.map(function (t) {
+      var a = accClassPct(t.stat.accuracy);
+      return '<div style="display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #f1f3f5">' +
+        '<div style="flex:1;min-width:0">' +
+          '<div>' + escHtml(TOPIC_NAMES[t.id] || t.id) + '</div>' +
+          '<div style="font-size:.72rem;color:#6b7280">poznane ' + t.stat.seen + ' / ' + t.stat.total + '</div>' +
+        '</div>' +
+        '<div style="width:80px;flex:none">' + _bar(t.stat.accuracy == null ? 0 : Math.round(t.stat.accuracy * 100), a.color) + '</div>' +
+        '<span style="width:58px;text-align:right;font-weight:700;color:' + a.color + ';font-size:.85rem">' +
+          (t.stat.accuracy == null ? '<span style="font-size:.7rem;color:#94a3b8">brak danych</span>' : a.label) + '</span>' +
+      '</div>';
+    }).join('');
+
+    document.getElementById('mapa-content').innerHTML =
+      '<button class="secondary" onclick="renderMapa()" style="max-width:160px;margin-bottom:14px">← Wszystkie dziedziny</button>' +
+      '<h2 style="margin:0 0 10px">' + escHtml(DOMAIN_NAMES[code] || code) + '</h2>' +
+      '<div class="card" style="border:1.5px solid #e5e7eb;border-radius:14px;padding:14px 16px;margin-bottom:14px">' + rows + '</div>' +
+      '<button onclick="startPersonalizedSession({ domains: [\'' + code + '\'] })" style="width:100%">Ćwicz tę dziedzinę (15 pytań)</button>';
+  }
+
   function loadStats() {
     const fullLog = getAnswerLog();
     const container = document.getElementById('stats-content');
@@ -3812,6 +3975,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       .replace(/'/g, '&#39;');
   }
 
+  function isAdmin() { return /(?:^|;\s*)ksap_admin=1(?:;|$)/.test(document.cookie); }
+
   /* ================================================================
      DEBUG PANEL — aktywny tylko z ?debug=1 w URL (działa też na file://)
      Wypełnia sesję odpowiedziami i skacze do podsumowania, żeby szybko
@@ -3820,8 +3985,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   ================================================================ */
   (function initDebugPanel() {
     try {
-      if (new URLSearchParams(window.location.search).get('debug') !== '1') return;
-    } catch (e) { return; }
+      if (new URLSearchParams(window.location.search).get('debug') !== '1' && !isAdmin()) return;
+    } catch (e) { if (!isAdmin()) return; }
 
     function fillSummary(mode) {
       state.session = buildSession();
@@ -3916,6 +4081,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         noTrack ? '#374151' : '#1d4ed8',
         toggleTracking
       ));
+      if (isAdmin()) {
+        body.appendChild(mkBtn('Wyłącz tryb admina', '#b91c1c', function () {
+          document.cookie = 'ksap_admin=; path=/; max-age=0';
+          alert('Tryb admina WYŁĄCZONY. Przeładuję stronę.');
+          window.location.reload();
+        }));
+      }
       body.appendChild(mkBtn('🗑️ Wyczyść historię', '#7f1d1d', clearHistory));
       panel.appendChild(body);
       document.body.appendChild(panel);

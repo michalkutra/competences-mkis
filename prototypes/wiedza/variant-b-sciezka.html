@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Wariant B — Ścieżka nauki</title>
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* timeline — pionowa linia łącząca etapy */
+    .timeline { position: relative; padding-left: 30px; }
+    .timeline::before {
+      content: ""; position: absolute; left: 11px; top: 8px; bottom: 8px;
+      width: 2px; background: var(--line);
+    }
+    .stage { position: relative; margin-bottom: 12px; }
+    .stage .node {
+      position: absolute; left: -30px; top: 2px;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: #fff; border: 2px solid var(--line);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 700; color: var(--muted2); z-index: 1;
+    }
+    .stage.done .node { background: var(--green-soft); border-color: var(--green); color: var(--green); }
+    .stage.current .node { background: var(--blue); border-color: var(--blue); color: #fff; }
+    .stage .card { margin-bottom: 0; }
+    .stage.current .card { border-color: var(--blue); box-shadow: var(--shadow); }
+    .stage.later .card { opacity: 0.62; }
+    .stage.later .card { background: #fbfcfd; }
+    .hero { border-color: var(--blue); border-width: 2px; box-shadow: var(--shadow); background: var(--blue-soft); }
+    .lock { font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <div class="proto-bar">🧪 <strong>Wariant B — Ścieżka nauki</strong> · <a href="index.html">← porównanie wariantów</a></div>
+
+  <div class="wrap">
+
+    <!-- ===================== EKRAN 1 — PLAN ===================== -->
+    <section id="screen-plan">
+      <span class="eyebrow">Prowadzony plan nauki</span>
+      <h1>Twoja ścieżka do egzaminu</h1>
+      <p class="sub" id="plan-sub"></p>
+
+      <!-- DZIŚ — hero -->
+      <div class="card hero" id="today-hero">
+        <div class="badge blue" style="margin-bottom:8px;">Dziś</div>
+        <h2 id="today-title"></h2>
+        <p class="muted small" id="today-meta" style="margin:4px 0 14px;"></p>
+        <div class="row" style="margin-bottom:14px; gap:8px; flex-wrap:wrap;">
+          <span class="muted tiny">Tempo:</span>
+          <span class="chip active" data-pace="spokojne">🌿 Spokojne · 10 pytań</span>
+          <span class="chip" data-pace="intensywne">🔥 Intensywne · 20 pytań</span>
+        </div>
+        <button class="btn lg block" id="start-today">Zacznij dzisiejszą sesję →</button>
+      </div>
+
+      <!-- postęp planu -->
+      <div class="card">
+        <div class="spread" style="margin-bottom:8px;">
+          <strong id="plan-stage-label"></strong>
+          <span class="pct" id="plan-pct"></span>
+        </div>
+        <div class="bar thick"><i id="plan-bar"></i></div>
+      </div>
+
+      <h2 style="margin:22px 0 12px;">Plan etap po etapie</h2>
+      <div class="timeline" id="timeline"></div>
+    </section>
+
+    <!-- ===================== EKRAN 2 — SESJA ===================== -->
+    <section id="screen-session" class="hidden">
+      <div class="between" style="margin-bottom:14px;">
+        <button class="btn ghost small" id="abort-session" style="padding:8px 14px;">← Plan</button>
+        <span class="muted small" id="session-progress"></span>
+      </div>
+      <span class="eyebrow">Dzisiejsza sesja</span>
+      <h1 id="session-stage-label" style="margin-bottom:18px;"></h1>
+
+      <!-- pytanie -->
+      <div id="quiz-area"></div>
+
+      <!-- zakończenie etapu -->
+      <div id="session-done" class="hidden center card">
+        <div style="font-size:2.4rem;">🎉</div>
+        <h1 style="margin:6px 0;">Etap ukończony!</h1>
+        <p class="muted" id="done-score" style="margin:0 0 4px;"></p>
+        <div class="card" style="background:var(--green-soft); border-color:var(--green); text-align:left; margin:16px 0;">
+          <div class="badge done" style="margin-bottom:6px;">Odblokowano</div>
+          <strong id="unlocked-label"></strong>
+        </div>
+        <div class="stack">
+          <button class="btn block" id="next-stage-btn">Przejdź do następnego etapu →</button>
+          <button class="btn ghost block" id="back-to-plan-btn">Wróć do planu</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+  (function () {
+    var P = window.PROTO;
+
+    // ---- mapa domen po kodzie ----
+    var byCode = {};
+    P.domains.forEach(function (d) { byCode[d.code] = d; });
+
+    // ---- definicja ścieżki (curriculum) — 8 etapów ----
+    // sekwencja: zacznij od mocnej domeny (Prawo) na łatwym, pogłęb, potem nowe domeny, na końcu powtórka
+    var plan = [
+      { code: 'pr', focus: 'podstawy',                level: 'easy',   days: 'dni 1–3',   status: 'done',    progress: 1 },
+      { code: 'pr', focus: 'pogłębienie',             level: 'hard',   days: 'dni 4–6',   status: 'current', progress: 0.35 },
+      { code: 'ap', focus: 'podstawy',                level: 'easy',   days: 'dni 7–8',   status: 'next',    progress: 0 },
+      { code: 'fp', focus: 'podstawy',                level: 'easy',   days: 'dni 9–11',  status: 'later',   progress: 0 },
+      { code: 'se', focus: 'zagadnienia kluczowe',    level: 'medium', days: 'dni 12–14', status: 'later',   progress: 0 },
+      { code: 'pz', focus: 'organizacje i polityka',  level: 'medium', days: 'dni 15–16', status: 'later',   progress: 0 },
+      { code: 'oz', focus: 'podstawy',                level: 'easy',   days: 'dni 17–18', status: 'later',   progress: 0 },
+      { code: 'mix', focus: 'powtórka + próbny przekrój', level: 'medium', days: 'dni 19–21', status: 'later', progress: 0 },
+    ];
+
+    function stageName(st) {
+      if (st.code === 'mix') return 'Powtórka mieszana';
+      return byCode[st.code].name;
+    }
+    function stageShort(st) {
+      if (st.code === 'mix') return 'Powtórka mieszana';
+      return byCode[st.code].short;
+    }
+    function stageLabel(st) {
+      return stageShort(st) + ' — ' + st.focus;
+    }
+    function levelBadge(level) {
+      var map = { easy: 'łatwy', medium: 'średni', hard: 'trudny' };
+      return '<span class="badge ' + level + '">' + (map[level] || level) + '</span>';
+    }
+
+    var pace = 'spokojne';
+    function paceCount() { return pace === 'spokojne' ? 10 : 20; }
+
+    // ---- stan: indeks aktualnego etapu ----
+    function currentIndex() {
+      for (var i = 0; i < plan.length; i++) if (plan[i].status === 'current') return i;
+      return plan.length; // wszystko zrobione
+    }
+
+    // ===================== RENDER EKRANU 1 =====================
+    function renderPlan() {
+      var doneCount = plan.filter(function (s) { return s.status === 'done'; }).length;
+      var cur = currentIndex();
+      var stageNo = cur < plan.length ? cur + 1 : plan.length;
+      var pct = Math.round((doneCount / plan.length) * 100);
+
+      document.getElementById('plan-sub').textContent =
+        P.daysLeft + ' dni do egzaminu (' + P.examDate + ') · plan na dziś gotowy';
+
+      var curStage = plan[cur];
+      if (curStage) {
+        document.getElementById('today-hero').classList.remove('hidden');
+        document.getElementById('today-title').textContent =
+          'Dziś: ' + stageShort(curStage) + ' — poziom ' +
+          ({ easy: 'łatwy', medium: 'średni', hard: 'trudny' }[curStage.level]);
+        var mins = Math.round(paceCount() * 1);
+        document.getElementById('today-meta').textContent =
+          curStage.focus + ' · ' + paceCount() + ' pytań · ~' + mins + ' min';
+      } else {
+        // cała ścieżka ukończona
+        document.getElementById('today-title').textContent = 'Cała ścieżka ukończona — czas na próbny egzamin!';
+        document.getElementById('today-meta').textContent = 'Wszystkie etapy zaliczone. Powtórz słabsze obszary.';
+      }
+
+      document.getElementById('plan-stage-label').textContent =
+        'Etap ' + stageNo + ' z ' + plan.length;
+      document.getElementById('plan-pct').textContent = pct + '% planu';
+      document.getElementById('plan-bar').style.width = pct + '%';
+
+      // timeline
+      var tl = document.getElementById('timeline');
+      tl.innerHTML = '';
+      plan.forEach(function (st, i) {
+        var wrap = document.createElement('div');
+        wrap.className = 'stage ' + (st.status === 'current' ? 'current' : st.status === 'done' ? 'done' : 'later');
+
+        var node = st.status === 'done' ? '✓' : (i + 1);
+
+        var statusBadge;
+        if (st.status === 'done') statusBadge = '<span class="badge done">Ukończone</span>';
+        else if (st.status === 'current') statusBadge = '<span class="badge blue">W toku</span>';
+        else if (st.status === 'next') statusBadge = '<span class="badge medium">Następne</span>';
+        else statusBadge = '<span class="muted tiny lock">🔒 Później</span>';
+
+        var barHtml = '';
+        if (st.status === 'done' || st.status === 'current') {
+          var cls = st.status === 'done' ? 'bar green' : 'bar';
+          barHtml = '<div class="' + cls + '" style="margin-top:10px;"><i style="width:' +
+            Math.round(st.progress * 100) + '%"></i></div>';
+        }
+
+        wrap.innerHTML =
+          '<div class="node">' + node + '</div>' +
+          '<div class="card">' +
+            '<div class="spread" style="margin-bottom:4px;">' +
+              '<strong>' + stageName(st) + '</strong>' + statusBadge +
+            '</div>' +
+            '<div class="muted small">' + st.focus + ' · ' + levelBadge(st.level) +
+              ' <span class="tiny">· ' + st.days + '</span></div>' +
+            barHtml +
+          '</div>';
+
+        // tylko aktualny etap klikalny → start sesji
+        if (st.status === 'current') {
+          var c = wrap.querySelector('.card');
+          c.classList.add('clickable');
+          c.addEventListener('click', startSession);
+        }
+        tl.appendChild(wrap);
+      });
+    }
+
+    // ===================== SESJA (EKRAN 2) =====================
+    var sessionQuestions = [];
+    var qIndex = 0;
+    var score = 0;
+
+    function pickQuestions(st) {
+      var pool;
+      if (st.code === 'mix') {
+        pool = P.questions.slice();
+      } else {
+        pool = P.questions.filter(function (q) { return q.domain === st.code; });
+      }
+      // potrzebujemy 3 — dopełnij powtórzeniami jeśli za mało
+      var out = pool.slice(0, 3);
+      var i = 0;
+      while (out.length < 3 && pool.length > 0) {
+        out.push(pool[i % pool.length]);
+        i++;
+      }
+      // gdyby domena nie miała ŻADNYCH pytań (np. dane demo) — użyj globalnej puli
+      if (out.length < 3) {
+        var g = P.questions.slice(0, 3);
+        while (out.length < 3) out.push(g[out.length % g.length]);
+      }
+      return out;
+    }
+
+    function startSession() {
+      var cur = currentIndex();
+      if (cur >= plan.length) return;
+      var st = plan[cur];
+      sessionQuestions = pickQuestions(st);
+      qIndex = 0;
+      score = 0;
+
+      document.getElementById('session-stage-label').textContent =
+        'Dzisiejsza sesja · ' + stageLabel(st);
+      document.getElementById('screen-plan').classList.add('hidden');
+      document.getElementById('screen-session').classList.remove('hidden');
+      document.getElementById('session-done').classList.add('hidden');
+      document.getElementById('quiz-area').classList.remove('hidden');
+      window.scrollTo(0, 0);
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      var q = sessionQuestions[qIndex];
+      var area = document.getElementById('quiz-area');
+      document.getElementById('session-progress').textContent =
+        'Pytanie ' + (qIndex + 1) + ' z ' + sessionQuestions.length;
+
+      var letters = ['A', 'B', 'C', 'D'];
+      var opts = q.options.map(function (opt, i) {
+        return '<div class="option" data-i="' + i + '"><strong>' + letters[i] + '.</strong> ' + opt + '</div>';
+      }).join('');
+
+      area.innerHTML =
+        '<div class="card">' +
+          '<div class="row" style="margin-bottom:10px; gap:8px;">' +
+            levelBadge(q.level) +
+            '<span class="muted tiny">' + q.topic + '</span>' +
+          '</div>' +
+          '<h2 style="margin-bottom:16px;">' + q.question + '</h2>' +
+          '<div id="options">' + opts + '</div>' +
+          '<div id="feedback"></div>' +
+        '</div>';
+
+      var optionEls = area.querySelectorAll('.option');
+      optionEls.forEach(function (el) {
+        el.addEventListener('click', function () { answer(parseInt(el.dataset.i, 10), q, optionEls); });
+      });
+    }
+
+    function answer(chosen, q, optionEls) {
+      var correct = chosen === q.correct;
+      if (correct) score++;
+
+      optionEls.forEach(function (el) {
+        var i = parseInt(el.dataset.i, 10);
+        el.classList.add('disabled');
+        el.style.cursor = 'default';
+        if (i === q.correct) el.classList.add('correct');
+        else if (i === chosen) el.classList.add('wrong');
+        // zamroź klik
+        var clone = el.cloneNode(true);
+        el.parentNode.replaceChild(clone, el);
+      });
+
+      var last = qIndex === sessionQuestions.length - 1;
+      var fb = document.getElementById('feedback');
+      fb.innerHTML =
+        '<div class="explain"><strong>' + (correct ? '✓ Dobrze!' : '✗ Niepoprawnie.') + '</strong> ' +
+          q.explanation + '</div>' +
+        '<div class="source-box">Źródło: ' + q.source + '</div>' +
+        '<button class="btn block" id="next-q" style="margin-top:14px;">' +
+          (last ? 'Zakończ etap →' : 'Następne pytanie →') + '</button>';
+
+      document.getElementById('next-q').addEventListener('click', function () {
+        if (last) finishSession();
+        else { qIndex++; renderQuestion(); window.scrollTo(0, 0); }
+      });
+    }
+
+    function finishSession() {
+      var cur = currentIndex();
+      // zaktualizuj stan planu: aktualny → done, następny → current
+      plan[cur].status = 'done';
+      plan[cur].progress = 1;
+      var nextIdx = cur + 1;
+      var unlockedLabel;
+      if (nextIdx < plan.length) {
+        plan[nextIdx].status = 'current';
+        plan[nextIdx].progress = 0;
+        unlockedLabel = 'Kolejny etap: ' + stageLabel(plan[nextIdx]);
+      } else {
+        unlockedLabel = 'To był ostatni etap — ścieżka ukończona! Powodzenia na egzaminie.';
+      }
+
+      document.getElementById('quiz-area').classList.add('hidden');
+      var done = document.getElementById('session-done');
+      done.classList.remove('hidden');
+      document.getElementById('done-score').textContent =
+        'Twój wynik: ' + score + ' / ' + sessionQuestions.length + ' poprawnych odpowiedzi';
+      document.getElementById('unlocked-label').textContent = unlockedLabel;
+
+      // jeśli to ostatni etap — ukryj „przejdź do następnego"
+      document.getElementById('next-stage-btn').style.display =
+        nextIdx < plan.length ? '' : 'none';
+
+      window.scrollTo(0, 0);
+    }
+
+    // ===================== NAWIGACJA =====================
+    function showPlan() {
+      renderPlan();
+      document.getElementById('screen-session').classList.add('hidden');
+      document.getElementById('screen-plan').classList.remove('hidden');
+      window.scrollTo(0, 0);
+    }
+
+    document.getElementById('start-today').addEventListener('click', startSession);
+    document.getElementById('abort-session').addEventListener('click', showPlan);
+    document.getElementById('back-to-plan-btn').addEventListener('click', showPlan);
+    document.getElementById('next-stage-btn').addEventListener('click', startSession);
+
+    // tempo (kosmetyczne)
+    document.querySelectorAll('.chip[data-pace]').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        document.querySelectorAll('.chip[data-pace]').forEach(function (c) { c.classList.remove('active'); });
+        chip.classList.add('active');
+        pace = chip.dataset.pace;
+        renderPlan();
+      });
+    });
+
+    // start
+    renderPlan();
+  })();
+  </script>
+</body>
+</html>

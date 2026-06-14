@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prototypy — efektywna nauka (cz. II wiedza)</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="shared.css">
+<style>
+  .variant-card { display:flex; gap:14px; align-items:flex-start; text-decoration:none; color:inherit; }
+  .variant-num {
+    flex:none; width:38px; height:38px; border-radius:10px; background:var(--blue-soft);
+    color:var(--blue); font-weight:800; display:flex; align-items:center; justify-content:center; font-size:1.05rem;
+  }
+  .variant-card p { margin:6px 0 0; color:var(--muted); font-size:0.9rem; }
+  .tag { font-size:0.72rem; font-weight:700; color:var(--green); background:var(--green-soft); padding:2px 8px; border-radius:999px; }
+  .tag.amber { color:var(--amber); background:var(--amber-soft); }
+</style>
+</head>
+<body>
+<div class="proto-bar">
+  🧪 <strong>Prototypy koncepcyjne</strong> — klikalne mockupy, dane częściowo zmyślone. Nie są połączone z aplikacją.
+</div>
+<div class="wrap">
+  <div class="eyebrow">Część II · Sprawdzian wiedzy · 827 pytań</div>
+  <h1>Jak sprawić, by te pytania realnie budowały pewność</h1>
+  <p class="sub">Feedback Eweliny rozpada się na <strong>dwie obawy</strong>. Każdy wariant niżej to klikalny pomysł — wejdź, poklikaj, wyobraź sobie, co by Ci dał.</p>
+
+  <p class="eyebrow" style="color:var(--green);background:var(--green-soft)">Obawa 1 · „Czy te pytania w ogóle przygotowują do egzaminu?"</p>
+  <p class="sub" style="margin-top:-6px">Nikt nie zna pytań tegorocznego egzaminu — ale <strong>263 z 827 pytań to prawdziwe pytania z egzaminów KSAP 2023–2025</strong>, a reszta jest ułożona w ich stylu. Problem: aplikacja tego nie pokazuje.</p>
+
+  <a class="card clickable variant-card" href="variant-e-zaufanie.html">
+    <div class="variant-num" style="background:var(--green-soft);color:var(--green)">E</div>
+    <div class="grow">
+      <div class="spread"><h2>Skąd te pytania (zaufanie)</h2><span class="tag">odpowiedź na obawę Eweliny</span></div>
+      <p>Pokazuje pochodzenie każdego pytania („Egzamin KSAP 2024" vs „ćwiczeniowe"), pokrycie 6 dziedzin i tryb „ucz się tylko z prawdziwych pytań egzaminacyjnych". Buduje zaufanie do treści.</p>
+    </div>
+  </a>
+
+  <p class="eyebrow" style="margin-top:18px">Obawa 2 · „Przytłaczające — uczę się ze wszystkiego i skaczę po tematach"</p>
+  <p class="sub" style="margin-top:-6px">Tu chodzi o organizację nauki: orientację, skupienie i poczucie postępu.</p>
+
+  <a class="card clickable variant-card" href="variant-a-mapa.html">
+    <div class="variant-num">A</div>
+    <div class="grow">
+      <div class="spread"><h2>Mapa postępu + skupienie na dziedzinie</h2><span class="tag">najbliżej feedbacku</span></div>
+      <p>Pulpit 6 dziedzin z % opanowania. Widzisz, gdzie stoisz, wchodzisz w jedną dziedzinę i domykasz ją do skutku. Orientacja + poczucie zamykania obszaru.</p>
+    </div>
+  </a>
+
+  <a class="card clickable variant-card" href="variant-b-sciezka.html">
+    <div class="variant-num">B</div>
+    <div class="grow">
+      <div class="spread"><h2>Ścieżka nauki (prowadzony plan)</h2><span class="tag">najmniej decyzji</span></div>
+      <p>Aplikacja prowadzi krok po kroku: dziedzina po dziedzinie, łatwe→trudne, plan rozpisany na ~21 dni do egzaminu. Otwierasz i wiesz, co robić dziś.</p>
+    </div>
+  </a>
+
+  <a class="card clickable variant-card" href="variant-c-slabosci.html">
+    <div class="variant-num">C</div>
+    <div class="grow">
+      <div class="spread"><h2>Dobór wg słabości</h2><span class="tag amber">adaptacyjny</span></div>
+      <p>Sesja sama przechyla się ku obszarom, które idą Ci słabiej. Włączasz jednym suwakiem; aplikacja pilnuje, byś nie utrwalał tylko tego, co już umiesz.</p>
+    </div>
+  </a>
+
+  <a class="card clickable variant-card" href="variant-d-drazenie.html">
+    <div class="variant-num">D</div>
+    <div class="grow">
+      <div class="spread"><h2>Drążenie jednego tematu</h2><span class="tag">najwęższe skupienie</span></div>
+      <p>Wybierasz jeden z 31 tematów i ćwiczysz tylko jego, aż „opanowanie" dojdzie do celu. Zero skakania — jeden wątek na raz.</p>
+    </div>
+  </a>
+
+  <p class="sub" style="margin-top:22px">Można je też łączyć — np. mapa (A) jako ekran główny, a drążenie tematu (D) jako wejście w słaby obszar. Po przeklikaniu powiedz, co rezonuje, a dopiero wtedy spisuję spec i plan wdrożenia.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Wariant E — Skąd te pytania</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+  /* Stacked real-vs-generated bar */
+  .stackbar {
+    height: 12px; border-radius: 999px; overflow: hidden;
+    background: #eef1f5; display: flex;
+  }
+  .stackbar > .real { height: 100%; background: var(--green); }
+  .stackbar > .rest { height: 100%; background: #d7dce3; }
+
+  /* hero numbers */
+  .hero-num { font-size: 2.1rem; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+  .hero-num.green { color: var(--green); }
+  .hero-num.neutral { color: var(--muted); }
+  .hero-card.green { border-color: #bbf7d0; background: var(--green-soft); }
+
+  /* origin badge (trust signal) */
+  .origin {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 0.72rem; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; letter-spacing: .02em;
+  }
+  .origin.real { background: var(--green-soft); color: var(--green); border: 1px solid #bbf7d0; }
+  .origin.gen { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
+
+  /* CSS toggle switch */
+  .switch { position: relative; display: inline-block; width: 46px; height: 26px; flex: none; }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .switch .track {
+    position: absolute; inset: 0; cursor: pointer; background: #cbd5e1;
+    border-radius: 999px; transition: background .15s;
+  }
+  .switch .track::before {
+    content: ""; position: absolute; height: 20px; width: 20px; left: 3px; top: 3px;
+    background: #fff; border-radius: 50%; transition: transform .15s; box-shadow: 0 1px 3px rgba(0,0,0,.2);
+  }
+  .switch input:checked + .track { background: var(--green); }
+  .switch input:checked + .track::before { transform: translateX(20px); }
+
+  .col2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .yearchip {
+    flex: 1; text-align: center; padding: 10px 6px; border-radius: 10px;
+    background: var(--green-soft); border: 1px solid #bbf7d0;
+  }
+  .yearchip .y { font-weight: 700; color: var(--green); font-size: 0.82rem; }
+  .yearchip .c { font-size: 1.3rem; font-weight: 800; color: var(--green); font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<div class="proto-bar">🧪 <strong>Wariant E — Skąd te pytania</strong> · <a href="index.html">← porównanie wariantów</a></div>
+
+<div class="wrap">
+
+  <!-- ============ SCREEN 1 — Provenance / trust ============ -->
+  <section id="s1">
+    <span class="eyebrow">Skąd pochodzą pytania?</span>
+    <h1>Skąd pochodzą te pytania?</h1>
+    <p class="sub">Pełna jawność materiału — sprawdź, na czym dokładnie się uczysz.</p>
+
+    <div class="col2">
+      <div class="card hero-card green center" style="margin-bottom:0;">
+        <div class="hero-num green" id="heroReal">263</div>
+        <div class="small" style="margin-top:8px;">prawdziwe pytania z egzaminów <strong>KSAP 2023–2025</strong></div>
+      </div>
+      <div class="card center" style="margin-bottom:0;">
+        <div class="hero-num neutral" id="heroGen">564</div>
+        <div class="small muted" style="margin-top:8px;">pytania ćwiczeniowe w tym samym stylu</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px;">
+      <h2>Czy te pytania przygotują Cię do egzaminu?</h2>
+      <p class="small" style="margin-top:8px;">
+        Powiedzmy to wprost: <strong>nikt nie zna pytań tegorocznego egzaminu</strong> (4 lipca 2026).
+        Ale egzamin KSAP co roku trzyma ten sam format i wraca do tych samych zagadnień z 6 dziedzin.
+        Dlatego najlepszym sprawdzianem przygotowania są poprzednie egzaminy — a masz tu
+        <strong>komplet trzech ostatnich roczników (2023, 2024, 2025)</strong> plus pytania ćwiczeniowe
+        ułożone dokładnie w ich stylu i zakresie.
+      </p>
+      <p class="small" style="margin-top:8px;">
+        To nie są zgadywanki — to odwzorowanie tego, jak egzamin realnie wygląda.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="small muted" style="margin-bottom:10px;">Prawdziwe pytania według roczników</div>
+      <div class="row" id="yearRow"></div>
+    </div>
+
+    <div class="card">
+      <h2>Pokrycie wszystkich 6 dziedzin</h2>
+      <p class="small muted" style="margin:6px 0 14px;">
+        Każda oficjalna dziedzina egzaminu jest pokryta. Zielony pasek pokazuje, ile pytań w danej
+        dziedzinie pochodzi wprost z prawdziwych egzaminów.
+      </p>
+      <div id="domainList" class="stack"></div>
+    </div>
+
+    <div class="card">
+      <div class="spread" style="align-items:flex-start;">
+        <div class="grow">
+          <strong class="small">Ucz się tylko z prawdziwych pytań egzaminacyjnych (<span id="onlyRealCount">263</span>)</strong>
+          <div class="tiny muted" style="margin-top:4px;">
+            Maksymalny sygnał — same pytania, które realnie pojawiły się na egzaminach.
+          </div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="onlyRealToggle">
+          <span class="track"></span>
+        </label>
+      </div>
+    </div>
+
+    <button class="btn block lg" onclick="startSession()">Zacznij sesję</button>
+  </section>
+
+  <!-- ============ SCREEN 2 — Quiz ============ -->
+  <section id="s2" class="hidden">
+    <div class="spread" style="margin-bottom:14px;">
+      <span class="muted small" id="qProgress">Pytanie 1 z 3</span>
+      <span class="tiny muted" id="modeLabel"></span>
+    </div>
+    <div class="bar thick green" style="margin-bottom:16px;"><i id="qBar" style="width:33%"></i></div>
+    <div id="quizCard"></div>
+  </section>
+
+  <!-- ============ SCREEN 3 — Result ============ -->
+  <section id="s3" class="hidden">
+    <div class="card center">
+      <span class="eyebrow">Sesja ukończona</span>
+      <h1 style="margin-top:6px;">Wynik: <span id="finalScore">0/3</span></h1>
+      <div class="bar thick green" style="margin:16px 0;"><i id="scoreBar" style="width:0%"></i></div>
+      <p class="small" id="provRecap" style="margin-bottom:0;"></p>
+    </div>
+    <div class="card">
+      <p class="small" style="margin:0;">
+        Ćwiczysz na tym, co realnie było na egzaminie — nie na zgadywankach. Im więcej prawdziwych
+        pytań przerobisz, tym lepiej wiesz, czego się spodziewać 4 lipca.
+      </p>
+    </div>
+    <div class="stack">
+      <button class="btn block lg" onclick="goScreen(1)">Nowa sesja</button>
+      <a class="btn ghost block" href="index.html">Wróć</a>
+    </div>
+  </section>
+
+</div>
+
+<script src="data.js"></script>
+<script>
+  var P = window.PROTO;
+  var LETTERS = ['A', 'B', 'C', 'D'];
+
+  // ---------- origin badge helper (the trust signal) ----------
+  function originBadge(origin) {
+    if (origin && origin.indexOf('ksap-') === 0) {
+      var year = origin.split('-')[1];
+      return '<span class="origin real">✓ Egzamin KSAP ' + year + '</span>';
+    }
+    return '<span class="origin gen">Pytanie ćwiczeniowe</span>';
+  }
+  function isReal(q) { return q.origin && q.origin.indexOf('ksap-') === 0; }
+
+  // ---------- Screen 1 rendering ----------
+  function renderScreen1() {
+    document.getElementById('heroReal').textContent = P.realCount;
+    document.getElementById('heroGen').textContent = P.generatedCount;
+    document.getElementById('onlyRealCount').textContent = P.realCount;
+
+    // year breakdown
+    var yr = '';
+    Object.keys(P.realByYear).forEach(function (y) {
+      yr += '<div class="yearchip"><div class="y">KSAP ' + y + '</div><div class="c">' + P.realByYear[y] + '</div></div>';
+    });
+    document.getElementById('yearRow').innerHTML = yr;
+
+    // per-domain stacked coverage
+    var dl = '';
+    P.domains.forEach(function (d) {
+      var realPct = Math.round((d.real / d.total) * 100);
+      var restPct = 100 - realPct;
+      dl += '<div>'
+        + '<div class="spread" style="margin-bottom:5px;">'
+        + '<strong class="small">' + d.short + '</strong>'
+        + '<span class="tiny muted">' + d.real + ' z ' + d.total + ' to prawdziwe pytania egzaminacyjne</span>'
+        + '</div>'
+        + '<div class="stackbar">'
+        + '<span class="real" style="width:' + realPct + '%"></span>'
+        + '<span class="rest" style="width:' + restPct + '%"></span>'
+        + '</div>'
+        + '</div>';
+    });
+    document.getElementById('domainList').innerHTML = dl;
+  }
+
+  // ---------- screen toggling ----------
+  function goScreen(n) {
+    document.getElementById('s1').classList.toggle('hidden', n !== 1);
+    document.getElementById('s2').classList.toggle('hidden', n !== 2);
+    document.getElementById('s3').classList.toggle('hidden', n !== 3);
+    window.scrollTo(0, 0);
+  }
+
+  // ---------- session state ----------
+  var session = { items: [], index: 0, score: 0, answered: false };
+
+  function domainShort(code) {
+    var d = P.domains.find(function (x) { return x.code === code; });
+    return d ? d.short : code;
+  }
+
+  function buildSession() {
+    var onlyReal = document.getElementById('onlyRealToggle').checked;
+    var picked;
+    if (onlyReal) {
+      picked = P.questions.filter(isReal).slice(0, 3);
+    } else {
+      // try to include at least one real + one generated for badge contrast
+      var reals = P.questions.filter(isReal);
+      var gens = P.questions.filter(function (q) { return !isReal(q); });
+      picked = [reals[0], gens[0], reals[1]].filter(Boolean);
+      // top up to 3 if needed
+      var pool = P.questions.slice();
+      for (var i = 0; picked.length < 3 && i < pool.length; i++) {
+        if (picked.indexOf(pool[i]) === -1) picked.push(pool[i]);
+      }
+      picked = picked.slice(0, 3);
+    }
+    session = { items: picked, index: 0, score: 0, answered: false };
+  }
+
+  function startSession() {
+    buildSession();
+    document.getElementById('modeLabel').textContent =
+      document.getElementById('onlyRealToggle').checked
+        ? 'Tryb: tylko prawdziwe egzaminy KSAP'
+        : 'Tryb: pełna pula';
+    goScreen(2);
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    var q = session.items[session.index];
+    var n = session.index + 1;
+    var total = session.items.length;
+    session.answered = false;
+
+    document.getElementById('qProgress').textContent = 'Pytanie ' + n + ' z ' + total;
+    document.getElementById('qBar').style.width = Math.round((n / total) * 100) + '%';
+
+    var opts = '';
+    q.options.forEach(function (o, i) {
+      opts += '<div class="option" data-i="' + i + '" onclick="answer(' + i + ')">'
+        + '<strong>' + LETTERS[i] + '.</strong> ' + o + '</div>';
+    });
+
+    var html = '<div class="card">'
+      + '<div class="row" style="flex-wrap:wrap;gap:8px;margin-bottom:10px;">'
+      + '<span class="chip">' + domainShort(q.domain) + '</span>'
+      + '<span class="badge ' + q.level + '">' + q.level + '</span>'
+      + originBadge(q.origin)
+      + '</div>'
+      + '<h2 style="margin-bottom:14px;">' + q.question + '</h2>'
+      + '<div id="opts">' + opts + '</div>'
+      + '<div id="feedback"></div>'
+      + '</div>';
+    document.getElementById('quizCard').innerHTML = html;
+  }
+
+  function answer(i) {
+    if (session.answered) return;
+    session.answered = true;
+    var q = session.items[session.index];
+    var nodes = document.querySelectorAll('#opts .option');
+    nodes.forEach(function (el) {
+      var idx = parseInt(el.getAttribute('data-i'), 10);
+      el.classList.add('disabled');
+      el.setAttribute('onclick', '');
+      if (idx === q.correct) el.classList.add('correct');
+      if (idx === i && i !== q.correct) el.classList.add('wrong');
+      if (idx === i) el.classList.add('selected');
+    });
+
+    if (i === q.correct) session.score++;
+
+    var last = session.index === session.items.length - 1;
+    var fb = '<div class="explain" style="margin-top:14px;">' + q.explanation + '</div>'
+      + '<div class="source-box">Źródło: ' + q.source + '</div>'
+      + '<button class="btn block" style="margin-top:14px;" onclick="nextQuestion()">'
+      + (last ? 'Zobacz wynik' : 'Następne') + '</button>';
+    document.getElementById('feedback').innerHTML = fb;
+  }
+
+  function nextQuestion() {
+    if (session.index < session.items.length - 1) {
+      session.index++;
+      renderQuestion();
+      window.scrollTo(0, 0);
+    } else {
+      renderResult();
+    }
+  }
+
+  function renderResult() {
+    var total = session.items.length;
+    var realCount = session.items.filter(isReal).length;
+    document.getElementById('finalScore').textContent = session.score + '/' + total;
+    document.getElementById('scoreBar').style.width = Math.round((session.score / total) * 100) + '%';
+
+    var recap;
+    if (realCount === total) {
+      recap = 'Wszystkie ' + total + ' pytania pochodziły z prawdziwych egzaminów KSAP (2023–2025).';
+    } else if (realCount === 0) {
+      recap = 'Dziś trafiły same pytania ćwiczeniowe — ułożone dokładnie w stylu i zakresie egzaminu KSAP.';
+    } else {
+      recap = 'Dziś ' + realCount + ' z ' + total + ' pytań pochodziło z prawdziwych egzaminów KSAP (2023–2025).';
+    }
+    document.getElementById('provRecap').innerHTML = recap;
+    goScreen(3);
+  }
+
+  // init
+  renderScreen1();
+</script>
+</body>
+</html>

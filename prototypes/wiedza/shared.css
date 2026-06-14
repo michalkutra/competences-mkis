@@ -1,0 +1,156 @@
+/* Prototypy „Efektywna nauka — część II (wiedza)".
+   Wspólne tokeny i komponenty. NIE jest to produkcyjny CSS aplikacji —
+   to samodzielny styl mockupów, wizualnie zbliżony do egzamin.kutra.pl. */
+
+:root {
+  --bg: #f0f2f5;
+  --card: #ffffff;
+  --ink: #1a1a1a;
+  --muted: #6b7280;
+  --muted2: #9ca3af;
+  --line: #e5e7eb;
+  --blue: #2563eb;
+  --blue-soft: #eff6ff;
+  --blue-chip: #e0edff;
+  --blue-border: #bfdbfe;
+  --green: #16a34a;
+  --green-soft: #ecfdf5;
+  --amber: #e67e22;
+  --amber-soft: #fff7ed;
+  --red: #e74c3c;
+  --red-soft: #fef2f2;
+  --radius: 14px;
+  --shadow: 0 6px 22px rgba(37,99,235,.10);
+  --shadow-soft: 0 2px 8px rgba(0,0,0,.05);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  background: var(--bg);
+  color: var(--ink);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+.wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 18px 16px 80px;
+}
+
+/* prototype banner — makes clear this is a mockup, not the real app */
+.proto-bar {
+  background: #1f2937;
+  color: #e5e7eb;
+  font-size: 0.78rem;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+.proto-bar strong { color: #fff; }
+.proto-bar a { color: #93c5fd; text-decoration: none; }
+.proto-bar a:hover { text-decoration: underline; }
+
+h1 { font-size: 1.35rem; margin: 6px 0 2px; }
+h2 { font-size: 1.05rem; margin: 0 0 4px; }
+.sub { color: var(--muted); font-size: 0.9rem; margin: 0 0 18px; }
+.eyebrow {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--blue);
+  background: var(--blue-soft); border-radius: 4px; padding: 3px 8px;
+  display: inline-block; margin-bottom: 10px;
+}
+
+.card {
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 18px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-soft);
+}
+.card.clickable { cursor: pointer; transition: border-color .15s, box-shadow .15s, transform .1s; }
+.card.clickable:hover { border-color: var(--blue); box-shadow: var(--shadow); transform: translateY(-2px); }
+
+button, .btn {
+  font: inherit; font-weight: 600; cursor: pointer;
+  border-radius: 10px; padding: 12px 20px; border: none;
+  background: var(--blue); color: #fff; transition: filter .12s, background .12s;
+}
+button:hover, .btn:hover { filter: brightness(1.05); }
+button:disabled { background: #cbd5e1; cursor: default; filter: none; }
+.btn.ghost { background: #fff; color: var(--blue); border: 1.5px solid var(--line); }
+.btn.ghost:hover { background: var(--blue-soft); border-color: var(--blue-border); }
+.btn.block { display: block; width: 100%; text-align: center; }
+.btn.lg { padding: 14px 24px; font-size: 1.02rem; }
+
+.chip {
+  padding: 7px 13px; border-radius: 999px; background: #f1f5f9;
+  color: #475569; border: 1px solid #e2e8f0; font-size: 0.85rem;
+  cursor: pointer; user-select: none; display: inline-block;
+}
+.chip.active { background: var(--blue-chip); color: var(--blue); border-color: var(--blue-border); }
+
+/* progress bar */
+.bar { height: 8px; border-radius: 999px; background: #eef1f5; overflow: hidden; }
+.bar > i { display: block; height: 100%; border-radius: 999px; background: var(--blue); transition: width .5s ease; }
+.bar.green > i { background: var(--green); }
+.bar.amber > i { background: var(--amber); }
+.bar.red > i { background: var(--red); }
+.bar.thick { height: 12px; }
+
+.row { display: flex; align-items: center; gap: 12px; }
+.between { justify-content: space-between; }
+.spread { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.muted { color: var(--muted); }
+.small { font-size: 0.82rem; }
+.tiny { font-size: 0.74rem; }
+.pct { font-variant-numeric: tabular-nums; font-weight: 700; }
+
+/* domain dot */
+.dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+
+/* quiz option */
+.option {
+  border: 1.5px solid var(--line); border-radius: 12px; padding: 13px 15px;
+  margin-bottom: 10px; cursor: pointer; transition: all .12s; background: #fff;
+}
+.option:hover:not(.correct):not(.wrong):not(.disabled) { border-color: #93c5fd; background: #f0f7ff; }
+.option.selected { border-color: var(--blue); background: var(--blue-soft); }
+.option.correct { border-color: var(--green); background: var(--green-soft); }
+.option.wrong { border-color: var(--red); background: var(--red-soft); }
+.option.disabled { cursor: default; }
+
+.explain {
+  background: #f9fafb; border-left: 3px solid var(--blue);
+  border-radius: 8px; padding: 12px 14px; font-size: 0.9rem; color: #374151; margin-top: 6px;
+}
+.source-box { font-size: 0.78rem; color: var(--muted); margin-top: 8px; font-style: italic; }
+
+.badge {
+  display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 2px 8px;
+  border-radius: 999px; text-transform: uppercase; letter-spacing: .04em;
+}
+.badge.easy { background: var(--green-soft); color: var(--green); }
+.badge.medium { background: var(--amber-soft); color: var(--amber); }
+.badge.hard { background: var(--red-soft); color: var(--red); }
+.badge.done { background: var(--green-soft); color: var(--green); }
+.badge.blue { background: var(--blue-soft); color: var(--blue); }
+
+.hidden { display: none !important; }
+
+/* generic list item */
+.item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f1f3f5; }
+.item:last-child { border-bottom: none; }
+.grow { flex: 1; min-width: 0; }
+
+.center { text-align: center; }
+.stack > * + * { margin-top: 10px; }

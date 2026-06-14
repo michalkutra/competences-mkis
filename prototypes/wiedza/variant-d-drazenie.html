@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Wariant D — Drążenie tematu</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+  /* Drobne dodatki tylko dla tego wariantu */
+  .topic-row { cursor: pointer; }
+  .topic-row .grow { display: flex; flex-direction: column; gap: 6px; }
+  .topic-name { font-weight: 600; }
+  .domain-head { display: flex; align-items: center; gap: 9px; margin: 22px 0 4px; }
+  .domain-head h2 { margin: 0; }
+  .mini-bar { display: flex; align-items: center; gap: 9px; }
+  .mini-bar .bar { flex: 1; }
+  .mini-bar .pct { min-width: 34px; text-align: right; font-size: 0.8rem; }
+
+  /* pierścień opanowania */
+  .ring-wrap { display: flex; flex-direction: column; align-items: center; gap: 6px; margin: 8px 0 4px; }
+  .ring { position: relative; width: 200px; height: 200px; }
+  .ring svg { transform: rotate(-90deg); display: block; }
+  .ring .ring-bg { fill: none; stroke: #eef1f5; stroke-width: 16; }
+  .ring .ring-fg { fill: none; stroke: var(--blue); stroke-width: 16; stroke-linecap: round;
+                   transition: stroke-dashoffset 1.1s cubic-bezier(.2,.7,.2,1), stroke 1.1s; }
+  .ring .ring-goal { fill: none; stroke: #cbd5e1; stroke-width: 16; stroke-dasharray: 2 6; opacity: .9; }
+  .ring-center { position: absolute; inset: 0; display: flex; flex-direction: column;
+                 align-items: center; justify-content: center; }
+  .ring-center .big { font-size: 2.6rem; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+  .ring-center .lbl { font-size: 0.72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-top: 4px; }
+  .ring.fg-red .ring-fg { stroke: var(--red); }
+  .ring.fg-amber .ring-fg { stroke: var(--amber); }
+  .ring.fg-blue .ring-fg { stroke: var(--blue); }
+  .ring.fg-green .ring-fg { stroke: var(--green); }
+
+  .opt-prefix { font-weight: 700; color: var(--blue); margin-right: 7px; }
+  .option.correct .opt-prefix, .option.wrong .opt-prefix { color: inherit; }
+</style>
+</head>
+<body>
+<div class="proto-bar">🧪 <strong>Wariant D — Drążenie tematu</strong> · <a href="index.html">← porównanie wariantów</a></div>
+
+<div class="wrap">
+
+  <!-- ============ EKRAN 1 — WYBÓR TEMATU ============ -->
+  <section id="screen-list">
+    <span class="eyebrow">Część II · Sprawdzian wiedzy</span>
+    <h1>Wybierz temat do drążenia</h1>
+    <p class="sub">Jeden temat naraz. Ćwiczysz, aż poczujesz się pewnie.</p>
+    <div id="domain-list"></div>
+  </section>
+
+  <!-- ============ EKRAN 2 — DRĄŻENIE (FOCUS) ============ -->
+  <section id="screen-focus" class="hidden">
+    <a href="#" class="muted small" id="back-to-list">← Lista tematów</a>
+
+    <div class="card center" style="padding-top:22px">
+      <div class="muted small" id="focus-domain"></div>
+      <h1 id="focus-title" style="margin:2px 0 14px">Temat</h1>
+
+      <div class="ring-wrap">
+        <div class="ring" id="focus-ring">
+          <svg width="200" height="200" viewBox="0 0 200 200">
+            <circle class="ring-bg" cx="100" cy="100" r="84"></circle>
+            <circle class="ring-goal" cx="100" cy="100" r="84"></circle>
+            <circle class="ring-fg" id="ring-fg" cx="100" cy="100" r="84"></circle>
+          </svg>
+          <div class="ring-center">
+            <span class="big" id="ring-pct">0%</span>
+            <span class="lbl">opanowanie</span>
+          </div>
+        </div>
+        <div class="small muted">🎯 Cel: <strong>80%</strong> — wtedy temat uznajemy za opanowany.</div>
+      </div>
+
+      <p class="small muted" id="focus-context" style="margin:10px 0 16px"></p>
+
+      <button class="btn lg block" id="focus-start">Ćwicz ten temat (10 pytań)</button>
+      <p class="tiny muted" style="margin:12px 0 0">Drążysz jeden temat — bez przeskakiwania. Każda sesja podbija opanowanie.</p>
+    </div>
+  </section>
+
+  <!-- ============ EKRAN 3 — SESJA (QUIZ) ============ -->
+  <section id="screen-session" class="hidden">
+    <a href="#" class="muted small" id="back-from-session">← Przerwij i wróć do tematu</a>
+    <h2 id="session-head" style="margin:8px 0 14px">Drążenie</h2>
+
+    <!-- pojedyncze pytanie -->
+    <div id="quiz-area"></div>
+
+    <!-- wynik -->
+    <div id="result-area" class="hidden"></div>
+  </section>
+
+</div>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  "use strict";
+  var P = window.PROTO;
+  var GOAL = 0.80;
+  var SESSION_LEN = 3;
+  var GAIN = 0.18; // hojny przyrost, by ukończenie było osiągalne w demo
+
+  // ---- indeks tematów (po id) + odniesienie do domeny ----
+  var topicById = {};
+  P.domains.forEach(function (d) {
+    d.topics.forEach(function (t) {
+      t._domain = d;
+      topicById[t.id] = t;
+    });
+  });
+
+  // ---- helpery ----
+  function pct(m) { return Math.round(m * 100); }
+  function barClass(m) { return m >= GOAL ? "green" : (m >= 0.5 ? "amber" : "red"); }
+  function ringClass(m) { return m >= GOAL ? "fg-green" : (m >= 0.5 ? "fg-blue" : (m >= 0.35 ? "fg-amber" : "fg-red")); }
+  function show(id) {
+    ["screen-list", "screen-focus", "screen-session"].forEach(function (s) {
+      document.getElementById(s).classList.toggle("hidden", s !== id);
+    });
+    window.scrollTo(0, 0);
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+
+  // ---- najsłabsze tematy (do chipa „polecane") ----
+  var weakest = [];
+  P.domains.forEach(function (d) { d.topics.forEach(function (t) { weakest.push(t); }); });
+  weakest.sort(function (a, b) { return a.mastery - b.mastery; });
+  var recommended = {};
+  weakest.slice(0, 2).forEach(function (t) { recommended[t.id] = true; });
+
+  // ================= EKRAN 1 — lista =================
+  function renderList() {
+    var wrap = document.getElementById("domain-list");
+    wrap.innerHTML = "";
+    P.domains.forEach(function (d) {
+      var head = document.createElement("div");
+      head.className = "domain-head";
+      head.innerHTML = '<span class="dot" style="background:' + d.color + '"></span>' +
+        '<h2>' + esc(d.name) + '</h2>';
+      wrap.appendChild(head);
+
+      var card = document.createElement("div");
+      card.className = "card";
+      card.style.padding = "4px 18px";
+
+      d.topics.forEach(function (t) {
+        var done = t.mastery >= GOAL;
+        var row = document.createElement("div");
+        row.className = "item topic-row";
+        row.innerHTML =
+          '<div class="grow">' +
+            '<div class="row between">' +
+              '<span class="topic-name">' + esc(t.name) +
+                (done ? ' <span class="badge done">✓ opanowany</span>' : '') +
+                (recommended[t.id] && !done ? ' <span class="chip active tiny" style="padding:2px 9px">polecane</span>' : '') +
+              '</span>' +
+              '<span class="tiny muted">' + t.count + ' pytań</span>' +
+            '</div>' +
+            '<div class="mini-bar">' +
+              '<div class="bar ' + barClass(t.mastery) + '"><i style="width:' + pct(t.mastery) + '%"></i></div>' +
+              '<span class="pct">' + pct(t.mastery) + '%</span>' +
+            '</div>' +
+          '</div>' +
+          '<span class="muted" aria-hidden="true">›</span>';
+        row.addEventListener("click", function () { openFocus(t.id); });
+        card.appendChild(row);
+      });
+      wrap.appendChild(card);
+    });
+  }
+
+  // ================= EKRAN 2 — focus =================
+  var currentTopicId = null;
+  var RING_C = 2 * Math.PI * 84; // obwód okręgu r=84
+
+  function setRing(mastery, animateFrom) {
+    var fg = document.getElementById("ring-fg");
+    var box = document.getElementById("focus-ring");
+    var pctEl = document.getElementById("ring-pct");
+    fg.style.strokeDasharray = RING_C;
+    box.className = "ring " + ringClass(mastery);
+
+    function offsetFor(m) { return RING_C * (1 - Math.min(m, 1)); }
+
+    if (typeof animateFrom === "number") {
+      // start od starej wartości, potem animuj do nowej
+      fg.style.strokeDashoffset = offsetFor(animateFrom);
+      pctEl.textContent = pct(animateFrom) + "%";
+      // licznik %
+      var startP = pct(animateFrom), endP = pct(mastery), steps = 30, i = 0;
+      var iv = setInterval(function () {
+        i++;
+        var v = Math.round(startP + (endP - startP) * (i / steps));
+        pctEl.textContent = v + "%";
+        if (i >= steps) clearInterval(iv);
+      }, 38);
+      // odpal animację stroke w następnej klatce
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          fg.style.strokeDashoffset = offsetFor(mastery);
+          box.className = "ring " + ringClass(mastery);
+        });
+      });
+    } else {
+      fg.style.strokeDashoffset = offsetFor(mastery);
+      pctEl.textContent = pct(mastery) + "%";
+    }
+  }
+
+  function openFocus(topicId) {
+    currentTopicId = topicId;
+    var t = topicById[topicId];
+    document.getElementById("focus-domain").innerHTML =
+      '<span class="dot" style="display:inline-block;background:' + t._domain.color + '"></span> ' + esc(t._domain.name);
+    document.getElementById("focus-title").textContent = t.name;
+    document.getElementById("focus-context").innerHTML =
+      '<strong>' + t.count + '</strong> pytań w tym temacie · poznane: <strong>' + t.answered + '</strong>';
+    show("screen-focus");
+    setRing(t.mastery);
+  }
+
+  // ================= EKRAN 3 — sesja =================
+  var session = null; // { questions:[], idx, correctCount }
+
+  function buildSession(topicId) {
+    var t = topicById[topicId];
+    var qs = P.questions.filter(function (q) { return q.topicId === topicId; });
+    if (qs.length < SESSION_LEN) {
+      // dobierz z tej samej domeny
+      var sameDomain = P.questions.filter(function (q) {
+        return q.domain === t._domain.code && qs.indexOf(q) === -1;
+      });
+      qs = qs.concat(sameDomain);
+    }
+    if (qs.length < SESSION_LEN) {
+      // dopełnij czymkolwiek (to mock)
+      var rest = P.questions.filter(function (q) { return qs.indexOf(q) === -1; });
+      qs = qs.concat(rest);
+    }
+    // zapętl jeśli wciąż za mało
+    var picked = [];
+    for (var i = 0; i < SESSION_LEN; i++) picked.push(qs[i % qs.length]);
+    return { questions: picked, idx: 0, correctCount: 0 };
+  }
+
+  function startSession() {
+    session = buildSession(currentTopicId);
+    var t = topicById[currentTopicId];
+    document.getElementById("session-head").innerHTML = "Drążenie: <strong>" + esc(t.name) + "</strong>";
+    document.getElementById("result-area").classList.add("hidden");
+    document.getElementById("quiz-area").classList.remove("hidden");
+    show("screen-session");
+    renderQuestion();
+  }
+
+  var LEVELS = { easy: "łatwe", medium: "średnie", hard: "trudne" };
+
+  function renderQuestion() {
+    var area = document.getElementById("quiz-area");
+    var q = session.questions[session.idx];
+    var letters = ["A", "B", "C", "D"];
+    var optsHtml = q.options.map(function (opt, i) {
+      return '<div class="option" data-i="' + i + '">' +
+        '<span class="opt-prefix">' + letters[i] + '</span>' + esc(opt) + '</div>';
+    }).join("");
+
+    area.innerHTML =
+      '<div class="row between" style="margin-bottom:8px">' +
+        '<span class="tiny muted">Pytanie ' + (session.idx + 1) + ' z ' + SESSION_LEN + '</span>' +
+        '<span class="badge ' + q.level + '">' + (LEVELS[q.level] || q.level) + '</span>' +
+      '</div>' +
+      '<div class="card">' +
+        '<p style="font-weight:600;margin:0 0 14px">' + esc(q.question) + '</p>' +
+        '<div id="opts">' + optsHtml + '</div>' +
+        '<div id="feedback"></div>' +
+        '<div id="next-wrap" class="hidden" style="margin-top:14px">' +
+          '<button class="btn block" id="next-btn"></button>' +
+        '</div>' +
+      '</div>';
+
+    var answered = false;
+    Array.prototype.forEach.call(area.querySelectorAll(".option"), function (el) {
+      el.addEventListener("click", function () {
+        if (answered) return;
+        answered = true;
+        var chosen = parseInt(el.getAttribute("data-i"), 10);
+        var correct = chosen === q.correct;
+        if (correct) session.correctCount++;
+
+        Array.prototype.forEach.call(area.querySelectorAll(".option"), function (o) {
+          o.classList.add("disabled");
+          var oi = parseInt(o.getAttribute("data-i"), 10);
+          if (oi === q.correct) o.classList.add("correct");
+          else if (oi === chosen) o.classList.add("wrong");
+        });
+
+        document.getElementById("feedback").innerHTML =
+          '<div class="explain">' + esc(q.explanation) + '</div>' +
+          '<div class="source-box">Źródło: ' + esc(q.source) + '</div>';
+
+        var nextWrap = document.getElementById("next-wrap");
+        var nextBtn = document.getElementById("next-btn");
+        nextBtn.textContent = (session.idx + 1 < SESSION_LEN) ? "Dalej" : "Zobacz wynik";
+        nextWrap.classList.remove("hidden");
+        nextBtn.onclick = function () {
+          if (session.idx + 1 < SESSION_LEN) {
+            session.idx++;
+            renderQuestion();
+            window.scrollTo(0, 0);
+          } else {
+            finishSession();
+          }
+        };
+      });
+    });
+  }
+
+  function finishSession() {
+    var t = topicById[currentTopicId];
+    var oldMastery = t.mastery;
+    var newMastery = Math.min(1, oldMastery + GAIN);
+    t.mastery = newMastery;
+    t.answered = Math.min(t.count, t.answered + SESSION_LEN);
+
+    document.getElementById("quiz-area").classList.add("hidden");
+    var res = document.getElementById("result-area");
+    res.classList.remove("hidden");
+
+    var crossed = newMastery >= GOAL;
+    var toGoal = Math.max(0, Math.round((GOAL - newMastery) * 100));
+
+    var footHtml;
+    if (crossed) {
+      footHtml =
+        '<div class="card center" style="border-color:var(--green)">' +
+          '<div style="font-size:2.2rem;line-height:1">🎉</div>' +
+          '<h2 style="margin:8px 0 4px">Temat opanowany!</h2>' +
+          '<p class="small muted" style="margin:0 0 14px">Opanowanie przekroczyło 80%. Świetna robota — ten temat masz z głowy.</p>' +
+          '<button class="btn block" id="res-back">Wróć i wybierz kolejny temat</button>' +
+        '</div>';
+    } else {
+      footHtml =
+        '<div class="card center">' +
+          '<p style="margin:0 0 4px;font-weight:600">Jeszcze ' + toGoal + '% do celu — drążymy dalej?</p>' +
+          '<p class="small muted" style="margin:0 0 14px">Zostajesz na tym samym temacie. Kolejna sesja znów podbije opanowanie.</p>' +
+          '<button class="btn block" id="res-again" style="margin-bottom:10px">Ćwicz dalej (10 pytań)</button>' +
+          '<button class="btn ghost block" id="res-back">Wróć do listy tematów</button>' +
+        '</div>';
+    }
+
+    res.innerHTML =
+      '<h2 style="margin:0 0 4px">Sesja ukończona</h2>' +
+      '<p class="sub" style="margin:0 0 16px">Wynik: <strong>' + session.correctCount + ' / ' + SESSION_LEN + '</strong> poprawnych</p>' +
+      '<div class="card center">' +
+        '<div class="muted small">' + esc(t.name) + '</div>' +
+        '<div class="ring-wrap">' +
+          '<div class="ring" id="result-ring">' +
+            '<svg width="200" height="200" viewBox="0 0 200 200">' +
+              '<circle class="ring-bg" cx="100" cy="100" r="84"></circle>' +
+              '<circle class="ring-fg" id="result-ring-fg" cx="100" cy="100" r="84"></circle>' +
+            '</svg>' +
+            '<div class="ring-center">' +
+              '<span class="big" id="result-ring-pct">' + pct(oldMastery) + '%</span>' +
+              '<span class="lbl">opanowanie</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="small muted">' +
+            '<span class="pct">' + pct(oldMastery) + '%</span> → <span class="pct" style="color:var(--green)">' + pct(newMastery) + '%</span>' +
+            ' &nbsp;(+' + Math.round(GAIN * 100) + ' pp)' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+      footHtml;
+
+    // animacja pierścienia wyniku: stara -> nowa
+    var fg = document.getElementById("result-ring-fg");
+    var box = document.getElementById("result-ring");
+    var pctEl = document.getElementById("result-ring-pct");
+    fg.style.strokeDasharray = RING_C;
+    fg.style.strokeDashoffset = RING_C * (1 - oldMastery);
+    box.className = "ring " + ringClass(oldMastery);
+    var startP = pct(oldMastery), endP = pct(newMastery), steps = 30, i = 0;
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        fg.style.strokeDashoffset = RING_C * (1 - newMastery);
+        box.className = "ring " + ringClass(newMastery);
+        var iv = setInterval(function () {
+          i++;
+          pctEl.textContent = Math.round(startP + (endP - startP) * (i / steps)) + "%";
+          if (i >= steps) clearInterval(iv);
+        }, 38);
+      });
+    });
+
+    var againBtn = document.getElementById("res-again");
+    if (againBtn) againBtn.onclick = startSession;
+    document.getElementById("res-back").onclick = function () {
+      renderList();
+      show("screen-list");
+    };
+  }
+
+  // ---- nawigacja ----
+  document.getElementById("back-to-list").addEventListener("click", function (e) {
+    e.preventDefault(); renderList(); show("screen-list");
+  });
+  document.getElementById("back-from-session").addEventListener("click", function (e) {
+    e.preventDefault(); openFocus(currentTopicId);
+  });
+  document.getElementById("focus-start").addEventListener("click", startSession);
+
+  // ---- start ----
+  renderList();
+  show("screen-list");
+})();
+</script>
+</body>
+</html>

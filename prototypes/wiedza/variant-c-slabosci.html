@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wariant C — Dobór wg słabości</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="shared.css">
+<style>
+  /* toggle switch */
+  .switch-row {
+    display:flex; align-items:flex-start; gap:14px;
+    background:var(--blue-soft); border:1.5px solid var(--blue-border);
+    border-radius:12px; padding:14px 16px;
+  }
+  .switch { position:relative; flex:none; width:48px; height:28px; cursor:pointer; }
+  .switch input { opacity:0; width:0; height:0; }
+  .switch .track {
+    position:absolute; inset:0; border-radius:999px; background:#cbd5e1; transition:background .18s;
+  }
+  .switch .knob {
+    position:absolute; top:3px; left:3px; width:22px; height:22px; border-radius:50%;
+    background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.25); transition:transform .18s;
+  }
+  .switch input:checked + .track { background:var(--blue); }
+  .switch input:checked + .track + .knob { transform:translateX(20px); }
+  .switch-label { font-size:0.92rem; line-height:1.35; }
+
+  /* horizontal bar chart */
+  .chart-row { display:grid; grid-template-columns:96px 1fr 44px; align-items:center; gap:10px; margin-bottom:11px; }
+  .chart-row .lbl { font-size:0.82rem; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .chart-row .pct { font-size:0.82rem; text-align:right; }
+  .chart-row .bar { height:14px; }
+
+  /* composition legend */
+  .comp-row { display:flex; align-items:center; gap:10px; padding:7px 0; border-bottom:1px solid #f1f3f5; }
+  .comp-row:last-child { border-bottom:none; }
+  .comp-row .num {
+    flex:none; width:30px; height:30px; border-radius:8px; background:var(--blue-soft); color:var(--blue);
+    font-weight:800; display:flex; align-items:center; justify-content:center; font-size:0.95rem;
+    font-variant-numeric:tabular-nums; transition:width .3s, background .3s;
+  }
+  .comp-row .cname { font-size:0.9rem; flex:1; }
+  .takeaway {
+    margin-top:12px; font-size:0.88rem; background:var(--amber-soft); color:#92400e;
+    border-radius:8px; padding:10px 12px; border-left:3px solid var(--amber);
+  }
+  .takeaway.even { background:#f1f5f9; color:#475569; border-left-color:#94a3b8; }
+</style>
+</head>
+<body>
+<div class="proto-bar">🧪 <strong>Wariant C — Dobór wg słabości</strong> · <a href="index.html">← porównanie wariantów</a></div>
+
+<div class="wrap">
+
+  <!-- ============ SCREEN 1: USTAWIENIA SESJI ============ -->
+  <section id="screen1">
+    <div class="eyebrow">Sprawdzian wiedzy · adaptacyjny</div>
+    <h1>Nowa sesja · 15 pytań</h1>
+    <p class="sub">Do egzaminu zostały 21 dni. Zamiast losować ze wszystkiego po równo, sesja może sama przechylić się ku obszarom, które idą Ci słabiej.</p>
+
+    <div class="card">
+      <label class="switch-row" for="adaptToggle">
+        <span class="switch">
+          <input type="checkbox" id="adaptToggle" checked onchange="renderPlan()">
+          <span class="track"></span><span class="knob"></span>
+        </span>
+        <span class="switch-label"><strong>Dopasuj do moich wyników</strong> — częściej losuj z obszarów, które idą Ci słabiej</span>
+      </label>
+    </div>
+
+    <div class="card">
+      <div class="spread" style="margin-bottom:14px">
+        <h2 id="chartTitle">Twoje opanowanie obszarów</h2>
+        <span class="badge blue" id="chartMode">tryb: dopasowany</span>
+      </div>
+      <div id="chart"></div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-bottom:12px">Skład dzisiejszych 15 pytań</h2>
+      <div id="composition"></div>
+      <div id="takeaway" class="takeaway"></div>
+    </div>
+
+    <button class="btn block lg" onclick="startSession()">Rozpocznij sesję</button>
+  </section>
+
+  <!-- ============ SCREEN 2: SESJA ============ -->
+  <section id="screen2" class="hidden">
+    <div class="spread" style="margin-bottom:6px">
+      <div class="eyebrow" style="margin-bottom:0">Sesja w toku</div>
+      <span class="small muted" id="qCounter">Pytanie 1 z 3</span>
+    </div>
+    <div class="bar thick" style="margin-bottom:16px"><i id="qProgress" style="width:33%"></i></div>
+
+    <div class="card" id="qCard"></div>
+
+    <button class="btn block lg hidden" id="nextBtn" onclick="nextQuestion()">Dalej</button>
+  </section>
+
+  <!-- ============ SCREEN 3: WYNIK ============ -->
+  <section id="screen3" class="hidden">
+    <div class="eyebrow">Podsumowanie</div>
+    <h1>Sesja ukończona</h1>
+    <p class="sub" id="scoreLine"></p>
+
+    <div class="card">
+      <div class="spread" style="margin-bottom:14px">
+        <h2>Twoje opanowanie obszarów</h2>
+        <span class="badge done">+ po sesji</span>
+      </div>
+      <div id="chart2"></div>
+      <p class="small muted" id="nudgeLine" style="margin:14px 0 0"></p>
+    </div>
+
+    <div class="card" style="background:var(--blue-soft); border-color:var(--blue-border)">
+      <div class="row">
+        <span style="font-size:1.4rem">🎯</span>
+        <p style="margin:0; font-size:0.92rem">Im słabszy obszar, tym częściej wraca — aż przestanie być słaby.</p>
+      </div>
+    </div>
+
+    <div class="stack">
+      <button class="btn block lg" onclick="newSession()">Nowa sesja</button>
+      <a class="btn ghost block" href="index.html">Wróć</a>
+    </div>
+  </section>
+
+</div>
+
+<script src="data.js"></script>
+<script>
+const P = window.PROTO;
+const SESSION_TOTAL = 15;
+const WEAK_CODES = ['fp','oz','se']; // najsłabsze obszary
+
+// helper: kolor paska wg opanowania
+function barClass(m){ return m < 0.40 ? 'red' : (m < 0.70 ? 'amber' : 'green'); }
+function pct(m){ return Math.round(m*100) + '%'; }
+
+// domeny posortowane od najsłabszej
+function domainsWeakestFirst(){
+  return [...P.domains].sort((a,b)=> a.mastery - b.mastery);
+}
+
+// ---- alokacja 15 pytań ----
+function allocationWeighted(){
+  const ds = P.domains;
+  const weights = ds.map(d => 1 - d.mastery);
+  const sum = weights.reduce((a,b)=>a+b,0);
+  // wstępne (float) + zaokrąglenie + korekta sumy do 15
+  const raw = ds.map((d,i)=> ({ code:d.code, val: weights[i]/sum * SESSION_TOTAL }));
+  let alloc = raw.map(r => ({ code:r.code, n: Math.round(r.val), frac: r.val - Math.floor(r.val) }));
+  let diff = SESSION_TOTAL - alloc.reduce((a,b)=>a+b.n,0);
+  // napraw zaokrąglenie: dodaj/odejmij od pozycji z największą/najmniejszą resztą
+  while(diff !== 0){
+    if(diff > 0){ // dołóż do największej reszty
+      let idx = alloc.reduce((best,c,i,arr)=> c.frac > arr[best].frac ? i : best, 0);
+      alloc[idx].n++; alloc[idx].frac = -1; diff--;
+    } else { // zabierz z najmniejszej reszty (ale n>0)
+      let idx = -1;
+      alloc.forEach((c,i)=>{ if(c.n>0 && (idx<0 || c.frac < alloc[idx].frac)) idx = i; });
+      alloc[idx].n--; alloc[idx].frac = 2; diff++;
+    }
+  }
+  const map = {}; alloc.forEach(a => map[a.code] = a.n);
+  return map;
+}
+
+function allocationEven(){
+  // proporcjonalnie do wielkości puli (~równomiernie)
+  const ds = P.domains;
+  const totalPool = ds.reduce((a,d)=>a+d.total,0);
+  let alloc = ds.map(d => ({ code:d.code, val: d.total/totalPool * SESSION_TOTAL }));
+  let out = alloc.map(a => ({ code:a.code, n: Math.round(a.val), frac: a.val - Math.floor(a.val) }));
+  let diff = SESSION_TOTAL - out.reduce((a,b)=>a+b.n,0);
+  while(diff !== 0){
+    if(diff > 0){ let idx = out.reduce((b,c,i,arr)=> c.frac>arr[b].frac?i:b,0); out[idx].n++; out[idx].frac=-1; diff--; }
+    else { let idx=-1; out.forEach((c,i)=>{ if(c.n>0 && (idx<0||c.frac<out[idx].frac)) idx=i; }); out[idx].n--; out[idx].frac=2; diff++; }
+  }
+  const map = {}; out.forEach(a => map[a.code]=a.n);
+  return map;
+}
+
+function domainByCode(code){ return P.domains.find(d => d.code === code); }
+
+// ---- render wykresu słupkowego (najsłabsze pierwsze) ----
+function renderChart(containerId, nudge){
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+  domainsWeakestFirst().forEach(d => {
+    const m = nudge ? Math.min(0.99, d.mastery + (WEAK_CODES.includes(d.code) ? 0.07 : 0.02)) : d.mastery;
+    const row = document.createElement('div');
+    row.className = 'chart-row';
+    row.innerHTML =
+      '<div class="lbl" title="'+d.name+'">'+d.short+'</div>' +
+      '<div class="bar '+barClass(m)+'"><i style="width:0%"></i></div>' +
+      '<div class="pct">'+pct(m)+'</div>';
+    el.appendChild(row);
+    // animacja: ustaw szerokość po wstawieniu do DOM
+    requestAnimationFrame(()=>{ row.querySelector('.bar > i').style.width = Math.round(m*100)+'%'; });
+  });
+}
+
+// ---- render planu (ekran 1, reaguje na toggle) ----
+function renderPlan(){
+  const on = document.getElementById('adaptToggle').checked;
+  document.getElementById('chartMode').textContent = on ? 'tryb: dopasowany' : 'tryb: równomierny';
+  renderChart('chart', false);
+
+  const alloc = on ? allocationWeighted() : allocationEven();
+  const comp = document.getElementById('composition');
+  comp.innerHTML = '';
+  // pokaż wg liczby pytań malejąco (gdy ON → słabe na górze)
+  const order = [...P.domains].sort((a,b)=> (alloc[b.code]-alloc[a.code]) || (a.mastery-b.mastery));
+  order.forEach(d => {
+    const row = document.createElement('div');
+    row.className = 'comp-row';
+    row.innerHTML =
+      '<span class="num">'+alloc[d.code]+'</span>' +
+      '<span class="cname">'+d.short+'</span>' +
+      '<span class="dot" style="background:'+d.color+'"></span>' +
+      '<span class="tiny muted">'+pct(d.mastery)+' opanowania</span>';
+    comp.appendChild(row);
+  });
+
+  // takeaway
+  const tk = document.getElementById('takeaway');
+  if(on){
+    const weakSum = WEAK_CODES.reduce((a,c)=> a + (alloc[c]||0), 0);
+    const share = Math.round(weakSum / SESSION_TOTAL * 100);
+    tk.className = 'takeaway';
+    tk.textContent = 'Najsłabsze obszary dostają dziś ~'+share+'% pytań.';
+  } else {
+    tk.className = 'takeaway even';
+    tk.textContent = 'Pytania rozłożone równomiernie — także te, które już umiesz.';
+  }
+}
+
+// ============ SESJA ============
+let sessionQs = [];
+let qIndex = 0;
+let score = 0;
+let answered = false;
+
+function pickQuestions(adaptive){
+  const all = [...P.questions];
+  let chosen;
+  if(adaptive){
+    const weak = all.filter(q => WEAK_CODES.includes(q.domain));
+    const rest = all.filter(q => !WEAK_CODES.includes(q.domain));
+    chosen = [...weak, ...rest].slice(0, 3);
+  } else {
+    chosen = all.slice(0, 3);
+  }
+  return chosen;
+}
+
+function startSession(){
+  const adaptive = document.getElementById('adaptToggle').checked;
+  sessionQs = pickQuestions(adaptive);
+  qIndex = 0; score = 0;
+  show('screen2');
+  renderQuestion();
+}
+
+function renderQuestion(){
+  answered = false;
+  const q = sessionQs[qIndex];
+  const d = domainByCode(q.domain);
+  document.getElementById('qCounter').textContent = 'Pytanie '+(qIndex+1)+' z '+sessionQs.length;
+  document.getElementById('qProgress').style.width = Math.round((qIndex)/sessionQs.length*100)+'%';
+  document.getElementById('nextBtn').classList.add('hidden');
+
+  const levelClass = q.level === 'easy' ? 'easy' : (q.level === 'medium' ? 'medium' : 'hard');
+  const levelText = q.level === 'easy' ? 'łatwe' : (q.level === 'medium' ? 'średnie' : 'trudne');
+
+  const card = document.getElementById('qCard');
+  let html =
+    '<div class="row" style="margin-bottom:12px; flex-wrap:wrap">' +
+      '<span class="chip active" style="cursor:default"><span class="dot" style="display:inline-block;background:'+d.color+';margin-right:6px;vertical-align:middle"></span>'+d.short+'</span>' +
+      '<span class="badge '+levelClass+'">'+levelText+'</span>' +
+      (WEAK_CODES.includes(q.domain) ? '<span class="badge blue">słaby obszar</span>' : '') +
+    '</div>' +
+    '<p style="font-weight:600; font-size:1.02rem; margin:0 0 14px">'+q.question+'</p>' +
+    '<div id="opts"></div>' +
+    '<div id="feedback"></div>';
+  card.innerHTML = html;
+
+  const opts = document.getElementById('opts');
+  const letters = ['A','B','C','D'];
+  q.options.forEach((opt,i)=>{
+    const div = document.createElement('div');
+    div.className = 'option';
+    div.innerHTML = '<strong style="margin-right:8px">'+letters[i]+'</strong>'+opt;
+    div.onclick = ()=> selectOption(i);
+    opts.appendChild(div);
+  });
+}
+
+function selectOption(i){
+  if(answered) return;
+  answered = true;
+  const q = sessionQs[qIndex];
+  const opts = document.querySelectorAll('#opts .option');
+  opts.forEach((o,idx)=>{
+    o.classList.add('disabled');
+    o.onclick = null;
+    if(idx === q.correct) o.classList.add('correct');
+    else if(idx === i) o.classList.add('wrong');
+  });
+  if(i === q.correct){ score++; if(opts[i]) opts[i].classList.add('selected'); }
+
+  const fb = document.getElementById('feedback');
+  fb.innerHTML =
+    '<div class="explain">'+q.explanation+
+      '<div class="source-box">Źródło: '+q.source+'</div>' +
+    '</div>';
+
+  const next = document.getElementById('nextBtn');
+  next.textContent = (qIndex === sessionQs.length - 1) ? 'Zobacz wynik' : 'Dalej';
+  next.classList.remove('hidden');
+}
+
+function nextQuestion(){
+  qIndex++;
+  if(qIndex < sessionQs.length){
+    renderQuestion();
+    window.scrollTo(0,0);
+  } else {
+    finishSession();
+  }
+}
+
+// ============ WYNIK ============
+function finishSession(){
+  show('screen3');
+  document.getElementById('scoreLine').textContent = 'Twój wynik: '+score+' / '+sessionQs.length+' poprawnych odpowiedzi.';
+  document.getElementById('nudgeLine').textContent =
+    'Twoje najsłabsze obszary dostały dziś 60% pytań — różnica zacznie być widoczna po kilku sesjach.';
+  // wykres z nudge (słabe obszary lekko w górę)
+  setTimeout(()=> renderChart('chart2', true), 60);
+  window.scrollTo(0,0);
+}
+
+function newSession(){
+  show('screen1');
+  renderPlan();
+  window.scrollTo(0,0);
+}
+
+// ============ NAWIGACJA ============
+function show(id){
+  ['screen1','screen2','screen3'].forEach(s=>{
+    document.getElementById(s).classList.toggle('hidden', s !== id);
+  });
+}
+
+// init
+renderPlan();
+</script>
+</body>
+</html>

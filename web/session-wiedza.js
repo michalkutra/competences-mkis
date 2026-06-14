@@ -34,11 +34,13 @@
     opts = opts || {};
     var domains = (opts.domains && opts.domains.length) ? opts.domains : null;
     var level = (opts.level && opts.level !== 'all') ? opts.level : null;
+    var realOnly = !!opts.realOnly;
     var size = opts.size || SESSION_SIZE;
 
     var filtered = (pool || []).filter(function (q) {
       if (domains && domains.indexOf(q.domain) === -1) return false;
       if (level && q.level !== level) return false;
+      if (realOnly && (!q.origin || q.origin === 'generated')) return false;
       return true;
     });
     sortLRS(filtered, lastSeen, rng);

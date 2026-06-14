@@ -45,4 +45,18 @@ assert.ok(s4.every((x) => !lastSeen[x.id]), 'wszystkie wybrane są niewidziane')
 const s5 = composeWiedzaSession(mkPool(), { domains: ['oz'] }, Object.create(null), makeRng(9)); // oz = 8
 assert.strictEqual(s5.length, 8, 'mniej niż 15 gdy pula mała');
 
+// 6) realOnly — tylko pytania z prawdziwych egzaminów (origin != 'generated')
+const poolO = [
+  { id: 'w_pr_1', domain: 'pr', level: 'easy',   origin: 'ksap-2023' },
+  { id: 'w_pr_2', domain: 'pr', level: 'medium', origin: 'generated' },
+  { id: 'w_se_1', domain: 'se', level: 'hard',   origin: 'ksap-2025' },
+  { id: 'w_se_2', domain: 'se', level: 'easy',   origin: 'generated' },
+];
+const sr = composeWiedzaSession(poolO, { realOnly: true }, Object.create(null), makeRng(11));
+assert.ok(sr.length === 2, 'realOnly: zostają 2 pytania egzaminacyjne');
+assert.ok(sr.every((x) => x.origin && x.origin !== 'generated'), 'realOnly: brak generated');
+// bez flagi — wszystkie 4
+const sr0 = composeWiedzaSession(poolO, {}, Object.create(null), makeRng(11));
+assert.strictEqual(sr0.length, 4, 'bez realOnly: cała pula');
+
 console.log('✅ session-wiedza OK');

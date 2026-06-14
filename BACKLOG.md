@@ -8,6 +8,8 @@
 
 | Pozycja | Wpływ | Wysiłek | Priorytet |
 |---|---|---|---|
+| Badge pochodzenia pytania (cz. II, dla wszystkich) | „Pytanie z egzaminu KSAP 2023" przy pytaniu — wprost adresuje obawę „czy te pytania realnie przygotowują" (263 realne pytania). `origin` już w bundlu, zero zmian danych | mały ([spec](docs/superpowers/specs/2026-06-13-tryby-spersonalizowane-wiedza-design.md) §1) | **SHOULD** (zaufanie, tani fix) |
+| Tryby spersonalizowane cz. II (Mapa wiedzy + Tylko prawdziwe pytania) + tryb admina | Orientacja (skuteczność+pokrycie per dziedzina/temat) + nauka na realnych pytaniach; widoczne tylko dla admina (`ksap_admin` — panel + auto-off GA + tryby), waliduje kierunek przed otwarciem dla wszystkich | średni ([spec](docs/superpowers/specs/2026-06-13-tryby-spersonalizowane-wiedza-design.md) §2–3) | **SHOULD** (feedback stakeholdera) |
 | Baner zgody na cookies/śledzenie (GDPR) | Strona live śledzi przez GA4 bez zgody (opt-out ukryty w debug) — realna ekspozycja prawna; tani fix | mały (spec gotowy) | **SHOULD** (zgodność prawna) |
 | Wall testimoniali (faza 2) | Social proof na Home/About — ale nie ma czego pokazać, póki nie napłyną pozytywne opinie (zależność danych); źródło = maile z Web3Forms | średni | COULD (po napływie opinii z Web3Forms) |
 | Adaptacyjny dobór wg słabości (per-typ floor+flex; per-pytanie = tryb „Powtórka błędów") | Nauka na błędach przed egzaminem — realna wartość edukacyjna w oknie 4 tyg. | średni | COULD (post-launch) |
@@ -146,6 +148,8 @@ Wewnętrzne narzędzie do szybkiego obejrzenia dowolnego pytania po ID — np. �
 ---
 
 ## Dobór wg słabości — dwa warianty (scalone w jeden wiersz tabeli)
+
+> **Powiązane (2026-06-13):** „Mapa wiedzy" z [speca trybów spersonalizowanych](docs/superpowers/specs/2026-06-13-tryby-spersonalizowane-wiedza-design.md) realizuje **user-driven** wariant tej idei (user sam wybiera słabą dziedzinę z mapy), zanim/zamiast automatycznego doboru. Automatyczny dobór poniżej pozostaje osobną pozycją.
 
 > **Refinement 2026-06-05:** te dwie sekcje to jedna pozycja backlogu o dwóch wariantach. **Główny kierunek = per-typ (floor+flex)** poniżej — opt-in, bez konfliktu z anti-repeat, sygnał stabilizuje się szybko. **Per-pytanie** (ta sekcja) degraduje do osobnego, drobniejszego trybu **„Powtórka błędów"**, nie do domyślnego doboru. Brainstorming zacząć od wariantu per-typ.
 

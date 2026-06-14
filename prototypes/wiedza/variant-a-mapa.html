@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Wariant A — Mapa postępu</title>
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* minimalne dodatki ponad shared.css */
+    .big-pct { font-size: 2.4rem; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+    .map-card .row { width: 100%; }
+    .back-link { display: inline-block; background: none; border: none; color: var(--blue); padding: 0; font-weight: 600; margin-bottom: 12px; }
+    .back-link:hover { text-decoration: underline; filter: none; }
+    /* dwie metryki: skuteczność (kolorowa) vs pokrycie (neutralna) */
+    .metric-row { display: flex; align-items: center; gap: 8px; margin-top: 7px; }
+    .metric-row .lbl { font-size: 0.74rem; color: var(--muted); width: 86px; flex: none; text-transform: uppercase; letter-spacing: .03em; }
+    .metric-row .bar { flex: 1; }
+    .metric-row .val { font-size: 0.82rem; font-weight: 700; width: 64px; flex: none; text-align: right; font-variant-numeric: tabular-nums; }
+    .bar.cov > i { background: #94a3b8; }   /* pokrycie = neutralny szaroniebieski */
+    .bar.na > i { background: #e2e8f0; }    /* brak danych */
+    .topic-acc { width: 58px; flex: none; text-align: right; font-weight: 700; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+    .topic-cov { font-size: 0.72rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="proto-bar">🧪 <strong>Wariant A — Mapa postępu</strong> · <a href="index.html">← porównanie wariantów</a></div>
+
+  <div class="wrap">
+
+    <!-- ============ EKRAN 1 — MAPA WIEDZY ============ -->
+    <section id="screen-map">
+      <span class="eyebrow">Mapa postępu</span>
+      <h1>Twoja mapa wiedzy</h1>
+      <p class="sub">Dwie rzeczy naraz: <strong>ile pytań już poznałeś</strong> i <strong>jak Ci idzie</strong> (skuteczność) — w każdej dziedzinie i temacie.</p>
+
+      <div class="card">
+        <div class="spread">
+          <div>
+            <div class="small muted">Średnia skuteczność</div>
+            <div class="big-pct" id="overall-pct">—</div>
+          </div>
+          <div class="center">
+            <div class="big-pct" id="days-left" style="font-size:1.8rem;">—</div>
+            <div class="tiny muted">dni do egzaminu</div>
+          </div>
+        </div>
+        <div class="bar thick" id="overall-bar" style="margin-top:14px;"><i style="width:0%"></i></div>
+        <div class="tiny muted" id="overall-cov" style="margin-top:10px;">—</div>
+      </div>
+
+      <h2 style="margin-top:6px;">Dziedziny</h2>
+      <p class="small muted" style="margin:0 0 12px;">Sam decydujesz: podciągnij to, co idzie słabo — albo poćwicz mocny obszar, gdy masz gorszy dzień.</p>
+      <div id="domain-list"></div>
+    </section>
+
+    <!-- ============ EKRAN 2 — DZIEDZINA (detal) ============ -->
+    <section id="screen-domain" class="hidden">
+      <button class="back-link" onclick="goMap()">← Mapa wiedzy</button>
+      <div class="row" style="gap:8px;">
+        <span class="dot" id="dom-dot"></span>
+        <h1 id="dom-name" style="margin:0;">—</h1>
+      </div>
+      <div class="card" style="margin-top:12px;">
+        <div class="metric-row">
+          <span class="lbl">Skuteczność</span>
+          <div class="bar thick" id="dom-bar"><i style="width:0%"></i></div>
+          <span class="val" id="dom-pct">—</span>
+        </div>
+        <div class="metric-row">
+          <span class="lbl">Poznane</span>
+          <div class="bar cov" id="dom-cov-bar"><i style="width:0%"></i></div>
+          <span class="val" id="dom-answered">—</span>
+        </div>
+      </div>
+
+      <h2>Tematy</h2>
+      <p class="small muted" style="margin:-4px 0 10px;">Skuteczność per temat — „brak danych" znaczy, że jeszcze nie ćwiczyłeś tego tematu.</p>
+      <div class="card" id="topic-list"></div>
+
+      <button class="btn block lg" onclick="startSession()">Ćwicz tę dziedzinę (15 pytań)</button>
+      <p class="small muted center" id="weakest-hint" style="margin-top:12px;">—</p>
+    </section>
+
+    <!-- ============ EKRAN 3 — SESJA (quiz) ============ -->
+    <section id="screen-session" class="hidden">
+      <!-- aktywne pytanie -->
+      <div id="session-quiz">
+        <button class="back-link" onclick="goDomain(currentDomain.code)">← Przerwij sesję</button>
+        <div class="spread small muted">
+          <span id="q-header">—</span>
+        </div>
+        <div class="bar" id="q-progress" style="margin:8px 0 18px;"><i style="width:0%"></i></div>
+        <div class="card">
+          <h2 id="q-text" style="font-size:1.1rem; line-height:1.4;">—</h2>
+          <div id="q-options" style="margin-top:14px;"></div>
+          <div id="q-feedback" class="hidden">
+            <div class="explain" id="q-explain"></div>
+            <div class="source-box" id="q-source"></div>
+          </div>
+        </div>
+        <button class="btn block lg hidden" id="q-next" onclick="nextQuestion()">Następne</button>
+      </div>
+
+      <!-- wyniki -->
+      <div id="session-results" class="hidden">
+        <div class="center">
+          <div style="font-size:2.6rem;">🎯</div>
+          <h1>Sesja ukończona</h1>
+          <p class="sub" id="res-score" style="margin-bottom:18px;">—</p>
+        </div>
+        <div class="card">
+          <div class="row" style="gap:8px; margin-bottom:12px;">
+            <span class="dot" id="res-dot"></span>
+            <strong id="res-dom-name">—</strong>
+          </div>
+          <div class="spread">
+            <span class="small muted">Skuteczność</span>
+            <span class="pct" id="res-mastery-label">—</span>
+          </div>
+          <div class="bar thick" id="res-bar" style="margin-top:8px;"><i style="width:0%"></i></div>
+          <div class="spread" style="margin-top:14px;">
+            <span class="small muted">Poznane</span>
+            <span class="pct small" id="res-cov-label">—</span>
+          </div>
+          <div class="bar cov" id="res-cov-bar" style="margin-top:8px;"><i style="width:0%"></i></div>
+        </div>
+        <button class="btn block lg" onclick="ctxAfterResults()">Ćwicz dalej</button>
+        <button class="btn ghost block" style="margin-top:10px;" onclick="goMap()">Wróć do mapy</button>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    /* ---------- stan ---------- */
+    var P = window.PROTO;
+    var currentDomain = null;   // wybrana dziedzina (obiekt z P.domains)
+    var session = null;         // { questions:[], idx, score }
+
+    var screens = {
+      map: document.getElementById('screen-map'),
+      domain: document.getElementById('screen-domain'),
+      session: document.getElementById('screen-session'),
+    };
+
+    /* ---------- helpery ---------- */
+    // skuteczność (accuracy 0..1, null = brak danych)
+    function accClass(a) {
+      if (a == null) return 'na';
+      if (a >= 0.70) return 'green';
+      if (a >= 0.40) return 'amber';
+      return 'red';
+    }
+    function pct(m) { return Math.round((m || 0) * 100); }
+    function accLabel(a) { return a == null ? '—' : pct(a) + '%'; }
+    function covFrac(o) { var den = o.total || o.count || 0; return den ? o.answered / den : 0; }
+    function setBar(barEl, value, klass) {
+      barEl.className = 'bar thick ' + (klass || accClass(value));
+      // dwukrokowa animacja: reset do 0, potem do docelowej szerokości
+      var fill = barEl.querySelector('i');
+      fill.style.width = '0%';
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { fill.style.width = pct(value) + '%'; });
+      });
+    }
+    // animacja paska od wartości startowej do docelowej (ułamki 0..1)
+    function animateBar(barEl, fromFrac, toFrac, klass) {
+      barEl.className = 'bar thick ' + (klass || '');
+      var fill = barEl.querySelector('i');
+      fill.style.transition = 'none';
+      fill.style.width = pct(fromFrac) + '%';
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          fill.style.transition = 'width 1s ease';
+          fill.style.width = pct(toFrac) + '%';
+        });
+      });
+    }
+    function show(name) {
+      for (var k in screens) screens[k].classList.add('hidden');
+      screens[name].classList.remove('hidden');
+      window.scrollTo(0, 0);
+    }
+    function levelBadge(level) {
+      var labels = { easy: 'łatwe', medium: 'średnie', hard: 'trudne' };
+      return '<span class="badge ' + level + '">' + (labels[level] || level) + '</span>';
+    }
+
+    /* ---------- EKRAN 1: mapa ---------- */
+    function renderMap() {
+      // średnia skuteczność ważona liczbą odpowiedzi (answered)
+      var sumA = 0, sumW = 0, totAns = 0, totQ = 0;
+      P.domains.forEach(function (d) {
+        if (d.accuracy != null) { sumA += d.accuracy * d.answered; sumW += d.answered; }
+        totAns += d.answered; totQ += d.total;
+      });
+      var avg = sumW ? sumA / sumW : 0;
+
+      document.getElementById('overall-pct').textContent = pct(avg) + '%';
+      document.getElementById('days-left').textContent = P.daysLeft;
+      var ob = document.getElementById('overall-bar');
+      ob.className = 'bar thick ' + accClass(avg);
+      requestAnimationFrame(function () { ob.querySelector('i').style.width = pct(avg) + '%'; });
+      document.getElementById('overall-cov').textContent =
+        'Poznane łącznie: ' + totAns + ' / ' + totQ + ' pytań';
+
+      // sortowanie: najsłabsze (najniższa skuteczność) na górze, „brak danych" na końcu
+      var sorted = P.domains.slice().sort(function (a, b) {
+        var aa = a.accuracy == null ? 2 : a.accuracy, bb = b.accuracy == null ? 2 : b.accuracy;
+        return aa - bb;
+      });
+
+      var list = document.getElementById('domain-list');
+      list.innerHTML = '';
+      sorted.forEach(function (d) {
+        var card = document.createElement('div');
+        card.className = 'card clickable map-card';
+        card.onclick = function () { goDomain(d.code); };
+        card.innerHTML =
+          '<div class="row" style="gap:9px;">' +
+            '<span class="dot" style="background:' + d.color + '"></span>' +
+            '<strong class="grow">' + d.name + '</strong>' +
+          '</div>' +
+          '<div class="metric-row">' +
+            '<span class="lbl">Skuteczność</span>' +
+            '<div class="bar ' + accClass(d.accuracy) + '"><i style="width:' + pct(d.accuracy) + '%"></i></div>' +
+            '<span class="val" style="color:var(--' + (d.accuracy == null ? 'muted' : accClass(d.accuracy)) + ')">' + accLabel(d.accuracy) + '</span>' +
+          '</div>' +
+          '<div class="metric-row">' +
+            '<span class="lbl">Poznane</span>' +
+            '<div class="bar cov"><i style="width:' + pct(covFrac(d)) + '%"></i></div>' +
+            '<span class="val muted">' + d.answered + '/' + d.total + '</span>' +
+          '</div>';
+        list.appendChild(card);
+      });
+    }
+
+    function goMap() { renderMap(); show('map'); }
+
+    /* ---------- EKRAN 2: dziedzina ---------- */
+    function goDomain(code) {
+      currentDomain = P.domains.filter(function (d) { return d.code === code; })[0];
+      var d = currentDomain;
+
+      document.getElementById('dom-dot').style.background = d.color;
+      document.getElementById('dom-name').textContent = d.name;
+      var domPct = document.getElementById('dom-pct');
+      domPct.textContent = accLabel(d.accuracy);
+      domPct.style.color = 'var(--' + (d.accuracy == null ? 'muted' : accClass(d.accuracy)) + ')';
+      setBar(document.getElementById('dom-bar'), d.accuracy);
+      document.getElementById('dom-answered').textContent = d.answered + ' / ' + d.total;
+      var domCov = document.getElementById('dom-cov-bar');
+      domCov.className = 'bar cov';
+      requestAnimationFrame(function () { domCov.querySelector('i').style.width = pct(covFrac(d)) + '%'; });
+
+      // tematy: skuteczność (kolor) + pokrycie; „brak danych" gdy answered = 0
+      var tl = document.getElementById('topic-list');
+      tl.innerHTML = '';
+      var sortedTopics = d.topics.slice().sort(function (a, b) {
+        var aa = a.accuracy == null ? 2 : a.accuracy, bb = b.accuracy == null ? 2 : b.accuracy;
+        return aa - bb;
+      });
+      sortedTopics.forEach(function (t) {
+        var item = document.createElement('div');
+        item.className = 'item';
+        item.innerHTML =
+          '<div class="grow">' +
+            '<div>' + t.name + '</div>' +
+            '<div class="topic-cov">poznane ' + t.answered + ' / ' + t.count + ' pytań</div>' +
+          '</div>' +
+          '<div style="width:80px; flex:none;"><div class="bar ' + accClass(t.accuracy) + '"><i style="width:' + pct(t.accuracy) + '%"></i></div></div>' +
+          (t.accuracy == null
+            ? '<span class="topic-acc tiny muted" style="line-height:1.1;">brak<br>danych</span>'
+            : '<span class="topic-acc" style="color:var(--' + accClass(t.accuracy) + ')">' + accLabel(t.accuracy) + '</span>');
+        tl.appendChild(item);
+      });
+
+      // najsłabszy temat z danymi
+      var withData = d.topics.filter(function (t) { return t.accuracy != null; });
+      var hint = document.getElementById('weakest-hint');
+      if (withData.length) {
+        var weakest = withData.slice().sort(function (a, b) { return a.accuracy - b.accuracy; })[0];
+        hint.innerHTML = '💡 Najsłabiej idzie: <strong>' + weakest.name + '</strong> (' + accLabel(weakest.accuracy) + ') — albo podciągnij to, albo poćwicz mocniejszy temat.';
+      } else {
+        hint.innerHTML = '💡 Brak danych — zacznij sesję, żeby poznać swoją skuteczność w tej dziedzinie.';
+      }
+
+      show('domain');
+    }
+
+    /* ---------- EKRAN 3: sesja ---------- */
+    var SESSION_SIZE = 3;
+
+    function buildSession(code) {
+      var same = P.questions.filter(function (q) { return q.domain === code; });
+      var pool = same.slice();
+      // jeśli za mało pytań z dziedziny — dobierz/powtórz (to mock)
+      var others = P.questions.filter(function (q) { return q.domain !== code; });
+      var i = 0;
+      while (pool.length < SESSION_SIZE) {
+        if (others.length) pool.push(others[i % others.length]);
+        else pool.push(same[i % same.length]);
+        i++;
+      }
+      return pool.slice(0, SESSION_SIZE);
+    }
+
+    function startSession() {
+      session = { questions: buildSession(currentDomain.code), idx: 0, score: 0 };
+      document.getElementById('session-results').classList.add('hidden');
+      document.getElementById('session-quiz').classList.remove('hidden');
+      show('session');
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      var q = session.questions[session.idx];
+      var n = session.idx + 1;
+
+      document.getElementById('q-header').innerHTML =
+        'Pytanie ' + n + ' z ' + SESSION_SIZE + ' · ' + currentDomain.short + ' · ' + levelBadge(q.level);
+      var prog = document.getElementById('q-progress');
+      prog.className = 'bar';
+      prog.querySelector('i').style.width = Math.round((n - 1) / SESSION_SIZE * 100) + '%';
+
+      document.getElementById('q-text').textContent = q.question;
+
+      // opcje
+      var letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+      var opts = document.getElementById('q-options');
+      opts.innerHTML = '';
+      q.options.forEach(function (opt, i) {
+        var el = document.createElement('div');
+        el.className = 'option';
+        el.innerHTML = '<strong>' + letters[i] + '.</strong> ' + opt;
+        el.onclick = function () { answer(i); };
+        opts.appendChild(el);
+      });
+
+      // reset feedback
+      document.getElementById('q-feedback').classList.add('hidden');
+      var nextBtn = document.getElementById('q-next');
+      nextBtn.classList.add('hidden');
+      nextBtn.textContent = (session.idx === SESSION_SIZE - 1) ? 'Zobacz wynik' : 'Następne';
+    }
+
+    function answer(chosen) {
+      var q = session.questions[session.idx];
+      var optionEls = document.getElementById('q-options').children;
+
+      // już odpowiedziano? (pierwsza opcja disabled => blokuj)
+      if (optionEls[0].classList.contains('disabled')) return;
+
+      if (chosen === q.correct) session.score++;
+
+      for (var i = 0; i < optionEls.length; i++) {
+        var el = optionEls[i];
+        el.classList.add('disabled');
+        el.onclick = null;
+        if (i === q.correct) el.classList.add('correct');
+        else if (i === chosen) el.classList.add('wrong');
+      }
+
+      document.getElementById('q-explain').textContent = q.explanation;
+      document.getElementById('q-source').textContent = 'Źródło: ' + q.source;
+      document.getElementById('q-feedback').classList.remove('hidden');
+      document.getElementById('q-next').classList.remove('hidden');
+    }
+
+    function nextQuestion() {
+      if (session.idx < SESSION_SIZE - 1) {
+        session.idx++;
+        renderQuestion();
+      } else {
+        finishSession();
+      }
+    }
+
+    function finishSession() {
+      var d = currentDomain;
+
+      // skuteczność: zmieszaj dotychczasową z wynikiem tej sesji
+      var sessAcc = session.score / SESSION_SIZE;
+      var oldA = d.accuracy;
+      var newA = oldA == null ? sessAcc : Math.round((oldA * 0.8 + sessAcc * 0.2) * 100) / 100;
+
+      // pokrycie: rośnie o rozmiar sesji (cap na total)
+      var oldCov = d.answered;
+      var newCov = Math.min(d.total, d.answered + SESSION_SIZE);
+
+      d.accuracy = newA; d.answered = newCov; d.mastery = newA; // zapis w pamięci + sync shim
+
+      document.getElementById('res-score').textContent =
+        'Twój wynik: ' + session.score + ' / ' + SESSION_SIZE;
+      document.getElementById('res-dot').style.background = d.color;
+      document.getElementById('res-dom-name').textContent = d.name;
+
+      var arrow = (oldA == null || newA >= oldA) ? ' ▲' : ' ▼';
+      var arrowColor = (oldA == null || newA >= oldA) ? 'var(--green)' : 'var(--red)';
+      document.getElementById('res-mastery-label').innerHTML =
+        accLabel(oldA) + ' → <span style="color:' + arrowColor + '">' + pct(newA) + '%' + arrow + '</span>';
+      animateBar(document.getElementById('res-bar'), (oldA == null ? 0 : oldA), newA, accClass(newA));
+
+      document.getElementById('res-cov-label').textContent = oldCov + ' → ' + newCov + ' / ' + d.total;
+      animateBar(document.getElementById('res-cov-bar'), oldCov / d.total, newCov / d.total, 'cov');
+
+      document.getElementById('session-quiz').classList.add('hidden');
+      document.getElementById('session-results').classList.remove('hidden');
+      show('session');
+    }
+
+    // "Ćwicz dalej" po wynikach → nowa sesja w tej samej dziedzinie
+    function ctxAfterResults() { startSession(); }
+
+    /* ---------- start ---------- */
+    renderMap();
+    show('map');
+  </script>
+</body>
+</html>
